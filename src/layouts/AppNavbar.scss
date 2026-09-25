@@ -1,0 +1,106 @@
+/**
+ * Gem System Page — App navbar
+ * Brand + actions shared by marketing and docs layouts (overrides on Gem Navbar).
+ */
+
+$navbar-mobile: 767.98px;
+
+.docs-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gem-space-3);
+  color: var(--gem-color-fg);
+  font-family: var(--gem-font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  &__logo {
+    display: block;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--gem-radius-sm);
+    object-fit: cover;
+  }
+
+  &__text {
+    white-space: nowrap;
+  }
+
+  @media (max-width: $navbar-mobile) {
+    &__text {
+      font-size: 1rem;
+    }
+  }
+}
+
+.docs-navbar {
+  --docs-navbar-control-height: 2.25rem;
+
+  // Single row on mobile: the docs menu is the Sidebar overlay, not the Navbar collapse.
+  .gem-navbar__toggle,
+  .gem-navbar__nav {
+    display: none !important;
+  }
+
+  &.gem-navbar--collapse-sm,
+  &.gem-navbar--collapse-md,
+  &.gem-navbar--collapse-lg {
+    .gem-navbar__inner {
+      display: flex !important;
+      align-items: center;
+      gap: var(--gem-space-3);
+    }
+  }
+
+  .gem-navbar__actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    width: auto !important;
+    margin-inline-start: auto;
+    padding-bottom: 0 !important;
+    grid-column: auto !important;
+
+    .gem-button {
+      width: auto !important;
+    }
+  }
+
+  &__start,
+  &__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gem-space-2);
+  }
+
+  &__actions .gem-button,
+  &__language .gem-select__trigger,
+  &__version .gem-select__trigger {
+    box-sizing: border-box;
+    height: var(--docs-navbar-control-height);
+    min-height: var(--docs-navbar-control-height);
+  }
+
+  &__actions .gem-button--icon-only {
+    width: var(--docs-navbar-control-height);
+  }
+
+  &__language,
+  &__version {
+    gap: 0;
+
+    .gem-select__trigger {
+      padding-block: 0;
+    }
+  }
+
+  &__language {
+    width: 8.5rem;
+  }
+
+  &__version {
+    width: 5rem;
+  }
+}

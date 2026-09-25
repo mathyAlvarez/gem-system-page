@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "Typography",
+    "description": "Semantic copy with the system's typographic variants."
+  },
+  "variants": {
+    "title": "Variants",
+    "sample": "The quick brown fox"
+  },
+  "as": {
+    "title": "as",
+    "description": "Change the HTML tag without losing the visual style.",
+    "headingAsP": "Looks like an h3, but it's a <p>",
+    "inline": "Inline with as=\"span\""
+  },
+  "tokens": {
+    "sample": "The quick brown fox jumps over the lazy gem.",
+    "families": {
+      "title": "Font families",
+      "description": "Typefaces from the fontFamily token. Load the fonts (Manrope, Fraunces and JetBrains Mono) in your app."
+    },
+    "switcher": {
+      "title": "Font switcher",
+      "description": "Switch the active font family. The preview uses fontFamily.{{family}}.",
+      "active": "Active family"
+    },
+    "weights": {
+      "title": "Font weights",
+      "description": "Values from the fontWeight token, shared by every family."
+    },
+    "sizes": {
+      "title": "Font size scale",
+      "description": "The fontSize token scale in rem (16px root). Each Typography variant uses one of these sizes."
+    }
+  }
+}

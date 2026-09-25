@@ -1,0 +1,169 @@
+/**
+ * Gem System Page — Tokens
+ * Theme toolbar, active theme preview, palette scales and semantic aliases.
+ */
+
+.tokens-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gem-space-4);
+
+  &__text {
+    color: var(--gem-color-fg-muted);
+
+    code {
+      color: var(--gem-color-accent);
+      font-family: var(--gem-font-mono);
+    }
+  }
+}
+
+.tokens-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  padding: var(--gem-space-5) var(--gem-space-6);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+
+  &__eyebrow {
+    color: var(--gem-color-fg-muted);
+    font-weight: var(--gem-font-weight-semibold);
+    text-transform: uppercase;
+  }
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__body {
+    color: var(--gem-color-fg-muted);
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gem-space-2);
+    margin-top: var(--gem-space-2);
+  }
+}
+
+.tokens-family {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gem-space-4);
+  }
+
+  &__code {
+    color: var(--gem-color-accent);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-sm);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+    gap: var(--gem-space-2);
+  }
+}
+
+.tokens-swatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  padding: var(--gem-space-3);
+  border: 1px solid color-mix(in srgb, var(--gem-color-fg) 12%, transparent);
+  border-radius: var(--gem-radius-md);
+  background: var(--tokens-swatch-bg);
+  color: var(--tokens-swatch-fg);
+
+  &--compact {
+    min-height: 4.25rem;
+  }
+
+  &__step {
+    font-size: var(--gem-font-size-sm);
+    font-weight: var(--gem-font-weight-semibold);
+  }
+
+  &__value {
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+    opacity: 0.9;
+    word-break: break-all;
+  }
+}
+
+.tokens-usage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--gem-space-4);
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-2);
+    min-width: 0;
+  }
+
+  &__alerts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--gem-space-3);
+    width: 100%;
+  }
+}
+
+.tokens-overrides {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-6);
+
+  &__scope {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gem-space-3);
+    padding: var(--gem-space-4);
+    border: 1px dashed var(--gem-color-primary-300);
+    border-radius: var(--gem-radius-md);
+    background: var(--gem-color-bg);
+  }
+}
+
+.tokens-semantic {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--gem-space-4);
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-3);
+    padding: var(--gem-space-4);
+    border: 1px solid var(--gem-color-border);
+    border-radius: var(--gem-radius-lg);
+    background: var(--gem-color-bg-subtle);
+
+    h6 {
+      text-transform: capitalize;
+    }
+  }
+
+  &__swatches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gem-space-2);
+  }
+}

@@ -1,0 +1,154 @@
+/**
+ * Gem System Page — Spacing
+ * Space scale, grid demo, containers, breakpoints and column layouts.
+ */
+
+$bp-md: 768px;
+
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+
+  &__row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    align-items: center;
+    gap: var(--gem-space-4);
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__value {
+    color: var(--gem-color-accent);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    min-height: 1rem;
+  }
+
+  &__bar {
+    width: var(--spacing-bar-size);
+    min-width: 1px;
+    height: 0.75rem;
+    border-radius: var(--gem-radius-sm);
+    background: var(--gem-color-accent);
+  }
+}
+
+.spacing-grid-frame {
+  width: 100%;
+  padding: var(--gem-space-4);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+
+  // Col always adds `.gem-grid__col-{span}`, whose rule is emitted after the
+  // breakpoint rules in gem-system/styles.css and wins with equal specificity.
+  &--responsive .gem-col {
+    grid-column-end: span var(--gem-col-span, 12);
+
+    @media (min-width: $bp-md) {
+      grid-column-end: span var(--gem-col-md, var(--gem-col-sm, var(--gem-col-span, 12)));
+    }
+  }
+}
+
+.spacing-cell {
+  display: grid;
+  place-items: center;
+  min-height: 2.75rem;
+  padding: var(--gem-space-2);
+  border-radius: var(--gem-radius-md);
+  background: var(--spacing-cell-bg);
+  color: var(--spacing-cell-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: var(--gem-font-weight-semibold);
+}
+
+.spacing-containers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+
+  &__row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    align-items: center;
+    gap: var(--gem-space-4);
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__value {
+    color: var(--gem-color-accent);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+  }
+
+  &__box {
+    height: 1.5rem;
+    border: 1px solid var(--gem-color-primary-300);
+    border-radius: var(--gem-radius-sm);
+    background: var(--gem-color-primary-100);
+  }
+}
+
+.spacing-breakpoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-3);
+
+  &__chip {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-1);
+    min-width: 6rem;
+    padding: var(--gem-space-3) var(--gem-space-4);
+    border: 1px solid var(--gem-color-border);
+    border-radius: var(--gem-radius-md);
+    background: var(--gem-color-bg-subtle);
+  }
+
+  &__value {
+    color: var(--gem-color-accent);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-sm);
+  }
+}
+
+.spacing-code-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--gem-space-4);
+}
+
+.spacing-columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gem-space-3);
+  }
+
+  &__meta {
+    color: var(--gem-color-fg-muted);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+  }
+}

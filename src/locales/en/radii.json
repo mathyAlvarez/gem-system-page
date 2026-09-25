@@ -1,0 +1,24 @@
+{
+  "header": {
+    "title": "Radii",
+    "description": "Border radius scale: --gem-radius-* CSS variables and radius / radiusPx helpers."
+  },
+  "intro": "Border radii from <strong>none</strong> to <strong>full</strong>. Core steps: <code>sm</code>, <code>md</code>, <code>lg</code> and <code>full</code>.",
+  "scale": {
+    "title": "Radius scale",
+    "description": "radius / --gem-radius-*"
+  },
+  "applied": {
+    "title": "Applied code",
+    "description": "Examples with CSS variables, the TypeScript helper and utility classes."
+  },
+  "code": {
+    "utilities": "Utility classes"
+  },
+  "playground": {
+    "title": "Apply radius",
+    "description": "Pick a radius token and apply it to the panel with the button.",
+    "label": "Radius",
+    "apply": "Apply radius"
+  }
+}

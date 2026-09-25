@@ -1,0 +1,42 @@
+{
+  "header": {
+    "title": "Icons",
+    "description": "The system SVG icon set. Color is inherited via currentColor and size accepts xs–8xl tokens, pixels or any CSS length."
+  },
+  "intro": "Base SVG set (<code>viewBox=\"0 0 24 24\"</code>, stroke <code>currentColor</code>). {{count}} icons + aliases (<code>X</code>, <code>Add</code>, <code>Delete</code>, <code>Loader</code>…).",
+  "usage": {
+    "title": "Usage",
+    "searchTitle": "Search",
+    "addTitle": "Add"
+  },
+  "groups": {
+    "navigation": "Navigation and structure",
+    "actions": "User actions",
+    "arithmetic": "Arithmetic",
+    "status": "Status and feedback",
+    "forms": "Forms and inputs",
+    "entities": "Entities and identity"
+  },
+  "sizes": {
+    "title": "Sizes"
+  },
+  "custom": {
+    "title": "Custom size",
+    "description": "You can also pass pixels (<code>size={32}</code>) or any CSS length (<code>size=\"2.25rem\"</code>)."
+  },
+  "colors": {
+    "title": "Color variants",
+    "description": "Color is inherited via <strong>currentColor</strong>. Pick a system variant and the icon group updates together.",
+    "groupLabel": "Color variants",
+    "variants": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "tertiary": "Tertiary",
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Info",
+      "neutral": "Neutral"
+    }
+  }
+}

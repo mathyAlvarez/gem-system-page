@@ -1,0 +1,62 @@
+---
+description: Convención de estilos del proyecto (SCSS + BEM anidado + tokens --gem-*). Aplicar al crear o editar estilos y al agregar clases en componentes.
+globs: src/**/*.scss,src/**/*.tsx
+alwaysApply: false
+---
+
+# Estilos: SCSS + BEM
+
+## Archivos
+
+- Siempre `.scss` (no `.css` nuevos). Colocado junto al componente/vista: `src/pages/home/HomePage.scss`, `src/layouts/MarketingLayout.scss`.
+- Se importa desde el componente dueño: `import "./HomePage.scss";`.
+- Solo lo que se reutiliza en varias vistas va en `src/styles/*.scss` (ej. `docs.scss`), importado una vez en `main.tsx`.
+- Para ajustar componentes de Gem, anidar su clase dentro de tu bloque (`.docs-navbar { .gem-navbar__nav { ... } }`); nunca estilos globales sobre `.gem-*`.
+- Encabezado obligatorio:
+
+```scss
+/**
+ * Gem System Page — <Nombre>
+ * <Una línea describiendo el bloque>.
+ */
+```
+
+## BEM anidado
+
+- Un bloque raíz por componente, en kebab-case y con prefijo de la vista (`home-hero`, `docs-code`). El prefijo `gem-` es exclusivo del design system: no lo uses para clases propias.
+- Elementos con `&__elemento`, modificadores con `&--modificador`, estados con `&:hover`, `&:focus-visible`, `&:disabled`.
+- Modificador que afecta a un elemento: `&--sm &__trigger { ... }` / `&__item--open &__panel { ... }`.
+- Máximo un nivel de elemento: `&__panel-inner`, nunca `&__panel__inner`.
+
+## Variables y tokens
+
+- Declarar custom properties locales del bloque en la raíz (`--<bloque>-<prop>`) derivadas de tokens `--gem-*`, y consumirlas en elementos.
+- Usar solo tokens `--gem-*` (color, space, radius, font, shadow). Sin hex/rgb sueltos ni Tailwind; un fallback dentro de `var()` es aceptable.
+- Variables Sass (`$`) solo para breakpoints u otros valores de compilación.
+
+## Tema, responsive y motion (dentro del bloque)
+
+```scss
+.docs-card {
+  --docs-card-bg: var(--gem-color-bg);
+  --docs-card-border: var(--gem-color-border);
+  background: var(--docs-card-bg);
+  border: 1px solid var(--docs-card-border);
+
+  &__title { font-weight: 650; }
+  &--compact &__title { font-size: var(--gem-font-size-sm); }
+
+  [data-theme='dark'] & {
+    --docs-card-border: var(--gem-palette-neutral-500);
+  }
+
+  @media (max-width: $mobile) { padding: var(--gem-space-4); }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__title { transition: none; }
+  }
+}
+```
+
+- Dark mode: solo reasignando las custom properties con `[data-theme='dark'] &`.
+- Media queries anidadas en el bloque, no agrupadas al final del archivo.

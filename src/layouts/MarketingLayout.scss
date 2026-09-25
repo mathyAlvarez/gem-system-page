@@ -1,0 +1,17 @@
+/**
+ * Gem System Page — Marketing layout
+ * Shell for landing pages: sticky navbar + main content.
+ */
+
+.marketing-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg);
+}
+
+.marketing-main {
+  flex: 1;
+  min-width: 0;
+}

@@ -1,0 +1,39 @@
+{
+  "header": {
+    "title": "Spacing",
+    "description": "Spacing, grid, containers and breakpoints: --gem-space-* / --gem-grid-* CSS variables and helpers for space, grid, container and breakpoints."
+  },
+  "intro": "Spacing uses a <strong>4px</strong> base unit (multiples of 4 / 8). The grid has <strong>12 columns</strong> with gaps from the same scale.",
+  "scale": {
+    "title": "Space scale"
+  },
+  "grid": {
+    "title": "Grid demo",
+    "meta": "{{columns}} cols · gap {{gap}} / {{gapLg}}",
+    "description": "<code>Grid</code> + <code>Col</code>: full width until <code>md</code>, then the listed span.",
+    "bug": {
+      "title": "Known Col bug",
+      "body": "In <code>gem-system/styles.css</code> the <code>.gem-grid__col-*</code> class added by <code>Col</code> is declared after the breakpoint rules, so <code>span</code> always wins and <code>sm</code>, <code>md</code>, <code>lg</code>… are ignored."
+    }
+  },
+  "containers": {
+    "title": "Containers",
+    "description": "container / .gem-container-*. Widths relative to the largest container."
+  },
+  "breakpoints": {
+    "title": "Breakpoints"
+  },
+  "applied": {
+    "title": "Applied code",
+    "description": "Examples with the TypeScript helpers and CSS variables."
+  },
+  "code": {
+    "gridTokens": "Grid tokens"
+  },
+  "columns": {
+    "title": "Column layouts",
+    "description": "Fixed column grids: <strong>4</strong>, <strong>3</strong> and <strong>2</strong> columns. Below <code>sm</code> (640px) they stack to a single column.",
+    "layoutTitle": "{{count}}-column grid",
+    "stacks": "stacks to 1 col (≤640px)"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "ariaLabel": "Gem System",
+    "bannerAlt": "Gem-org — build your react based app with gem-org system",
+    "lead": "Gem-org ofrece un design system, transiciones y animaciones para React, fácil de utilizar e incluir en todos tus proyectos.",
+    "cta": "Getting started",
+    "more": "Ver más"
+  },
+  "marquee": {
+    "ariaLabel": "Stack",
+    "tokens": "Tokens · Icons · Forms",
+    "storybook": "Demos alineadas a Storybook"
+  },
+  "packages": {
+    "title": "Lo que necesitas para armar tus componentes",
+    "description": "El ecosistema de Gem-org: un design system base, efectos visuales y transiciones.",
+    "system": {
+      "description": "Componentes React + TypeScript listos para usar y de fácil customización: forms, navigation, feedback, data y más.",
+      "detail": "Ver componentes"
+    },
+    "effects": {
+      "description": "Efectos visuales: glow, float, tilt, beams, gradients y motion para superficies de producto.",
+      "detail": "Ver efectos"
+    },
+    "motions": {
+      "description": "Transiciones y presencia: fade, slide, stagger, morph y números animados.",
+      "detail": "Ver transiciones"
+    }
+  },
+  "reasons": {
+    "title": "¿Por qué usar Gem-org?",
+    "description": "Una experiencia de docs y API pensada para el desarrollo de componentes con una amplia gama de funcionalidades.",
+    "api": {
+      "title": "API consistente",
+      "body": "Estilos compartidos en los componentes que gem-system ofrece, como forms, overlays, feedback y demás."
+    },
+    "tokens": {
+      "title": "Tokens semánticos",
+      "body": "Color, espacio, tipo y sombra vía --gem-*. Light y dark sin hex sueltos."
+    },
+    "docs": {
+      "title": "Docs detalladas",
+      "body": "Cada demo de los componentes presenta ejemplos detallados de sus funcionalidades para que sea más fácil de aplicar y entender."
+    },
+    "motion": {
+      "title": "Efectos y motion",
+      "body": "Gemffects y Gemsitions se apoyan en el mismo ecosistema para presencia y detalle."
+    }
+  },
+  "explore": {
+    "title": "Listo para explorar",
+    "description": "La documentación tiene demos live alineadas a Storybook, con cada componente y su forma de uso.",
+    "stats": {
+      "stories": "Story files en el catálogo",
+      "sections": "Secciones de la documentación",
+      "packages": "Paquetes Gem-org"
+    },
+    "openDocs": "Ver documentación",
+    "npm": "npm · gem-system"
+  },
+  "footer": {
+    "brands": "Gem-org · gem-system · gemffects · gemsitions",
+    "cta": "Empezar a integrar"
+  }
+}

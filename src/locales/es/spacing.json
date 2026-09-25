@@ -1,0 +1,39 @@
+{
+  "header": {
+    "title": "Spacing",
+    "description": "Espaciado, grilla, contenedores y breakpoints: variables CSS --gem-space-* / --gem-grid-* y helpers para space, grid, container y breakpoints."
+  },
+  "intro": "El espaciado usa una unidad base de <strong>4px</strong> (múltiplos de 4 / 8). La grilla tiene <strong>12 columnas</strong> con divisiones (gap) de la misma escala.",
+  "scale": {
+    "title": "Escala de espaciado"
+  },
+  "grid": {
+    "title": "Demo de la grilla",
+    "meta": "{{columns}} columnas · división {{gap}} / {{gapLg}}",
+    "description": "<code>Grid</code> + <code>Col</code>: ancho completo hasta <code>md</code>, después el span indicado.",
+    "bug": {
+      "title": "Bug conocido en Col",
+      "body": "En <code>gem-system/styles.css</code> la clase <code>.gem-grid__col-*</code> que agrega <code>Col</code> se declara después de las reglas de breakpoint, así que <code>span</code> siempre gana y se ignoran <code>sm</code>, <code>md</code>, <code>lg</code>…"
+    }
+  },
+  "containers": {
+    "title": "Contenedores",
+    "description": "container / .gem-container-*. Anchos relativos al contenedor más grande."
+  },
+  "breakpoints": {
+    "title": "Breakpoints"
+  },
+  "applied": {
+    "title": "Código aplicado",
+    "description": "Ejemplos con los helpers de TypeScript y con variables CSS."
+  },
+  "code": {
+    "gridTokens": "Tokens de la grilla"
+  },
+  "columns": {
+    "title": "Layouts de columnas",
+    "description": "Grillas de columnas fijas: <strong>4</strong>, <strong>3</strong> y <strong>2</strong> columnas. Por debajo de <code>sm</code> (640px) se apilan en una sola columna.",
+    "layoutTitle": "Grilla de {{count}} columnas",
+    "stacks": "se apila en 1 col (≤640px)"
+  }
+}

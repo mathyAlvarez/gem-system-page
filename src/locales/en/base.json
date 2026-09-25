@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "ariaLabel": "Gem System",
+    "bannerAlt": "Gem-org — build your react based app with gem-org system",
+    "lead": "Gem-org offers a design system, transitions and animations for React, easy to use and include in all your projects.",
+    "cta": "Getting started",
+    "more": "Learn more"
+  },
+  "marquee": {
+    "ariaLabel": "Stack",
+    "tokens": "Tokens · Icons · Forms",
+    "storybook": "Storybook-aligned demos"
+  },
+  "packages": {
+    "title": "What you need to build your components",
+    "description": "The Gem-org ecosystem: a base design system, visual effects and transitions.",
+    "system": {
+      "description": "Ready-to-use, easy-to-customize React + TypeScript components: forms, navigation, feedback, data and more.",
+      "detail": "View components"
+    },
+    "effects": {
+      "description": "Visual effects: glow, float, tilt, beams, gradients and motion for product surfaces.",
+      "detail": "View effects"
+    },
+    "motions": {
+      "description": "Transitions and presence: fade, slide, stagger, morph and animated numbers.",
+      "detail": "View transitions"
+    }
+  },
+  "reasons": {
+    "title": "Why use Gem-org?",
+    "description": "A docs and API experience designed for building components with a wide range of features.",
+    "api": {
+      "title": "Consistent API",
+      "body": "Shared styles across the components gem-system offers, such as forms, overlays, feedback and more."
+    },
+    "tokens": {
+      "title": "Semantic tokens",
+      "body": "Color, spacing, type and shadow via --gem-*. Light and dark without loose hex values."
+    },
+    "docs": {
+      "title": "Detailed docs",
+      "body": "Every component demo shows detailed examples of its features, making it easier to understand and apply."
+    },
+    "motion": {
+      "title": "Effects and motion",
+      "body": "Gemffects and Gemsitions build on the same ecosystem for presence and detail."
+    }
+  },
+  "explore": {
+    "title": "Ready to explore",
+    "description": "The docs have live demos aligned with Storybook, with each component and how to use it.",
+    "stats": {
+      "stories": "Story files in the catalog",
+      "sections": "Docs sections",
+      "packages": "Gem-org packages"
+    },
+    "openDocs": "View docs",
+    "npm": "npm · gem-system"
+  },
+  "footer": {
+    "brands": "Gem-org · gem-system · gemffects · gemsitions",
+    "cta": "Start integrating"
+  }
+}

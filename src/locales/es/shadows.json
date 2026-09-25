@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Shadows",
+    "description": "Sombras, z-index y elevación: variables CSS --gem-shadow-* / --gem-z-* y helpers para shadow, zIndex y elevation."
+  },
+  "intro": "Las sombras comunican <strong>elevación</strong>; el z-index controla el <strong>orden de apilado</strong>. Usá el mapa semántico <code>elevation</code> cuando una superficie necesita ambos.",
+  "scale": {
+    "title": "Escala de sombras"
+  },
+  "zIndex": {
+    "title": "Escala de z-index",
+    "description": "zIndex / --gem-z-*. Los saltos entre capas dejan lugar para valores puntuales sin colisiones."
+  },
+  "elevation": {
+    "title": "Elevación semántica",
+    "description": "Cada nivel de elevation combina una sombra y un z-index."
+  },
+  "stacking": {
+    "title": "Orden de apilado",
+    "description": "Apilado típico: overlay → modal → toast → tooltip. Las clases <code>.gem-z-*</code> y <code>.gem-shadow-*</code> se corresponden 1:1 con los tokens.",
+    "layers": {
+      "overlay": "Overlay",
+      "modal": "Modal",
+      "toast": "Toast",
+      "tooltip": "Tooltip"
+    }
+  },
+  "applied": {
+    "title": "Código aplicado",
+    "description": "Ejemplos con variables CSS y con los helpers de TypeScript."
+  },
+  "playground": {
+    "title": "Aplicar elevación",
+    "description": "Elegí un token de <strong>elevation</strong> y aplicalo al panel. <code>box-shadow</code> y <code>z-index</code> se actualizan juntos.",
+    "label": "Elevación",
+    "apply": "Aplicar elevación"
+  }
+}

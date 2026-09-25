@@ -1,0 +1,51 @@
+{
+  "header": {
+    "title": "Getting started",
+    "description": "Instalá el paquete, cargá los estilos y empezá a usar componentes de Gem System."
+  },
+  "peers": {
+    "title": "Peers",
+    "body": "React 18.2+ o 19. Table además requiere @tanstack/react-table y @tanstack/react-virtual."
+  },
+  "install": {
+    "title": "Instalación"
+  },
+  "bootstrap": {
+    "title": "Bootstrap",
+    "description": "La forma más rápida: importá styles.css una sola vez en el entry y usá los componentes desde el barrel.",
+    "fullLabel": "Import completo",
+    "partial": {
+      "title": "Importar solo lo necesario",
+      "description": "No hace falta cargar todo el design system. Cada componente se publica como un subpath propio (en kebab-case, por ejemplo <code>@gem-org/gem-system/date-picker</code>) con su hoja de estilos homónima (<code>date-picker.css</code>). Así el bundle solo incluye el JS y el CSS de los componentes que realmente usás.",
+      "label": "Import parcial",
+      "notesTitle": "Tené en cuenta:",
+      "notes": {
+        "tokens": "<code>tokens.css</code> es obligatorio y se importa una sola vez: define las variables <code>--gem-*</code> que usan todos los componentes.",
+        "utilities": "<code>utilities.css</code> es opcional; solo si usás clases utilitarias como <code>gem-bg-*</code> o <code>gem-text-*</code>.",
+        "dependencies": "Los componentes no importan CSS por sí mismos: la app carga los estilos. Si un componente usa otro internamente (Button usa Icon), importá también los estilos de esa dependencia.",
+        "single": "Elegí un solo camino: <code>styles.css</code> ya incluye todos los estilos, no lo mezcles con imports individuales."
+      }
+    },
+    "fonts": {
+      "title": "Fuentes",
+      "description": "Las tipografías (Fraunces, Manrope y JetBrains Mono) se cargan en el head del HTML."
+    }
+  },
+  "theme": {
+    "title": "Tema",
+    "description": "Gem System trae tema claro y oscuro. El tema se controla con el atributo data-theme o con los helpers de @gem-org/gem-system/tokens.",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "toggle": "Alternar",
+    "current": "Tema actual: {{theme}}",
+    "scopedLabel": "Tema por contenedor"
+  },
+  "code": {
+    "optionalUtilities": "opcional: gem-bg-*, gem-text-*, gem-border-*",
+    "buttonUsesIcon": "Button usa Icon internamente",
+    "anyComponent": "cualquier componente",
+    "initialTheme": "index.html: tema inicial",
+    "scopedTheme": "El tema también puede aplicarse a un contenedor puntual",
+    "scopedEquivalent": "equivale a <div data-theme=\"dark\">"
+  }
+}

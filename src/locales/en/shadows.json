@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Shadows",
+    "description": "Shadows, z-index and elevation: --gem-shadow-* / --gem-z-* CSS variables and shadow, zIndex and elevation helpers."
+  },
+  "intro": "Shadows communicate <strong>elevation</strong>; z-index controls <strong>stacking order</strong>. Use the semantic <code>elevation</code> map when a surface needs both.",
+  "scale": {
+    "title": "Shadow scale"
+  },
+  "zIndex": {
+    "title": "Z-index scale",
+    "description": "zIndex / --gem-z-*. Gaps between layers leave room for one-off values without collisions."
+  },
+  "elevation": {
+    "title": "Semantic elevation",
+    "description": "Each elevation level pairs a shadow with a z-index."
+  },
+  "stacking": {
+    "title": "Stacking order",
+    "description": "Typical stacking: overlay → modal → toast → tooltip. Classes <code>.gem-z-*</code> and <code>.gem-shadow-*</code> map 1:1 to tokens.",
+    "layers": {
+      "overlay": "Overlay",
+      "modal": "Modal",
+      "toast": "Toast",
+      "tooltip": "Tooltip"
+    }
+  },
+  "applied": {
+    "title": "Applied code",
+    "description": "Examples with CSS variables and the TypeScript helpers."
+  },
+  "playground": {
+    "title": "Apply elevation",
+    "description": "Pick an <strong>elevation</strong> token and apply it to the panel. Both <code>box-shadow</code> and <code>z-index</code> update together.",
+    "label": "Elevation",
+    "apply": "Apply elevation"
+  }
+}

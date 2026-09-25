@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "Typography",
+    "description": "Copy semántico con variantes tipográficas del sistema."
+  },
+  "variants": {
+    "title": "Variantes",
+    "sample": "El veloz murciélago hindú"
+  },
+  "as": {
+    "title": "as",
+    "description": "Cambiá el tag HTML sin perder el estilo visual.",
+    "headingAsP": "Se ve como h3, pero es un <p>",
+    "inline": "Inline con as=\"span\""
+  },
+  "tokens": {
+    "sample": "El veloz murciélago hindú come feliz cardillo y kiwi.",
+    "families": {
+      "title": "Font families",
+      "description": "Familias tipográficas del token fontFamily. Cargá las fuentes (Manrope, Fraunces y JetBrains Mono) en tu app."
+    },
+    "switcher": {
+      "title": "Font switcher",
+      "description": "Cambiá la familia activa. La vista previa usa fontFamily.{{family}}.",
+      "active": "Familia activa"
+    },
+    "weights": {
+      "title": "Font weights",
+      "description": "Valores del token fontWeight, compartidos por todas las familias."
+    },
+    "sizes": {
+      "title": "Font size scale",
+      "description": "Escala del token fontSize en rem (raíz de 16px). Cada variante de Typography usa uno de estos tamaños."
+    }
+  }
+}

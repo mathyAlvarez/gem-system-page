@@ -1,0 +1,140 @@
+/**
+ * Gem System Page — Docs shared
+ * Primitives reused across views: page, section, demo, code, swatches and icons.
+ */
+
+.docs-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-8);
+  max-width: 56rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-3);
+    padding-bottom: var(--gem-space-6);
+    border-bottom: 1px solid var(--gem-color-border);
+  }
+
+  &__meta {
+    color: var(--gem-color-fg-muted);
+  }
+}
+
+.docs-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+}
+
+.docs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-3);
+}
+
+.docs-demo {
+  --docs-demo-grid: color-mix(in srgb, var(--gem-color-border) 55%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  overflow: hidden;
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+
+  &__preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gem-space-3);
+    padding: var(--gem-space-6);
+    background:
+      linear-gradient(90deg, var(--docs-demo-grid) 1px, transparent 1px),
+      linear-gradient(var(--docs-demo-grid) 1px, transparent 1px);
+    background-position: -1px -1px;
+    background-size: 1.25rem 1.25rem;
+
+    &--stack {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__code {
+    border-top: 1px solid var(--gem-color-border);
+    background: var(--gem-color-bg-subtle);
+  }
+}
+
+.docs-code {
+  overflow: hidden;
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gem-space-2);
+    min-height: 2.5rem;
+    padding: var(--gem-space-1) var(--gem-space-2) var(--gem-space-1) var(--gem-space-4);
+    border-bottom: 1px solid var(--gem-color-border);
+  }
+}
+
+.docs-code-viewer {
+  position: relative;
+  width: 100%;
+  padding-inline: var(--gem-space-3);
+  background: var(--gem-color-bg-subtle);
+}
+
+.docs-theme-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+}
+
+.docs-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: var(--gem-space-3);
+}
+
+.docs-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+
+  &__chip {
+    height: 3.5rem;
+    border: 1px solid var(--gem-color-border);
+    border-radius: var(--gem-radius-md);
+  }
+}
+
+.docs-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: var(--gem-space-3);
+}
+
+.docs-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gem-space-2);
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  text-align: center;
+}

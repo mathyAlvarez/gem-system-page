@@ -1,0 +1,41 @@
+{
+  "navbar": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "docsNav": "Documentation"
+  },
+  "nav": {
+    "gettingStarted": "Getting started",
+    "foundations": "Foundations",
+    "typography": "Typography",
+    "tokens": "Tokens",
+    "icons": "Icons",
+    "radii": "Radii",
+    "shadows": "Shadows",
+    "spacing": "Spacing",
+    "components": "Components",
+    "layout": "Layout",
+    "navigation": "Navigation and structure",
+    "feedback": "Feedback",
+    "dataDisplay": "Data display"
+  },
+  "version": {
+    "label": "Version"
+  },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Theme",
+    "toLight": "Dark theme, switch to light",
+    "toDark": "Light theme, switch to dark"
+  },
+  "code": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyAria": "Copy to clipboard",
+    "copiedAria": "Copied to clipboard"
+  }
+}

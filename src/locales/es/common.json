@@ -1,0 +1,41 @@
+{
+  "navbar": {
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "docsNav": "Documentación"
+  },
+  "nav": {
+    "gettingStarted": "Primeros pasos",
+    "foundations": "Fundamentos",
+    "typography": "Tipografía",
+    "tokens": "Tokens",
+    "icons": "Íconos",
+    "radii": "Bordes",
+    "shadows": "Sombras",
+    "spacing": "Espaciado",
+    "components": "Componentes",
+    "layout": "Layout",
+    "navigation": "Navegación y estructura",
+    "feedback": "Feedback",
+    "dataDisplay": "Visualización de datos"
+  },
+  "version": {
+    "label": "Versión"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Tema",
+    "toLight": "Tema oscuro, cambiar a claro",
+    "toDark": "Tema claro, cambiar a oscuro"
+  },
+  "code": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copyAria": "Copiar al portapapeles",
+    "copiedAria": "Copiado al portapapeles"
+  }
+}

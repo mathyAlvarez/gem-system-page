@@ -1,0 +1,24 @@
+{
+  "header": {
+    "title": "Radii",
+    "description": "Escala de bordes redondeados: variables CSS --gem-radius-* y helpers radius / radiusPx."
+  },
+  "intro": "Bordes redondeados desde <strong>none</strong> hasta <strong>full</strong>. Pasos principales: <code>sm</code>, <code>md</code>, <code>lg</code> y <code>full</code>.",
+  "scale": {
+    "title": "Escala de radios",
+    "description": "radius / --gem-radius-*"
+  },
+  "applied": {
+    "title": "Código aplicado",
+    "description": "Ejemplos con variables CSS, el helper de TypeScript y las clases utilitarias."
+  },
+  "code": {
+    "utilities": "Clases utilitarias"
+  },
+  "playground": {
+    "title": "Aplicar radio",
+    "description": "Elegí un token de radius y aplicalo al panel con el botón.",
+    "label": "Radio",
+    "apply": "Aplicar radio"
+  }
+}

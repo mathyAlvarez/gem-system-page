@@ -1,0 +1,51 @@
+{
+  "header": {
+    "title": "Getting started",
+    "description": "Install the package, load the styles and start using Gem System components."
+  },
+  "peers": {
+    "title": "Peers",
+    "body": "React 18.2+ or 19. Table also requires @tanstack/react-table and @tanstack/react-virtual."
+  },
+  "install": {
+    "title": "Installation"
+  },
+  "bootstrap": {
+    "title": "Bootstrap",
+    "description": "The fastest way: import styles.css once in your entry and use the components from the barrel.",
+    "fullLabel": "Full import",
+    "partial": {
+      "title": "Import only what you need",
+      "description": "You don't have to load the whole design system. Each component is published as its own subpath (in kebab-case, e.g. <code>@gem-org/gem-system/date-picker</code>) with a matching stylesheet (<code>date-picker.css</code>). That way the bundle only includes the JS and CSS of the components you actually use.",
+      "label": "Partial import",
+      "notesTitle": "Keep in mind:",
+      "notes": {
+        "tokens": "<code>tokens.css</code> is required and imported only once: it defines the <code>--gem-*</code> variables used by every component.",
+        "utilities": "<code>utilities.css</code> is optional; only if you use utility classes such as <code>gem-bg-*</code> or <code>gem-text-*</code>.",
+        "dependencies": "Components don't import CSS on their own: the app loads the styles. If a component uses another one internally (Button uses Icon), also import that dependency's styles.",
+        "single": "Pick one path: <code>styles.css</code> already includes every style, don't mix it with individual imports."
+      }
+    },
+    "fonts": {
+      "title": "Fonts",
+      "description": "The typefaces (Fraunces, Manrope and JetBrains Mono) are loaded in the HTML head."
+    }
+  },
+  "theme": {
+    "title": "Theme",
+    "description": "Gem System ships light and dark themes. The theme is controlled with the data-theme attribute or with the helpers from @gem-org/gem-system/tokens.",
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle",
+    "current": "Current theme: {{theme}}",
+    "scopedLabel": "Theme per container"
+  },
+  "code": {
+    "optionalUtilities": "optional: gem-bg-*, gem-text-*, gem-border-*",
+    "buttonUsesIcon": "Button uses Icon internally",
+    "anyComponent": "any component",
+    "initialTheme": "index.html: initial theme",
+    "scopedTheme": "The theme can also be applied to a single container",
+    "scopedEquivalent": "same as <div data-theme=\"dark\">"
+  }
+}

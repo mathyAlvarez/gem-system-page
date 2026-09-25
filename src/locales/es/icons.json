@@ -1,0 +1,42 @@
+{
+  "header": {
+    "title": "Icons",
+    "description": "Set de íconos SVG del sistema. El color se hereda con currentColor y el tamaño acepta tokens xs–8xl, píxeles o cualquier medida CSS."
+  },
+  "intro": "Set base de SVG (<code>viewBox=\"0 0 24 24\"</code>, stroke <code>currentColor</code>). {{count}} íconos + aliases (<code>X</code>, <code>Add</code>, <code>Delete</code>, <code>Loader</code>…).",
+  "usage": {
+    "title": "Uso",
+    "searchTitle": "Buscar",
+    "addTitle": "Agregar"
+  },
+  "groups": {
+    "navigation": "Navegación y estructura",
+    "actions": "Acciones del usuario",
+    "arithmetic": "Aritmética",
+    "status": "Estado y feedback",
+    "forms": "Formularios e inputs",
+    "entities": "Entidades e identidad"
+  },
+  "sizes": {
+    "title": "Tamaños"
+  },
+  "custom": {
+    "title": "Tamaño personalizado",
+    "description": "También podés pasar píxeles (<code>size={32}</code>) o cualquier medida CSS (<code>size=\"2.25rem\"</code>)."
+  },
+  "colors": {
+    "title": "Variantes de color",
+    "description": "El color se hereda con <strong>currentColor</strong>. Elegí una variante del sistema y el grupo de íconos se actualiza en conjunto.",
+    "groupLabel": "Variantes de color",
+    "variants": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "tertiary": "Tertiary",
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Info",
+      "neutral": "Neutral"
+    }
+  }
+}

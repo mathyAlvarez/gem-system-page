@@ -1,0 +1,111 @@
+/**
+ * Gem System Page — Radii
+ * Radius scale cards, applied code grid and the interactive playground.
+ */
+
+.radii-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--gem-space-3);
+}
+
+.radii-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+
+  &__swatch {
+    display: grid;
+    place-items: center;
+    height: 5rem;
+    border: 1px solid var(--gem-color-primary-300);
+    background: var(--gem-color-primary-100);
+    color: var(--gem-color-primary-800);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-sm);
+    font-weight: var(--gem-font-weight-semibold);
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-1);
+  }
+
+  &__value {
+    color: var(--gem-color-fg-muted);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+  }
+}
+
+.radii-code-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--gem-space-4);
+}
+
+.radii-playground {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--gem-space-3);
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-1);
+    min-width: 10rem;
+  }
+
+  &__stage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gem-space-5);
+  }
+
+  &__surface {
+    display: flex;
+    flex: 1 1 16rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gem-space-2);
+    min-height: 9rem;
+    padding: var(--gem-space-6);
+    border: 1px solid var(--gem-color-primary-300);
+    background: var(--gem-color-primary-50);
+    color: var(--gem-color-primary-800);
+    transition: border-radius var(--gemst-duration-normal) var(--gemst-easing-emphasized);
+  }
+
+  &__value {
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-sm);
+  }
+
+  &__chip {
+    flex: 0 0 auto;
+    width: 5rem;
+    height: 5rem;
+    background: var(--gem-color-primary-500);
+    transition: border-radius var(--gemst-duration-normal) var(--gemst-easing-emphasized);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__surface,
+    &__chip {
+      transition: none;
+    }
+  }
+}
