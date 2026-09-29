@@ -1,0 +1,190 @@
+{
+  "header": {
+    "title": "Tooltip",
+    "description": "Floating explanation that appears on hover or focus. It renders in a portal (on the body or the closest <dialog>) and repositions itself to stay on screen."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and hover or focus the button to see the result.",
+    "content": "Helpful information",
+    "trigger": "Hover me",
+    "placement": "placement",
+    "delay": "delay",
+    "closeDelay": "closeDelay",
+    "offset": "offset",
+    "disabled": "disabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Wrap a single element with Tooltip and pass the text in `content`. It opens on hover or focus.",
+      "texts": {
+        "content": "Appears on hover or focus",
+        "label": "Hover me"
+      }
+    },
+    "placements": {
+      "title": "Placements",
+      "description": "`placement` sets the preferred side: top, bottom, left or right. If it doesn't fit, it shifts to stay visible.",
+      "texts": {
+        "prefix": "Placement"
+      }
+    },
+    "onIconButton": {
+      "title": "On icon button",
+      "description": "An icon-only button needs `aria-label`; the tooltip adds the visible description. The example uses the gem-system `.gem-field-info` class for the button.",
+      "texts": {
+        "content": "More information about this field",
+        "ariaLabel": "More information"
+      }
+    },
+    "longContent": {
+      "title": "Long content",
+      "description": "Long text wraps with a max width of 18rem. Still, keep it brief.",
+      "texts": {
+        "content": "Tooltips can wrap longer helper copy. Keep it short when possible so the message stays easy to scan.",
+        "label": "Long tip"
+      }
+    },
+    "instant": {
+      "title": "Instant",
+      "description": "`delay={0}` opens it with no wait. The default is 200 ms.",
+      "texts": {
+        "content": "No open delay",
+        "label": "Instant"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` turns the tooltip off without touching the element. An empty `content` doesn't show either.",
+      "texts": {
+        "content": "You should not see this",
+        "label": "Disabled tooltip"
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `open` and `onOpenChange` you drive it from your state. Hover, focus and Escape still call `onOpenChange`.",
+      "texts": {
+        "content": "Controlled open state",
+        "target": "Target",
+        "open": "Open tooltip",
+        "close": "Close tooltip"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Brand",
+      "brandContent": "Primary background and radius lg with cn() on className",
+      "merged": "Merged",
+      "mergedContent": "rounded-full and secondary replace the base values"
+    },
+    "cva": {
+      "content": "Tooltip with cva variants"
+    },
+    "css": {
+      "accent": "Accent",
+      "accentContent": "Primary accent bubble",
+      "warning": "Warning",
+      "warningContent": "Warning tone with larger radius",
+      "soft": "Soft",
+      "softContent": "Soft bordered surface",
+      "rich": "Rich content",
+      "richTitle": "Field hint",
+      "richBody": "Title and body inside the same tooltip.",
+      "inline": "Inline style",
+      "inlineContent": "One-off tweak with the style prop"
+    }
+  },
+  "apiLink": "See the full Tooltip API",
+  "api": {
+    "header": {
+      "title": "Tooltip API",
+      "description": "API reference for the Tooltip React component: props, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Tooltip"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Tooltip accepts no native attributes. It clones its single child and adds <code>ref</code>, <code>aria-describedby</code> and the <code>onMouseEnter</code>, <code>onMouseLeave</code>, <code>onFocus</code>, <code>onBlur</code> and <code>onKeyDown</code> handlers, keeping the ones it already has. <code>className</code> and <code>style</code> go to the bubble; <code>wrapperClassName</code> goes to the <code>&lt;span&gt;</code> that wraps the child."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "The bubble has <code>role=\"tooltip\"</code> and a unique id.",
+      "describedBy": "While open, the child gets <code>aria-describedby</code> pointing to the bubble.",
+      "triggers": "It opens on hover and on focus, so it also works with the keyboard.",
+      "escape": "<code>Escape</code> closes it.",
+      "focusable": "The child must be able to receive focus and mouse events. A <code>disabled</code> button doesn't fire them: wrap it in a <code>&lt;span tabIndex={0}&gt;</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles. The bubble lives in a portal, so style it through `className`, not from the trigger container.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "trigger": "<span> wrapping the child. Receives `wrapperClassName`.",
+        "root": "Tooltip bubble (position: fixed). Receives `className` and style.",
+        "content": "Tooltip content.",
+        "arrow": "Arrow. Inherits the bubble background color.",
+        "placement": "Applied when `placement=\"{{value}}\"`; positions the arrow.",
+        "ready": "Applied once positioned; sets the opacity to 1."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tooltip defines no variables of its own: it uses gem-system tokens. Since it lives in a portal, redefine them in `className` or globally.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Tooltip"
+      },
+      "items": {
+        "--gem-palette-neutral-900": "Bubble and arrow background (neutral-100 in dark mode).",
+        "--gem-palette-neutral-50": "Text color (neutral-950 in dark mode).",
+        "--gem-radius-sm": "Bubble radius.",
+        "--gem-shadow-md": "Bubble shadow (shadow-lg in dark mode).",
+        "--gem-font-sans": "Font.",
+        "--gem-z-tooltip": "Bubble layer (z-index)."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It accepts no native attributes: the trigger is the child you pass.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "content": "Bubble content. Hidden when empty.",
+      "children": "Single element that triggers the tooltip. It must accept a ref and events.",
+      "placement": "Preferred side relative to the trigger.",
+      "delay": "Wait before opening on hover or focus (ms).",
+      "closeDelay": "Wait before closing (ms).",
+      "offset": "Distance between the trigger and the bubble (px).",
+      "disabled": "Disables opening.",
+      "open": "Controlled open state.",
+      "defaultOpen": "Uncontrolled initial state.",
+      "className": "Extra classes for the bubble.",
+      "wrapperClassName": "Extra classes for the trigger <span>.",
+      "style": "Inline styles for the bubble.",
+      "onOpenChange": "Fires when the open state changes."
+    }
+  }
+}

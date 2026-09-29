@@ -1,0 +1,26 @@
+.gem-combobox.combobox-branded {
+  --gem-color-border: var(--gem-palette-secondary-400);
+  --gem-color-accent: var(--gem-palette-secondary-600);
+  --gem-color-bg-subtle: var(--gem-palette-secondary-100);
+  --gem-radius-md: var(--gem-radius-lg);
+}
+
+.gem-combobox.combobox-pill {
+  --gem-color-border: var(--gem-palette-tertiary-400);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-color-bg-subtle: var(--gem-palette-tertiary-100);
+  --gem-radius-sm: var(--gem-radius-full);
+}
+
+.gem-combobox.combobox-pill .gem-combobox__control {
+  border-radius: var(--gem-radius-full);
+  padding-inline: 1rem;
+}
+
+[data-theme="dark"] .gem-combobox.combobox-branded .gem-combobox__control {
+  border-color: var(--gem-palette-secondary-500);
+}
+
+[data-theme="dark"] .gem-combobox.combobox-pill .gem-combobox__control {
+  border-color: var(--gem-palette-tertiary-500);
+}

@@ -1,0 +1,24 @@
+.gem-grid.grid-panel {
+  --gem-grid-gap: var(--gem-space-3);
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+  box-shadow: var(--gem-shadow-sm);
+}
+
+@media (min-width: 1024px) {
+  .gem-grid.grid-panel {
+    --gem-grid-gap: var(--gem-space-6);
+  }
+}
+
+.gem-grid.grid-sidebar {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 768px) {
+  .gem-grid.grid-sidebar {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+}

@@ -1,4 +1,17 @@
 {
+  "scrollTop": "Volver arriba",
+  "toc": "Contenido",
+  "apiSection": {
+    "title": "API",
+    "description": "Consultá la referencia completa con todas las props, clases CSS y variables disponibles para {{component}} y los tipos que exporta."
+  },
+  "styleChanges": {
+    "title": "Cambio estilos",
+    "tailwind": "Tailwind + cn()",
+    "cva": "cva",
+    "cssVariables": "Variables CSS",
+    "guide": "Ver guía de personalización de estilos"
+  },
   "navbar": {
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
@@ -6,6 +19,11 @@
   },
   "nav": {
     "gettingStarted": "Primeros pasos",
+    "overrideStyles": "Personalizar estilos",
+    "overrideOverview": "Enfoque recomendado",
+    "overrideTailwind": "Tailwind + cn()",
+    "overrideCva": "Variantes con cva",
+    "overrideCssVariables": "Variables CSS",
     "foundations": "Fundamentos",
     "typography": "Tipografía",
     "tokens": "Tokens",

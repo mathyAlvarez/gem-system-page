@@ -1,0 +1,53 @@
+.gem-switch.switch-branded {
+  gap: var(--gem-space-2);
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px solid var(--gem-palette-secondary-200);
+  border-radius: var(--gem-radius-lg);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 8%, transparent);
+  --gem-switch-tone: var(--gem-palette-secondary-600);
+  --gem-switch-tone-hover: var(--gem-palette-secondary-500);
+  --gem-switch-tone-active: var(--gem-palette-secondary-700);
+  --gem-switch-track-ring: var(--gem-palette-secondary-400);
+}
+
+.gem-switch.switch-branded .gem-switch__label-text {
+  color: var(--gem-palette-secondary-800);
+  font-weight: var(--gem-font-weight-bold);
+  letter-spacing: 0.02em;
+}
+
+.gem-switch.switch-square {
+  --gem-switch-track-w: 3.25rem;
+  --gem-switch-track-h: 1.5rem;
+  --gem-switch-pad: 0.25rem;
+  --gem-switch-tone: var(--gem-palette-tertiary-500);
+  --gem-switch-tone-hover: var(--gem-palette-tertiary-400);
+  --gem-switch-tone-active: var(--gem-palette-tertiary-600);
+  --gem-switch-thumb-on: var(--gem-palette-neutral-900);
+}
+
+.gem-switch.switch-square .gem-switch__track,
+.gem-switch.switch-square .gem-switch__thumb {
+  border-radius: var(--gem-radius-xs);
+}
+
+.gem-switch.switch-square .gem-switch__label-text {
+  color: var(--gem-palette-tertiary-700);
+  font-size: var(--gem-font-size-xs);
+  font-weight: var(--gem-font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .gem-switch.switch-branded {
+  border-color: var(--gem-palette-secondary-500);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 16%, transparent);
+}
+
+[data-theme="dark"] .gem-switch.switch-branded .gem-switch__label-text {
+  color: var(--gem-palette-secondary-200);
+}
+
+[data-theme="dark"] .gem-switch.switch-square .gem-switch__label-text {
+  color: var(--gem-palette-tertiary-300);
+}

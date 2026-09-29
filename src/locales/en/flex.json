@@ -1,0 +1,199 @@
+{
+  "header": {
+    "title": "Flex",
+    "description": "Declarative flexbox: arrange children in a row or column with `direction`, `align`, `justify`, `gap` and `wrap`, without writing CSS by hand. Use it for toolbars, stacks and action groups. If you need columns aligned across rows, use `Grid` or `Row` and `Col`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and the code instantly. The frame has a minimum height so `justify` in a column and `align` in a row are visible; item 2 is taller.",
+    "direction": "direction",
+    "justify": "justify",
+    "align": "align",
+    "gap": "gap",
+    "wrap": "wrap",
+    "count": "Number of items",
+    "inline": "inline"
+  },
+  "stories": {
+    "toolbar": {
+      "title": "Toolbar",
+      "description": "`justify=\"between\"` sends the title to the start and the actions to the end; `align=\"center\"` centers them vertically. The actions are another Flex with a smaller `gap`. The examples use this item and these demo styles.",
+      "texts": {
+        "title": "Projects",
+        "secondary": "Export",
+        "primary": "New"
+      }
+    },
+    "direction": {
+      "title": "Direction",
+      "description": "`direction` sets the main axis: `row` (default) lays out horizontally and `column` vertically. The `-reverse` variants only flip the visual order; screen readers and keyboard focus follow the source order."
+    },
+    "stack": {
+      "title": "Vertical stack",
+      "description": "With `direction=\"column\"` and `align=\"stretch\"`, each child takes the full width. It is the simplest way to stack a label, a control and helper text with even spacing.",
+      "texts": {
+        "label": "Name",
+        "field": "Field",
+        "helper": "Helper text under the control."
+      }
+    },
+    "gap": {
+      "title": "Spacing",
+      "description": "Unlike Grid, Flex has no default spacing: without `gap` it is 0. It accepts a spacing token (`3` is `var(--gem-space-3)`), any other number (treated as pixels) or any CSS length. With `wrap`, `rowGap` separates the lines and `columnGap` the items on the same line."
+    },
+    "wrap": {
+      "title": "Wrapping",
+      "description": "By default children stay on a single line and shrink or overflow. `wrap` moves them to the next line when they don't fit, and `wrap=\"wrap-reverse\"` stacks the lines from bottom to top. Resize the window to see the difference.",
+      "tags": ["Design", "Tokens", "Layout", "Forms", "Navigation", "Feedback", "Data", "Accessibility"]
+    },
+    "justify": {
+      "title": "Justify",
+      "description": "`justify` distributes leftover space along the main axis (`justify-content`). `between` keeps the ends against the edges, `around` adds half a gap at the edges and `evenly` uses the same space everywhere. In flexbox, `stretch` behaves like `start`: to make a child grow, use `flex-1`."
+    },
+    "align": {
+      "title": "Align",
+      "description": "`align` aligns children on the cross axis (`align-items`). Without `align`, they stretch to the tallest one (`stretch`). `baseline` aligns the first line of text even when font sizes differ."
+    },
+    "alignContent": {
+      "title": "Align content",
+      "description": "`alignContent` only has an effect with `wrap` and when the container is taller than its lines: it distributes that space between the lines (`align-content`). Don't confuse it with `align`, which aligns items within each line."
+    },
+    "grow": {
+      "title": "Flexible children",
+      "description": "Flex controls the container; each child's size is set with classes on the child. `flex-1` makes it take the free space, `ms-auto` pushes it to the end and `shrink-0` prevents it from shrinking. For long text to be truncated with an ellipsis, the flexible child needs `min-w-0`.",
+      "longText": "A long text that doesn't fit in the available space is truncated with an ellipsis instead of pushing the rest."
+    },
+    "inline": {
+      "title": "Inline",
+      "description": "`inline` uses `display: inline-flex`, so the Flex flows inside text instead of taking its own line. Since `as` doesn't accept `span`, the Flex renders as a `div`: the surrounding text must be a `div`, not a `p`, for the HTML to be valid.",
+      "texts": {
+        "before": "Your order is",
+        "badge": "confirmed",
+        "after": "and we'll let you know when it ships."
+      }
+    },
+    "centered": {
+      "title": "Centered",
+      "description": "`direction=\"column\"` with `justify=\"center\"` and `align=\"center\"` centers content on both axes. Useful for empty states or loading screens; the container needs a height for vertical centering to show.",
+      "texts": {
+        "title": "No projects yet",
+        "body": "Create the first one to get started.",
+        "action": "Create project"
+      }
+    },
+    "withRow": {
+      "title": "Flex with Row",
+      "description": "Flex and Grid work together: Flex builds the header row (title and actions, with `wrap` for narrow screens) and `Row` with `Col` splits the content into columns. The Grid page explains the CSS that per-breakpoint spans need.",
+      "texts": {
+        "title": "Inventory",
+        "filter": "Filter",
+        "add": "Add",
+        "filters": "Filters",
+        "results": "Results"
+      }
+    }
+  },
+  "apiLink": "See the full Flex API",
+  "api": {
+    "header": {
+      "title": "Flex API",
+      "description": "API reference for the Flex React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Flex"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only the layout."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts HTML attributes (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) and passes them to the root element. <code>ref</code> reaches the element. <code>gap</code>, <code>rowGap</code> and <code>columnGap</code> become CSS variables inside <code>style</code>, merged with the <code>style</code> you pass."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "order": "With <code>row-reverse</code>, <code>column-reverse</code> or <code>wrap-reverse</code> only the visual order changes. If order matters, change it in the source.",
+      "landmark": "With <code>as</code> you can render <code>nav</code>, <code>header</code>, <code>footer</code> or <code>aside</code> instead of a <code>&lt;div&gt;</code>.",
+      "list": "For a group of links or tags, use <code>as=\"ul\"</code> and <code>&lt;li&gt;</code> on each child so the number of items is announced.",
+      "label": "If a bar groups related controls, give it <code>role=\"toolbar\"</code> or <code>role=\"group\"</code> and a name with <code>aria-label</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root element. Receives `className` and `classNames.root`.",
+        "direction": "Applied from `direction`: `row`, `column`, `row-reverse` or `column-reverse`.",
+        "nowrap": "Applied with `wrap={false}` (default) or `wrap=\"nowrap\"`.",
+        "wrap": "Applied with `wrap` or `wrap=\"wrap\"`.",
+        "wrapReverse": "Applied with `wrap=\"wrap-reverse\"`.",
+        "inline": "Applied with `inline`. Uses `display: inline-flex`.",
+        "splitGap": "Applied when `rowGap` or `columnGap` is set.",
+        "align": "Applied with `align` (`align-items`).",
+        "justify": "Applied with `justify` (`justify-content`).",
+        "content": "Applied with `alignContent` (`align-content`)."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`.gem-flex` sets `--gem-flex-gap: 0`. If you don't pass `gap`, you can redefine it from a class; if you do, it is written inline and can only be overridden with `!important`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-flex-gap": "Space between children. Set by `gap`; defaults to 0.",
+        "--gem-flex-row-gap": "Space between lines with `wrap`. Set by `rowGap`.",
+        "--gem-flex-column-gap": "Space between children on the same line. Set by `columnGap`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Flex.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Flex"
+      },
+      "items": {
+        "--gem-space-{n}": "Spacing scale used by `gap`, `rowGap` and `columnGap` when they receive a token."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. Flex shares its types file with Grid, Row and Col."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Also accepts the root element's HTML attributes.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "as": "HTML element to render.",
+      "direction": "Main axis. The `-reverse` variants flip the visual order.",
+      "wrap": "Moves children to another line when they don't fit. `true` equals `\"wrap\"`.",
+      "gap": "Space between children: spacing token, pixels or CSS length.",
+      "rowGap": "Space between lines. Takes precedence over `gap`.",
+      "columnGap": "Space between children on a line. Takes precedence over `gap`.",
+      "align": "Cross-axis alignment (`align-items`).",
+      "justify": "Distribution of leftover space on the main axis (`justify-content`).",
+      "alignContent": "Distribution of space between lines with `wrap` (`align-content`).",
+      "inline": "Uses `display: inline-flex` to flow inside text.",
+      "className": "Extra classes for the root element.",
+      "classNames": "Per-slot classes. `root` is added to the root element.",
+      "style": "Inline styles. Merged with the gap CSS variables.",
+      "ref": "Ref to the root element.",
+      "children": "Items to arrange."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.gem-button.brand-button {
+  --gem-btn-bg: var(--gem-palette-tertiary-800);
+  --gem-btn-border: var(--gem-palette-tertiary-900);
+  --gem-btn-fg: var(--gem-palette-neutral-0);
+  --gem-btn-bg-hover: var(--gem-palette-tertiary-900);
+  --gem-btn-border-hover: var(--gem-palette-tertiary-900);
+  --gem-btn-fg-hover: var(--gem-palette-neutral-0);
+  border-radius: var(--gem-radius-full);
+}

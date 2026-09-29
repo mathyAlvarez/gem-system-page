@@ -1,0 +1,299 @@
+{
+  "header": {
+    "title": "FileUploader",
+    "description": "Field to upload files by dragging them or with a button. Filters by type and size, limits the number of files and shows the progress of each upload."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Attachments",
+    "dropLabel": "Drag and drop files here",
+    "browseLabel": "Browse files",
+    "helperText": "Drop a file or use Browse files. Progress is simulated.",
+    "size": "size",
+    "border": "border",
+    "multiple": "multiple",
+    "droppable": "droppable",
+    "simulateUpload": "simulateUpload",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Dropzone with a label, custom copy and simulated progress with `simulateUpload`.",
+      "texts": {
+        "label": "Attachments",
+        "dropLabel": "Drag and drop files here",
+        "browseLabel": "Browse files",
+        "helperText": "Drop a file or use Browse files. Progress is simulated."
+      }
+    },
+    "multiple": {
+      "title": "Multiple",
+      "description": "`multiple` allows several files; `maxFiles` limits how many.",
+      "texts": {
+        "label": "Documents",
+        "helperText": "Up to 5 files. Each file shows its own progress bar."
+      }
+    },
+    "buttonOnly": {
+      "title": "Button only",
+      "description": "`droppable={false}` replaces the dropzone with a button.",
+      "texts": {
+        "label": "Attachment",
+        "helperText": "No dropzone: browse with the button. The selected file can be removed below."
+      }
+    },
+    "buttonOnlyMultiple": {
+      "title": "Button only · multiple",
+      "description": "Button with multiple selection and a file list below.",
+      "texts": {
+        "label": "Documents",
+        "helperText": "Choose files with the button. The list below lets you remove each one."
+      }
+    },
+    "imagesOnly": {
+      "title": "Images only",
+      "description": "`fileTypes` filters the picker and rejects other file types.",
+      "texts": {
+        "label": "Cover image",
+        "dropLabel": "Drop your cover image",
+        "browseLabel": "Choose image",
+        "allowedText": "Allowed: JPG, PNG",
+        "helperText": "fileTypes=\"jpg/png\" filters the picker and rejects other files."
+      }
+    },
+    "fileTypes": {
+      "title": "File types",
+      "description": "Copy for the dropzone, the button and the allowed types comes from the parent.",
+      "texts": {
+        "label": "Data files",
+        "dropLabel": "Drag and drop files here",
+        "browseLabel": "Browse files",
+        "allowedText": "Allowed: JPG, PNG, CSV",
+        "helperText": "Copy for the dropzone, button, and allowed line comes from the parent."
+      }
+    },
+    "minMaxFiles": {
+      "title": "Min and max files",
+      "description": "`minFiles` marks the field as invalid below the minimum; `maxFiles` stops the picker.",
+      "texts": {
+        "label": "Evidence",
+        "dropLabel": "Drop evidence files",
+        "browseLabel": "Add files",
+        "allowedText": "Allowed: JPG, PNG, PDF",
+        "helperText": "Between 2 and 4 files. The picker stops at the maximum."
+      }
+    },
+    "maxSize": {
+      "title": "Max size",
+      "description": "`maxSize` (in bytes) rejects files over the limit.",
+      "texts": {
+        "label": "Resume",
+        "helperText": "PDF or Word, 200 KB max. Larger files are rejected."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` blocks the dropzone and the actions.",
+      "texts": {
+        "label": "Locked uploads",
+        "helperText": "The dropzone cannot receive files."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marks the field as invalid and forces the error border.",
+      "texts": {
+        "label": "Contract",
+        "errorMessage": "Upload a signed contract to continue."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` changes the border tone. It is forced to error when the field is invalid."
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "`infoText` adds an info icon next to the label.",
+      "texts": {
+        "label": "Identity documents",
+        "infoText": "Accepted formats: PDF, JPG, or PNG. Max 5 MB."
+      }
+    },
+    "customUpload": {
+      "title": "Custom upload",
+      "description": "Pass `onUpload` to send files to your API and report progress with onProgress. signal is aborted if the file is removed.",
+      "texts": {
+        "label": "Invoice",
+        "helperText": "This example uses a custom onUpload handler."
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the file list with value and `onChange`.",
+      "texts": {
+        "label": "Controlled",
+        "filesLabel": "Files",
+        "empty": "none"
+      }
+    },
+    "fileEvents": {
+      "title": "File events",
+      "description": "`onFileAdded` and `onFileRemoved` receive the current file list.",
+      "texts": {
+        "label": "Reports",
+        "lastEventLabel": "Last event",
+        "filesLabel": "Files",
+        "added": "added",
+        "removed": "removed",
+        "empty": "none"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary tokens and lg radius with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-2xl replaces radius-lg thanks to tailwind-merge."
+    },
+    "css": {
+      "label": "Branded dropzone",
+      "helperText": "Tertiary accents on the dropzone and the progress bar."
+    }
+  },
+  "apiLink": "See the full FileUploader API",
+  "api": {
+    "header": {
+      "title": "FileUploader API",
+      "description": "API reference for the FileUploader React component: props, events, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "FileUploader"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, FileUploader accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>onChange</code>, <code>value</code>, <code>defaultValue</code>, <code>size</code>, <code>type</code> and <code>children</code>. They are applied to the hidden <code>&lt;input type=\"file\"&gt;</code>; <code>className</code> goes to the dropzone (or button) and <code>wrapperClassName</code> to the root."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "dropzone": "The dropzone uses <code>role=\"button\"</code> and works with the keyboard; without a visible label it uses <code>dropLabel</code> as <code>aria-label</code>.",
+      "progress": "Each file shows a bar with <code>role=\"progressbar\"</code> and <code>aria-valuenow</code>.",
+      "remove": "Remove buttons have an <code>aria-label</code> with the file name.",
+      "label": "<code>helperText</code>, the allowed types and <code>errorMessage</code> are linked with <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "dropzone": "Drop area. Receives `className`.",
+        "icon": "Dropzone icon.",
+        "title": "Main dropzone text (`dropLabel`).",
+        "browse": "Browse button (`browseLabel`).",
+        "trigger": "Button container when `droppable={false}`. Receives `className`.",
+        "input": "Native file input (hidden).",
+        "constraints": "Allowed types text (`allowedText`).",
+        "list": "Selected files list.",
+        "item": "Each file in the list.",
+        "itemUploading": "File being uploaded.",
+        "itemSuccess": "File uploaded successfully.",
+        "itemError": "File with an upload error.",
+        "name": "File name.",
+        "details": "File size and status.",
+        "progress": "Upload progress bar.",
+        "remove": "Button that removes the file.",
+        "message": "Helper or error text below the field.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "button": "Applied when `droppable={false}`.",
+        "drag": "Applied while files are dragged over the dropzone.",
+        "invalid": "Applied with `isInvalid`, `errorMessage` or below `minFiles`.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "FileUploader has no variables of its own: it uses these gem-system tokens. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in FileUploader"
+      },
+      "items": {
+        "--gem-color-border": "Dashed dropzone border and each file border.",
+        "--gem-color-accent": "Icon, drag border and uploading state.",
+        "--gem-color-primary-500": "Icon background, progress bar and drag background.",
+        "--gem-color-bg-subtle": "Hover background and file icon background.",
+        "--gem-radius-md": "Dropzone and file radius.",
+        "--gem-radius-sm": "File icon and remove button radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes except `onChange`, value, `defaultValue`, size, type and children.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled file list.",
+      "defaultValue": "Uncontrolled initial files.",
+      "multiple": "Allows more than one file.",
+      "droppable": "Shows the dropzone. With false, only a button.",
+      "fileTypes": "Allowed types as a simple string, e.g. jpg/png/csv. Takes precedence over accept.",
+      "accept": "Native accept filter (MIME or extensions). Used when `fileTypes` is omitted.",
+      "maxSize": "Maximum size per file in bytes.",
+      "minFiles": "Minimum number of files. The field is invalid below it.",
+      "maxFiles": "Maximum number of files. Extra files are rejected.",
+      "simulateUpload": "Animates a mock upload when `onUpload` is not provided.",
+      "label": "Visible field label.",
+      "dropLabel": "Title inside the dropzone.",
+      "browseLabel": "Browse button label.",
+      "allowedText": "Allowed types copy below the dropzone.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the dropzone and file actions.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "className": "Extra classes for the dropzone or button.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Fires when files are added or removed (not on progress ticks).",
+      "onFileAdded": "Fires after files are added. Receives the current list.",
+      "onFileRemoved": "Fires after a file is removed. Receives the current list.",
+      "onReject": "Fires when files are rejected for type, size or count.",
+      "onUpload": "Uploads each accepted file. Report progress with onProgress(0–100)."
+    }
+  }
+}

@@ -88,6 +88,7 @@ export function CodeViewer({ code, language = "typescript" }: CodeViewerProps) {
       label={languageLabels[language]}
       textStyle="caption"
       icon={null}
+      classNames={{ mark: "docs-code-viewer__badge" }}
     >
       <div className="docs-code-viewer" style={{ height }}>
         <Editor

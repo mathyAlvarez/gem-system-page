@@ -6,7 +6,9 @@ import "@gem-org/gemffects/styles.css";
 import "@gem-org/gemsitions/styles.css";
 import "./index.css";
 import "./styles/docs.scss";
+import "./styles/tailwind.css";
 import "./locales/index.ts";
+import "./theme.ts";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(

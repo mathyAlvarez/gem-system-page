@@ -1,0 +1,12 @@
+.gem-otp-input.otp-input-branded {
+  --gem-color-border: transparent;
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 10%, transparent);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--gem-palette-tertiary-500) 30%, transparent);
+  --gem-shadow-xs: none;
+  --gem-radius-md: var(--gem-radius-lg);
+}
+
+.gem-otp-input.otp-input-branded .gem-otp-input__separator {
+  color: var(--gem-palette-tertiary-600);
+}

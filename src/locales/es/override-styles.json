@@ -1,0 +1,204 @@
+{
+  "overview": {
+    "header": {
+      "title": "Personalizar estilos",
+      "description": "Enfoque recomendado para personalizar componentes de @gem-org en proyectos con React, Vite y Tailwind."
+    },
+    "recommendation": {
+      "title": "No incorpores styled-components",
+      "body": "En un stack React + Vite + Tailwind, sumar CSS-in-JS en runtime agrega un segundo sistema de estilos y costo en cada render. El patrón más eficiente y actual combina tres piezas: <strong>Tailwind CSS</strong>, <strong>class-variance-authority (cva)</strong> y <strong>variables CSS en la prop style</strong>."
+    },
+    "guides": {
+      "title": "Guías",
+      "open": "Ver guía",
+      "tailwind": {
+        "title": "Tailwind + cn()",
+        "body": "Estructura, layout y ajustes puntuales. Pisá estilos de un componente con className sin conflictos."
+      },
+      "cva": {
+        "title": "Variantes con cva",
+        "body": "Definí variantes tipadas (intent, size, shape) en un solo lugar y reutilizalas."
+      },
+      "cssVars": {
+        "title": "Variables CSS",
+        "body": "Valores calculados en runtime y overrides de tokens de gem-system dentro de un scope."
+      }
+    },
+    "when": {
+      "title": "¿Cuándo usar cada uno?",
+      "need": "Necesidad",
+      "tool": "Herramienta",
+      "rows": {
+        "layout": "Layout, espaciado y ajustes puntuales",
+        "override": "Pisar el estilo de un componente puntual",
+        "variants": "Un componente con varias apariencias fijas",
+        "dynamic": "Un valor que cambia en runtime (color, progreso, posición)",
+        "theme": "Cambiar el tema de una zona completa"
+      },
+      "tools": {
+        "layout": "Tailwind",
+        "override": "Tailwind + cn()",
+        "variants": "cva",
+        "dynamic": "Variable CSS en style",
+        "theme": "Variables --gem-* en un scope"
+      }
+    }
+  },
+  "tailwind": {
+    "header": {
+      "title": "Tailwind + cn()",
+      "description": "Tailwind para estructura y diseño rápido; clsx + tailwind-merge para que className pise al componente sin conflictos."
+    },
+    "install": {
+      "title": "Paso 1 · Instalar dependencias",
+      "description": "Tailwind v4 con su plugin de Vite, más clsx y tailwind-merge para la utilidad cn()."
+    },
+    "vite": {
+      "title": "Paso 2 · Registrar el plugin en Vite",
+      "description": "El plugin procesa el CSS de Tailwind y genera solo las clases que encuentra en tu código."
+    },
+    "css": {
+      "title": "Paso 3 · Importar las utilidades",
+      "description": "Importá el theme y las utilidades, sin preflight y con important.",
+      "why": "Los estilos de gem-system no usan <code>@layer</code>. En CSS, lo que está fuera de una capa le gana a <code>@layer utilities</code> sin importar la especificidad, así que sin <code>important</code> tus clases nunca pisarían al componente.",
+      "preflightTitle": "Por qué sin preflight",
+      "preflight": "Preflight es el reset global de Tailwind: cambia márgenes, bordes y tipografía de todos los elementos y puede alterar los componentes de gem-system."
+    },
+    "main": {
+      "title": "Paso 4 · Cargar el CSS en la app",
+      "description": "Importalo después de los estilos de gem-system."
+    },
+    "cn": {
+      "title": "Paso 5 · Crear cn()",
+      "description": "clsx resuelve clases condicionales; tailwind-merge elimina las que entran en conflicto y deja la última."
+    },
+    "layout": {
+      "title": "Paso 6 · Layout con utilidades y tokens",
+      "description": "Usá utilidades para estructura. Leé los tokens del sistema con bg-(--gem-color-bg) para seguir el tema light/dark.",
+      "demo": {
+        "title": "Reporte mensual",
+        "meta": "Actualizado hace 5 minutos",
+        "secondary": "Exportar",
+        "primary": "Compartir"
+      }
+    },
+    "override": {
+      "title": "Paso 7 · Pisar un componente con className",
+      "description": "Las clases que pasás por className se aplican sobre los estilos del componente.",
+      "default": "Por defecto",
+      "custom": "Con className"
+    },
+    "wrapper": {
+      "title": "Paso 8 · Encapsular en un componente propio",
+      "description": "Definí clases base y dejá que quien lo use las pise con className. cn() garantiza que gane la última.",
+      "brand": "Marca",
+      "override": "Pisado",
+      "toggle": "Activo (clsx)"
+    },
+    "merge": {
+      "title": "Qué resuelve tailwind-merge",
+      "description": "Resultado real de cn() en esta página: las clases del mismo grupo se reemplazan y el resto se conserva."
+    },
+    "tips": {
+      "title": "Buenas prácticas",
+      "tokens": "Preferí los tokens de gem-system (<code>bg-(--gem-color-accent)</code>) antes que colores fijos de Tailwind, así se respeta el tema.",
+      "className": "Exponé siempre <code>className</code> en tus componentes y pasalo último a <code>cn()</code>.",
+      "important": "Con las utilidades importadas como <code>important</code>, no necesitás el modificador <code>!</code> en cada clase.",
+      "scope": "Usá Tailwind para ajustes puntuales; si una combinación se repite, convertila en una variante con cva."
+    }
+  },
+  "cva": {
+    "header": {
+      "title": "Variantes con cva",
+      "description": "class-variance-authority define las variantes de un componente en un solo lugar, tipadas, y devuelve el className de cada combinación."
+    },
+    "install": {
+      "title": "Paso 1 · Instalar",
+      "description": "cva no depende de Tailwind, pero se combina con cn() para resolver conflictos."
+    },
+    "anatomy": {
+      "title": "Paso 2 · Anatomía de una definición",
+      "description": "Clases base, un mapa de variantes y los valores por defecto."
+    },
+    "playground": {
+      "title": "Paso 3 · Probar las variantes",
+      "description": "Cambiá las props y mirá qué className devuelve cva.",
+      "intent": "intent",
+      "size": "size",
+      "pill": "pill",
+      "label": "Etiqueta",
+      "output": "className resultante"
+    },
+    "compound": {
+      "title": "Paso 4 · compoundVariants",
+      "description": "Aplican clases solo cuando se cumple una combinación. Acá, outline + lg usa un borde más grueso."
+    },
+    "types": {
+      "title": "Paso 5 · Tipar con VariantProps",
+      "description": "VariantProps infiere las props desde la definición: agregar una variante no requiere tocar tipos a mano."
+    },
+    "matrix": {
+      "title": "Todas las combinaciones",
+      "description": "intent × size con la misma definición."
+    },
+    "extend": {
+      "title": "Paso 6 · Extender componentes de gem-system",
+      "description": "Sumá variantes propias a un Button de gem-system sin tocar la librería: cva genera el className y gem-system conserva el resto.",
+      "shape": "shape",
+      "width": "width",
+      "label": "Continuar"
+    },
+    "tips": {
+      "title": "Buenas prácticas",
+      "single": "Una definición cva por componente, exportada junto a él.",
+      "defaults": "Definí siempre <code>defaultVariants</code> para que el componente funcione sin props.",
+      "boolean": "Para variantes booleanas usá las claves <code>true</code> / <code>false</code>.",
+      "cn": "Envolvé el resultado con <code>cn()</code> para que <code>className</code> externo gane."
+    }
+  },
+  "cssVars": {
+    "header": {
+      "title": "Variables CSS",
+      "description": "Para valores calculados en runtime, pasá variables CSS por style y consumilas desde clases estáticas."
+    },
+    "why": {
+      "title": "Paso 1 · Por qué no interpolar clases",
+      "description": "Tailwind solo genera las clases que encuentra escritas en el código. Una clase armada en runtime no existe en el CSS.",
+      "wrong": "No funciona",
+      "right": "Funciona"
+    },
+    "basic": {
+      "title": "Paso 2 · Definir y consumir",
+      "description": "El valor viaja en la variable; la clase queda fija. Acá --progress controla el ancho.",
+      "label": "Progreso"
+    },
+    "types": {
+      "title": "Paso 3 · Tipar variables propias",
+      "description": "Extendé CSSProperties una vez para no castear en cada style."
+    },
+    "brand": {
+      "title": "Paso 4 · Varias variables combinadas",
+      "description": "Tono y radio calculados en runtime alimentan clases estáticas de borde, fondo y hover.",
+      "hue": "Tono",
+      "radius": "Radio",
+      "cardTitle": "Color de marca",
+      "cardBody": "El color y el radio salen de variables CSS definidas en style.",
+      "action": "Acción de marca"
+    },
+    "scope": {
+      "title": "Paso 5 · Pisar tokens de gem-system en un scope",
+      "description": "Los componentes de gem-system leen variables --gem-*. Redefinilas en un contenedor y todo lo que está adentro cambia, sin tocar el resto de la página.",
+      "hue": "Tono primario",
+      "primary": "Confirmar",
+      "switch": "Notificaciones",
+      "slider": "Volumen"
+    },
+    "tips": {
+      "title": "Buenas prácticas",
+      "prefix": "Usá un prefijo propio (<code>--brand-*</code>) para no chocar con <code>--gem-*</code>.",
+      "units": "Pasá la unidad en el valor (<code>12px</code>) o usá <code>calc()</code> en la clase.",
+      "static": "Si el valor es fijo, no uses una variable: una clase o una variante cva alcanza.",
+      "scope": "Para cambiar el tema de una zona, redefiní los tokens <code>--gem-*</code> en el contenedor."
+    }
+  }
+}

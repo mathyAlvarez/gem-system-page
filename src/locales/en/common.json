@@ -1,4 +1,17 @@
 {
+  "scrollTop": "Back to top",
+  "toc": "Contents",
+  "apiSection": {
+    "title": "API",
+    "description": "Check the full reference for every prop, CSS class and variable available in {{component}}, plus the types it exports."
+  },
+  "styleChanges": {
+    "title": "Style changes",
+    "tailwind": "Tailwind + cn()",
+    "cva": "cva",
+    "cssVariables": "CSS variables",
+    "guide": "Open the style override guide"
+  },
   "navbar": {
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -6,6 +19,11 @@
   },
   "nav": {
     "gettingStarted": "Getting started",
+    "overrideStyles": "Override styles",
+    "overrideOverview": "Recommended approach",
+    "overrideTailwind": "Tailwind + cn()",
+    "overrideCva": "Variants with cva",
+    "overrideCssVariables": "CSS variables",
     "foundations": "Foundations",
     "typography": "Typography",
     "tokens": "Tokens",

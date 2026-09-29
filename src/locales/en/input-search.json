@@ -1,0 +1,244 @@
+{
+  "header": {
+    "title": "InputSearch",
+    "description": "Search field with a magnifying-glass icon and a clear control. Enter fires `onSearch` and Escape empties the field. Use Combobox when the query should pick from a list of options."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Search",
+    "placeholder": "Search…",
+    "helperText": "Type, then use clear or Escape to empty the field.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "clearable": "clearable",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Magnifying glass at the start and a clear button when there is text. Escape also empties the field.",
+      "texts": {
+        "label": "Search",
+        "placeholder": "Search…",
+        "helperText": "Type, then use clear or Escape to empty the field."
+      }
+    },
+    "withValue": {
+      "title": "With value",
+      "description": "The clear button appears when the field has text.",
+      "texts": {
+        "label": "Search",
+        "defaultValue": "Design tokens",
+        "helperText": "Clear appears when the field is not empty."
+      }
+    },
+    "withoutIcon": {
+      "title": "Without icon",
+      "description": "`prefixIcon={null}` hides the magnifying glass.",
+      "texts": {
+        "label": "Search",
+        "defaultValue": "Query",
+        "helperText": "prefixIcon={null} hides the magnifying glass."
+      }
+    },
+    "customIcon": {
+      "title": "Custom icon",
+      "description": "`prefixIcon` replaces the magnifying glass with another icon.",
+      "texts": {
+        "label": "People",
+        "placeholder": "Find a person"
+      }
+    },
+    "withSuffix": {
+      "title": "With suffix",
+      "description": "`suffixIcon` sits before the clear button.",
+      "texts": {
+        "label": "Search",
+        "defaultValue": "Invoices",
+        "helperText": "Decorative suffix sits before the clear control."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the field and hides the clear button.",
+      "texts": {
+        "label": "Search",
+        "defaultValue": "Locked query"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marks the field as invalid and forces the error border.",
+      "texts": {
+        "label": "Search",
+        "placeholder": "Search…",
+        "errorMessage": "Enter a term to search."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the value with value, `onChange` and `onClear`. Enter fires `onSearch` with the current value.",
+      "texts": {
+        "label": "Controlled",
+        "helperText": "Press Enter to fire onSearch.",
+        "valueLabel": "Value",
+        "searchLabel": "Last search",
+        "empty": "(empty)"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary accent and pill shape with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-xs replaces radius-full thanks to tailwind-merge.",
+      "value": "gem-system"
+    },
+    "css": {
+      "label": "Branded search",
+      "placeholder": "Search components…",
+      "helperText": "No border, soft tertiary background and pill shape."
+    }
+  },
+  "apiLink": "See the full InputSearch API",
+  "api": {
+    "header": {
+      "title": "InputSearch API",
+      "description": "API reference for the InputSearch React component: props, events, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "InputSearch"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "InputSearch wraps <code>InputText</code>: it accepts all its props (except <code>type</code>) and native <code>&lt;input&gt;</code> attributes. <code>className</code> goes to the <code>&lt;input&gt;</code> and <code>wrapperClassName</code> to the container, which also gets the <code>gem-input-search</code> class."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "searchbox": "The input uses <code>type=\"search\"</code> and <code>role=\"searchbox\"</code>.",
+      "keyboard": "<code>Enter</code> fires <code>onSearch</code> and <code>Escape</code> empties the field and fires <code>onClear</code>.",
+      "clear": "The clear button has an <code>aria-label</code> (<code>Clear</code> by default, change it with <code>clearLabel</code>) and does not steal focus from the input.",
+      "label": "<code>helperText</code> and <code>errorMessage</code> are linked with <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "InputSearch adds gem-input-search classes to the InputText ones.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container (next to gem-input-text). Receives `wrapperClassName`.",
+        "clear": "Clear button.",
+        "label": "Field label.",
+        "field": "Container for the input, icons and button.",
+        "control": "The <input>. Receives `className`.",
+        "prefix": "Magnifying glass or prefix icon.",
+        "suffix": "Container for the suffix and the clear button.",
+        "message": "Helper or error text below the field.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "hasClear": "Applied when the clear button is shown.",
+        "suffixAndClear": "Applied with both `suffixIcon` and the clear button.",
+        "labelOutline": "Applied with `labelPlacement=\"outline\"`.",
+        "invalid": "Applied with `isInvalid`, `errorMessage` or when `validRegex` fails.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "InputText variables the component computes by measuring the prefix and suffix, applied as inline style on the root. Read them from your CSS; a class cannot override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-input-prefix-pad": "Measured width of the magnifying glass or prefix icon; used as the input left padding.",
+        "--gem-input-suffix-pad": "Measured width of the suffix and clear button; used as the input right padding."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by the field. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in InputSearch"
+      },
+      "items": {
+        "--gem-color-border": "Input border.",
+        "--gem-color-accent": "Focus border.",
+        "--gem-shadow-focus": "Focus ring of the input and clear button.",
+        "--gem-color-bg": "Input background.",
+        "--gem-color-bg-subtle": "Clear button hover background.",
+        "--gem-color-fg": "Value and label color.",
+        "--gem-color-fg-muted": "Placeholder, magnifying glass, clear button and helper text.",
+        "--gem-radius-md": "Input radius.",
+        "--gem-radius-sm": "Clear button radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts InputText props (except type) and native <input> attributes.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled value.",
+      "defaultValue": "Uncontrolled initial value.",
+      "clearable": "Shows the clear button when there is text.",
+      "clearLabel": "Accessible name of the clear button.",
+      "prefixIcon": "Icon at the start. Magnifying glass by default; null hides it.",
+      "suffixIcon": "Decorative icon before the clear button.",
+      "placeholder": "Placeholder text when the field is empty.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: above or on the border.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "infoLabel": "Accessible name of the info icon.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "validRegex": "Pattern the value must match. Failing values show the error border.",
+      "uppercase": "Forces typed text to uppercase.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field and hides the clear button.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "className": "Extra classes for the <input>.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Native event on every change. Also fires on clear, with an empty value.",
+      "onClear": "Fires after the field is cleared (button or Escape).",
+      "onSearch": "Receives the current value when Enter is pressed.",
+      "onValidate": "Fires when validity changes based on `validRegex`.",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

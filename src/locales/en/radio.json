@@ -1,0 +1,178 @@
+{
+  "header": {
+    "title": "Radio",
+    "description": "Lets users pick a single option among several. Use it standalone (several Radio controls with the same `name`) or inside RadioGroup, which passes down `size`, `tone`, state and `name`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly.",
+    "label": "Remember this device",
+    "helperText": "A single radio can be used without RadioGroup.",
+    "size": "size",
+    "tone": "tone",
+    "defaultChecked": "defaultChecked",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "A standalone Radio with `label` and `helperText`. `value` is required.",
+      "label": "Remember this device",
+      "helperText": "A single radio can be used without RadioGroup."
+    },
+    "checked": {
+      "title": "Checked",
+      "description": "`defaultChecked` for the uncontrolled initial state.",
+      "label": "Selected option"
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the option and dims the label.",
+      "label": "Disabled option",
+      "helperText": "This option cannot be changed."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "The seven tones available in the `tone` prop."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small radio",
+        "md": "Medium radio",
+        "lg": "Large radio"
+      }
+    },
+    "withoutLabel": {
+      "title": "Without label",
+      "description": "With no visible text, pass `aria-label`.",
+      "ariaLabel": "Select this option"
+    },
+    "sharedName": {
+      "title": "Shared name",
+      "description": "Several Radio controls with the same `name` form a native exclusive group, without RadioGroup. Prefer RadioGroup when you need a label, error or Home/End navigation.",
+      "labels": {
+        "es": "Spanish",
+        "en": "English",
+        "pt": "Portuguese"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "card": "Tailwind card",
+      "cardHelper": "Classes with cn() on wrapperClassName.",
+      "merged": "Merged pill",
+      "mergedHelper": "rounded-full replaces rounded-lg thanks to tailwind-merge."
+    },
+    "cva": {
+      "plain": "appearance=\"plain\"",
+      "card": "appearance=\"card\"",
+      "brand": "appearance=\"card\" brand=\"tertiary\""
+    },
+    "css": {
+      "branded": "Branded option",
+      "brandedHelper": "Card-like container and secondary colors.",
+      "square": "Square option",
+      "squareHelper": "Circle and dot with radius xs, uppercase label.",
+      "combined": "Success + lg + custom",
+      "combinedHelper": "Props first, then CSS overrides."
+    }
+  },
+  "apiLink": "See the full Radio API",
+  "api": {
+    "header": {
+      "title": "Radio API",
+      "description": "API reference for the Radio React component: props, CSS classes, CSS variables and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Radio"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath, which also exports RadioGroup."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, Radio accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>size</code>, <code>type</code> and <code>children</code>. They go to the <code>&lt;input type=\"radio\"&gt;</code>; use <code>wrapperClassName</code> for the container. Inside <code>RadioGroup</code>, the group sets <code>name</code>, <code>size</code>, <code>tone</code>, and the checked and disabled state."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "native": "Uses a native <code>&lt;input type=\"radio\"&gt;</code>: arrow keys move the selection between radios sharing the same <code>name</code>.",
+      "label": "The <code>label</code> wraps the input. With no visible label, pass <code>aria-label</code>.",
+      "describedBy": "<code>helperText</code> is linked through <code>aria-describedby</code>.",
+      "group": "Inside <code>RadioGroup</code> it inherits <code>aria-invalid</code> and <code>required</code> from the group."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "<label> element wrapping the control and text.",
+        "control": "Container for the input and the visual circle.",
+        "input": "Native input (visually hidden). Receives `className`.",
+        "circle": "Visual radio circle.",
+        "dot": "Inner dot of the checked state.",
+        "labelText": "Label text.",
+        "message": "Helper text below the radio.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "tone": "Applied when `tone=\"{{value}}\"` (or error when the group is invalid).",
+        "invalid": "Applied when the parent RadioGroup is invalid.",
+        "disabled": "Applied with `isDisabled`, disabled or a disabled group."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Each tone sets these variables. Redefine them on your `wrapperClassName` to change colors without overriding rules.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-radio-tone": "Border and background of the checked state.",
+        "--gem-radio-tone-hover": "Border on hover.",
+        "--gem-radio-tone-active": "Border and background on hover while checked.",
+        "--gem-radio-tone-focus": "Focus ring (box-shadow).",
+        "--gem-radio-on": "Dot color over the checked background."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. Includes the RadioGroup types."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes (except size, type and children).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Option value. Required.",
+      "label": "Visible label next to the control.",
+      "helperText": "Helper text below the option.",
+      "name": "Native group name. Inside RadioGroup the group sets it.",
+      "size": "Control size. Inherited from RadioGroup when nested.",
+      "tone": "Color tone. Inherited from RadioGroup when nested (error when invalid).",
+      "checked": "Controlled state (only outside RadioGroup).",
+      "defaultChecked": "Uncontrolled initial state (only outside RadioGroup).",
+      "isDisabled": "Disables the option. Prefer it over native disabled.",
+      "id": "Input id. Inside RadioGroup it is built from `name` and `value`.",
+      "aria-label": "Accessible name when there is no label.",
+      "className": "Extra classes for the native input.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Fires when the option is selected."
+    }
+  }
+}

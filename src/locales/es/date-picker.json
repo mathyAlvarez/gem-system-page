@@ -1,0 +1,351 @@
+{
+  "header": {
+    "title": "DatePicker",
+    "description": "Campo para elegir una fecha, un rango o fecha y hora desde un calendario. Soporta locales, formatos de salida, límites mínimo y máximo, y navegación rápida por mes y año."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Fecha de inicio",
+    "placeholder": "Elegí una fecha",
+    "helperText": "Selección de una sola fecha.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "locale": "locale",
+    "range": "range",
+    "showTime": "showTime",
+    "clearable": "clearable",
+    "isLoading": "isLoading",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Selección de una fecha con label, placeholder y texto de ayuda.",
+      "texts": {
+        "label": "Fecha de inicio",
+        "placeholder": "Elegí una fecha",
+        "helperText": "Selección de una sola fecha."
+      }
+    },
+    "locale": {
+      "title": "Locale",
+      "description": "`locale` acepta un código BCP 47 y traduce meses, días y el valor formateado.",
+      "labels": {
+        "en": "Inglés (default)",
+        "es": "Español",
+        "pt": "Portugués"
+      }
+    },
+    "outputFormat": {
+      "title": "Formato de salida",
+      "description": "`format` define cómo se muestra el valor. Tokens: YYYY, YY, MMMM, MMM, MM, M, DD y D.",
+      "texts": {
+        "rangeLabel": "Rango · DD MMM YYYY",
+        "rangeHelper": "format=\"DD MMM YYYY\" con range"
+      }
+    },
+    "range": {
+      "title": "Rango",
+      "description": "`range` permite elegir una fecha de inicio y otra de fin. El valor es { start, end }.",
+      "texts": {
+        "label": "Estadía",
+        "placeholder": "Elegí un rango de fechas",
+        "helperText": "Elegí una fecha de inicio y luego una de fin."
+      }
+    },
+    "withTime": {
+      "title": "Con hora",
+      "description": "`showTime` agrega selectores de hora y minutos.",
+      "texts": {
+        "label": "Turno",
+        "helperText": "Usá la X junto al reloj para limpiar sin abrir el calendario."
+      }
+    },
+    "timeRange": {
+      "title": "Rango con hora",
+      "description": "Con range y `showTime` podés editar la hora de inicio y de fin por separado.",
+      "texts": {
+        "label": "Ventana del evento",
+        "helperText": "Usá Start / End para editar cada hora."
+      }
+    },
+    "minuteStep": {
+      "title": "Intervalo de minutos",
+      "description": "`minuteStep` define el salto entre minutos del selector.",
+      "texts": {
+        "label": "Reunión",
+        "helperText": "Los minutos avanzan de a 15."
+      }
+    },
+    "timeFormat": {
+      "title": "Formato de hora",
+      "description": "Tokens de hora: HH, H, hh, h, mm, m, A y a.",
+      "texts": {
+        "h24": "Reloj de 24 horas.",
+        "h12": "Reloj de 12 horas con AM/PM."
+      }
+    },
+    "clearable": {
+      "title": "Limpiable",
+      "description": "`clearable` muestra una X para vaciar el campo sin abrir el calendario.",
+      "texts": {
+        "label": "Fecha de factura",
+        "helperText": "Usá la X junto al ícono del calendario para limpiar el valor."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo y el calendario.",
+      "texts": {
+        "label": "Fecha bloqueada",
+        "helperText": "Este campo no se puede cambiar."
+      }
+    },
+    "loading": {
+      "title": "Cargando",
+      "description": "`isLoading` muestra un spinner y `loadingText` mientras llega el valor.",
+      "texts": {
+        "label": "Turno",
+        "loadingText": "Cargando fecha…",
+        "helperText": "El campo muestra loadingText junto al spinner."
+      }
+    },
+    "loadingThenValue": {
+      "title": "Carga y luego valor",
+      "description": "Empieza en `isLoading` y, a los 2 segundos, se setea la fecha y el spinner se detiene.",
+      "texts": {
+        "label": "Turno",
+        "loadingText": "Cargando fecha…",
+        "fetching": "Buscando la fecha…",
+        "loaded": "Cargada."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marca el campo como inválido y fuerza el borde de error.",
+      "texts": {
+        "label": "Fecha de vencimiento",
+        "errorMessage": "Elegí una fecha de vencimiento para continuar."
+      }
+    },
+    "minMax": {
+      "title": "Mínimo y máximo",
+      "description": "`minDate` y `maxDate` deshabilitan las fechas fuera del intervalo.",
+      "texts": {
+        "label": "Turno",
+        "helperText": "Solo se habilitan las fechas desde hoy hasta el mes que viene."
+      }
+    },
+    "birthDate": {
+      "title": "Fecha de nacimiento",
+      "description": "Para fechas lejanas, hacé clic en el mes o el año para saltar rápido.",
+      "texts": {
+        "label": "Fecha de nacimiento",
+        "placeholder": "Elegí una fecha",
+        "helperText": "Hacé clic en el mes/año para saltar a un año lejano."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Bordes",
+      "description": "`border` cambia el tono del borde. Se fuerza a error si el campo es inválido."
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "`infoText` agrega un ícono de información junto al label.",
+      "texts": {
+        "label": "Período de facturación",
+        "infoText": "La factura se genera en esta fecha."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá la fecha con value y `onChange`.",
+      "texts": {
+        "label": "Controlado",
+        "valueLabel": "Valor"
+      }
+    },
+    "controlledRange": {
+      "title": "Rango controlado",
+      "description": "En modo range, value y `onChange` trabajan con { start, end }.",
+      "texts": {
+        "label": "Rango controlado",
+        "valueLabel": "Rango"
+      }
+    },
+    "events": {
+      "title": "Eventos",
+      "description": "Abrí el calendario, cambiá de mes o año, elegí una fecha y editá la hora: cada callback se lista abajo.",
+      "texts": {
+        "dateTime": "Fecha y hora",
+        "range": "Rango",
+        "empty": "Todavía no hay eventos."
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Tokens secondary con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "Los tokens tertiary reemplazan a los secondary gracias a tailwind-merge."
+    },
+    "css": {
+      "pill": "Pill de marca",
+      "pillHelper": "Radio completo y acentos tertiary.",
+      "range": "Rango de marca",
+      "rangeHelper": "El rango también toma los tokens redefinidos."
+    }
+  },
+  "apiLink": "Ver la API completa de DatePicker",
+  "api": {
+    "header": {
+      "title": "DatePicker API",
+      "description": "Referencia de la API del componente DatePicker de React: props, eventos, clases CSS, variables y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "DatePicker"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, DatePicker acepta los atributos nativos de <code>&lt;button&gt;</code> (<code>ButtonHTMLAttributes</code>) salvo <code>onChange</code>, <code>value</code>, <code>defaultValue</code> y <code>size</code>. Se aplican al botón que abre el calendario; <code>className</code> también va al botón y <code>wrapperClassName</code> a la raíz."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "trigger": "El campo es un <code>&lt;button&gt;</code> con <code>aria-haspopup=\"dialog\"</code>, <code>aria-expanded</code> y <code>aria-controls</code> apuntando al calendario.",
+      "dialog": "El calendario usa <code>role=\"dialog\"</code> con el mes visible como <code>aria-label</code>; la grilla de días usa <code>role=\"grid\"</code>.",
+      "keyboard": "<code>Escape</code> cierra el calendario y devuelve el foco al campo.",
+      "label": "<code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Label del campo.",
+        "control": "Envuelve el campo y el popover.",
+        "trigger": "Botón visible que abre el calendario. Recibe `className`.",
+        "value": "Texto con la fecha formateada.",
+        "valuePlaceholder": "Se aplica al valor cuando se muestra el placeholder.",
+        "icons": "Contenedor de los íconos de calendario y reloj.",
+        "clear": "Botón para limpiar el valor (clearable).",
+        "popover": "Panel del calendario.",
+        "nav": "Fila con los botones de mes anterior y siguiente.",
+        "caption": "Mes y año visibles. Abre la vista de meses o años.",
+        "periodGrid": "Grilla de meses o años.",
+        "period": "Cada mes o año de la grilla.",
+        "weekday": "Encabezado de cada día de la semana.",
+        "grid": "Grilla de días (role=\"grid\").",
+        "day": "Cada día del calendario.",
+        "daySelected": "Día seleccionado (o extremo del rango).",
+        "dayInRange": "Día dentro del rango seleccionado.",
+        "dayToday": "Día actual.",
+        "dayOutside": "Día de otro mes.",
+        "clock": "Selector de hora y minutos (`showTime`).",
+        "clockItem": "Cada hora o minuto del selector.",
+        "footer": "Pie del calendario.",
+        "message": "Texto de ayuda o error debajo del campo.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "labelOutline": "Se aplica cuando `labelPlacement=\"outline\"`.",
+        "open": "Se aplica mientras el calendario está abierto.",
+        "range": "Se aplica cuando `range={true}`.",
+        "time": "Se aplica cuando `showTime={true}`.",
+        "loading": "Se aplica con `isLoading`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variable propia y tokens de gem-system que usa DatePicker. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-datepicker-range": "Fondo de los días dentro del rango. Se define en cada .gem-datepicker__day.",
+        "--gem-color-primary-600": "Fondo del día seleccionado.",
+        "--gem-color-border": "Borde del campo y del calendario.",
+        "--gem-color-accent": "Borde con el calendario abierto.",
+        "--gem-radius-md": "Radio del campo y del calendario.",
+        "--gem-radius-sm": "Radio de botones internos, meses y años."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <button> salvo `onChange`, value, `defaultValue` y size.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Valor controlado. Date en modo simple, { start, end } en modo range.",
+      "defaultValue": "Valor inicial no controlado.",
+      "range": "Permite elegir un rango de inicio y fin.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: sobre el borde (outline) o arriba del campo (above).",
+      "placeholder": "Texto cuando no hay nada seleccionado.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "minDate": "Primera fecha seleccionable (inclusive).",
+      "maxDate": "Última fecha seleccionable (inclusive).",
+      "locale": "Locale BCP 47 para nombres de meses y valor formateado.",
+      "format": "Patrón de salida. Con `showTime` el default es YYYY-MM-DD HH:mm.",
+      "showTime": "Muestra los selectores de hora y minutos.",
+      "minuteStep": "Intervalo de minutos del selector.",
+      "weekStartsOn": "Primer día de la semana: 0 = domingo, 1 = lunes.",
+      "clearable": "Muestra una X para limpiar sin abrir el calendario.",
+      "isLoading": "Muestra un spinner y bloquea el calendario.",
+      "loadingText": "Texto visible mientras `isLoading` es true.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "name": "`name` nativo del input oculto (inicio en modo range).",
+      "endName": "`name` nativo del input oculto de la fecha de fin (modo range).",
+      "className": "Clases extra para el botón del campo.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Se dispara al cambiar la fecha o el rango.",
+      "onDateChange": "Modo simple: se dispara al elegir, actualizar o limpiar la fecha.",
+      "onRangeChange": "Modo range: se dispara al cambiar inicio o fin.",
+      "onMonthChange": "Se dispara al cambiar el mes visible (0–11).",
+      "onYearChange": "Se dispara al cambiar el año visible.",
+      "onTimeChange": "Se dispara al cambiar la hora o los minutos.",
+      "onHourChange": "Se dispara al cambiar la hora.",
+      "onMinuteChange": "Se dispara al cambiar los minutos."
+    }
+  }
+}

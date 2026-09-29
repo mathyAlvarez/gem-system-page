@@ -26,6 +26,129 @@
   display: flex;
   flex-direction: column;
   gap: var(--gem-space-4);
+  scroll-margin-top: var(--gem-space-6);
+}
+
+.docs-toc {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  max-height: calc(100dvh - 8rem);
+  overflow-y: auto;
+
+  &__title {
+    color: var(--gem-color-fg-muted);
+    font-weight: var(--gem-font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    display: block;
+    padding: var(--gem-space-1) var(--gem-space-3);
+    border-left: 1px solid var(--gem-color-border);
+    color: var(--gem-color-fg-muted);
+    font-size: var(--gem-font-size-sm);
+    line-height: 1.4;
+    text-decoration: none;
+    transition:
+      color var(--gemst-duration-fast) var(--gemst-easing-standard),
+      border-color var(--gemst-duration-fast) var(--gemst-easing-standard);
+
+    &:hover {
+      color: var(--gem-color-fg);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--gem-shadow-focus);
+    }
+
+    &--sub {
+      padding-left: var(--gem-space-6);
+    }
+
+    &--active {
+      border-left-color: var(--gem-color-accent);
+      color: var(--gem-color-accent);
+      font-weight: var(--gem-font-weight-semibold);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+}
+
+.docs-api-table {
+  overflow-x: auto;
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    th,
+    td {
+      padding: var(--gem-space-3) var(--gem-space-4);
+      border-bottom: 1px solid var(--gem-color-border);
+      vertical-align: top;
+    }
+
+    thead th {
+      background: var(--gem-color-bg-subtle);
+      color: var(--gem-color-fg-muted);
+      font-size: var(--gem-font-size-xs);
+      font-weight: var(--gem-font-weight-semibold);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    tbody th {
+      font-weight: inherit;
+    }
+
+    tbody tr:last-child {
+      th,
+      td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__name,
+  &__code,
+  &__muted {
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+  }
+
+  &__name {
+    color: var(--gem-color-accent);
+    font-weight: var(--gem-font-weight-semibold);
+    white-space: nowrap;
+  }
+
+  &__code {
+    color: var(--gem-color-fg);
+  }
+
+  &__muted {
+    color: var(--gem-color-fg-muted);
+  }
 }
 
 .docs-hero-actions {
@@ -66,6 +189,26 @@
     border-top: 1px solid var(--gem-color-border);
     background: var(--gem-color-bg-subtle);
   }
+
+  // Lets popovers (combobox menus, dropdowns) escape the preview instead of being clipped.
+  &--overflow {
+    overflow: visible;
+
+    > .docs-demo__preview {
+      position: relative;
+      z-index: 1;
+      border-radius: var(--gem-radius-lg) var(--gem-radius-lg) 0 0;
+
+      &:focus-within {
+        z-index: 2;
+      }
+    }
+
+    > .docs-demo__code {
+      overflow: hidden;
+      border-radius: 0 0 var(--gem-radius-lg) var(--gem-radius-lg);
+    }
+  }
 }
 
 .docs-code {
@@ -90,6 +233,19 @@
   width: 100%;
   padding-inline: var(--gem-space-3);
   background: var(--gem-color-bg-subtle);
+}
+
+[data-theme="dark"] .docs-code-viewer__badge {
+  color: var(--gem-palette-neutral-950);
+}
+
+.docs-prop {
+  color: var(--gem-palette-primary-600);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .docs-prop {
+  color: var(--gem-palette-primary-400);
 }
 
 .docs-theme-demo {
@@ -137,4 +293,13 @@
   border-radius: var(--gem-radius-md);
   background: var(--gem-color-bg);
   text-align: center;
+}
+
+/* Playground flags: single-line labels, so the track is centered with the text. */
+[class*="-playground__flags"] .gem-switch__label {
+  align-items: center;
+}
+
+[class*="-playground__flags"] .gem-switch__control {
+  margin-top: 0;
 }

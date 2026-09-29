@@ -1,0 +1,274 @@
+{
+  "header": {
+    "title": "Textarea",
+    "description": "Multi-line text field with manual or automatic resizing and an optional character counter. It shares the label, messages, borders and info icon with InputText."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Description",
+    "placeholder": "Write something…",
+    "helperText": "Drag the corner to resize vertically.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "resize": "resize",
+    "showCount": "showCount",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Label, placeholder and helper text. By default it shows 3 rows and resizes vertically.",
+      "texts": {
+        "label": "Description",
+        "placeholder": "Write something…",
+        "helperText": "Drag the corner to resize vertically."
+      }
+    },
+    "withInfoIcon": {
+      "title": "With info icon",
+      "description": "`infoText` adds an info button with a tooltip. It renders in the label row, aligned to the right, so it sits at the top-right corner of the field. `onInfoClick` fires when it is activated.",
+      "texts": {
+        "label": "Description",
+        "placeholder": "Write something…",
+        "infoText": "About this field",
+        "helperText": "The icon sits at the top-right when infoText is set."
+      }
+    },
+    "outlineWithInfoIcon": {
+      "title": "Outline with info icon",
+      "description": "With `labelPlacement=\"outline\"` there is no label row: the info button sits on the top border, at the right corner of the field.",
+      "texts": {
+        "label": "Outlined",
+        "placeholder": "Outlined border",
+        "infoText": "About this field"
+      }
+    },
+    "outlineLabel": {
+      "title": "Outline label",
+      "description": "`labelPlacement=\"outline\"` places the label on the top border.",
+      "texts": {
+        "label": "Notes",
+        "placeholder": "Add your notes…"
+      }
+    },
+    "autosize": {
+      "title": "Autosize",
+      "description": "`resize=\"auto\"` fits the height to the content between `minRows` and `maxRows`. Past `maxRows` it scrolls.",
+      "texts": {
+        "label": "Comment",
+        "helperText": "Grows with content up to maxRows.",
+        "defaultValue": "Type more lines to see it grow…"
+      }
+    },
+    "withCounter": {
+      "title": "With counter",
+      "description": "`showCount` together with `maxLength` shows the counter as current / max. It turns red at the limit.",
+      "texts": {
+        "label": "Bio",
+        "helperText": "Keep it short.",
+        "defaultValue": "Hello from gem-system"
+      }
+    },
+    "counterOnly": {
+      "title": "Counter only",
+      "description": "Without `maxLength`, `showCount` only shows the character count.",
+      "texts": {
+        "label": "Message",
+        "placeholder": "No maxLength: only counts characters."
+      }
+    },
+    "noResize": {
+      "title": "No resize",
+      "description": "`resize=\"none\"` hides the resize handle. `minRows` sets the height.",
+      "texts": {
+        "label": "Fixed height",
+        "helperText": "resize=\"none\" with 4 rows."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` replaces `helperText`, forces the error border and is announced with role=\"alert\". The counter stays visible.",
+      "texts": {
+        "label": "Feedback",
+        "defaultValue": "Too short",
+        "errorMessage": "Please provide more detail."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the field and the resize handle.",
+      "texts": {
+        "label": "Read-only notes",
+        "defaultValue": "This field is disabled."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes with `size`: sm, md and lg. They change the padding and text size.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` sets the tone of the border and helper text. It is forced to error when the field is invalid.",
+      "placeholders": {
+        "default": "Default border",
+        "outlined": "Stronger border",
+        "borderless": "No border",
+        "primary": "Primary tone",
+        "success": "Success tone",
+        "warning": "Warning tone",
+        "error": "Error tone",
+        "info": "Info tone"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Tailwind brand",
+      "brandHelper": "Secondary accent and radius xl with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-xs replaces radius-xl thanks to tailwind-merge.",
+      "placeholder": "Write something…"
+    },
+    "cva": {
+      "placeholder": "Write something…"
+    },
+    "css": {
+      "soft": "Soft field",
+      "softPlaceholder": "Write something…",
+      "softHelper": "No border, soft tertiary background and radius lg, tokens only.",
+      "code": "Code snippet",
+      "codeValue": "const greeting = \"hello\";\nconsole.log(greeting);"
+    }
+  },
+  "apiLink": "See the full Textarea API",
+  "api": {
+    "header": {
+      "title": "Textarea API",
+      "description": "API reference for the Textarea React component: props, events, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Textarea"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It accepts native <code>&lt;textarea&gt;</code> attributes (<code>TextareaHTMLAttributes</code>) except <code>size</code>. Extra attributes, <code>className</code> and <code>style</code> go to the <code>&lt;textarea&gt;</code>; <code>wrapperClassName</code> goes to the container. If you pass <code>rows</code>, it takes precedence over <code>minRows</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "label": "The label is linked to the textarea through <code>htmlFor</code>. With no visible label, pass <code>aria-label</code>.",
+      "describedby": "<code>helperText</code> or <code>errorMessage</code> is linked through <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>.",
+      "count": "The counter is also linked through <code>aria-describedby</code> and uses <code>aria-live=\"polite\"</code> to announce changes.",
+      "states": "<code>isInvalid</code> and <code>isRequired</code> are reflected in <code>aria-invalid</code> and <code>aria-required</code>. The asterisk is <code>aria-hidden</code>.",
+      "info": "The info icon is a button with a tooltip; <code>infoLabel</code> gives it an accessible name when <code>infoText</code> is not text."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "Field label.",
+        "required": "Required field asterisk.",
+        "field": "Container for the textarea (and the outline label).",
+        "control": "The <textarea>. Receives `className` and style.",
+        "footer": "Row below the field with the messages and the counter.",
+        "messages": "Container for the helper or error text.",
+        "message": "Helper or error text.",
+        "messageTone": "Message color with the {{value}} tone.",
+        "count": "Character counter.",
+        "countLimit": "Applied to the counter when it reaches `maxLength`.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "resize": "Applied when `resize=\"{{value}}\"`.",
+        "labelOutline": "Applied with `labelPlacement=\"outline\"`.",
+        "hasInfo": "Applied when `infoText` is set.",
+        "hasCount": "Applied with `showCount`.",
+        "invalid": "Applied with `isInvalid`, `errorMessage` or when `validRegex` fails.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Textarea defines no variables of its own: it uses gem-system tokens. Redefine them on your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Textarea"
+      },
+      "items": {
+        "--gem-color-border": "Textarea border.",
+        "--gem-color-accent": "Focused border and focused outline label.",
+        "--gem-shadow-focus": "Focus ring.",
+        "--gem-shadow-xs": "Resting textarea shadow.",
+        "--gem-color-bg": "Textarea background and outline label background.",
+        "--gem-color-bg-subtle": "Disabled background.",
+        "--gem-color-fg": "Value and label color.",
+        "--gem-color-fg-muted": "Placeholder, helper text and counter.",
+        "--gem-color-neutral-400": "Hover border.",
+        "--gem-color-error-600": "Required asterisk and invalid outline label.",
+        "--gem-color-error-700": "Error message and counter at the limit.",
+        "--gem-radius-md": "Textarea radius.",
+        "--gem-font-sans": "Field font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. The size, border and label types reuse the InputText ones."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <textarea> attributes.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled value.",
+      "defaultValue": "Uncontrolled initial value.",
+      "placeholder": "Sample text when the field is empty.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: above or on the border.",
+      "helperText": "Helper text below the field (hidden when `errorMessage` is set).",
+      "errorMessage": "Error message. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "infoLabel": "Accessible name of the info icon.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "resize": "Manual resize, or `auto` to fit the height to the content.",
+      "minRows": "Minimum rows. Also the floor for autosize.",
+      "maxRows": "Maximum rows with `resize=\"auto\"`.",
+      "showCount": "Shows a character counter. Uses `maxLength` when set.",
+      "maxLength": "Native character limit. With `showCount` it shows as current / max.",
+      "validRegex": "Pattern the value must match. An empty value is considered valid.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "className": "Extra classes for the <textarea>.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Native event on every change.",
+      "onValidate": "Fires when validity changes (and on mount when `validRegex` is set).",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

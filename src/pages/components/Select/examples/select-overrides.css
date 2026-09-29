@@ -1,0 +1,50 @@
+.gem-select.select-branded {
+  --gem-color-accent: var(--gem-palette-secondary-600);
+}
+
+.gem-select.select-branded .gem-select__trigger {
+  border-width: 2px;
+  border-color: var(--gem-palette-secondary-400);
+  border-radius: var(--gem-radius-lg);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 8%, transparent);
+}
+
+.gem-select.select-branded .gem-select__chip {
+  background-color: var(--gem-palette-secondary-100);
+  color: var(--gem-palette-secondary-800);
+}
+
+.gem-select.select-pill {
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+}
+
+.gem-select.select-pill .gem-select__trigger {
+  border-radius: var(--gem-radius-full);
+  border-color: var(--gem-palette-tertiary-400);
+  padding-inline: var(--gem-space-4);
+}
+
+.gem-select.select-pill .gem-select__chip {
+  border-radius: var(--gem-radius-full);
+  background-color: var(--gem-palette-tertiary-100);
+  color: var(--gem-palette-tertiary-800);
+}
+
+[data-theme="dark"] .gem-select.select-branded .gem-select__trigger {
+  border-color: var(--gem-palette-secondary-500);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 16%, transparent);
+}
+
+[data-theme="dark"] .gem-select.select-branded .gem-select__chip {
+  background-color: color-mix(in srgb, var(--gem-palette-secondary-500) 28%, transparent);
+  color: var(--gem-palette-secondary-200);
+}
+
+[data-theme="dark"] .gem-select.select-pill .gem-select__trigger {
+  border-color: var(--gem-palette-tertiary-500);
+}
+
+[data-theme="dark"] .gem-select.select-pill .gem-select__chip {
+  background-color: color-mix(in srgb, var(--gem-palette-tertiary-500) 28%, transparent);
+  color: var(--gem-palette-tertiary-300);
+}

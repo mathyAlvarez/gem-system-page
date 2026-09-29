@@ -1,0 +1,352 @@
+{
+  "header": {
+    "title": "Combobox",
+    "description": "Type-ahead field that filters options as you type. Keyboard friendly (arrows, Enter and Escape) and also exported as Autocomplete. It fills 100% of its container width."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Country",
+    "placeholder": "Type to filter…",
+    "helperText": "Options filter as you type.",
+    "size": "size",
+    "border": "border",
+    "multiple": "multiple",
+    "clearable": "clearable",
+    "allowsCustomValue": "allowsCustomValue",
+    "showExpand": "showExpand",
+    "isLoading": "isLoading",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "data": {
+    "title": "Sample data",
+    "description": "The examples on this page import their options from this file."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Minimal usage: options, label and placeholder.",
+      "texts": {
+        "label": "Country",
+        "placeholder": "Type to filter…",
+        "helperText": "Options filter as you type."
+      }
+    },
+    "multiple": {
+      "title": "Multiple",
+      "description": "With multiple, each selection renders as a chip and the value is a string[].",
+      "texts": {
+        "label": "Countries",
+        "placeholder": "Add a country",
+        "helperText": "Type to filter, then pick one or more."
+      }
+    },
+    "withDescriptions": {
+      "title": "With descriptions",
+      "description": "Each option can have a secondary description. Matches are highlighted in the list.",
+      "texts": {
+        "label": "City",
+        "placeholder": "Search cities",
+        "helperText": "Matches highlight in the list."
+      }
+    },
+    "customOption": {
+      "title": "Custom option",
+      "description": "Pass a function as `children` (or `renderOption`) to control each row. highlight() marks the query.",
+      "texts": {
+        "label": "City",
+        "placeholder": "Search cities",
+        "helperText": "Each row is rendered from children."
+      }
+    },
+    "customValue": {
+      "title": "Custom value",
+      "description": "`allowsCustomValue` lets Enter commit text that is not in the list.",
+      "texts": {
+        "label": "Library",
+        "placeholder": "Pick or type a name",
+        "helperText": "Enter commits a value even if it is not in the list."
+      }
+    },
+    "maxResults": {
+      "title": "Max results",
+      "description": "`maxResults` limits how many matches are listed.",
+      "texts": {
+        "label": "City",
+        "placeholder": "Search cities",
+        "helperText": "Only the first 3 matches are listed."
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` shows a control to empty the field (on by default).",
+      "texts": {
+        "label": "Country",
+        "helperText": "Use the clear control to empty the field."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` blocks the field and the list.",
+      "texts": {
+        "label": "Country",
+        "helperText": "This field cannot be changed."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marks the field as invalid and forces the error border.",
+      "texts": {
+        "label": "Country",
+        "errorMessage": "Choose a country to continue."
+      }
+    },
+    "withChevron": {
+      "title": "With chevron",
+      "description": "`showExpand` reveals the button that opens and closes the list.",
+      "texts": {
+        "label": "Countries",
+        "placeholder": "Add a country",
+        "helperText": "showExpand reveals the list chevron."
+      }
+    },
+    "loading": {
+      "title": "Loading",
+      "description": "`loading` or `isLoading` show a spinner while data arrives.",
+      "texts": {
+        "label": "Country",
+        "placeholder": "Search…",
+        "helperText": "Pass loading or isLoading from the parent."
+      }
+    },
+    "withoutSuffixIcon": {
+      "title": "Without suffix icon",
+      "description": "`suffixIcon={null}` hides the search icon.",
+      "texts": {
+        "label": "Countries",
+        "placeholder": "Add a country",
+        "helperText": "suffixIcon={null} hides the search icon."
+      }
+    },
+    "customSuffixIcon": {
+      "title": "Custom suffix icon",
+      "description": "Pass any icon as `suffixIcon`.",
+      "texts": {
+        "label": "Assignee",
+        "placeholder": "Search people",
+        "helperText": "Pass any icon as suffixIcon."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` changes the border tone. It is forced to error when the field is invalid."
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "`infoText` adds an info icon next to the label.",
+      "texts": {
+        "label": "Workspace",
+        "infoText": "This cannot be changed after the workspace is created."
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the selection with value and `onChange`.",
+      "texts": {
+        "label": "Controlled",
+        "valueLabel": "Value",
+        "empty": "(empty)"
+      }
+    },
+    "controlledMultiple": {
+      "title": "Controlled multiple",
+      "description": "With multiple, value and `onChange` work with string[].",
+      "texts": {
+        "label": "Controlled multiple",
+        "valueLabel": "Values",
+        "empty": "(empty)"
+      }
+    },
+    "fieldMapping": {
+      "title": "Field mapping",
+      "description": "Map any data shape with `optionValue`, `optionLabel`, `optionDescription` and `optionDisabled` (keys or getters).",
+      "texts": {
+        "label": "Assignee",
+        "helperText": "value = id, label = name, description = role."
+      }
+    },
+    "asyncFilter": {
+      "title": "Async filter",
+      "description": "With `filter={false}` filtering is up to you: `options` update from `onInputChange` after a short delay.",
+      "texts": {
+        "label": "Country",
+        "placeholder": "Type at least one letter…",
+        "loadingText": "Fetching matches…",
+        "helperText": "Remote-style filtering."
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Tokens redefined with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "max-w-md replaces max-w-sm thanks to tailwind-merge."
+    },
+    "css": {
+      "branded": "Branded field",
+      "brandedHelper": "Secondary tokens on the control and chips.",
+      "pill": "Pill branded",
+      "pillHelper": "Full radius and tertiary accents."
+    }
+  },
+  "apiLink": "See the full Combobox API",
+  "api": {
+    "header": {
+      "title": "Combobox API",
+      "description": "API reference for the Combobox (Autocomplete) React component: props, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Combobox"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. Autocomplete is an alias of the same component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, Combobox accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>onChange</code>, <code>value</code>, <code>defaultValue</code>, <code>size</code> and <code>children</code>. They are applied to the text input; <code>className</code> goes to the control and <code>wrapperClassName</code> to the root."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "The input uses <code>role=\"combobox\"</code> with <code>aria-expanded</code>, <code>aria-controls</code> and <code>aria-activedescendant</code> pointing at the active option.",
+      "listbox": "The list uses <code>role=\"listbox\"</code> (with <code>aria-multiselectable</code> in multiple mode) and each row <code>role=\"option\"</code> with <code>aria-selected</code>.",
+      "keyboard": "Arrow keys move, <code>Enter</code> picks and <code>Escape</code> closes the list.",
+      "label": "Without a visible label, pass <code>aria-label</code>. <code>helperText</code> and <code>errorMessage</code> are linked with <code>aria-describedby</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "field": "Wraps the control and the dropdown menu.",
+        "control": "Visible field box. Receives `className`.",
+        "suffix": "Leading icon (`suffixIcon`).",
+        "chips": "Chips container in multiple mode.",
+        "chip": "Each selected value in multiple mode.",
+        "chipRemove": "Button that removes a chip.",
+        "input": "Text input where the query is typed.",
+        "actions": "Container for clear, spinner and chevron.",
+        "clear": "Button that clears the field.",
+        "chevron": "Button that opens and closes the list (`showExpand`).",
+        "menu": "Dropdown panel.",
+        "list": "Options list (role=\"listbox\").",
+        "option": "Each row in the list.",
+        "optionActive": "Option highlighted by keyboard or mouse.",
+        "optionSelected": "Selected option.",
+        "optionDisabled": "Disabled option.",
+        "optionLabel": "Main option text.",
+        "optionDescription": "Secondary option text.",
+        "mark": "Highlight of the searched text.",
+        "empty": "Message when there are no results.",
+        "more": "Indicator of results hidden by `maxResults`.",
+        "message": "Helper or error text below the field.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "open": "Applied while the list is open.",
+        "multiple": "Applied when `multiple={true}`.",
+        "loading": "Applied with loading or `isLoading`.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Combobox has no variables of its own: it uses these gem-system tokens. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Combobox"
+      },
+      "items": {
+        "--gem-color-border": "Control and menu border.",
+        "--gem-color-accent": "Border when focused or open.",
+        "--gem-color-bg": "Control and menu background.",
+        "--gem-color-bg-subtle": "Chips and active option background.",
+        "--gem-radius-md": "Control and menu radius.",
+        "--gem-radius-sm": "Chips, options and inner buttons radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes except `onChange`, value, `defaultValue`, size and children.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "options": "Menu options. Objects of any shape are supported.",
+      "value": "Controlled value. string[] when multiple is set.",
+      "defaultValue": "Uncontrolled initial value.",
+      "onChange": "Fires when the selection changes.",
+      "inputValue": "Controlled input text (the query).",
+      "defaultInputValue": "Uncontrolled initial input text.",
+      "onInputChange": "Fires on every keystroke. Useful for async option fetching.",
+      "multiple": "Allows more than one selected option.",
+      "allowsCustomValue": "Commits typed text that does not match an option.",
+      "filter": "Client-side filter. Pass false when options are already filtered.",
+      "openOnFocus": "Opens the list when the input is focused.",
+      "minQueryLength": "Minimum characters before filtering or opening.",
+      "maxResults": "Maximum options rendered after filtering.",
+      "children": "Render prop for each row. Receives the original item and its state.",
+      "renderOption": "Same as `children`. `children` wins when both are set.",
+      "optionValue": "Field or getter for each option value.",
+      "optionLabel": "Field or getter for the visible label.",
+      "optionDisabled": "Field or getter that disables an option.",
+      "optionDescription": "Field or getter for the secondary text.",
+      "optionSearchText": "Field or getter used by the filter.",
+      "label": "Visible field label.",
+      "placeholder": "Text shown when the input is empty.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "noResultsText": "Copy when the filter matches no options.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "clearable": "Shows a control to clear the selection or query.",
+      "showExpand": "Shows the chevron that opens and closes the list.",
+      "suffixIcon": "Icon at the start of the field. null hides it.",
+      "isLoading": "Shows a spinner. The list stays available.",
+      "loading": "Alias of `isLoading`.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "name": "Native name for hidden form inputs.",
+      "className": "Extra classes for the control.",
+      "wrapperClassName": "Extra classes for the root container."
+    }
+  }
+}

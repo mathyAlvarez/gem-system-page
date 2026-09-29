@@ -1,0 +1,16 @@
+.events-log {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  list-style: none;
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg-subtle);
+  color: var(--gem-color-fg);
+  font-family: var(--gem-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.events-log__empty {
+  color: var(--gem-color-fg-muted);
+}

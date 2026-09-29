@@ -1,0 +1,362 @@
+{
+  "header": {
+    "title": "OtpInput",
+    "description": "Segmented slots for verification codes (6 by default, any positive length). Supports pasting the whole code, keyboard navigation and fires `onComplete` once the code is full."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Verification code",
+    "helperText": "Enter the 6-digit code sent to your email.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "type": "type",
+    "length": "length",
+    "uppercase": "uppercase",
+    "mask": "mask",
+    "separator": "separator",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Six numeric slots. Paste the whole code into any slot.",
+      "texts": {
+        "label": "Verification code",
+        "helperText": "Enter the 6-digit code sent to your email."
+      }
+    },
+    "fourDigits": {
+      "title": "Four digits",
+      "description": "`length` sets the number of slots.",
+      "texts": {
+        "label": "PIN",
+        "helperText": "Four-digit confirmation code."
+      }
+    },
+    "fiveDigits": {
+      "title": "Five digits",
+      "description": "Any positive length is valid.",
+      "texts": {
+        "label": "Login code",
+        "helperText": "Five-digit SMS code."
+      }
+    },
+    "withSeparator": {
+      "title": "With separator",
+      "description": "`separator` sits in the middle of the slots.",
+      "texts": {
+        "label": "Authentication code",
+        "helperText": "Optional separator splits the slots in half."
+      }
+    },
+    "alphanumeric": {
+      "title": "Alphanumeric",
+      "description": "`type=\"alphanumeric\"` accepts letters and numbers. `uppercase` is true by default.",
+      "texts": {
+        "label": "Backup code",
+        "helperText": "Letters and numbers. uppercase is true by default."
+      }
+    },
+    "caseSensitive": {
+      "title": "Case sensitive",
+      "description": "`uppercase={false}` keeps the typed casing.",
+      "texts": {
+        "label": "Backup code",
+        "helperText": "uppercase={false} keeps the typed casing."
+      }
+    },
+    "masked": {
+      "title": "Masked",
+      "description": "`mask` hides filled slots with a disc.",
+      "texts": {
+        "label": "Secure code",
+        "helperText": "Default mask is a disc. Pass maskIcon to replace it."
+      }
+    },
+    "maskCharacter": {
+      "title": "Mask character",
+      "description": "`maskIcon` accepts a character and also enables masking.",
+      "texts": {
+        "label": "Secure code",
+        "helperText": "maskIcon=\"*\"."
+      }
+    },
+    "maskIcon": {
+      "title": "Mask icon",
+      "description": "`maskIcon` also accepts any React node, such as an icon.",
+      "texts": {
+        "label": "Secure code",
+        "helperText": "maskIcon accepts any React node."
+      }
+    },
+    "outlineLabel": {
+      "title": "Outline label",
+      "description": "`labelPlacement=\"outline\"` floats the label over the slot group.",
+      "texts": {
+        "label": "OTP",
+        "helperText": "The label sits over the slot group."
+      }
+    },
+    "withInfoIcon": {
+      "title": "With info icon",
+      "description": "`infoText` adds an icon with a tooltip at the top-right.",
+      "texts": {
+        "label": "Verification code",
+        "infoText": "Codes expire after 10 minutes.",
+        "helperText": "The info control sits at the top-right when infoText is set."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` shows the message with role=\"alert\" and forces the error border.",
+      "texts": {
+        "label": "Verification code",
+        "errorMessage": "The code is incorrect or has expired."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks every slot.",
+      "texts": {
+        "label": "Verification code",
+        "helperText": "This field cannot be edited."
+      }
+    },
+    "required": {
+      "title": "Required",
+      "description": "`isRequired` adds the asterisk and aria-required.",
+      "texts": {
+        "label": "Verification code",
+        "helperText": "Required fields are marked with *."
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` sets the tone of the slots and helper text. Forced to error when the field is invalid.",
+      "helperTexts": {
+        "default": "Neutral default border.",
+        "outlined": "Thicker outlined border.",
+        "borderless": "Transparent border.",
+        "primary": "Primary accent.",
+        "success": "Validation passed.",
+        "warning": "Needs attention.",
+        "error": "Something went wrong.",
+        "info": "Informational border."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "lengths": {
+      "title": "Lengths",
+      "description": "4, 6 (default) and 8 slots.",
+      "labels": {
+        "four": "4 digits",
+        "six": "6 digits (default)",
+        "eight": "8 digits"
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the value with value and `onChange`. `onComplete` fires once when the code reaches length.",
+      "texts": {
+        "label": "Controlled code",
+        "helperText": "Paste a 6-digit code or type one character per slot.",
+        "fill": "Fill demo",
+        "clear": "Clear",
+        "valueLabel": "Value",
+        "completeLabel": "Complete",
+        "empty": "(empty)"
+      }
+    },
+    "allStates": {
+      "title": "All states",
+      "description": "Base, filled, error and disabled.",
+      "texts": {
+        "base": {
+          "label": "Base",
+          "helperText": "Default state."
+        },
+        "filled": {
+          "label": "Filled",
+          "helperText": "All slots filled."
+        },
+        "error": {
+          "label": "Error",
+          "errorMessage": "Invalid verification code."
+        },
+        "disabled": {
+          "label": "Disabled"
+        }
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary accent and circular slots with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-xs replaces radius-full thanks to tailwind-merge."
+    },
+    "css": {
+      "label": "Branded code",
+      "helperText": "No border, soft tertiary background and lg radius, tokens only."
+    }
+  },
+  "apiLink": "See the full OtpInput API",
+  "api": {
+    "header": {
+      "title": "OtpInput API",
+      "description": "API reference for the OtpInput React component: props, events, CSS classes, tokens, utilities and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "OtpInput"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. OTPInput is an alias of the same component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It does not extend native <code>&lt;input&gt;</code> attributes: it only accepts the props in the table. <code>className</code> goes to each slot, <code>wrapperClassName</code> to the container and <code>onFocus</code>/<code>onBlur</code> to the slot group. With <code>name</code> a <code>&lt;input type=\"hidden\"&gt;</code> submits the full code in a form."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "group": "Slots live in a <code>role=\"group\"</code>. The label points to the first slot; without a label, pass <code>aria-label</code> or <code>aria-labelledby</code>.",
+      "slots": "Each slot has <code>aria-label=\"Digit n of length\"</code> (fixed, in English) and uses <code>inputMode=\"numeric\"</code> when type is numeric.",
+      "keyboard": "Arrows, <code>Home</code> and <code>End</code> move focus; <code>Backspace</code> and <code>Delete</code> erase. Pasting spreads the code across the slots.",
+      "autocomplete": "The first slot uses <code>autoComplete=\"one-time-code\"</code> so the browser can suggest the code received by SMS.",
+      "states": "<code>isInvalid</code> and <code>isRequired</code> map to <code>aria-invalid</code> and <code>aria-required</code> on each slot; the error uses <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can target to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "Field label.",
+        "required": "Required asterisk.",
+        "field": "Container for the slot group.",
+        "slots": "Slot group (role=\"group\").",
+        "slot": "Wrapper around each slot.",
+        "control": "Each <input>. Receives `className`.",
+        "secret": "Filled slot with masking on (transparent text).",
+        "mask": "Mask glyph over the slot.",
+        "disc": "Default mask (disc).",
+        "separator": "Separator between both halves.",
+        "message": "Helper or error text below the field.",
+        "messageTone": "Message color with the {{value}} tone.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "length": "Slot count, e.g. gem-otp-input--length-6.",
+        "labelOutline": "Applied with `labelPlacement=\"outline\"`.",
+        "hasInfo": "Applied when `infoText` is set.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled`.",
+        "masked": "Applied with mask or `maskIcon`.",
+        "uppercase": "Applied with uppercase."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "OtpInput has no CSS variables of its own: it uses these gem-system tokens. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in OtpInput"
+      },
+      "items": {
+        "--gem-color-border": "Slot border.",
+        "--gem-color-accent": "Focus border, caret and outline label on focus.",
+        "--gem-shadow-focus": "Focus ring.",
+        "--gem-shadow-xs": "Resting slot shadow.",
+        "--gem-color-bg": "Slot and outline label background.",
+        "--gem-color-bg-subtle": "Disabled background and borderless hover.",
+        "--gem-color-fg": "Character, mask and label color.",
+        "--gem-color-fg-muted": "Placeholder, separator and helper text.",
+        "--gem-color-error-600": "Required asterisk.",
+        "--gem-radius-md": "Slot radius.",
+        "--gem-space-2": "Gap between slots.",
+        "--gem-font-sans": "Field font family."
+      }
+    },
+    "utils": {
+      "title": "Utilities",
+      "description": "Helpers exported with the component to validate codes outside of it.",
+      "columns": {
+        "name": "Name",
+        "type": "Type",
+        "description": "Description"
+      },
+      "items": {
+        "DEFAULT_OTP_LENGTH": "Default length.",
+        "resolveOtpLength": "Normalizes length: non-finite values fall back to 6 and values below 1 become 1.",
+        "sanitizeOtpValue": "Strips characters not allowed by type and applies uppercase when needed.",
+        "clampOtpLength": "Deprecated. Alias of resolveOtpLength."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "OtpInput props. It does not accept other native attributes.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled code (trimmed to length).",
+      "defaultValue": "Uncontrolled initial code.",
+      "length": "Number of slots. Any positive integer.",
+      "type": "Allowed characters: numbers only or letters and numbers.",
+      "uppercase": "Forces typed, pasted and emitted values to uppercase.",
+      "mask": "Hides filled slots with a disc.",
+      "maskIcon": "Mask glyph: a character or any node. Also enables masking.",
+      "separator": "Node between both halves of the slots.",
+      "placeholder": "Text shown in empty slots.",
+      "name": "Name of a hidden input that submits the full code.",
+      "id": "Base for each slot id.",
+      "autoFocus": "Focuses the first empty slot on mount.",
+      "autoComplete": "Autocomplete hint on the first slot.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: above or over the slot group.",
+      "helperText": "Hint below (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "infoLabel": "Accessible name of the info icon.",
+      "size": "Slot size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "isInvalid": "Marks the field as invalid (aria-invalid on each slot).",
+      "isDisabled": "Disables every slot.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "aria-label": "Accessible name of the group when there is no label.",
+      "className": "Extra classes for each slot.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Receives the full code after every change.",
+      "onComplete": "Fires once when the code reaches length characters.",
+      "onFocus": "Focus inside the slot group.",
+      "onBlur": "Focus leaves the slot group.",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

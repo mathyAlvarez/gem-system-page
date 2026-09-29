@@ -1,0 +1,167 @@
+{
+  "header": {
+    "title": "Button",
+    "description": "Triggers an action. Color variants, sizes, shadows, loading state, icons and icon-only mode."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly.",
+    "label": "Label",
+    "defaultLabel": "Button",
+    "variant": "variant",
+    "size": "size",
+    "shadow": "shadow",
+    "hovered": "hovered",
+    "isLoading": "isLoading",
+    "rounded": "rounded",
+    "disabled": "disabled"
+  },
+  "stories": {
+    "allVariants": {
+      "title": "All variants",
+      "description": "The ten visual variants available through the variant prop."
+    },
+    "danger": {
+      "title": "Danger with icon",
+      "description": "Destructive actions: combine `variant=\"danger\"` with `leftIcon`.",
+      "label": "Delete"
+    },
+    "loading": {
+      "title": "Loading",
+      "description": "`isLoading` shows a spinner and disables the button.",
+      "label": "Saving…"
+    },
+    "iconOnly": {
+      "title": "Icon only",
+      "description": "Square button. Requires aria-label to be accessible.",
+      "ariaLabel": "Search"
+    },
+    "rounded": {
+      "title": "Rounded",
+      "description": "Fully rounded corners (--gem-radius-full).",
+      "label": "Rounded"
+    },
+    "custom": {
+      "title": "Custom palette",
+      "description": "Combine gem-bg-*, gem-text-* and gem-border-* classes from utilities.css to apply fixed palette colors.",
+      "label": "Custom palette"
+    },
+    "shadows": {
+      "title": "Shadows",
+      "description": "The shadow prop applies the system shadow tokens."
+    },
+    "hoveredOff": {
+      "title": "Hovered off",
+      "description": "`hovered={false}` disables the hover styles.",
+      "label": "No hover effect"
+    },
+    "withIcons": {
+      "title": "With icons",
+      "description": "`leftIcon`, `rightIcon`, `rounded` and `iconOnly` combined.",
+      "add": "Add item",
+      "search": "Search",
+      "pill": "Pill",
+      "close": "Close",
+      "delete": "Delete"
+    }
+  },
+  "overrides": {
+    "label": "Save"
+  },
+  "apiLink": "See the full Button API",
+  "api": {
+    "header": {
+      "title": "Button API",
+      "description": "API reference for the React Button component: props, CSS classes, CSS variables and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Button"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, Button accepts every native <code>&lt;button&gt;</code> attribute (<code>ButtonHTMLAttributes</code>), such as <code>onClick</code>, <code>form</code> or <code>aria-*</code>. The <code>ref</code> is forwarded to the <code>&lt;button&gt;</code> element."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "loading": "With <code>isLoading</code> the button is disabled and gets <code>aria-busy</code> and <code>aria-disabled</code>.",
+      "iconOnly": "With <code>iconOnly</code> there is no visible text: pass <code>aria-label</code>.",
+      "icons": "Icons and the spinner render with <code>aria-hidden</code>.",
+      "type": "The default <code>type</code> is <code>\"button\"</code>, so it never submits forms by accident."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on the props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class name",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Always applied to the root <button> element.",
+        "label": "Wraps the text (`children`), except in `iconOnly`.",
+        "icon": "Wraps `leftIcon`, `rightIcon` or the icon in `iconOnly`.",
+        "spinner": "Wraps the spinner when `isLoading` is true.",
+        "variant": "Applied when `variant=\"{{value}}\"`.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "shadow": "Applied when `shadow=\"{{value}}\"`.",
+        "iconOnly": "Applied when `iconOnly={true}`.",
+        "rounded": "Applied when `rounded={true}`.",
+        "loading": "Applied when `isLoading={true}`.",
+        "noHover": "Applied when `hovered={false}`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Each variant sets these variables. Redefine them in your own class to change colors without overriding rules.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-btn-bg": "Background color.",
+        "--gem-btn-border": "Border color.",
+        "--gem-btn-fg": "Text and icon color.",
+        "--gem-btn-bg-hover": "Background color on hover.",
+        "--gem-btn-border-hover": "Border color on hover.",
+        "--gem-btn-fg-hover": "Text and icon color on hover."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts every native <button> attribute.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "disabled": "Disables the button.",
+      "type": "Native type attribute.",
+      "className": "Extra classes, merged with the gem-system ones.",
+      "variant": "Visual style.",
+      "size": "Control size.",
+      "shadow": "Button shadow.",
+      "hovered": "Enables hover styles.",
+      "isLoading": "Shows a spinner and disables the button.",
+      "iconOnly": "Square icon-only button. Requires aria-label.",
+      "rounded": "Fully rounded corners (--gem-radius-full).",
+      "leftIcon": "Icon before the label.",
+      "rightIcon": "Icon after the label.",
+      "children": "Button content. For icon-only, pass the icon as children.",
+      "onHover": "Fires when the pointer enters (true) or leaves (false). Not called while disabled or loading.",
+      "ref": "Forwards to the native <button>."
+    }
+  }
+}

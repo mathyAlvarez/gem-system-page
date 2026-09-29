@@ -1,0 +1,291 @@
+{
+  "header": {
+    "title": "InputMask",
+    "description": "Text field that formats the value in real time from a pattern: dates, times, phones, cards or your own mask. It inherits the look of InputText."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Value",
+    "helperText": "The value is formatted as you type.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "preset": "preset",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "`preset=\"date\"` formats digits as DD/MM/YYYY. `prefixIcon` adds a decorative icon.",
+      "texts": {
+        "label": "Date",
+        "helperText": "Typed digits are formatted as DD/MM/YYYY."
+      }
+    },
+    "prefixText": {
+      "title": "Prefix text",
+      "description": "`prefix` accepts text, an icon or any React node.",
+      "texts": {
+        "label": "Phone",
+        "helperText": "prefix can be text, an icon, or any React node."
+      }
+    },
+    "suffixText": {
+      "title": "Suffix text",
+      "description": "`suffix` sits after the formatted value.",
+      "texts": {
+        "label": "Card",
+        "helperText": "suffix sits after the formatted value."
+      }
+    },
+    "prefixAndSuffix": {
+      "title": "Prefix and suffix",
+      "description": "Mix text, Typography or icons in either slot.",
+      "texts": {
+        "label": "Card",
+        "helperText": "Mix text, Typography, or icons in either slot."
+      }
+    },
+    "prefixIconAndText": {
+      "title": "Prefix icon and text",
+      "description": "With both `prefixIcon` and prefix, the icon comes first.",
+      "texts": {
+        "label": "Date",
+        "helperText": "prefixIcon renders before prefix when both are set."
+      }
+    },
+    "dateIso": {
+      "title": "ISO date",
+      "description": "`preset=\"date-iso\"` uses the 9999-99-99 pattern.",
+      "texts": {
+        "label": "ISO date",
+        "helperText": "Pattern 9999-99-99."
+      }
+    },
+    "time": {
+      "title": "Time",
+      "description": "`preset=\"time\"` formats hours and minutes.",
+      "texts": {
+        "label": "Time",
+        "helperText": "Hours and minutes (99:99)."
+      }
+    },
+    "phone": {
+      "title": "Phone",
+      "description": "`preset=\"phone\"` uses the generic (99) 9999-9999 format and `type=\"tel\"`.",
+      "texts": {
+        "label": "Phone",
+        "helperText": "Generic (99) 9999-9999."
+      }
+    },
+    "card": {
+      "title": "Card",
+      "description": "`preset=\"card\"` groups 16 digits in fours.",
+      "texts": {
+        "label": "Card number",
+        "helperText": "16 digits in groups of four."
+      }
+    },
+    "customMask": {
+      "title": "Custom mask",
+      "description": "`mask` takes precedence over `preset`. 9 is a digit, A a letter and S an alphanumeric; everything else is a separator.",
+      "texts": {
+        "label": "Postal code",
+        "helperText": "Custom pattern: letter, 4 digits, 3 letters."
+      }
+    },
+    "outlineLabel": {
+      "title": "Outline label",
+      "description": "`labelPlacement=\"outline\"` places the label on the top border, same as InputText.",
+      "texts": {
+        "label": "Phone",
+        "helperText": "Same outline label as Input Text."
+      }
+    },
+    "invalid": {
+      "title": "Invalid",
+      "description": "`isInvalid` and `errorMessage` force the error border.",
+      "texts": {
+        "label": "Card number",
+        "errorMessage": "Enter the 16-digit card number."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the field.",
+      "texts": {
+        "label": "Date"
+      }
+    },
+    "valuePayload": {
+      "title": "Value payload",
+      "description": "`onValueChange` receives the formatted value, the unmasked value and whether it is complete.",
+      "texts": {
+        "label": "Date",
+        "helperText": "onValueChange reports formatted and raw values.",
+        "formatted": "Formatted",
+        "unmasked": "Unmasked",
+        "complete": "Complete"
+      }
+    },
+    "presets": {
+      "title": "Presets",
+      "description": "Some of the built-in patterns, with their mask as helper text."
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary accent and pill shape with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-xs replaces radius-full thanks to tailwind-merge."
+    },
+    "css": {
+      "label": "Branded phone",
+      "helperText": "Tertiary tokens and lg radius redefined on the container class."
+    }
+  },
+  "apiLink": "See the full InputMask API",
+  "api": {
+    "header": {
+      "title": "InputMask API",
+      "description": "API reference for the InputMask React component: props, events, utilities, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "InputMask"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component. The utilities to apply masks outside the component are exported too."
+    },
+    "presets": {
+      "title": "Presets",
+      "description": "Built-in patterns. `mask` takes precedence over `preset`; with neither, date is used.",
+      "columns": {
+        "name": "Preset",
+        "pattern": "Pattern",
+        "placeholder": "Placeholder"
+      }
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "InputMask wraps <code>InputText</code>: it accepts its props and native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>size</code>, <code>prefix</code>, <code>type</code>, <code>value</code> and <code>defaultValue</code>, which are redefined. <code>className</code> goes to the <code>&lt;input&gt;</code> and <code>wrapperClassName</code> to the container, which also gets the <code>gem-input-mask</code> class."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "inputMode": "<code>inputMode=\"numeric\"</code> is set when the mask only accepts digits, so mobile devices show the numeric keyboard.",
+      "autoComplete": "Date, phone and card presets fill <code>autoComplete</code> (<code>bday</code>, <code>tel</code>, <code>cc-number</code>).",
+      "label": "The label is linked with <code>htmlFor</code>; <code>helperText</code> and <code>errorMessage</code> are linked with <code>aria-describedby</code> and the error uses <code>role=\"alert\"</code>.",
+      "state": "<code>isInvalid</code> and <code>isRequired</code> are reflected as <code>aria-invalid</code> and <code>aria-required</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "InputMask adds gem-input-mask to the container; the rest of the classes come from InputText.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container (next to gem-input-text). Receives `wrapperClassName`.",
+        "label": "Field label.",
+        "required": "Required asterisk.",
+        "field": "Container for the input and its icons.",
+        "control": "The <input>. Receives `className`.",
+        "prefix": "`prefix` and `prefixIcon` content.",
+        "suffix": "`suffix` and `suffixIcon` content.",
+        "message": "Helper text below the field.",
+        "messageError": "Error message.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "labelOutline": "Applied with `labelPlacement=\"outline\"`.",
+        "hasPrefix": "Applied when prefix or `prefixIcon` is set.",
+        "hasSuffix": "Applied when suffix or `suffixIcon` is set.",
+        "hasInfo": "Applied when `infoText` is set.",
+        "invalid": "Applied with `isInvalid`, `errorMessage` or when `validRegex` fails.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "InputText variables the component computes by measuring the prefix and suffix, applied as inline style on the root. Read them from your CSS; a class cannot override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-input-prefix-pad": "Measured prefix width; used as the input left padding.",
+        "--gem-input-suffix-pad": "Measured suffix width; used as the input right padding."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by the field. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in InputMask"
+      },
+      "items": {
+        "--gem-color-border": "Input border.",
+        "--gem-color-accent": "Focus border and focused outline label.",
+        "--gem-shadow-focus": "Focus ring.",
+        "--gem-color-bg": "Input and outline label background.",
+        "--gem-color-fg": "Value and label color.",
+        "--gem-color-fg-muted": "Placeholder, icons and helper text.",
+        "--gem-radius-md": "Input radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts InputText props and native <input> attributes except size, prefix, type, value and `defaultValue`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "mask": "Pattern with 9 (digit), A (letter), S (alphanumeric) and separators. Takes precedence over `preset`. Use \\\\ to force a literal.",
+      "preset": "Built-in pattern, e.g. date, date-iso, time, phone or card.",
+      "definitions": "Extra or replacement pattern tokens, merged with the defaults.",
+      "value": "Controlled value (formatted when displayed).",
+      "defaultValue": "Uncontrolled initial value.",
+      "type": "Native input type. Defaults to tel for phone presets.",
+      "placeholder": "Defaults to the preset placeholder (e.g. DD/MM/YYYY).",
+      "maxLength": "Defaults to the length of the formatted pattern.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: above or on the border.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "infoLabel": "Accessible name of the info icon.",
+      "prefix": "Content before the value: text, icon or any node.",
+      "suffix": "Content after the value: text, icon or any node.",
+      "prefixIcon": "Decorative icon before the value (renders before prefix).",
+      "suffixIcon": "Decorative icon after the value (renders after suffix).",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "validRegex": "Pattern the value must match. Failing values show the error border.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "className": "Extra classes for the <input>.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Native event. event.target.value is the formatted value.",
+      "onValueChange": "Receives { value, unmaskedValue, isComplete } on every change.",
+      "onComplete": "Fires when the value becomes complete.",
+      "onValidate": "Fires when validity changes based on `validRegex`.",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.checkbox-with-tooltip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gem-space-1);
+}
+
+.checkbox-with-tooltip .gem-checkbox {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkbox-tooltip-target {
+  display: inline-flex;
+  border-radius: var(--gem-radius-sm);
+  outline: none;
+}
+
+.checkbox-tooltip-target:focus-visible {
+  box-shadow: var(--gem-shadow-focus);
+}

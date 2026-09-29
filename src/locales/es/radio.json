@@ -1,0 +1,178 @@
+{
+  "header": {
+    "title": "Radio",
+    "description": "Permite elegir una sola opción entre varias. Se usa suelto (varios Radio con el mismo `name`) o dentro de RadioGroup, que le pasa `size`, `tone`, estado y `name`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "Recordar este dispositivo",
+    "helperText": "Un Radio suelto se puede usar sin RadioGroup.",
+    "size": "size",
+    "tone": "tone",
+    "defaultChecked": "defaultChecked",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Un Radio suelto con `label` y `helperText`. `value` es obligatorio.",
+      "label": "Recordar este dispositivo",
+      "helperText": "Un Radio suelto se puede usar sin RadioGroup."
+    },
+    "checked": {
+      "title": "Marcado",
+      "description": "`defaultChecked` para el estado inicial no controlado.",
+      "label": "Opción seleccionada"
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea la opción y atenúa el label.",
+      "label": "Opción deshabilitada",
+      "helperText": "Esta opción no se puede cambiar."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "Los siete tonos disponibles en la prop `tone`."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Radio chico",
+        "md": "Radio mediano",
+        "lg": "Radio grande"
+      }
+    },
+    "withoutLabel": {
+      "title": "Sin label",
+      "description": "Sin texto visible, pasá `aria-label`.",
+      "ariaLabel": "Seleccionar esta opción"
+    },
+    "sharedName": {
+      "title": "Mismo name",
+      "description": "Varios Radio con el mismo `name` forman un grupo exclusivo nativo, sin RadioGroup. Preferí RadioGroup cuando necesites label, error o navegación con Home/End.",
+      "labels": {
+        "es": "Español",
+        "en": "Inglés",
+        "pt": "Portugués"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "card": "Card con Tailwind",
+      "cardHelper": "Clases con cn() en wrapperClassName.",
+      "merged": "Pill combinado",
+      "mergedHelper": "rounded-full reemplaza a rounded-lg gracias a tailwind-merge."
+    },
+    "cva": {
+      "plain": "appearance=\"plain\"",
+      "card": "appearance=\"card\"",
+      "brand": "appearance=\"card\" brand=\"tertiary\""
+    },
+    "css": {
+      "branded": "Opción de marca",
+      "brandedHelper": "Contenedor tipo card y colores secondary.",
+      "square": "Opción cuadrada",
+      "squareHelper": "Círculo y punto con radio xs, label en mayúsculas.",
+      "combined": "Success + lg + custom",
+      "combinedHelper": "Primero las props, después los overrides de CSS."
+    }
+  },
+  "apiLink": "Ver la API completa de Radio",
+  "api": {
+    "header": {
+      "title": "Radio API",
+      "description": "Referencia de la API del componente Radio de React: props, clases CSS, variables CSS y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Radio"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath, que también exporta RadioGroup."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Radio acepta los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>size</code>, <code>type</code> y <code>children</code>. Se aplican al <code>&lt;input type=\"radio\"&gt;</code>; para el contenedor usá <code>wrapperClassName</code>. Dentro de <code>RadioGroup</code>, el grupo define <code>name</code>, <code>size</code>, <code>tone</code>, el estado marcado y deshabilitado."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "native": "Usa un <code>&lt;input type=\"radio\"&gt;</code> nativo: las flechas mueven la selección entre radios con el mismo <code>name</code>.",
+      "label": "El <code>label</code> envuelve al input. Sin label visible, pasá <code>aria-label</code>.",
+      "describedBy": "<code>helperText</code> se vincula con <code>aria-describedby</code>.",
+      "group": "Dentro de <code>RadioGroup</code> hereda <code>aria-invalid</code> y <code>required</code> del grupo."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Elemento <label> que envuelve control y texto.",
+        "control": "Contenedor del input y el círculo visual.",
+        "input": "Input nativo (visualmente oculto). Recibe `className`.",
+        "circle": "Círculo visual del radio.",
+        "dot": "Punto interior del estado marcado.",
+        "labelText": "Texto del label.",
+        "message": "Texto de ayuda debajo del radio.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "tone": "Se aplica cuando `tone=\"{{value}}\"` (o error si el grupo es inválido).",
+        "invalid": "Se aplica cuando el RadioGroup padre es inválido.",
+        "disabled": "Se aplica con `isDisabled`, disabled o un grupo deshabilitado."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Cada tono define estas variables. Redefinilas en tu `wrapperClassName` para cambiar colores sin pisar reglas.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-radio-tone": "Borde y fondo del estado marcado.",
+        "--gem-radio-tone-hover": "Borde en hover.",
+        "--gem-radio-tone-active": "Borde y fondo en hover del estado marcado.",
+        "--gem-radio-tone-focus": "Anillo de foco (box-shadow).",
+        "--gem-radio-on": "Color del punto sobre el fondo marcado."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. Incluye los tipos de RadioGroup."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <input> (salvo size, type y children).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Valor de la opción. Obligatorio.",
+      "label": "Label visible junto al control.",
+      "helperText": "Texto de ayuda debajo de la opción.",
+      "name": "Nombre del grupo nativo. Dentro de RadioGroup lo define el grupo.",
+      "size": "Tamaño del control. Dentro de RadioGroup lo hereda del grupo.",
+      "tone": "Tono de color. Dentro de RadioGroup lo hereda del grupo (error si es inválido).",
+      "checked": "Estado controlado (solo fuera de RadioGroup).",
+      "defaultChecked": "Estado inicial no controlado (solo fuera de RadioGroup).",
+      "isDisabled": "Deshabilita la opción. Preferilo sobre disabled nativo.",
+      "id": "Id del input. Dentro de RadioGroup se genera con el `name` y el `value`.",
+      "aria-label": "Nombre accesible cuando no hay label.",
+      "className": "Clases extra para el input nativo.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Se dispara al seleccionar la opción."
+    }
+  }
+}

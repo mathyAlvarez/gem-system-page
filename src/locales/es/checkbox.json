@@ -1,0 +1,224 @@
+{
+  "header": {
+    "title": "Checkbox",
+    "description": "Permite marcar una o varias opciones. Soporta estado indeterminado, tonos, tamaños, forma redondeada, texto de ayuda y errores."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "Aceptar términos",
+    "helperText": "Podés cambiarlo más tarde.",
+    "size": "size",
+    "tone": "tone",
+    "rounded": "rounded",
+    "indeterminate": "indeterminate",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Con label y `helperText`.",
+      "label": "Aceptar términos",
+      "helperText": "Podés cambiarlo más tarde."
+    },
+    "checked": {
+      "title": "Marcado",
+      "description": "`defaultChecked` para el estado inicial no controlado.",
+      "label": "Suscribirme al newsletter"
+    },
+    "indeterminate": {
+      "title": "Indeterminado",
+      "description": "Estado mixto para un padre con opciones anidadas parcialmente seleccionadas.",
+      "label": "Seleccionar todos los permisos",
+      "helperText": "Algunas opciones anidadas están seleccionadas."
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled`, marcado y sin marcar.",
+      "checkedLabel": "Opción deshabilitada",
+      "uncheckedLabel": "Deshabilitado sin marcar",
+      "helperText": "Esta opción no se puede cambiar."
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` fuerza el tono error y marca el campo como inválido.",
+      "label": "Acepto la política de privacidad",
+      "errorMessage": "Tenés que aceptar para continuar."
+    },
+    "required": {
+      "title": "Requerido",
+      "description": "`isRequired` agrega el asterisco y aria-required.",
+      "label": "Confirmación requerida",
+      "helperText": "Los campos requeridos muestran un asterisco."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "Los siete tonos disponibles en la prop tone."
+    },
+    "rounded": {
+      "title": "Rounded",
+      "description": "Control completamente circular con rounded.",
+      "label": "Checkbox redondeado",
+      "helperText": "Forma circular vía rounded."
+    },
+    "roundedTones": {
+      "title": "Tonos redondeados",
+      "description": "`rounded` combinado con cada tono."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "sm, md y lg, también con rounded.",
+      "sm": "Chico",
+      "md": "Mediano",
+      "lg": "Grande",
+      "rounded": "redondeado"
+    },
+    "withoutLabel": {
+      "title": "Sin label",
+      "description": "Sin texto visible, pasá aria-label.",
+      "ariaLabel": "Activar notificaciones"
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "Combiná Checkbox con Tooltip mediante un botón de info junto al label, o envolviendo un disparador enfocable cuando el checkbox está deshabilitado.",
+      "marketing": "Emails de marketing",
+      "marketingHelper": "Preferencia opcional.",
+      "marketingInfo": "Enviamos como máximo un email por semana. Podés darte de baja cuando quieras.",
+      "priority": "Soporte prioritario",
+      "priorityInfo": "El soporte prioritario está disponible en los planes Pro.",
+      "analytics": "Compartir analíticas de uso",
+      "analyticsAria": "Sobre las analíticas",
+      "analyticsTitle": "Solo anónimas",
+      "analyticsBody": "No se incluyen datos personales."
+    },
+    "styleOverrides": {
+      "tailwind": {
+        "card": "Card con Tailwind",
+        "cardHelper": "Clases con cn() en wrapperClassName.",
+        "merged": "Pill combinado",
+        "mergedHelper": "rounded-full reemplaza a rounded-lg gracias a tailwind-merge."
+      },
+      "cva": {
+        "plain": "appearance=\"plain\"",
+        "card": "appearance=\"card\"",
+        "brand": "appearance=\"card\" brand=\"tertiary\""
+      },
+      "branded": "Campo de marca",
+      "brandedHelper": "Contenedor tipo card y colores secondary.",
+      "pill": "Pill de marca",
+      "pillHelper": "Radio, borde y tipografía del label propios.",
+      "combined": "Success + rounded + custom",
+      "combinedHelper": "Primero las props, después los overrides de CSS."
+    },
+    "nestedGroup": {
+      "title": "Grupo anidado",
+      "description": "Un padre controlado que pasa a indeterminado cuando solo algunas opciones están marcadas.",
+      "all": "Todas las notificaciones",
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Push"
+    }
+  },
+  "apiLink": "Ver la API completa de Checkbox",
+  "api": {
+    "header": {
+      "title": "Checkbox API",
+      "description": "Referencia de la API del componente Checkbox de React: props, clases CSS, variables CSS y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Checkbox"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Checkbox acepta los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>size</code> y <code>type</code>, como <code>name</code>, <code>value</code> o <code>aria-*</code>. Se aplican al <code>&lt;input type=\"checkbox\"&gt;</code>; para el contenedor usá <code>wrapperClassName</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "label": "El <code>label</code> se asocia al input con <code>htmlFor</code>. Sin label visible, pasá <code>aria-label</code>.",
+      "describedBy": "<code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code> y <code>isRequired</code> agregan <code>aria-invalid</code> y <code>aria-required</code>.",
+      "indeterminate": "<code>indeterminate</code> setea la propiedad nativa y <code>aria-checked=\"mixed\"</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Elemento <label> que envuelve control y texto.",
+        "control": "Contenedor del input y la caja visual.",
+        "input": "Input nativo (visualmente oculto). Recibe `className`.",
+        "box": "Caja visual del checkbox.",
+        "iconCheck": "Ícono de check del estado marcado.",
+        "iconMinus": "Ícono de guion del estado indeterminado.",
+        "labelText": "Texto del label.",
+        "required": "Asterisco cuando `isRequired` es true.",
+        "message": "Texto de ayuda debajo del campo.",
+        "messageError": "Mensaje de error debajo del campo.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "tone": "Se aplica cuando `tone=\"{{value}}\"` (o error si es inválido).",
+        "rounded": "Se aplica cuando `rounded={true}`.",
+        "indeterminate": "Se aplica cuando `indeterminate={true}`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled` o disabled."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Cada tono define estas variables. Redefinilas en tu `wrapperClassName` para cambiar colores sin pisar reglas.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-checkbox-tone": "Borde y fondo del estado marcado o indeterminado.",
+        "--gem-checkbox-tone-hover": "Borde en hover.",
+        "--gem-checkbox-tone-active": "Borde y fondo en hover del estado marcado.",
+        "--gem-checkbox-tone-focus": "Anillo de foco (box-shadow).",
+        "--gem-checkbox-on": "Color del ícono sobre el fondo marcado."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <input> (salvo size y type).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "label": "Label visible junto al control.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "size": "Tamaño del control.",
+      "tone": "Tono de color. Se fuerza a error si el campo es inválido.",
+      "rounded": "Control completamente redondeado (--gem-radius-full).",
+      "indeterminate": "Estado mixto (padre de opciones anidadas).",
+      "checked": "Estado controlado.",
+      "defaultChecked": "Estado inicial no controlado.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo. Preferilo sobre disabled nativo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "onChange": "Se dispara al cambiar el estado.",
+      "className": "Clases extra para el input nativo.",
+      "wrapperClassName": "Clases extra para el contenedor raíz."
+    }
+  }
+}

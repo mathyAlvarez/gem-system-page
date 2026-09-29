@@ -1,0 +1,20 @@
+.gem-textarea.textarea-soft {
+  --gem-color-border: transparent;
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 8%, transparent);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--gem-palette-tertiary-500) 30%, transparent);
+  --gem-shadow-xs: none;
+  --gem-radius-md: var(--gem-radius-lg);
+}
+
+.gem-textarea.textarea-code .gem-textarea__control {
+  font-family: var(--gem-font-mono, monospace);
+  font-size: var(--gem-font-size-xs);
+  line-height: 1.6;
+}
+
+.gem-textarea.textarea-code .gem-textarea__count {
+  padding: 0 var(--gem-space-2);
+  border-radius: var(--gem-radius-full);
+  background: var(--gem-color-bg-subtle);
+}

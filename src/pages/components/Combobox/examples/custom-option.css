@@ -1,0 +1,33 @@
+.city-option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.city-option__avatar {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--gem-radius-full);
+  background-color: color-mix(in srgb, var(--gem-color-primary-500) 16%, transparent);
+  color: var(--gem-color-primary-700);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.city-option__copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+[data-theme="dark"] .city-option__avatar {
+  background-color: color-mix(in srgb, var(--gem-palette-primary-500) 28%, transparent);
+  color: var(--gem-palette-primary-300);
+}

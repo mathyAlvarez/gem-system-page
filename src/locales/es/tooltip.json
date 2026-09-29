@@ -1,0 +1,190 @@
+{
+  "header": {
+    "title": "Tooltip",
+    "description": "Explicación flotante que aparece al pasar el mouse o al enfocar un elemento. Se renderiza en un portal (en el body o en el <dialog> más cercano) y se reubica para no salirse de la pantalla."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y pasá el mouse o enfocá el botón para ver el resultado.",
+    "content": "Información útil",
+    "trigger": "Pasá el mouse",
+    "placement": "placement",
+    "delay": "delay",
+    "closeDelay": "closeDelay",
+    "offset": "offset",
+    "disabled": "disabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Envolvé un único elemento con Tooltip y pasá el texto en `content`. Se abre con hover o foco.",
+      "texts": {
+        "content": "Aparece con hover o foco",
+        "label": "Pasá el mouse"
+      }
+    },
+    "placements": {
+      "title": "Posiciones",
+      "description": "`placement` define el lado preferido: top, bottom, left o right. Si no entra en pantalla, se corre para quedar visible.",
+      "texts": {
+        "prefix": "Posición"
+      }
+    },
+    "onIconButton": {
+      "title": "En un botón de ícono",
+      "description": "Un botón que solo tiene ícono necesita `aria-label`; el tooltip agrega la descripción visible. En el ejemplo se usa la clase `.gem-field-info` de gem-system para el botón.",
+      "texts": {
+        "content": "Más información sobre este campo",
+        "ariaLabel": "Más información"
+      }
+    },
+    "longContent": {
+      "title": "Contenido largo",
+      "description": "El texto largo hace salto de línea con un ancho máximo de 18rem. Aun así, conviene que sea breve.",
+      "texts": {
+        "content": "Los tooltips pueden mostrar textos de ayuda más largos. Mantenelos cortos cuando puedas para que el mensaje se lea de un vistazo.",
+        "label": "Texto largo"
+      }
+    },
+    "instant": {
+      "title": "Instantáneo",
+      "description": "`delay={0}` lo abre sin espera. Por defecto espera 200 ms.",
+      "texts": {
+        "content": "Sin demora al abrir",
+        "label": "Instantáneo"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` desactiva el tooltip sin tocar el elemento. Con `content` vacío tampoco se muestra.",
+      "texts": {
+        "content": "Esto no se debería ver",
+        "label": "Tooltip deshabilitado"
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `open` y `onOpenChange` manejás la apertura desde tu estado. El hover, el foco y Escape siguen llamando a `onOpenChange`.",
+      "texts": {
+        "content": "Estado de apertura controlado",
+        "target": "Destino",
+        "open": "Abrir tooltip",
+        "close": "Cerrar tooltip"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca",
+      "brandContent": "Fondo primary y radio lg con cn() en className",
+      "merged": "Combinado",
+      "mergedContent": "rounded-full y secondary reemplazan a los valores base"
+    },
+    "cva": {
+      "content": "Tooltip con variantes de cva"
+    },
+    "css": {
+      "accent": "Acento",
+      "accentContent": "Burbuja con el acento primary",
+      "warning": "Warning",
+      "warningContent": "Tono warning con radio más grande",
+      "soft": "Suave",
+      "softContent": "Superficie suave con borde",
+      "rich": "Contenido enriquecido",
+      "richTitle": "Pista del campo",
+      "richBody": "Título y cuerpo dentro del mismo tooltip.",
+      "inline": "Estilo inline",
+      "inlineContent": "Ajuste puntual con la prop style"
+    }
+  },
+  "apiLink": "Ver la API completa de Tooltip",
+  "api": {
+    "header": {
+      "title": "Tooltip API",
+      "description": "Referencia de la API del componente Tooltip de React: props, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Tooltip"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Tooltip no acepta atributos nativos. Clona su único hijo y le agrega <code>ref</code>, <code>aria-describedby</code> y los handlers <code>onMouseEnter</code>, <code>onMouseLeave</code>, <code>onFocus</code>, <code>onBlur</code> y <code>onKeyDown</code>, sin pisar los que ya tenga. <code>className</code> y <code>style</code> van a la burbuja; <code>wrapperClassName</code> va al <code>&lt;span&gt;</code> que envuelve al hijo."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "La burbuja tiene <code>role=\"tooltip\"</code> y un id único.",
+      "describedBy": "Mientras está abierto, el hijo recibe <code>aria-describedby</code> apuntando a la burbuja.",
+      "triggers": "Se abre con hover y con foco, así que también funciona con teclado.",
+      "escape": "<code>Escape</code> lo cierra.",
+      "focusable": "El hijo tiene que poder recibir foco y eventos del mouse. Un botón con <code>disabled</code> no los dispara: envolvelo en un <code>&lt;span tabIndex={0}&gt;</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos. La burbuja vive en un portal, así que estilala con `className` y no desde el contenedor del trigger.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "trigger": "<span> que envuelve al hijo. Recibe `wrapperClassName`.",
+        "root": "Burbuja del tooltip (position: fixed). Recibe `className` y style.",
+        "content": "Contenido del tooltip.",
+        "arrow": "Flecha. Hereda el color de fondo de la burbuja.",
+        "placement": "Se aplica cuando `placement=\"{{value}}\"`; ubica la flecha.",
+        "ready": "Se aplica cuando ya está posicionado; pasa la opacidad a 1."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tooltip no define variables propias: usa tokens de gem-system. Como está en un portal, redefinilos en `className` o de forma global.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Tooltip"
+      },
+      "items": {
+        "--gem-palette-neutral-900": "Fondo de la burbuja y de la flecha (en modo oscuro usa neutral-100).",
+        "--gem-palette-neutral-50": "Color del texto (en modo oscuro usa neutral-950).",
+        "--gem-radius-sm": "Radio de la burbuja.",
+        "--gem-shadow-md": "Sombra de la burbuja (en modo oscuro usa shadow-lg).",
+        "--gem-font-sans": "Tipografía.",
+        "--gem-z-tooltip": "Capa (z-index) de la burbuja."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "No acepta atributos nativos: el trigger es el hijo que le pasás.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "content": "Contenido de la burbuja. Si está vacío, no se muestra.",
+      "children": "Único elemento que dispara el tooltip. Tiene que aceptar ref y eventos.",
+      "placement": "Lado preferido respecto del trigger.",
+      "delay": "Espera antes de abrir con hover o foco (ms).",
+      "closeDelay": "Espera antes de cerrar (ms).",
+      "offset": "Distancia entre el trigger y la burbuja (px).",
+      "disabled": "Desactiva la apertura.",
+      "open": "Estado de apertura controlado.",
+      "defaultOpen": "Estado inicial no controlado.",
+      "className": "Clases extra para la burbuja.",
+      "wrapperClassName": "Clases extra para el <span> del trigger.",
+      "style": "Estilos inline para la burbuja.",
+      "onOpenChange": "Se dispara cuando cambia el estado de apertura."
+    }
+  }
+}

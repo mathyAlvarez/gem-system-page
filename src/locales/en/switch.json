@@ -1,0 +1,249 @@
+{
+  "header": {
+    "title": "Switch",
+    "description": "On/off toggle with a sliding thumb animation. Use it for preferences that apply right away. Also exported as `Toggle`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly.",
+    "label": "Enable notifications",
+    "helperText": "You can change this later.",
+    "size": "size",
+    "tone": "tone",
+    "labelPlacement": "labelPlacement",
+    "defaultChecked": "defaultChecked",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "A Switch with `label` and `helperText`, off by default.",
+      "texts": {
+        "label": "Enable notifications",
+        "helperText": "You can change this later."
+      }
+    },
+    "on": {
+      "title": "On",
+      "description": "`defaultChecked` for the uncontrolled initial state.",
+      "texts": {
+        "label": "Dark mode"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the control and dims the label and message.",
+      "texts": {
+        "label": "Disabled on",
+        "helperText": "This setting cannot be changed."
+      }
+    },
+    "disabledOff": {
+      "title": "Disabled off",
+      "description": "The same `isDisabled` state with the switch turned off.",
+      "texts": {
+        "label": "Disabled off"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` replaces `helperText`, forces the error tone and is announced with `role=\"alert\"`.",
+      "texts": {
+        "label": "Share usage analytics",
+        "errorMessage": "You must enable this to continue."
+      }
+    },
+    "required": {
+      "title": "Required",
+      "description": "`isRequired` adds the asterisk to the label and `aria-required` to the input.",
+      "texts": {
+        "label": "Required preference",
+        "helperText": "Required fields show an asterisk."
+      }
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "The seven tones of the `tone` prop. The tone colors the track when on."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes with `size`: sm, md and lg. They change the track, thumb and text.",
+      "labels": {
+        "sm": "Small switch",
+        "md": "Medium switch",
+        "lg": "Large switch"
+      }
+    },
+    "labelStart": {
+      "title": "Label start",
+      "description": "`labelPlacement=\"start\"` puts the label before the track, handy for settings rows.",
+      "texts": {
+        "label": "Wi-Fi",
+        "helperText": "The label sits before the track."
+      }
+    },
+    "withoutLabel": {
+      "title": "Without label",
+      "description": "With no visible text, pass `aria-label` to give it an accessible name.",
+      "texts": {
+        "ariaLabel": "Toggle notifications"
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `checked` and `onChange` you manage the state from your component.",
+      "texts": {
+        "label": "Airplane mode",
+        "state": "State",
+        "on": "on",
+        "off": "off"
+      }
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "Switch has no info prop: the info button is a separate element. In the first and last cases it sits to the right of the Switch inside a flex container; the Switch takes the remaining width, so the container limits the width to keep the button close to the label. `FieldInfoButton` renders the icon with its Tooltip; for custom content, wrap a `.gem-field-info` button with `Tooltip`. In the second case the Switch is disabled, so the Tooltip wraps a `<span tabIndex={0}>` that receives focus.",
+      "texts": {
+        "marketing": "Marketing emails",
+        "marketingHelper": "Optional preference.",
+        "marketingInfo": "We send at most one email per week. Unsubscribe anytime.",
+        "priority": "Priority support",
+        "priorityInfo": "Priority support is available on Pro plans.",
+        "analytics": "Share usage analytics",
+        "analyticsTitle": "Anonymous only",
+        "analyticsBody": "No personal data is included.",
+        "analyticsAria": "About analytics"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "row": "Settings row",
+      "rowHelper": "Classes with cn() on wrapperClassName; the label spans the full width.",
+      "merged": "Merged row",
+      "mergedHelper": "rounded-2xl replaces rounded-lg thanks to tailwind-merge."
+    },
+    "cva": {
+      "plain": "appearance=\"plain\"",
+      "card": "appearance=\"card\"",
+      "brand": "appearance=\"card\" brand=\"tertiary\""
+    },
+    "css": {
+      "branded": "Branded switch",
+      "brandedHelper": "Card-like container and secondary colors.",
+      "square": "Square switch",
+      "squareHelper": "Wider track, radius xs and uppercase label.",
+      "combined": "Success + lg + custom",
+      "combinedHelper": "Props first, then CSS overrides."
+    }
+  },
+  "apiLink": "See the full Switch API",
+  "api": {
+    "header": {
+      "title": "Switch API",
+      "description": "API reference for the Switch React component: props, CSS classes, CSS variables and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Switch"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `Toggle` is an alias of the same component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, Switch accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>size</code> and <code>type</code>. They go to the <code>&lt;input type=\"checkbox\" role=\"switch\"&gt;</code>; use <code>wrapperClassName</code> for the container. <code>isDisabled</code> and <code>isRequired</code> take precedence over <code>disabled</code> and <code>required</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "Uses a native <code>&lt;input type=\"checkbox\"&gt;</code> with <code>role=\"switch\"</code>, so screen readers announce on or off.",
+      "keyboard": "Space toggles the state like any checkbox; Enter toggles it too.",
+      "label": "The <code>label</code> wraps the input. With no visible label, pass <code>aria-label</code>.",
+      "describedBy": "<code>errorMessage</code> or <code>helperText</code> is linked through <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code> and <code>isRequired</code> are reflected in <code>aria-invalid</code> and <code>aria-required</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "<label> element wrapping the control and text.",
+        "control": "Container for the input and the track.",
+        "input": "Native input (invisible, covers the track). Receives `className`.",
+        "track": "Switch track. Takes the tone color when on.",
+        "thumb": "Circle that slides inside the track.",
+        "labelText": "Label text.",
+        "required": "Asterisk shown with `isRequired`.",
+        "message": "Helper or error text below the switch.",
+        "messageError": "Applied to the message when `errorMessage` is set.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "tone": "Applied when `tone=\"{{value}}\"` (or error when invalid).",
+        "placement": "Applied when `labelPlacement=\"{{value}}\"`.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled` or disabled."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Set on the root container. Redefine them on your `wrapperClassName` to change colors and dimensions without overriding rules.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-switch-tone": "Background and border of the track when on.",
+        "--gem-switch-tone-hover": "Track border on hover.",
+        "--gem-switch-tone-active": "Track background on hover while on.",
+        "--gem-switch-tone-focus": "Focus ring (box-shadow).",
+        "--gem-switch-thumb": "Thumb color when off.",
+        "--gem-switch-thumb-on": "Thumb color when on.",
+        "--gem-switch-track-ring": "Track border when off.",
+        "--gem-switch-track-w": "Track width. Changed by `size`.",
+        "--gem-switch-track-h": "Track height. The thumb is computed from it.",
+        "--gem-switch-pad": "Space between the thumb and the track edge."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. `ToggleProps` is an alias of `SwitchProps`."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes (except size and type).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "label": "Visible label next to the control.",
+      "labelPlacement": "Label position relative to the track.",
+      "helperText": "Helper text below. Hidden when `errorMessage` is set.",
+      "errorMessage": "Error message below. Implies the invalid state.",
+      "size": "Control size.",
+      "tone": "Tone of the on state. Switches to error with `isInvalid` or `errorMessage`.",
+      "checked": "Controlled state.",
+      "defaultChecked": "Uncontrolled initial state.",
+      "isInvalid": "Marks the field as invalid (`aria-invalid`).",
+      "isDisabled": "Disables the switch. Prefer it over native disabled.",
+      "isRequired": "Marks the field as required (`aria-required` and asterisk).",
+      "id": "Input id. Used to link the label and messages.",
+      "name": "Field name when submitting a form.",
+      "aria-label": "Accessible name when there is no label.",
+      "className": "Extra classes for the native input.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Fires when the state changes.",
+      "onKeyDown": "Fires on key press. Calling preventDefault stops Enter from toggling."
+    }
+  }
+}

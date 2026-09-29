@@ -131,6 +131,20 @@ const toNavItems = (base: string, routes: ComponentRoute[]): NavLeaf[] =>
 export const navigation: NavEntry[] = [
   { id: "getting-started", labelKey: "gettingStarted", to: "/getting-started", icon: Home },
   {
+    id: "override-styles",
+    labelKey: "overrideStyles",
+    items: [
+      { id: "override-overview", labelKey: "overrideOverview", to: "/override-styles" },
+      { id: "override-tailwind", labelKey: "overrideTailwind", to: "/override-styles/tailwind" },
+      { id: "override-cva", labelKey: "overrideCva", to: "/override-styles/cva" },
+      {
+        id: "override-css-variables",
+        labelKey: "overrideCssVariables",
+        to: "/override-styles/css-variables",
+      },
+    ],
+  },
+  {
     id: "foundations-docs",
     labelKey: "foundations",
     items: [

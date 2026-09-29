@@ -1,0 +1,17 @@
+.radio-group-tooltip-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: min(100%, 22rem);
+}
+
+.radio-group-with-tooltip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gem-space-1);
+}
+
+.radio-group-with-tooltip .gem-radio-group {
+  flex: 1;
+  min-width: 0;
+}

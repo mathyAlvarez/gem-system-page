@@ -1,0 +1,15 @@
+.gem-datepicker.datepicker-pill {
+  --gem-color-border: var(--gem-palette-tertiary-400);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-color-primary-500: var(--gem-palette-tertiary-500);
+  --gem-color-primary-600: var(--gem-palette-tertiary-600);
+}
+
+.gem-datepicker.datepicker-pill .gem-datepicker__trigger {
+  border-radius: var(--gem-radius-full);
+  padding-inline: 1rem;
+}
+
+.gem-datepicker.datepicker-pill .gem-datepicker__day {
+  --gem-datepicker-range: color-mix(in srgb, var(--gem-palette-tertiary-500) 18%, transparent);
+}

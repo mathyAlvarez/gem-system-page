@@ -1,0 +1,36 @@
+.gem-slider.slider-branded {
+  --gem-slider-tone: var(--gem-palette-secondary-600);
+  --gem-slider-tone-hover: var(--gem-palette-secondary-500);
+  --gem-slider-tone-active: var(--gem-palette-secondary-700);
+  --gem-slider-track-h: 0.5rem;
+  --gem-slider-thumb-size: 1.25rem;
+}
+
+.gem-slider.slider-branded .gem-slider__fill {
+  background-image: linear-gradient(
+    90deg,
+    var(--gem-palette-secondary-400),
+    var(--gem-palette-secondary-700)
+  );
+}
+
+.gem-slider.slider-square {
+  --gem-slider-tone: var(--gem-palette-tertiary-500);
+  --gem-slider-tone-hover: var(--gem-palette-tertiary-400);
+  --gem-slider-tone-active: var(--gem-palette-tertiary-600);
+  --gem-slider-thumb: var(--gem-palette-tertiary-500);
+}
+
+.gem-slider.slider-square .gem-slider__track,
+.gem-slider.slider-square .gem-slider__thumb {
+  border-radius: var(--gem-radius-xs);
+}
+
+.gem-slider.slider-square .gem-slider__tick-value {
+  color: var(--gem-palette-tertiary-700);
+  font-weight: var(--gem-font-weight-bold);
+}
+
+[data-theme="dark"] .gem-slider.slider-square .gem-slider__tick-value {
+  color: var(--gem-palette-tertiary-300);
+}

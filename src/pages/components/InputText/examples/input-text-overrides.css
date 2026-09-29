@@ -1,0 +1,12 @@
+.gem-input-text.input-text-soft {
+  --gem-color-border: transparent;
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 8%, transparent);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--gem-palette-tertiary-500) 30%, transparent);
+  --gem-shadow-xs: none;
+  --gem-radius-md: var(--gem-radius-lg);
+}
+
+.gem-input-text.input-text-soft .gem-input-text__icon {
+  color: var(--gem-palette-tertiary-600);
+}

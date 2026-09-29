@@ -1,0 +1,347 @@
+{
+  "header": {
+    "title": "Select",
+    "description": "Selección simple o múltiple con búsqueda opcional dentro del menú. La raíz tiene `width: 100%` y ocupa todo el ancho de su contenedor."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "País",
+    "placeholder": "Elegí un país",
+    "helperText": "Escribí para filtrar las opciones.",
+    "size": "size",
+    "border": "border",
+    "searchable": "searchable",
+    "multiple": "multiple",
+    "clearable": "clearable",
+    "showExpand": "showExpand",
+    "isLoading": "isLoading",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "search": {
+    "searchPlaceholder": "Buscar",
+    "noResultsText": "Sin resultados"
+  },
+  "options": {
+    "countries": [
+      { "value": "br", "label": "Brasil" },
+      { "value": "ca", "label": "Canadá" },
+      { "value": "cl", "label": "Chile" },
+      { "value": "es", "label": "España" },
+      { "value": "fr", "label": "Francia" },
+      { "value": "it", "label": "Italia" },
+      { "value": "jp", "label": "Japón" },
+      { "value": "mx", "label": "México" }
+    ],
+    "roles": [
+      { "value": "admin", "label": "Administrador", "description": "Acceso total" },
+      { "value": "editor", "label": "Editor", "description": "Puede publicar contenido" },
+      { "value": "viewer", "label": "Lector", "description": "Solo lectura" },
+      { "value": "guest", "label": "Invitado", "description": "Vista previa limitada", "disabled": true }
+    ],
+    "workspaces": [
+      { "value": "personal", "label": "Personal" },
+      { "value": "team", "label": "Equipo" },
+      { "value": "enterprise", "label": "Empresa" }
+    ],
+    "users": [
+      { "id": "u1", "name": "Ada Lovelace", "role": "Admin", "active": true },
+      { "id": "u2", "name": "Alan Turing", "role": "Editor", "active": true },
+      { "id": "u3", "name": "Grace Hopper", "role": "Lector", "active": false },
+      { "id": "u4", "name": "Katherine Johnson", "role": "Editor", "active": true }
+    ]
+  },
+  "data": {
+    "title": "Datos de ejemplo",
+    "description": "Los ejemplos reciben sus opciones por props. Estas son las listas que usan, en el idioma actual."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Con `label`, `placeholder` y búsqueda dentro del menú. `searchPlaceholder` y `noResultsText` traducen los textos del buscador.",
+      "texts": {
+        "label": "País",
+        "placeholder": "Elegí un país",
+        "helperText": "Escribí para filtrar las opciones."
+      }
+    },
+    "multiple": {
+      "title": "Múltiple",
+      "description": "`multiple` muestra la selección como chips y `defaultValue` recibe un array.",
+      "texts": {
+        "label": "Países",
+        "placeholder": "Elegí países",
+        "helperText": "Elegí una o más opciones."
+      }
+    },
+    "withDescriptions": {
+      "title": "Con descripciones",
+      "description": "`description` agrega un texto secundario a cada opción y `disabled` la bloquea.",
+      "texts": {
+        "label": "Rol",
+        "helperText": "Invitado está deshabilitado."
+      }
+    },
+    "withoutSearch": {
+      "title": "Sin búsqueda",
+      "description": "`searchable={false}` quita el buscador; el menú se maneja con el teclado.",
+      "texts": {
+        "label": "País"
+      }
+    },
+    "clearable": {
+      "title": "Limpiable",
+      "description": "`clearable` muestra un botón para vaciar el campo cuando hay una selección.",
+      "texts": {
+        "label": "País",
+        "placeholder": "Elegí un país",
+        "helperText": "Usá el botón de limpiar para vaciar el campo."
+      }
+    },
+    "withoutChevron": {
+      "title": "Sin chevron",
+      "description": "`showExpand={false}` oculta la flecha del trigger.",
+      "texts": {
+        "label": "País",
+        "helperText": "showExpand={false} oculta la flecha."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el trigger y los inputs ocultos del formulario.",
+      "texts": {
+        "label": "País",
+        "helperText": "Este campo no se puede cambiar."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` fuerza el borde de error y muestra el mensaje con role=\"alert\".",
+      "texts": {
+        "label": "País",
+        "placeholder": "Elegí un país",
+        "errorMessage": "Elegí un país para continuar."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Chico",
+        "md": "Mediano",
+        "lg": "Grande"
+      }
+    },
+    "borders": {
+      "title": "Bordes",
+      "description": "`border` define el tono del trigger. Se fuerza a error si el campo es inválido."
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "`infoText` agrega un ícono de información en la fila del label, alineado a la derecha del campo.",
+      "texts": {
+        "label": "Espacio de trabajo",
+        "infoText": "No se puede cambiar después de crear el espacio."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá el valor con `value` y `onChange`. En modo simple `onChange` recibe un string.",
+      "texts": {
+        "label": "Controlado",
+        "valueLabel": "Valor"
+      }
+    },
+    "controlledMultiple": {
+      "title": "Múltiple controlado",
+      "description": "Con `multiple`, `value` es un array y `onChange` recibe un string[].",
+      "texts": {
+        "label": "Múltiple controlado",
+        "placeholder": "Elegí países",
+        "valueLabel": "Valores"
+      }
+    },
+    "fieldMapping": {
+      "title": "Mapeo de campos",
+      "description": "Usá cualquier forma de datos con `optionValue`, `optionLabel`, `optionDescription` y `optionDisabled` (claves o funciones).",
+      "texts": {
+        "label": "Responsable",
+        "helperText": "value = id, label = name, description = role."
+      }
+    },
+    "loadingThenDefault": {
+      "title": "Carga y valor por defecto",
+      "description": "Arranca con `isLoading`. A los 2 segundos llegan las opciones y se selecciona u1. Mientras carga, el trigger muestra \"Loading…\" (texto fijo de la librería).",
+      "texts": {
+        "label": "Responsable",
+        "loadingHelper": "Buscando opciones…",
+        "loadedHelper": "Listo. Por defecto: Ada Lovelace.",
+        "reload": "Volver a cargar"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Tokens redefinidos con cn() en wrapperClassName. El menú se renderiza en body y no los hereda.",
+      "merged": "Combinado",
+      "mergedHelper": "max-w-md reemplaza a max-w-sm gracias a tailwind-merge."
+    },
+    "css": {
+      "branded": "Campo de marca",
+      "brandedHelper": "Colores secondary en el trigger y los chips.",
+      "pill": "Pill de marca",
+      "pillHelper": "Radio completo y acentos tertiary."
+    }
+  },
+  "apiLink": "Ver la API completa de Select",
+  "api": {
+    "header": {
+      "title": "Select API",
+      "description": "Referencia de la API del componente Select de React: props, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Select"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Select acepta los atributos nativos de <code>&lt;button&gt;</code> (<code>ButtonHTMLAttributes</code>) salvo <code>onChange</code>, <code>value</code>, <code>defaultValue</code> y <code>size</code>. Se aplican al trigger; <code>className</code> va al trigger y <code>wrapperClassName</code> a la raíz. Con <code>name</code> se agregan <code>&lt;input type=\"hidden\"&gt;</code> (uno por valor) para enviar la selección en un formulario. El menú se renderiza en un portal en <code>body</code> (o en el <code>&lt;dialog&gt;</code> más cercano)."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "trigger": "El trigger es un <code>&lt;button&gt;</code> con <code>aria-haspopup=\"listbox\"</code>, <code>aria-expanded</code> y <code>aria-controls</code>.",
+      "listbox": "La lista usa <code>role=\"listbox\"</code> (con <code>aria-multiselectable</code> en modo múltiple), <code>aria-activedescendant</code> y cada fila <code>role=\"option\"</code> con <code>aria-selected</code>.",
+      "keyboard": "<code>Enter</code>, <code>Espacio</code> o <code>ArrowDown</code> abren el menú; las flechas, <code>Home</code> y <code>End</code> se mueven; <code>Enter</code> elige y <code>Escape</code> cierra y devuelve el foco.",
+      "label": "El label nombra al trigger con <code>aria-labelledby</code>. Sin label visible, pasá <code>aria-label</code>. <code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code>, <code>isRequired</code> e <code>isLoading</code> agregan <code>aria-invalid</code>, <code>aria-required</code> y <code>aria-busy</code>.",
+      "copy": "Los nombres accesibles de los botones de limpiar (<code>Clear</code>) y de quitar chips (<code>Remove …</code>) y el texto de carga están fijos en inglés."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Las clases del menú viven en body, fuera de la raíz.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "field": "Contenedor del trigger.",
+        "trigger": "Botón que abre el menú. Recibe `className`.",
+        "value": "Valor visible dentro del trigger.",
+        "placeholder": "Valor cuando no hay selección.",
+        "chips": "Contenedor de chips en modo múltiple.",
+        "chip": "Chip de cada valor seleccionado.",
+        "chipRemove": "Botón para quitar un chip.",
+        "actions": "Contenedor de limpiar, spinner y chevron.",
+        "clear": "Botón de limpiar (`clearable`).",
+        "chevron": "Flecha del trigger (`showExpand`).",
+        "spinner": "Spinner de carga (`isLoading`).",
+        "menu": "Menú desplegable (portal en body).",
+        "menuTop": "Menú abierto hacia arriba por falta de espacio.",
+        "search": "Fila del buscador (`searchable`).",
+        "searchInput": "Input del buscador.",
+        "list": "Lista de opciones (role=\"listbox\").",
+        "option": "Cada opción.",
+        "optionActive": "Opción activa con teclado o mouse.",
+        "optionSelected": "Opción seleccionada.",
+        "optionDisabled": "Opción deshabilitada.",
+        "optionLabel": "Label de la opción.",
+        "optionDescription": "Descripción de la opción.",
+        "optionTick": "Check de la opción seleccionada en modo simple.",
+        "check": "Casilla de cada opción en modo múltiple.",
+        "empty": "Mensaje de sin resultados.",
+        "message": "Texto de ayuda debajo del campo.",
+        "messageError": "Mensaje de error debajo del campo.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "open": "Se aplica con el menú abierto.",
+        "multiple": "Se aplica con `multiple`.",
+        "loading": "Se aplica con `isLoading`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Select no define variables propias: usa estos tokens de gem-system. Redefinilos en tu `wrapperClassName` para cambiar el trigger; el menú está en body, así que para estilarlo redefinilos en un ancestro común (o globalmente).",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Select"
+      },
+      "items": {
+        "--gem-color-border": "Borde del trigger, del menú y del buscador.",
+        "--gem-color-accent": "Borde con el menú abierto.",
+        "--gem-shadow-focus": "Anillo de foco con el menú abierto.",
+        "--gem-color-bg": "Fondo del trigger y del menú.",
+        "--gem-color-bg-subtle": "Fondo de chips, opción activa y trigger deshabilitado.",
+        "--gem-color-fg": "Texto del valor, chips y opciones.",
+        "--gem-color-fg-muted": "Placeholder, íconos, descripciones y texto de ayuda.",
+        "--gem-color-primary-600": "Check de la opción seleccionada y casillas marcadas.",
+        "--gem-color-error-600": "Borde y mensaje de error.",
+        "--gem-radius-md": "Radio del trigger y del menú.",
+        "--gem-radius-sm": "Radio de chips, opciones y botón de limpiar.",
+        "--gem-shadow-lg": "Sombra del menú.",
+        "--gem-z-popover": "z-index del menú.",
+        "--gem-font-sans": "Tipografía del campo y del menú."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <button> (salvo onChange, value, defaultValue y size). Select es genérico: T es la forma de cada opción.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "options": "Opciones del menú. Acepta objetos de cualquier forma.",
+      "value": "Valor controlado. Usá string[] con `multiple`.",
+      "defaultValue": "Valor inicial no controlado.",
+      "multiple": "Permite elegir más de una opción.",
+      "searchable": "Muestra un buscador dentro del menú.",
+      "clearable": "Muestra un botón para vaciar la selección.",
+      "showExpand": "Muestra la flecha del trigger.",
+      "optionValue": "Campo o función para el valor de cada opción.",
+      "optionLabel": "Campo o función para el label visible.",
+      "optionDisabled": "Campo o función que deshabilita una opción.",
+      "optionDescription": "Campo o función para el texto secundario.",
+      "optionSearchText": "Campo o función usada por el buscador.",
+      "label": "Label visible del campo.",
+      "placeholder": "Texto cuando no hay selección.",
+      "searchPlaceholder": "Placeholder del buscador.",
+      "noResultsText": "Texto cuando el filtro no encuentra opciones.",
+      "helperText": "Texto de ayuda debajo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información junto al label.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "isLoading": "Muestra un spinner y bloquea el menú.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "name": "Nombre de los inputs ocultos para formularios.",
+      "id": "Id del trigger y base de los ids internos.",
+      "aria-label": "Nombre accesible cuando no hay label.",
+      "className": "Clases extra para el trigger.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Recibe el nuevo valor: string en modo simple, string[] con `multiple`.",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "header": {
+    "title": "Button",
+    "description": "Dispara una acción. Variantes de color, tamaños, sombras, estado de carga, íconos y modo solo ícono."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "Texto",
+    "defaultLabel": "Button",
+    "variant": "variant",
+    "size": "size",
+    "shadow": "shadow",
+    "hovered": "hovered",
+    "isLoading": "isLoading",
+    "rounded": "rounded",
+    "disabled": "disabled"
+  },
+  "stories": {
+    "allVariants": {
+      "title": "Todas las variantes",
+      "description": "Las diez variantes visuales disponibles en la prop variant."
+    },
+    "danger": {
+      "title": "Danger con ícono",
+      "description": "Acciones destructivas: combiná `variant=\"danger\"` con `leftIcon`.",
+      "label": "Eliminar"
+    },
+    "loading": {
+      "title": "Loading",
+      "description": "`isLoading` muestra un spinner y deshabilita el botón.",
+      "label": "Guardando…"
+    },
+    "iconOnly": {
+      "title": "Solo ícono",
+      "description": "Botón cuadrado. Requiere aria-label para que sea accesible.",
+      "ariaLabel": "Buscar"
+    },
+    "rounded": {
+      "title": "Rounded",
+      "description": "Esquinas completamente redondeadas (--gem-radius-full).",
+      "label": "Rounded"
+    },
+    "custom": {
+      "title": "Paleta personalizada",
+      "description": "Combiná clases gem-bg-*, gem-text-* y gem-border-* de utilities.css para aplicar colores fijos de la paleta.",
+      "label": "Paleta personalizada"
+    },
+    "shadows": {
+      "title": "Sombras",
+      "description": "La prop shadow aplica los tokens de sombra del sistema."
+    },
+    "hoveredOff": {
+      "title": "Sin hover",
+      "description": "`hovered={false}` desactiva los estilos de hover.",
+      "label": "Sin efecto hover"
+    },
+    "withIcons": {
+      "title": "Con íconos",
+      "description": "`leftIcon`, `rightIcon`, `rounded` e `iconOnly` combinados.",
+      "add": "Agregar ítem",
+      "search": "Buscar",
+      "pill": "Pill",
+      "close": "Cerrar",
+      "delete": "Eliminar"
+    }
+  },
+  "overrides": {
+    "label": "Guardar"
+  },
+  "apiLink": "Ver la API completa de Button",
+  "api": {
+    "header": {
+      "title": "Button API",
+      "description": "Referencia de la API del componente Button de React: props, clases CSS, variables CSS y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Button"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Button acepta todos los atributos nativos de <code>&lt;button&gt;</code> (<code>ButtonHTMLAttributes</code>), como <code>onClick</code>, <code>form</code> o <code>aria-*</code>. El <code>ref</code> se reenvía al elemento <code>&lt;button&gt;</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "loading": "Con <code>isLoading</code> el botón queda deshabilitado y recibe <code>aria-busy</code> y <code>aria-disabled</code>.",
+      "iconOnly": "Con <code>iconOnly</code> no hay texto visible: pasá <code>aria-label</code>.",
+      "icons": "Los íconos y el spinner se renderizan con <code>aria-hidden</code>.",
+      "type": "El <code>type</code> por defecto es <code>\"button\"</code>, así no envía formularios por accidente."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Se aplica siempre al elemento raíz <button>.",
+        "label": "Contenedor del texto (`children`), salvo en `iconOnly`.",
+        "icon": "Contenedor de `leftIcon`, `rightIcon` o del ícono en `iconOnly`.",
+        "spinner": "Contenedor del spinner cuando `isLoading` es true.",
+        "variant": "Se aplica cuando `variant=\"{{value}}\"`.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "shadow": "Se aplica cuando `shadow=\"{{value}}\"`.",
+        "iconOnly": "Se aplica cuando `iconOnly={true}`.",
+        "rounded": "Se aplica cuando `rounded={true}`.",
+        "loading": "Se aplica cuando `isLoading={true}`.",
+        "noHover": "Se aplica cuando `hovered={false}`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Cada variante define estas variables. Redefinilas en una clase propia para cambiar colores sin pisar reglas.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-btn-bg": "Color de fondo.",
+        "--gem-btn-border": "Color del borde.",
+        "--gem-btn-fg": "Color del texto e íconos.",
+        "--gem-btn-bg-hover": "Color de fondo en hover.",
+        "--gem-btn-border-hover": "Color del borde en hover.",
+        "--gem-btn-fg-hover": "Color del texto e íconos en hover."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta todos los atributos nativos de <button>.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "disabled": "Deshabilita el botón.",
+      "type": "Atributo type nativo.",
+      "className": "Clases extra, se suman a las de gem-system.",
+      "variant": "Estilo visual.",
+      "size": "Tamaño del control.",
+      "shadow": "Sombra del botón.",
+      "hovered": "Habilita los estilos de hover.",
+      "isLoading": "Muestra un spinner y deshabilita el botón.",
+      "iconOnly": "Botón cuadrado solo con ícono. Requiere aria-label.",
+      "rounded": "Esquinas completamente redondeadas (--gem-radius-full).",
+      "leftIcon": "Ícono antes del texto.",
+      "rightIcon": "Ícono después del texto.",
+      "children": "Contenido del botón. En solo ícono, pasá el ícono como children.",
+      "onHover": "Se dispara al entrar (true) o salir (false) el puntero. No se llama si está deshabilitado o cargando.",
+      "ref": "Se reenvía al <button> nativo."
+    }
+  }
+}

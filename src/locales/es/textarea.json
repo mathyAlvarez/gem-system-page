@@ -1,0 +1,274 @@
+{
+  "header": {
+    "title": "Textarea",
+    "description": "Campo de texto multilínea con redimensionado manual o automático y contador de caracteres opcional. Comparte label, mensajes, bordes e ícono de información con InputText."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Descripción",
+    "placeholder": "Escribí algo…",
+    "helperText": "Arrastrá la esquina para cambiar el alto.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "resize": "resize",
+    "showCount": "showCount",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Label, placeholder y texto de ayuda. Por defecto muestra 3 filas y se redimensiona en vertical.",
+      "texts": {
+        "label": "Descripción",
+        "placeholder": "Escribí algo…",
+        "helperText": "Arrastrá la esquina para cambiar el alto."
+      }
+    },
+    "withInfoIcon": {
+      "title": "Con ícono de información",
+      "description": "`infoText` agrega un botón de información con tooltip. Se renderiza en la fila del label, alineado a la derecha, así que queda en la esquina superior derecha del campo. `onInfoClick` se dispara al activarlo.",
+      "texts": {
+        "label": "Descripción",
+        "placeholder": "Escribí algo…",
+        "infoText": "Sobre este campo",
+        "helperText": "El ícono aparece arriba a la derecha cuando hay infoText."
+      }
+    },
+    "outlineWithInfoIcon": {
+      "title": "Label sobre el borde con información",
+      "description": "Con `labelPlacement=\"outline\"` no hay fila de label: el botón de información se ubica sobre el borde superior, en la esquina derecha del campo.",
+      "texts": {
+        "label": "Con borde",
+        "placeholder": "Borde outlined",
+        "infoText": "Sobre este campo"
+      }
+    },
+    "outlineLabel": {
+      "title": "Label sobre el borde",
+      "description": "`labelPlacement=\"outline\"` ubica el label sobre el borde superior.",
+      "texts": {
+        "label": "Notas",
+        "placeholder": "Agregá tus notas…"
+      }
+    },
+    "autosize": {
+      "title": "Alto automático",
+      "description": "`resize=\"auto\"` ajusta el alto al contenido entre `minRows` y `maxRows`. Al superar `maxRows` aparece el scroll.",
+      "texts": {
+        "label": "Comentario",
+        "helperText": "Crece con el contenido hasta maxRows.",
+        "defaultValue": "Escribí más líneas para ver cómo crece…"
+      }
+    },
+    "withCounter": {
+      "title": "Con contador",
+      "description": "`showCount` junto con `maxLength` muestra el contador como actual / máximo. Al llegar al límite se pinta de rojo.",
+      "texts": {
+        "label": "Biografía",
+        "helperText": "Mantenela corta.",
+        "defaultValue": "Hola desde gem-system"
+      }
+    },
+    "counterOnly": {
+      "title": "Solo contador",
+      "description": "Sin `maxLength`, `showCount` muestra solo la cantidad de caracteres.",
+      "texts": {
+        "label": "Mensaje",
+        "placeholder": "Sin maxLength: solo cuenta caracteres."
+      }
+    },
+    "noResize": {
+      "title": "Sin redimensionar",
+      "description": "`resize=\"none\"` oculta el control de redimensionado. `minRows` fija el alto.",
+      "texts": {
+        "label": "Alto fijo",
+        "helperText": "resize=\"none\" con 4 filas."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` reemplaza al `helperText`, fuerza el borde de error y se anuncia con role=\"alert\". El contador sigue visible.",
+      "texts": {
+        "label": "Comentarios",
+        "defaultValue": "Muy corto",
+        "errorMessage": "Agregá más detalle."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo y el redimensionado.",
+      "texts": {
+        "label": "Notas de solo lectura",
+        "defaultValue": "Este campo está deshabilitado."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños con `size`: sm, md y lg. Cambian el padding y el tamaño del texto.",
+      "labels": {
+        "sm": "Chico",
+        "md": "Mediano",
+        "lg": "Grande"
+      }
+    },
+    "borders": {
+      "title": "Bordes",
+      "description": "`border` define el tono del borde y del texto de ayuda. Se fuerza a error si el campo es inválido.",
+      "placeholders": {
+        "default": "Borde por defecto",
+        "outlined": "Borde más marcado",
+        "borderless": "Sin borde",
+        "primary": "Tono primary",
+        "success": "Tono success",
+        "warning": "Tono warning",
+        "error": "Tono error",
+        "info": "Tono info"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Acento secondary y radio xl con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "radius-xs reemplaza a radius-xl gracias a tailwind-merge.",
+      "placeholder": "Escribí algo…"
+    },
+    "cva": {
+      "placeholder": "Escribí algo…"
+    },
+    "css": {
+      "soft": "Campo suave",
+      "softPlaceholder": "Escribí algo…",
+      "softHelper": "Sin borde, fondo tertiary suave y radio lg, solo con tokens.",
+      "code": "Fragmento de código",
+      "codeValue": "const saludo = \"hola\";\nconsole.log(saludo);"
+    }
+  },
+  "apiLink": "Ver la API completa de Textarea",
+  "api": {
+    "header": {
+      "title": "Textarea API",
+      "description": "Referencia de la API del componente Textarea de React: props, eventos, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Textarea"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos nativos de <code>&lt;textarea&gt;</code> (<code>TextareaHTMLAttributes</code>) salvo <code>size</code>. Los atributos extra, <code>className</code> y <code>style</code> van al <code>&lt;textarea&gt;</code>; <code>wrapperClassName</code> va al contenedor. Si pasás <code>rows</code>, tiene prioridad sobre <code>minRows</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "label": "El label se vincula con el textarea por <code>htmlFor</code>. Sin label visible, pasá <code>aria-label</code>.",
+      "describedby": "<code>helperText</code> o <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>.",
+      "count": "El contador también se vincula con <code>aria-describedby</code> y usa <code>aria-live=\"polite\"</code> para anunciar los cambios.",
+      "states": "<code>isInvalid</code> y <code>isRequired</code> se reflejan en <code>aria-invalid</code> y <code>aria-required</code>. El asterisco es <code>aria-hidden</code>.",
+      "info": "El ícono de información es un botón con tooltip; <code>infoLabel</code> le da el nombre accesible cuando <code>infoText</code> no es texto."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Label del campo.",
+        "required": "Asterisco de campo requerido.",
+        "field": "Contenedor del textarea (y del label sobre el borde).",
+        "control": "El <textarea>. Recibe `className` y style.",
+        "footer": "Fila debajo del campo con los mensajes y el contador.",
+        "messages": "Contenedor del texto de ayuda o error.",
+        "message": "Texto de ayuda o error.",
+        "messageTone": "Color del mensaje con tono {{value}}.",
+        "count": "Contador de caracteres.",
+        "countLimit": "Se aplica al contador al llegar a `maxLength`.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "resize": "Se aplica cuando `resize=\"{{value}}\"`.",
+        "labelOutline": "Se aplica con `labelPlacement=\"outline\"`.",
+        "hasInfo": "Se aplica cuando hay `infoText`.",
+        "hasCount": "Se aplica con `showCount`.",
+        "invalid": "Se aplica con `isInvalid`, `errorMessage` o si falla `validRegex`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Textarea no define variables propias: usa tokens de gem-system. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Textarea"
+      },
+      "items": {
+        "--gem-color-border": "Borde del textarea.",
+        "--gem-color-accent": "Borde con foco y label sobre el borde con foco.",
+        "--gem-shadow-focus": "Anillo de foco.",
+        "--gem-shadow-xs": "Sombra del textarea en reposo.",
+        "--gem-color-bg": "Fondo del textarea y del label sobre el borde.",
+        "--gem-color-bg-subtle": "Fondo deshabilitado.",
+        "--gem-color-fg": "Color del valor y del label.",
+        "--gem-color-fg-muted": "Placeholder, texto de ayuda y contador.",
+        "--gem-color-neutral-400": "Borde en hover.",
+        "--gem-color-error-600": "Asterisco de requerido y label sobre el borde inválido.",
+        "--gem-color-error-700": "Mensaje de error y contador al llegar al límite.",
+        "--gem-radius-md": "Radio del textarea.",
+        "--gem-font-sans": "Tipografía del campo."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. Los tipos de tamaño, borde y label reutilizan los de InputText."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <textarea>.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Valor controlado.",
+      "defaultValue": "Valor inicial no controlado.",
+      "placeholder": "Texto de ejemplo cuando el campo está vacío.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: arriba o sobre el borde.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "resize": "Redimensionado manual, o `auto` para ajustar el alto al contenido.",
+      "minRows": "Filas mínimas. También es el piso del alto automático.",
+      "maxRows": "Filas máximas con `resize=\"auto\"`.",
+      "showCount": "Muestra un contador de caracteres. Usa `maxLength` si está definido.",
+      "maxLength": "Límite nativo de caracteres. Con `showCount` se muestra como actual / máximo.",
+      "validRegex": "Patrón que el valor debe cumplir. Un valor vacío se considera válido.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "className": "Clases extra para el <textarea>.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Evento nativo en cada cambio.",
+      "onValidate": "Se dispara cuando cambia la validez (y al montar si hay `validRegex`).",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

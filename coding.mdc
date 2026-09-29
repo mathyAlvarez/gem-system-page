@@ -1,0 +1,108 @@
+---
+alwaysApply: true
+---
+
+Para estilizar y estructurar ese código de manera mucho más limpia, mantenible y profesional, puedes aplicar las siguientes estrategias:
+
+1. Tagged Template Tag con Prettier (Formateo y Sintaxis en tu IDE)
+   Si usas la extensión Prettier o Inline HTML/GraphQL en VS Code / Cursor, puedes usar una función tagged template vacía (o usar librerías como code-tag) para que tu IDE resalte la sintaxis real de TSX/JSX dentro del string como si fuera código vivo.
+
+TypeScript
+// Función helper simple
+const tsx = (strings: TemplateStringsArray, ...values: any[]) =>
+String.raw({ raw: strings }, ...values);
+
+// Al usar tsx`...`, tu IDE formateará y pintará los colores del código
+const brandCode = tsx`import type { CSSProperties } from "react";
+import { Button, Typography } from "@gem-org/gem-system";
+
+export function BrandCard({ hue, radius }: { hue: number; radius: number }) {
+const style = {
+"--brand-hue": ${hue}, 
+    "--brand-radius": "${radius}px"
+} as CSSProperties;
+
+return (
+
+<div style={style} className="${brandCardClass}">
+<Typography variant="h5">${t("cssVars.brand.cardTitle")}</Typography>
+      <Typography variant="body">${t("cssVars.brand.cardBody")}</Typography>
+<Button className="${brandButtonClass}">${t("cssVars.brand.action")}</Button>
+</div>
+);
+}
+
+// <BrandCard hue={${hue}} radius={${radius}} />`; 2. Generar el String mediante una Función Generadora limpia
+En lugar de construir un template string estático con interpolaciones ruidosas, crea una función que reciba el estado dinámico (idioma, variables, clases) y devuelva el código limpio para Monaco:
+
+TypeScript
+interface CodeGenProps {
+hue: number;
+radius: number;
+cardTitle: string;
+cardBody: string;
+actionText: string;
+}
+
+export const getBrandCardCode = ({
+hue,
+radius,
+cardTitle,
+cardBody,
+actionText,
+}: CodeGenProps) => `import type { CSSProperties } from "react";
+import { Button, Typography } from "@gem-org/gem-system";
+
+export function BrandCard({ hue, radius }: { hue: number; radius: number }) {
+const style = {
+"--brand-hue": hue,
+"--brand-radius": \`\${radius}px\`
+} as CSSProperties;
+
+return (
+
+<div style={style} className="p-6 rounded-xl border border-gem-border">
+<Typography variant="h5">${cardTitle}</Typography>
+      <Typography variant="body">${cardBody}</Typography>
+<Button variant="primary">${actionText}</Button>
+</div>
+);
+}
+
+// Ejemplo de uso:
+// <BrandCard hue={${hue}} radius={${radius}} />`; 3. Auto-formatear el código en Monaco Editor (Prettier integrado)
+Si quieres que Monaco Editor muestre el código perfectamente indentado e higienizado sin importar cómo venga formateado el string, puedes formatearlo antes de pasárselo al componente o configurar la opción formatOnMount:
+
+TypeScript
+import Editor from "@monaco-editor/react";
+
+export const CodeViewer = ({ code }: { code: string }) => {
+return (
+<Editor
+height="300px"
+defaultLanguage="typescript"
+value={code}
+theme="vs-dark"
+options={{
+        readOnly: true,
+        minimap: { enabled: false },
+        fontSize: 13,
+        formatOnMount: true, // Formatea automáticamente al cargar
+        scrollBeyondLastLine: false,
+        automaticLayout: true,
+        padding: { top: 12, bottom: 12 },
+      }}
+/>
+);
+}; 4. Separar los snippets a archivos .raw (La mejor práctica)
+Si tus fragmentos de código son muy extensos, lo ideal es guardarlos en archivos separados (ej. BrandCard.example.tsx) e importarlos directamente como string usando la sintaxis de Vite o Webpack:
+
+TypeScript
+// Importa el archivo como un string nativo usando '?raw' (Vite)
+import rawBrandCode from './examples/BrandCard.example.tsx?raw';
+
+// Luego reemplazas solo las variables dinámicas de forma limpia:
+const formattedCode = rawBrandCode
+.replace('**HUE**', String(hue))
+.replace('**RADIUS**', String(radius));
+Esto te da autocompletado total, TypeScript checker y sintaxis de color completa en tu editor mientras desarrollas el componente.

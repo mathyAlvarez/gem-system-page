@@ -1,0 +1,39 @@
+.switch-tooltip-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: min(100%, 20rem);
+}
+
+.switch-with-tooltip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gem-space-1);
+}
+
+.switch-with-tooltip .gem-switch {
+  flex: 1;
+  min-width: 0;
+}
+
+.switch-with-tooltip .gem-field-info {
+  margin-top: 0.1rem;
+}
+
+.switch-tooltip-target {
+  display: inline-flex;
+  align-self: flex-start;
+  max-width: 100%;
+  border-radius: var(--gem-radius-sm);
+  outline: none;
+}
+
+.switch-tooltip-target:focus-visible {
+  box-shadow: var(--gem-shadow-focus);
+}
+
+.switch-tooltip-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+}

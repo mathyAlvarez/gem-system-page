@@ -1,0 +1,45 @@
+.flex-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: var(--gem-space-2) var(--gem-space-4);
+  border: 1px dashed var(--gem-color-primary-400);
+  border-radius: var(--gem-radius-md);
+  background: color-mix(in srgb, var(--gem-color-primary-500) 12%, transparent);
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 600;
+  text-align: center;
+}
+
+.flex-item--accent {
+  border-color: var(--gem-color-secondary-400);
+  background: color-mix(in srgb, var(--gem-color-secondary-500) 14%, transparent);
+}
+
+.flex-item--tall {
+  min-height: 6rem;
+}
+
+.flex-frame {
+  padding: var(--gem-space-3);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg-subtle);
+}
+
+.flex-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: 100%;
+}
+
+.flex-caption {
+  margin-bottom: var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}

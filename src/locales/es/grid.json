@@ -1,0 +1,277 @@
+{
+  "header": {
+    "title": "Grid",
+    "description": "Layout declarativo sobre CSS Grid con tres piezas. `Grid` define las columnas (`columns`, `template` o `auto`). `Row` es un Grid fijo de 12 columnas. `Col` indica cuántas columnas ocupa cada hijo, con valores mobile-first por breakpoint. Para limitar el ancho de la página, combinalo con `Container`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Con `auto`, `columns` se ignora y cada columna mide al menos 10rem. Con `align`, la primera celda es más alta para que se note la alineación.",
+    "columns": "columns",
+    "auto": "auto",
+    "gap": "gap",
+    "stack": "stack",
+    "align": "align",
+    "count": "Cantidad de celdas"
+  },
+  "tracks": {
+    "title": "Cómo se definen las columnas",
+    "description": "Grid arma `grid-template-columns` de una de tres formas. Si pasás más de una, gana `auto`, después `template` y por último `columns`.",
+    "columns": {
+      "mode": "Modo",
+      "example": "Ejemplo",
+      "result": "grid-template-columns",
+      "use": "Cuándo usarlo"
+    },
+    "items": {
+      "columns": "Columnas iguales. Es el modo por defecto (12). De 2 a 4 columnas se apilan en mobile salvo que cambies `stack`.",
+      "template": "Columnas de distinto ancho, como un sidebar fijo y un contenido flexible. Acepta cualquier valor CSS.",
+      "auto": "Tarjetas que se reacomodan solas según el espacio disponible, sin breakpoints. El ancho mínimo sale de `minItemWidth`."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "`columns` reparte el ancho en columnas iguales y los hijos se ubican en orden, pasando a la siguiente fila cuando se completan. Los ejemplos usan esta celda y estos estilos de demo."
+    },
+    "stack": {
+      "title": "Apilado en mobile",
+      "description": "Con 2 a 4 columnas iguales, Grid pasa a una sola columna por debajo de 640px (`stack=\"sm\"` por defecto). `stack=\"md\"` apila por debajo de 768px y `stack={false}` mantiene las columnas siempre. Achicá la ventana para ver la diferencia."
+    },
+    "rowCol": {
+      "title": "Row y Col (12 columnas)",
+      "description": "`Row` es un Grid de 12 columnas que nunca se apila. Cada `Col` ocupa `span` columnas (12 por defecto). Cuando la suma supera 12, la siguiente Col baja a otra fila; no hace falta un Row por fila."
+    },
+    "responsive": {
+      "title": "Responsive",
+      "description": "Los spans son mobile-first: `span` aplica desde 0 y cada breakpoint (`sm`, `md`, `lg`, `xl`, `xxl`) lo reemplaza desde su ancho mínimo en adelante. Si no definís un breakpoint, hereda el anterior. El ejemplo muestra 1 columna en mobile, 2 desde 768px y 3 desde 1024px. Los breakpoints dependen del ancho de la ventana, no del contenedor.",
+      "columns": {
+        "breakpoint": "Breakpoint",
+        "minWidth": "Ancho mínimo",
+        "span": "Span",
+        "offset": "Offset"
+      },
+      "breakpoints": {
+        "base": "Base (mobile)",
+        "sm": "sm",
+        "md": "md (tablet)",
+        "lg": "lg (desktop)",
+        "xl": "xl",
+        "xxl": "xxl (2xl)"
+      },
+      "bug": {
+        "title": "Bug conocido en Col",
+        "body": "En gem-system 2.0.1, la clase <code>.gem-grid__col-*</code> que agrega <code>Col</code> se declara después de las reglas de breakpoint. Por eso <code>span</code> siempre gana y se ignoran <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> y <code>xxl</code>. Mientras no se corrija, agregá este CSS global. Los ejemplos de esta página lo usan."
+      }
+    },
+    "gap": {
+      "title": "Espaciado",
+      "description": "`gap` acepta un token de espaciado (`4` es `var(--gem-space-4)`), otro número (se toma como píxeles) o cualquier largo CSS. Con `rowGap` y `columnGap` separás el espacio vertical del horizontal. Sin `gap`, usa `--gem-grid-gutter` (1rem), que pasa a `--gem-grid-gutter-lg` (1.5rem) desde 1024px."
+    },
+    "auto": {
+      "title": "Columnas automáticas",
+      "description": "`auto` crea tantas columnas como entren, cada una de al menos `minItemWidth` (16rem por defecto). Con pocos elementos, `fit` estira los que hay para ocupar la fila y `fill` deja lugares vacíos y mantiene el ancho de cada celda. No necesita `stack`: en pantallas angostas queda una columna sola."
+    },
+    "template": {
+      "title": "Template propio",
+      "description": "`template` recibe el valor de `grid-template-columns` tal cual. Usá `minmax(0, …)` para que el contenido largo no desborde la columna. Los templates no se apilan solos; pasá `stack` si los querés en una columna en mobile.",
+      "texts": {
+        "sidebar": "Sidebar de 16rem",
+        "content": "Contenido flexible"
+      }
+    },
+    "offset": {
+      "title": "Offset",
+      "description": "`offset` deja libres esa cantidad de columnas antes de la Col; en la práctica la hace empezar en la columna offset + 1. Tiene variantes por breakpoint (`offsetSm`, `offsetMd`…) y `0` vuelve a la ubicación automática."
+    },
+    "align": {
+      "title": "Alineación",
+      "description": "`align` en Grid o Row alinea verticalmente todas las celdas de la fila (`align-items`). `align` en Col alinea solo esa celda (`align-self`). `justify` reparte el espacio sobrante cuando las columnas no ocupan todo el ancho, por ejemplo con un template de anchos fijos."
+    },
+    "nested": {
+      "title": "Grids anidados",
+      "description": "Una Col puede tener su propio Grid adentro. El Grid interno arma sus columnas sobre el ancho de esa Col, no sobre el de la página."
+    },
+    "pageLayout": {
+      "title": "Layout de página",
+      "description": "Row y Col arman la estructura general: encabezado y pie de ancho completo, y un sidebar que se pone al costado desde 768px. Adentro del contenido principal, un Grid con `auto=\"fit\"` acomoda las tarjetas sin breakpoints. En una página real, envolvelo en un `Container` para limitar el ancho.",
+      "texts": {
+        "header": "Encabezado",
+        "sidebar": "Sidebar",
+        "card": "Tarjeta",
+        "footer": "Pie de página"
+      }
+    }
+  },
+  "styleChanges": {
+    "css": {
+      "sidebar": "Sidebar de 14rem desde 768px",
+      "content": "Contenido"
+    }
+  },
+  "apiLink": "Ver la API completa de Grid",
+  "api": {
+    "header": {
+      "title": "Grid API",
+      "description": "Referencia de la API de los componentes Grid, Row y Col de React: props, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Grid"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlos desde el entry principal o desde su subpath para cargar solo el layout."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Grid, Row y Col aceptan los atributos HTML (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasan al elemento raíz. <code>ref</code> llega al elemento. Las props de layout se convierten en variables CSS dentro de <code>style</code> (por ejemplo <code>--gem-grid-cols</code> o <code>--gem-col-span</code>), que se combinan con el <code>style</code> que pases."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "order": "El orden visual sigue al del DOM. Evitá reordenar con CSS: los lectores de pantalla y el foco con teclado siguen el orden del código.",
+      "landmark": "Con <code>as</code> podés renderizar <code>main</code>, <code>aside</code>, <code>nav</code>, <code>header</code> o <code>footer</code> en lugar de un <code>&lt;div&gt;</code>.",
+      "list": "Para una lista de tarjetas usá <code>as=\"ul\"</code> en Grid y <code>as=\"li\"</code> en cada hijo, así se anuncia la cantidad de elementos.",
+      "label": "Si hay varios <code>nav</code>, <code>aside</code> o <code>section</code>, dales un nombre con <code>aria-label</code> o <code>aria-labelledby</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento raíz de Grid y Row. Recibe `className` y `classNames.root`.",
+        "cols": "Se aplica con `columns` cuando no hay `template` ni `auto`.",
+        "template": "Se aplica con `template`.",
+        "autoFit": "Se aplica con `auto=\"fit\"`.",
+        "autoFill": "Se aplica con `auto=\"fill\"`.",
+        "splitGap": "Se aplica cuando hay `rowGap` o `columnGap`.",
+        "stackSm": "Apila en una columna por debajo de 640px.",
+        "stackMd": "Apila en una columna por debajo de 768px.",
+        "align": "Se aplica con `align` en Grid o Row (`align-items`).",
+        "justify": "Se aplica con `justify` en Grid o Row (`justify-content`).",
+        "row": "Se suma en Row, además de `.gem-grid`.",
+        "col": "Elemento raíz de Col. Recibe `className` y `classNames.root`.",
+        "colSpan": "Se aplica según `span`. Es la clase que hoy pisa los spans por breakpoint.",
+        "colAlign": "Se aplica con `align` en Col (`align-self`)."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se definen en `style` del elemento raíz. Las que se escriben inline solo se pueden redefinir con `!important` (por ejemplo, las utilidades de Tailwind del sitio); `--gem-grid-gap` se puede cambiar desde una clase si no pasás `gap`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-grid-cols": "Cantidad de columnas iguales. La define `columns`.",
+        "--gem-grid-gap": "Espacio entre celdas. La define `gap`; sin `gap`, usa el gutter del tema.",
+        "--gem-grid-row-gap": "Espacio vertical. La define `rowGap`.",
+        "--gem-grid-column-gap": "Espacio horizontal. La define `columnGap`.",
+        "--gem-grid-template": "Valor de `template`.",
+        "--gem-grid-min": "Ancho mínimo de cada columna con `auto`. La define `minItemWidth`.",
+        "--gem-col-span": "Columnas que ocupa la Col desde 0. La define `span`.",
+        "--gem-col-{bp}": "Span desde el breakpoint `sm`, `md`, `lg`, `xl` o `xxl`.",
+        "--gem-col-start": "Columna inicial. La define `offset` (offset + 1).",
+        "--gem-col-{bp}-start": "Columna inicial desde cada breakpoint. La definen `offsetSm`…`offsetXxl`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa el grid. Redefinilos de forma global para cambiar todos los grids.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Grid"
+      },
+      "items": {
+        "--gem-grid-gutter": "Espacio por defecto entre celdas (1rem).",
+        "--gem-grid-gutter-lg": "Espacio por defecto desde 1024px (1.5rem).",
+        "--gem-space-{n}": "Escala de espaciado que usan `gap`, `rowGap` y `columnGap` cuando reciben un token."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. El archivo también incluye los tipos de Flex."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Los tres componentes aceptan además los atributos HTML del elemento raíz.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "grid": {
+        "title": "Grid",
+        "description": "Contenedor de CSS Grid.",
+        "items": {
+          "columns": "Cantidad de columnas iguales. Se ignora con `template` o `auto`.",
+          "template": "Valor de `grid-template-columns`, como `\"1fr 2fr\"` o `\"16rem 1fr\"`.",
+          "auto": "Crea columnas automáticas con `repeat(auto-fit | auto-fill, …)`. Usalo con `minItemWidth`.",
+          "minItemWidth": "Ancho mínimo de cada columna con `auto`. Un número son píxeles.",
+          "stack": "Breakpoint por debajo del cual se apila en una columna. Por defecto es `\"sm\"` con 2 a 4 columnas iguales y `false` en el resto.",
+          "gap": "Espacio entre celdas: token de espaciado, píxeles o largo CSS.",
+          "rowGap": "Espacio vertical. Tiene prioridad sobre `gap`.",
+          "columnGap": "Espacio horizontal. Tiene prioridad sobre `gap`.",
+          "align": "Alineación vertical de las celdas (`align-items`).",
+          "justify": "Distribución de las columnas cuando sobra espacio (`justify-content`). `stretch` usa `justify-items`.",
+          "as": "Elemento HTML que se renderiza.",
+          "className": "Clases extra para el elemento raíz.",
+          "classNames": "Clases por slot. `root` se suma al elemento raíz.",
+          "style": "Estilos inline. Se combinan con las variables CSS del grid.",
+          "ref": "Ref al elemento raíz.",
+          "children": "Celdas del grid."
+        }
+      },
+      "row": {
+        "title": "Row",
+        "description": "Grid de 12 columnas. No acepta `columns`, `template`, `auto` ni `minItemWidth`.",
+        "items": {
+          "stack": "Apila en una columna por debajo del breakpoint. Por defecto no se apila.",
+          "gap": "Espacio entre Cols: token de espaciado, píxeles o largo CSS.",
+          "rowGap": "Espacio vertical. Tiene prioridad sobre `gap`.",
+          "columnGap": "Espacio horizontal. Tiene prioridad sobre `gap`.",
+          "align": "Alineación vertical de las Cols (`align-items`).",
+          "justify": "Distribución de las columnas cuando sobra espacio (`justify-content`).",
+          "as": "Elemento HTML que se renderiza.",
+          "className": "Clases extra. Se suman a `.gem-grid` y `.gem-row`.",
+          "classNames": "Clases por slot. `root` se suma al elemento raíz.",
+          "style": "Estilos inline. Se combinan con las variables CSS del grid.",
+          "ref": "Ref al elemento raíz.",
+          "children": "Normalmente, componentes `Col`."
+        }
+      },
+      "col": {
+        "title": "Col",
+        "description": "Celda que ocupa una cantidad de columnas de un Row o de un Grid de 12 columnas.",
+        "items": {
+          "span": "Columnas que ocupa desde 0 (mobile-first).",
+          "sm": "Columnas desde 640px.",
+          "md": "Columnas desde 768px.",
+          "lg": "Columnas desde 1024px.",
+          "xl": "Columnas desde 1280px.",
+          "xxl": "Columnas desde 1536px.",
+          "offset": "Columnas libres antes de la Col. `0` vuelve a la ubicación automática.",
+          "offsetSm": "Offset desde 640px.",
+          "offsetMd": "Offset desde 768px.",
+          "offsetLg": "Offset desde 1024px.",
+          "offsetXl": "Offset desde 1280px.",
+          "offsetXxl": "Offset desde 1536px.",
+          "align": "Alineación vertical de esta Col (`align-self`).",
+          "as": "Elemento HTML que se renderiza.",
+          "className": "Clases extra para el elemento raíz.",
+          "classNames": "Clases por slot. `root` se suma al elemento raíz.",
+          "style": "Estilos inline. Se combinan con las variables CSS de la Col.",
+          "ref": "Ref al elemento raíz.",
+          "children": "Contenido de la celda."
+        }
+      }
+    }
+  }
+}

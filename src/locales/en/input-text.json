@@ -1,0 +1,419 @@
+{
+  "header": {
+    "title": "InputText",
+    "description": "Base text field for gem-system: label, helper text, error, prefix and suffix, status borders and regex validation. InputSearch, InputPassword and InputMask are built on top of it."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Full name",
+    "placeholder": "Jane Doe",
+    "helperText": "This is helper text.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "type": "type",
+    "uppercase": "uppercase",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Label, placeholder and helper text.",
+      "texts": {
+        "label": "Full name",
+        "placeholder": "Jane Doe",
+        "helperText": "This is helper text."
+      }
+    },
+    "outlineLabel": {
+      "title": "Outline label",
+      "description": "`labelPlacement=\"outline\"` places the label on the top border.",
+      "texts": {
+        "label": "Full name",
+        "placeholder": "Jane Doe",
+        "helperText": "The label sits on the top border."
+      }
+    },
+    "withInfoIcon": {
+      "title": "With info icon",
+      "description": "`infoText` adds an icon with a tooltip at the top-right.",
+      "texts": {
+        "label": "Full name",
+        "placeholder": "Jane Doe",
+        "infoText": "About this field",
+        "helperText": "The info control sits at the top-right when infoText is set."
+      }
+    },
+    "withInfoReactNode": {
+      "title": "Info with ReactNode",
+      "description": "`infoText` accepts any React node for custom tooltip content. `infoLabel` gives the icon its accessible name.",
+      "texts": {
+        "label": "Full name",
+        "placeholder": "Jane Doe",
+        "infoLabel": "About this field",
+        "infoTitle": "Field hint",
+        "infoBody": "Custom React content inside the tooltip.",
+        "helperText": "Pass a ReactNode to infoText for custom tooltip content."
+      }
+    },
+    "outlineWithInfoIcon": {
+      "title": "Outline with info icon",
+      "description": "With the outline label, the info icon also sits on the border.",
+      "texts": {
+        "label": "Outlined",
+        "placeholder": "outlined border",
+        "infoText": "About this field"
+      }
+    },
+    "validRegex": {
+      "title": "Valid regex",
+      "description": "`validRegex` shows the error border when the value does not match. `onValidate` reports validity to the parent.",
+      "texts": {
+        "label": "Email",
+        "placeholder": "you@example.com",
+        "helperText": "Must be a valid email.",
+        "validLabel": "valid",
+        "invalidLabel": "invalid"
+      }
+    },
+    "outlineLabelBorders": {
+      "title": "Outline label borders",
+      "description": "With `labelPlacement=\"outline\"` the label takes the border color.",
+      "texts": {
+        "success": "Looks good",
+        "warning": "Check this",
+        "error": "Invalid"
+      }
+    },
+    "withoutLabel": {
+      "title": "Without label",
+      "description": "Without a visible label, pass aria-label to give it an accessible name.",
+      "texts": {
+        "placeholder": "No label above",
+        "ariaLabel": "Search query"
+      }
+    },
+    "withPrefixIcon": {
+      "title": "With prefix icon",
+      "description": "`prefixIcon` adds a decorative icon before the value.",
+      "texts": {
+        "label": "Email",
+        "placeholder": "you@example.com"
+      }
+    },
+    "withSuffixIcon": {
+      "title": "With suffix icon",
+      "description": "`suffixIcon` adds a decorative icon after the value.",
+      "texts": {
+        "label": "Search",
+        "placeholder": "Search…"
+      }
+    },
+    "withPrefixText": {
+      "title": "With prefix text",
+      "description": "`prefix` accepts text, icons or any React node.",
+      "texts": {
+        "label": "Website",
+        "placeholder": "example.com",
+        "helperText": "prefix accepts text, icons or any React node."
+      }
+    },
+    "withSuffixText": {
+      "title": "With suffix text",
+      "description": "`suffix` sits after the value.",
+      "texts": {
+        "label": "Price",
+        "helperText": "The suffix sits after the value."
+      }
+    },
+    "withPrefixAndSuffix": {
+      "title": "With prefix and suffix",
+      "description": "Use both at once. The input padding adapts to the width of each.",
+      "texts": {
+        "label": "Amount",
+        "helperText": "Both slots can hold text, icons or mixed nodes."
+      }
+    },
+    "withIcons": {
+      "title": "With icons",
+      "description": "`prefixIcon` and `suffixIcon` together.",
+      "texts": {
+        "label": "Username",
+        "placeholder": "username",
+        "helperText": "Prefix and suffix icons."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` shows the message with role=\"alert\" and forces the error border.",
+      "texts": {
+        "label": "Email",
+        "defaultValue": "not-an-email",
+        "errorMessage": "Enter a valid email address."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the field.",
+      "texts": {
+        "label": "Account ID",
+        "helperText": "This field cannot be edited."
+      }
+    },
+    "required": {
+      "title": "Required",
+      "description": "`isRequired` adds the asterisk and aria-required.",
+      "texts": {
+        "label": "Display name",
+        "placeholder": "Required field",
+        "helperText": "Required fields are marked with *."
+      }
+    },
+    "uppercase": {
+      "title": "Uppercase",
+      "description": "`uppercase` forces typed text to uppercase, including the value `onChange` receives.",
+      "texts": {
+        "label": "Code",
+        "helperText": "Typed and onChange values are uppercase."
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` sets the tone of the border and helper text. Forced to error when the field is invalid.",
+      "texts": {
+        "default": {
+          "text": "Default border",
+          "helperText": "Neutral default border."
+        },
+        "outlined": {
+          "text": "Stronger outline",
+          "helperText": "Thicker outlined border."
+        },
+        "borderless": {
+          "text": "No border",
+          "helperText": "Transparent border for minimal UI."
+        },
+        "primary": {
+          "text": "Primary tone",
+          "helperText": "Primary accent border."
+        },
+        "success": {
+          "text": "Looks good",
+          "helperText": "Validation passed."
+        },
+        "warning": {
+          "text": "Check this field",
+          "helperText": "Needs attention."
+        },
+        "error": {
+          "text": "Invalid value",
+          "helperText": "Something went wrong."
+        },
+        "info": {
+          "text": "Additional context",
+          "helperText": "Informational border."
+        }
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "styleOverrides": {
+      "title": "Style overrides",
+      "description": "`className` targets the <input>, `wrapperClassName` the container and style is passed inline to the <input>.",
+      "texts": {
+        "className": {
+          "placeholder": "Custom className",
+          "helperText": "Rounded secondary look from a consumer class."
+        },
+        "wrapperClassName": {
+          "placeholder": "Custom wrapperClassName",
+          "helperText": "Label and control restyled from the wrapper."
+        },
+        "style": {
+          "placeholder": "Custom style prop",
+          "helperText": "Useful for one-off tweaks without a CSS class."
+        }
+      }
+    },
+    "allStates": {
+      "title": "All states",
+      "description": "Base, with icons, error and disabled.",
+      "texts": {
+        "base": {
+          "label": "Base",
+          "placeholder": "Base input",
+          "helperText": "Default state."
+        },
+        "icons": {
+          "label": "With icons",
+          "placeholder": "Search users"
+        },
+        "error": {
+          "label": "Error",
+          "defaultValue": "Invalid value",
+          "errorMessage": "Something went wrong."
+        },
+        "disabled": {
+          "label": "Disabled",
+          "defaultValue": "Read only value"
+        }
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary accent and pill shape with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-xs replaces radius-full thanks to tailwind-merge.",
+      "placeholder": "Type something"
+    },
+    "css": {
+      "label": "Soft field",
+      "placeholder": "Jane Doe",
+      "helperText": "No border, soft tertiary background and lg radius, tokens only."
+    }
+  },
+  "apiLink": "See the full InputText API",
+  "api": {
+    "header": {
+      "title": "InputText API",
+      "description": "API reference for the InputText React component: props, events, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "InputText"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>size</code>, <code>prefix</code> and <code>type</code>, which are redefined. Extra attributes, <code>className</code> and <code>style</code> go to the <code>&lt;input&gt;</code>; <code>wrapperClassName</code> goes to the container."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "label": "The label is linked to the input with <code>htmlFor</code>. Without a visible label, pass <code>aria-label</code>.",
+      "describedby": "<code>helperText</code> and <code>errorMessage</code> are linked with <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code> and <code>isRequired</code> map to <code>aria-invalid</code> and <code>aria-required</code>. The asterisk is <code>aria-hidden</code>.",
+      "info": "The info icon is a button with a tooltip; <code>infoLabel</code> gives it an accessible name when <code>infoText</code> is not text."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can target to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "Field label.",
+        "required": "Required asterisk.",
+        "field": "Container for the input and the prefix and suffix slots.",
+        "control": "The <input>. Receives `className` and style.",
+        "icon": "Prefix or suffix slot.",
+        "prefix": "Prefix slot (`prefixIcon` + prefix).",
+        "suffix": "Suffix slot (suffix + `suffixIcon`).",
+        "message": "Helper or error text below the field.",
+        "messageTone": "Message color with the {{value}} tone.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "labelOutline": "Applied with `labelPlacement=\"outline\"`.",
+        "hasPrefix": "Applied when there is a prefix.",
+        "hasSuffix": "Applied when there is a suffix.",
+        "hasInfo": "Applied when `infoText` is set.",
+        "invalid": "Applied with `isInvalid`, `errorMessage` or when `validRegex` fails.",
+        "disabled": "Applied with `isDisabled`.",
+        "uppercase": "Applied with uppercase."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The component computes them by measuring the prefix and suffix, applied as inline style on the root. Read them from your CSS; a class cannot override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-input-prefix-pad": "Measured prefix width; used as the input left padding.",
+        "--gem-input-suffix-pad": "Measured suffix width; used as the input right padding."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by the field. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in InputText"
+      },
+      "items": {
+        "--gem-color-border": "Input border.",
+        "--gem-color-accent": "Focus border and outline label on focus.",
+        "--gem-shadow-focus": "Focus ring.",
+        "--gem-shadow-xs": "Resting input shadow.",
+        "--gem-color-bg": "Input and outline label background.",
+        "--gem-color-bg-subtle": "Disabled background and borderless hover.",
+        "--gem-color-fg": "Value and label color.",
+        "--gem-color-fg-muted": "Placeholder, icons and helper text.",
+        "--gem-color-error-600": "Required asterisk.",
+        "--gem-radius-md": "Input radius.",
+        "--gem-font-sans": "Field font family."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled value.",
+      "defaultValue": "Uncontrolled initial value.",
+      "type": "Native input type, restricted to text-like values.",
+      "placeholder": "Placeholder text when the field is empty.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: above or on the border.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "infoLabel": "Accessible name of the info icon.",
+      "prefix": "Content before the value: text, icon or any node.",
+      "suffix": "Content after the value: text, icon or any node.",
+      "prefixIcon": "Decorative icon before the value (shown before prefix).",
+      "suffixIcon": "Decorative icon after the value (shown after suffix).",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "validRegex": "Pattern the value must match. Empty values count as valid.",
+      "uppercase": "Forces typed text and the `onChange` value to uppercase.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "className": "Extra classes for the <input>.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Native event on every change.",
+      "onValidate": "Fires when validity changes (and on mount when `validRegex` is set).",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.gem-flex.flex-toolbar {
+  --gem-flex-gap: var(--gem-space-3);
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+  box-shadow: var(--gem-shadow-sm);
+}
+
+.gem-flex.flex-responsive {
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .gem-flex.flex-responsive {
+    flex-direction: row;
+    --gem-flex-gap: var(--gem-space-6);
+  }
+}

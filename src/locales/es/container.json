@@ -1,0 +1,201 @@
+{
+  "header": {
+    "title": "Container",
+    "description": "Contenedor de página centrado con un ancho máximo por token y padding horizontal que crece en los breakpoints sm, md y lg. Usá `size` para el tope, `maxWidth` para un largo CSS puntual, `fluid` para quitar el tope y `padded={false}` para pegarlo a los bordes."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. La franja clara es el ancho disponible; la caja punteada es el contenido.",
+    "size": "size",
+    "as": "as",
+    "maxWidth": "maxWidth",
+    "fluid": "fluid",
+    "padded": "padded",
+    "centered": "centered",
+    "comment": "Contenido de la página",
+    "boxTitle": "Contenedor",
+    "boxBody": "La caja punteada es el contenido. La franja clara detrás es el ancho disponible."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Por defecto usa `size=\"lg\"` (64rem), se centra y agrega padding horizontal. Los ejemplos usan esta caja y estos estilos de demo para mostrar el área del contenido.",
+      "texts": {
+        "title": "Contenedor de página",
+        "body": "La caja punteada es el contenido. La franja clara detrás es el ancho disponible. El padding crece a 640px, 768px y 1024px."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` elige el token de ancho máximo: sm (40rem), md (48rem), lg (64rem), xl (80rem) y 2xl (96rem). Los que superan el ancho del demo ocupan todo el espacio; agrandá la ventana para ver cada tope.",
+      "body": "Contenedor centrado con padding por breakpoint."
+    },
+    "customMaxWidth": {
+      "title": "Ancho máximo propio",
+      "description": "`maxWidth` tiene prioridad sobre `size` y `fluid`. Un número se toma como píxeles; un string, como cualquier largo CSS.",
+      "body": "Tope propio con el mismo padding por breakpoint que los tokens."
+    },
+    "fluid": {
+      "title": "Fluido",
+      "description": "`fluid` quita el ancho máximo para ocupar todo el padre. El padding horizontal se mantiene.",
+      "texts": {
+        "title": "Fluido",
+        "body": "Sin ancho máximo. El padding horizontal sigue la escala de breakpoints salvo que padded sea false."
+      }
+    },
+    "flush": {
+      "title": "Sin padding",
+      "description": "`padded={false}` quita el padding horizontal. El ancho máximo sigue aplicando.",
+      "texts": {
+        "title": "Sin padding",
+        "body": "El ancho máximo se mantiene. Se quita el padding de los bordes."
+      }
+    },
+    "landmark": {
+      "title": "Landmark",
+      "description": "`as` renderiza main, section, article, header, footer o aside en lugar de un div. Una section necesita un nombre accesible, por eso el ejemplo le pasa `aria-label`.",
+      "texts": {
+        "title": "Sección destacada",
+        "body": "Usá as para renderizar main, section, article u otros landmarks."
+      }
+    },
+    "responsive": {
+      "title": "Padding por breakpoint",
+      "description": "El padding horizontal depende del ancho de la ventana, no del contenedor padre. Cambiá el tamaño de la ventana para ver cómo cambia el valor de la caja.",
+      "texts": {
+        "title": "Padding actual",
+        "body": "Compacto en mobile, crece en tablet y usa el margen más grande desde 1024px."
+      },
+      "columns": {
+        "breakpoint": "Breakpoint",
+        "minWidth": "Ancho mínimo",
+        "token": "Token",
+        "value": "Valor"
+      },
+      "breakpoints": {
+        "base": "Mobile",
+        "sm": "sm",
+        "md": "Tablet (md)",
+        "lg": "Desktop (lg)"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "article": "Artículo con Tailwind",
+      "articleBody": "Tope de 36rem, padding de space-8 y padding vertical con cn() en className.",
+      "merged": "Combinado",
+      "mergedBody": "Tope de 24rem y py-0 reemplazan a los valores base gracias a tailwind-merge."
+    },
+    "cva": {
+      "body": "Variantes de ancho y margen redefiniendo las variables del contenedor."
+    },
+    "css": {
+      "narrow": "Angosto",
+      "narrowBody": "Redefine --gem-container-max y --gem-container-pad desde una clase.",
+      "card": "Tarjeta",
+      "cardBody": "Borde, fondo y padding vertical; el padding horizontal crece desde 1024px."
+    }
+  },
+  "apiLink": "Ver la API completa de Container",
+  "api": {
+    "header": {
+      "title": "Container API",
+      "description": "Referencia de la API del componente Container de React: props, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Container"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasa al elemento raíz. <code>ref</code> llega al elemento para medirlo. Con <code>maxWidth</code>, el valor se agrega a <code>style</code> como <code>--gem-container-max</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "landmark": "Con <code>as</code> elegís el landmark semántico en lugar de un <code>&lt;div&gt;</code> sin significado.",
+      "main": "Usá un solo <code>as=\"main\"</code> por página.",
+      "label": "Si hay varias <code>section</code> o <code>aside</code>, dales un nombre con <code>aria-label</code> o <code>aria-labelledby</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento raíz. Recibe `className` y `classNames.root`.",
+        "size": "Se aplica cuando `size=\"{{value}}\"` (sin `fluid` ni `maxWidth`).",
+        "custom": "Se aplica cuando hay `maxWidth`.",
+        "fluid": "Se aplica con `fluid`. Quita el ancho máximo.",
+        "flush": "Se aplica con `padded={false}`. Quita el padding horizontal.",
+        "start": "Se aplica con `centered={false}`. Alinea el contenedor al inicio."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Definidas en el elemento raíz. Redefinilas en tu `className` para cambiar el tope o el padding sin pisar reglas.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-container-max": "Ancho máximo. Lo definen `size`, `fluid` o `maxWidth`.",
+        "--gem-container-pad": "Padding horizontal. Cambia por breakpoint y vale 0 con `padded={false}`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa el contenedor. Redefinilos de forma global para cambiar todos los contenedores.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Container"
+      },
+      "items": {
+        "--gem-container-sm": "Ancho máximo de `size=\"sm\"` (40rem).",
+        "--gem-container-md": "Ancho máximo de `size=\"md\"` (48rem).",
+        "--gem-container-lg": "Ancho máximo de `size=\"lg\"` (64rem).",
+        "--gem-container-xl": "Ancho máximo de `size=\"xl\"` (80rem).",
+        "--gem-container-2xl": "Ancho máximo de `size=\"2xl\"` (96rem).",
+        "--gem-grid-margin": "Padding en mobile (menos de 640px).",
+        "--gem-space-5": "Padding desde 640px.",
+        "--gem-grid-gutter-lg": "Padding desde 768px.",
+        "--gem-grid-margin-lg": "Padding desde 1024px."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del elemento raíz.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "as": "Elemento o landmark HTML que se renderiza.",
+      "size": "Token de ancho máximo. Se ignora con `fluid` o `maxWidth`.",
+      "maxWidth": "Ancho máximo propio. Un número son píxeles; un string, cualquier largo CSS. Tiene prioridad sobre `size` y `fluid`.",
+      "fluid": "Quita el ancho máximo. Se ignora con `maxWidth`.",
+      "padded": "Padding horizontal por breakpoint.",
+      "centered": "Centra el contenedor con margin-inline: auto.",
+      "className": "Clases extra para el elemento raíz.",
+      "classNames": "Clases por slot. `root` se suma al elemento raíz.",
+      "style": "Estilos inline. Con `maxWidth` se agrega --gem-container-max.",
+      "ref": "Ref al elemento raíz para medirlo.",
+      "children": "Contenido del contenedor."
+    }
+  }
+}

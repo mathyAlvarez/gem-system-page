@@ -1,0 +1,347 @@
+{
+  "header": {
+    "title": "Select",
+    "description": "Single and multiple selection with optional in-menu search. The root is `width: 100%` and fills its parent."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly.",
+    "label": "Country",
+    "placeholder": "Choose a country",
+    "helperText": "Type to filter options.",
+    "size": "size",
+    "border": "border",
+    "searchable": "searchable",
+    "multiple": "multiple",
+    "clearable": "clearable",
+    "showExpand": "showExpand",
+    "isLoading": "isLoading",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "search": {
+    "searchPlaceholder": "Search",
+    "noResultsText": "No results"
+  },
+  "options": {
+    "countries": [
+      { "value": "br", "label": "Brazil" },
+      { "value": "ca", "label": "Canada" },
+      { "value": "cl", "label": "Chile" },
+      { "value": "es", "label": "Spain" },
+      { "value": "fr", "label": "France" },
+      { "value": "it", "label": "Italy" },
+      { "value": "jp", "label": "Japan" },
+      { "value": "mx", "label": "Mexico" }
+    ],
+    "roles": [
+      { "value": "admin", "label": "Admin", "description": "Full access" },
+      { "value": "editor", "label": "Editor", "description": "Can publish content" },
+      { "value": "viewer", "label": "Viewer", "description": "Read only" },
+      { "value": "guest", "label": "Guest", "description": "Limited preview", "disabled": true }
+    ],
+    "workspaces": [
+      { "value": "personal", "label": "Personal" },
+      { "value": "team", "label": "Team" },
+      { "value": "enterprise", "label": "Enterprise" }
+    ],
+    "users": [
+      { "id": "u1", "name": "Ada Lovelace", "role": "Admin", "active": true },
+      { "id": "u2", "name": "Alan Turing", "role": "Editor", "active": true },
+      { "id": "u3", "name": "Grace Hopper", "role": "Viewer", "active": false },
+      { "id": "u4", "name": "Katherine Johnson", "role": "Editor", "active": true }
+    ]
+  },
+  "data": {
+    "title": "Sample data",
+    "description": "Examples receive their options through props. These are the lists they use, in the current language."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "With `label`, `placeholder` and in-menu search. `searchPlaceholder` and `noResultsText` translate the search copy.",
+      "texts": {
+        "label": "Country",
+        "placeholder": "Choose a country",
+        "helperText": "Type to filter options."
+      }
+    },
+    "multiple": {
+      "title": "Multiple",
+      "description": "`multiple` shows the selection as chips and `defaultValue` takes an array.",
+      "texts": {
+        "label": "Countries",
+        "placeholder": "Select countries",
+        "helperText": "Select one or more options."
+      }
+    },
+    "withDescriptions": {
+      "title": "With descriptions",
+      "description": "`description` adds secondary text to each option and `disabled` locks it.",
+      "texts": {
+        "label": "Role",
+        "helperText": "Guest is disabled."
+      }
+    },
+    "withoutSearch": {
+      "title": "Without search",
+      "description": "`searchable={false}` removes the search field; the menu is keyboard driven.",
+      "texts": {
+        "label": "Country"
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` shows a button to empty the field when there is a selection.",
+      "texts": {
+        "label": "Country",
+        "placeholder": "Choose a country",
+        "helperText": "Use the clear control to empty the field."
+      }
+    },
+    "withoutChevron": {
+      "title": "Without chevron",
+      "description": "`showExpand={false}` hides the trigger chevron.",
+      "texts": {
+        "label": "Country",
+        "helperText": "showExpand={false} hides the chevron."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the trigger and the hidden form inputs.",
+      "texts": {
+        "label": "Country",
+        "helperText": "This field cannot be changed."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` forces the error border and shows the message with role=\"alert\".",
+      "texts": {
+        "label": "Country",
+        "placeholder": "Choose a country",
+        "errorMessage": "Select a country to continue."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` sets the trigger tone. Forced to error when the field is invalid."
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "`infoText` adds an info icon in the label row, aligned to the right edge of the field.",
+      "texts": {
+        "label": "Workspace",
+        "infoText": "This cannot be changed after the workspace is created."
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the value with `value` and `onChange`. In single mode `onChange` receives a string.",
+      "texts": {
+        "label": "Controlled",
+        "valueLabel": "Value"
+      }
+    },
+    "controlledMultiple": {
+      "title": "Controlled multiple",
+      "description": "With `multiple`, `value` is an array and `onChange` receives a string[].",
+      "texts": {
+        "label": "Controlled multiple",
+        "placeholder": "Select countries",
+        "valueLabel": "Values"
+      }
+    },
+    "fieldMapping": {
+      "title": "Field mapping",
+      "description": "Map any data shape with `optionValue`, `optionLabel`, `optionDescription` and `optionDisabled` (keys or getters).",
+      "texts": {
+        "label": "Assignee",
+        "helperText": "value = id, label = name, description = role."
+      }
+    },
+    "loadingThenDefault": {
+      "title": "Loading then default",
+      "description": "Starts in `isLoading`. After 2 seconds the options arrive and u1 is selected. While loading, the trigger shows \"Loading…\" (fixed library copy).",
+      "texts": {
+        "label": "Assignee",
+        "loadingHelper": "Fetching options…",
+        "loadedHelper": "Loaded. Default: Ada Lovelace.",
+        "reload": "Reload"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Tailwind brand",
+      "brandHelper": "Tokens redefined with cn() on wrapperClassName. The menu renders in body and does not inherit them.",
+      "merged": "Merged",
+      "mergedHelper": "max-w-md replaces max-w-sm thanks to tailwind-merge."
+    },
+    "css": {
+      "branded": "Branded field",
+      "brandedHelper": "Secondary colors on the trigger and chips.",
+      "pill": "Pill branded",
+      "pillHelper": "Full radius and tertiary accents."
+    }
+  },
+  "apiLink": "See the full Select API",
+  "api": {
+    "header": {
+      "title": "Select API",
+      "description": "API reference for the Select React component: props, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Select"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, Select accepts native <code>&lt;button&gt;</code> attributes (<code>ButtonHTMLAttributes</code>) except <code>onChange</code>, <code>value</code>, <code>defaultValue</code> and <code>size</code>. They go to the trigger; <code>className</code> goes to the trigger and <code>wrapperClassName</code> to the root. With <code>name</code>, hidden <code>&lt;input type=\"hidden\"&gt;</code> elements (one per value) submit the selection in a form. The menu renders in a portal in <code>body</code> (or the closest <code>&lt;dialog&gt;</code>)."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "trigger": "The trigger is a <code>&lt;button&gt;</code> with <code>aria-haspopup=\"listbox\"</code>, <code>aria-expanded</code> and <code>aria-controls</code>.",
+      "listbox": "The list uses <code>role=\"listbox\"</code> (with <code>aria-multiselectable</code> in multiple mode), <code>aria-activedescendant</code>, and each row <code>role=\"option\"</code> with <code>aria-selected</code>.",
+      "keyboard": "<code>Enter</code>, <code>Space</code> or <code>ArrowDown</code> open the menu; arrows, <code>Home</code> and <code>End</code> move; <code>Enter</code> picks and <code>Escape</code> closes and restores focus.",
+      "label": "The label names the trigger through <code>aria-labelledby</code>. With no visible label, pass <code>aria-label</code>. <code>helperText</code> and <code>errorMessage</code> are linked through <code>aria-describedby</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code>, <code>isRequired</code> and <code>isLoading</code> add <code>aria-invalid</code>, <code>aria-required</code> and <code>aria-busy</code>.",
+      "copy": "The accessible names of the clear button (<code>Clear</code>) and chip remove buttons (<code>Remove …</code>) and the loading copy are fixed in English."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Menu classes live in body, outside the root.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "field": "Trigger container.",
+        "trigger": "Button that opens the menu. Receives `className`.",
+        "value": "Visible value inside the trigger.",
+        "placeholder": "Value when nothing is selected.",
+        "chips": "Chips container in multiple mode.",
+        "chip": "Chip for each selected value.",
+        "chipRemove": "Button that removes a chip.",
+        "actions": "Container for clear, spinner and chevron.",
+        "clear": "Clear button (`clearable`).",
+        "chevron": "Trigger chevron (`showExpand`).",
+        "spinner": "Loading spinner (`isLoading`).",
+        "menu": "Dropdown menu (portal in body).",
+        "menuTop": "Menu opened upwards for lack of space.",
+        "search": "Search row (`searchable`).",
+        "searchInput": "Search input.",
+        "list": "Options list (role=\"listbox\").",
+        "option": "Each option.",
+        "optionActive": "Option active via keyboard or mouse.",
+        "optionSelected": "Selected option.",
+        "optionDisabled": "Disabled option.",
+        "optionLabel": "Option label.",
+        "optionDescription": "Option description.",
+        "optionTick": "Check of the selected option in single mode.",
+        "check": "Checkbox of each option in multiple mode.",
+        "empty": "No results message.",
+        "message": "Helper text below the field.",
+        "messageError": "Error message below the field.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "open": "Applied while the menu is open.",
+        "multiple": "Applied with `multiple`.",
+        "loading": "Applied with `isLoading`.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Select has no variables of its own: it uses these gem-system tokens. Redefine them on your `wrapperClassName` to change the trigger; the menu lives in body, so to style it redefine them on a shared ancestor (or globally).",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Select"
+      },
+      "items": {
+        "--gem-color-border": "Border of the trigger, menu and search row.",
+        "--gem-color-accent": "Border while the menu is open.",
+        "--gem-shadow-focus": "Focus ring while the menu is open.",
+        "--gem-color-bg": "Background of the trigger and menu.",
+        "--gem-color-bg-subtle": "Background of chips, active option and disabled trigger.",
+        "--gem-color-fg": "Text of the value, chips and options.",
+        "--gem-color-fg-muted": "Placeholder, icons, descriptions and helper text.",
+        "--gem-color-primary-600": "Check of the selected option and checked boxes.",
+        "--gem-color-error-600": "Error border and message.",
+        "--gem-radius-md": "Radius of the trigger and menu.",
+        "--gem-radius-sm": "Radius of chips, options and the clear button.",
+        "--gem-shadow-lg": "Menu shadow.",
+        "--gem-z-popover": "Menu z-index.",
+        "--gem-font-sans": "Font family of the field and menu."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <button> attributes (except onChange, value, defaultValue and size). Select is generic: T is the shape of each option.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "options": "Menu options. Objects of any shape are supported.",
+      "value": "Controlled value. Use string[] with `multiple`.",
+      "defaultValue": "Uncontrolled initial value.",
+      "multiple": "Allows more than one selected option.",
+      "searchable": "Shows a search field inside the menu.",
+      "clearable": "Shows a button to clear the selection.",
+      "showExpand": "Shows the trigger chevron.",
+      "optionValue": "Field or getter for each option value.",
+      "optionLabel": "Field or getter for the visible label.",
+      "optionDisabled": "Field or getter that disables an option.",
+      "optionDescription": "Field or getter for secondary text.",
+      "optionSearchText": "Field or getter used by the search.",
+      "label": "Visible field label.",
+      "placeholder": "Text when nothing is selected.",
+      "searchPlaceholder": "Search field placeholder.",
+      "noResultsText": "Copy when the filter matches no options.",
+      "helperText": "Helper text below (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error message. Marks the field as invalid.",
+      "infoText": "Shows an info icon next to the label.",
+      "infoLabel": "Accessible name of the info icon.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "isLoading": "Shows a spinner and blocks the menu.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "name": "Name of the hidden inputs for forms.",
+      "id": "Trigger id and base for internal ids.",
+      "aria-label": "Accessible name when there is no label.",
+      "className": "Extra classes for the trigger.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Receives the new value: string in single mode, string[] with `multiple`.",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "header": {
+    "title": "RadioGroup",
+    "description": "Groups several Radio controls to pick a single option. Adds a label, helper text, error, orientation and keyboard navigation, and passes `name`, `size`, `tone` and state to each option."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly.",
+    "label": "Notification channel",
+    "helperText": "Choose how we should reach you.",
+    "options": {
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Push notifications"
+    },
+    "size": "size",
+    "tone": "tone",
+    "orientation": "orientation",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "With `label`, `helperText` and `defaultValue`. Each option can have its own `helperText`.",
+      "texts": {
+        "label": "Notification channel",
+        "helperText": "Choose how we should reach you.",
+        "email": "Email",
+        "emailHelper": "Digest once a day.",
+        "sms": "SMS",
+        "push": "Push notifications"
+      }
+    },
+    "horizontal": {
+      "title": "Horizontal",
+      "description": "`orientation=\"horizontal\"` lays the options out in a row.",
+      "texts": {
+        "label": "Plan",
+        "free": "Free",
+        "pro": "Pro",
+        "team": "Team"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks every option in the group.",
+      "texts": {
+        "label": "Billing cycle",
+        "helperText": "This group cannot be changed.",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      }
+    },
+    "disabledOption": {
+      "title": "Disabled option",
+      "description": "`isDisabled` on a Radio locks only that option.",
+      "texts": {
+        "label": "Shipping",
+        "standard": "Standard",
+        "standardHelper": "3–5 business days.",
+        "express": "Express",
+        "expressHelper": "Unavailable in your region.",
+        "pickup": "Store pickup"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marks the group as invalid, forces the error tone on the options and shows the message with role=\"alert\".",
+      "texts": {
+        "label": "Payment method",
+        "errorMessage": "Select a payment method to continue.",
+        "card": "Credit card",
+        "transfer": "Bank transfer",
+        "wallet": "Digital wallet"
+      }
+    },
+    "required": {
+      "title": "Required",
+      "description": "`isRequired` adds the asterisk, aria-required and required on each input.",
+      "texts": {
+        "label": "Account type",
+        "helperText": "Required groups show an asterisk.",
+        "personal": "Personal",
+        "business": "Business"
+      }
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` on the group applies to every option.",
+      "labels": {
+        "a": "Option A",
+        "b": "Option B"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` on the group sets the size of the options and the message.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large",
+        "a": "Option A",
+        "b": "Option B"
+      }
+    },
+    "keyboard": {
+      "title": "Keyboard navigation",
+      "description": "Tab enters the group, arrow keys change the option and Home/End jump to the first or last enabled one.",
+      "texts": {
+        "label": "Theme",
+        "helperText": "Tab into the group, then use Arrow keys. Home and End jump to the first or last option. Space selects the focused radio.",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the selection with `value` and `onChange`, which receives the value and the event.",
+      "texts": {
+        "label": "Subscription",
+        "free": "Free",
+        "pro": "Pro",
+        "enterprise": "Enterprise",
+        "selected": "Selected"
+      }
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "Two ways to show the info icon. With `infoText`, the group renders a FieldInfoButton inside the label row, aligned to the right edge of the group; `infoLabel` sets its accessible name and `onInfoClick` its click. The other way is to place your own FieldInfoButton in a flex container next to the group (`content` is the tooltip text): it sits at the top right, outside the group. In both cases the icon goes to the right edge, so limit the container width.",
+      "texts": {
+        "visibility": "Visibility",
+        "visibilityInfo": "Private workspaces are only visible to invited members.",
+        "private": "Private",
+        "public": "Public",
+        "retention": "Retention",
+        "retentionHelper": "How long we keep activity logs.",
+        "retentionInfo": "Longer retention may be required for compliance.",
+        "days7": "7 days",
+        "days30": "30 days",
+        "days90": "90 days"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "card": "Tailwind card",
+      "cardHelper": "Classes with cn() on wrapperClassName; [&_.gem-radio] changes the option tone.",
+      "merged": "Merged pill",
+      "mergedHelper": "rounded-full replaces rounded-lg thanks to tailwind-merge.",
+      "a": "Option A",
+      "b": "Option B"
+    },
+    "cva": {
+      "a": "Option A",
+      "b": "Option B"
+    },
+    "css": {
+      "label": "Branded options",
+      "helperText": "The group changes the tone; each option is a card.",
+      "a": "Option A",
+      "aHelper": "Highlighted with :has(:checked).",
+      "b": "Option B",
+      "bHelper": "Same style via wrapperClassName on each Radio."
+    }
+  },
+  "apiLink": "See the full RadioGroup API",
+  "api": {
+    "header": {
+      "title": "RadioGroup API",
+      "description": "API reference for the RadioGroup React component: props, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "RadioGroup"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from the Radio subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, RadioGroup accepts native <code>&lt;div&gt;</code> attributes (<code>HTMLAttributes</code>) except <code>onChange</code> and <code>defaultValue</code>. <code>className</code> and <code>wrapperClassName</code> go to the same root container. Options are <code>Radio</code> controls: the group passes them <code>name</code>, <code>size</code>, <code>tone</code>, the selected value and the disabled, invalid and required state."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "The container uses <code>role=\"radiogroup\"</code> and is named by the label through <code>aria-labelledby</code>.",
+      "describedBy": "<code>helperText</code> or <code>errorMessage</code> are linked through <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code>, <code>isRequired</code> and <code>isDisabled</code> add <code>aria-invalid</code>, <code>aria-required</code> and <code>aria-disabled</code> to the group.",
+      "keyboard": "Arrow keys use native radio navigation; <code>Home</code> and <code>End</code> focus and select the first or last enabled option.",
+      "noLabel": "With no visible label, pass <code>aria-label</code> or <code>aria-labelledby</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Options use the Radio classes.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container (role=\"radiogroup\"). Receives `className` and `wrapperClassName`.",
+        "options": "Options container.",
+        "message": "Helper text below the group.",
+        "messageError": "Error message below the group.",
+        "orientation": "Applied when `orientation=\"{{value}}\"`.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled`.",
+        "header": "Row with the label and the info icon.",
+        "labelText": "Group label text.",
+        "required": "Asterisk when `isRequired` is true.",
+        "info": "Info icon button."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "RadioGroup has no CSS variables of its own: option colors come from the Radio --gem-radio-* variables. The group uses these gem-system tokens.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in RadioGroup"
+      },
+      "items": {
+        "--gem-space-2": "Gap between the label, the options and the message.",
+        "--gem-color-fg-muted": "Helper text color.",
+        "--gem-color-error-600": "Error message and asterisk color.",
+        "--gem-font-sans": "Group font family."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. Includes the Radio types."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <div> attributes (except onChange and defaultValue).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "children": "Radio options.",
+      "name": "Shared name for the inputs. Generated when omitted.",
+      "value": "Controlled selected value.",
+      "defaultValue": "Uncontrolled initial value.",
+      "label": "Visible group label.",
+      "helperText": "Helper text below the group (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error message. Marks the group as invalid.",
+      "infoText": "Shows an info icon next to the label.",
+      "infoLabel": "Accessible name of the info icon.",
+      "size": "Size of the options.",
+      "tone": "Tone of the options. Forced to error when the group is invalid.",
+      "orientation": "Options layout: column or row.",
+      "isInvalid": "Marks the group as invalid (aria-invalid).",
+      "isDisabled": "Disables every option.",
+      "isRequired": "Marks the group as required (aria-required + asterisk).",
+      "id": "Group id and base for internal ids.",
+      "aria-label": "Accessible name when there is no label.",
+      "className": "Extra classes for the root container.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Receives the new value and the event when the selection changes.",
+      "onInfoClick": "Fires when the info icon is activated.",
+      "onKeyDown": "Keyboard handler on the group. Calling preventDefault disables Home/End."
+    }
+  }
+}

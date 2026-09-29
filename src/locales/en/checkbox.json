@@ -1,0 +1,224 @@
+{
+  "header": {
+    "title": "Checkbox",
+    "description": "Lets users select one or more options. Supports indeterminate state, tones, sizes, rounded shape, helper text and errors."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly.",
+    "label": "Accept terms",
+    "helperText": "You can change this later.",
+    "size": "size",
+    "tone": "tone",
+    "rounded": "rounded",
+    "indeterminate": "indeterminate",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "With label and `helperText`.",
+      "label": "Accept terms",
+      "helperText": "You can change this later."
+    },
+    "checked": {
+      "title": "Checked",
+      "description": "`defaultChecked` for the uncontrolled initial state.",
+      "label": "Subscribe to newsletter"
+    },
+    "indeterminate": {
+      "title": "Indeterminate",
+      "description": "Mixed state for a parent with partially selected nested options.",
+      "label": "Select all permissions",
+      "helperText": "Some nested options are selected."
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled`, checked and unchecked.",
+      "checkedLabel": "Disabled option",
+      "uncheckedLabel": "Disabled unchecked",
+      "helperText": "This option cannot be changed."
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` forces the error tone and marks the field as invalid.",
+      "label": "I agree to the privacy policy",
+      "errorMessage": "You must accept to continue."
+    },
+    "required": {
+      "title": "Required",
+      "description": "`isRequired` adds the asterisk and aria-required.",
+      "label": "Required confirmation",
+      "helperText": "Required fields show an asterisk."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "The seven tones available through the tone prop."
+    },
+    "rounded": {
+      "title": "Rounded",
+      "description": "Fully circular control via rounded.",
+      "label": "Rounded checkbox",
+      "helperText": "Fully circular control via rounded."
+    },
+    "roundedTones": {
+      "title": "Rounded tones",
+      "description": "`rounded` combined with every tone."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "sm, md and lg, also with rounded.",
+      "sm": "Small",
+      "md": "Medium",
+      "lg": "Large",
+      "rounded": "rounded"
+    },
+    "withoutLabel": {
+      "title": "Without label",
+      "description": "No visible text: pass aria-label.",
+      "ariaLabel": "Toggle notifications"
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "Pair Checkbox with Tooltip through an info button next to the label, or wrap a focusable trigger when the checkbox is disabled.",
+      "marketing": "Marketing emails",
+      "marketingHelper": "Optional preference.",
+      "marketingInfo": "We send at most one email per week. Unsubscribe anytime.",
+      "priority": "Priority support",
+      "priorityInfo": "Priority support is available on Pro plans.",
+      "analytics": "Share usage analytics",
+      "analyticsAria": "About analytics",
+      "analyticsTitle": "Anonymous only",
+      "analyticsBody": "No personal data is included."
+    },
+    "styleOverrides": {
+      "tailwind": {
+        "card": "Card with Tailwind",
+        "cardHelper": "cn() classes on wrapperClassName.",
+        "merged": "Merged pill",
+        "mergedHelper": "rounded-full replaces rounded-lg thanks to tailwind-merge."
+      },
+      "cva": {
+        "plain": "appearance=\"plain\"",
+        "card": "appearance=\"card\"",
+        "brand": "appearance=\"card\" brand=\"tertiary\""
+      },
+      "branded": "Branded field",
+      "brandedHelper": "Card-like wrapper + secondary box colors.",
+      "pill": "Pill branded",
+      "pillHelper": "Custom radius, border and label typography.",
+      "combined": "Success + rounded + custom",
+      "combinedHelper": "Props first, then CSS overrides on top."
+    },
+    "nestedGroup": {
+      "title": "Nested group",
+      "description": "A controlled parent that becomes indeterminate when only some options are checked.",
+      "all": "All notifications",
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Push"
+    }
+  },
+  "apiLink": "See the full Checkbox API",
+  "api": {
+    "header": {
+      "title": "Checkbox API",
+      "description": "API reference for the React Checkbox component: props, CSS classes, CSS variables and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Checkbox"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, Checkbox accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>size</code> and <code>type</code>, such as <code>name</code>, <code>value</code> or <code>aria-*</code>. They apply to the <code>&lt;input type=\"checkbox\"&gt;</code>; use <code>wrapperClassName</code> for the container."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "label": "The <code>label</code> is tied to the input through <code>htmlFor</code>. Without a visible label, pass <code>aria-label</code>.",
+      "describedBy": "<code>helperText</code> and <code>errorMessage</code> are linked via <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code> and <code>isRequired</code> add <code>aria-invalid</code> and <code>aria-required</code>.",
+      "indeterminate": "<code>indeterminate</code> sets the native property and <code>aria-checked=\"mixed\"</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on the props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class name",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "<label> element wrapping the control and text.",
+        "control": "Wraps the input and the visual box.",
+        "input": "Native input (visually hidden). Receives `className`.",
+        "box": "Visual checkbox box.",
+        "iconCheck": "Check icon for the checked state.",
+        "iconMinus": "Dash icon for the indeterminate state.",
+        "labelText": "Label text.",
+        "required": "Asterisk when `isRequired` is true.",
+        "message": "Helper text below the field.",
+        "messageError": "Error message below the field.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "tone": "Applied when `tone=\"{{value}}\"` (or error when invalid).",
+        "rounded": "Applied when `rounded={true}`.",
+        "indeterminate": "Applied when `indeterminate={true}`.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled` or disabled."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Each tone sets these variables. Redefine them in your `wrapperClassName` to change colors without overriding rules.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-checkbox-tone": "Border and background of the checked or indeterminate state.",
+        "--gem-checkbox-tone-hover": "Border on hover.",
+        "--gem-checkbox-tone-active": "Border and background on hover while checked.",
+        "--gem-checkbox-tone-focus": "Focus ring (box-shadow).",
+        "--gem-checkbox-on": "Icon color on the checked background."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes (except size and type).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "label": "Visible label next to the control.",
+      "helperText": "Hint text below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy below the field. Marks it as invalid.",
+      "size": "Control size.",
+      "tone": "Color tone. Forced to error when the field is invalid.",
+      "rounded": "Fully rounded control (--gem-radius-full).",
+      "indeterminate": "Mixed state (parent of nested options).",
+      "checked": "Controlled state.",
+      "defaultChecked": "Uncontrolled initial state.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field. Prefer it over native disabled.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "onChange": "Fires when the state changes.",
+      "className": "Extra classes for the native input.",
+      "wrapperClassName": "Extra classes for the root container."
+    }
+  }
+}

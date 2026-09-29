@@ -1,0 +1,273 @@
+{
+  "header": {
+    "title": "InputNumber",
+    "description": "Numeric field with +/- buttons or arrows, limits, step, precision and Intl.NumberFormat formatting on blur."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Quantity",
+    "helperText": "Use +/- or ArrowUp / ArrowDown.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "showSteppers": "showSteppers",
+    "additionButtons": "additionButtons",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "+/- buttons on both sides. The ArrowUp and ArrowDown keys also change the value.",
+      "texts": {
+        "label": "Quantity",
+        "helperText": "Use +/- or ArrowUp / ArrowDown."
+      }
+    },
+    "withInfoIcon": {
+      "title": "With info icon",
+      "description": "`infoText` adds an info icon at the top-right.",
+      "texts": {
+        "label": "Quantity",
+        "infoText": "About this field",
+        "helperText": "Info control sits at the top-right when infoText is set."
+      }
+    },
+    "withoutSteppers": {
+      "title": "Without steppers",
+      "description": "`showSteppers={false}` leaves only the numeric field.",
+      "texts": {
+        "label": "Amount",
+        "helperText": "Numeric input only."
+      }
+    },
+    "additionButtons": {
+      "title": "Addition buttons",
+      "description": "`additionButtons` shows stacked chevrons on the right instead of +/-.",
+      "texts": {
+        "label": "Number Field",
+        "helperText": "Enter value between 10 and 40"
+      }
+    },
+    "minMaxStep": {
+      "title": "Min / max / step",
+      "description": "`min` and `max` clamp the value; `step` sets how much it changes and `precision` how many decimals it rounds to.",
+      "texts": {
+        "label": "Score",
+        "helperText": "Clamped between 0 and 10, step 0.5."
+      }
+    },
+    "formatted": {
+      "title": "Formatted",
+      "description": "`locale` and `formatOptions` format the value with Intl.NumberFormat on blur.",
+      "texts": {
+        "label": "Price",
+        "helperText": "Formats on blur via Intl.NumberFormat."
+      }
+    },
+    "withIcons": {
+      "title": "With icons",
+      "description": "`prefixIcon` and `suffixIcon` without +/- buttons.",
+      "texts": {
+        "label": "Amount",
+        "helperText": "Prefix and suffix icons without steppers."
+      }
+    },
+    "withIconsAndSteppers": {
+      "title": "With icons and steppers",
+      "description": "Icons sit between the +/- buttons and the value.",
+      "texts": {
+        "label": "Total",
+        "helperText": "Icons sit between the +/- controls and the value."
+      }
+    },
+    "withIconsAndAddition": {
+      "title": "With icons and addition",
+      "description": "Prefix icon next to the stacked buttons.",
+      "texts": {
+        "label": "Rate",
+        "helperText": "Prefix icon with chevron addition buttons."
+      }
+    },
+    "outlineLabel": {
+      "title": "Outline label",
+      "description": "`labelPlacement=\"outline\"` places the label on the top border.",
+      "texts": {
+        "label": "Units"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`isInvalid` and `errorMessage` force the error border.",
+      "texts": {
+        "label": "Age",
+        "errorMessage": "Enter a valid age."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` locks the field and the buttons.",
+      "texts": {
+        "label": "Locked quantity"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "arithmeticIcons": {
+      "title": "Arithmetic icons",
+      "description": "Icons from @gem-org/gem-system/icons designed for numeric fields.",
+      "titles": {
+        "multiply": "Multiply",
+        "divide": "Divide",
+        "equals": "Equals",
+        "percent": "Percent",
+        "plusMinus": "Plus minus"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary accent and pill shape with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "radius-xs replaces radius-full thanks to tailwind-merge."
+    },
+    "css": {
+      "label": "Branded quantity",
+      "helperText": "Tertiary tokens and stacked buttons with their own background."
+    }
+  },
+  "apiLink": "See the full InputNumber API",
+  "api": {
+    "header": {
+      "title": "InputNumber API",
+      "description": "API reference for the InputNumber React component: props, events, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "InputNumber"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, InputNumber accepts native <code>&lt;input&gt;</code> attributes (<code>InputHTMLAttributes</code>) except <code>size</code>, <code>type</code>, <code>value</code>, <code>defaultValue</code>, <code>onChange</code> and <code>prefix</code>. <code>className</code> goes to the <code>&lt;input&gt;</code> and <code>wrapperClassName</code> to the root container."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "spinbutton": "The input uses <code>role=\"spinbutton\"</code> with <code>aria-valuenow</code>, <code>aria-valuemin</code> and <code>aria-valuemax</code>.",
+      "keyboard": "<code>ArrowUp</code> and <code>ArrowDown</code> increase and decrease the value by <code>step</code>.",
+      "buttons": "Buttons have an <code>aria-label</code> and are out of the tab order; they are disabled at <code>min</code> or <code>max</code>.",
+      "label": "<code>helperText</code> and <code>errorMessage</code> are linked with <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "Field label.",
+        "required": "Required asterisk.",
+        "field": "Container for the input, icons and buttons.",
+        "control": "The <input>. Receives `className`.",
+        "decrement": "- button (`showSteppers`).",
+        "increment": "+ button (`showSteppers`).",
+        "addition": "Stacked buttons group (`additionButtons`).",
+        "additionBtn": "Each stacked button.",
+        "prefix": "Prefix icon.",
+        "suffix": "Suffix icon.",
+        "message": "Helper text below the field.",
+        "messageError": "Error message.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "labelOutline": "Applied with `labelPlacement=\"outline\"`.",
+        "hasSteppers": "Applied when the +/- buttons are shown.",
+        "hasAddition": "Applied with `additionButtons`.",
+        "hasPrefix": "Applied when `prefixIcon` is set.",
+        "hasSuffix": "Applied when `suffixIcon` is set.",
+        "hasInfo": "Applied when `infoText` is set.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "InputNumber has no variables of its own: it uses these gem-system tokens. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in InputNumber"
+      },
+      "items": {
+        "--gem-color-border": "Input border and stacked buttons separator.",
+        "--gem-color-accent": "Focus border and focused outline label.",
+        "--gem-shadow-focus": "Focus ring.",
+        "--gem-color-bg": "Input and outline label background.",
+        "--gem-color-bg-subtle": "Button hover background and disabled field background.",
+        "--gem-color-fg": "Value and label color.",
+        "--gem-color-fg-muted": "Placeholder, icons, buttons and helper text.",
+        "--gem-radius-md": "Input and stacked buttons radius.",
+        "--gem-radius-sm": "+/- buttons radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <input> attributes except size, type, value, `defaultValue`, `onChange` and prefix.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled numeric value. Use null for empty.",
+      "defaultValue": "Uncontrolled initial value.",
+      "min": "Minimum allowed value.",
+      "max": "Maximum allowed value.",
+      "step": "Step for the buttons and arrow keys.",
+      "precision": "Decimals used when rounding and formatting (if `formatOptions` does not set maximumFractionDigits).",
+      "showSteppers": "Shows +/- buttons on both sides. Ignored with `additionButtons`.",
+      "additionButtons": "Shows stacked chevrons on the right instead of +/-.",
+      "locale": "Locale for Intl.NumberFormat formatting.",
+      "formatOptions": "Intl.NumberFormat options applied on blur.",
+      "formatDisplay": "Formats the value on blur with locale and `formatOptions`.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: above or on the border.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "infoLabel": "Accessible name of the info icon.",
+      "prefixIcon": "Icon before the value.",
+      "suffixIcon": "Icon after the value.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field and the buttons.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "className": "Extra classes for the <input>.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Receives the parsed number (null when empty or invalid).",
+      "onInfoClick": "Fires when the info icon is activated."
+    }
+  }
+}

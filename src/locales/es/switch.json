@@ -1,0 +1,249 @@
+{
+  "header": {
+    "title": "Switch",
+    "description": "Interruptor de encendido y apagado con animación del thumb. Se usa para preferencias que se aplican al instante. También se exporta como `Toggle`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "Activar notificaciones",
+    "helperText": "Podés cambiarlo más tarde.",
+    "size": "size",
+    "tone": "tone",
+    "labelPlacement": "labelPlacement",
+    "defaultChecked": "defaultChecked",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Un Switch con `label` y `helperText`, apagado por defecto.",
+      "texts": {
+        "label": "Activar notificaciones",
+        "helperText": "Podés cambiarlo más tarde."
+      }
+    },
+    "on": {
+      "title": "Encendido",
+      "description": "`defaultChecked` para el estado inicial no controlado.",
+      "texts": {
+        "label": "Modo oscuro"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el control y atenúa el label y el mensaje.",
+      "texts": {
+        "label": "Deshabilitado encendido",
+        "helperText": "Esta preferencia no se puede cambiar."
+      }
+    },
+    "disabledOff": {
+      "title": "Deshabilitado apagado",
+      "description": "El mismo estado `isDisabled` con el switch apagado.",
+      "texts": {
+        "label": "Deshabilitado apagado"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` reemplaza al `helperText`, fuerza el tono error y se anuncia con `role=\"alert\"`.",
+      "texts": {
+        "label": "Compartir estadísticas de uso",
+        "errorMessage": "Tenés que activarlo para continuar."
+      }
+    },
+    "required": {
+      "title": "Requerido",
+      "description": "`isRequired` agrega el asterisco al label y `aria-required` al input.",
+      "texts": {
+        "label": "Preferencia obligatoria",
+        "helperText": "Los campos obligatorios muestran un asterisco."
+      }
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "Los siete tonos de la prop `tone`. El tono colorea el track cuando está encendido."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños con `size`: sm, md y lg. Cambian el track, el thumb y el texto.",
+      "labels": {
+        "sm": "Switch chico",
+        "md": "Switch mediano",
+        "lg": "Switch grande"
+      }
+    },
+    "labelStart": {
+      "title": "Label al inicio",
+      "description": "`labelPlacement=\"start\"` pone el label antes del track, útil para filas de configuración.",
+      "texts": {
+        "label": "Wi-Fi",
+        "helperText": "El label queda antes del track."
+      }
+    },
+    "withoutLabel": {
+      "title": "Sin label",
+      "description": "Sin texto visible, pasá `aria-label` para darle un nombre accesible.",
+      "texts": {
+        "ariaLabel": "Alternar notificaciones"
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `checked` y `onChange` manejás el estado desde tu componente.",
+      "texts": {
+        "label": "Modo avión",
+        "state": "Estado",
+        "on": "encendido",
+        "off": "apagado"
+      }
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "Switch no tiene prop de info: el botón de info es un elemento aparte. En el primer y el último caso se coloca a la derecha del Switch dentro de un contenedor flex; el Switch ocupa el ancho restante, por eso el contenedor limita el ancho para que el botón quede cerca del label. `FieldInfoButton` renderiza el ícono con su Tooltip; para contenido propio, envolvé un botón `.gem-field-info` con `Tooltip`. En el segundo caso el Switch está deshabilitado, así que el Tooltip envuelve un `<span tabIndex={0}>` que recibe el foco.",
+      "texts": {
+        "marketing": "Emails de marketing",
+        "marketingHelper": "Preferencia opcional.",
+        "marketingInfo": "Enviamos como máximo un email por semana. Podés darte de baja cuando quieras.",
+        "priority": "Soporte prioritario",
+        "priorityInfo": "El soporte prioritario está disponible en los planes Pro.",
+        "analytics": "Compartir estadísticas de uso",
+        "analyticsTitle": "Solo datos anónimos",
+        "analyticsBody": "No se incluyen datos personales.",
+        "analyticsAria": "Sobre las estadísticas"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "row": "Fila de configuración",
+      "rowHelper": "Clases con cn() en wrapperClassName; el label ocupa todo el ancho.",
+      "merged": "Fila combinada",
+      "mergedHelper": "rounded-2xl reemplaza a rounded-lg gracias a tailwind-merge."
+    },
+    "cva": {
+      "plain": "appearance=\"plain\"",
+      "card": "appearance=\"card\"",
+      "brand": "appearance=\"card\" brand=\"tertiary\""
+    },
+    "css": {
+      "branded": "Switch de marca",
+      "brandedHelper": "Contenedor tipo card y colores secondary.",
+      "square": "Switch cuadrado",
+      "squareHelper": "Track más ancho, radio xs y label en mayúsculas.",
+      "combined": "Success + lg + custom",
+      "combinedHelper": "Primero las props, después los overrides de CSS."
+    }
+  },
+  "apiLink": "Ver la API completa de Switch",
+  "api": {
+    "header": {
+      "title": "Switch API",
+      "description": "Referencia de la API del componente Switch de React: props, clases CSS, variables CSS y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Switch"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `Toggle` es un alias del mismo componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Switch acepta los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>size</code> y <code>type</code>. Se aplican al <code>&lt;input type=\"checkbox\" role=\"switch\"&gt;</code>; para el contenedor usá <code>wrapperClassName</code>. <code>isDisabled</code> e <code>isRequired</code> tienen prioridad sobre <code>disabled</code> y <code>required</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "Usa un <code>&lt;input type=\"checkbox\"&gt;</code> nativo con <code>role=\"switch\"</code>, así los lectores de pantalla anuncian encendido o apagado.",
+      "keyboard": "Space alterna el estado como en cualquier checkbox; además, Enter también lo alterna.",
+      "label": "El <code>label</code> envuelve al input. Sin label visible, pasá <code>aria-label</code>.",
+      "describedBy": "<code>errorMessage</code> o <code>helperText</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code> y <code>isRequired</code> se reflejan en <code>aria-invalid</code> y <code>aria-required</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Elemento <label> que envuelve control y texto.",
+        "control": "Contenedor del input y el track.",
+        "input": "Input nativo (invisible, cubre el track). Recibe `className`.",
+        "track": "Pista del switch. Toma el color del tono cuando está encendido.",
+        "thumb": "Círculo que se desliza dentro del track.",
+        "labelText": "Texto del label.",
+        "required": "Asterisco que se muestra con `isRequired`.",
+        "message": "Texto de ayuda o de error debajo del switch.",
+        "messageError": "Se aplica al mensaje cuando hay `errorMessage`.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "tone": "Se aplica cuando `tone=\"{{value}}\"` (o error si es inválido).",
+        "placement": "Se aplica cuando `labelPlacement=\"{{value}}\"`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled` o disabled."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Definidas en el contenedor raíz. Redefinilas en tu `wrapperClassName` para cambiar colores y medidas sin pisar reglas.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-switch-tone": "Fondo y borde del track encendido.",
+        "--gem-switch-tone-hover": "Borde del track en hover.",
+        "--gem-switch-tone-active": "Fondo del track encendido en hover.",
+        "--gem-switch-tone-focus": "Anillo de foco (box-shadow).",
+        "--gem-switch-thumb": "Color del thumb apagado.",
+        "--gem-switch-thumb-on": "Color del thumb encendido.",
+        "--gem-switch-track-ring": "Borde del track apagado.",
+        "--gem-switch-track-w": "Ancho del track. Lo cambia `size`.",
+        "--gem-switch-track-h": "Alto del track. El thumb se calcula a partir de él.",
+        "--gem-switch-pad": "Espacio entre el thumb y el borde del track."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. `ToggleProps` es un alias de `SwitchProps`."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <input> (salvo size y type).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "label": "Label visible junto al control.",
+      "labelPlacement": "Posición del label respecto del track.",
+      "helperText": "Texto de ayuda debajo. Se oculta cuando hay `errorMessage`.",
+      "errorMessage": "Mensaje de error debajo. Implica estado inválido.",
+      "size": "Tamaño del control.",
+      "tone": "Tono del estado encendido. Pasa a error con `isInvalid` o `errorMessage`.",
+      "checked": "Estado controlado.",
+      "defaultChecked": "Estado inicial no controlado.",
+      "isInvalid": "Marca el campo como inválido (`aria-invalid`).",
+      "isDisabled": "Deshabilita el switch. Preferilo sobre disabled nativo.",
+      "isRequired": "Marca el campo como obligatorio (`aria-required` y asterisco).",
+      "id": "Id del input. Se usa para vincular label y mensajes.",
+      "name": "Nombre del campo al enviar un formulario.",
+      "aria-label": "Nombre accesible cuando no hay label.",
+      "className": "Clases extra para el input nativo.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Se dispara al cambiar el estado.",
+      "onKeyDown": "Se dispara al presionar una tecla. Si llamás a preventDefault, Enter deja de alternar el estado."
+    }
+  }
+}

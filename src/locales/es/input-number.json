@@ -1,0 +1,273 @@
+{
+  "header": {
+    "title": "InputNumber",
+    "description": "Campo numérico con botones +/- o flechas, límites, paso, precisión y formato con Intl.NumberFormat al perder el foco."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Cantidad",
+    "helperText": "Usá +/- o las flechas arriba y abajo.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "showSteppers": "showSteppers",
+    "additionButtons": "additionButtons",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Botones +/- a los lados. Las flechas arriba y abajo del teclado también cambian el valor.",
+      "texts": {
+        "label": "Cantidad",
+        "helperText": "Usá +/- o las flechas arriba y abajo."
+      }
+    },
+    "withInfoIcon": {
+      "title": "Con ícono de información",
+      "description": "`infoText` agrega un ícono de información arriba a la derecha.",
+      "texts": {
+        "label": "Cantidad",
+        "infoText": "Sobre este campo",
+        "helperText": "El ícono aparece arriba a la derecha cuando hay infoText."
+      }
+    },
+    "withoutSteppers": {
+      "title": "Sin botones",
+      "description": "`showSteppers={false}` deja solo el campo numérico.",
+      "texts": {
+        "label": "Monto",
+        "helperText": "Solo el campo numérico."
+      }
+    },
+    "additionButtons": {
+      "title": "Botones apilados",
+      "description": "`additionButtons` muestra flechas apiladas a la derecha en lugar de +/-.",
+      "texts": {
+        "label": "Número",
+        "helperText": "Ingresá un valor entre 10 y 40."
+      }
+    },
+    "minMaxStep": {
+      "title": "Mínimo, máximo y paso",
+      "description": "`min` y `max` limitan el valor; `step` define cuánto cambia y `precision` cuántos decimales redondea.",
+      "texts": {
+        "label": "Puntaje",
+        "helperText": "Entre 0 y 10, de a 0.5."
+      }
+    },
+    "formatted": {
+      "title": "Con formato",
+      "description": "`locale` y `formatOptions` formatean el valor con Intl.NumberFormat al perder el foco.",
+      "texts": {
+        "label": "Precio",
+        "helperText": "Se formatea al salir del campo con Intl.NumberFormat."
+      }
+    },
+    "withIcons": {
+      "title": "Con íconos",
+      "description": "`prefixIcon` y `suffixIcon` sin botones +/-.",
+      "texts": {
+        "label": "Monto",
+        "helperText": "Íconos de prefijo y sufijo sin botones."
+      }
+    },
+    "withIconsAndSteppers": {
+      "title": "Íconos y botones",
+      "description": "Los íconos quedan entre los botones +/- y el valor.",
+      "texts": {
+        "label": "Total",
+        "helperText": "Los íconos van entre los botones y el valor."
+      }
+    },
+    "withIconsAndAddition": {
+      "title": "Íconos y botones apilados",
+      "description": "Ícono de prefijo junto a los botones apilados.",
+      "texts": {
+        "label": "Tasa",
+        "helperText": "Ícono de prefijo con botones apilados."
+      }
+    },
+    "outlineLabel": {
+      "title": "Label en el borde",
+      "description": "`labelPlacement=\"outline\"` ubica el label sobre el borde superior.",
+      "texts": {
+        "label": "Unidades"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`isInvalid` y `errorMessage` fuerzan el borde de error.",
+      "texts": {
+        "label": "Edad",
+        "errorMessage": "Ingresá una edad válida."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo y los botones.",
+      "texts": {
+        "label": "Cantidad bloqueada"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "arithmeticIcons": {
+      "title": "Íconos aritméticos",
+      "description": "Íconos de @gem-org/gem-system/icons pensados para campos numéricos.",
+      "titles": {
+        "multiply": "Multiplicar",
+        "divide": "Dividir",
+        "equals": "Igual",
+        "percent": "Porcentaje",
+        "plusMinus": "Más menos"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Acento secondary y forma de píldora con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "radius-xs reemplaza a radius-full gracias a tailwind-merge."
+    },
+    "css": {
+      "label": "Cantidad de marca",
+      "helperText": "Tokens tertiary y botones apilados con fondo propio."
+    }
+  },
+  "apiLink": "Ver la API completa de InputNumber",
+  "api": {
+    "header": {
+      "title": "InputNumber API",
+      "description": "Referencia de la API del componente InputNumber de React: props, eventos, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "InputNumber"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, InputNumber acepta los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>size</code>, <code>type</code>, <code>value</code>, <code>defaultValue</code>, <code>onChange</code> y <code>prefix</code>. <code>className</code> va al <code>&lt;input&gt;</code> y <code>wrapperClassName</code> al contenedor raíz."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "spinbutton": "El input usa <code>role=\"spinbutton\"</code> con <code>aria-valuenow</code>, <code>aria-valuemin</code> y <code>aria-valuemax</code>.",
+      "keyboard": "<code>ArrowUp</code> y <code>ArrowDown</code> suben y bajan el valor según <code>step</code>.",
+      "buttons": "Los botones tienen <code>aria-label</code> y quedan fuera del orden de tabulación; se deshabilitan al llegar a <code>min</code> o <code>max</code>.",
+      "label": "<code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Label del campo.",
+        "required": "Asterisco de campo requerido.",
+        "field": "Contenedor del input, los íconos y los botones.",
+        "control": "El <input>. Recibe `className`.",
+        "decrement": "Botón - (`showSteppers`).",
+        "increment": "Botón + (`showSteppers`).",
+        "addition": "Grupo de botones apilados (`additionButtons`).",
+        "additionBtn": "Cada botón apilado.",
+        "prefix": "Ícono de prefijo.",
+        "suffix": "Ícono de sufijo.",
+        "message": "Texto de ayuda debajo del campo.",
+        "messageError": "Mensaje de error.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "labelOutline": "Se aplica con `labelPlacement=\"outline\"`.",
+        "hasSteppers": "Se aplica cuando se muestran los botones +/-.",
+        "hasAddition": "Se aplica con `additionButtons`.",
+        "hasPrefix": "Se aplica cuando hay `prefixIcon`.",
+        "hasSuffix": "Se aplica cuando hay `suffixIcon`.",
+        "hasInfo": "Se aplica cuando hay `infoText`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "InputNumber no define variables propias: usa estos tokens de gem-system. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en InputNumber"
+      },
+      "items": {
+        "--gem-color-border": "Borde del input y separador de los botones apilados.",
+        "--gem-color-accent": "Borde con foco y label en el borde con foco.",
+        "--gem-shadow-focus": "Anillo de foco.",
+        "--gem-color-bg": "Fondo del input y del label en el borde.",
+        "--gem-color-bg-subtle": "Fondo de los botones en hover y del campo deshabilitado.",
+        "--gem-color-fg": "Color del valor y del label.",
+        "--gem-color-fg-muted": "Placeholder, íconos, botones y texto de ayuda.",
+        "--gem-radius-md": "Radio del input y de los botones apilados.",
+        "--gem-radius-sm": "Radio de los botones +/-."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <input> salvo size, type, value, `defaultValue`, `onChange` y prefix.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Valor numérico controlado. Usá null para vacío.",
+      "defaultValue": "Valor inicial no controlado.",
+      "min": "Valor mínimo permitido.",
+      "max": "Valor máximo permitido.",
+      "step": "Cuánto cambia con los botones y las flechas del teclado.",
+      "precision": "Decimales usados al redondear y al formatear (si `formatOptions` no define maximumFractionDigits).",
+      "showSteppers": "Muestra los botones +/- a los lados. Se ignora con `additionButtons`.",
+      "additionButtons": "Muestra flechas apiladas a la derecha en lugar de +/-.",
+      "locale": "Locale para formatear con Intl.NumberFormat.",
+      "formatOptions": "Opciones de Intl.NumberFormat aplicadas al perder el foco.",
+      "formatDisplay": "Formatea el valor al perder el foco con locale y `formatOptions`.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: arriba o sobre el borde.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "prefixIcon": "Ícono antes del valor.",
+      "suffixIcon": "Ícono después del valor.",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo y los botones.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "className": "Clases extra para el <input>.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Recibe el número ya interpretado (null si está vacío o no es válido).",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

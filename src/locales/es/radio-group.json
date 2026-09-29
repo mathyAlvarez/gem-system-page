@@ -1,0 +1,272 @@
+{
+  "header": {
+    "title": "RadioGroup",
+    "description": "Agrupa varios Radio para elegir una sola opción. Aporta label, texto de ayuda, error, orientación y navegación con teclado, y pasa `name`, `size`, `tone` y estado a cada opción."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "Canal de notificaciones",
+    "helperText": "Elegí cómo querés que te contactemos.",
+    "options": {
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Notificaciones push"
+    },
+    "size": "size",
+    "tone": "tone",
+    "orientation": "orientation",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Con `label`, `helperText` y `defaultValue`. Cada opción puede tener su propio `helperText`.",
+      "texts": {
+        "label": "Canal de notificaciones",
+        "helperText": "Elegí cómo querés que te contactemos.",
+        "email": "Email",
+        "emailHelper": "Un resumen por día.",
+        "sms": "SMS",
+        "push": "Notificaciones push"
+      }
+    },
+    "horizontal": {
+      "title": "Horizontal",
+      "description": "`orientation=\"horizontal\"` ubica las opciones en fila.",
+      "texts": {
+        "label": "Plan",
+        "free": "Gratis",
+        "pro": "Pro",
+        "team": "Equipo"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea todas las opciones del grupo.",
+      "texts": {
+        "label": "Ciclo de facturación",
+        "helperText": "Este grupo no se puede cambiar.",
+        "monthly": "Mensual",
+        "yearly": "Anual"
+      }
+    },
+    "disabledOption": {
+      "title": "Opción deshabilitada",
+      "description": "`isDisabled` en un Radio bloquea solo esa opción.",
+      "texts": {
+        "label": "Envío",
+        "standard": "Estándar",
+        "standardHelper": "De 3 a 5 días hábiles.",
+        "express": "Express",
+        "expressHelper": "No disponible en tu zona.",
+        "pickup": "Retiro en tienda"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marca el grupo como inválido, fuerza el tono error en las opciones y muestra el mensaje con role=\"alert\".",
+      "texts": {
+        "label": "Medio de pago",
+        "errorMessage": "Elegí un medio de pago para continuar.",
+        "card": "Tarjeta de crédito",
+        "transfer": "Transferencia bancaria",
+        "wallet": "Billetera digital"
+      }
+    },
+    "required": {
+      "title": "Requerido",
+      "description": "`isRequired` agrega el asterisco, aria-required y required en cada input.",
+      "texts": {
+        "label": "Tipo de cuenta",
+        "helperText": "Los grupos requeridos muestran un asterisco.",
+        "personal": "Personal",
+        "business": "Empresa"
+      }
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` en el grupo se aplica a todas las opciones.",
+      "labels": {
+        "a": "Opción A",
+        "b": "Opción B"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` en el grupo define el tamaño de las opciones y del mensaje.",
+      "labels": {
+        "sm": "Chico",
+        "md": "Mediano",
+        "lg": "Grande",
+        "a": "Opción A",
+        "b": "Opción B"
+      }
+    },
+    "keyboard": {
+      "title": "Navegación con teclado",
+      "description": "Tab entra al grupo, las flechas cambian de opción y Home/End saltan a la primera o la última habilitada.",
+      "texts": {
+        "label": "Tema",
+        "helperText": "Entrá con Tab y usá las flechas. Home y End saltan a la primera o la última opción. Espacio selecciona la opción con foco.",
+        "light": "Claro",
+        "dark": "Oscuro",
+        "system": "Sistema"
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá la selección con `value` y `onChange`, que recibe el valor y el evento.",
+      "texts": {
+        "label": "Suscripción",
+        "free": "Gratis",
+        "pro": "Pro",
+        "enterprise": "Enterprise",
+        "selected": "Seleccionado"
+      }
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "Dos formas de mostrar el ícono de información. Con `infoText`, el grupo renderiza un FieldInfoButton dentro de la fila del label, alineado a la derecha del ancho del grupo; `infoLabel` define su nombre accesible y `onInfoClick` su click. La otra forma es poner un FieldInfoButton propio en un contenedor flex junto al grupo (`content` es el texto del tooltip): queda arriba a la derecha, fuera del grupo. En los dos casos el ícono se ubica en el borde derecho, así que conviene limitar el ancho del contenedor.",
+      "texts": {
+        "visibility": "Visibilidad",
+        "visibilityInfo": "Los espacios privados solo los ven los miembros invitados.",
+        "private": "Privado",
+        "public": "Público",
+        "retention": "Retención",
+        "retentionHelper": "Cuánto tiempo guardamos los registros de actividad.",
+        "retentionInfo": "Algunas normas pueden exigir una retención más larga.",
+        "days7": "7 días",
+        "days30": "30 días",
+        "days90": "90 días"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "card": "Card con Tailwind",
+      "cardHelper": "Clases con cn() en wrapperClassName; [&_.gem-radio] cambia el tono de las opciones.",
+      "merged": "Pill combinado",
+      "mergedHelper": "rounded-full reemplaza a rounded-lg gracias a tailwind-merge.",
+      "a": "Opción A",
+      "b": "Opción B"
+    },
+    "cva": {
+      "a": "Opción A",
+      "b": "Opción B"
+    },
+    "css": {
+      "label": "Opciones de marca",
+      "helperText": "El grupo cambia el tono; cada opción es una card.",
+      "a": "Opción A",
+      "aHelper": "Se resalta con :has(:checked).",
+      "b": "Opción B",
+      "bHelper": "Mismo estilo con wrapperClassName en cada Radio."
+    }
+  },
+  "apiLink": "Ver la API completa de RadioGroup",
+  "api": {
+    "header": {
+      "title": "RadioGroup API",
+      "description": "Referencia de la API del componente RadioGroup de React: props, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "RadioGroup"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde el subpath de Radio."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, RadioGroup acepta los atributos nativos de <code>&lt;div&gt;</code> (<code>HTMLAttributes</code>) salvo <code>onChange</code> y <code>defaultValue</code>. <code>className</code> y <code>wrapperClassName</code> van al mismo contenedor raíz. Las opciones son <code>Radio</code>: el grupo les pasa <code>name</code>, <code>size</code>, <code>tone</code>, el valor seleccionado y el estado deshabilitado, inválido y requerido."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "El contenedor usa <code>role=\"radiogroup\"</code> y se nombra con el label mediante <code>aria-labelledby</code>.",
+      "describedBy": "<code>helperText</code> o <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code>, <code>isRequired</code> e <code>isDisabled</code> agregan <code>aria-invalid</code>, <code>aria-required</code> y <code>aria-disabled</code> al grupo.",
+      "keyboard": "Las flechas usan la navegación nativa entre radios; <code>Home</code> y <code>End</code> enfocan y seleccionan la primera o la última opción habilitada.",
+      "noLabel": "Sin label visible, pasá <code>aria-label</code> o <code>aria-labelledby</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Las opciones usan las clases de Radio.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz (role=\"radiogroup\"). Recibe `className` y `wrapperClassName`.",
+        "options": "Contenedor de las opciones.",
+        "message": "Texto de ayuda debajo del grupo.",
+        "messageError": "Mensaje de error debajo del grupo.",
+        "orientation": "Se aplica cuando `orientation=\"{{value}}\"`.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`.",
+        "header": "Fila del label y el ícono de información.",
+        "labelText": "Texto del label del grupo.",
+        "required": "Asterisco cuando `isRequired` es true.",
+        "info": "Botón del ícono de información."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "RadioGroup no tiene variables CSS propias: los colores de las opciones salen de las variables --gem-radio-* de Radio. El grupo usa estos tokens de gem-system.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en RadioGroup"
+      },
+      "items": {
+        "--gem-space-2": "Espacio entre el label, las opciones y el mensaje.",
+        "--gem-color-fg-muted": "Color del texto de ayuda.",
+        "--gem-color-error-600": "Color del mensaje de error y del asterisco.",
+        "--gem-font-sans": "Tipografía del grupo."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. Incluye los tipos de Radio."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <div> (salvo onChange y defaultValue).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "children": "Opciones Radio.",
+      "name": "Nombre compartido de los inputs. Se genera si no se pasa.",
+      "value": "Valor seleccionado controlado.",
+      "defaultValue": "Valor inicial no controlado.",
+      "label": "Label visible del grupo.",
+      "helperText": "Texto de ayuda debajo del grupo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el grupo como inválido.",
+      "infoText": "Muestra un ícono de información junto al label.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "size": "Tamaño de las opciones.",
+      "tone": "Tono de las opciones. Se fuerza a error si el grupo es inválido.",
+      "orientation": "Disposición de las opciones: en columna o en fila.",
+      "isInvalid": "Marca el grupo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita todas las opciones.",
+      "isRequired": "Marca el grupo como requerido (aria-required + asterisco).",
+      "id": "Id del grupo y base de los ids internos.",
+      "aria-label": "Nombre accesible cuando no hay label.",
+      "className": "Clases extra para el contenedor raíz.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Recibe el nuevo valor y el evento al cambiar la selección.",
+      "onInfoClick": "Se dispara al activar el ícono de información.",
+      "onKeyDown": "Teclado en el grupo. Si llamás preventDefault se desactiva Home/End."
+    }
+  }
+}

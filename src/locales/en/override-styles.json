@@ -1,0 +1,204 @@
+{
+  "overview": {
+    "header": {
+      "title": "Override styles",
+      "description": "Recommended approach to customize @gem-org components in React, Vite and Tailwind projects."
+    },
+    "recommendation": {
+      "title": "Don't add styled-components",
+      "body": "In a React + Vite + Tailwind stack, runtime CSS-in-JS adds a second styling system and a cost on every render. The most efficient, current pattern combines three pieces: <strong>Tailwind CSS</strong>, <strong>class-variance-authority (cva)</strong> and <strong>CSS variables in the style prop</strong>."
+    },
+    "guides": {
+      "title": "Guides",
+      "open": "Open guide",
+      "tailwind": {
+        "title": "Tailwind + cn()",
+        "body": "Structure, layout and one-off tweaks. Override a component's styles through className without conflicts."
+      },
+      "cva": {
+        "title": "Variants with cva",
+        "body": "Define typed variants (intent, size, shape) in one place and reuse them."
+      },
+      "cssVars": {
+        "title": "CSS variables",
+        "body": "Runtime-computed values and gem-system token overrides inside a scope."
+      }
+    },
+    "when": {
+      "title": "When to use each one?",
+      "need": "Need",
+      "tool": "Tool",
+      "rows": {
+        "layout": "Layout, spacing and one-off tweaks",
+        "override": "Override a single component's style",
+        "variants": "A component with several fixed looks",
+        "dynamic": "A value that changes at runtime (color, progress, position)",
+        "theme": "Retheme a whole area"
+      },
+      "tools": {
+        "layout": "Tailwind",
+        "override": "Tailwind + cn()",
+        "variants": "cva",
+        "dynamic": "CSS variable in style",
+        "theme": "--gem-* variables in a scope"
+      }
+    }
+  },
+  "tailwind": {
+    "header": {
+      "title": "Tailwind + cn()",
+      "description": "Tailwind for structure and fast design; clsx + tailwind-merge so className overrides the component without conflicts."
+    },
+    "install": {
+      "title": "Step 1 · Install dependencies",
+      "description": "Tailwind v4 with its Vite plugin, plus clsx and tailwind-merge for the cn() utility."
+    },
+    "vite": {
+      "title": "Step 2 · Register the Vite plugin",
+      "description": "The plugin processes Tailwind CSS and only generates the classes it finds in your code."
+    },
+    "css": {
+      "title": "Step 3 · Import the utilities",
+      "description": "Import the theme and utilities, without preflight and as important.",
+      "why": "gem-system styles are not inside <code>@layer</code>. In CSS, unlayered rules beat <code>@layer utilities</code> regardless of specificity, so without <code>important</code> your classes would never override the component.",
+      "preflightTitle": "Why skip preflight",
+      "preflight": "Preflight is Tailwind's global reset: it changes margins, borders and typography on every element and can alter gem-system components."
+    },
+    "main": {
+      "title": "Step 4 · Load the CSS in the app",
+      "description": "Import it after the gem-system styles."
+    },
+    "cn": {
+      "title": "Step 5 · Create cn()",
+      "description": "clsx handles conditional classes; tailwind-merge drops conflicting ones and keeps the last."
+    },
+    "layout": {
+      "title": "Step 6 · Layout with utilities and tokens",
+      "description": "Use utilities for structure. Read system tokens with bg-(--gem-color-bg) to follow the light/dark theme.",
+      "demo": {
+        "title": "Monthly report",
+        "meta": "Updated 5 minutes ago",
+        "secondary": "Export",
+        "primary": "Share"
+      }
+    },
+    "override": {
+      "title": "Step 7 · Override a component with className",
+      "description": "Classes passed through className apply on top of the component's styles.",
+      "default": "Default",
+      "custom": "With className"
+    },
+    "wrapper": {
+      "title": "Step 8 · Wrap it in your own component",
+      "description": "Define base classes and let consumers override them with className. cn() makes sure the last one wins.",
+      "brand": "Brand",
+      "override": "Overridden",
+      "toggle": "Active (clsx)"
+    },
+    "merge": {
+      "title": "What tailwind-merge solves",
+      "description": "Live cn() output on this page: classes from the same group are replaced and the rest are kept."
+    },
+    "tips": {
+      "title": "Best practices",
+      "tokens": "Prefer gem-system tokens (<code>bg-(--gem-color-accent)</code>) over fixed Tailwind colors so the theme is respected.",
+      "className": "Always expose <code>className</code> on your components and pass it last to <code>cn()</code>.",
+      "important": "With utilities imported as <code>important</code>, you don't need the <code>!</code> modifier on each class.",
+      "scope": "Use Tailwind for one-off tweaks; when a combination repeats, turn it into a cva variant."
+    }
+  },
+  "cva": {
+    "header": {
+      "title": "Variants with cva",
+      "description": "class-variance-authority defines a component's variants in one typed place and returns the className for each combination."
+    },
+    "install": {
+      "title": "Step 1 · Install",
+      "description": "cva doesn't depend on Tailwind, but pairs with cn() to resolve conflicts."
+    },
+    "anatomy": {
+      "title": "Step 2 · Anatomy of a definition",
+      "description": "Base classes, a variants map and default values."
+    },
+    "playground": {
+      "title": "Step 3 · Try the variants",
+      "description": "Change the props and see which className cva returns.",
+      "intent": "intent",
+      "size": "size",
+      "pill": "pill",
+      "label": "Label",
+      "output": "Resulting className"
+    },
+    "compound": {
+      "title": "Step 4 · compoundVariants",
+      "description": "Apply classes only when a combination matches. Here, outline + lg uses a thicker border."
+    },
+    "types": {
+      "title": "Step 5 · Type with VariantProps",
+      "description": "VariantProps infers props from the definition: adding a variant doesn't require editing types by hand."
+    },
+    "matrix": {
+      "title": "Every combination",
+      "description": "intent × size from the same definition."
+    },
+    "extend": {
+      "title": "Step 6 · Extend gem-system components",
+      "description": "Add your own variants to a gem-system Button without touching the library: cva builds the className and gem-system keeps the rest.",
+      "shape": "shape",
+      "width": "width",
+      "label": "Continue"
+    },
+    "tips": {
+      "title": "Best practices",
+      "single": "One cva definition per component, exported next to it.",
+      "defaults": "Always define <code>defaultVariants</code> so the component works without props.",
+      "boolean": "For boolean variants use the <code>true</code> / <code>false</code> keys.",
+      "cn": "Wrap the result with <code>cn()</code> so an external <code>className</code> wins."
+    }
+  },
+  "cssVars": {
+    "header": {
+      "title": "CSS variables",
+      "description": "For runtime-computed values, pass CSS variables through style and consume them from static classes."
+    },
+    "why": {
+      "title": "Step 1 · Why not interpolate classes",
+      "description": "Tailwind only generates classes it finds written in code. A class built at runtime doesn't exist in the CSS.",
+      "wrong": "Doesn't work",
+      "right": "Works"
+    },
+    "basic": {
+      "title": "Step 2 · Define and consume",
+      "description": "The value travels in the variable; the class stays static. Here --progress controls the width.",
+      "label": "Progress"
+    },
+    "types": {
+      "title": "Step 3 · Type your own variables",
+      "description": "Extend CSSProperties once so you don't have to cast every style."
+    },
+    "brand": {
+      "title": "Step 4 · Several variables combined",
+      "description": "Runtime hue and radius feed static border, background and hover classes.",
+      "hue": "Hue",
+      "radius": "Radius",
+      "cardTitle": "Brand color",
+      "cardBody": "Color and radius come from CSS variables set in style.",
+      "action": "Brand action"
+    },
+    "scope": {
+      "title": "Step 5 · Override gem-system tokens in a scope",
+      "description": "gem-system components read --gem-* variables. Redefine them on a container and everything inside changes, without touching the rest of the page.",
+      "hue": "Primary hue",
+      "primary": "Confirm",
+      "switch": "Notifications",
+      "slider": "Volume"
+    },
+    "tips": {
+      "title": "Best practices",
+      "prefix": "Use your own prefix (<code>--brand-*</code>) to avoid clashing with <code>--gem-*</code>.",
+      "units": "Pass the unit in the value (<code>12px</code>) or use <code>calc()</code> in the class.",
+      "static": "If the value is fixed, skip the variable: a class or a cva variant is enough.",
+      "scope": "To retheme an area, redefine the <code>--gem-*</code> tokens on the container."
+    }
+  }
+}

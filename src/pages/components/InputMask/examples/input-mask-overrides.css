@@ -1,0 +1,10 @@
+.gem-input-mask.input-mask-branded {
+  --gem-color-border: var(--gem-palette-tertiary-300);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--gem-palette-tertiary-500) 30%, transparent);
+  --gem-radius-md: var(--gem-radius-lg);
+}
+
+.gem-input-mask.input-mask-branded .gem-input-text__icon--prefix {
+  color: var(--gem-palette-tertiary-600);
+}

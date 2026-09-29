@@ -1,0 +1,7 @@
+.arithmetic-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  color: var(--gem-color-fg);
+}

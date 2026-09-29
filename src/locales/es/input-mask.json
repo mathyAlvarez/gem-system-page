@@ -1,0 +1,291 @@
+{
+  "header": {
+    "title": "InputMask",
+    "description": "Campo de texto que formatea el valor en tiempo real según un patrón: fechas, horas, teléfonos, tarjetas o una máscara propia. Hereda el aspecto de InputText."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Dato",
+    "helperText": "El valor se formatea mientras escribís.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "preset": "preset",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "`preset=\"date\"` formatea los dígitos como DD/MM/AAAA. `prefixIcon` agrega un ícono decorativo.",
+      "texts": {
+        "label": "Fecha",
+        "helperText": "Los dígitos se formatean como DD/MM/AAAA."
+      }
+    },
+    "prefixText": {
+      "title": "Texto de prefijo",
+      "description": "`prefix` acepta texto, un ícono o cualquier nodo de React.",
+      "texts": {
+        "label": "Teléfono",
+        "helperText": "prefix puede ser texto, un ícono o cualquier nodo."
+      }
+    },
+    "suffixText": {
+      "title": "Texto de sufijo",
+      "description": "`suffix` se ubica después del valor formateado.",
+      "texts": {
+        "label": "Tarjeta",
+        "helperText": "suffix va después del valor formateado."
+      }
+    },
+    "prefixAndSuffix": {
+      "title": "Prefijo y sufijo",
+      "description": "Combiná texto, Typography o íconos en cualquiera de los dos lados.",
+      "texts": {
+        "label": "Tarjeta",
+        "helperText": "Mezclá texto, Typography o íconos en ambos lados."
+      }
+    },
+    "prefixIconAndText": {
+      "title": "Ícono y texto de prefijo",
+      "description": "Con `prefixIcon` y prefix a la vez, el ícono va primero.",
+      "texts": {
+        "label": "Fecha",
+        "helperText": "prefixIcon se muestra antes que prefix."
+      }
+    },
+    "dateIso": {
+      "title": "Fecha ISO",
+      "description": "`preset=\"date-iso\"` usa el patrón 9999-99-99.",
+      "texts": {
+        "label": "Fecha ISO",
+        "helperText": "Patrón 9999-99-99."
+      }
+    },
+    "time": {
+      "title": "Hora",
+      "description": "`preset=\"time\"` formatea horas y minutos.",
+      "texts": {
+        "label": "Hora",
+        "helperText": "Horas y minutos (99:99)."
+      }
+    },
+    "phone": {
+      "title": "Teléfono",
+      "description": "`preset=\"phone\"` usa el formato genérico (99) 9999-9999 y `type=\"tel\"`.",
+      "texts": {
+        "label": "Teléfono",
+        "helperText": "Formato genérico (99) 9999-9999."
+      }
+    },
+    "card": {
+      "title": "Tarjeta",
+      "description": "`preset=\"card\"` agrupa 16 dígitos de a cuatro.",
+      "texts": {
+        "label": "Número de tarjeta",
+        "helperText": "16 dígitos en grupos de cuatro."
+      }
+    },
+    "customMask": {
+      "title": "Máscara propia",
+      "description": "`mask` tiene prioridad sobre `preset`. 9 es un dígito, A una letra y S un alfanumérico; el resto son separadores.",
+      "texts": {
+        "label": "Código postal",
+        "helperText": "Patrón propio: letra, 4 dígitos y 3 letras."
+      }
+    },
+    "outlineLabel": {
+      "title": "Label en el borde",
+      "description": "`labelPlacement=\"outline\"` ubica el label sobre el borde superior, igual que en InputText.",
+      "texts": {
+        "label": "Teléfono",
+        "helperText": "El mismo label en el borde que InputText."
+      }
+    },
+    "invalid": {
+      "title": "Inválido",
+      "description": "`isInvalid` y `errorMessage` fuerzan el borde de error.",
+      "texts": {
+        "label": "Número de tarjeta",
+        "errorMessage": "Ingresá los 16 dígitos de la tarjeta."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo.",
+      "texts": {
+        "label": "Fecha"
+      }
+    },
+    "valuePayload": {
+      "title": "Valor emitido",
+      "description": "`onValueChange` recibe el valor formateado, el valor sin máscara y si está completo.",
+      "texts": {
+        "label": "Fecha",
+        "helperText": "onValueChange informa el valor formateado y el crudo.",
+        "formatted": "Formateado",
+        "unmasked": "Sin máscara",
+        "complete": "Completo"
+      }
+    },
+    "presets": {
+      "title": "Presets",
+      "description": "Algunos de los patrones incluidos, con su máscara como texto de ayuda."
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Acento secondary y forma de píldora con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "radius-xs reemplaza a radius-full gracias a tailwind-merge."
+    },
+    "css": {
+      "label": "Teléfono de marca",
+      "helperText": "Tokens tertiary y radio lg redefinidos en la clase del contenedor."
+    }
+  },
+  "apiLink": "Ver la API completa de InputMask",
+  "api": {
+    "header": {
+      "title": "InputMask API",
+      "description": "Referencia de la API del componente InputMask de React: props, eventos, utilidades, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "InputMask"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente. También se exportan las utilidades para aplicar máscaras fuera del componente."
+    },
+    "presets": {
+      "title": "Presets",
+      "description": "Patrones incluidos. `mask` tiene prioridad sobre `preset`; sin ninguno de los dos se usa date.",
+      "columns": {
+        "name": "Preset",
+        "pattern": "Patrón",
+        "placeholder": "Placeholder"
+      }
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "InputMask envuelve a <code>InputText</code>: acepta sus props y los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>size</code>, <code>prefix</code>, <code>type</code>, <code>value</code> y <code>defaultValue</code>, que se redefinen. <code>className</code> va al <code>&lt;input&gt;</code> y <code>wrapperClassName</code> al contenedor, que además recibe la clase <code>gem-input-mask</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "inputMode": "Se define <code>inputMode=\"numeric\"</code> cuando la máscara solo admite dígitos, para mostrar el teclado numérico en móviles.",
+      "autoComplete": "Los presets de fecha, teléfono y tarjeta completan <code>autoComplete</code> (<code>bday</code>, <code>tel</code>, <code>cc-number</code>).",
+      "label": "El label se asocia con <code>htmlFor</code>; <code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code> y el error usa <code>role=\"alert\"</code>.",
+      "state": "<code>isInvalid</code> y <code>isRequired</code> se reflejan como <code>aria-invalid</code> y <code>aria-required</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "InputMask agrega gem-input-mask al contenedor; el resto de las clases vienen de InputText.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz (junto a gem-input-text). Recibe `wrapperClassName`.",
+        "label": "Label del campo.",
+        "required": "Asterisco de campo requerido.",
+        "field": "Contenedor del input y sus íconos.",
+        "control": "El <input>. Recibe `className`.",
+        "prefix": "Contenido de prefix y `prefixIcon`.",
+        "suffix": "Contenido de suffix y `suffixIcon`.",
+        "message": "Texto de ayuda debajo del campo.",
+        "messageError": "Mensaje de error.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "labelOutline": "Se aplica con `labelPlacement=\"outline\"`.",
+        "hasPrefix": "Se aplica cuando hay prefix o `prefixIcon`.",
+        "hasSuffix": "Se aplica cuando hay suffix o `suffixIcon`.",
+        "hasInfo": "Se aplica cuando hay `infoText`.",
+        "invalid": "Se aplica con `isInvalid`, `errorMessage` o si falla `validRegex`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables de InputText que el componente calcula midiendo el prefijo y el sufijo, y aplica como estilo inline en la raíz. Sirven para leerlas desde tu CSS; no se sobrescriben con una clase.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-input-prefix-pad": "Ancho medido del prefijo; se usa como padding izquierdo del input.",
+        "--gem-input-suffix-pad": "Ancho medido del sufijo; se usa como padding derecho del input."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa el campo. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en InputMask"
+      },
+      "items": {
+        "--gem-color-border": "Borde del input.",
+        "--gem-color-accent": "Borde con foco y label en el borde con foco.",
+        "--gem-shadow-focus": "Anillo de foco.",
+        "--gem-color-bg": "Fondo del input y del label en el borde.",
+        "--gem-color-fg": "Color del valor y del label.",
+        "--gem-color-fg-muted": "Placeholder, íconos y texto de ayuda.",
+        "--gem-radius-md": "Radio del input."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta las props de InputText y los atributos nativos de <input> salvo size, prefix, type, value y `defaultValue`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "mask": "Patrón con 9 (dígito), A (letra), S (alfanumérico) y separadores. Tiene prioridad sobre `preset`. Usá \\\\ para forzar un literal.",
+      "preset": "Patrón incluido, por ejemplo date, date-iso, time, phone o card.",
+      "definitions": "Tokens de patrón extra o reemplazos, combinados con los de por defecto.",
+      "value": "Valor controlado (se formatea al mostrarse).",
+      "defaultValue": "Valor inicial no controlado.",
+      "type": "Tipo nativo del input. Por defecto tel para los presets de teléfono.",
+      "placeholder": "Por defecto usa el placeholder del preset (por ejemplo DD/MM/YYYY).",
+      "maxLength": "Por defecto es el largo del patrón formateado.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: arriba o sobre el borde.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "prefix": "Contenido antes del valor: texto, ícono o cualquier nodo.",
+      "suffix": "Contenido después del valor: texto, ícono o cualquier nodo.",
+      "prefixIcon": "Ícono decorativo antes del valor (va antes que prefix).",
+      "suffixIcon": "Ícono decorativo después del valor (va después que suffix).",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "validRegex": "Patrón que el valor debe cumplir. Si falla, muestra el borde de error.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "className": "Clases extra para el <input>.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Evento nativo. event.target.value es el valor formateado.",
+      "onValueChange": "Recibe { value, unmaskedValue, isComplete } en cada cambio.",
+      "onComplete": "Se dispara cuando el valor pasa a estar completo.",
+      "onValidate": "Se dispara cuando cambia la validez según `validRegex`.",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

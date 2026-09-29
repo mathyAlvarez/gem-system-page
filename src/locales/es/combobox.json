@@ -1,0 +1,352 @@
+{
+  "header": {
+    "title": "Combobox",
+    "description": "Campo con autocompletado que filtra las opciones mientras escribís. Se maneja con teclado (flechas, Enter y Escape) y también se exporta como Autocomplete. Ocupa el 100% del ancho de su contenedor."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "País",
+    "placeholder": "Escribí para filtrar…",
+    "helperText": "Las opciones se filtran mientras escribís.",
+    "size": "size",
+    "border": "border",
+    "multiple": "multiple",
+    "clearable": "clearable",
+    "allowsCustomValue": "allowsCustomValue",
+    "showExpand": "showExpand",
+    "isLoading": "isLoading",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "data": {
+    "title": "Datos de ejemplo",
+    "description": "Los ejemplos de esta página importan sus opciones desde este archivo."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Uso mínimo: options, label y placeholder.",
+      "texts": {
+        "label": "País",
+        "placeholder": "Escribí para filtrar…",
+        "helperText": "Las opciones se filtran mientras escribís."
+      }
+    },
+    "multiple": {
+      "title": "Múltiple",
+      "description": "Con multiple, cada selección se muestra como chip y el valor es un string[].",
+      "texts": {
+        "label": "Países",
+        "placeholder": "Agregá un país",
+        "helperText": "Filtrá y elegí uno o más."
+      }
+    },
+    "withDescriptions": {
+      "title": "Con descripciones",
+      "description": "Cada opción puede tener una description secundaria. Las coincidencias se resaltan en la lista.",
+      "texts": {
+        "label": "Ciudad",
+        "placeholder": "Buscar ciudades",
+        "helperText": "Las coincidencias se resaltan en la lista."
+      }
+    },
+    "customOption": {
+      "title": "Opción personalizada",
+      "description": "Pasá una función como children (o `renderOption`) para controlar cada fila. highlight() resalta el texto buscado.",
+      "texts": {
+        "label": "Ciudad",
+        "placeholder": "Buscar ciudades",
+        "helperText": "Cada fila se renderiza desde children."
+      }
+    },
+    "customValue": {
+      "title": "Valor libre",
+      "description": "`allowsCustomValue` permite confirmar con Enter un texto que no está en la lista.",
+      "texts": {
+        "label": "Librería",
+        "placeholder": "Elegí o escribí un nombre",
+        "helperText": "Enter confirma el valor aunque no esté en la lista."
+      }
+    },
+    "maxResults": {
+      "title": "Máximo de resultados",
+      "description": "`maxResults` limita cuántas coincidencias se muestran.",
+      "texts": {
+        "label": "Ciudad",
+        "placeholder": "Buscar ciudades",
+        "helperText": "Solo se listan las primeras 3 coincidencias."
+      }
+    },
+    "clearable": {
+      "title": "Limpiable",
+      "description": "`clearable` muestra un botón para vaciar el campo (activo por defecto).",
+      "texts": {
+        "label": "País",
+        "helperText": "Usá el botón para vaciar el campo."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo y la lista.",
+      "texts": {
+        "label": "País",
+        "helperText": "Este campo no se puede cambiar."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marca el campo como inválido y fuerza el borde de error.",
+      "texts": {
+        "label": "País",
+        "errorMessage": "Elegí un país para continuar."
+      }
+    },
+    "withChevron": {
+      "title": "Con chevron",
+      "description": "`showExpand` muestra el botón para abrir y cerrar la lista.",
+      "texts": {
+        "label": "Países",
+        "placeholder": "Agregá un país",
+        "helperText": "showExpand muestra el chevron de la lista."
+      }
+    },
+    "loading": {
+      "title": "Cargando",
+      "description": "`loading` o `isLoading` muestran un spinner mientras llegan los datos.",
+      "texts": {
+        "label": "País",
+        "placeholder": "Buscar…",
+        "helperText": "Pasá loading o isLoading desde el padre."
+      }
+    },
+    "withoutSuffixIcon": {
+      "title": "Sin ícono",
+      "description": "`suffixIcon={null}` oculta el ícono de búsqueda.",
+      "texts": {
+        "label": "Países",
+        "placeholder": "Agregá un país",
+        "helperText": "suffixIcon={null} oculta el ícono de búsqueda."
+      }
+    },
+    "customSuffixIcon": {
+      "title": "Ícono personalizado",
+      "description": "Pasá cualquier ícono en `suffixIcon`.",
+      "texts": {
+        "label": "Responsable",
+        "placeholder": "Buscar personas",
+        "helperText": "Pasá cualquier ícono en suffixIcon."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Bordes",
+      "description": "`border` cambia el tono del borde. Se fuerza a error si el campo es inválido."
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "`infoText` agrega un ícono de información junto al label.",
+      "texts": {
+        "label": "Workspace",
+        "infoText": "No se puede cambiar después de crear el workspace."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá la selección con value y `onChange`.",
+      "texts": {
+        "label": "Controlado",
+        "valueLabel": "Valor",
+        "empty": "(vacío)"
+      }
+    },
+    "controlledMultiple": {
+      "title": "Controlado múltiple",
+      "description": "Con multiple, value y `onChange` trabajan con string[].",
+      "texts": {
+        "label": "Controlado múltiple",
+        "valueLabel": "Valores",
+        "empty": "(vacío)"
+      }
+    },
+    "fieldMapping": {
+      "title": "Mapeo de campos",
+      "description": "Usá cualquier forma de datos con `optionValue`, `optionLabel`, `optionDescription` y `optionDisabled` (keys o funciones).",
+      "texts": {
+        "label": "Responsable",
+        "helperText": "value = id, label = name, description = role."
+      }
+    },
+    "asyncFilter": {
+      "title": "Filtro asíncrono",
+      "description": "Con `filter={false}` el filtrado queda de tu lado: las opciones se actualizan desde `onInputChange` después de una pequeña demora.",
+      "texts": {
+        "label": "País",
+        "placeholder": "Escribí al menos una letra…",
+        "loadingText": "Buscando coincidencias…",
+        "helperText": "Filtrado estilo remoto."
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Tokens redefinidos con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "max-w-md reemplaza a max-w-sm gracias a tailwind-merge."
+    },
+    "css": {
+      "branded": "Campo de marca",
+      "brandedHelper": "Tokens secondary en el control y los chips.",
+      "pill": "Pill de marca",
+      "pillHelper": "Radio completo y acentos tertiary."
+    }
+  },
+  "apiLink": "Ver la API completa de Combobox",
+  "api": {
+    "header": {
+      "title": "Combobox API",
+      "description": "Referencia de la API del componente Combobox (Autocomplete) de React: props, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Combobox"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. Autocomplete es un alias del mismo componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Combobox acepta los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>onChange</code>, <code>value</code>, <code>defaultValue</code>, <code>size</code> y <code>children</code>. Se aplican al input de texto; <code>className</code> va al control y <code>wrapperClassName</code> a la raíz."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "El input usa <code>role=\"combobox\"</code> con <code>aria-expanded</code>, <code>aria-controls</code> y <code>aria-activedescendant</code> apuntando a la opción activa.",
+      "listbox": "La lista usa <code>role=\"listbox\"</code> (con <code>aria-multiselectable</code> en modo múltiple) y cada fila <code>role=\"option\"</code> con <code>aria-selected</code>.",
+      "keyboard": "Flechas para moverse, <code>Enter</code> para elegir y <code>Escape</code> para cerrar la lista.",
+      "label": "Sin label visible, pasá <code>aria-label</code>. <code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "field": "Envuelve el control y el menú desplegable.",
+        "control": "Caja visible del campo. Recibe `className`.",
+        "suffix": "Ícono de inicio (`suffixIcon`).",
+        "chips": "Contenedor de chips en modo múltiple.",
+        "chip": "Cada valor seleccionado en modo múltiple.",
+        "chipRemove": "Botón para quitar un chip.",
+        "input": "Input de texto donde se escribe la búsqueda.",
+        "actions": "Contenedor de clear, spinner y chevron.",
+        "clear": "Botón para limpiar el campo.",
+        "chevron": "Botón para abrir y cerrar la lista (`showExpand`).",
+        "menu": "Panel desplegable.",
+        "list": "Lista de opciones (role=\"listbox\").",
+        "option": "Cada fila de la lista.",
+        "optionActive": "Opción resaltada con teclado o mouse.",
+        "optionSelected": "Opción seleccionada.",
+        "optionDisabled": "Opción deshabilitada.",
+        "optionLabel": "Texto principal de la opción.",
+        "optionDescription": "Texto secundario de la opción.",
+        "mark": "Resaltado del texto buscado.",
+        "empty": "Mensaje cuando no hay resultados.",
+        "more": "Indicador de resultados ocultos por `maxResults`.",
+        "message": "Texto de ayuda o error debajo del campo.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "open": "Se aplica mientras la lista está abierta.",
+        "multiple": "Se aplica cuando `multiple={true}`.",
+        "loading": "Se aplica con loading o `isLoading`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Combobox no define variables propias: usa estos tokens de gem-system. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Combobox"
+      },
+      "items": {
+        "--gem-color-border": "Borde del control y del menú.",
+        "--gem-color-accent": "Borde con foco o lista abierta.",
+        "--gem-color-bg": "Fondo del control y del menú.",
+        "--gem-color-bg-subtle": "Fondo de chips y de la opción activa.",
+        "--gem-radius-md": "Radio del control y del menú.",
+        "--gem-radius-sm": "Radio de chips, opciones y botones internos."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <input> salvo `onChange`, value, `defaultValue`, size y children.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "options": "Opciones del menú. Acepta objetos de cualquier forma.",
+      "value": "Valor controlado. string[] cuando multiple está activo.",
+      "defaultValue": "Valor inicial no controlado.",
+      "onChange": "Se dispara al cambiar la selección.",
+      "inputValue": "Texto controlado del input (la búsqueda).",
+      "defaultInputValue": "Texto inicial no controlado del input.",
+      "onInputChange": "Se dispara en cada tecla. Útil para buscar opciones de forma asíncrona.",
+      "multiple": "Permite elegir más de una opción.",
+      "allowsCustomValue": "Confirma texto que no coincide con ninguna opción.",
+      "filter": "Filtro del cliente. Pasá false si las opciones ya vienen filtradas.",
+      "openOnFocus": "Abre la lista al enfocar el input.",
+      "minQueryLength": "Caracteres mínimos antes de filtrar o abrir.",
+      "maxResults": "Máximo de opciones renderizadas tras filtrar.",
+      "children": "Render prop para cada fila. Recibe el item original y su estado.",
+      "renderOption": "Igual que `children`. `children` gana si están los dos.",
+      "optionValue": "Campo o función para el valor de cada opción.",
+      "optionLabel": "Campo o función para el label visible.",
+      "optionDisabled": "Campo o función para deshabilitar una opción.",
+      "optionDescription": "Campo o función para el texto secundario.",
+      "optionSearchText": "Campo o función usada por el filtro.",
+      "label": "Label visible del campo.",
+      "placeholder": "Texto cuando el input está vacío.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "noResultsText": "Texto cuando el filtro no encuentra opciones.",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "clearable": "Muestra un botón para limpiar la selección o la búsqueda.",
+      "showExpand": "Muestra el chevron para abrir y cerrar la lista.",
+      "suffixIcon": "Ícono al inicio del campo. null lo oculta.",
+      "isLoading": "Muestra un spinner. La lista sigue disponible.",
+      "loading": "Alias de `isLoading`.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "name": "`name` nativo para los inputs ocultos del formulario.",
+      "className": "Clases extra para el control.",
+      "wrapperClassName": "Clases extra para el contenedor raíz."
+    }
+  }
+}

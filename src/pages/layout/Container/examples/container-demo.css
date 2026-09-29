@@ -1,0 +1,24 @@
+.container-stage {
+  width: 100%;
+  padding-block: var(--gem-space-6);
+  border-block: 1px dashed var(--gem-color-border);
+  background: var(--gem-color-bg-subtle);
+}
+
+.container-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-height: 4.5rem;
+  padding: var(--gem-space-4);
+  border: 1px dashed var(--gem-color-primary-400);
+  border-radius: var(--gem-radius-md);
+  background: color-mix(in srgb, var(--gem-color-primary-500) 12%, transparent);
+}
+
+.container-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: 100%;
+}

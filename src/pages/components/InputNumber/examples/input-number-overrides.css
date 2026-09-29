@@ -1,0 +1,13 @@
+.gem-input-number.input-number-branded {
+  --gem-color-border: var(--gem-palette-tertiary-300);
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--gem-palette-tertiary-500) 30%, transparent);
+}
+
+.gem-input-number.input-number-branded .gem-input-number__addition {
+  background: color-mix(in srgb, var(--gem-palette-tertiary-500) 10%, transparent);
+}
+
+.gem-input-number.input-number-branded .gem-input-number__addition-btn {
+  color: var(--gem-palette-tertiary-700);
+}

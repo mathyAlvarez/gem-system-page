@@ -1,0 +1,16 @@
+.gem-input-search.input-search-branded {
+  --gem-color-border: transparent;
+  --gem-color-accent: var(--gem-palette-tertiary-600);
+  --gem-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--gem-palette-tertiary-500) 30%, transparent);
+  --gem-radius-md: var(--gem-radius-full);
+}
+
+.gem-input-search.input-search-branded .gem-input-text__control {
+  background-color: color-mix(in srgb, var(--gem-palette-tertiary-500) 8%, transparent);
+  box-shadow: none;
+}
+
+.gem-input-search.input-search-branded .gem-input-text__icon--prefix,
+.gem-input-search.input-search-branded .gem-input-search__clear {
+  color: var(--gem-palette-tertiary-600);
+}

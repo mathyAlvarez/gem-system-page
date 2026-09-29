@@ -1,11 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Button, Navbar, Sidebar, type SidebarItem } from "@gem-org/gem-system";
 import { ChevronRight, Menu } from "@gem-org/gem-system/icons";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect, ThemeToggle, VersionSelect } from "../components/NavbarControls.tsx";
+import { ScrollToTopFab } from "../components/ScrollToTopFab.tsx";
+import { TableOfContents } from "../components/TableOfContents.tsx";
 import { MiddleDot } from "../components/ThemeIcons.tsx";
-import { navigation, type NavEntry, type NavLeaf } from "../data/navigation.ts";
+import { docsRouteGroups, navigation, type NavEntry, type NavLeaf } from "../data/navigation.ts";
 import "./AppNavbar.scss";
 import "./DocsLayout.scss";
 
@@ -50,10 +52,19 @@ export function DocsLayout() {
   const { t } = useTranslation();
   const isOverlay = useSidebarOverlay();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const contentRef = useRef<HTMLElement>(null);
+  const hasToc = docsRouteGroups.some(({ base }) => location.pathname.startsWith(`/${base}/`));
 
   useEffect(() => {
     setSidebarOpen(false);
   }, [location.pathname]);
+
+  // The page scrolls inside <main>, so the browser does not reset it on navigation.
+  useLayoutEffect(() => {
+    const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+    if (target) target.scrollIntoView({ block: "start" });
+    else contentRef.current?.scrollTo({ top: 0 });
+  }, [location.pathname, location.hash]);
 
   const sidebarItems = useMemo<SidebarItem[]>(() => {
     const labelOf = (entry: NavEntry) =>
@@ -65,7 +76,7 @@ export function DocsLayout() {
         id: item.id,
         label: labelOf(item),
         icon: <Icon size="sm" />,
-        current: location.pathname === item.to,
+        current: location.pathname === item.to || location.pathname === `${item.to}/api`,
         onClick: () => navigate(item.to),
       };
     };
@@ -132,8 +143,16 @@ export function DocsLayout() {
           menuLabel={t("navbar.openMenu")}
           closeLabel={t("navbar.closeMenu")}
         />
-        <main className="docs-content">
-          <Outlet />
+        <main ref={contentRef} className="docs-content">
+          {hasToc ? (
+            <div className="docs-content__grid">
+              <Outlet />
+              <TableOfContents targetRef={contentRef} />
+            </div>
+          ) : (
+            <Outlet />
+          )}
+          <ScrollToTopFab targetRef={contentRef} />
         </main>
       </div>
     </div>

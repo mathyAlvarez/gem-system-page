@@ -1,0 +1,201 @@
+{
+  "header": {
+    "title": "Container",
+    "description": "Centered page shell with a max-width token and horizontal padding that steps up at the sm, md and lg breakpoints. Use `size` for the cap, `maxWidth` for a one-off CSS length, `fluid` to drop the cap and `padded={false}` to flush it to the edges."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and code instantly. The pale band is the available width; the dashed box is the content.",
+    "size": "size",
+    "as": "as",
+    "maxWidth": "maxWidth",
+    "fluid": "fluid",
+    "padded": "padded",
+    "centered": "centered",
+    "comment": "Page content",
+    "boxTitle": "Container",
+    "boxBody": "The dashed box is the content. The pale band behind it is the available width."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "By default it uses `size=\"lg\"` (64rem), centers itself and adds horizontal padding. The examples use this box and these demo styles to show the content area.",
+      "texts": {
+        "title": "Page container",
+        "body": "The dashed box is the content. The pale band behind it is the available width. Padding grows at 640px, 768px and 1024px."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` picks the max-width token: sm (40rem), md (48rem), lg (64rem), xl (80rem) and 2xl (96rem). Sizes wider than the demo fill the space; widen the window to see each cap.",
+      "body": "Centered shell with breakpoint padding."
+    },
+    "customMaxWidth": {
+      "title": "Custom max width",
+      "description": "`maxWidth` takes precedence over `size` and `fluid`. A number is pixels; a string is any CSS length.",
+      "body": "Custom cap with the same breakpoint padding as the tokens."
+    },
+    "fluid": {
+      "title": "Fluid",
+      "description": "`fluid` drops the max width to fill the parent. Horizontal padding stays.",
+      "texts": {
+        "title": "Fluid",
+        "body": "No max width. Horizontal padding still follows the breakpoint scale unless padded is false."
+      }
+    },
+    "flush": {
+      "title": "No padding",
+      "description": "`padded={false}` removes the horizontal padding. The max width still applies.",
+      "texts": {
+        "title": "Flush",
+        "body": "The max width stays. Edge padding is removed."
+      }
+    },
+    "landmark": {
+      "title": "Landmark",
+      "description": "`as` renders main, section, article, header, footer or aside instead of a div. A section needs an accessible name, so the example passes `aria-label`.",
+      "texts": {
+        "title": "Featured section",
+        "body": "Use as to render main, section, article or other landmarks."
+      }
+    },
+    "responsive": {
+      "title": "Breakpoint padding",
+      "description": "Horizontal padding depends on the window width, not the parent container. Resize the window to see the value in the box change.",
+      "texts": {
+        "title": "Current padding",
+        "body": "Compact on mobile, grows on tablet and uses the largest margin from 1024px."
+      },
+      "columns": {
+        "breakpoint": "Breakpoint",
+        "minWidth": "Min width",
+        "token": "Token",
+        "value": "Value"
+      },
+      "breakpoints": {
+        "base": "Mobile",
+        "sm": "sm",
+        "md": "Tablet (md)",
+        "lg": "Desktop (lg)"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "article": "Tailwind article",
+      "articleBody": "36rem cap, space-8 padding and vertical padding with cn() on className.",
+      "merged": "Merged",
+      "mergedBody": "A 24rem cap and py-0 replace the base values thanks to tailwind-merge."
+    },
+    "cva": {
+      "body": "Width and gutter variants that redefine the container variables."
+    },
+    "css": {
+      "narrow": "Narrow",
+      "narrowBody": "Redefines --gem-container-max and --gem-container-pad from a class.",
+      "card": "Card",
+      "cardBody": "Border, background and vertical padding; horizontal padding grows from 1024px."
+    }
+  },
+  "apiLink": "See the full Container API",
+  "api": {
+    "header": {
+      "title": "Container API",
+      "description": "API reference for the Container React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Container"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It accepts HTML attributes (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) and passes them to the root element. <code>ref</code> reaches the element so you can measure it. With <code>maxWidth</code>, the value is added to <code>style</code> as <code>--gem-container-max</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "landmark": "With <code>as</code> you pick a semantic landmark instead of a meaningless <code>&lt;div&gt;</code>.",
+      "main": "Use a single <code>as=\"main\"</code> per page.",
+      "label": "When there are several <code>section</code> or <code>aside</code> elements, name them with <code>aria-label</code> or <code>aria-labelledby</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root element. Receives `className` and `classNames.root`.",
+        "size": "Applied when `size=\"{{value}}\"` (without `fluid` or `maxWidth`).",
+        "custom": "Applied when `maxWidth` is set.",
+        "fluid": "Applied with `fluid`. Removes the max width.",
+        "flush": "Applied with `padded={false}`. Removes the horizontal padding.",
+        "start": "Applied with `centered={false}`. Aligns the container to the start."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Set on the root element. Redefine them on your `className` to change the cap or padding without overriding rules.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-container-max": "Max width. Set by `size`, `fluid` or `maxWidth`.",
+        "--gem-container-pad": "Horizontal padding. Changes per breakpoint and is 0 with `padded={false}`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by the container. Redefine them globally to change every container.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Container"
+      },
+      "items": {
+        "--gem-container-sm": "Max width for `size=\"sm\"` (40rem).",
+        "--gem-container-md": "Max width for `size=\"md\"` (48rem).",
+        "--gem-container-lg": "Max width for `size=\"lg\"` (64rem).",
+        "--gem-container-xl": "Max width for `size=\"xl\"` (80rem).",
+        "--gem-container-2xl": "Max width for `size=\"2xl\"` (96rem).",
+        "--gem-grid-margin": "Padding on mobile (below 640px).",
+        "--gem-space-5": "Padding from 640px.",
+        "--gem-grid-gutter-lg": "Padding from 768px.",
+        "--gem-grid-margin-lg": "Padding from 1024px."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts HTML attributes for the root element.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "as": "HTML element or landmark to render.",
+      "size": "Max-width token. Ignored with `fluid` or `maxWidth`.",
+      "maxWidth": "Custom max width. A number is pixels; a string is any CSS length. Takes precedence over `size` and `fluid`.",
+      "fluid": "Removes the max width. Ignored with `maxWidth`.",
+      "padded": "Horizontal padding per breakpoint.",
+      "centered": "Centers the container with margin-inline: auto.",
+      "className": "Extra classes for the root element.",
+      "classNames": "Per-slot classes. `root` is added to the root element.",
+      "style": "Inline styles. With `maxWidth`, --gem-container-max is added.",
+      "ref": "Ref to the root element so you can measure it.",
+      "children": "Container content."
+    }
+  }
+}

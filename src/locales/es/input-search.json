@@ -1,0 +1,244 @@
+{
+  "header": {
+    "title": "InputSearch",
+    "description": "Campo de búsqueda con ícono de lupa y botón para limpiar. Enter dispara `onSearch` y Escape vacía el campo. Si la búsqueda tiene que elegir de una lista de opciones, usá Combobox."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Buscar",
+    "placeholder": "Buscar…",
+    "helperText": "Escribí y usá el botón limpiar o Escape para vaciar el campo.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "clearable": "clearable",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Lupa al inicio y botón para limpiar cuando hay texto. Escape también vacía el campo.",
+      "texts": {
+        "label": "Buscar",
+        "placeholder": "Buscar…",
+        "helperText": "Escribí y usá el botón limpiar o Escape para vaciar el campo."
+      }
+    },
+    "withValue": {
+      "title": "Con valor",
+      "description": "El botón para limpiar aparece cuando el campo tiene texto.",
+      "texts": {
+        "label": "Buscar",
+        "defaultValue": "Tokens de diseño",
+        "helperText": "El botón limpiar aparece cuando el campo no está vacío."
+      }
+    },
+    "withoutIcon": {
+      "title": "Sin ícono",
+      "description": "`prefixIcon={null}` oculta la lupa.",
+      "texts": {
+        "label": "Buscar",
+        "defaultValue": "Consulta",
+        "helperText": "prefixIcon={null} oculta la lupa."
+      }
+    },
+    "customIcon": {
+      "title": "Ícono propio",
+      "description": "`prefixIcon` reemplaza la lupa por otro ícono.",
+      "texts": {
+        "label": "Personas",
+        "placeholder": "Buscar una persona"
+      }
+    },
+    "withSuffix": {
+      "title": "Con sufijo",
+      "description": "`suffixIcon` se ubica antes del botón para limpiar.",
+      "texts": {
+        "label": "Buscar",
+        "defaultValue": "Facturas",
+        "helperText": "El sufijo decorativo va antes del botón limpiar."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo y oculta el botón para limpiar.",
+      "texts": {
+        "label": "Buscar",
+        "defaultValue": "Consulta bloqueada"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marca el campo como inválido y fuerza el borde de error.",
+      "texts": {
+        "label": "Buscar",
+        "placeholder": "Buscar…",
+        "errorMessage": "Ingresá un término para buscar."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá el valor con value, `onChange` y `onClear`. Enter dispara `onSearch` con el valor actual.",
+      "texts": {
+        "label": "Controlado",
+        "helperText": "Presioná Enter para disparar onSearch.",
+        "valueLabel": "Valor",
+        "searchLabel": "Última búsqueda",
+        "empty": "(vacío)"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Acento secondary y forma de píldora con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "radius-xs reemplaza a radius-full gracias a tailwind-merge.",
+      "value": "gem-system"
+    },
+    "css": {
+      "label": "Búsqueda de marca",
+      "placeholder": "Buscar componentes…",
+      "helperText": "Sin borde, fondo tertiary suave y forma de píldora."
+    }
+  },
+  "apiLink": "Ver la API completa de InputSearch",
+  "api": {
+    "header": {
+      "title": "InputSearch API",
+      "description": "Referencia de la API del componente InputSearch de React: props, eventos, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "InputSearch"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "InputSearch envuelve a <code>InputText</code>: acepta todas sus props (salvo <code>type</code>) y los atributos nativos de <code>&lt;input&gt;</code>. <code>className</code> va al <code>&lt;input&gt;</code> y <code>wrapperClassName</code> al contenedor, que además recibe la clase <code>gem-input-search</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "searchbox": "El input usa <code>type=\"search\"</code> y <code>role=\"searchbox\"</code>.",
+      "keyboard": "<code>Enter</code> dispara <code>onSearch</code> y <code>Escape</code> vacía el campo y dispara <code>onClear</code>.",
+      "clear": "El botón para limpiar tiene <code>aria-label</code> (por defecto <code>Clear</code>, se cambia con <code>clearLabel</code>) y no le quita el foco al input.",
+      "label": "<code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "InputSearch agrega clases gem-input-search a las de InputText.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz (junto a gem-input-text). Recibe `wrapperClassName`.",
+        "clear": "Botón para limpiar el valor.",
+        "label": "Label del campo.",
+        "field": "Contenedor del input, los íconos y el botón.",
+        "control": "El <input>. Recibe `className`.",
+        "prefix": "Lupa o ícono de prefijo.",
+        "suffix": "Contenedor del sufijo y del botón para limpiar.",
+        "message": "Texto de ayuda o error debajo del campo.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "hasClear": "Se aplica cuando se muestra el botón para limpiar.",
+        "suffixAndClear": "Se aplica con `suffixIcon` y botón para limpiar a la vez.",
+        "labelOutline": "Se aplica con `labelPlacement=\"outline\"`.",
+        "invalid": "Se aplica con `isInvalid`, `errorMessage` o si falla `validRegex`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables de InputText que el componente calcula midiendo el prefijo y el sufijo, y aplica como estilo inline en la raíz. Sirven para leerlas desde tu CSS; no se sobrescriben con una clase.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-input-prefix-pad": "Ancho medido de la lupa o ícono de prefijo; se usa como padding izquierdo del input.",
+        "--gem-input-suffix-pad": "Ancho medido del sufijo y el botón para limpiar; se usa como padding derecho del input."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa el campo. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en InputSearch"
+      },
+      "items": {
+        "--gem-color-border": "Borde del input.",
+        "--gem-color-accent": "Borde con foco.",
+        "--gem-shadow-focus": "Anillo de foco del input y del botón para limpiar.",
+        "--gem-color-bg": "Fondo del input.",
+        "--gem-color-bg-subtle": "Fondo del botón para limpiar en hover.",
+        "--gem-color-fg": "Color del valor y del label.",
+        "--gem-color-fg-muted": "Placeholder, lupa, botón para limpiar y texto de ayuda.",
+        "--gem-radius-md": "Radio del input.",
+        "--gem-radius-sm": "Radio del botón para limpiar."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta las props de InputText (salvo type) y los atributos nativos de <input>.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Valor controlado.",
+      "defaultValue": "Valor inicial no controlado.",
+      "clearable": "Muestra el botón para limpiar cuando hay texto.",
+      "clearLabel": "Nombre accesible del botón para limpiar.",
+      "prefixIcon": "Ícono al inicio. Por defecto la lupa; null la oculta.",
+      "suffixIcon": "Ícono decorativo antes del botón para limpiar.",
+      "placeholder": "Texto de ejemplo cuando el campo está vacío.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: arriba o sobre el borde.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "validRegex": "Patrón que el valor debe cumplir. Si falla, muestra el borde de error.",
+      "uppercase": "Convierte lo que se escribe a mayúsculas.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo y oculta el botón para limpiar.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "className": "Clases extra para el <input>.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Evento nativo en cada cambio. También se dispara al limpiar, con value vacío.",
+      "onClear": "Se dispara después de limpiar el campo (botón o Escape).",
+      "onSearch": "Recibe el valor actual al presionar Enter.",
+      "onValidate": "Se dispara cuando cambia la validez según `validRegex`.",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

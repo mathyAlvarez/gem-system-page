@@ -1,0 +1,362 @@
+{
+  "header": {
+    "title": "OtpInput",
+    "description": "Casillas separadas para códigos de verificación (6 por defecto, cualquier largo positivo). Acepta pegar el código completo, se mueve con el teclado y dispara `onComplete` cuando el código está completo."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Código de verificación",
+    "helperText": "Ingresá el código de 6 dígitos que te enviamos por email.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "type": "type",
+    "length": "length",
+    "uppercase": "uppercase",
+    "mask": "mask",
+    "separator": "separator",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Seis casillas numéricas. Podés pegar el código completo en cualquier casilla.",
+      "texts": {
+        "label": "Código de verificación",
+        "helperText": "Ingresá el código de 6 dígitos que te enviamos por email."
+      }
+    },
+    "fourDigits": {
+      "title": "Cuatro dígitos",
+      "description": "`length` define la cantidad de casillas.",
+      "texts": {
+        "label": "PIN",
+        "helperText": "Código de confirmación de cuatro dígitos."
+      }
+    },
+    "fiveDigits": {
+      "title": "Cinco dígitos",
+      "description": "Cualquier largo positivo es válido.",
+      "texts": {
+        "label": "Código de acceso",
+        "helperText": "Código de cinco dígitos por SMS."
+      }
+    },
+    "withSeparator": {
+      "title": "Con separador",
+      "description": "`separator` se ubica en la mitad de las casillas.",
+      "texts": {
+        "label": "Código de autenticación",
+        "helperText": "El separador opcional divide las casillas a la mitad."
+      }
+    },
+    "alphanumeric": {
+      "title": "Alfanumérico",
+      "description": "`type=\"alphanumeric\"` acepta letras y números. `uppercase` es true por defecto.",
+      "texts": {
+        "label": "Código de respaldo",
+        "helperText": "Letras y números. uppercase es true por defecto."
+      }
+    },
+    "caseSensitive": {
+      "title": "Distingue mayúsculas",
+      "description": "`uppercase={false}` respeta las mayúsculas y minúsculas que se escriben.",
+      "texts": {
+        "label": "Código de respaldo",
+        "helperText": "uppercase={false} mantiene lo que escribís tal cual."
+      }
+    },
+    "masked": {
+      "title": "Oculto",
+      "description": "`mask` oculta las casillas completas con un punto.",
+      "texts": {
+        "label": "Código seguro",
+        "helperText": "Por defecto se oculta con un punto. Usá maskIcon para cambiarlo."
+      }
+    },
+    "maskCharacter": {
+      "title": "Carácter de máscara",
+      "description": "`maskIcon` acepta un carácter y además activa la máscara.",
+      "texts": {
+        "label": "Código seguro",
+        "helperText": "maskIcon=\"*\"."
+      }
+    },
+    "maskIcon": {
+      "title": "Ícono de máscara",
+      "description": "`maskIcon` también acepta cualquier nodo de React, como un ícono.",
+      "texts": {
+        "label": "Código seguro",
+        "helperText": "maskIcon acepta cualquier nodo de React."
+      }
+    },
+    "outlineLabel": {
+      "title": "Label sobre el borde",
+      "description": "`labelPlacement=\"outline\"` ubica el label sobre el grupo de casillas.",
+      "texts": {
+        "label": "OTP",
+        "helperText": "El label se apoya sobre el grupo de casillas."
+      }
+    },
+    "withInfoIcon": {
+      "title": "Con ícono de información",
+      "description": "`infoText` agrega un ícono con tooltip arriba a la derecha.",
+      "texts": {
+        "label": "Código de verificación",
+        "infoText": "Los códigos vencen a los 10 minutos.",
+        "helperText": "El ícono de información aparece arriba a la derecha cuando hay infoText."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` muestra el mensaje con role=\"alert\" y fuerza el borde de error.",
+      "texts": {
+        "label": "Código de verificación",
+        "errorMessage": "El código es incorrecto o venció."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea todas las casillas.",
+      "texts": {
+        "label": "Código de verificación",
+        "helperText": "Este campo no se puede editar."
+      }
+    },
+    "required": {
+      "title": "Requerido",
+      "description": "`isRequired` agrega el asterisco y aria-required.",
+      "texts": {
+        "label": "Código de verificación",
+        "helperText": "Los campos requeridos se marcan con *."
+      }
+    },
+    "borders": {
+      "title": "Bordes",
+      "description": "`border` define el tono de las casillas y del texto de ayuda. Se fuerza a error si el campo es inválido.",
+      "helperTexts": {
+        "default": "Borde neutro por defecto.",
+        "outlined": "Borde outlined más grueso.",
+        "borderless": "Borde transparente.",
+        "primary": "Acento primary.",
+        "success": "La validación pasó.",
+        "warning": "Necesita atención.",
+        "error": "Algo salió mal.",
+        "info": "Borde informativo."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "lengths": {
+      "title": "Largos",
+      "description": "4, 6 (por defecto) y 8 casillas.",
+      "labels": {
+        "four": "4 dígitos",
+        "six": "6 dígitos (por defecto)",
+        "eight": "8 dígitos"
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá el valor con value y `onChange`. `onComplete` se dispara una vez cuando el código llega a length.",
+      "texts": {
+        "label": "Código controlado",
+        "helperText": "Pegá un código de 6 dígitos o escribí un carácter por casilla.",
+        "fill": "Completar demo",
+        "clear": "Limpiar",
+        "valueLabel": "Valor",
+        "completeLabel": "Completo",
+        "empty": "(vacío)"
+      }
+    },
+    "allStates": {
+      "title": "Todos los estados",
+      "description": "Base, completo, error y deshabilitado.",
+      "texts": {
+        "base": {
+          "label": "Base",
+          "helperText": "Estado por defecto."
+        },
+        "filled": {
+          "label": "Completo",
+          "helperText": "Todas las casillas completas."
+        },
+        "error": {
+          "label": "Error",
+          "errorMessage": "Código de verificación inválido."
+        },
+        "disabled": {
+          "label": "Deshabilitado"
+        }
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Acento secondary y casillas circulares con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "radius-xs reemplaza a radius-full gracias a tailwind-merge."
+    },
+    "css": {
+      "label": "Código de marca",
+      "helperText": "Sin borde, fondo tertiary suave y radio lg, solo con tokens."
+    }
+  },
+  "apiLink": "Ver la API completa de OtpInput",
+  "api": {
+    "header": {
+      "title": "OtpInput API",
+      "description": "Referencia de la API del componente OtpInput de React: props, eventos, clases CSS, tokens, utilidades y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "OtpInput"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. OTPInput es un alias del mismo componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "No extiende los atributos nativos de <code>&lt;input&gt;</code>: solo acepta las props de la tabla. <code>className</code> va a cada casilla, <code>wrapperClassName</code> al contenedor y <code>onFocus</code>/<code>onBlur</code> al grupo de casillas. Con <code>name</code> se agrega un <code>&lt;input type=\"hidden\"&gt;</code> que envía el código completo en un formulario."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "group": "Las casillas están en un <code>role=\"group\"</code>. El label apunta a la primera casilla; sin label, pasá <code>aria-label</code> o <code>aria-labelledby</code>.",
+      "slots": "Cada casilla tiene <code>aria-label=\"Digit n of length\"</code> (en inglés, no se puede cambiar) y usa <code>inputMode=\"numeric\"</code> cuando type es numeric.",
+      "keyboard": "Flechas, <code>Home</code> y <code>End</code> mueven el foco; <code>Backspace</code> y <code>Delete</code> borran. Pegar reparte el código entre las casillas.",
+      "autocomplete": "La primera casilla usa <code>autoComplete=\"one-time-code\"</code> para que el navegador sugiera el código recibido por SMS.",
+      "states": "<code>isInvalid</code> e <code>isRequired</code> se reflejan en <code>aria-invalid</code> y <code>aria-required</code> de cada casilla; el error usa <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Label del campo.",
+        "required": "Asterisco de campo requerido.",
+        "field": "Contenedor del grupo de casillas.",
+        "slots": "Grupo de casillas (role=\"group\").",
+        "slot": "Envoltorio de cada casilla.",
+        "control": "Cada <input>. Recibe `className`.",
+        "secret": "Casilla completa con la máscara activa (texto transparente).",
+        "mask": "Glifo de máscara sobre la casilla.",
+        "disc": "Máscara por defecto (punto).",
+        "separator": "Separador entre las dos mitades.",
+        "message": "Texto de ayuda o error debajo del campo.",
+        "messageTone": "Color del mensaje con tono {{value}}.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "length": "Cantidad de casillas, por ejemplo gem-otp-input--length-6.",
+        "labelOutline": "Se aplica con `labelPlacement=\"outline\"`.",
+        "hasInfo": "Se aplica cuando hay `infoText`.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`.",
+        "masked": "Se aplica con mask o `maskIcon`.",
+        "uppercase": "Se aplica con uppercase."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "OtpInput no tiene variables CSS propias: usa estos tokens de gem-system. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en OtpInput"
+      },
+      "items": {
+        "--gem-color-border": "Borde de las casillas.",
+        "--gem-color-accent": "Borde con foco, cursor y label sobre el borde con foco.",
+        "--gem-shadow-focus": "Anillo de foco.",
+        "--gem-shadow-xs": "Sombra de las casillas en reposo.",
+        "--gem-color-bg": "Fondo de las casillas y del label sobre el borde.",
+        "--gem-color-bg-subtle": "Fondo deshabilitado y hover del borde borderless.",
+        "--gem-color-fg": "Color de los caracteres, la máscara y el label.",
+        "--gem-color-fg-muted": "Placeholder, separador y texto de ayuda.",
+        "--gem-color-error-600": "Asterisco de requerido.",
+        "--gem-radius-md": "Radio de las casillas.",
+        "--gem-space-2": "Espacio entre casillas.",
+        "--gem-font-sans": "Tipografía del campo."
+      }
+    },
+    "utils": {
+      "title": "Utilidades",
+      "description": "Helpers exportados junto al componente para validar códigos fuera de él.",
+      "columns": {
+        "name": "Nombre",
+        "type": "Tipo",
+        "description": "Descripción"
+      },
+      "items": {
+        "DEFAULT_OTP_LENGTH": "Largo por defecto.",
+        "resolveOtpLength": "Normaliza length: valores no finitos vuelven a 6 y menores a 1 pasan a 1.",
+        "sanitizeOtpValue": "Quita los caracteres no permitidos por type y aplica mayúsculas si corresponde.",
+        "clampOtpLength": "Obsoleto. Alias de resolveOtpLength."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props de OtpInput. No acepta otros atributos nativos.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Código controlado (se recorta a length).",
+      "defaultValue": "Código inicial no controlado.",
+      "length": "Cantidad de casillas. Cualquier entero positivo.",
+      "type": "Caracteres permitidos: solo números o letras y números.",
+      "uppercase": "Convierte lo que se escribe, se pega y se emite a mayúsculas.",
+      "mask": "Oculta las casillas completas con un punto.",
+      "maskIcon": "Glifo de la máscara: un carácter o cualquier nodo. También activa la máscara.",
+      "separator": "Nodo entre las dos mitades de las casillas.",
+      "placeholder": "Texto en las casillas vacías.",
+      "name": "Nombre de un input oculto que envía el código completo.",
+      "id": "Base de los ids de cada casilla.",
+      "autoFocus": "Enfoca la primera casilla vacía al montar.",
+      "autoComplete": "Sugerencia de autocompletado en la primera casilla.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: arriba o sobre el grupo de casillas.",
+      "helperText": "Texto de ayuda debajo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "size": "Tamaño de las casillas.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid en cada casilla).",
+      "isDisabled": "Deshabilita todas las casillas.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "aria-label": "Nombre accesible del grupo cuando no hay label.",
+      "className": "Clases extra para cada casilla.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Recibe el código completo después de cada cambio.",
+      "onComplete": "Se dispara una vez cuando el código llega a length caracteres.",
+      "onFocus": "Foco dentro del grupo de casillas.",
+      "onBlur": "Pérdida de foco del grupo de casillas.",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

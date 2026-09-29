@@ -1,0 +1,37 @@
+.grid-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  padding: var(--gem-space-3);
+  border: 1px dashed var(--gem-color-primary-400);
+  border-radius: var(--gem-radius-md);
+  background: color-mix(in srgb, var(--gem-color-primary-500) 12%, transparent);
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 600;
+  text-align: center;
+}
+
+.grid-cell--accent {
+  border-color: var(--gem-color-secondary-400);
+  background: color-mix(in srgb, var(--gem-color-secondary-500) 14%, transparent);
+}
+
+.grid-cell--tall {
+  min-height: 8rem;
+}
+
+.grid-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: 100%;
+}
+
+.grid-caption {
+  margin-bottom: var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}

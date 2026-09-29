@@ -1,0 +1,6 @@
+/* Preflight is skipped so Tailwind does not reset gem-system or docs styles.
+   Utilities are `important` because gem-system CSS is unlayered and would
+   otherwise beat anything inside @layer utilities. */
+@layer theme, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) important;

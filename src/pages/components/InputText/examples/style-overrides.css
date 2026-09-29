@@ -1,0 +1,30 @@
+.gem-input-text .gem-input-text__control.input-text-pill {
+  border-radius: var(--gem-radius-full);
+  border-color: var(--gem-palette-secondary-400);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 12%, transparent);
+  padding-inline: 1.25rem;
+  font-weight: 650;
+}
+
+.gem-input-text .gem-input-text__control.input-text-pill:focus-visible {
+  border-color: var(--gem-palette-secondary-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gem-palette-secondary-500) 30%, transparent);
+}
+
+.gem-input-text.input-text-branded {
+  gap: 0.5rem;
+}
+
+.gem-input-text.input-text-branded .gem-input-text__label {
+  color: var(--gem-palette-tertiary-700);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.gem-input-text.input-text-branded .gem-input-text__control {
+  border-width: 2px;
+  border-color: var(--gem-palette-tertiary-400);
+  border-radius: var(--gem-radius-lg);
+  background: color-mix(in srgb, var(--gem-palette-tertiary-500) 8%, transparent);
+}

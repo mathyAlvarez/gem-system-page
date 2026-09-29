@@ -1,0 +1,255 @@
+{
+  "header": {
+    "title": "Slider",
+    "description": "Elige un valor numérico o un rango arrastrando o con el teclado. Con un array en `value` o `defaultValue` pasa a modo rango con dos thumbs."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante.",
+    "label": "Volumen",
+    "helperText": "Arrastrá el thumb o usá las flechas.",
+    "size": "size",
+    "tone": "tone",
+    "suffix": "suffix",
+    "range": "rango",
+    "showValue": "showValue",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "rangeLabels": {
+    "min": "Mínimo",
+    "max": "Máximo"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Un valor con `label`, `defaultValue` y el valor visible sobre el thumb.",
+      "texts": {
+        "label": "Volumen",
+        "helperText": "Arrastrá el thumb o usá las flechas."
+      }
+    },
+    "range": {
+      "title": "Rango",
+      "description": "Un array en `defaultValue` muestra dos thumbs que no se cruzan. `minAriaLabel` y `maxAriaLabel` nombran cada thumb.",
+      "texts": {
+        "label": "Rango de precio",
+        "helperText": "Dos thumbs. No se pueden cruzar."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el arrastre y el teclado.",
+      "texts": {
+        "label": "Deshabilitado",
+        "helperText": "Este slider no se puede cambiar."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` fuerza el tono error y muestra el mensaje con role=\"alert\".",
+      "texts": {
+        "label": "Presupuesto",
+        "errorMessage": "Elegí un valor de al menos 25."
+      }
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "Los siete tonos disponibles en la prop `tone`."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg. Cambian el alto del track y el tamaño del thumb.",
+      "labels": {
+        "sm": "Chico",
+        "md": "Mediano",
+        "lg": "Grande"
+      }
+    },
+    "step": {
+      "title": "Paso",
+      "description": "`min`, `max` y `step` definen el rango y el incremento. `formatValue` da formato al valor visible y a aria-valuetext.",
+      "texts": {
+        "label": "Temperatura",
+        "helperText": "step={0.5}"
+      }
+    },
+    "prefixSuffix": {
+      "title": "Prefijo y sufijo",
+      "description": "`prefix` y `suffix` se agregan a cada valor. Si el sufijo empieza con una letra se inserta un espacio.",
+      "texts": {
+        "label": "Duración",
+        "infoText": "Elegí el inicio y el fin del período.",
+        "suffix": "días",
+        "helperText": "Los valores se muestran sobre cada thumb."
+      }
+    },
+    "withoutValue": {
+      "title": "Sin valor visible",
+      "description": "`showValue={false}` oculta el valor sobre el thumb.",
+      "texts": {
+        "label": "Opacidad"
+      }
+    },
+    "withTooltip": {
+      "title": "Con tooltip",
+      "description": "`infoText` agrega un ícono de información en la fila del label, alineado a la derecha.",
+      "texts": {
+        "label": "Radio",
+        "infoText": "Controla el radio de las esquinas de las cards.",
+        "helperText": "El ícono usa el tooltip compartido de los campos."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Manejá el valor con `value` y `onChange`, que se dispara mientras arrastrás o usás el teclado.",
+      "texts": {
+        "label": "Controlado",
+        "valueLabel": "Valor"
+      }
+    },
+    "controlledRange": {
+      "title": "Rango controlado",
+      "description": "Con un array en `value`, `onChange` recibe una tupla [inicio, fin].",
+      "texts": {
+        "label": "Rango controlado",
+        "rangeLabel": "Rango"
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Variables --gem-slider-* redefinidas con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "El track de 0.75rem reemplaza al de 0.5rem gracias a tailwind-merge."
+    },
+    "css": {
+      "branded": "Slider de marca",
+      "brandedHelper": "Tono secondary, track más alto y relleno con degradé.",
+      "square": "Slider cuadrado",
+      "squareHelper": "Track y thumbs con radio xs y acentos tertiary."
+    }
+  },
+  "apiLink": "Ver la API completa de Slider",
+  "api": {
+    "header": {
+      "title": "Slider API",
+      "description": "Referencia de la API del componente Slider de React: props, clases CSS, variables CSS y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Slider"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Además de las props documentadas, Slider acepta los atributos nativos de <code>&lt;div&gt;</code> (<code>HTMLAttributes</code>) salvo <code>onChange</code> y <code>defaultValue</code>. Se aplican a la raíz, igual que <code>className</code> y <code>wrapperClassName</code>. Con <code>name</code> se agrega un <code>&lt;input type=\"hidden\"&gt;</code> (dos en modo rango, el segundo con <code>maxName</code>) para enviar el valor en un formulario."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "Cada thumb es un <code>&lt;button role=\"slider\"&gt;</code> con <code>aria-valuemin</code>, <code>aria-valuemax</code>, <code>aria-valuenow</code> y <code>aria-valuetext</code> (con <code>formatValue</code>, <code>prefix</code> y <code>suffix</code>).",
+      "range": "En modo rango el control usa <code>role=\"group\"</code> y cada thumb se nombra con <code>minAriaLabel</code> y <code>maxAriaLabel</code> (por defecto en inglés: <code>Minimum</code> y <code>Maximum</code>).",
+      "keyboard": "Flechas mueven un <code>step</code>; <code>PageUp</code>/<code>PageDown</code> mueven un 10 % del rango; <code>Home</code> y <code>End</code> van al mínimo y al máximo.",
+      "label": "El label nombra el thumb con <code>aria-labelledby</code>. Sin label visible, pasá <code>aria-label</code>. <code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>.",
+      "states": "<code>isInvalid</code>/<code>errorMessage</code>, <code>isRequired</code> e <code>isDisabled</code> agregan <code>aria-invalid</code>, <code>aria-required</code> y <code>aria-disabled</code> a cada thumb."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Nombres de clase aplicados según las props. Útiles para estilar con CSS.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `className` y `wrapperClassName`.",
+        "header": "Fila del label y el ícono de información.",
+        "control": "Área interactiva (arrastre y click). role=\"group\" en modo rango.",
+        "ticks": "Contenedor de los valores visibles.",
+        "tickValue": "Valor visible sobre cada thumb (`showValue`).",
+        "rail": "Contenedor del track y los thumbs.",
+        "track": "Track de fondo.",
+        "fill": "Parte rellena del track.",
+        "thumb": "Cada thumb (role=\"slider\").",
+        "thumbMin": "Thumb de inicio en modo rango.",
+        "thumbMax": "Thumb de fin en modo rango.",
+        "message": "Texto de ayuda debajo del campo.",
+        "messageError": "Mensaje de error debajo del campo.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "tone": "Se aplica cuando `tone=\"{{value}}\"` (o error si es inválido).",
+        "single": "Se aplica con un solo valor.",
+        "range": "Se aplica en modo rango.",
+        "invalid": "Se aplica con `isInvalid` o `errorMessage`.",
+        "disabled": "Se aplica con `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Cada tono y tamaño define estas variables. Redefinilas en tu `wrapperClassName` para cambiar colores y medidas sin pisar reglas.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-slider-tone": "Color del relleno y del anillo del thumb.",
+        "--gem-slider-tone-hover": "Anillo del thumb en hover.",
+        "--gem-slider-tone-active": "Anillo del thumb mientras se arrastra.",
+        "--gem-slider-tone-focus": "Anillo de foco (box-shadow).",
+        "--gem-slider-thumb": "Fondo del thumb.",
+        "--gem-slider-track-h": "Alto del track.",
+        "--gem-slider-thumb-size": "Tamaño del thumb."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <div> (salvo onChange y defaultValue).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "min": "Límite inferior.",
+      "max": "Límite superior.",
+      "step": "Incremento. Los valores se ajustan a este paso.",
+      "value": "Valor controlado. Usá una tupla para un rango.",
+      "defaultValue": "Valor inicial no controlado. Usá una tupla para un rango.",
+      "label": "Label visible del campo.",
+      "helperText": "Texto de ayuda debajo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información junto al label.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "size": "Tamaño del track y el thumb.",
+      "tone": "Tono del relleno. Se fuerza a error si el campo es inválido.",
+      "showValue": "Muestra el valor sobre cada thumb.",
+      "prefix": "Texto antes de cada valor (por ejemplo $).",
+      "suffix": "Texto después de cada valor (por ejemplo %). Agrega un espacio si empieza con una letra.",
+      "formatValue": "Formatea el valor visible y aria-valuetext.",
+      "minAriaLabel": "Nombre accesible del thumb de inicio en modo rango.",
+      "maxAriaLabel": "Nombre accesible del thumb de fin en modo rango.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el slider.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "name": "Nombre del input oculto (o del thumb de inicio en modo rango).",
+      "maxName": "Nombre del input oculto del thumb de fin en modo rango.",
+      "id": "Id de la raíz y base de los ids internos.",
+      "aria-label": "Nombre accesible cuando no hay label.",
+      "className": "Clases extra para el contenedor raíz.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Se dispara mientras cambia el valor: número o tupla en modo rango.",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

@@ -1,0 +1,419 @@
+{
+  "header": {
+    "title": "InputText",
+    "description": "Campo de texto base de gem-system: label, texto de ayuda, error, prefijo y sufijo, bordes de estado y validación por regex. InputSearch, InputPassword e InputMask se construyen sobre él."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Probá las props principales y copiá el código generado.",
+    "label": "Nombre completo",
+    "placeholder": "Ana García",
+    "helperText": "Este es un texto de ayuda.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "type": "type",
+    "uppercase": "uppercase",
+    "isInvalid": "isInvalid",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Label, placeholder y texto de ayuda.",
+      "texts": {
+        "label": "Nombre completo",
+        "placeholder": "Ana García",
+        "helperText": "Este es un texto de ayuda."
+      }
+    },
+    "outlineLabel": {
+      "title": "Label sobre el borde",
+      "description": "`labelPlacement=\"outline\"` ubica el label sobre el borde superior.",
+      "texts": {
+        "label": "Nombre completo",
+        "placeholder": "Ana García",
+        "helperText": "El label se apoya sobre el borde superior."
+      }
+    },
+    "withInfoIcon": {
+      "title": "Con ícono de información",
+      "description": "`infoText` agrega un ícono con tooltip arriba a la derecha.",
+      "texts": {
+        "label": "Nombre completo",
+        "placeholder": "Ana García",
+        "infoText": "Sobre este campo",
+        "helperText": "El ícono de información aparece arriba a la derecha cuando hay infoText."
+      }
+    },
+    "withInfoReactNode": {
+      "title": "Información con ReactNode",
+      "description": "`infoText` acepta cualquier nodo de React para personalizar el tooltip. `infoLabel` le da el nombre accesible al ícono.",
+      "texts": {
+        "label": "Nombre completo",
+        "placeholder": "Ana García",
+        "infoLabel": "Sobre este campo",
+        "infoTitle": "Pista del campo",
+        "infoBody": "Contenido de React dentro del tooltip.",
+        "helperText": "Pasá un ReactNode a infoText para un tooltip personalizado."
+      }
+    },
+    "outlineWithInfoIcon": {
+      "title": "Label sobre el borde con información",
+      "description": "Con el label sobre el borde, el ícono de información también se ubica sobre el borde.",
+      "texts": {
+        "label": "Con borde",
+        "placeholder": "borde outlined",
+        "infoText": "Sobre este campo"
+      }
+    },
+    "validRegex": {
+      "title": "Validación con regex",
+      "description": "`validRegex` marca el borde de error si el valor no cumple el patrón. `onValidate` informa la validez al padre.",
+      "texts": {
+        "label": "Email",
+        "placeholder": "tu@ejemplo.com",
+        "helperText": "Tiene que ser un email válido.",
+        "validLabel": "válido",
+        "invalidLabel": "inválido"
+      }
+    },
+    "outlineLabelBorders": {
+      "title": "Bordes con label sobre el borde",
+      "description": "Con `labelPlacement=\"outline\"` el label toma el color del borde.",
+      "texts": {
+        "success": "Se ve bien",
+        "warning": "Revisá esto",
+        "error": "Inválido"
+      }
+    },
+    "withoutLabel": {
+      "title": "Sin label",
+      "description": "Sin label visible, pasá aria-label para darle un nombre accesible.",
+      "texts": {
+        "placeholder": "Sin label arriba",
+        "ariaLabel": "Búsqueda"
+      }
+    },
+    "withPrefixIcon": {
+      "title": "Con ícono de prefijo",
+      "description": "`prefixIcon` agrega un ícono decorativo antes del valor.",
+      "texts": {
+        "label": "Email",
+        "placeholder": "tu@ejemplo.com"
+      }
+    },
+    "withSuffixIcon": {
+      "title": "Con ícono de sufijo",
+      "description": "`suffixIcon` agrega un ícono decorativo después del valor.",
+      "texts": {
+        "label": "Buscar",
+        "placeholder": "Buscar…"
+      }
+    },
+    "withPrefixText": {
+      "title": "Con texto de prefijo",
+      "description": "`prefix` acepta texto, íconos o cualquier nodo de React.",
+      "texts": {
+        "label": "Sitio web",
+        "placeholder": "ejemplo.com",
+        "helperText": "prefix acepta texto, íconos o cualquier nodo de React."
+      }
+    },
+    "withSuffixText": {
+      "title": "Con texto de sufijo",
+      "description": "`suffix` se ubica después del valor.",
+      "texts": {
+        "label": "Precio",
+        "helperText": "El sufijo va después del valor."
+      }
+    },
+    "withPrefixAndSuffix": {
+      "title": "Con prefijo y sufijo",
+      "description": "Podés usar los dos a la vez. El padding del input se ajusta al ancho de cada uno.",
+      "texts": {
+        "label": "Monto",
+        "helperText": "Los dos pueden tener texto, íconos o nodos combinados."
+      }
+    },
+    "withIcons": {
+      "title": "Con íconos",
+      "description": "`prefixIcon` y `suffixIcon` juntos.",
+      "texts": {
+        "label": "Usuario",
+        "placeholder": "usuario",
+        "helperText": "Íconos de prefijo y sufijo."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` muestra el mensaje con role=\"alert\" y fuerza el borde de error.",
+      "texts": {
+        "label": "Email",
+        "defaultValue": "no-es-un-email",
+        "errorMessage": "Ingresá un email válido."
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` bloquea el campo.",
+      "texts": {
+        "label": "ID de cuenta",
+        "helperText": "Este campo no se puede editar."
+      }
+    },
+    "required": {
+      "title": "Requerido",
+      "description": "`isRequired` agrega el asterisco y aria-required.",
+      "texts": {
+        "label": "Nombre visible",
+        "placeholder": "Campo requerido",
+        "helperText": "Los campos requeridos se marcan con *."
+      }
+    },
+    "uppercase": {
+      "title": "Mayúsculas",
+      "description": "`uppercase` convierte lo que se escribe a mayúsculas, también en el valor que recibe `onChange`.",
+      "texts": {
+        "label": "Código",
+        "helperText": "Lo que escribís y el valor de onChange quedan en mayúsculas."
+      }
+    },
+    "borders": {
+      "title": "Bordes",
+      "description": "`border` define el tono del borde y del texto de ayuda. Se fuerza a error si el campo es inválido.",
+      "texts": {
+        "default": {
+          "text": "Borde por defecto",
+          "helperText": "Borde neutro por defecto."
+        },
+        "outlined": {
+          "text": "Borde más marcado",
+          "helperText": "Borde outlined más grueso."
+        },
+        "borderless": {
+          "text": "Sin borde",
+          "helperText": "Borde transparente para interfaces mínimas."
+        },
+        "primary": {
+          "text": "Tono primary",
+          "helperText": "Borde con el acento primary."
+        },
+        "success": {
+          "text": "Se ve bien",
+          "helperText": "La validación pasó."
+        },
+        "warning": {
+          "text": "Revisá este campo",
+          "helperText": "Necesita atención."
+        },
+        "error": {
+          "text": "Valor inválido",
+          "helperText": "Algo salió mal."
+        },
+        "info": {
+          "text": "Contexto adicional",
+          "helperText": "Borde informativo."
+        }
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "Tres tamaños: sm, md y lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "styleOverrides": {
+      "title": "Sobrescribir estilos",
+      "description": "`className` apunta al <input>, `wrapperClassName` al contenedor y style se pasa inline al <input>.",
+      "texts": {
+        "className": {
+          "placeholder": "className propio",
+          "helperText": "Forma de píldora secondary desde una clase propia."
+        },
+        "wrapperClassName": {
+          "placeholder": "wrapperClassName propio",
+          "helperText": "Label y control con estilos desde el contenedor."
+        },
+        "style": {
+          "placeholder": "Prop style propia",
+          "helperText": "Útil para ajustes puntuales sin una clase CSS."
+        }
+      }
+    },
+    "allStates": {
+      "title": "Todos los estados",
+      "description": "Base, con íconos, error y deshabilitado.",
+      "texts": {
+        "base": {
+          "label": "Base",
+          "placeholder": "Campo base",
+          "helperText": "Estado por defecto."
+        },
+        "icons": {
+          "label": "Con íconos",
+          "placeholder": "Buscar usuarios"
+        },
+        "error": {
+          "label": "Error",
+          "defaultValue": "Valor inválido",
+          "errorMessage": "Algo salió mal."
+        },
+        "disabled": {
+          "label": "Deshabilitado",
+          "defaultValue": "Valor de solo lectura"
+        }
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Marca con Tailwind",
+      "brandHelper": "Acento secondary y forma de píldora con cn() en wrapperClassName.",
+      "merged": "Combinado",
+      "mergedHelper": "radius-xs reemplaza a radius-full gracias a tailwind-merge.",
+      "placeholder": "Escribí algo"
+    },
+    "css": {
+      "label": "Campo suave",
+      "placeholder": "Ana García",
+      "helperText": "Sin borde, fondo tertiary suave y radio lg, solo con tokens."
+    }
+  },
+  "apiLink": "Ver la API completa de InputText",
+  "api": {
+    "header": {
+      "title": "InputText API",
+      "description": "Referencia de la API del componente InputText de React: props, eventos, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "InputText"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath para cargar solo este componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos nativos de <code>&lt;input&gt;</code> (<code>InputHTMLAttributes</code>) salvo <code>size</code>, <code>prefix</code> y <code>type</code>, que se redefinen. Los atributos extra, <code>className</code> y <code>style</code> van al <code>&lt;input&gt;</code>; <code>wrapperClassName</code> va al contenedor."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "label": "El label se vincula con el input por <code>htmlFor</code>. Sin label visible, pasá <code>aria-label</code>.",
+      "describedby": "<code>helperText</code> y <code>errorMessage</code> se vinculan con <code>aria-describedby</code>; el error usa <code>role=\"alert\"</code>.",
+      "states": "<code>isInvalid</code> y <code>isRequired</code> se reflejan en <code>aria-invalid</code> y <code>aria-required</code>. El asterisco es <code>aria-hidden</code>.",
+      "info": "El ícono de información es un botón con tooltip; <code>infoLabel</code> le da el nombre accesible cuando <code>infoText</code> no es texto."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "label": "Label del campo.",
+        "required": "Asterisco de campo requerido.",
+        "field": "Contenedor del input y los slots de prefijo y sufijo.",
+        "control": "El <input>. Recibe `className` y style.",
+        "icon": "Slot de prefijo o sufijo.",
+        "prefix": "Slot de prefijo (`prefixIcon` + prefix).",
+        "suffix": "Slot de sufijo (suffix + `suffixIcon`).",
+        "message": "Texto de ayuda o error debajo del campo.",
+        "messageTone": "Color del mensaje con tono {{value}}.",
+        "size": "Se aplica cuando `size=\"{{value}}\"`.",
+        "border": "Se aplica cuando `border=\"{{value}}\"`.",
+        "labelOutline": "Se aplica con `labelPlacement=\"outline\"`.",
+        "hasPrefix": "Se aplica cuando hay prefijo.",
+        "hasSuffix": "Se aplica cuando hay sufijo.",
+        "hasInfo": "Se aplica cuando hay `infoText`.",
+        "invalid": "Se aplica con `isInvalid`, `errorMessage` o si falla `validRegex`.",
+        "disabled": "Se aplica con `isDisabled`.",
+        "uppercase": "Se aplica con uppercase."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "El componente las calcula midiendo el prefijo y el sufijo, y las aplica como estilo inline en la raíz. Sirven para leerlas desde tu CSS; no se sobrescriben con una clase.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-input-prefix-pad": "Ancho medido del prefijo; se usa como padding izquierdo del input.",
+        "--gem-input-suffix-pad": "Ancho medido del sufijo; se usa como padding derecho del input."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa el campo. Redefinilos en tu `wrapperClassName` para cambiar solo este campo.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en InputText"
+      },
+      "items": {
+        "--gem-color-border": "Borde del input.",
+        "--gem-color-accent": "Borde con foco y label sobre el borde con foco.",
+        "--gem-shadow-focus": "Anillo de foco.",
+        "--gem-shadow-xs": "Sombra del input en reposo.",
+        "--gem-color-bg": "Fondo del input y del label sobre el borde.",
+        "--gem-color-bg-subtle": "Fondo deshabilitado y hover del borde borderless.",
+        "--gem-color-fg": "Color del valor y del label.",
+        "--gem-color-fg-muted": "Placeholder, íconos y texto de ayuda.",
+        "--gem-color-error-600": "Asterisco de requerido.",
+        "--gem-radius-md": "Radio del input.",
+        "--gem-font-sans": "Tipografía del campo."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos nativos de <input>.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "value": "Valor controlado.",
+      "defaultValue": "Valor inicial no controlado.",
+      "type": "Tipo nativo del input, limitado a tipos de texto.",
+      "placeholder": "Texto de ejemplo cuando el campo está vacío.",
+      "label": "Label visible del campo.",
+      "labelPlacement": "Posición del label: arriba o sobre el borde.",
+      "helperText": "Texto de ayuda debajo del campo (se oculta si hay `errorMessage`).",
+      "errorMessage": "Mensaje de error. Marca el campo como inválido.",
+      "infoText": "Muestra un ícono de información con este contenido.",
+      "infoLabel": "Nombre accesible del ícono de información.",
+      "prefix": "Contenido antes del valor: texto, ícono o cualquier nodo.",
+      "suffix": "Contenido después del valor: texto, ícono o cualquier nodo.",
+      "prefixIcon": "Ícono decorativo antes del valor (se muestra antes de prefix).",
+      "suffixIcon": "Ícono decorativo después del valor (se muestra después de suffix).",
+      "size": "Tamaño del control.",
+      "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
+      "validRegex": "Patrón que el valor debe cumplir. Un valor vacío se considera válido.",
+      "uppercase": "Convierte lo que se escribe y el valor de `onChange` a mayúsculas.",
+      "isInvalid": "Marca el campo como inválido (aria-invalid).",
+      "isDisabled": "Deshabilita el campo.",
+      "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "className": "Clases extra para el <input>.",
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onChange": "Evento nativo en cada cambio.",
+      "onValidate": "Se dispara cuando cambia la validez (y al montar si hay `validRegex`).",
+      "onInfoClick": "Se dispara al activar el ícono de información."
+    }
+  }
+}

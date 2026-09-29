@@ -1,0 +1,19 @@
+.gem-container.container-narrow {
+  --gem-container-max: 32rem;
+  --gem-container-pad: var(--gem-space-6);
+}
+
+.gem-container.container-card {
+  --gem-container-max: 40rem;
+  padding-block: var(--gem-space-6);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+  box-shadow: var(--gem-shadow-sm);
+}
+
+@media (min-width: 1024px) {
+  .gem-container.container-card {
+    --gem-container-pad: var(--gem-space-10);
+  }
+}

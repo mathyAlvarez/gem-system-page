@@ -1,0 +1,351 @@
+{
+  "header": {
+    "title": "DatePicker",
+    "description": "Field to pick a date, a range or a date and time from a calendar. Supports locales, output formats, min and max limits, and quick month and year navigation."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Try the main props and copy the generated code.",
+    "label": "Start date",
+    "placeholder": "Select a date",
+    "helperText": "Single date selection.",
+    "size": "size",
+    "border": "border",
+    "labelPlacement": "labelPlacement",
+    "locale": "locale",
+    "range": "range",
+    "showTime": "showTime",
+    "clearable": "clearable",
+    "isLoading": "isLoading",
+    "isDisabled": "isDisabled",
+    "isRequired": "isRequired"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Single date selection with label, placeholder and helper text.",
+      "texts": {
+        "label": "Start date",
+        "placeholder": "Select a date",
+        "helperText": "Single date selection."
+      }
+    },
+    "locale": {
+      "title": "Locale",
+      "description": "`locale` takes a BCP 47 code and translates months, weekdays and the formatted value.",
+      "labels": {
+        "en": "English (default)",
+        "es": "Spanish",
+        "pt": "Portuguese"
+      }
+    },
+    "outputFormat": {
+      "title": "Output format",
+      "description": "`format` defines how the value is shown. Tokens: YYYY, YY, MMMM, MMM, MM, M, DD and D.",
+      "texts": {
+        "rangeLabel": "Range · DD MMM YYYY",
+        "rangeHelper": "format=\"DD MMM YYYY\" with range"
+      }
+    },
+    "range": {
+      "title": "Range",
+      "description": "`range` lets you pick a start and an end date. The value is { start, end }.",
+      "texts": {
+        "label": "Stay",
+        "placeholder": "Select a date range",
+        "helperText": "Pick a start date, then an end date."
+      }
+    },
+    "withTime": {
+      "title": "With time",
+      "description": "`showTime` adds hour and minute pickers.",
+      "texts": {
+        "label": "Appointment",
+        "helperText": "Use the X next to the clock to clear without opening the calendar."
+      }
+    },
+    "timeRange": {
+      "title": "Time range",
+      "description": "With range and `showTime` you can edit the start and end time separately.",
+      "texts": {
+        "label": "Event window",
+        "helperText": "Use Start / End to edit each time."
+      }
+    },
+    "minuteStep": {
+      "title": "Minute step",
+      "description": "`minuteStep` sets the interval between minutes in the picker.",
+      "texts": {
+        "label": "Meeting",
+        "helperText": "Minutes jump in 15-minute steps."
+      }
+    },
+    "timeFormat": {
+      "title": "Time format",
+      "description": "Time tokens: HH, H, hh, h, mm, m, A and a.",
+      "texts": {
+        "h24": "24-hour clock.",
+        "h12": "12-hour clock with AM/PM."
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` shows an X to empty the field without opening the calendar.",
+      "texts": {
+        "label": "Invoice date",
+        "helperText": "Use the X next to the calendar icon to clear the value."
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` blocks the field and the calendar.",
+      "texts": {
+        "label": "Locked date",
+        "helperText": "This field cannot be changed."
+      }
+    },
+    "loading": {
+      "title": "Loading",
+      "description": "`isLoading` shows a spinner and `loadingText` while the value arrives.",
+      "texts": {
+        "label": "Appointment",
+        "loadingText": "Loading date…",
+        "helperText": "The field shows loadingText next to the spinner."
+      }
+    },
+    "loadingThenValue": {
+      "title": "Loading then value",
+      "description": "Starts in `isLoading`. After 2 seconds the date is set and the spinner stops.",
+      "texts": {
+        "label": "Appointment",
+        "loadingText": "Loading date…",
+        "fetching": "Fetching date…",
+        "loaded": "Loaded."
+      }
+    },
+    "error": {
+      "title": "Error",
+      "description": "`errorMessage` marks the field as invalid and forces the error border.",
+      "texts": {
+        "label": "Due date",
+        "errorMessage": "Select a due date to continue."
+      }
+    },
+    "minMax": {
+      "title": "Min and max",
+      "description": "`minDate` and `maxDate` disable dates outside the interval.",
+      "texts": {
+        "label": "Appointment",
+        "helperText": "Only dates from today through next month are enabled."
+      }
+    },
+    "birthDate": {
+      "title": "Birth date",
+      "description": "For distant dates, click the month or year to jump quickly.",
+      "texts": {
+        "label": "Date of birth",
+        "placeholder": "Select a date",
+        "helperText": "Click the month/year to jump to a distant year."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "Three sizes: sm, md and lg.",
+      "labels": {
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large"
+      }
+    },
+    "borders": {
+      "title": "Borders",
+      "description": "`border` changes the border tone. It is forced to error when the field is invalid."
+    },
+    "withTooltip": {
+      "title": "With tooltip",
+      "description": "`infoText` adds an info icon next to the label.",
+      "texts": {
+        "label": "Billing period",
+        "infoText": "The invoice is generated on this date."
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "Drive the date with value and `onChange`.",
+      "texts": {
+        "label": "Controlled",
+        "valueLabel": "Value"
+      }
+    },
+    "controlledRange": {
+      "title": "Controlled range",
+      "description": "In range mode, value and `onChange` work with { start, end }.",
+      "texts": {
+        "label": "Controlled range",
+        "valueLabel": "Range"
+      }
+    },
+    "events": {
+      "title": "Events",
+      "description": "Open the calendar, change month or year, pick a date and edit the time: each callback is listed below.",
+      "texts": {
+        "dateTime": "Date and time",
+        "range": "Range",
+        "empty": "No events yet."
+      }
+    }
+  },
+  "styleChanges": {
+    "tailwind": {
+      "brand": "Branded with Tailwind",
+      "brandHelper": "Secondary tokens with cn() on wrapperClassName.",
+      "merged": "Merged",
+      "mergedHelper": "Tertiary tokens replace the secondary ones thanks to tailwind-merge."
+    },
+    "css": {
+      "pill": "Pill branded",
+      "pillHelper": "Full radius and tertiary accents.",
+      "range": "Branded range",
+      "rangeHelper": "The range also picks up the redefined tokens."
+    }
+  },
+  "apiLink": "See the full DatePicker API",
+  "api": {
+    "header": {
+      "title": "DatePicker API",
+      "description": "API reference for the DatePicker React component: props, events, CSS classes, variables and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "DatePicker"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath to load only this component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Besides the documented props, DatePicker accepts native <code>&lt;button&gt;</code> attributes (<code>ButtonHTMLAttributes</code>) except <code>onChange</code>, <code>value</code>, <code>defaultValue</code> and <code>size</code>. They are applied to the button that opens the calendar; <code>className</code> also goes to the button and <code>wrapperClassName</code> to the root."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "trigger": "The field is a <code>&lt;button&gt;</code> with <code>aria-haspopup=\"dialog\"</code>, <code>aria-expanded</code> and <code>aria-controls</code> pointing at the calendar.",
+      "dialog": "The calendar uses <code>role=\"dialog\"</code> with the visible month as <code>aria-label</code>; the days grid uses <code>role=\"grid\"</code>.",
+      "keyboard": "<code>Escape</code> closes the calendar and returns focus to the field.",
+      "label": "<code>helperText</code> and <code>errorMessage</code> are linked with <code>aria-describedby</code>; the error uses <code>role=\"alert\"</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Class names applied based on props. Useful for styling with CSS.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `wrapperClassName`.",
+        "label": "Field label.",
+        "control": "Wraps the field and the popover.",
+        "trigger": "Visible button that opens the calendar. Receives `className`.",
+        "value": "Formatted date text.",
+        "valuePlaceholder": "Applied to the value while the placeholder is shown.",
+        "icons": "Container for the calendar and clock icons.",
+        "clear": "Button that clears the value (clearable).",
+        "popover": "Calendar panel.",
+        "nav": "Row with previous and next month buttons.",
+        "caption": "Visible month and year. Opens the months or years view.",
+        "periodGrid": "Months or years grid.",
+        "period": "Each month or year in the grid.",
+        "weekday": "Header for each weekday.",
+        "grid": "Days grid (role=\"grid\").",
+        "day": "Each calendar day.",
+        "daySelected": "Selected day (or range end).",
+        "dayInRange": "Day inside the selected range.",
+        "dayToday": "Today.",
+        "dayOutside": "Day from another month.",
+        "clock": "Hour and minute picker (`showTime`).",
+        "clockItem": "Each hour or minute in the picker.",
+        "footer": "Calendar footer.",
+        "message": "Helper or error text below the field.",
+        "size": "Applied when `size=\"{{value}}\"`.",
+        "border": "Applied when `border=\"{{value}}\"`.",
+        "labelOutline": "Applied when `labelPlacement=\"outline\"`.",
+        "open": "Applied while the calendar is open.",
+        "range": "Applied when `range={true}`.",
+        "time": "Applied when `showTime={true}`.",
+        "loading": "Applied with `isLoading`.",
+        "invalid": "Applied with `isInvalid` or `errorMessage`.",
+        "disabled": "Applied with `isDisabled`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Own variable and gem-system tokens used by DatePicker. Redefine them in your `wrapperClassName` to change only this field.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-datepicker-range": "Background of days inside the range. Defined on each .gem-datepicker__day.",
+        "--gem-color-primary-600": "Selected day background.",
+        "--gem-color-border": "Field and calendar border.",
+        "--gem-color-accent": "Border while the calendar is open.",
+        "--gem-radius-md": "Field and calendar radius.",
+        "--gem-radius-sm": "Inner buttons, months and years radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts native <button> attributes except `onChange`, value, `defaultValue` and size.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Controlled value. Date in single mode, { start, end } in range mode.",
+      "defaultValue": "Uncontrolled initial value.",
+      "range": "Enables start/end range selection.",
+      "label": "Visible field label.",
+      "labelPlacement": "Label position: on the border (outline) or above the field (above).",
+      "placeholder": "Text shown when nothing is selected.",
+      "helperText": "Hint below the field (hidden when `errorMessage` is shown).",
+      "errorMessage": "Error copy. Marks the field as invalid.",
+      "infoText": "Shows an info icon with this content.",
+      "size": "Control size.",
+      "border": "Border tone. Forced to error when the field is invalid.",
+      "minDate": "Earliest selectable date (inclusive).",
+      "maxDate": "Latest selectable date (inclusive).",
+      "locale": "BCP 47 locale for month names and the formatted value.",
+      "format": "Output pattern. With `showTime` the default is YYYY-MM-DD HH:mm.",
+      "showTime": "Shows hour and minute pickers.",
+      "minuteStep": "Minute interval in the time picker.",
+      "weekStartsOn": "First day of the week: 0 = Sunday, 1 = Monday.",
+      "clearable": "Shows an X to clear without opening the calendar.",
+      "isLoading": "Shows a spinner and blocks the calendar.",
+      "loadingText": "Visible copy while `isLoading` is true.",
+      "isInvalid": "Marks the field as invalid (aria-invalid).",
+      "isDisabled": "Disables the field.",
+      "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "name": "Native name for the hidden input (start date in range mode).",
+      "endName": "Native name for the end-date hidden input (range mode).",
+      "className": "Extra classes for the field button.",
+      "wrapperClassName": "Extra classes for the root container.",
+      "onChange": "Fires when the date or range changes.",
+      "onDateChange": "Single mode: fires when the date is picked, updated or cleared.",
+      "onRangeChange": "Range mode: fires when start or end changes.",
+      "onMonthChange": "Fires when the visible month changes (0–11).",
+      "onYearChange": "Fires when the visible year changes.",
+      "onTimeChange": "Fires when the hour or minute changes.",
+      "onHourChange": "Fires when the hour changes.",
+      "onMinuteChange": "Fires when the minute changes."
+    }
+  }
+}
