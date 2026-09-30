@@ -1,0 +1,15 @@
+.gem-drawer.drawer-branded {
+  --gem-drawer-extent: 26rem;
+  --gem-radius-md: 1rem;
+  --gem-color-border: var(--gem-palette-secondary-300);
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-secondary-500) 6%, white);
+}
+
+.gem-drawer.drawer-branded::backdrop {
+  background-color: color-mix(in srgb, var(--gem-palette-secondary-900) 40%, transparent);
+}
+
+[data-theme="dark"] .gem-drawer.drawer-branded {
+  --gem-color-border: var(--gem-palette-secondary-700);
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-secondary-500) 10%, var(--gem-palette-neutral-900));
+}

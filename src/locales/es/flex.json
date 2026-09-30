@@ -83,7 +83,7 @@
     },
     "withRow": {
       "title": "Flex con Row",
-      "description": "Flex y Grid se combinan: Flex arma la fila del encabezado (título y acciones, con `wrap` para pantallas angostas) y `Row` con `Col` reparte el contenido en columnas. En la página de Grid está explicado el CSS que necesitan los spans por breakpoint.",
+      "description": "Flex y Grid se combinan: Flex arma la fila del encabezado (título y acciones, con `wrap` para pantallas angostas) y `Row` con `Col` reparte el contenido en columnas. Desde 768px, los filtros ocupan 4 columnas y los resultados 8.",
       "texts": {
         "title": "Inventario",
         "filter": "Filtrar",

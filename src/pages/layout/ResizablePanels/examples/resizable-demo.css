@@ -1,0 +1,51 @@
+.resizable-pane {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-height: 100%;
+  padding: var(--gem-space-4);
+  background: var(--gem-color-bg);
+}
+
+.resizable-pane--muted {
+  background: var(--gem-color-bg-subtle);
+}
+
+.resizable-pane--accent {
+  background: color-mix(in srgb, var(--gem-color-primary-500) 8%, var(--gem-color-bg));
+}
+
+.resizable-pane--flush {
+  padding: 0;
+}
+
+.resizable-pane p {
+  margin: 0;
+}
+
+.resizable-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.resizable-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-3);
+}
+
+.resizable-caption {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}
+
+.resizable-fill {
+  display: flex;
+  flex-direction: column;
+}

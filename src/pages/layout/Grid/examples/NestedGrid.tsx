@@ -1,6 +1,5 @@
 import { Col, Grid, Row } from "@gem-org/gem-system";
 import { GridCell } from "./GridCell.tsx";
-import "./grid-col-fix.css";
 
 export function NestedGrid() {
   return (

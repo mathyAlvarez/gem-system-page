@@ -1,12 +1,13 @@
-import type { ReactNode } from "react";
-import { CopyToClipboard, Typography } from "@gem-org/gem-system";
+import { useMemo, useState, type ReactNode } from "react";
+import { CopyToClipboard, Tabs, Typography } from "@gem-org/gem-system";
 import { useTranslation } from "react-i18next";
+import { getCodeFiles } from "../lib/codeFiles.ts";
 import { CodeViewer, type CodeLanguage } from "./CodeViewer.tsx";
 import { propText } from "./PropText.tsx";
 
 type DocsPageHeaderProps = {
   title: string;
-  description: string;
+  description: ReactNode;
   importPath?: string;
 };
 
@@ -19,7 +20,7 @@ export function DocsPageHeader({
     <header className="docs-page__header">
       <Typography variant="h1">{title}</Typography>
       <Typography variant="body" className="docs-page__meta">
-        {propText(description)}
+        {typeof description === "string" ? propText(description) : description}
       </Typography>
       {importPath ? <CodeBlock code={importPath} label="Import" /> : null}
     </header>
@@ -67,31 +68,61 @@ type CodeBlockProps = {
   language?: CodeLanguage;
 };
 
-function CodeHeader({ code, label }: { code: string; label?: string }) {
+function CodePanel({ code, label, language = "typescript" }: CodeBlockProps) {
   const { t } = useTranslation();
+  const files = useMemo(() => getCodeFiles(code, label, language), [code, label, language]);
+  const [activeName, setActiveName] = useState(files[0].name);
+  const active = files.find((file) => file.name === activeName) ?? files[0];
+
+  const copy = (
+    <CopyToClipboard
+      value={active.code}
+      size="sm"
+      label={t("code.copy")}
+      copiedLabel={t("code.copied")}
+      copyAriaLabel={t("code.copyAria")}
+      copiedAriaLabel={t("code.copiedAria")}
+    />
+  );
+
+  if (files.length > 1) {
+    return (
+      <div className="docs-code__tabs">
+        <Tabs
+          size="sm"
+          value={active.name}
+          onChange={setActiveName}
+          listLabel={t("code.files")}
+          classNames={{ root: "docs-code__tabs-root", list: "docs-code__tab-list", panel: "docs-code__panel" }}
+          items={files.map((file) => ({
+            id: file.name,
+            label: file.name,
+            content:
+              file === active ? <CodeViewer code={file.code} language={file.language} /> : null,
+          }))}
+        />
+        <div className="docs-code__copy">{copy}</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="docs-code__header">
-      <Typography variant="caption" className="docs-page__meta">
-        {label ?? ""}
-      </Typography>
-      <CopyToClipboard
-        value={code}
-        size="sm"
-        label={t("code.copy")}
-        copiedLabel={t("code.copied")}
-        copyAriaLabel={t("code.copyAria")}
-        copiedAriaLabel={t("code.copiedAria")}
-      />
-    </div>
+    <>
+      <div className="docs-code__header">
+        <Typography variant="caption" className="docs-page__meta">
+          {label ?? ""}
+        </Typography>
+        {copy}
+      </div>
+      <CodeViewer code={active.code} language={active.language} />
+    </>
   );
 }
 
 export function CodeBlock({ code, label, language }: CodeBlockProps) {
   return (
     <div className="docs-code">
-      <CodeHeader code={code} label={label} />
-      <CodeViewer code={code} language={language} />
+      <CodePanel code={code} label={label} language={language} />
     </div>
   );
 }
@@ -116,8 +147,7 @@ export function DemoBlock({ children, code, label, language, stack = false, over
         {children}
       </div>
       <div className="docs-demo__code">
-        <CodeHeader code={code} label={label} />
-        <CodeViewer code={code} language={language} />
+        <CodePanel code={code} label={label} language={language} />
       </div>
     </div>
   );

@@ -1,0 +1,243 @@
+{
+  "header": {
+    "title": "Avatar",
+    "description": "A person's image with initials or an icon as fallback. Shows an optional presence status. `AvatarGroup` stacks several avatars and sums up the rest in a counter."
+  },
+  "common": {
+    "statuses": {
+      "online": "Online",
+      "offline": "Offline",
+      "busy": "Do not disturb",
+      "away": "Away"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the avatar and its code. When there's a `status` or no name, the example passes `role=\"img\"` and an explicit `aria-label`, because the default texts are fixed.",
+    "unknown": "Unnamed user"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`src` shows the photo and `name` is used as alternative text. If the image fails to load, the initials are shown."
+    },
+    "initials": {
+      "title": "Initials",
+      "description": "Without `src`, `name` generates the initials: the first letter of the first and last word, or the first two letters of a single word. The color comes from a hash of the name, so each person keeps theirs."
+    },
+    "icon": {
+      "title": "Icon fallback",
+      "description": "Without `src` or `name` a user icon is shown. `icon` replaces it and `children` replaces the whole fallback. Without a name, the avatar is announced as `Avatar`: pass `aria-label`.",
+      "texts": {
+        "unknown": "Unnamed user",
+        "team": "Design team",
+        "bot": "Automatic notifications"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `xs`, `sm`, `md` (default), `lg` and `xl`. Image, initials and icon share the same scale."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` colors the fallback background: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `info` or `neutral`. Without `tone`, it's picked from `name`. Check contrast: white initials on `warning`, `success` or `tertiary` may have low contrast."
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` rounds the corners: `sm`, `md`, `lg` or `full` (default, circular)."
+    },
+    "status": {
+      "title": "Status",
+      "description": "`status` adds a presence dot: `online`, `offline`, `busy` or `away`. `statusPosition` places it at the bottom right (`right`, default) or centered (`centered`). The dot is visual only: the example passes `role=\"img\"` and an `aria-label` with the status."
+    },
+    "broken": {
+      "title": "Broken image",
+      "description": "If `src` fails, the initials or icon are shown. Changing `src` retries loading the image."
+    },
+    "group": {
+      "title": "Group",
+      "description": "`AvatarGroup` overlaps the avatars with a ring and centers the status. `max` collapses the rest into a counter and `total` sets the real count when it's larger than the children. The counter is announced as `+N more` and can't be changed; the last example builds its own counter.",
+      "texts": {
+        "team": "Project team",
+        "more": "more people",
+        "custom": "Custom counter"
+      }
+    },
+    "tooltip": {
+      "title": "With tooltip",
+      "description": "Avatar has no tooltip prop: wrap it in `Tooltip`. Since the avatar isn't interactive, pass `tabIndex={0}` so the tooltip also opens with the keyboard.",
+      "texts": {
+        "team": "Project team"
+      }
+    },
+    "person": {
+      "title": "Next to the name",
+      "description": "If the name and status are already visible next to it, pass `alt=\"\"` so the avatar is decorative and isn't read twice."
+    },
+    "helpers": {
+      "title": "Helpers",
+      "description": "`getAvatarInitials` and `getAvatarTone` are the functions Avatar uses. Use them to show the same initials or color in other components.",
+      "texts": {
+        "name": "Name",
+        "initials": "getAvatarInitials",
+        "tone": "getAvatarTone"
+      }
+    }
+  },
+  "apiLink": "See the full Avatar API",
+  "api": {
+    "header": {
+      "title": "Avatar API",
+      "description": "API reference for React Avatar and AvatarGroup: props, helpers, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Avatar"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. `getAvatarInitials` and `getAvatarTone` compute initials and tone the same way the component does."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Avatar</code> accepts <code>&lt;span&gt;</code> attributes except <code>children</code>, and they go to the root along with <code>ref</code>. <code>imgProps</code> reaches the inner <code>&lt;img&gt;</code>, except <code>src</code> and <code>alt</code>. <code>AvatarGroup</code> accepts <code>&lt;div&gt;</code> attributes. It only counts children that are an <code>Avatar</code> or wrap one, like <code>Tooltip</code>, and passes each <code>size</code>, <code>radius</code>, <code>bordered</code> and <code>statusPosition=\"centered\"</code> unless set."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "image": "With an image, the name comes from the <code>&lt;img&gt;</code> <code>alt</code> (<code>alt</code> or <code>name</code>). Without one, the root has <code>role=\"img\"</code> and an <code>aria-label</code>.",
+      "decorative": "With <code>alt=\"\"</code> the avatar gets <code>aria-hidden</code>. Use it when the name is already visible next to it.",
+      "fallback": "Without <code>name</code> or <code>alt</code>, the default name is <code>\"Avatar\"</code>. Pass a descriptive <code>aria-label</code>.",
+      "status": "The status dot has <code>aria-hidden</code>. Without an image, the raw status is appended to the name (<code>\"Ana, online\"</code>). With an image it isn't announced. Pass <code>role=\"img\"</code> and an <code>aria-label</code> with the status.",
+      "group": "<code>AvatarGroup</code> has <code>role=\"group\"</code> but no name: pass it an <code>aria-label</code>.",
+      "overflow": "The <code>max</code> counter is announced as <code>\"+N more\"</code> and can't be changed. To translate it, skip <code>max</code> and add your own <code>Avatar</code> with the number and an <code>aria-label</code>.",
+      "contrast": "Initials are white on the tone color. On <code>warning</code>, <code>success</code> and <code>tertiary</code> contrast may fall below 4.5:1; the automatic tone can pick them too.",
+      "focus": "Avatar isn't interactive. If you add a tooltip, pass <code>tabIndex={0}</code> so it can be focused."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size: `--xs`, `--sm`, `--md`, `--lg` or `--xl`. Sets the size variables.",
+        "radius": "Radius: `--radius-sm`, `--radius-md`, `--radius-lg` or `--radius-full`.",
+        "tone": "Fallback tone: `--primary`, `--danger`, `--neutral`, etc.",
+        "bordered": "Applied with `bordered`. Draws a ring with `--gem-avatar-ring`.",
+        "hasImage": "Applied when the image is shown.",
+        "face": "Clipped wrapper for the image or fallback. Receives `classNames.face`.",
+        "image": "The `<img>`. Receives `classNames.image` and `imgProps.className`.",
+        "fallback": "Fallback wrapper. Receives `classNames.fallback`.",
+        "initials": "Initials. Receives `classNames.initials`.",
+        "icon": "Fallback icon. Receives `classNames.icon`.",
+        "status": "Status dot. Receives `classNames.status`.",
+        "statusValue": "Status: `--online`, `--offline`, `--busy` or `--away`.",
+        "statusPosition": "Position: `--right` or `--centered`.",
+        "group": "`AvatarGroup` root. Receives `className` and `classNames.root`.",
+        "groupItem": "Wrapper for each avatar in the group. Overlaps the avatars.",
+        "overflow": "`max` counter. Receives `classNames.overflow`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Avatar's own variables. The size class sets them, so override them with `.gem-avatar.your-class`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-avatar-size": "Avatar width and height.",
+        "--gem-avatar-font": "Initials font size.",
+        "--gem-avatar-icon": "Fallback icon size.",
+        "--gem-avatar-status": "Status dot size.",
+        "--gem-avatar-ring": "Ring thickness with `bordered`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Avatar.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Avatar"
+      },
+      "items": {
+        "--gem-color-{tone}-500": "Background of each tone. `danger` uses `--gem-color-error-500`.",
+        "--gem-color-neutral-300": "`neutral` tone background.",
+        "--gem-color-neutral-400": "Base background and `offline` dot.",
+        "--gem-palette-neutral-0": "Initials and icon color.",
+        "--gem-color-fg": "Initials color on `neutral`.",
+        "--gem-color-bg": "`bordered` ring, group ring and status dot border.",
+        "--gem-color-bg-subtle": "Background while the image loads.",
+        "--gem-color-{success|error|warning}-solid": "`online`, `busy` and `away` dots.",
+        "--gem-radius-{sm|md|lg|full}": "Radius per `radius`.",
+        "--gem-space-2": "Overlap between avatars in the group.",
+        "--gem-font-sans": "Initials font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "They also accept their element's attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "avatar": {
+        "title": "Avatar",
+        "description": "A single avatar.",
+        "items": {
+          "src": "Image URL. If missing or broken, initials or icon are shown.",
+          "name": "Person's name. Generates initials, tone and accessible name.",
+          "alt": "Accessible name. Defaults to `name`. With `\"\"` the avatar is decorative.",
+          "size": "Avatar size.",
+          "radius": "Corner rounding.",
+          "tone": "Fallback color. Without a value, computed from `name`, or `neutral`.",
+          "status": "Presence dot.",
+          "statusPosition": "Dot position. In `AvatarGroup` the default is `centered`.",
+          "bordered": "Draws a ring in the background color.",
+          "icon": "Replaces the icon when there's no image or initials.",
+          "children": "Custom fallback. Replaces initials and icon.",
+          "imgProps": "Extra props for the `<img>`, such as `loading` or `onError`.",
+          "role": "Root role. Without an image it's `img`.",
+          "aria-label": "Root accessible name. Pass it with `role=\"img\"` to announce the status your way.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `face`, `image`, `fallback`, `initials`, `icon` and `status`.",
+          "ref": "Root ref. `Tooltip` uses it for positioning."
+        }
+      },
+      "group": {
+        "title": "AvatarGroup",
+        "description": "Stacks several avatars.",
+        "items": {
+          "children": "Avatars to stack. They can be wrapped in a `Tooltip`.",
+          "size": "Size for avatars that don't set one.",
+          "radius": "Radius for avatars that don't set one.",
+          "max": "Visible avatars before the counter. Without a value, all are shown.",
+          "total": "Real number of people, when larger than the children.",
+          "aria-label": "Group name. No default.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes for `root` and `overflow`."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Exported functions.",
+        "items": {
+          "initials": "Initials of the first and last word, or the first letters of a single word, uppercased.",
+          "tone": "Stable tone from the name, among `primary`, `secondary`, `tertiary`, `success`, `warning` and `info`."
+        }
+      }
+    }
+  }
+}

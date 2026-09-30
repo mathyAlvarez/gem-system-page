@@ -1,0 +1,28 @@
+.statistic-card-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: min(20rem, 100%);
+  min-width: 0;
+}
+
+.statistic-card-demo--wide {
+  width: min(52rem, 100%);
+}
+
+.statistic-card-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-4);
+  width: min(52rem, 100%);
+}
+
+.statistic-card-demo__row > * {
+  flex: 1 1 14rem;
+  max-width: 20rem;
+}
+
+.statistic-card-demo__actions {
+  display: flex;
+  gap: var(--gem-space-2);
+}

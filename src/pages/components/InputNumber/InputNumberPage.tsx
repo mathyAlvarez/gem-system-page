@@ -40,6 +40,8 @@ import { TailwindInputNumber } from "./examples/TailwindInputNumber.tsx";
 import tailwindCode from "./examples/TailwindInputNumber.tsx?raw";
 import { VariantInputNumbers } from "./examples/VariantInputNumber.tsx";
 import variantCode from "./examples/VariantInputNumber.tsx?raw";
+import { ClearableInputNumber } from "./examples/ClearableInputNumber.tsx";
+import clearableCode from "./examples/ClearableInputNumber.tsx?raw";
 import "./InputNumberPage.scss";
 
 type StoryId =
@@ -53,6 +55,7 @@ type StoryId =
   | "withIconsAndSteppers"
   | "withIconsAndAddition"
   | "outlineLabel"
+  | "clearable"
   | "error"
   | "disabled"
   | "sizes"
@@ -129,6 +132,12 @@ export function InputNumberPage() {
       file: "OutlineLabelInputNumber.tsx",
       code: outlineLabelCode,
       preview: <OutlineLabelInputNumber {...t("stories.outlineLabel.texts", { returnObjects: true })} />,
+    },
+    {
+      id: "clearable",
+      file: "ClearableInputNumber.tsx",
+      code: clearableCode,
+      preview: <ClearableInputNumber {...t("stories.clearable.texts", { returnObjects: true })} />,
     },
     {
       id: "error",

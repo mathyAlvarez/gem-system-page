@@ -1,0 +1,26 @@
+.progress-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+}
+
+.progress-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono, monospace);
+  font-size: 0.75rem;
+}
+
+.progress-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}

@@ -1,0 +1,30 @@
+.gem-navbar.navbar-inverted {
+  --gem-navbar-bg: var(--gem-palette-neutral-900);
+  --gem-navbar-fg: var(--gem-palette-neutral-50);
+  --gem-navbar-border: var(--gem-palette-neutral-800);
+}
+
+.navbar-inverted .gem-navbar__link {
+  color: var(--gem-palette-neutral-50);
+}
+
+.navbar-inverted .gem-navbar__link:hover {
+  background-color: var(--gem-palette-neutral-800);
+  color: var(--gem-palette-primary-300);
+}
+
+.navbar-inverted .gem-navbar__link[aria-current="page"] {
+  background-color: color-mix(in srgb, var(--gem-palette-primary-400) 16%, transparent);
+  color: var(--gem-palette-primary-300);
+}
+
+.navbar-inverted a.gem-navbar__brand:hover {
+  color: var(--gem-palette-primary-300);
+}
+
+.navbar-inverted .gem-button.gem-navbar__toggle,
+.navbar-inverted .gem-navbar__actions .gem-button--transparent {
+  --gem-btn-fg: var(--gem-palette-neutral-50);
+  --gem-btn-bg-hover: var(--gem-palette-neutral-800);
+  --gem-btn-fg-hover: var(--gem-palette-primary-300);
+}

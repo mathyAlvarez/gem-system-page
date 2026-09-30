@@ -1,0 +1,196 @@
+{
+  "header": {
+    "title": "Transition",
+    "description": "Anima la entrada y salida de su contenido. Controlás la presencia con `in` y elegís el movimiento con `effect`: fade, scale, cuatro slides y collapse. Por defecto desmonta el contenido al terminar de salir."
+  },
+  "common": {
+    "toggle": { "show": "Mostrar", "hide": "Ocultar" },
+    "panel": {
+      "title": "Resumen semanal",
+      "body": "12 tareas cerradas, 3 en revisión y 1 bloqueada."
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y usá el botón para ver la entrada y la salida."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Envolvé el contenido y cambiá `in` para mostrarlo u ocultarlo. Sin más props usa `fade` de 220 ms. La primera vez que se monta con `in` en `true` aparece sin animación."
+    },
+    "effects": {
+      "title": "Efectos",
+      "description": "`effect` acepta `fade`, `scale`, `slide-up`, `slide-down`, `slide-left`, `slide-right` y `collapse`. Los slides combinan desplazamiento y opacidad; `collapse` anima la altura."
+    },
+    "collapse": {
+      "title": "Mostrar y ocultar contenido",
+      "description": "Para un disclosure, usá `collapse` con un botón que tenga `aria-expanded` y `aria-controls`. Pasá `unmountOnExit={false}` para que el `id` al que apunta `aria-controls` exista siempre.",
+      "texts": {
+        "trigger": "Opciones avanzadas",
+        "title": "Opciones avanzadas",
+        "body": "Estas opciones cambian cómo se exporta el reporte. Casi nunca hace falta tocarlas."
+      }
+    },
+    "timing": {
+      "title": "Duración, retraso y curva",
+      "description": "`duration` recibe milisegundos, o `{ enter, exit }` para tiempos distintos. `delay` se aplica tanto al entrar como al salir, y `easing` acepta cualquier curva CSS."
+    },
+    "stagger": {
+      "title": "Aparición escalonada",
+      "description": "Con un `delay` distinto por elemento, los ítems aparecen de a uno. Al salir se invierte el orden. `Transition` va dentro de cada `<li>` para no romper la estructura de la lista.",
+      "texts": {
+        "listLabel": "Integraciones",
+        "items": [
+          { "name": "GitHub", "detail": "Conectada" },
+          { "name": "Slack", "detail": "Conectada" },
+          { "name": "Figma", "detail": "Pendiente" },
+          { "name": "Linear", "detail": "Sin conectar" }
+        ]
+      }
+    },
+    "appear": {
+      "title": "Animar al montar",
+      "description": "Con `appear`, la primera vez que se monta ya visible también se anima. Útil para contenido que llega después de cargar.",
+      "texts": {
+        "replay": "Volver a montar"
+      }
+    },
+    "keepMounted": {
+      "title": "Mantener montado",
+      "description": "Por defecto, el contenido se desmonta al salir y pierde su estado. Con `unmountOnExit={false}` queda en el DOM, transparente e inerte, y sigue ocupando su espacio. Escribí en los dos campos, ocultalos y volvé a mostrarlos.",
+      "texts": {
+        "unmounted": "Se desmonta",
+        "mounted": "Queda montado",
+        "field": "Nota",
+        "placeholder": "Escribí algo"
+      }
+    },
+    "renderProp": {
+      "title": "Estado de la transición",
+      "description": "`children` puede ser una función que recibe el estado: `entering`, `entered`, `exiting` o `exited`. Sirve para adaptar el contenido a cada fase.",
+      "texts": {
+        "statuses": {
+          "entering": "Entrando",
+          "entered": "Visible",
+          "exiting": "Saliendo",
+          "exited": "Oculto"
+        }
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onEnter`, `onEntering` y `onEntered` avisan cada fase de la entrada; `onExit`, `onExiting` y `onExited`, las de la salida. `onExited` corre antes de desmontar.",
+      "texts": {
+        "logLabel": "Registro de eventos",
+        "clear": "Limpiar"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Transition",
+  "api": {
+    "header": {
+      "title": "Transition API",
+      "description": "Referencia de la API de Transition de React: props, eventos, clases CSS, variables y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Transition"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Transition</code> acepta los atributos de <code>&lt;div&gt;</code>. Van al contenedor que agrega alrededor del contenido. <code>children</code> también acepta una función que recibe el estado."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "reducedMotion": "Respeta <code>prefers-reduced-motion</code>: con esa preferencia, entra y sale al instante.",
+      "hidden": "Cuando sale y queda montado, recibe <code>hidden</code>, <code>inert</code> y <code>aria-hidden</code>: no se puede enfocar ni lo leen los lectores de pantalla. Como la clase del componente fija <code>display</code>, <code>hidden</code> no lo saca del layout: sigue ocupando su espacio, transparente.",
+      "focus": "No mueve el foco. Si el foco estaba dentro del contenido que sale, se pierde: devolvelo al botón que lo ocultó.",
+      "disclosure": "Para mostrar y ocultar contenido, usá un botón con <code>aria-expanded</code> y <code>aria-controls</code>. <code>aria-controls</code> necesita <code>unmountOnExit={false}</code>, para que el elemento exista siempre.",
+      "announce": "El contenido que aparece no se anuncia. Si es un aviso importante, ponelo en una región <code>aria-live</code> o usá un componente que ya la tenga, como Toast.",
+      "wrapper": "Agrega un <code>&lt;div&gt;</code> alrededor del contenido. Dentro de listas o tablas, ponelo dentro de cada <code>&lt;li&gt;</code> o celda para no romper la estructura.",
+      "duration": "Mantené las animaciones cortas y no uses el movimiento como única forma de comunicar algo."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos. En cada fase se aplica una sola de las clases de fase.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor. Recibe `className` y `classNames.root`. Es `inline-block` por defecto.",
+        "effect": "Efecto: `--fade`, `--scale`, `--slide-up`, `--slide-down`, `--slide-left`, `--slide-right` o `--collapse`.",
+        "enter": "Primer frame de la entrada, con el estado inicial.",
+        "enterActive": "Entrada en curso. Tiene el `transition` de CSS.",
+        "entered": "Visible, sin animación.",
+        "exit": "Primer frame de la salida.",
+        "exitActive": "Salida en curso. Tiene el `transition` de CSS.",
+        "exited": "Oculto: transparente y sin eventos de puntero. Si queda montado, conserva su espacio.",
+        "block": "Se aplica con `block` o con `collapse`: ocupa todo el ancho.",
+        "inner": "Contenedor interno, solo con `collapse`. Recibe `classNames.inner`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Duración, retraso y curva se definen con estilos inline a partir de las props, así que el CSS común no las pisa.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-transition-duration": "Duración de la fase actual. La define `duration`. Cambiala solo con la prop: el componente usa ese valor para saber cuándo termina.",
+        "--gem-transition-delay": "Retraso. Lo define `delay`.",
+        "--gem-transition-easing": "Curva. La define `easing`. Se puede pisar con una utilidad `!important`, como en el ejemplo de Tailwind.",
+        "--gem-transition-offset": "Distancia de los slides. Vale `0.75rem` y se puede cambiar con CSS."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Transition acepta además los atributos de `<div>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "presence": { "title": "Presencia", "description": "Cuándo se muestra y qué pasa al salir." },
+      "motion": { "title": "Movimiento", "description": "Efecto, tiempos y curva." },
+      "events": { "title": "Eventos", "description": "Callbacks de cada fase." },
+      "styling": { "title": "Estilos", "description": "Clases y referencias." }
+    },
+    "items": {
+      "in": "`true` hace entrar al contenido y `false` lo hace salir.",
+      "children": "Contenido, o una función que recibe el estado actual.",
+      "appear": "Anima también el primer montaje cuando `in` ya es `true`.",
+      "unmountOnExit": "Desmonta el contenido al terminar de salir. Con `false` queda en el DOM, transparente e inerte, ocupando su espacio.",
+      "effect": "Movimiento de entrada y salida.",
+      "duration": "Duración en milisegundos. `{ enter, exit }` separa los tiempos.",
+      "delay": "Retraso en milisegundos, al entrar y al salir.",
+      "easing": "Curva CSS.",
+      "block": "Ocupa todo el ancho del contenedor. `collapse` siempre lo hace.",
+      "onEnter": "Empieza la entrada, con el estado inicial aplicado.",
+      "onEntering": "La transición de entrada está corriendo.",
+      "onEntered": "Terminó la entrada. También corre en el primer montaje sin `appear`.",
+      "onExit": "Empieza la salida.",
+      "onExiting": "La transición de salida está corriendo.",
+      "onExited": "Terminó la salida, antes de desmontar.",
+      "className": "Clases extra para el contenedor.",
+      "classNames": "Clases por parte: `root` e `inner` (solo con `collapse`).",
+      "style": "Estilos inline. Se combinan con las variables que define el componente.",
+      "ref": "Se reenvía al contenedor."
+    }
+  }
+}

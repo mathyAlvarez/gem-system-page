@@ -48,11 +48,15 @@ export const inputMaskProps = [
   { name: "onValueChange", type: "(next: InputMaskValue) => void", defaultValue: "—" },
   { name: "onComplete", type: "(next: InputMaskValue) => void", defaultValue: "—" },
   { name: "onValidate", type: "(isValid: boolean, value: string) => void", defaultValue: "—" },
+  { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 
 export const inputMaskCssClasses = [
   { name: ".gem-input-mask", rule: "root" as const },
+  { name: ".gem-field-clear", rule: "clear" as const },
   { name: ".gem-input-text__label", rule: "label" as const },
   { name: ".gem-input-text__required", rule: "required" as const },
   { name: ".gem-input-text__field", rule: "field" as const },

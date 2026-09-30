@@ -1,0 +1,218 @@
+{
+  "header": {
+    "title": "Indicator",
+    "description": "Corner mark that flags its child as featured. Wrap a card, tile or image. `variant` is the shape (`ribbon`, `fold` or `flag`) and `placement` is the corner."
+  },
+  "common": {
+    "featured": "Featured",
+    "new": "New",
+    "hot": "Hot"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the mark and its code. With `fold` the example uses a short word. Without `label`, it passes an explicit `aria-label` because the default name is fixed to `Featured`.",
+    "label": "Featured",
+    "short": "New",
+    "featured": "Featured"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Wrap any surface. By default it's a `tertiary` `ribbon` on the top-end corner."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` sets the shape: `ribbon` is a diagonal band, `fold` a folded corner and `flag` a tab sitting on the corner."
+    },
+    "placements": {
+      "title": "Placement",
+      "description": "`placement` picks the corner: `top-end` (default), `top-start`, `bottom-end` or `bottom-start`. `start` and `end` map to left and right."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` changes the background and text color: `primary`, `secondary`, `tertiary` (default), `success`, `warning`, `error`, `info` or `neutral`."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It scales the ribbon width, fold, flag, text and icon."
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "The mark is clipped with `radius`: `none`, `sm`, `md` (default), `lg` or `full`. Match the child's radius so the ribbon stays inside the corners."
+    },
+    "fold": {
+      "title": "Fold",
+      "description": "`variant=\"fold\"` shows the full text diagonally, so keep words short. It works on all four corners."
+    },
+    "typography": {
+      "title": "Typography",
+      "description": "`textStyle` applies a typography token (`caption`, `label`, `bodySm`, `code`, etc.) to a string `label` and removes the uppercase. A React node in `label` renders as-is; pass `aria-label` in that case."
+    },
+    "card": {
+      "title": "With a card",
+      "description": "`block` stretches the indicator to the container width, handy with cards. The default `radius` (`md`) matches `Card`.",
+      "texts": {
+        "title": "Coastal retreat",
+        "subtitle": "Available this weekend",
+        "body": "Sea-view cabin with breakfast included and free cancellation up to 48 hours before."
+      }
+    },
+    "icon": {
+      "title": "Icon",
+      "description": "`icon` adds a glyph before the text. Without `label` a star is shown; pass `aria-label` to name the mark.",
+      "texts": {
+        "loved": "Loved"
+      }
+    },
+    "offset": {
+      "title": "Offset",
+      "description": "`offset` moves the mark away from the corner, in pixels. Useful when the child has its own border or padding."
+    },
+    "toggle": {
+      "title": "Show and hide",
+      "description": "`isInvisible` removes the mark without unmounting the content. Use it to show the mark based on state without layout shifts.",
+      "texts": {
+        "hide": "Hide mark",
+        "show": "Show mark"
+      }
+    }
+  },
+  "styles": {
+    "cva": {
+      "sale": "Sale",
+      "limited": "Limited edition",
+      "eco": "Eco"
+    }
+  },
+  "apiLink": "See the full Indicator API",
+  "api": {
+    "header": {
+      "title": "Indicator API",
+      "description": "API reference for the React Indicator component: props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Indicator"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Indicator</code> accepts <code>&lt;div&gt;</code> attributes, which go to the root along with <code>ref</code>, except <code>role</code> and <code>aria-label</code>, which go to the mark layer. <code>style</code> is merged with <code>--gem-indicator-offset</code> when you pass <code>offset</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "The mark layer has <code>role=\"img\"</code>. Change it with <code>role</code>.",
+      "name": "The accessible name is <code>aria-label</code> or, if missing, the string <code>label</code>.",
+      "fallback": "Without a string <code>label</code> or <code>aria-label</code>, the name is <code>\"Featured\"</code>. Pass an explicit <code>aria-label</code> for other languages.",
+      "custom": "If <code>label</code> is a React node, it isn't used as the name: pass <code>aria-label</code>.",
+      "decorative": "The icon has <code>aria-hidden</code>. With <code>isInvisible</code> the layer is removed from the DOM and not announced.",
+      "surface": "The mark comes after the child in the DOM, so it's read after the content. It has <code>pointer-events: none</code> and doesn't block clicks.",
+      "contrast": "Each tone sets a text color with good contrast. If you change <code>--gem-indicator-bg</code> or <code>--gem-indicator-fg</code>, check it reaches 4.5:1: the text is small."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Defines the variables. Receives `className` and `classNames.root`.",
+        "tone": "Tone: `--primary`, `--error`, `--neutral`, etc. Sets `--gem-indicator-bg` and `--gem-indicator-fg`.",
+        "variant": "Shape: `--ribbon`, `--fold` or `--flag`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Sets the sizing variables.",
+        "radius": "Radius: `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg` or `--radius-full`. Sets `--gem-indicator-radius`.",
+        "placement": "Corner: `--top-end`, `--top-start`, `--bottom-end` or `--bottom-start`.",
+        "block": "Applied with `block`. Takes the full width.",
+        "hasLabel": "Applied when there's a `label`. In `fold` it enlarges the corner and rotates the text.",
+        "surface": "Child wrapper. Receives `classNames.surface`.",
+        "layer": "Layer that clips the mark with the radius. Holds the role and name. Receives `classNames.layer`.",
+        "mark": "The colored mark. Receives `classNames.mark`.",
+        "content": "Icon and text wrapper.",
+        "icon": "Icon. Receives `classNames.icon`.",
+        "label": "Text of a string `label`. Receives `classNames.label`.",
+        "labelToken": "Applied with `textStyle`. Removes the uppercase.",
+        "slot": "Wrapper of a React node `label`. Receives `classNames.label`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Indicator's own variables. The tone, size and radius classes set them, so use `.gem-indicator.your-class` to override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-indicator-bg": "Mark background color.",
+        "--gem-indicator-fg": "Text and icon color.",
+        "--gem-indicator-offset": "Distance from the corner. Set by `offset`.",
+        "--gem-indicator-radius": "Radius used to clip the mark.",
+        "--gem-indicator-ribbon": "Ribbon length in `ribbon`.",
+        "--gem-indicator-inset": "Ribbon distance from the edge in `ribbon`.",
+        "--gem-indicator-overhang": "How far the ribbon overhangs in `ribbon` (negative value).",
+        "--gem-indicator-fold": "Corner side in `fold`.",
+        "--gem-indicator-flag-h": "Minimum tab height in `flag`.",
+        "--gem-indicator-pad": "Vertical ribbon padding.",
+        "--gem-indicator-font": "Text size.",
+        "--gem-indicator-icon": "Icon size.",
+        "--gem-indicator-gap": "Gap between icon and text."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Indicator.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Indicator"
+      },
+      "items": {
+        "--gem-color-{primary|secondary}-600": "Background of the `primary` and `secondary` tones.",
+        "--gem-color-tertiary-500": "Background of the `tertiary` tone.",
+        "--gem-color-{success|warning|error|info}-solid": "Background of the status tones.",
+        "--gem-color-neutral-700": "Background of the `neutral` tone.",
+        "--gem-palette-neutral-{0|950}": "Text color: white or near-black depending on the tone.",
+        "--gem-radius-{none|sm|md|lg|full}": "Layer radius and flag corners.",
+        "--gem-shadow-sm": "Ribbon and flag shadow.",
+        "--gem-font-sans": "Text font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "children": "Surface to highlight: card, tile or image.",
+      "tone": "Mark color.",
+      "variant": "Mark shape.",
+      "size": "Mark size.",
+      "radius": "Radius used to clip the mark. Match the child.",
+      "placement": "Corner where the mark sits.",
+      "offset": "Extra distance from the corner, in pixels.",
+      "label": "Mark text or a custom node. In `fold` use a short word.",
+      "textStyle": "Typography token for a string `label`. Ignored when `label` is a node.",
+      "icon": "Glyph before the text. Without `label`, a star is shown.",
+      "block": "Takes the full container width.",
+      "isInvisible": "Hides the mark without unmounting the child.",
+      "role": "Mark layer role.",
+      "aria-label": "Accessible name of the mark. Defaults to the string `label` or `\"Featured\"`.",
+      "className": "Extra classes for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `mark`, `icon` and `label`.",
+      "ref": "Root ref."
+    }
+  }
+}

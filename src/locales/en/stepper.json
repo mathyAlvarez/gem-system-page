@@ -1,0 +1,271 @@
+{
+  "header": {
+    "title": "Stepper",
+    "description": "Shows progress through a multi-step process: a sign-up, a checkout or an account setup. Each step has a number (or an icon), a title and, optionally, a description and content shown while it is the current step. It is linear by default: you can only go back to completed steps, not jump ahead. Use it when order matters; if the sections are independent, `Tabs` works better."
+  },
+  "demo": {
+    "navLabel": "Workspace setup",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "restart": "Start over",
+    "done": "Done: the workspace is set up.",
+    "steps": {
+      "account": {
+        "label": "Account",
+        "description": "Email and password",
+        "content": "Create the workspace owner account and verify the email address."
+      },
+      "profile": {
+        "label": "Profile",
+        "description": "Name and role",
+        "content": "Add a display name, a photo and the role this person will have."
+      },
+      "review": {
+        "label": "Review",
+        "description": "Confirm details",
+        "content": "Check every field before creating the workspace."
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result. Click the steps to navigate: in linear mode only the current and previous ones respond. `alternativeLabel` only applies horizontally."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass `items` with an `id` and a `label` per step. `defaultValue` picks the initial step; the previous ones are completed and the next ones pending. The current step `content` shows below. Translate `navLabel`: it defaults to \"Progress\"."
+    },
+    "alternativeLabel": {
+      "title": "Labels below",
+      "description": "`alternativeLabel` centers the title and description under each indicator and stretches the connectors. It looks tidier with many steps or little width. Horizontal only."
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "With `orientation=\"vertical\"` the steps stack, the connector runs under each indicator and the content appears next to the current step. Best for narrow screens or steps with a lot of content."
+    },
+    "wizard": {
+      "title": "Controlled wizard",
+      "description": "The most common case: control the step with `value` and `onChange`, and move with your own buttons. On finish, `completed` on each item marks everything as done and `showContent={false}` hides the panel."
+    },
+    "verticalWizard": {
+      "title": "Vertical wizard",
+      "description": "`content` accepts any node, so each step's buttons can live inside the panel. Each action sits next to the content it belongs to."
+    },
+    "nonLinear": {
+      "title": "Non-linear",
+      "description": "With `linear={false}` any enabled step can be selected, including upcoming ones. Useful when steps can be completed in any order, like a profile filled in parts."
+    },
+    "error": {
+      "title": "Error step",
+      "description": "`error` on an item marks it red and swaps the number for an alert mark, even when it is the current step. Pair it with a `description` that explains what to fix.",
+      "texts": {
+        "errorDescription": "Fix the highlighted fields"
+      }
+    },
+    "icons": {
+      "title": "With icons",
+      "description": "`icon` replaces the number while the step is pending or current. Completed steps still show the completed mark (change it with `completedIcon`).",
+      "texts": {
+        "steps": {
+          "account": { "label": "Account", "content": "Sign-in details." },
+          "files": { "label": "Files", "content": "Upload the workspace documents." },
+          "schedule": { "label": "Schedule", "content": "Pick a go-live date." },
+          "settings": { "label": "Settings", "content": "Notifications and visibility." }
+        }
+      }
+    },
+    "optional": {
+      "title": "Optional step",
+      "description": "`optional` adds a text under the title, but it is fixed in English (\"Optional\") and cannot be translated. In other languages, say it in the `description`, as this demo does.",
+      "texts": {
+        "optional": "Optional: can be skipped"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` on an item blocks that step and keyboard navigation skips it. `isDisabled` disables the whole stepper and lowers its opacity, for example while saving."
+    },
+    "readOnly": {
+      "title": "Read-only",
+      "description": "With `clickable={false}` steps cannot be clicked and the stepper only reports status. Useful for tracking, like an order status, where the system drives progress.",
+      "texts": {
+        "navLabel": "Order status",
+        "steps": {
+          "placed": { "label": "Order placed", "description": "March 12" },
+          "packed": { "label": "Packed", "description": "March 13" },
+          "shipped": { "label": "On the way", "description": "Arrives in 2 days" },
+          "delivered": { "label": "Delivered", "description": "Pending" }
+        }
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the indicator (24, 32 or 40px) and the text size. The default is `md`."
+    }
+  },
+  "apiLink": "See the full Stepper API",
+  "api": {
+    "header": {
+      "title": "Stepper API",
+      "description": "API reference for the Stepper React component: props, items, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Stepper"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. `getStepperStatus(item, index, currentIndex)` returns a step status in case you build your own view."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;nav&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>, except <code>children</code>, <code>onChange</code> and <code>defaultValue</code>) and passes them to the root element. <code>classNames</code> adds classes to each part: <code>root</code>, <code>list</code>, <code>item</code>, <code>trigger</code>, <code>indicator</code>, <code>label</code>, <code>description</code>, <code>connector</code> and <code>panel</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "nav": "The stepper is a <code>&lt;nav&gt;</code> with <code>aria-label</code> (from <code>navLabel</code>) and the steps are an ordered list <code>&lt;ol&gt;</code>.",
+      "current": "The current step has <code>aria-current=\"step\"</code>.",
+      "keyboard": "There is a single tab stop. Arrow keys (left and right horizontally, up and down vertically), Home and End move focus between activatable steps.",
+      "linear": "In linear mode, upcoming steps are not buttons: they cannot be focused or activated.",
+      "readOnly": "With <code>clickable={false}</code> or <code>isDisabled</code> no step is a button. <code>isDisabled</code> adds <code>aria-disabled</code> to the <code>&lt;nav&gt;</code>.",
+      "panel": "The current step content is a <code>role=\"region\"</code> named by its step (<code>aria-labelledby</code>), and the step button points to it with <code>aria-controls</code>.",
+      "icons": "Indicators are decorative (<code>aria-hidden</code>): the completed or error state is not announced. If it matters, say it in the <code>description</code>.",
+      "labels": "<code>navLabel</code> (<code>\"Progress\"</code>) and the <code>optional</code> text (<code>\"Optional\"</code>) are in English. Translate <code>navLabel</code>; <code>optional</code> cannot be translated. Use <code>ariaLabel</code> on an item when its <code>label</code> is not text."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root `<nav>` element. Receives `className` and `classNames.root` and defines the stepper variables.",
+        "size": "Indicator and text size.",
+        "orientation": "`horizontal` or `vertical` layout.",
+        "alt": "Applied with `alternativeLabel` horizontally.",
+        "linear": "Applied when `linear` is `true`.",
+        "disabled": "Applied with `isDisabled`. Lowers opacity and blocks the pointer.",
+        "list": "Ordered `<ol>` list of steps. Receives `classNames.list`.",
+        "item": "Each step (`<li>`). Receives `classNames.item`.",
+        "itemStatus": "Step status: `pending`, `current`, `completed` or `error`. Sets the indicator and title colors.",
+        "trigger": "Step button (or `<div>` when it cannot be activated). Receives `classNames.trigger`.",
+        "triggerStatus": "Step status applied to the button. It has no styles of its own; it is a hook.",
+        "indicator": "Circle with the number, icon or mark. Receives `classNames.indicator`.",
+        "mark": "Default error mark.",
+        "copy": "Wrapper for the title, description and optional text.",
+        "label": "Step title. Receives `classNames.label`.",
+        "description": "Step description. Receives `classNames.description`.",
+        "optional": "\"Optional\" text when the item has `optional`.",
+        "connector": "Line between steps. Receives `classNames.connector`.",
+        "connectorDone": "Connector after a completed step.",
+        "panel": "Current step content. Receives `classNames.panel`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Defined on `.gem-stepper`, with their own values in the dark theme. To change them, use a more specific selector such as `.gem-stepper.my-class`. `--gem-stepper-indicator-size` is also set by the size classes.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-stepper-fg": "Text color.",
+        "--gem-stepper-muted": "Color of descriptions and pending step titles.",
+        "--gem-stepper-current": "Color of the current and completed steps (indicator and title).",
+        "--gem-stepper-current-fg": "Number or mark color over `--gem-stepper-current`.",
+        "--gem-stepper-completed": "Connector color after a completed step.",
+        "--gem-stepper-pending": "Indicator border of pending steps.",
+        "--gem-stepper-pending-fg": "Number of pending steps.",
+        "--gem-stepper-error": "Color of error steps.",
+        "--gem-stepper-error-fg": "Mark color over `--gem-stepper-error`.",
+        "--gem-stepper-track": "Color of pending connectors.",
+        "--gem-stepper-surface": "Indicator background of pending steps.",
+        "--gem-stepper-indicator-size": "Indicator diameter."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Stepper.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Stepper"
+      },
+      "items": {
+        "--gem-color-fg": "Default value of `--gem-stepper-fg`.",
+        "--gem-color-fg-muted": "Default value of `--gem-stepper-muted` and `--gem-stepper-pending-fg`.",
+        "--gem-color-primary-600": "Default value of `--gem-stepper-current` and `--gem-stepper-completed`.",
+        "--gem-color-error-600": "Default value of `--gem-stepper-error`.",
+        "--gem-color-neutral-0": "Text color over the current and error steps.",
+        "--gem-color-border": "Default value of `--gem-stepper-pending` and `--gem-stepper-track`.",
+        "--gem-color-bg": "Default value of `--gem-stepper-surface`.",
+        "--gem-palette-*": "Dark theme colors (neutral, primary and error).",
+        "--gem-radius-full": "Round indicator shape.",
+        "--gem-shadow-focus": "Indicator focus ring.",
+        "--gem-space-1": "Small margins of the vertical connector and `alternativeLabel`.",
+        "--gem-space-2": "Gap between indicator and text, and connector margin.",
+        "--gem-space-3": "Column gap in vertical layout.",
+        "--gem-space-4": "Gap between the list and the panel.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props of the Stepper and of each item in `items`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "stepper": {
+        "title": "Stepper",
+        "description": "It also accepts the HTML attributes of a `<nav>`.",
+        "items": {
+          "items": "Steps, in order.",
+          "value": "`id` of the current step (controlled mode).",
+          "defaultValue": "`id` of the initial step (uncontrolled mode). Defaults to the first enabled step.",
+          "orientation": "Step layout.",
+          "size": "Indicator and text size.",
+          "linear": "When `true`, only the current and previous steps can be selected.",
+          "clickable": "With `false` steps cannot be activated and the stepper only shows status.",
+          "alternativeLabel": "Centers titles under the indicators. Horizontal only.",
+          "showContent": "Shows the current step `content`.",
+          "isDisabled": "Disables the whole stepper.",
+          "navLabel": "Accessible name of the `<nav>`.",
+          "completedIcon": "Icon for completed steps.",
+          "errorIcon": "Icon for error steps. Defaults to an alert mark.",
+          "className": "Extra classes for the `<nav>`.",
+          "classNames": "Classes per part: `root`, `list`, `item`, `trigger`, `indicator`, `label`, `description`, `connector` and `panel`.",
+          "onChange": "Runs when another step is picked, with its `id`, the item and its index. It does not run if the step cannot be activated."
+        }
+      },
+      "item": {
+        "title": "StepperItem",
+        "description": "Each item in `items`.",
+        "items": {
+          "id": "Unique identifier. It is the `value` and what `onChange` receives.",
+          "label": "Step title.",
+          "description": "Secondary text under the title.",
+          "icon": "Replaces the number while the step is pending or current.",
+          "content": "Content shown while it is the current step.",
+          "optional": "Adds the \"Optional\" text (in English, cannot be translated).",
+          "disabled": "Disables the step.",
+          "error": "Marks the step as failed, even when it is current.",
+          "completed": "Marks the step as completed even if it comes after the current one.",
+          "ariaLabel": "Accessible name of the step when `label` is not text."
+        }
+      }
+    }
+  }
+}

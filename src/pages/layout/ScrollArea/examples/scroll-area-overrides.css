@@ -1,0 +1,17 @@
+.gem-scroll-area.code-panel {
+  --gem-scroll-area-bg: #16181d;
+  --gem-scroll-area-fg: #e6e8eb;
+  --gem-scroll-area-size: 0.625rem;
+  --gem-scroll-area-thumb: #3a3f4a;
+  --gem-scroll-area-thumb-hover: var(--gem-color-primary-400);
+  --gem-scroll-area-track: #1d2026;
+  --gem-scroll-area-radius: var(--gem-radius-lg);
+}
+
+.code-panel pre {
+  margin: 0;
+  padding: var(--gem-space-4);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.6;
+}

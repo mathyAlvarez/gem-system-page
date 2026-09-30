@@ -1,0 +1,28 @@
+.property-list-branded {
+  --gem-property-list-pad-y: 0.625rem;
+  --gem-property-list-pad-x: 1rem;
+  --gem-property-list-label-width: 9rem;
+  --gem-property-list-rule: var(--gem-color-primary-200);
+
+  border-color: var(--gem-color-primary-300);
+  background: linear-gradient(180deg, var(--gem-color-primary-50), var(--gem-color-bg) 60%);
+}
+
+.property-list-branded .gem-property-list__header {
+  background: var(--gem-color-primary-100);
+}
+
+.property-list-branded .gem-property-list__title {
+  color: var(--gem-color-primary-800);
+}
+
+.property-list-branded .gem-property-list__label {
+  color: var(--gem-color-primary-700);
+}
+
+.property-list-pill .gem-property-list__value {
+  padding: 0.125rem var(--gem-space-2);
+  border-radius: 999px;
+  background: var(--gem-color-neutral-100);
+  font-weight: 600;
+}

@@ -1,0 +1,209 @@
+{
+  "header": {
+    "title": "Breadcrumbs",
+    "description": "Muestra la ruta desde el inicio hasta la página actual, para que la persona sepa dónde está y pueda volver a un nivel anterior con un clic. Se usa arriba del título en páginas que están varios niveles adentro, como un detalle de producto o una configuración. Renderiza un `<nav>` con una lista ordenada `<ol>`."
+  },
+  "demo": {
+    "navLabel": "Ruta de navegación",
+    "overflowLabel": "Mostrar más niveles",
+    "crumbs": {
+      "home": "Inicio",
+      "docs": "Documentación",
+      "components": "Componentes",
+      "breadcrumbs": "Breadcrumbs",
+      "workspace": "Espacio de trabajo",
+      "projects": "Proyectos",
+      "navigation": "Navegación",
+      "files": "Archivos",
+      "settings": "Configuración"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Con la ruta larga y `maxItems` podés ver cómo se colapsan los niveles del medio.",
+    "trail": "trail",
+    "size": "size",
+    "separator": "separator",
+    "maxItems": "maxItems",
+    "itemsBeforeCollapse": "itemsBeforeCollapse",
+    "itemsAfterCollapse": "itemsAfterCollapse"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasá la ruta en `items`, del nivel más alto al actual. Cada item necesita `id` y `label`. El último es la página actual: se muestra resaltado, no es un enlace y recibe `aria-current=\"page\"`. Un item con `href` se renderiza como `<a>`; sin `href`, como `<button>`. En tu app, usá `href` con la URL de cada nivel."
+    },
+    "current": {
+      "title": "Página actual en el medio",
+      "description": "Por defecto la página actual es el último item. Con `current` podés marcar otro, por ejemplo cuando la ruta muestra también los niveles siguientes. Los items después del actual siguen siendo enlaces."
+    },
+    "icons": {
+      "title": "Con íconos",
+      "description": "`icon` agrega un ícono antes del texto. Es decorativo (`aria-hidden`), así que el texto tiene que alcanzar por sí solo. Usalo con moderación: un ícono en el primer nivel suele ser suficiente."
+    },
+    "separator": {
+      "title": "Separador",
+      "description": "`separator` reemplaza la flecha entre niveles por cualquier nodo: un texto como `\"/\"` o un ícono. El separador es decorativo y los lectores de pantalla lo ignoran."
+    },
+    "collapsed": {
+      "title": "Rutas largas",
+      "description": "Cuando la ruta tiene más items que `maxItems`, los del medio se esconden detrás de un botón con tres puntos que abre un menú. `itemsBeforeCollapse` e `itemsAfterCollapse` definen cuántos quedan visibles al principio y al final; el botón cuenta como un lugar más. El menú se cierra con Escape, al hacer clic afuera o al elegir un nivel."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el tamaño del texto: `sm` (12px), `md` (14px, por defecto) o `lg` (16px). Usá `sm` en tablas o paneles densos y `lg` en encabezados grandes."
+    },
+    "navigation": {
+      "title": "Navegar con onItemClick",
+      "description": "`onItemClick` recibe el item elegido y el que era la página actual antes del clic. Sirve para navegar con un router o para registrar el movimiento. Acá la ruta se recorta hasta el nivel elegido. Cada item también acepta su propio `onClick` con los mismos argumentos.",
+      "texts": {
+        "lastClick": "Último movimiento",
+        "none": "ninguno",
+        "reset": "Restablecer ruta"
+      }
+    },
+    "mobile": {
+      "title": "Pantallas chicas",
+      "description": "La ruta pasa a otra línea cuando no entra en el ancho disponible, y cada nivel se corta con puntos suspensivos a partir de 16rem. En pantallas chicas conviene usar `maxItems` para mostrar solo el inicio y los últimos niveles, y `size=\"sm\"` para ganar espacio. Estos recuadros simulan el ancho de un teléfono.",
+      "texts": {
+        "wrapped": "Sin maxItems",
+        "collapsed": "maxItems={3}"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Breadcrumbs",
+  "api": {
+    "header": {
+      "title": "Breadcrumbs API",
+      "description": "Referencia de la API del componente Breadcrumbs de React: props, items, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Breadcrumbs"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML del <code>&lt;nav&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasa a ese elemento, incluido <code>ref</code>. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>list</code>, <code>item</code>, <code>link</code>, <code>current</code>, <code>separator</code> y <code>overflow</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "landmark": "La raíz es un <code>&lt;nav&gt;</code> con <code>navLabel</code> como <code>aria-label</code>, así los lectores de pantalla lo anuncian como navegación.",
+      "list": "Los niveles van en una lista ordenada <code>&lt;ol&gt;</code>, que anuncia la cantidad de niveles y la posición de cada uno.",
+      "current": "La página actual es un <code>&lt;span&gt;</code> con <code>aria-current=\"page\"</code>, no un enlace.",
+      "separator": "Los separadores tienen <code>aria-hidden</code> y no se leen.",
+      "overflow": "El botón de los niveles ocultos tiene <code>aria-expanded</code>, <code>aria-haspopup</code> y <code>aria-controls</code> apuntando al menú. Su nombre es <code>overflowLabel</code>.",
+      "escape": "Con el menú abierto, <code>Escape</code> o un clic afuera lo cierran.",
+      "disabled": "Los items deshabilitados se renderizan como <code>&lt;button disabled&gt;</code> y no se pueden activar.",
+      "labels": "<code>navLabel</code> y <code>overflowLabel</code> vienen en inglés por defecto (<code>\"Breadcrumb\"</code>, <code>\"Show more path\"</code>). Pasalos traducidos si tu app está en otro idioma."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento `<nav>`. Recibe `className` y `classNames.root`. Define las variables de Breadcrumbs.",
+        "size": "Se aplica según `size`. Define el tamaño del texto.",
+        "list": "Lista `<ol>`. Pasa a otra línea cuando no entra.",
+        "item": "Cada `<li>` con su separador y su enlace.",
+        "link": "Enlace o botón de un nivel anterior. Se corta con puntos suspensivos a partir de 16rem.",
+        "current": "Página actual, con `aria-current=\"page\"`.",
+        "icon": "Contenedor del `icon` de un item.",
+        "separator": "Separador entre niveles.",
+        "overflow": "Contenedor del botón y del menú de niveles ocultos.",
+        "trigger": "Botón con tres puntos que abre el menú.",
+        "menu": "Menú con los niveles ocultos."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-breadcrumbs` y ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-breadcrumbs.mi-clase`) o con utilidades de Tailwind.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-breadcrumbs-fg": "Color base del componente.",
+        "--gem-breadcrumbs-muted": "Color de los enlaces y de los separadores.",
+        "--gem-breadcrumbs-current": "Color de la página actual.",
+        "--gem-breadcrumbs-hover": "Color de los enlaces al pasar el mouse."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Breadcrumbs.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Breadcrumbs"
+      },
+      "items": {
+        "--gem-color-fg": "Valor por defecto de `--gem-breadcrumbs-fg`.",
+        "--gem-color-fg-muted": "Valor por defecto de `--gem-breadcrumbs-muted`.",
+        "--gem-color-primary-600": "Valor por defecto de `--gem-breadcrumbs-current`.",
+        "--gem-color-primary-700": "Valor por defecto de `--gem-breadcrumbs-hover`.",
+        "--gem-color-bg": "Fondo del menú de niveles ocultos.",
+        "--gem-color-bg-subtle": "Fondo de los enlaces al pasar el mouse.",
+        "--gem-color-border": "Borde del menú.",
+        "--gem-radius-sm": "Bordes redondeados de los enlaces.",
+        "--gem-radius-md": "Bordes redondeados del menú.",
+        "--gem-shadow-md": "Sombra del menú.",
+        "--gem-shadow-focus": "Anillo de foco de los enlaces y del botón.",
+        "--gem-z-dropdown": "Capa del menú."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del `<nav>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "breadcrumbs": {
+        "title": "Breadcrumbs",
+        "description": "Props del componente principal.",
+        "items": {
+          "items": "Niveles de la ruta, del más alto al actual.",
+          "navLabel": "Nombre accesible del `<nav>` (`aria-label`).",
+          "separator": "Nodo entre niveles. Por defecto, una flecha.",
+          "size": "Tamaño del texto.",
+          "maxItems": "Cantidad de items a partir de la cual se colapsan los del medio.",
+          "itemsBeforeCollapse": "Items visibles al principio cuando la ruta está colapsada.",
+          "itemsAfterCollapse": "Items visibles al final cuando la ruta está colapsada. Mínimo 1.",
+          "overflowLabel": "Nombre accesible del botón de niveles ocultos.",
+          "className": "Clases extra para el `<nav>`.",
+          "classNames": "Clases por parte: `root`, `list`, `item`, `link`, `current`, `separator` y `overflow`.",
+          "onItemClick": "Se llama al elegir un nivel que no es el actual. Recibe el item elegido y el que era el actual."
+        }
+      },
+      "item": {
+        "title": "BreadcrumbItem",
+        "description": "Cada objeto del array `items`.",
+        "items": {
+          "id": "Identificador único. Se usa como `key`.",
+          "label": "Texto del nivel. Acepta cualquier nodo.",
+          "href": "URL de destino. Con `href` se renderiza un `<a>`; sin `href`, un `<button>`.",
+          "icon": "Ícono decorativo antes del texto.",
+          "current": "Marca este nivel como la página actual. Por defecto es el último.",
+          "disabled": "Lo muestra apagado y no se puede activar.",
+          "onClick": "Se llama al elegir este nivel. Recibe el item y el que era el actual."
+        }
+      }
+    }
+  }
+}

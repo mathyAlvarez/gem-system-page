@@ -44,6 +44,9 @@ export const textareaProps = [
   { name: "wrapperClassName", type: "string", defaultValue: "—" },
   { name: "onChange", type: "(event: ChangeEvent<HTMLTextAreaElement>) => void", defaultValue: "—" },
   { name: "onValidate", type: "(isValid: boolean, value: string) => void", defaultValue: "—" },
+  { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 
@@ -51,6 +54,7 @@ const messageTones = ["error", "primary", "success", "warning", "info"] as const
 
 export const textareaCssClasses = [
   { name: ".gem-textarea", rule: "root" as const },
+  { name: ".gem-field-clear", rule: "clear" as const },
   { name: ".gem-textarea__label", rule: "label" as const },
   { name: ".gem-textarea__required", rule: "required" as const },
   { name: ".gem-textarea__field", rule: "field" as const },

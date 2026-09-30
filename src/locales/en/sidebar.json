@@ -1,0 +1,266 @@
+{
+  "header": {
+    "title": "Sidebar",
+    "description": "Side navigation for apps with many sections, like admin panels or internal tools. It shows a header on top, the link list in the middle and a footer at the bottom. It can collapse into a narrow icon rail to give the content more room, and on small screens it turns into a panel that opens from a menu button. It renders an `<aside>` with a `<nav>` inside."
+  },
+  "demo": {
+    "navLabel": "Side navigation",
+    "expandLabel": "Expand sidebar",
+    "collapseLabel": "Collapse sidebar",
+    "menuLabel": "Open menu",
+    "closeLabel": "Close menu",
+    "pageTitle": "Page content",
+    "user": "Alex Rivera",
+    "newProject": "New project",
+    "items": {
+      "home": "Home",
+      "projects": "Projects",
+      "team": "Team",
+      "messages": "Messages",
+      "starred": "Starred",
+      "settings": "Settings",
+      "workspace": "Workspace",
+      "files": "Files",
+      "archive": "Archive",
+      "people": "People",
+      "guests": "Guests"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and the code instantly. Use the arrow button to collapse the sidebar.",
+    "note": "The demo uses position=\"static\" so the sidebar fills the height of the box.",
+    "side": "side",
+    "shadow": "shadow",
+    "bordered": "bordered",
+    "collapsible": "collapsible",
+    "items": "items",
+    "footer": "footer"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass `header`, `items` and `footer`. Each item needs an `id` and a `label`, and it's best to give it an `icon`: without one, the first letter of the label is shown. The arrow button collapses the sidebar into an icon rail; while collapsed, each icon shows its label in a tooltip. The demos use `position=\"static\"` because they live inside a box with a fixed height.",
+      "note": "Use the arrow to collapse the sidebar. With focus inside, Escape collapses it too. Hover an icon to see its label."
+    },
+    "collapsed": {
+      "title": "Collapsed and controlled",
+      "description": "With `collapsed` and `onCollapsedChange` the state lives in your component, for example to save it in `localStorage` and remember it between visits. If you only want it to start collapsed, use `defaultCollapsed`. To hide the button and keep the sidebar always expanded, pass `collapsible={false}`.",
+      "texts": {
+        "note": "This example starts collapsed. Hover or focus an icon to read its label.",
+        "state": "Sidebar state",
+        "collapsed": "collapsed",
+        "expanded": "expanded"
+      }
+    },
+    "nested": {
+      "title": "Nested groups",
+      "description": "An item with `items` becomes a group that opens and closes. `defaultOpen` sets whether it starts open. The group doesn't navigate: it only shows or hides its children. While collapsed the children are hidden and only the group icon remains, so keep the most used links at the first level.",
+      "note": "Workspace starts open and Archive is disabled. Collapse the sidebar to see how groups hide."
+    },
+    "end": {
+      "title": "Right side",
+      "description": "`side=\"end\"` places the sidebar on the end side (the right in left-to-right languages). The border and the collapse arrow flip automatically. In the layout, the container has to place the sidebar after the content, for example with `flex-direction: row-reverse`.",
+      "note": "The sidebar is on the right and the arrow points outward to collapse it."
+    },
+    "slots": {
+      "title": "Header, extra content and footer",
+      "description": "`header`, `children` and `footer` accept any node. `children` renders below the links, useful for an action button, and hides while collapsed. The footer always stays at the bottom, separated by a border. Here the sidebar uses `bordered={false}` and `shadow=\"md\"` to separate from the content with a shadow.",
+      "note": "The New project button goes in children and the user card in footer."
+    },
+    "responsive": {
+      "title": "Small screens",
+      "description": "Below `overlayBreakpoint` the sidebar hides and a menu button appears. Tapping it opens the sidebar as a panel covering 90% of the width, with a dark backdrop behind; it closes with the close button, Escape, tapping the backdrop or choosing a link (`closeOnItemClick`). It depends on the window width, not the box: this example uses `overlayBreakpoint=\"lg\"`, so shrink the window below 1024px to see it. With `isOpen` and `onOpenChange` you can control the panel.",
+      "note": "Shrink the window below 1024px: the sidebar is replaced by a menu button that opens the panel."
+    }
+  },
+  "breakpoints": {
+    "columns": {
+      "breakpoint": "Value",
+      "width": "Panel with window",
+      "usage": "When to use it"
+    },
+    "items": {
+      "sm": "Default. The sidebar shows on tablets and only becomes a panel on phones.",
+      "md": "When the content needs more width on portrait tablets.",
+      "lg": "For layouts with wide content, like tables or editors.",
+      "never": "The sidebar stays at every size. Useful if you handle responsiveness yourself."
+    }
+  },
+  "position": {
+    "title": "Placement in the layout",
+    "description": "`position` sets how the sidebar is placed. `sticky` (default) stays at the top with the window height while the page scrolls. `fixed` pins it to the window edge: the content has to leave room with a margin equal to the sidebar width. `static` takes the height of its container, as in the demos. In an app, put the sidebar and the content in a flex container and give the content `min-w-0` so it doesn't push the sidebar."
+  },
+  "styles": {
+    "tailwindNote": "14rem width, subtle background, colored border and rounded items with Tailwind utilities.",
+    "cssNote": "A custom class changes the Sidebar variables and the colors of the items and buttons."
+  },
+  "apiLink": "See the full Sidebar API",
+  "api": {
+    "header": {
+      "title": "Sidebar API",
+      "description": "API reference for the Sidebar React component: props, items, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Sidebar"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It accepts the <code>&lt;aside&gt;</code> HTML attributes (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) and passes them to that element. The <code>&lt;aside&gt;</code> lives inside a <code>.gem-sidebar-root</code> with <code>display: contents</code>, which also holds the menu button and the panel backdrop on small screens. <code>classNames</code> adds classes to each part: <code>root</code>, <code>header</code>, <code>nav</code>, <code>list</code>, <code>item</code>, <code>extras</code>, <code>footer</code>, <code>toggle</code>, <code>menu</code> and <code>backdrop</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "landmark": "The root is an <code>&lt;aside&gt;</code> and the links live inside a <code>&lt;nav&gt;</code> with <code>navLabel</code> as its <code>aria-label</code>.",
+      "toggle": "The collapse button has <code>aria-expanded</code> and <code>aria-controls</code> pointing to the <code>&lt;nav&gt;</code>. Its label switches between <code>expandLabel</code> and <code>collapseLabel</code>.",
+      "collapsed": "While collapsed, each item gets its label as <code>aria-label</code> and shows it in a tooltip on hover or focus.",
+      "nested": "Groups are buttons with <code>aria-expanded</code>. When closed, their children are <code>inert</code> and don't receive focus.",
+      "current": "The item with <code>current</code> gets <code>aria-current=\"page\"</code>. Disabled items render as <code>&lt;button disabled&gt;</code>.",
+      "escape": "With focus inside the expanded sidebar, <code>Escape</code> collapses it. With the panel open on small screens, <code>Escape</code> closes it.",
+      "overlay": "On small screens, the menu button has <code>aria-expanded</code>. With the panel closed, the <code>&lt;aside&gt;</code> is <code>inert</code>; with the panel open, the page doesn't scroll behind it.",
+      "labels": "<code>navLabel</code>, <code>expandLabel</code>, <code>collapseLabel</code>, <code>menuLabel</code> and <code>closeLabel</code> default to English. Pass translated values if your app uses another language."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "wrapper": "Container with `display: contents`. Adds `--overlay` and `--open` on small screens.",
+        "root": "The `<aside>` element. Receives `className` and `classNames.root`. Defines the Sidebar variables.",
+        "side": "Applied based on `side`: `start` or `end`.",
+        "position": "Applied based on `position`: `static`, `sticky` or `fixed`.",
+        "shadow": "Applied based on `shadow`.",
+        "bordered": "Applied with `bordered`. Draws the border on the content side.",
+        "collapsed": "Applied while collapsed. Uses `--gem-sidebar-width-collapsed` and hides labels, groups and `children`.",
+        "overlay": "Applied below `overlayBreakpoint`. Turns the sidebar into a fixed panel.",
+        "open": "Applied when the panel is open on small screens.",
+        "header": "Header with the `header` content and the collapse or close button.",
+        "toggle": "Collapse button, or close button on small screens.",
+        "nav": "The `<nav>` element with its own scroll. Holds the list and `children`.",
+        "list": "The `<ul>` list of items. Groups also use `.gem-sidebar__list--nested`.",
+        "item": "Each link or button. Uses `aria-current` for the active state.",
+        "control": "Button of a group with children.",
+        "icon": "Container of each item icon.",
+        "fallback": "Initial shown when the item has no `icon`.",
+        "label": "Item text. Truncated with an ellipsis when it doesn't fit.",
+        "panel": "Animated container for a group's children. Adds `--open` when open.",
+        "extras": "Container for `children`, below the list.",
+        "footer": "Container for `footer`, at the bottom, with a top border.",
+        "menu": "Menu button that opens the panel on small screens.",
+        "backdrop": "Dark backdrop behind the panel. Tapping it closes the panel."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They're defined on `.gem-sidebar` and none are written inline, so you can change them from your own class (`.gem-sidebar.my-class`) or with Tailwind utilities.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-sidebar-bg": "Sidebar background.",
+        "--gem-sidebar-fg": "Text and icon color.",
+        "--gem-sidebar-border": "Color of the side border and the footer border.",
+        "--gem-sidebar-width": "Expanded width. Defaults to `16rem`.",
+        "--gem-sidebar-width-collapsed": "Collapsed width. Defaults to `4.5rem`.",
+        "--gem-sidebar-scrollbar-size": "Thickness of the `<nav>` scrollbar.",
+        "--gem-sidebar-scrollbar-thumb": "Thumb color. Defaults to the text color at 28%.",
+        "--gem-sidebar-scrollbar-thumb-hover": "Thumb color on hover. Defaults to the text color at 45%.",
+        "--gem-sidebar-scrollbar-track": "Track color. Transparent by default."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Sidebar.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Sidebar"
+      },
+      "items": {
+        "--gem-color-bg": "Default value of `--gem-sidebar-bg`.",
+        "--gem-color-fg": "Default value of `--gem-sidebar-fg`.",
+        "--gem-color-border": "Default value of `--gem-sidebar-border`.",
+        "--gem-color-bg-subtle": "Item background on hover.",
+        "--gem-color-primary-500": "Base of the active item background and the initial.",
+        "--gem-color-primary-700": "Active and hovered item text.",
+        "--gem-radius-md": "Rounded corners of the items.",
+        "--gem-shadow-{sm|md|lg}": "Shadows used by `shadow`.",
+        "--gem-shadow-xl": "Panel shadow on small screens.",
+        "--gem-shadow-focus": "Focus ring of the items.",
+        "--gem-z-fixed": "Layer of the sidebar with `position=\"fixed\"`.",
+        "--gem-z-overlay": "Layer of the panel backdrop.",
+        "--gem-z-modal": "Layer of the panel on small screens."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the `<aside>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "sidebar": {
+        "title": "Sidebar",
+        "description": "Props of the main component.",
+        "items": {
+          "header": "Header content: brand, title or any node.",
+          "items": "Navigation items. An item with `items` becomes a group.",
+          "navLabel": "Accessible name of the `<nav>` (`aria-label`).",
+          "footer": "Footer content: user card, button or any node.",
+          "children": "Extra content below the list. Hidden while collapsed.",
+          "side": "Side of the sidebar: start or end.",
+          "position": "How the sidebar is placed: inside its container, stuck to the top on scroll or pinned to the window.",
+          "bordered": "Draws a border on the content side.",
+          "shadow": "Shadow of the sidebar.",
+          "collapsible": "Shows the button to collapse and expand.",
+          "collapsed": "Collapsed state in controlled mode. Use it with `onCollapsedChange`.",
+          "defaultCollapsed": "Initial collapsed state in uncontrolled mode.",
+          "expandLabel": "Accessible label of the button while collapsed.",
+          "collapseLabel": "Accessible label of the button while expanded.",
+          "overlayBreakpoint": "Window width below which the sidebar becomes a panel with a menu button. `never` keeps it always.",
+          "isOpen": "Panel state on small screens, in controlled mode. Use it with `onOpenChange`.",
+          "defaultOpen": "Initial panel state on small screens.",
+          "menuLabel": "Accessible label of the menu button.",
+          "closeLabel": "Accessible label of the close button and the panel backdrop.",
+          "closeOnItemClick": "Closes the panel when an item is chosen, only on small screens.",
+          "className": "Extra classes for the `<aside>`.",
+          "classNames": "Classes per part: `root`, `header`, `nav`, `list`, `item`, `extras`, `footer`, `toggle`, `menu` and `backdrop`.",
+          "onCollapsedChange": "Called when the sidebar collapses or expands.",
+          "onOpenChange": "Called when the panel opens or closes, including the automatic close past the breakpoint."
+        }
+      },
+      "item": {
+        "title": "SidebarItem",
+        "description": "Each object in the `items` array.",
+        "items": {
+          "id": "Unique identifier. Used as the `key`.",
+          "label": "Item text. Also used in the tooltip while collapsed.",
+          "href": "Target URL. With `href` it renders an `<a>`; without it, a `<button>`.",
+          "icon": "Leading icon. Without one, the first letter of `label` is shown.",
+          "current": "Marks the active page and adds `aria-current=\"page\"`.",
+          "disabled": "Dims it and it can't be activated.",
+          "items": "Children of the item. The item becomes a group that opens and closes.",
+          "defaultOpen": "Whether the group starts open.",
+          "onClick": "Called when the item is chosen. Useful to navigate with a router."
+        }
+      }
+    }
+  }
+}

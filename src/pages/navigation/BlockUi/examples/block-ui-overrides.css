@@ -1,0 +1,4 @@
+.gem-block-ui.overlay-themed {
+  --gem-block-ui-overlay: var(--gem-color-bg);
+  --gem-block-ui-spinner-size: var(--gem-icon-4xl, 3.5rem);
+}

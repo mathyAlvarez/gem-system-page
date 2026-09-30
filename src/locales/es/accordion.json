@@ -1,0 +1,239 @@
+{
+  "header": {
+    "title": "Accordion",
+    "description": "Secciones que se abren y cierran para mostrar contenido bajo demanda. Con `type=\"multiple\"` cada panel es independiente; con `type=\"single\"` solo queda uno abierto a la vez. Las secciones se pasan como datos en `items`."
+  },
+  "common": {
+    "sections": [
+      {
+        "id": "billing",
+        "title": "Facturación",
+        "subtitle": "Planes, comprobantes y medios de pago",
+        "content": "Descargá tus facturas, actualizá la tarjeta guardada y cambiá entre pago mensual o anual. Los cambios se aplican al comienzo del próximo ciclo."
+      },
+      {
+        "id": "members",
+        "title": "Miembros y roles",
+        "subtitle": "Quién puede ver o editar este espacio",
+        "content": "Invitá a tu equipo, asigná roles de administrador o lector y quitá accesos. Los invitados solo ven los proyectos que compartas con ellos."
+      },
+      {
+        "id": "notifications",
+        "title": "Notificaciones",
+        "content": "Elegí avisos por correo y en la app para comentarios, menciones y cambios de estado. El resumen por correo puede ser diario o semanal."
+      }
+    ]
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el acordeón y el código. Al cambiar `type` o `collapsible` el ejemplo se reinicia con `defaultValue`."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Por defecto `type` es `multiple`: cada sección se abre sola y pueden quedar varias abiertas. `defaultValue` indica cuáles empiezan abiertas. Enter o Espacio alternan la sección enfocada y las flechas mueven el foco entre encabezados. Los datos del ejemplo están en `demo.ts`."
+    },
+    "single": {
+      "title": "Una a la vez",
+      "description": "Con `type=\"single\"`, abrir una sección cierra las demás. `collapsible` (default `true`) permite cerrar también la que está abierta."
+    },
+    "requiredOpen": {
+      "title": "Siempre una abierta",
+      "description": "Con `type=\"single\"` y `collapsible={false}`, siempre queda un panel abierto. Si ninguno lo está, se abre el primero habilitado."
+    },
+    "icons": {
+      "title": "Con íconos",
+      "description": "`icon` agrega un ícono antes del título. Es decorativo: se oculta a lectores de pantalla.",
+      "texts": {
+        "sections": [
+          { "id": "home", "title": "Espacio de trabajo", "content": "Resumen, accesos directos y actividad reciente de este espacio." },
+          { "id": "files", "title": "Archivos", "content": "Documentos del proyecto agrupados por carpeta." },
+          { "id": "calendar", "title": "Calendario", "content": "Próximas fechas, recordatorios y eventos compartidos." },
+          { "id": "settings", "title": "Configuración", "content": "Visibilidad, notificaciones y opciones de archivo." }
+        ]
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` en un ítem lo deja cerrado y sin interacción, y las flechas lo saltean. `isDisabled` deshabilita todo el acordeón pero respeta los paneles abiertos.",
+      "texts": {
+        "itemLabel": "Un ítem deshabilitado",
+        "allLabel": "isDisabled"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia el estilo: `connected` (un solo borde alrededor, default), `separated` (cada sección con su borde) o `flush` (sin borde exterior, solo separadores)."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` ajusta el espacio interno y el tamaño del texto: `sm`, `md` (default) o `lg`."
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `value` y `onChange` manejás las secciones abiertas desde tu estado. `onChange` recibe la lista de ids abiertos y el ítem que cambió.",
+      "texts": {
+        "openMembers": "Abrir Miembros",
+        "expandAll": "Abrir todas",
+        "collapseAll": "Cerrar todas"
+      }
+    },
+    "rich": {
+      "title": "Contenido enriquecido",
+      "description": "`title` y `content` aceptan cualquier nodo. Si el título no es texto plano, pasá `ariaLabel` para que el botón tenga un nombre claro. Los paneles cerrados usan `inert`, así que sus botones no reciben foco.",
+      "texts": {
+        "title": "Integraciones",
+        "badge": "Nuevo",
+        "steps": [
+          "Conectá tu calendario.",
+          "Elegí qué proyectos sincronizar.",
+          "Confirmá los permisos."
+        ],
+        "action": "Conectar"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Accordion",
+  "api": {
+    "header": {
+      "title": "Accordion API",
+      "description": "Referencia de la API del componente Accordion de React: props, ítems, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Accordion"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `AccordionItem` tipa cada sección de `items`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>&lt;div&gt;</code> salvo <code>children</code>, <code>onChange</code> y <code>defaultValue</code>, y van a la raíz junto con <code>ref</code>, <code>id</code> y <code>className</code>. <code>classNames</code> agrega clases a <code>root</code>, <code>item</code>, <code>heading</code>, <code>trigger</code>, <code>icon</code>, <code>title</code>, <code>subtitle</code>, <code>indicator</code>, <code>panel</code> y <code>content</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "structure": "Cada encabezado es un <code>&lt;button&gt;</code> real con <code>aria-expanded</code> y <code>aria-controls</code> apuntando a su panel.",
+      "heading": "Los botones van dentro de un <code>&lt;h3&gt;</code> fijo. No hay prop para cambiar el nivel; si el acordeón está bajo un <code>&lt;h3&gt;</code>, la jerarquía queda plana.",
+      "name": "Si <code>title</code> es texto, se usa como <code>aria-label</code> y el subtítulo no forma parte del nombre. Si <code>title</code> es un nodo, pasá <code>ariaLabel</code>.",
+      "keyboard": "Enter o Espacio alternan la sección. Flecha abajo y arriba mueven el foco entre encabezados (y vuelven al principio); Inicio y Fin van al primero y al último.",
+      "panel": "Cada panel tiene <code>role=\"region\"</code> con <code>aria-labelledby</code> a su botón. Los cerrados llevan <code>aria-hidden</code> e <code>inert</code>, así que su contenido no se lee ni recibe foco.",
+      "disabled": "Los ítems deshabilitados usan <code>disabled</code> nativo: salen del orden de tabulación y las flechas los saltean.",
+      "regions": "Cada panel es una región con nombre. Con muchas secciones abiertas, la lista de regiones del lector de pantalla puede llenarse.",
+      "motion": "Con <code>prefers-reduced-motion</code> se quitan las animaciones del panel y de la flecha."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Define las variables. Recibe `className` y `classNames.root`.",
+        "variant": "Variante: `--connected`, `--separated` o `--flush`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`.",
+        "type": "Comportamiento: `--multiple` o `--single`.",
+        "disabled": "Se aplica con `isDisabled`. Desactiva los eventos del puntero.",
+        "item": "Cada sección. Recibe `classNames.item`.",
+        "itemOpen": "Se aplica a la sección abierta.",
+        "itemDisabled": "Se aplica a la sección deshabilitada.",
+        "heading": "El `<h3>` que envuelve al botón. Recibe `classNames.heading`.",
+        "trigger": "Botón del encabezado. Recibe `classNames.trigger`.",
+        "icon": "Ícono antes del título. Recibe `classNames.icon`.",
+        "label": "Contenedor del título y el subtítulo.",
+        "title": "Título. Recibe `classNames.title`.",
+        "subtitle": "Subtítulo. Recibe `classNames.subtitle`.",
+        "indicator": "Flecha que gira al abrir. Recibe `classNames.indicator`.",
+        "panel": "Panel colapsable. Anima con `grid-template-rows`. Recibe `classNames.panel`.",
+        "panelInner": "Recorta el contenido durante la animación.",
+        "content": "Contenido del panel. Recibe `classNames.content`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Accordion. El tema oscuro las redefine con un selector de igual especificidad, así que usá `.gem-accordion.tu-clase` y una variante para `[data-theme=\"dark\"]`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-accordion-fg": "Color del título y el contenido.",
+        "--gem-accordion-muted": "Color del subtítulo, el ícono y la flecha.",
+        "--gem-accordion-border": "Color de bordes y separadores.",
+        "--gem-accordion-bg": "Fondo de cada sección.",
+        "--gem-accordion-subtle": "Fondo del encabezado al pasar el mouse.",
+        "--gem-accordion-radius": "Radio en `connected` y `separated`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Accordion.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Accordion"
+      },
+      "items": {
+        "--gem-color-fg": "Valor de `--gem-accordion-fg`.",
+        "--gem-color-fg-muted": "Valor de `--gem-accordion-muted`.",
+        "--gem-color-border": "Valor de `--gem-accordion-border`.",
+        "--gem-color-bg": "Valor de `--gem-accordion-bg`.",
+        "--gem-color-bg-subtle": "Valor de `--gem-accordion-subtle`.",
+        "--gem-radius-md": "Valor de `--gem-accordion-radius`.",
+        "--gem-space-3": "Espacio dentro del encabezado y entre secciones en `separated`.",
+        "--gem-shadow-focus": "Foco del botón del encabezado.",
+        "--gem-palette-neutral-{50|300|500}": "Texto, subtítulo y borde en tema oscuro.",
+        "--gem-font-sans": "Fuente del texto."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<div>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "accordion": {
+        "title": "Accordion",
+        "description": "Componente raíz.",
+        "items": {
+          "items": "Secciones a mostrar. Ver AccordionItem.",
+          "type": "`multiple`: secciones independientes. `single`: una abierta a la vez.",
+          "value": "Ids abiertos, en modo controlado. Con `single` acepta un solo string.",
+          "defaultValue": "Ids abiertos al inicio, sin controlar.",
+          "collapsible": "Con `single`, permite cerrar la sección abierta. Se ignora con `multiple`.",
+          "variant": "Estilo de bordes.",
+          "size": "Espacio interno y tamaño del texto.",
+          "isDisabled": "Deshabilita todas las secciones.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `item`, `heading`, `trigger`, `icon`, `title`, `subtitle`, `indicator`, `panel` y `content`.",
+          "onChange": "Se llama al abrir o cerrar una sección, con los ids abiertos y el ítem que cambió.",
+          "onKeyDown": "Se llama con las teclas presionadas dentro del acordeón."
+        }
+      },
+      "item": {
+        "title": "AccordionItem",
+        "description": "Cada elemento de `items`.",
+        "items": {
+          "id": "Clave estable. Se usa en `value`, en los ids de accesibilidad y en `onChange`.",
+          "title": "Texto del encabezado. Acepta un nodo.",
+          "subtitle": "Texto secundario debajo del título.",
+          "content": "Contenido del panel.",
+          "icon": "Ícono decorativo antes del título.",
+          "disabled": "Deja la sección cerrada y sin interacción.",
+          "ariaLabel": "Nombre accesible del botón cuando `title` no es texto."
+        }
+      }
+    }
+  }
+}

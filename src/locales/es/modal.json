@@ -1,0 +1,346 @@
+{
+  "header": {
+    "title": "Modal",
+    "description": "Ventana de diálogo que aparece sobre la página con un fondo oscurecido. Mientras está abierta, el resto de la página no se puede usar: el foco queda dentro del modal hasta que se cierra. Por defecto se cierra con Escape, con un clic en el fondo o con el botón ×. Usalo para confirmar acciones, completar formularios cortos o mostrar información que requiere atención. Para contenido largo o que no interrumpe, mejor un `Drawer` o una página aparte."
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "done": "Listo",
+    "closeLabel": "Cerrar"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y abrí el modal para ver el resultado. Si desactivás `closeOnBackdrop`, `closeOnEscape` y `showClose` a la vez, solo se cierra con el botón del pie.",
+    "texts": {
+      "open": "Abrir modal",
+      "title": "Detalle del pedido",
+      "subtitle": "Pedido #1042",
+      "body": "El pedido está en preparación y se va a despachar en las próximas 24 horas."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Controlá el modal con `open` y `onOpenChange`. `title` y `subtitle` arman el encabezado, `children` el cuerpo y `footer` el pie con las acciones. Pasá `closeLabel` traducido: el botón × se anuncia como \"Close\" por defecto.",
+      "texts": {
+        "open": "Descartar borrador",
+        "title": "Descartar borrador",
+        "subtitle": "Esta acción no se puede deshacer",
+        "body": "El borrador actual se va a eliminar. Podés empezar uno nuevo cuando quieras.",
+        "keep": "Seguir editando",
+        "discard": "Descartar"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` define el ancho y el padding: `sm` (22rem), `md` (28rem, default), `lg` (36rem), `xl` (44rem) y `full`, que ocupa toda la ventana menos un margen. En pantallas chicas nunca supera el ancho disponible.",
+      "texts": {
+        "title": "Tamaño",
+        "body": "El ancho sale de la variable --gem-modal-width, que cada tamaño redefine."
+      }
+    },
+    "appearance": {
+      "title": "Apariencia",
+      "description": "`radius` usa los tokens de radio (`sm`, `md`, `lg`). `rounded` redondea más: `true` usa `--gem-radius-2xl`, un número es un porcentaje y un string es cualquier valor CSS. `bordered` y `shadow` controlan el borde y la sombra.",
+      "texts": {
+        "title": "Apariencia",
+        "body": "Cada botón abre el modal con una combinación distinta de props visuales."
+      }
+    },
+    "compound": {
+      "title": "Secciones compuestas",
+      "description": "Si todos los hijos son `Modal.Header`, `Modal.Body` y `Modal.Footer`, el modal los usa tal cual en lugar de armar las secciones con props. Sirve cuando el cuerpo necesita clases propias o más estructura. El botón × se agrega igual al encabezado. En este modo el modal no toma el nombre del título solo: conectalo con `headingId` y `aria-labelledby`.",
+      "texts": {
+        "open": "Ajustes del espacio",
+        "title": "Ajustes del espacio de trabajo",
+        "subtitle": "Plan personal",
+        "badge": "Beta",
+        "body": "Las secciones compuestas dejan explícito el marcado cuando el cuerpo es más que un párrafo.",
+        "hint": "Modal.Body acepta className y cualquier atributo de un div."
+      }
+    },
+    "form": {
+      "title": "Formulario",
+      "description": "Al abrir, el foco va al primer elemento enfocable que no sea el ×, en este caso el campo de correo. El botón de enviar está en el pie, fuera del `<form>`, y se conecta con el atributo `form`.",
+      "texts": {
+        "open": "Invitar miembro",
+        "title": "Invitar miembro",
+        "subtitle": "Va a recibir un correo con el acceso",
+        "email": "Correo",
+        "emailPlaceholder": "nombre@empresa.com",
+        "role": "Rol",
+        "rolePlaceholder": "Editor",
+        "submit": "Enviar invitación",
+        "sent": "Invitación enviada"
+      }
+    },
+    "scrollable": {
+      "title": "Contenido largo",
+      "description": "El modal tiene una altura máxima (90% de la ventana, hasta 44rem). Si el contenido no entra, solo se desplaza el cuerpo: el encabezado y el pie quedan fijos.",
+      "texts": {
+        "open": "Ver novedades",
+        "title": "Novedades de la versión",
+        "subtitle": "El encabezado y el pie quedan fijos",
+        "paragraph": "El cuerpo se desplaza mientras el encabezado y el pie siguen visibles, así las acciones están siempre a mano."
+      }
+    },
+    "persistent": {
+      "title": "Sin cierre automático",
+      "description": "Con `closeOnBackdrop={false}`, `closeOnEscape={false}` y `showClose={false}` el modal solo se cierra desde una acción del pie. Usalo con cuidado, para decisiones que no se pueden dejar a medias.",
+      "texts": {
+        "open": "Transferir propiedad",
+        "title": "Transferir propiedad",
+        "subtitle": "Esta acción no se puede deshacer",
+        "body": "La nueva persona dueña recibe la facturación, los miembros y los ajustes del espacio de inmediato.",
+        "confirm": "Transferir"
+      }
+    },
+    "initialFocus": {
+      "title": "Foco inicial",
+      "description": "`initialFocusRef` elige qué elemento recibe el foco al abrir. En confirmaciones destructivas conviene enfocar la opción segura (Cancelar) en lugar del primer control, así un Enter apurado no borra nada.",
+      "texts": {
+        "open": "Eliminar archivo",
+        "title": "Eliminar archivo",
+        "subtitle": "informe-anual.pdf",
+        "body": "El archivo se mueve a la papelera y se borra definitivamente en 30 días.",
+        "dontAsk": "No volver a preguntar",
+        "confirm": "Eliminar"
+      }
+    },
+    "draggable": {
+      "title": "Arrastrable",
+      "description": "Con `draggable` el modal se mueve arrastrando el encabezado. Los botones, enlaces y campos del encabezado siguen funcionando. El modal no sale de la ventana y vuelve al centro cada vez que se abre.",
+      "texts": {
+        "open": "Abrir notas",
+        "title": "Notas",
+        "subtitle": "Arrastrá el encabezado para moverlo",
+        "body": "Útil cuando el modal tapa información de la página que hace falta consultar."
+      }
+    },
+    "nestedContent": {
+      "title": "Componentes adentro",
+      "description": "Los componentes con menús flotantes, como `Select` y `DatePicker`, funcionan dentro del modal y sus menús se muestran encima. `Tabs` sirve para ordenar formularios largos sin agrandar el modal.",
+      "texts": {
+        "open": "Configurar proyecto",
+        "title": "Configuración del proyecto",
+        "subtitle": "Componentes anidados",
+        "tabsLabel": "Secciones del proyecto",
+        "tabs": {
+          "details": "Detalles",
+          "schedule": "Fechas"
+        },
+        "intro": "Abrí el selector o el calendario: el menú aparece por encima del modal.",
+        "region": "Región",
+        "regionPlaceholder": "Elegí una región",
+        "regions": {
+          "north": "Norte",
+          "south": "Sur",
+          "east": "Este",
+          "west": "Oeste"
+        },
+        "startDate": "Fecha de inicio",
+        "datePlaceholder": "Elegí una fecha",
+        "notify": "Avisar a los seguidores"
+      }
+    },
+    "nested": {
+      "title": "Modal sobre modal",
+      "description": "Un modal puede abrir otro. El segundo queda encima y Escape o un clic en el fondo cierran primero el de arriba. Si cerrás el de abajo, cerrá también el de arriba.",
+      "texts": {
+        "open": "Editar proyecto",
+        "outerTitle": "Editar proyecto",
+        "outerSubtitle": "Modal principal",
+        "outerBody": "Las acciones destructivas pueden abrir un segundo modal de confirmación. El primero sigue montado hasta que se cierra el segundo.",
+        "deleteProject": "Eliminar proyecto",
+        "innerTitle": "Eliminar proyecto",
+        "innerSubtitle": "Esta acción no se puede deshacer",
+        "innerBody": "Los miembros pierden el acceso de inmediato.",
+        "keep": "Conservar proyecto",
+        "confirm": "Eliminar"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "open": "Abrir modal con Tailwind",
+      "title": "Bienvenida",
+      "subtitle": "Sin bordes y con fondo desenfocado",
+      "body": "classNames agrega clases a cada parte. Con el variant backdrop: de Tailwind también podés estilar el fondo."
+    },
+    "cva": {
+      "title": "Modal con variantes",
+      "body": "El wrapper aplica las variantes de cva en className y deja pasar el resto de las props."
+    },
+    "css": {
+      "open": "Abrir modal personalizado",
+      "title": "Modal de marca",
+      "subtitle": "Tokens redefinidos en una clase",
+      "body": "La clase cambia el ancho con --gem-modal-width y redefine los tokens de color y radio solo dentro de este modal."
+    }
+  },
+  "apiLink": "Ver la API completa de Modal",
+  "api": {
+    "header": {
+      "title": "Modal API",
+      "description": "Referencia de la API del componente Modal de React: props, secciones, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Modal"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. Las secciones están como `Modal.Header`, `Modal.Body` y `Modal.Footer`, y también como exports sueltos."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;dialog&gt;</code> (<code>DialogHTMLAttributes&lt;HTMLDialogElement&gt;</code>, salvo <code>title</code> y <code>open</code>) y los pasa al elemento, igual que <code>ref</code>. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>header</code>, <code>title</code>, <code>subtitle</code>, <code>extra</code>, <code>body</code>, <code>footer</code> y <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "dialog": "Es un <code>&lt;dialog&gt;</code> nativo abierto con <code>showModal()</code>: el navegador lo pone en la capa superior y deja el resto de la página inerte. Tiene <code>aria-modal=\"true\"</code>.",
+      "name": "Con <code>title</code>, el modal toma su nombre del título (<code>aria-labelledby</code>). Con secciones compuestas, conectá <code>headingId</code> de <code>Modal.Header</code> con <code>aria-labelledby</code>. Sin título, pasale <code>aria-label</code>.",
+      "focus": "Al abrir, el foco va a <code>initialFocusRef</code> o, si no está, al primer elemento enfocable que no sea el botón ×.",
+      "trap": "Tab y Shift+Tab recorren solo los elementos del modal.",
+      "restore": "Al cerrar, el foco vuelve al elemento que lo tenía antes de abrir, normalmente el botón que abrió el modal.",
+      "dismiss": "Escape cierra el modal (salvo con <code>closeOnEscape={false}</code>). Con modales anidados, cierra solo el de arriba.",
+      "scroll": "Mientras está abierto, bloquea el scroll de la página con <code>overflow: hidden</code> en <code>&lt;body&gt;</code>.",
+      "labels": "El botón × se llama <code>\"Close\"</code> por defecto. Pasá <code>closeLabel</code> traducido."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento `<dialog>`. Recibe `className` y `classNames.root`.",
+        "size": "Ancho (`--gem-modal-width`) y padding de las secciones.",
+        "shadow": "Sombra según `shadow`.",
+        "bordered": "Borde de 1.5px con `--gem-color-border`.",
+        "borderless": "Borde transparente con `bordered={false}`.",
+        "radius": "Radio según `radius` cuando no hay `rounded`.",
+        "rounded": "Radio `--gem-radius-2xl` con `rounded={true}`.",
+        "roundedCustom": "Radio personalizado desde `--gem-modal-radius` cuando `rounded` es un número o un string.",
+        "draggable": "Se aplica con `draggable`. Cambia el cursor del encabezado.",
+        "dragging": "Se aplica mientras se arrastra.",
+        "backdrop": "Fondo oscurecido detrás del modal.",
+        "header": "Encabezado. Recibe `classNames.header`.",
+        "headerSolo": "Encabezado sin subtítulo. No tiene estilos propios; sirve como gancho.",
+        "heading": "Contenedor del título y el subtítulo.",
+        "title": "Título (`<h2>`). Recibe `classNames.title`.",
+        "subtitle": "Subtítulo. Recibe `classNames.subtitle`.",
+        "extra": "Contenedor de `extra` y el botón ×.",
+        "close": "Botón ×. Recibe `classNames.close`.",
+        "body": "Cuerpo con scroll propio. Recibe `classNames.body`.",
+        "footer": "Pie con las acciones, alineadas a la derecha. Recibe `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Modal tiene pocas variables propias; el resto de los colores y radios salen de tokens de gem-system, que podés redefinir en una clase (ver Cambio estilos). `--gem-modal-width` la definen las clases de tamaño, así que para cambiarla usá un selector como `.gem-modal.mi-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-modal-width": "Ancho máximo del modal. Nunca supera el ancho de la ventana menos 2rem. No aplica con `size=\"full\"`.",
+        "--gem-modal-radius": "Radio cuando `rounded` es un número o un string. Se escribe inline desde esa prop."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Modal.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Modal"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo del modal.",
+        "--gem-color-bg-subtle": "Fondo del botón × al pasar el mouse.",
+        "--gem-color-border": "Borde del modal y separadores del encabezado y el pie.",
+        "--gem-color-fg": "Color del título y el cuerpo.",
+        "--gem-color-fg-muted": "Color del subtítulo y el botón ×.",
+        "--gem-palette-neutral-*": "Colores del tema oscuro.",
+        "--gem-radius-sm": "Radio con `radius=\"sm\"` y del botón ×.",
+        "--gem-radius-md": "Radio por defecto.",
+        "--gem-radius-lg": "Radio con `radius=\"lg\"`.",
+        "--gem-radius-2xl": "Radio con `rounded`.",
+        "--gem-shadow-*": "Sombra según `shadow` (`none` a `xl`).",
+        "--gem-shadow-focus": "Anillo de foco del modal y el botón ×.",
+        "--gem-space-2": "Separación entre acciones del pie y del encabezado.",
+        "--gem-space-3": "Separación entre el título y `extra`.",
+        "--gem-font-sans": "Tipografía."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props del Modal y de sus secciones.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "modal": {
+        "title": "Modal",
+        "description": "Además acepta los atributos HTML de un `<dialog>`.",
+        "items": {
+          "open": "Estado abierto controlado.",
+          "defaultOpen": "Estado abierto inicial si no es controlado.",
+          "title": "Título del encabezado. También es el nombre accesible.",
+          "subtitle": "Texto secundario debajo del título.",
+          "extra": "Contenido al final del encabezado, antes del botón ×.",
+          "header": "Contenido libre dentro del encabezado. Se combina con `title`, `subtitle` y `extra`.",
+          "footer": "Contenido del pie, normalmente botones.",
+          "children": "Cuerpo del modal, o secciones `Modal.Header`, `Modal.Body` y `Modal.Footer`.",
+          "size": "Ancho y padding.",
+          "bordered": "Dibuja un borde de 1.5px.",
+          "shadow": "Sombra.",
+          "radius": "Radio con los tokens de gem-system, si no hay `rounded`.",
+          "rounded": "Radio extra: `true` usa `--gem-radius-2xl`, un número es un porcentaje y un string es un valor CSS.",
+          "closeOnBackdrop": "Cierra al hacer clic en el fondo.",
+          "closeOnEscape": "Cierra con Escape.",
+          "showClose": "Muestra el botón × en el encabezado.",
+          "closeLabel": "Nombre accesible del botón ×.",
+          "draggable": "Permite mover el modal arrastrando el encabezado.",
+          "initialFocusRef": "Elemento que recibe el foco al abrir.",
+          "container": "Elemento donde se monta el modal (portal).",
+          "className": "Clases extra para el `<dialog>`.",
+          "classNames": "Clases por parte: `root`, `header`, `title`, `subtitle`, `extra`, `body`, `footer` y `close`.",
+          "ref": "Referencia al `<dialog>`.",
+          "onOpenChange": "Se ejecuta cuando el modal pide abrirse o cerrarse (Escape, fondo, botón ×)."
+        }
+      },
+      "header": {
+        "title": "Modal.Header",
+        "description": "Encabezado para usar con secciones compuestas. Además acepta los atributos HTML de un `<header>`.",
+        "items": {
+          "title": "Título (`<h2>`).",
+          "subtitle": "Texto secundario debajo del título.",
+          "extra": "Contenido al final del encabezado.",
+          "close": "Control de cierre propio. El modal agrega su botón × después.",
+          "headingId": "`id` del título, para `aria-labelledby`.",
+          "titleClassName": "Clases extra para el título.",
+          "subtitleClassName": "Clases extra para el subtítulo.",
+          "children": "Contenido libre entre el título y `extra`."
+        }
+      },
+      "sections": {
+        "title": "Modal.Body y Modal.Footer",
+        "description": "No tienen props propias: aceptan los atributos HTML de un `<div>` y un `<footer>`, incluidos `className` y `children`."
+      }
+    }
+  }
+}

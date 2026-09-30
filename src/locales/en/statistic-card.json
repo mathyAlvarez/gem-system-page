@@ -1,0 +1,357 @@
+{
+  "header": {
+    "title": "Statistic Card",
+    "description": "Card that shows a metric: title, value, optional trend and an icon. Numbers are grouped and rounded for you. Group several with `StatisticCard.Group`."
+  },
+  "common": {
+    "separators": { "groupSeparator": ",", "decimalSeparator": "." },
+    "users": {
+      "title": "Active users",
+      "description": "Signed in during the last 24 hours",
+      "trendValue": "+4.2%",
+      "trendLabel": "vs last week"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the card and the code.",
+    "texts": {
+      "title": "Active users",
+      "description": "Signed in during the last 24 hours",
+      "trendValue": "+12%",
+      "trendLabel": "vs last week"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`title` and `value` are the essentials. `suffix` adds a unit, `icon` an icon in a tinted well and `trend` the trend row with an arrow. Include the sign in `trendValue`: the arrow is decorative.",
+      "texts": {
+        "title": "Completion rate",
+        "trendValue": "+12.4%",
+        "trendLabel": "vs last week"
+      }
+    },
+    "currency": {
+      "title": "Currency",
+      "description": "`prefix` goes before the value and `precision` sets the decimals. `groupSeparator` and `decimalSeparator` adapt the format to the language: they default to `,` and `.`.",
+      "texts": {
+        "title": "Monthly revenue",
+        "description": "Net of refunds",
+        "trendValue": "+8.1%",
+        "trendLabel": "vs last month"
+      }
+    },
+    "trend": {
+      "title": "Trend",
+      "description": "`trend=\"up\"` is green, `\"down\"` red and `\"neutral\"` gray. The trend color is independent of `tone`, which only changes the icon well.",
+      "texts": {
+        "bounce": {
+          "title": "Bounce rate",
+          "description": "Sessions that left on the first page",
+          "trendValue": "−3.2%",
+          "trendLabel": "vs yesterday"
+        },
+        "nps": {
+          "title": "NPS",
+          "description": "This quarter",
+          "trendLabel": "Unchanged"
+        }
+      }
+    },
+    "invert": {
+      "title": "Inverted trend",
+      "description": "`trendInvert` paints a drop green and a rise red. Use it for metrics where going down is good, like errors or churn.",
+      "texts": {
+        "title": "Open incidents",
+        "description": "A drop is healthy for this metric",
+        "trendValue": "−4",
+        "trendLabel": "vs last sprint"
+      }
+    },
+    "inline": {
+      "title": "Inline layout",
+      "description": "`layout=\"inline\"` puts the icon beside the value instead of above it.",
+      "texts": {
+        "title": "Team seats",
+        "description": "Occupied seats on the plan"
+      }
+    },
+    "loading": {
+      "title": "Loading",
+      "description": "`isLoading` replaces the value, trend and description with animated placeholders and adds `aria-busy`. The title and icon stay. Try reloading.",
+      "texts": {
+        "reload": "Reload"
+      }
+    },
+    "footer": {
+      "title": "With footer",
+      "description": "`children` (or `footer`) adds content below the metric, like a progress bar. `extra` goes at the end of the title: if it's an icon button, give it an `aria-label`.",
+      "texts": {
+        "title": "Storage used",
+        "description": "12.4 GB of 18 GB",
+        "more": "More options"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It changes the padding, icon size and value typography."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` changes the icon well color. It doesn't affect the trend or the value."
+    },
+    "format": {
+      "title": "Number format",
+      "description": "With a numeric `value`, the card groups thousands and applies `precision`. For richer formats, like currency or compact notation, pass `formatValue` with `Intl.NumberFormat`.",
+      "texts": {
+        "defaults": "Default",
+        "separators": "Custom separators",
+        "compact": "Compact notation",
+        "currency": "Currency with Intl"
+      }
+    },
+    "group": {
+      "title": "Group",
+      "description": "`StatisticCard.Group` lays cards out in a grid. Without `columns`, columns fit the available width; with `columns`, they're fixed and collapse to one below 40rem.",
+      "texts": {
+        "users": {
+          "title": "Active users",
+          "trendValue": "+12%",
+          "trendLabel": "vs last week"
+        },
+        "conversion": {
+          "title": "Conversion",
+          "trendValue": "+0.4 pp",
+          "trendLabel": "vs last week"
+        },
+        "churn": {
+          "title": "Churn",
+          "trendValue": "−0.3 pp",
+          "trendLabel": "vs last week"
+        }
+      }
+    },
+    "divided": {
+      "title": "Divided group",
+      "description": "`divided` joins the cards into one surface with lines between them. It ignores `columns`. Use `bordered={false}` on each card.",
+      "texts": {
+        "sessions": {
+          "title": "Sessions",
+          "description": "Last 7 days"
+        },
+        "duration": {
+          "title": "Avg. duration",
+          "value": "4m 12s",
+          "description": "Per session"
+        },
+        "nps": {
+          "title": "NPS",
+          "description": "This quarter",
+          "trendLabel": "Unchanged"
+        }
+      }
+    },
+    "custom": {
+      "title": "Custom color and radius",
+      "description": "`tone=\"custom\"` with `color` paints the icon well with any CSS color. `rounded` adds more rounding: `true` uses the 2xl token, a number is read as a percent and a string as CSS.",
+      "texts": {
+        "accent": {
+          "title": "Custom accent",
+          "description": "rounded uses --gem-radius-2xl"
+        },
+        "percent": {
+          "title": "p95 latency",
+          "description": "rounded={12} means 12%"
+        }
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "branded": {
+        "title": "Branded surface",
+        "description": "Styled with className and variables"
+      },
+      "pill": {
+        "title": "Return",
+        "description": "Round icon and tertiary tone"
+      }
+    }
+  },
+  "apiLink": "See the full Statistic Card API",
+  "api": {
+    "header": {
+      "title": "Statistic Card API",
+      "description": "API reference for the React StatisticCard: card and group props, helpers, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Statistic Card"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `StatisticCard.Group` is also exported as `StatisticCardGroup`."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>StatisticCard</code> accepts <code>&lt;article&gt;</code> attributes except <code>title</code>, which is the metric name here. They go to the root along with <code>ref</code>. <code>style</code> is merged with <code>--gem-statistic-card-radius</code> and <code>--gem-statistic-card-color</code>. <code>StatisticCard.Group</code> accepts <code>&lt;div&gt;</code> attributes."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "semantics": "Each card is an <code>&lt;article&gt;</code> with <code>aria-labelledby</code> pointing to the title. Without a title, pass <code>aria-label</code>.",
+      "heading": "A text <code>title</code> renders as an <code>&lt;h3&gt;</code>; if you pass a node, it's a <code>div</code>. The value is a <code>&lt;p&gt;</code>, not a heading.",
+      "trend": "The trend arrow has <code>aria-hidden</code>. The component adds an English <code>aria-label</code> (<code>\"Increase\"</code>, <code>\"Decrease\"</code>) on a <code>&lt;p&gt;</code>, which many screen readers ignore. Put the direction in the visible text: a sign in <code>trendValue</code> (<code>\"+12%\"</code>) or a word in <code>trendLabel</code>.",
+      "color": "Green and red alone don't tell whether something improved, especially with <code>trendInvert</code>. Add context in <code>description</code>.",
+      "icon": "The icon well has <code>aria-hidden</code>: it's decorative.",
+      "loading": "With <code>isLoading</code> the card gets <code>aria-busy=\"true\"</code> and the placeholders have <code>aria-hidden</code>. The animation stops with <code>prefers-reduced-motion</code>.",
+      "extra": "Icon buttons in <code>extra</code> need an <code>aria-label</code>. A <code>ProgressBar</code> in the footer needs a name too."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root `<article>`. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Defines padding, gap and icon size.",
+        "layout": "Layout: `--stacked` or `--inline`.",
+        "tone": "Tone: `--tone-primary` … `--tone-neutral` or `--tone-custom`. Defines the icon colors.",
+        "shadow": "Shadow: `--shadow-none` … `--shadow-xl`.",
+        "radius": "Radius: `--radius-sm`, `--radius-md` or `--radius-lg`, when `rounded` is off.",
+        "rounded": "Applied with `rounded={true}`. With a number or string, `--rounded-custom` is applied.",
+        "bordered": "Applied with `bordered`. Without a border, `--borderless` is applied.",
+        "loading": "Applied with `isLoading`.",
+        "header": "`<header>` with the title and `extra`. Receives `classNames.header`.",
+        "title": "Title. Receives `classNames.title`.",
+        "extra": "`extra` container. Receives `classNames.extra`.",
+        "body": "Container of the icon and content. Receives `classNames.body`.",
+        "icon": "Icon well. Receives `classNames.icon`.",
+        "main": "Column with value, trend and description. Receives `classNames.main`.",
+        "valueRow": "Row with prefix, value and suffix. Receives `classNames.value`.",
+        "value": "Value.",
+        "affix": "Prefix or suffix. Receives `classNames.prefix` or `classNames.suffix`.",
+        "trend": "Trend row. Receives `classNames.trend`. Modifiers: `--up`, `--down`, `--neutral`.",
+        "description": "Description. Receives `classNames.description`.",
+        "footer": "Footer with `footer` and `children`. Receives `classNames.footer`.",
+        "bone": "Loading placeholder.",
+        "group": "`StatisticCard.Group` grid. `--fixed` with `columns`.",
+        "groupDivided": "Applied with `divided`. One surface with lines between cards."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "StatisticCard's own variables. The size and tone classes define them, so override them with `.gem-statistic-card.your-class`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-statistic-card-icon-bg": "Icon well background.",
+        "--gem-statistic-card-icon-fg": "Icon color.",
+        "--gem-statistic-card-pad": "Card padding.",
+        "--gem-statistic-card-gap": "Gap between header, body and footer.",
+        "--gem-statistic-card-icon-size": "Icon well size.",
+        "--gem-statistic-card-color": "Accent color with `tone=\"custom\"`. Set by `color`.",
+        "--gem-statistic-card-radius": "Radius with a numeric or string `rounded`.",
+        "--gem-statistic-card-cols": "Group columns. Set by `columns`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by StatisticCard.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in StatisticCard"
+      },
+      "items": {
+        "--gem-color-bg": "Background.",
+        "--gem-color-fg": "Value.",
+        "--gem-color-fg-muted": "Title, affixes, description and neutral trend.",
+        "--gem-color-border": "Border and lines of the divided group.",
+        "--gem-color-{tone}-{100|700}": "Icon well for primary, secondary and tertiary.",
+        "--gem-color-{success|warning|error|info}-{soft|text}": "Icon well for those tones. `success-text` and `error-text` also paint the trend.",
+        "--gem-color-neutral-{50|100}": "Neutral tone and loading placeholders.",
+        "--gem-radius-{sm|md|lg|2xl}": "Card and icon radius.",
+        "--gem-shadow-{none|xs|sm|md|lg|xl}": "Shadow.",
+        "--gem-space-{1|2|3|4}": "Inner and group gaps.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "The card also accepts `<article>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "card": {
+        "title": "StatisticCard",
+        "description": "Card props.",
+        "items": {
+          "title": "Metric name. A string renders as an `<h3>`.",
+          "value": "Primary value. Numbers are grouped and can be rounded.",
+          "prefix": "Node before the value, like `$`.",
+          "suffix": "Node after the value, like `%` or `ms`.",
+          "precision": "Decimals when `value` is a number. When unset, integers stay whole and decimals stay as they are.",
+          "groupSeparator": "Thousands separator.",
+          "decimalSeparator": "Decimal mark.",
+          "formatValue": "Replaces the default number formatter.",
+          "description": "Supporting text below the value.",
+          "icon": "Icon in a tinted well.",
+          "extra": "Content at the end of the title, like a menu or link.",
+          "footer": "Content below the metric.",
+          "children": "Footer content, after `footer`.",
+          "trend": "Direction of change. Drives the color and arrow. When unset, there's no trend row.",
+          "trendValue": "Delta next to the arrow. A number is formatted like `value`.",
+          "trendLabel": "Comparison period, like \"vs last week\".",
+          "trendInvert": "Treats a drop as positive.",
+          "tone": "Icon well color.",
+          "color": "CSS accent color. Takes priority over `tone`.",
+          "size": "Density.",
+          "layout": "`stacked` puts the icon above; `inline`, beside.",
+          "bordered": "Shows the border.",
+          "shadow": "Elevation.",
+          "radius": "Radius when `rounded` is off.",
+          "rounded": "`true` uses the 2xl token, a number is a percent and a string is CSS.",
+          "isLoading": "Replaces the content with placeholders.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `header`, `title`, `extra`, `body`, `icon`, `main`, `value`, `prefix`, `suffix`, `trend`, `description` and `footer`.",
+          "ref": "Ref to the `<article>`."
+        }
+      },
+      "group": {
+        "title": "StatisticCard.Group",
+        "description": "Container for several cards.",
+        "items": {
+          "columns": "Number of columns, from 1 to 12. When unset, the grid fits itself.",
+          "divided": "Joins the cards into one surface with lines between them. Ignores `columns`.",
+          "className": "Extra classes for the group.",
+          "classNames": "Classes per part: `root`.",
+          "children": "Cards.",
+          "ref": "Ref to the group `<div>`."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Exported functions the card uses to format values.",
+        "items": {
+          "formatStatisticValue": "Formats a number with separators and precision. Returns an empty string if it isn't finite.",
+          "resolveDisplayedValue": "Returns what the card shows: applies `formatValue` or `formatStatisticValue` to numbers and leaves other values as they are."
+        }
+      }
+    }
+  }
+}

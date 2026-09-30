@@ -1,0 +1,45 @@
+.crumbs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: 100%;
+  min-width: 0;
+}
+
+.crumbs-caption {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}
+
+.crumbs-phone {
+  width: 100%;
+  max-width: 20rem;
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-xl);
+  background: var(--gem-color-bg);
+}
+
+.crumbs-page {
+  width: 100%;
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+}
+
+.crumbs-page__title {
+  margin: var(--gem-space-3) 0 var(--gem-space-2);
+  color: var(--gem-color-fg);
+  font-size: 1.25rem;
+  font-weight: 650;
+}
+
+.crumbs-page__text {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}

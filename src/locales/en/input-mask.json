@@ -12,6 +12,7 @@
     "border": "border",
     "labelPlacement": "labelPlacement",
     "preset": "preset",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -105,6 +106,16 @@
         "helperText": "Same outline label as Input Text."
       }
     },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` shows a button that empties the field while it has a value. It clears through the normal `onChange` path, so it works the same controlled or uncontrolled, and then fires `onClear`. `clearLabel` is the button's accessible name; it defaults to \"Clear\". The value is cleared through the mask and emits an empty value.",
+      "texts": {
+        "label": "Phone",
+        "clearLabel": "Clear phone",
+        "helperText": "The button shows while the field has a value.",
+        "clearedText": "Field cleared: onClear fired."
+      }
+    },
     "invalid": {
       "title": "Invalid",
       "description": "`isInvalid` and `errorMessage` force the error border.",
@@ -193,6 +204,7 @@
       },
       "rules": {
         "root": "Root container (next to gem-input-text). Receives `wrapperClassName`.",
+        "clear": "Clear button. Shown with `clearable` while the field has a value.",
         "label": "Field label.",
         "required": "Required asterisk.",
         "field": "Container for the input and its icons.",
@@ -279,13 +291,16 @@
       "isInvalid": "Marks the field as invalid (aria-invalid).",
       "isDisabled": "Disables the field.",
       "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "clearable": "Shows a button that empties the field while it has a value.",
+      "clearLabel": "Accessible name of the clear button.",
       "className": "Extra classes for the <input>.",
       "wrapperClassName": "Extra classes for the root container.",
       "onChange": "Native event. event.target.value is the formatted value.",
       "onValueChange": "Receives { value, unmaskedValue, isComplete } on every change.",
       "onComplete": "Fires when the value becomes complete.",
       "onValidate": "Fires when validity changes based on `validRegex`.",
-      "onInfoClick": "Fires when the info icon is activated."
+      "onInfoClick": "Fires when the info icon is activated.",
+      "onClear": "Fires after the field is cleared with the button."
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Alert, Col, Grid, Typography } from "@gem-org/gem-system";
+import { Col, Grid, Typography } from "@gem-org/gem-system";
 import { grid } from "@gem-org/gem-system/tokens";
 import { Trans, useTranslation } from "react-i18next";
 import { DemoBlock, DocsSection } from "../../../components/DocsPrimitives.tsx";
@@ -33,13 +33,8 @@ export function GridDemo() {
       <Typography variant="body" className="docs-page__meta">
         <Trans t={t} i18nKey="grid.description" components={rich} />
       </Typography>
-
-      <Alert status="warning" title={t("grid.bug.title")}>
-        <Trans t={t} i18nKey="grid.bug.body" components={rich} />
-      </Alert>
-
       <DemoBlock stack code={code} label="GridDemo.tsx">
-        <div className="spacing-grid-frame spacing-grid-frame--responsive">
+        <div className="spacing-grid-frame">
           <Grid columns={12} gap={4}>
             {gridCells.map((cell, index) => (
               <Col

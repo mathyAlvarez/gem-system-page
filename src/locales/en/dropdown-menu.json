@@ -1,0 +1,287 @@
+{
+  "header": {
+    "title": "Dropdown Menu",
+    "description": "Menu that opens from a button and lists actions on something specific: edit, duplicate or delete a document, or the options of an account. It also supports checkboxes, exclusive options and submenus. The panel renders in a portal above the page, so no container clips it."
+  },
+  "demo": {
+    "trigger": "Actions",
+    "menuLabel": "Document actions",
+    "moreActions": "More actions",
+    "lastAction": "Last action",
+    "none": "none",
+    "items": {
+      "edit": "Edit",
+      "duplicate": "Duplicate",
+      "share": "Share",
+      "download": "Download",
+      "guide": "Menu guide (MDN)",
+      "delete": "Delete"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result and the code instantly. Open the menu with a click or with the arrow keys from the button.",
+    "size": "size",
+    "placement": "placement",
+    "offset": "offset",
+    "matchTriggerWidth": "matchTriggerWidth",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass the button in `trigger` and the options in `items`. It opens on click and closes on select, with Escape or when clicking outside. `onAction` receives the chosen `id`. Each item can have an `icon`, a `shortcut` (visual only, it doesn't register the key) and an `href` to work as a link. Use `type: \"separator\"` to group."
+    },
+    "iconTrigger": {
+      "title": "Icon button",
+      "description": "The trigger can be any element that accepts `onClick`, for example a `Button` with `iconOnly`. Since it has no text, pass `aria-label`. It's the typical three-dots pattern on a row or card; with `placement=\"bottom-end\"` the menu aligns to the right.",
+      "texts": {
+        "title": "Quarterly report.pdf"
+      }
+    },
+    "disabledDanger": {
+      "title": "Disabled and destructive",
+      "description": "`disabled` keeps the item visible but dimmed, and the keyboard skips it. `description` adds a help line, useful to explain why it's unavailable. `danger` paints the item red for destructive actions; keep it separated from the rest.",
+      "texts": {
+        "archive": "Archive",
+        "archiveHint": "Unavailable in the trial plan",
+        "deleteProject": "Delete project"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the padding and text of the items: `sm`, `md` (default) or `lg`. You set the trigger size yourself; keep them matched."
+    },
+    "placement": {
+      "title": "Placement",
+      "description": "`placement` sets which side of the trigger it opens on and how it aligns. If the menu doesn't fit on that side of the window, it opens on the other one (top or bottom) and never gets cut off, so near the edge of the screen it may not follow the requested side. `offset` is the distance in pixels from the trigger."
+    },
+    "selection": {
+      "title": "Checkboxes and options",
+      "description": "`type: \"checkbox\"` adds an option that toggles on and off, and `type: \"radio-group\"` a group of exclusive options. Unlike actions, the menu stays open after changing them. `type: \"label\"` adds a section title.",
+      "texts": {
+        "trigger": "View",
+        "menuLabel": "View options",
+        "section": "View",
+        "grid": "Show grid",
+        "density": "Density",
+        "compact": "Compact",
+        "comfortable": "Comfortable",
+        "spacious": "Spacious",
+        "on": "on",
+        "off": "off"
+      }
+    },
+    "submenu": {
+      "title": "Submenu",
+      "description": "`type: \"submenu\"` groups options in a second level. It opens on hover or with the right arrow, and closes with the left arrow or Escape. If there's no room on the sides, like on a phone, it shows inside the same panel.",
+      "texts": {
+        "trigger": "Account",
+        "menuLabel": "Account menu",
+        "profile": "Profile",
+        "share": "Share",
+        "copyLink": "Copy link",
+        "email": "Send by email",
+        "exportPdf": "Export PDF",
+        "signOut": "Sign out"
+      }
+    }
+  },
+  "apiLink": "See the full Dropdown Menu API",
+  "api": {
+    "header": {
+      "title": "Dropdown Menu API",
+      "description": "API reference for the DropdownMenu React component: props, item types, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Dropdown Menu"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>) and passes them to the menu <strong>panel</strong>, not the container. The same goes for <code>className</code>. For the trigger container use <code>classNames.root</code>. <code>classNames</code> accepts <code>root</code>, <code>trigger</code>, <code>menu</code>, <code>item</code>, <code>label</code>, <code>separator</code> and <code>shortcut</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "trigger": "The trigger gets <code>aria-haspopup=\"menu\"</code>, <code>aria-expanded</code> and <code>aria-controls</code> pointing to the panel.",
+      "menu": "The panel has <code>role=\"menu\"</code> with <code>menuLabel</code> as its <code>aria-label</code>, and marks the active item with <code>aria-activedescendant</code>.",
+      "items": "Actions have <code>role=\"menuitem\"</code>, checkboxes <code>menuitemcheckbox</code> and options <code>menuitemradio</code>, with <code>aria-checked</code>. Option groups have <code>role=\"group\"</code>.",
+      "keyboard": "From the trigger, the down and up arrows open the menu on the first or last item. Inside, the arrows move through items, <code>Home</code> and <code>End</code> go to the ends, <code>Enter</code> or <code>Space</code> select and <code>Escape</code> closes.",
+      "typeahead": "Typing a letter jumps to the first item whose text starts with it.",
+      "submenu": "Submenus have <code>aria-haspopup</code> and <code>aria-expanded</code>. The right arrow opens them and the left one goes back.",
+      "focus": "When closing with Escape or selecting, focus returns to the trigger. Tab closes the menu.",
+      "disabled": "Disabled items have <code>aria-disabled</code> and the keyboard skips them.",
+      "labels": "<code>menuLabel</code> defaults to English (<code>\"Actions\"</code>). Pass it translated. If a <code>label</code> is not text, use <code>ariaLabel</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles. The panel renders in `document.body`, outside the container, so selectors that depend on it won't reach it.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Trigger container. Receives `classNames.root`.",
+        "trigger": "`<span>` wrapping the trigger.",
+        "panel": "Menu panel (`role=\"menu\"`). Receives `className` and `classNames.menu`.",
+        "ready": "Applied once the panel is positioned. Until then it stays invisible.",
+        "size": "Applied to the panel based on `size`.",
+        "item": "Each item. Receives `classNames.item`.",
+        "active": "Active item, hovered or chosen with the keyboard.",
+        "disabled": "Disabled item.",
+        "danger": "Item with `danger`.",
+        "icon": "`icon` container.",
+        "labelText": "Item text. Truncated with an ellipsis.",
+        "description": "`description` text.",
+        "shortcut": "`shortcut` text. Receives `classNames.shortcut`.",
+        "check": "Mark of checkboxes and options.",
+        "chevron": "Submenu arrow.",
+        "section": "Section and group titles. Receives `classNames.label`.",
+        "separator": "Separator. Receives `classNames.separator`.",
+        "submenu": "Submenu panel.",
+        "submenuLayout": "`start` opens the submenu to the left and `nested` shows it inside the panel when there's no room on the sides."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Dropdown Menu has no variables of its own: it uses gem-system tokens directly. To change colors on a single menu, redefine those tokens in a class on the panel."
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Dropdown Menu.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Dropdown Menu"
+      },
+      "items": {
+        "--gem-color-bg": "Background of the panel and submenus.",
+        "--gem-color-bg-subtle": "Background of the active item.",
+        "--gem-color-border": "Panel border and separators.",
+        "--gem-color-fg": "Item text.",
+        "--gem-color-fg-muted": "Descriptions, shortcuts, section titles and arrows.",
+        "--gem-color-primary-600": "Checkbox and option mark.",
+        "--gem-color-error-500": "Background of the active destructive item.",
+        "--gem-color-error-600": "Text of destructive items.",
+        "--gem-radius-sm": "Rounded corners of the items.",
+        "--gem-radius-md": "Rounded corners of the panel.",
+        "--gem-shadow-lg": "Panel shadow.",
+        "--gem-z-dropdown": "Panel layer.",
+        "--gem-font-sans": "Component font.",
+        "--gem-font-mono": "Shortcut font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the panel.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "dropdownMenu": {
+        "title": "DropdownMenu",
+        "description": "Props of the main component.",
+        "items": {
+          "items": "Menu entries: actions, separators, titles, checkboxes, options and submenus.",
+          "trigger": "Element that opens the menu, usually a `Button`. Receives the ARIA attributes and the `onClick`.",
+          "menuLabel": "Accessible name of the panel (`aria-label`).",
+          "size": "Item size.",
+          "placement": "Side and alignment of the panel: `bottom-start`, `bottom`, `bottom-end`, `top-start`, `top` or `top-end`.",
+          "offset": "Distance in pixels between the trigger and the panel.",
+          "matchTriggerWidth": "Makes the panel at least as wide as the trigger.",
+          "isDisabled": "Disables the trigger and prevents opening.",
+          "open": "Whether the menu is open. Controlled mode.",
+          "defaultOpen": "Whether it starts open. Uncontrolled mode.",
+          "className": "Extra classes for the panel.",
+          "classNames": "Classes per part: `root`, `trigger`, `menu`, `item`, `label`, `separator` and `shortcut`.",
+          "onOpenChange": "Called when opening or closing. Receives the new state.",
+          "onAction": "Called when an action is chosen. Receives its `id`.",
+          "onCheckedChange": "Called when a checkbox changes. Receives the `id` and the new value.",
+          "onRadioChange": "Called when an option is chosen. Receives the group `id` and the option `id`."
+        }
+      },
+      "action": {
+        "title": "DropdownMenuActionItem",
+        "description": "Regular action. It's the default type, so `type` is optional.",
+        "items": {
+          "type": "Item type.",
+          "id": "Unique identifier. Passed to `onAction`.",
+          "label": "Item text.",
+          "description": "Help line below the text.",
+          "icon": "Decorative icon before the text.",
+          "shortcut": "Shortcut shown on the right. Visual only.",
+          "href": "Turns the item into an `<a>` link.",
+          "target": "Where the link opens.",
+          "rel": "Relationship with the destination. With `_blank` it defaults to `noopener noreferrer`.",
+          "disabled": "Shows it dimmed and it can't be chosen.",
+          "danger": "Paints it red for destructive actions.",
+          "closeOnSelect": "Closes the menu when chosen.",
+          "ariaLabel": "Accessible name when `label` is not text.",
+          "onSelect": "Called when chosen, before `onAction`."
+        }
+      },
+      "checkbox": {
+        "title": "DropdownMenuCheckboxItem",
+        "description": "Option that toggles on and off.",
+        "items": {
+          "type": "Item type.",
+          "id": "Unique identifier. Passed to the menu's `onCheckedChange`.",
+          "label": "Item text.",
+          "checked": "Whether it's on.",
+          "description": "Help line below the text.",
+          "icon": "Decorative icon before the text.",
+          "disabled": "Shows it dimmed and it can't be changed.",
+          "closeOnSelect": "Closes the menu when changed. By default it stays open.",
+          "ariaLabel": "Accessible name when `label` is not text.",
+          "onCheckedChange": "Called when changed. Receives the new value."
+        }
+      },
+      "radio": {
+        "title": "DropdownMenuRadioGroupItem",
+        "description": "Group of exclusive options. Each option (`DropdownMenuRadioOption`) has `id`, `label`, `description` and `disabled`.",
+        "items": {
+          "type": "Item type.",
+          "id": "Group identifier. Passed to the menu's `onRadioChange`.",
+          "label": "Group title. It's also its accessible name.",
+          "value": "`id` of the chosen option.",
+          "items": "Group options.",
+          "onValueChange": "Called when an option is chosen. Receives its `id`."
+        }
+      },
+      "submenu": {
+        "title": "DropdownMenuSubmenuItem",
+        "description": "Item that opens a second level.",
+        "items": {
+          "type": "Item type.",
+          "id": "Unique identifier.",
+          "label": "Item text.",
+          "icon": "Decorative icon before the text.",
+          "items": "Submenu entries. Supports actions and checkboxes.",
+          "disabled": "Shows it dimmed and it can't be opened.",
+          "ariaLabel": "Accessible name when `label` is not text."
+        }
+      },
+      "other": {
+        "title": "Separators and titles",
+        "description": "Items without an action to organize the menu.",
+        "items": {
+          "separator": "Divider line between groups.",
+          "label": "Section title. It can't be chosen."
+        }
+      }
+    }
+  }
+}

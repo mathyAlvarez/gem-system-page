@@ -18,12 +18,14 @@ const toOptions = (values: readonly string[]) => values.map((value) => ({ value,
 const placements: InputMaskLabelPlacement[] = ["above", "outline"];
 
 type Flags = {
+  clearable: boolean;
   isInvalid: boolean;
   isDisabled: boolean;
   isRequired: boolean;
 };
 
 const flagDefaults: Flags = {
+  clearable: false,
   isInvalid: false,
   isDisabled: false,
   isRequired: false,

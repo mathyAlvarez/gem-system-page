@@ -3,8 +3,6 @@
  * Space scale, grid demo, containers, breakpoints and column layouts.
  */
 
-$bp-md: 768px;
-
 .spacing-scale {
   display: flex;
   flex-direction: column;
@@ -49,16 +47,6 @@ $bp-md: 768px;
   border: 1px dashed var(--gem-color-border);
   border-radius: var(--gem-radius-lg);
   background: var(--gem-color-bg-subtle);
-
-  // Col always adds `.gem-grid__col-{span}`, whose rule is emitted after the
-  // breakpoint rules in gem-system/styles.css and wins with equal specificity.
-  &--responsive .gem-col {
-    grid-column-end: span var(--gem-col-span, 12);
-
-    @media (min-width: $bp-md) {
-      grid-column-end: span var(--gem-col-md, var(--gem-col-sm, var(--gem-col-span, 12)));
-    }
-  }
 }
 
 .spacing-cell {

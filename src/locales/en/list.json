@@ -1,0 +1,333 @@
+{
+  "header": {
+    "title": "List",
+    "description": "Vertical index of text, icons, avatars and actions. Built from an `items` array: rows, separators and subheaders. Rows can be selected, open nested items, hold a checkbox or switch and a secondary action."
+  },
+  "common": {
+    "mail": {
+      "inbox": "Inbox",
+      "drafts": "Drafts",
+      "sent": "Sent mail",
+      "trash": "Trash",
+      "spam": "Spam",
+      "starred": "Starred",
+      "important": "Important"
+    },
+    "folders": [
+      { "id": "photos", "label": "Photos", "description": "Jan 9, 2014" },
+      { "id": "work", "label": "Work", "description": "Jan 7, 2014" },
+      { "id": "vacation", "label": "Vacation", "description": "July 20, 2014" }
+    ],
+    "roles": ["Product designer", "Frontend engineer", "Research lead"]
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the list and its code. Click a row to select it."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Each item needs an `id` and a `label`. `{ type: \"separator\" }` adds a divider line. Rows are buttons by default."
+    },
+    "icons": {
+      "title": "With icons",
+      "description": "`icon` adds a leading icon. `bordered` wraps the list in a border."
+    },
+    "folders": {
+      "title": "With description",
+      "description": "`description` adds a second line under the `label`."
+    },
+    "nested": {
+      "title": "Nested",
+      "description": "`items` inside an item turns it into a disclosure. `defaultOpen` opens it initially. The chevron rotates when open."
+    },
+    "selected": {
+      "title": "Selection",
+      "description": "`value` and `onChange` control the selected row; `defaultValue` sets it uncontrolled. The chosen row gets `aria-current`."
+    },
+    "avatars": {
+      "title": "With avatar",
+      "description": "`avatar` replaces the icon. Give the `Avatar` `alt=\"\"` because the name is already in the `label`."
+    },
+    "alignStart": {
+      "title": "Align start",
+      "description": "With three or more lines, use `align: \"start\"` so the avatar stays at the top. `divided` separates rows with a line.",
+      "texts": {
+        "messages": [
+          {
+            "id": "brunch",
+            "from": "Ali Connors",
+            "subject": "Brunch this weekend?",
+            "preview": "I'll be in your neighborhood doing errands, want to grab breakfast?"
+          },
+          {
+            "id": "bbq",
+            "from": "Travis Howard",
+            "subject": "Summer BBQ",
+            "preview": "To Scott, Alex and Jennifer: wish I could come, but I'm out of town that weekend."
+          }
+        ]
+      }
+    },
+    "checkboxes": {
+      "title": "Checkboxes",
+      "description": "`type: \"checkbox\"` adds a checkbox and the whole row toggles it. `checked` and `onCheckedChange` control the state.",
+      "texts": {
+        "tasks": [
+          { "id": "copy", "label": "Review copy" },
+          { "id": "icons", "label": "Export icons" },
+          { "id": "qa", "label": "Test on mobile" }
+        ],
+        "done": "done"
+      }
+    },
+    "secondaryCheckbox": {
+      "title": "Checkbox at the end",
+      "description": "`controlPlacement: \"end\"` puts the checkbox at the end. There it's a separate control: the row and the checkbox are two different targets."
+    },
+    "switches": {
+      "title": "Switches",
+      "description": "`type: \"switch\"` adds a trailing switch. The whole row toggles it.",
+      "texts": {
+        "wifi": "Wi-Fi",
+        "darkMode": "Dark mode",
+        "notifications": "Notifications",
+        "notificationsHint": "Comment and mention alerts"
+      }
+    },
+    "secondaryAction": {
+      "title": "Secondary action",
+      "description": "`secondaryAction` adds a trailing element, like an icon button. It's a separate target: its click doesn't activate the row. Try deleting a file.",
+      "texts": {
+        "files": ["annual-report.pdf", "budget.xlsx", "final-logo.svg"],
+        "remove": "Delete",
+        "restore": "Restore files"
+      }
+    },
+    "sticky": {
+      "title": "Sticky subheaders",
+      "description": "`{ type: \"subheader\", sticky: true }` sticks to the top while the list scrolls. It needs `maxHeight` so the list scrolls.",
+      "texts": {
+        "sections": [
+          { "id": "a", "label": "A", "items": ["Abigail", "Adam", "Ava"] },
+          { "id": "b", "label": "B", "items": ["Bella", "Ben", "Bruno"] },
+          { "id": "c", "label": "C", "items": ["Camila", "Carlos", "Clara"] },
+          { "id": "d", "label": "D", "items": ["Daniel", "Daisy", "Diego"] }
+        ]
+      }
+    },
+    "inset": {
+      "title": "Inset",
+      "description": "`inset` adds start padding so a row without an icon lines up with rows that have one. It works on separators too.",
+      "texts": {
+        "favorite": "favorite"
+      }
+    },
+    "gutterless": {
+      "title": "Gutterless",
+      "description": "`disableGutters` removes horizontal padding on every row; you can also set it per item. Useful when the list sits in a container with its own padding.",
+      "texts": {
+        "lines": ["Line item 1", "Line item 2", "Line item 3"],
+        "comment": "Comment"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It changes padding, type scale and icon size."
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` disables one item. `isDisabled` disables the whole list.",
+      "texts": {
+        "archive": "Archive (admins only)"
+      }
+    }
+  },
+  "apiLink": "See the full List API",
+  "api": {
+    "header": {
+      "title": "List API",
+      "description": "API reference for the React List component: list and item props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "List"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `ListItem` types the `items` array."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>List</code> accepts <code>&lt;ul&gt;</code> attributes except <code>children</code>, <code>onChange</code> and <code>defaultValue</code>, which mean something else here. They go to the root along with <code>ref</code>. <code>style</code> is merged with <code>--gem-list-max-h</code> when you pass <code>maxHeight</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "semantics": "The root is a <code>&lt;ul&gt;</code> and each row an <code>&lt;li&gt;</code>. Subheaders are text, not headings.",
+      "rows": "A plain row is a <code>&lt;button&gt;</code> and the selected one has <code>aria-current=\"true\"</code>. With <code>href</code> it's an <code>&lt;a&gt;</code> with <code>aria-current=\"page\"</code>. With <code>secondaryAction</code> it's a <code>div</code> with <code>role=\"button\"</code> that responds to Enter and Space.",
+      "nested": "An item with <code>items</code> has <code>aria-expanded</code> and <code>aria-controls</code>. The closed panel has <code>aria-hidden</code> and <code>inert</code>.",
+      "controls": "Checkbox and switch are real inputs. At the start (or always, for switch) the row is their <code>&lt;label&gt;</code>. Without a string <code>label</code> or <code>ariaLabel</code>, they're named <code>\"Select\"</code> or <code>\"Toggle\"</code>.",
+      "secondary": "<code>secondaryAction</code> is a separate target. If it's an icon button, give it an <code>aria-label</code>.",
+      "names": "The row uses <code>ariaLabel</code> or the string <code>label</code> as <code>aria-label</code>, so the <code>description</code> isn't announced. If the <code>label</code> is a node, pass <code>ariaLabel</code>.",
+      "separator": "Separators have <code>aria-hidden</code>.",
+      "disabled": "Disabled rows are <code>disabled</code> buttons; links use <code>aria-disabled</code> and leave the tab order."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root `<ul>`. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Sets the sizing variables.",
+        "radius": "Radius: `--radius-sm`, `--radius-md` or `--radius-lg`. Sets `--gem-list-radius`.",
+        "bordered": "Applied with `bordered`. Adds a border and clips the corners.",
+        "divided": "Applied with `divided`. Adds a line between rows.",
+        "noPadding": "Applied with `disablePadding`.",
+        "noGutters": "Applied with `disableGutters`.",
+        "disabled": "Applied with `isDisabled`.",
+        "scroll": "Applied with `maxHeight`. Enables scrolling.",
+        "item": "Each row `<li>`. Receives `classNames.item`. Modifiers: `--disabled`, `--inset`, `--no-gutters`, `--align-start`, `--with-end`.",
+        "selected": "Selected row.",
+        "open": "Open nested item.",
+        "row": "Row target (`button`, `a`, `label` or `div`). Receives `classNames.row`.",
+        "icon": "Icon. Receives `classNames.icon`.",
+        "avatar": "Avatar. Receives `classNames.avatar`.",
+        "text": "Label and description wrapper. Receives `classNames.text`.",
+        "label": "Label. Receives `classNames.label`.",
+        "description": "Description. Receives `classNames.description`.",
+        "control": "Checkbox or switch wrapper. `--end` when trailing.",
+        "secondary": "`secondaryAction` wrapper. Receives `classNames.secondary`.",
+        "indicator": "Chevron of a nested item.",
+        "nested": "Nested items `<ul>`. Receives `classNames.nested`.",
+        "subheader": "Subheader. Receives `classNames.subheader`. `--sticky` when pinned.",
+        "separator": "Separator. Receives `classNames.separator`. `--inset` when inset."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "List's own variables. The size and radius classes set them, so use `.gem-list.your-class` to override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-list-fg": "Text color.",
+        "--gem-list-muted": "Description, icon and subheader color.",
+        "--gem-list-border": "Border, divider and separator color.",
+        "--gem-list-bg": "List and subheader background.",
+        "--gem-list-subtle": "Row background on hover.",
+        "--gem-list-selected": "Selected row background.",
+        "--gem-list-selected-fg": "Selected row text color.",
+        "--gem-list-radius": "Radius with `bordered`.",
+        "--gem-list-pad-y": "Vertical list padding.",
+        "--gem-list-row-y": "Vertical row padding.",
+        "--gem-list-row-x": "Horizontal row padding.",
+        "--gem-list-gap": "Gap between icon and text.",
+        "--gem-list-label": "Label size.",
+        "--gem-list-description": "Description size.",
+        "--gem-list-icon": "Icon slot size. Also sets the `inset` indent.",
+        "--gem-list-max-h": "Max height. Set by `maxHeight`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by List.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in List"
+      },
+      "items": {
+        "--gem-color-fg": "Text color.",
+        "--gem-color-fg-muted": "Descriptions, icons and subheaders.",
+        "--gem-color-border": "Border and dividers.",
+        "--gem-color-bg": "Background.",
+        "--gem-color-bg-subtle": "Row hover.",
+        "--gem-color-primary-{500|700}": "Selected row background and text.",
+        "--gem-radius-{sm|md|lg}": "Radius with `bordered`.",
+        "--gem-shadow-focus": "Row focus ring.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "The list also accepts `<ul>` attributes (see Inheritance). Items are objects inside `items`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "list": {
+        "title": "List",
+        "description": "Component props.",
+        "items": {
+          "items": "Rows, separators and subheaders.",
+          "value": "Selected row id. Controlled mode.",
+          "defaultValue": "Initially selected id. Uncontrolled mode.",
+          "onChange": "Fires when a selectable row (no nested items or control) is activated.",
+          "onAction": "Fires when any row is activated, including links.",
+          "onCheckedChange": "Fires when a checkbox or switch changes.",
+          "size": "Density and type scale.",
+          "bordered": "Adds a border around the list.",
+          "divided": "Adds a line between rows.",
+          "radius": "Radius with `bordered`.",
+          "disablePadding": "Removes the vertical list padding.",
+          "disableGutters": "Removes horizontal padding on every row.",
+          "isDisabled": "Disables every item.",
+          "maxHeight": "Max height with scrolling. A number is taken as pixels.",
+          "className": "Extra classes for the root.",
+          "classNames": "Per-part classes: `root`, `item`, `row`, `icon`, `avatar`, `text`, `label`, `description`, `secondary`, `nested`, `subheader` and `separator`.",
+          "ref": "`<ul>` ref."
+        }
+      },
+      "item": {
+        "title": "ListActionItem",
+        "description": "A row inside `items`.",
+        "items": {
+          "id": "Stable key for selection, ids and callbacks.",
+          "label": "Main text.",
+          "description": "Second line under the label.",
+          "icon": "Leading icon.",
+          "avatar": "Leading avatar. Takes priority over `icon`.",
+          "type": "`checkbox` or `switch` add that control.",
+          "checked": "Checkbox or switch state.",
+          "control": "Explicit control. Inferred from `type` by default.",
+          "controlPlacement": "Where the control sits. Defaults to `start` for checkbox and `end` for switch.",
+          "items": "Nested items. The row becomes a disclosure.",
+          "defaultOpen": "Opens the nested items initially.",
+          "href": "Turns the row into a link.",
+          "target": "Link `target`.",
+          "rel": "Link `rel`.",
+          "secondaryAction": "Trailing element, separate from the row.",
+          "selected": "Marks the row as current. Prefer the list `value`.",
+          "disabled": "Disables the row.",
+          "inset": "Adds start padding to line up with rows that have an icon.",
+          "disableGutters": "Removes horizontal padding on this row.",
+          "align": "Vertical alignment of the leading slot. Use `start` with three or more lines.",
+          "onClick": "Fires when the row is activated.",
+          "onCheckedChange": "Fires when this row's control changes.",
+          "ariaLabel": "Accessible name when `label` isn't text."
+        }
+      },
+      "special": {
+        "title": "Separators and subheaders",
+        "description": "Special items inside `items`.",
+        "items": {
+          "separator": "Divider line. `inset` aligns it with the text.",
+          "subheader": "Section title. `sticky` pins it while scrolling."
+        }
+      }
+    }
+  }
+}

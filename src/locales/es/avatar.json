@@ -1,0 +1,243 @@
+{
+  "header": {
+    "title": "Avatar",
+    "description": "Imagen de una persona con iniciales o ícono como respaldo. Muestra un estado de presencia opcional. `AvatarGroup` apila varios avatares y resume los que sobran en un contador."
+  },
+  "common": {
+    "statuses": {
+      "online": "En línea",
+      "offline": "Sin conexión",
+      "busy": "No molestar",
+      "away": "Ausente"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el avatar y el código. Cuando hay `status` o no hay nombre, el ejemplo pasa `role=\"img\"` y un `aria-label` traducido, porque los textos por defecto están en inglés.",
+    "unknown": "Usuario sin nombre"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "`src` muestra la foto y `name` se usa como texto alternativo. Si la imagen no carga, se muestran las iniciales."
+    },
+    "initials": {
+      "title": "Iniciales",
+      "description": "Sin `src`, `name` genera las iniciales: la primera letra de la primera y la última palabra, o las dos primeras letras si es una sola. El color sale de un hash del nombre, así cada persona conserva el suyo."
+    },
+    "icon": {
+      "title": "Ícono de respaldo",
+      "description": "Sin `src` ni `name` se muestra un ícono de usuario. `icon` lo reemplaza y `children` reemplaza todo el respaldo. Sin nombre, el avatar se anuncia como `Avatar`, en inglés: pasá `aria-label`.",
+      "texts": {
+        "unknown": "Usuario sin nombre",
+        "team": "Equipo de diseño",
+        "bot": "Notificaciones automáticas"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `xs`, `sm`, `md` (default), `lg` y `xl`. La imagen, las iniciales y el ícono usan la misma escala."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` colorea el fondo del respaldo: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, `info` o `neutral`. Sin `tone`, se elige según `name`. Revisá el contraste: las iniciales blancas sobre `warning`, `success` o `tertiary` pueden quedar con poco contraste."
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "`radius` redondea las esquinas: `sm`, `md`, `lg` o `full` (default, circular)."
+    },
+    "status": {
+      "title": "Estado",
+      "description": "`status` agrega un punto de presencia: `online`, `offline`, `busy` o `away`. `statusPosition` lo ubica abajo a la derecha (`right`, default) o centrado (`centered`). El punto es solo visual: el ejemplo pasa `role=\"img\"` y un `aria-label` con el estado traducido."
+    },
+    "broken": {
+      "title": "Imagen rota",
+      "description": "Si `src` falla, se muestran las iniciales o el ícono. Si cambiás `src`, vuelve a intentar cargar la imagen."
+    },
+    "group": {
+      "title": "Grupo",
+      "description": "`AvatarGroup` superpone los avatares con borde y pone el estado centrado. `max` junta los que sobran en un contador y `total` indica la cantidad real si es mayor que los hijos. El contador se anuncia como `+N more`, en inglés; el último ejemplo arma su propio contador traducido.",
+      "texts": {
+        "team": "Equipo del proyecto",
+        "more": "personas más",
+        "custom": "Contador propio"
+      }
+    },
+    "tooltip": {
+      "title": "Con tooltip",
+      "description": "Avatar no tiene prop de tooltip: envolvelo en `Tooltip`. Como el avatar no es interactivo, pasale `tabIndex={0}` para que el tooltip también se abra con teclado.",
+      "texts": {
+        "team": "Equipo del proyecto"
+      }
+    },
+    "person": {
+      "title": "Junto al nombre",
+      "description": "Si el nombre y el estado ya se ven al lado, pasá `alt=\"\"` para que el avatar sea decorativo y no se lea dos veces."
+    },
+    "helpers": {
+      "title": "Helpers",
+      "description": "`getAvatarInitials` y `getAvatarTone` son las funciones que usa Avatar. Sirven para mostrar las mismas iniciales o el mismo color en otros componentes.",
+      "texts": {
+        "name": "Nombre",
+        "initials": "getAvatarInitials",
+        "tone": "getAvatarTone"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Avatar",
+  "api": {
+    "header": {
+      "title": "Avatar API",
+      "description": "Referencia de la API de Avatar y AvatarGroup de React: props, helpers, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Avatar"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `getAvatarInitials` y `getAvatarTone` calculan las iniciales y el tono igual que el componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Avatar</code> acepta los atributos de <code>&lt;span&gt;</code> salvo <code>children</code>, y van a la raíz junto con <code>ref</code>. <code>imgProps</code> llega a la <code>&lt;img&gt;</code> interna, salvo <code>src</code> y <code>alt</code>. <code>AvatarGroup</code> acepta los atributos de <code>&lt;div&gt;</code>. Solo cuenta los hijos que son <code>Avatar</code> o que envuelven uno, como <code>Tooltip</code>, y a cada uno le pasa <code>size</code>, <code>radius</code>, <code>bordered</code> y <code>statusPosition=\"centered\"</code> si no los define."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "image": "Con imagen, el nombre sale del <code>alt</code> de la <code>&lt;img&gt;</code> (<code>alt</code> o <code>name</code>). Sin imagen, la raíz tiene <code>role=\"img\"</code> y un <code>aria-label</code>.",
+      "decorative": "Con <code>alt=\"\"</code> el avatar queda con <code>aria-hidden</code>. Usalo cuando el nombre ya se ve al lado.",
+      "fallback": "Sin <code>name</code> ni <code>alt</code>, el nombre por defecto es <code>\"Avatar\"</code>, en inglés. Pasá <code>aria-label</code> traducido.",
+      "status": "El punto de estado tiene <code>aria-hidden</code>. Sin imagen, el estado se agrega al nombre en inglés (<code>\"Ana, online\"</code>). Con imagen no se anuncia. Pasá <code>role=\"img\"</code> y un <code>aria-label</code> con el estado traducido.",
+      "group": "<code>AvatarGroup</code> tiene <code>role=\"group\"</code> pero no tiene nombre: pasale <code>aria-label</code>.",
+      "overflow": "El contador de <code>max</code> se anuncia como <code>\"+N more\"</code>, en inglés, y no se puede cambiar. Para traducirlo, no uses <code>max</code> y agregá tu propio <code>Avatar</code> con el número y un <code>aria-label</code>.",
+      "contrast": "Las iniciales son blancas sobre el color del tono. En <code>warning</code>, <code>success</code> y <code>tertiary</code> el contraste puede no alcanzar 4.5:1; el tono automático también puede elegirlos.",
+      "focus": "Avatar no es interactivo. Si le agregás un tooltip, pasale <code>tabIndex={0}</code> para que se pueda enfocar."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Define las variables. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--xs`, `--sm`, `--md`, `--lg` o `--xl`. Define las variables de tamaño.",
+        "radius": "Radio: `--radius-sm`, `--radius-md`, `--radius-lg` o `--radius-full`.",
+        "tone": "Tono del respaldo: `--primary`, `--danger`, `--neutral`, etc.",
+        "bordered": "Se aplica con `bordered`. Dibuja un anillo con `--gem-avatar-ring`.",
+        "hasImage": "Se aplica cuando la imagen se muestra.",
+        "face": "Contenedor recortado de la imagen o el respaldo. Recibe `classNames.face`.",
+        "image": "La `<img>`. Recibe `classNames.image` e `imgProps.className`.",
+        "fallback": "Contenedor del respaldo. Recibe `classNames.fallback`.",
+        "initials": "Iniciales. Recibe `classNames.initials`.",
+        "icon": "Ícono de respaldo. Recibe `classNames.icon`.",
+        "status": "Punto de estado. Recibe `classNames.status`.",
+        "statusValue": "Estado: `--online`, `--offline`, `--busy` o `--away`.",
+        "statusPosition": "Posición: `--right` o `--centered`.",
+        "group": "Raíz de `AvatarGroup`. Recibe `className` y `classNames.root`.",
+        "groupItem": "Envoltorio de cada avatar del grupo. Superpone los avatares.",
+        "overflow": "Contador de `max`. Recibe `classNames.overflow`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Avatar. Las define la clase de tamaño, así que para pisarlas usá `.gem-avatar.tu-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-avatar-size": "Ancho y alto del avatar.",
+        "--gem-avatar-font": "Tamaño de las iniciales.",
+        "--gem-avatar-icon": "Tamaño del ícono de respaldo.",
+        "--gem-avatar-status": "Tamaño del punto de estado.",
+        "--gem-avatar-ring": "Grosor del anillo con `bordered`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Avatar.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Avatar"
+      },
+      "items": {
+        "--gem-color-{tone}-500": "Fondo de cada tono. `danger` usa `--gem-color-error-500`.",
+        "--gem-color-neutral-300": "Fondo del tono `neutral`.",
+        "--gem-color-neutral-400": "Fondo base y punto `offline`.",
+        "--gem-palette-neutral-0": "Color de las iniciales y el ícono.",
+        "--gem-color-fg": "Color de las iniciales en `neutral`.",
+        "--gem-color-bg": "Anillo de `bordered`, del grupo y borde del punto de estado.",
+        "--gem-color-bg-subtle": "Fondo mientras carga la imagen.",
+        "--gem-color-{success|error|warning}-solid": "Punto de `online`, `busy` y `away`.",
+        "--gem-radius-{sm|md|lg|full}": "Radio según `radius`.",
+        "--gem-space-2": "Superposición entre avatares del grupo.",
+        "--gem-font-sans": "Fuente de las iniciales."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además aceptan los atributos de su elemento (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "avatar": {
+        "title": "Avatar",
+        "description": "Un avatar individual.",
+        "items": {
+          "src": "URL de la imagen. Si falta o falla, se muestran las iniciales o el ícono.",
+          "name": "Nombre de la persona. Genera las iniciales, el tono y el nombre accesible.",
+          "alt": "Nombre accesible. Por defecto usa `name`. Con `\"\"` el avatar es decorativo.",
+          "size": "Tamaño del avatar.",
+          "radius": "Redondeo de las esquinas.",
+          "tone": "Color del respaldo. Sin valor, se calcula desde `name`, o `neutral`.",
+          "status": "Punto de presencia.",
+          "statusPosition": "Posición del punto. En `AvatarGroup` el default es `centered`.",
+          "bordered": "Dibuja un anillo del color del fondo.",
+          "icon": "Reemplaza el ícono cuando no hay imagen ni iniciales.",
+          "children": "Respaldo propio. Reemplaza las iniciales y el ícono.",
+          "imgProps": "Props extra para la `<img>`, por ejemplo `loading` o `onError`.",
+          "role": "Rol de la raíz. Sin imagen es `img`.",
+          "aria-label": "Nombre accesible de la raíz. Pasalo junto con `role=\"img\"` para traducir el estado.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `face`, `image`, `fallback`, `initials`, `icon` y `status`.",
+          "ref": "Ref de la raíz. `Tooltip` la usa para posicionarse."
+        }
+      },
+      "group": {
+        "title": "AvatarGroup",
+        "description": "Apila varios avatares.",
+        "items": {
+          "children": "Avatares a apilar. Pueden estar envueltos en un `Tooltip`.",
+          "size": "Tamaño para los avatares que no lo definen.",
+          "radius": "Radio para los avatares que no lo definen.",
+          "max": "Cantidad de avatares visibles antes del contador. Sin valor, se ven todos.",
+          "total": "Cantidad real de personas, si es mayor que los hijos.",
+          "aria-label": "Nombre del grupo. No tiene valor por defecto.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases para `root` y `overflow`."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Funciones exportadas.",
+        "items": {
+          "initials": "Iniciales de la primera y la última palabra, o las primeras letras si es una sola, en mayúsculas.",
+          "tone": "Tono estable a partir del nombre, entre `primary`, `secondary`, `tertiary`, `success`, `warning` e `info`."
+        }
+      }
+    }
+  }
+}

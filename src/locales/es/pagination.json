@@ -1,0 +1,258 @@
+{
+  "header": {
+    "title": "Pagination",
+    "description": "Divide una lista larga en páginas y permite moverse entre ellas. Incluye el rango de resultados (`1–10 de 87`), los botones de página y un selector de cantidad por página. Se usa debajo de tablas y listados cuando mostrar todo junto sería demasiado. Renderiza un `<nav>` con una lista de botones."
+  },
+  "demo": {
+    "navLabel": "Paginación de facturas",
+    "pageSizeLabel": "Filas por página",
+    "firstLabel": "Primera página",
+    "previousLabel": "Página anterior",
+    "nextLabel": "Página siguiente",
+    "lastLabel": "Última página",
+    "page": "Página {page}",
+    "summary": "{start}–{end} de {total}",
+    "invoice": "Factura",
+    "status": {
+      "paid": "Pagada",
+      "open": "Pendiente",
+      "overdue": "Vencida"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Con `total` en 480 o 5000 y distintos `siblingCount` y `boundaryCount` podés ver cómo se recortan las páginas.",
+    "variant": "variant",
+    "size": "size",
+    "total": "total",
+    "siblingCount": "siblingCount",
+    "boundaryCount": "boundaryCount",
+    "showFirstLast": "showFirstLast",
+    "showPageSize": "showPageSize",
+    "showSummary": "showSummary",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Solo necesita `total`, la cantidad total de items. Calcula las páginas con el tamaño de página (10 por defecto) y maneja la página actual por su cuenta. Todos los textos vienen en inglés, así que en estos ejemplos se pasan traducidos con un helper `paginationLabels` que agrupa `navLabel`, `pageSizeLabel`, las etiquetas de los botones, `pageLabel` y `showSummary`."
+    },
+    "rows": {
+      "title": "Con filas",
+      "description": "El caso típico: guardás `page` y `pageSize` en tu estado y recortás la lista con ellos. Al cambiar la cantidad por página conviene volver a la página 1. `pageSizeOptions` define las opciones del selector."
+    },
+    "firstLast": {
+      "title": "Primera y última",
+      "description": "`showFirstLast` (activo por defecto) agrega botones para saltar a la primera y a la última página. Con `false` quedan solo anterior y siguiente. En pantallas angostas se ocultan igual."
+    },
+    "manyPages": {
+      "title": "Muchas páginas",
+      "description": "Cuando hay muchas páginas, las del medio se reemplazan por puntos suspensivos. `siblingCount` define cuántas páginas se ven a cada lado de la actual y `boundaryCount` cuántas quedan fijas al principio y al final."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el alto de los botones y el tamaño del texto: `sm`, `md` (por defecto) o `lg`. También se aplica al selector de cantidad por página."
+    },
+    "ghost": {
+      "title": "Variantes",
+      "description": "`outlined` (por defecto) une los botones en una barra con bordes. `ghost` los separa, sin bordes ni divisores; la página actual sigue resaltada."
+    },
+    "hiddenPageSize": {
+      "title": "Sin selector de cantidad",
+      "description": "Con `showPageSize={false}` se oculta el selector. Usalo cuando la cantidad por página es fija."
+    },
+    "customSummary": {
+      "title": "Resumen personalizado",
+      "description": "`showSummary` acepta una función que recibe el rango (`start`, `end`, `total`, `page`, `pageSize` y `pageCount`) y devuelve el texto. Con `false` se oculta.",
+      "texts": {
+        "summary": "Mostrando {start} a {end} · {pageCount} páginas"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` deshabilita todos los botones y el selector, por ejemplo mientras se cargan los datos."
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `page` y `onPageChange` la página vive en tu estado, así podés cambiarla desde afuera. Lo mismo pasa con `pageSize` y `onPageSizeChange`.",
+      "texts": {
+        "current": "Página actual",
+        "goToFirst": "Ir a la primera página"
+      }
+    },
+    "mobile": {
+      "title": "Pantallas chicas",
+      "description": "Pagination mide su propio ancho y se compacta sola. Hasta 768px se ocultan los botones de primera y última, la barra ocupa toda la fila y se muestran menos páginas. Hasta 480px queda solo la primera, la actual y la última. Además, en ventanas de menos de 1024px la barra pasa a su propia fila. Estos recuadros simulan una tablet y un teléfono.",
+      "texts": {
+        "compact": "Hasta 768px",
+        "tight": "Hasta 480px"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Pagination",
+  "api": {
+    "header": {
+      "title": "Pagination API",
+      "description": "Referencia de la API del componente Pagination de React: props, textos, rango, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Pagination"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML del <code>&lt;nav&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>), salvo <code>onChange</code> y <code>defaultValue</code>. Los botones son <code>Button</code> de gem-system y el selector es un <code>Select</code>. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>summary</code>, <code>controls</code>, <code>list</code>, <code>item</code>, <code>ellipsis</code> y <code>pageSize</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "landmark": "La raíz es un <code>&lt;nav&gt;</code> con <code>navLabel</code> como <code>aria-label</code>.",
+      "current": "La página actual tiene <code>aria-current=\"page\"</code>.",
+      "buttons": "Cada página es un botón con <code>pageLabel(page)</code> como <code>aria-label</code>, así se anuncia \"Página 3\" en lugar de solo \"3\".",
+      "edges": "Los botones de primera, anterior, siguiente y última usan <code>firstLabel</code>, <code>previousLabel</code>, <code>nextLabel</code> y <code>lastLabel</code>, y se deshabilitan al llegar a un extremo.",
+      "keyboard": "Con el foco dentro del componente, las flechas izquierda y derecha cambian de página, y <code>Home</code> y <code>End</code> van a la primera y a la última. No aplica dentro del selector.",
+      "summary": "El resumen tiene <code>aria-live=\"polite\"</code>, así los lectores de pantalla anuncian el nuevo rango al cambiar de página.",
+      "pageSize": "El selector se nombra con el texto visible de <code>pageSizeLabel</code> mediante <code>aria-labelledby</code>.",
+      "ellipsis": "Los puntos suspensivos tienen <code>aria-hidden</code> y no se leen.",
+      "labels": "Todos los textos vienen en inglés por defecto (<code>\"Pagination\"</code>, <code>\"Rows per page\"</code>, <code>\"Page 1\"</code>, <code>\"1–10 of 87\"</code>). Pasalos traducidos si tu app está en otro idioma."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento `<nav>`. Recibe `className` y `classNames.root`. Define las variables de Pagination.",
+        "size": "Se aplica según `size`. Define el tamaño del texto y de los botones.",
+        "variant": "Se aplica según `variant`: `outlined` o `ghost`.",
+        "compact": "Se aplica cuando el componente mide hasta 768px. Oculta primera y última y muestra menos páginas.",
+        "tight": "Se aplica cuando el componente mide hasta 480px. Muestra solo la primera, la actual y la última.",
+        "disabled": "Se aplica con `isDisabled`. Baja la opacidad.",
+        "summary": "Texto del rango. Recibe `classNames.summary`.",
+        "bar": "Lista `<ul>` con los botones. Recibe `classNames.controls` y `classNames.list`.",
+        "item": "Cada `<li>` de la barra.",
+        "edges": "`<li>` de los botones de primera, anterior, siguiente y última.",
+        "current": "`<li>` de la página actual.",
+        "control": "Cada botón de la barra.",
+        "page": "Botón de una página. Recibe `classNames.item`.",
+        "active": "Botón de la página actual.",
+        "ellipsis": "Puntos suspensivos. Recibe `classNames.ellipsis`.",
+        "pageSize": "Contenedor del selector. Recibe `classNames.pageSize`.",
+        "pageSizeLabel": "Texto de `pageSizeLabel`.",
+        "select": "`Select` de la cantidad por página."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-pagination` y ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-pagination.mi-clase`) o con utilidades de Tailwind. En el tema oscuro toman otros valores.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-pagination-fg": "Color base del componente.",
+        "--gem-pagination-muted": "Color del resumen y de `pageSizeLabel`.",
+        "--gem-pagination-bg": "Fondo de la barra y de los botones.",
+        "--gem-pagination-border": "Borde de la barra y divisores entre botones.",
+        "--gem-pagination-accent": "Color de los botones y fondo de la página actual.",
+        "--gem-pagination-accent-hover": "Color al pasar el mouse.",
+        "--gem-pagination-hover": "Fondo de los botones al pasar el mouse."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Pagination.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Pagination"
+      },
+      "items": {
+        "--gem-color-fg": "Valor por defecto de `--gem-pagination-fg`.",
+        "--gem-color-fg-muted": "Valor por defecto de `--gem-pagination-muted`.",
+        "--gem-color-bg": "Valor por defecto de `--gem-pagination-bg`.",
+        "--gem-color-border": "Valor por defecto de `--gem-pagination-border`.",
+        "--gem-color-primary-50": "Valor por defecto de `--gem-pagination-hover`.",
+        "--gem-color-primary-600": "Valor por defecto de `--gem-pagination-accent`.",
+        "--gem-color-primary-700": "Valor por defecto de `--gem-pagination-accent-hover`.",
+        "--gem-space-2": "Espacio entre `pageSizeLabel` y el selector.",
+        "--gem-space-3": "Espacio vertical entre el resumen, la barra y el selector.",
+        "--gem-space-4": "Espacio horizontal entre el resumen, la barra y el selector.",
+        "--gem-radius-md": "Bordes redondeados de la barra y de los botones en `ghost`.",
+        "--gem-shadow-focus": "Anillo de foco de los botones en `ghost`.",
+        "--gem-font-sans": "Fuente del componente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del `<nav>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "pagination": {
+        "title": "Pagination",
+        "description": "Props del componente principal.",
+        "items": {
+          "total": "Cantidad total de items.",
+          "page": "Página actual, empezando en 1. Modo controlado.",
+          "defaultPage": "Página inicial. Modo no controlado.",
+          "pageSize": "Items por página. Modo controlado.",
+          "defaultPageSize": "Items por página al inicio. Modo no controlado.",
+          "pageSizeOptions": "Opciones del selector de cantidad por página.",
+          "showPageSize": "Muestra el selector de cantidad por página.",
+          "showSummary": "Muestra el rango de resultados. Con una función, personaliza el texto.",
+          "siblingCount": "Páginas visibles a cada lado de la actual.",
+          "boundaryCount": "Páginas fijas al principio y al final. Mínimo 1.",
+          "showFirstLast": "Agrega los botones de primera y última página.",
+          "variant": "Estilo visual: barra unida (`outlined`) o botones separados (`ghost`).",
+          "size": "Tamaño de los botones y del texto.",
+          "isDisabled": "Deshabilita todos los controles.",
+          "className": "Clases extra para el `<nav>`.",
+          "classNames": "Clases por parte: `root`, `summary`, `controls`, `list`, `item`, `ellipsis` y `pageSize`.",
+          "onPageChange": "Se llama al cambiar de página. Recibe la nueva página.",
+          "onPageSizeChange": "Se llama al cambiar la cantidad por página. Recibe el nuevo valor."
+        }
+      },
+      "labels": {
+        "title": "Textos",
+        "description": "Nombres accesibles y textos visibles. Todos vienen en inglés por defecto.",
+        "items": {
+          "navLabel": "Nombre accesible del `<nav>` (`aria-label`).",
+          "pageSizeLabel": "Texto visible junto al selector.",
+          "firstLabel": "Nombre accesible del botón de primera página.",
+          "previousLabel": "Nombre accesible del botón de página anterior.",
+          "nextLabel": "Nombre accesible del botón de página siguiente.",
+          "lastLabel": "Nombre accesible del botón de última página.",
+          "pageLabel": "Devuelve el nombre accesible de cada botón de página. Recibe el número de página."
+        }
+      },
+      "range": {
+        "title": "PaginationRange",
+        "description": "Objeto que recibe `showSummary` cuando es una función.",
+        "items": {
+          "start": "Posición del primer item de la página. `0` si no hay items.",
+          "end": "Posición del último item de la página.",
+          "total": "Cantidad total de items.",
+          "page": "Página actual.",
+          "pageSize": "Items por página.",
+          "pageCount": "Cantidad de páginas."
+        }
+      }
+    }
+  }
+}

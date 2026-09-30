@@ -1,0 +1,17 @@
+.gem-spinner.spinner-branded {
+  --gem-spinner-color: var(--gem-palette-tertiary-600);
+  --gem-spinner-gap: var(--gem-space-3);
+}
+
+.gem-spinner.spinner-branded .gem-spinner__label {
+  color: var(--gem-palette-tertiary-700);
+  font-weight: 650;
+}
+
+[data-theme="dark"] .gem-spinner.spinner-branded {
+  --gem-spinner-color: var(--gem-palette-tertiary-400);
+}
+
+[data-theme="dark"] .gem-spinner.spinner-branded .gem-spinner__label {
+  color: var(--gem-palette-tertiary-300);
+}

@@ -1,0 +1,27 @@
+.gem-indicator.indicator-branded {
+  --gem-indicator-bg: var(--gem-palette-secondary-600);
+  --gem-indicator-fg: var(--gem-palette-neutral-0);
+  --gem-indicator-ribbon: 9.5rem;
+  --gem-indicator-pad: 0.5rem;
+  --gem-indicator-font: 0.75rem;
+}
+
+.gem-indicator.indicator-branded .gem-indicator__mark {
+  background-image: linear-gradient(
+    90deg,
+    var(--gem-palette-secondary-600),
+    var(--gem-palette-primary-500)
+  );
+}
+
+.gem-indicator.indicator-branded .gem-indicator__label {
+  letter-spacing: 0.12em;
+}
+
+[data-theme="dark"] .gem-indicator.indicator-branded .gem-indicator__mark {
+  background-image: linear-gradient(
+    90deg,
+    var(--gem-palette-secondary-500),
+    var(--gem-palette-primary-400)
+  );
+}

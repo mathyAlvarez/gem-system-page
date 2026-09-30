@@ -22,6 +22,7 @@ export const selectProps = [
   { name: "multiple", type: "boolean", defaultValue: "false" },
   { name: "searchable", type: "boolean", defaultValue: "true" },
   { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
   { name: "showExpand", type: "boolean", defaultValue: "true" },
   { name: "optionValue", type: "keyof T | (item: T) => string | number", defaultValue: '"value"' },
   { name: "optionLabel", type: "keyof T | (item: T) => ReactNode", defaultValue: '"label"' },
@@ -48,6 +49,7 @@ export const selectProps = [
   { name: "className", type: "string", defaultValue: "—" },
   { name: "wrapperClassName", type: "string", defaultValue: "—" },
   { name: "onChange", type: "(value: SelectValue) => void", defaultValue: "—" },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 

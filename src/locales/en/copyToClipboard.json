@@ -1,0 +1,211 @@
+{
+  "header": {
+    "title": "CopyToClipboard",
+    "description": "Button that copies text to the clipboard and confirms it: it swaps the icon and label, shows a tooltip and announces it to screen readers. Use it next to commands, keys, links or code blocks. You can also use your own button or a function that receives the state."
+  },
+  "common": {
+    "labels": {
+      "label": "Copy",
+      "copiedLabel": "Copied",
+      "copyAriaLabel": "Copy to clipboard",
+      "copiedAriaLabel": "Copied to clipboard",
+      "errorAriaLabel": "Unable to copy"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and copy to see the confirmation. All labels default to English, so the example passes the five text props explicitly."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "With just `value`, an icon button copies the text. On copy, the icon turns into a check, the tooltip shows `copiedLabel` and the state resets after 2 seconds. Pass translated labels: `label`, `copiedLabel`, `copyAriaLabel`, `copiedAriaLabel` and `errorAriaLabel`."
+    },
+    "label": {
+      "title": "With label",
+      "description": "If `children` is text, the button shows it next to the icon and stops being icon-only. On copy, the text switches to `copiedLabel` and the button uses the `success` variant. The tooltip repeats the text; remove it with `tooltip={false}`.",
+      "texts": {
+        "text": "Copy command"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` uses the button sizes: `sm`, `md` (default), `lg` and `xl`. The icon grows from `lg`."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` accepts the button variants. It defaults to `transparent`, meant to sit next to text or a code block."
+    },
+    "tooltip": {
+      "title": "Tooltip",
+      "description": "`tooltipPlacement` picks the tooltip side: `top` (default), `right`, `bottom` or `left`. With `tooltip={false}` it isn't shown; the confirmation still comes through the icon and the announcement."
+    },
+    "customTrigger": {
+      "title": "Custom trigger",
+      "description": "If `children` is an element, it's used as the button: it gets the click, `disabled` and the tooltip. If it's a function, it receives `copied`, `copy`, `error` and `disabled`, and you decide how to show each state. In that case there's no tooltip.",
+      "texts": {
+        "copyCommand": "Copy install command",
+        "copyLink": "Copy invite link",
+        "linkCopied": "Link copied",
+        "link": "https://example.com/invite/gem-team"
+      }
+    },
+    "input": {
+      "title": "Next to a field",
+      "description": "A common case is copying a key or token shown in a read-only field. Use a `copyAriaLabel` that says what gets copied.",
+      "texts": {
+        "label": "API key",
+        "copyAriaLabel": "Copy API key"
+      }
+    },
+    "codeBlock": {
+      "title": "Code block",
+      "description": "Placed in the corner of a code block, with `tooltipPlacement=\"left\"` so the tooltip doesn't cover the top edge.",
+      "texts": {
+        "copyAriaLabel": "Copy code"
+      }
+    },
+    "dynamicValue": {
+      "title": "Computed value",
+      "description": "`value` also accepts a function, called on each copy. Useful to build the text on the spot, like a link with the current filters.",
+      "texts": {
+        "label": "Search",
+        "placeholder": "Type something to search",
+        "copyLink": "Copy link"
+      }
+    },
+    "callbacks": {
+      "title": "Callbacks",
+      "description": "`onCopied` receives the copied text and `onError` the error if it fails, for example if the browser denies permission or the `value` function throws. The second button simulates a failure.",
+      "texts": {
+        "copyCode": "Copy coupon",
+        "failCopy": "Simulate error",
+        "copied": "Coupon copied",
+        "failed": "The coupon expired"
+      }
+    },
+    "timeout": {
+      "title": "Confirmation duration",
+      "description": "`timeout` sets how many milliseconds the copied state lasts (2000 by default). With `0` or less it stays copied until the next copy."
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` blocks the button and the tooltip."
+    }
+  },
+  "apiLink": "See the full CopyToClipboard API",
+  "api": {
+    "header": {
+      "title": "CopyToClipboard API",
+      "description": "API reference for the CopyToClipboard React component: props, render props, CSS classes, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "CopyToClipboard"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or its subpath. `writeClipboardText` is the function the component uses to copy, in case you need to copy without a button: it tries the Clipboard API and falls back to an alternative method."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It doesn't forward loose HTML attributes. For the default button use <code>buttonProps</code>, which accepts <code>Button</code> props except <code>children</code>, <code>onClick</code>, <code>iconOnly</code>, <code>variant</code>, <code>size</code> and <code>disabled</code>. <code>className</code> goes to the wrapper and <code>classNames</code> adds classes to <code>root</code>, <code>button</code>, <code>icon</code> and <code>status</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "button": "The default trigger is a <code>&lt;button&gt;</code>. When icon-only, its name is <code>copyAriaLabel</code> and switches to <code>copiedAriaLabel</code> on copy.",
+      "live": "It includes a hidden region with <code>role=\"status\"</code> and <code>aria-live=\"polite\"</code> that announces <code>copiedAriaLabel</code> or <code>errorAriaLabel</code>. The button references it with <code>aria-describedby</code>.",
+      "labels": "All five labels default to English (<code>\"Copy\"</code>, <code>\"Copied\"</code>, <code>\"Copy to clipboard\"</code>, <code>\"Copied to clipboard\"</code>, <code>\"Unable to copy\"</code>). Pass them translated.",
+      "trigger": "With a custom element, the name comes from its text. The component adds <code>aria-describedby</code>, <code>disabled</code> and the click; if the element's <code>onClick</code> calls <code>preventDefault()</code>, nothing is copied.",
+      "render": "With a function, the button and its name are up to you. The announcement region stays.",
+      "tooltip": "The tooltip is a visual aid: the button name and the announcement don't depend on it.",
+      "disabled": "With <code>disabled</code> the button is disabled and nothing can be copied."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Wrapper. Receives `className` and `classNames.root`.",
+        "copied": "Applied while the copied state lasts. Slightly scales up the icon.",
+        "error": "Applied when the copy fails.",
+        "button": "Default button or custom element. Receives `classNames.button`.",
+        "buttonCopied": "Icon-only button in the copied state. Paints the icon with `--gem-color-success-solid`.",
+        "status": "Visually hidden announcement region. Receives `classNames.status`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "CopyToClipboard has no variables of its own: the button uses `Button`'s and colors come from gem-system tokens. To change the confirmation color, redefine `--gem-color-success-solid` in a class (see Style changes)."
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by CopyToClipboard, besides the button's.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in CopyToClipboard"
+      },
+      "items": {
+        "--gem-color-success-solid": "Icon color on copy.",
+        "--gem-color-error-solid": "Wrapper color when the copy fails."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props of the component and of the function you can pass as `children`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "copy": {
+        "title": "CopyToClipboard",
+        "description": "`value` is required.",
+        "items": {
+          "value": "Text to copy. If it's a function, it's called on each copy.",
+          "children": "Button text, a custom element or a function that receives the state.",
+          "timeout": "Milliseconds the copied state lasts. With `0` or less it stays copied until the next copy.",
+          "variant": "Default button variant. Switches to `success` when copying with a label.",
+          "size": "Default button size.",
+          "iconOnly": "Icon-only button. Defaults to `true` when `children` isn't text.",
+          "rounded": "Fully rounded button.",
+          "label": "Button and tooltip text before copying.",
+          "copiedLabel": "Button and tooltip text after copying.",
+          "copyAriaLabel": "Accessible name of the icon-only button before copying.",
+          "copiedAriaLabel": "Accessible name after copying and announced text.",
+          "errorAriaLabel": "Text announced when the copy fails.",
+          "tooltip": "Shows the tooltip on the default button or a custom element.",
+          "tooltipPlacement": "Tooltip side.",
+          "disabled": "Blocks copying.",
+          "buttonProps": "Extra props for the default `Button`.",
+          "className": "Extra classes for the wrapper.",
+          "classNames": "Classes per part: `root`, `button`, `icon` and `status`.",
+          "onCopied": "Runs after copying, with the copied text.",
+          "onError": "Runs when the copy fails, with the error."
+        }
+      },
+      "render": {
+        "title": "Render props",
+        "description": "What the `children` function receives.",
+        "items": {
+          "copied": "`true` while the copied state lasts.",
+          "error": "Error from the last copy, or `null`.",
+          "copy": "Copies `value`. Wire it to your button's `onClick`.",
+          "disabled": "Value of the `disabled` prop."
+        }
+      }
+    }
+  }
+}

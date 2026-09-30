@@ -13,6 +13,7 @@
     "labelPlacement": "labelPlacement",
     "showSteppers": "showSteppers",
     "additionButtons": "additionButtons",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -96,6 +97,18 @@
       "description": "`labelPlacement=\"outline\"` ubica el label sobre el borde superior.",
       "texts": {
         "label": "Unidades"
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` muestra un botón para vaciar el campo mientras tiene un valor. Limpia a través del `onChange` normal, así funciona igual controlado o no controlado, y después dispara `onClear`. `clearLabel` es el nombre accesible del botón; por defecto es \"Clear\", en inglés, así que conviene traducirlo. Al limpiar, `onChange` recibe `null`.",
+      "texts": {
+        "label": "Cantidad",
+        "clearLabel": "Limpiar cantidad",
+        "valueText": "Valor",
+        "emptyText": "Sin valor: onChange recibió null.",
+        "helperText": "El botón aparece mientras el campo tiene un valor.",
+        "clearedText": "Campo limpiado: se disparó onClear."
       }
     },
     "error": {
@@ -182,6 +195,7 @@
       },
       "rules": {
         "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "clear": "Botón de limpiar. Se muestra con `clearable` mientras el campo tiene un valor.",
         "label": "Label del campo.",
         "required": "Asterisco de campo requerido.",
         "field": "Contenedor del input, los íconos y los botones.",
@@ -264,10 +278,13 @@
       "isInvalid": "Marca el campo como inválido (aria-invalid).",
       "isDisabled": "Deshabilita el campo y los botones.",
       "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "clearable": "Muestra un botón para vaciar el campo mientras tiene un valor.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto está en inglés.",
       "className": "Clases extra para el <input>.",
       "wrapperClassName": "Clases extra para el contenedor raíz.",
       "onChange": "Recibe el número ya interpretado (null si está vacío o no es válido).",
-      "onInfoClick": "Se dispara al activar el ícono de información."
+      "onInfoClick": "Se dispara al activar el ícono de información.",
+      "onClear": "Se dispara después de limpiar el campo con el botón."
     }
   }
 }

@@ -1,0 +1,271 @@
+{
+  "header": {
+    "title": "Stepper",
+    "description": "Muestra el avance en un proceso de varios pasos: un registro, un checkout o la configuración de una cuenta. Cada paso tiene un número (o un ícono), un título y, opcionalmente, una descripción y un contenido que se ve cuando es el paso actual. Por defecto es lineal: solo se puede volver a los pasos ya completados, no saltar hacia adelante. Usalo cuando el orden importa; si las secciones son independientes, mejor `Tabs`."
+  },
+  "demo": {
+    "navLabel": "Configuración del espacio de trabajo",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "finish": "Finalizar",
+    "restart": "Empezar de nuevo",
+    "done": "Listo: el espacio de trabajo quedó configurado.",
+    "steps": {
+      "account": {
+        "label": "Cuenta",
+        "description": "Correo y contraseña",
+        "content": "Creá la cuenta del dueño del espacio de trabajo y verificá el correo."
+      },
+      "profile": {
+        "label": "Perfil",
+        "description": "Nombre y rol",
+        "content": "Agregá un nombre visible, una foto y el rol que va a tener esta persona."
+      },
+      "review": {
+        "label": "Revisión",
+        "description": "Confirmar datos",
+        "content": "Revisá cada campo antes de crear el espacio de trabajo."
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado. Tocá los pasos para navegar: en modo lineal solo responden el actual y los anteriores. `alternativeLabel` solo aplica en horizontal."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasale `items` con un `id` y un `label` por paso. `defaultValue` elige el paso inicial; los anteriores quedan completados y los siguientes pendientes. El `content` del paso actual se muestra debajo. Traducí `navLabel`: por defecto dice \"Progress\"."
+    },
+    "alternativeLabel": {
+      "title": "Títulos debajo",
+      "description": "`alternativeLabel` centra el título y la descripción debajo de cada indicador y estira los conectores. Queda más ordenado cuando hay muchos pasos o poco ancho. Solo funciona en horizontal."
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "Con `orientation=\"vertical\"` los pasos se apilan, el conector baja por debajo de cada indicador y el contenido aparece al lado del paso actual. Es la mejor opción en pantallas angostas o cuando cada paso tiene mucho contenido."
+    },
+    "wizard": {
+      "title": "Wizard controlado",
+      "description": "El caso más común: controlar el paso con `value` y `onChange`, y moverse con botones propios. Al finalizar, `completed` en cada item marca todo como hecho y `showContent={false}` oculta el panel."
+    },
+    "verticalWizard": {
+      "title": "Wizard vertical",
+      "description": "`content` acepta cualquier nodo, así que los botones de cada paso pueden vivir dentro del panel. Queda cada acción junto al contenido al que se refiere."
+    },
+    "nonLinear": {
+      "title": "No lineal",
+      "description": "Con `linear={false}` se puede ir a cualquier paso habilitado, incluso a los siguientes. Útil cuando los pasos se pueden completar en cualquier orden, como un perfil que se llena por partes."
+    },
+    "error": {
+      "title": "Paso con error",
+      "description": "`error` en un item lo marca en rojo y cambia el número por un signo de alerta, aunque sea el paso actual. Acompañalo con una `description` que explique qué hay que corregir.",
+      "texts": {
+        "errorDescription": "Revisá los campos marcados"
+      }
+    },
+    "icons": {
+      "title": "Con íconos",
+      "description": "`icon` reemplaza el número mientras el paso está pendiente o es el actual. Los pasos completados muestran igual la marca de completado (se cambia con `completedIcon`).",
+      "texts": {
+        "steps": {
+          "account": { "label": "Cuenta", "content": "Datos de acceso." },
+          "files": { "label": "Archivos", "content": "Subí los documentos del espacio de trabajo." },
+          "schedule": { "label": "Fecha", "content": "Elegí la fecha de lanzamiento." },
+          "settings": { "label": "Ajustes", "content": "Notificaciones y visibilidad." }
+        }
+      }
+    },
+    "optional": {
+      "title": "Paso opcional",
+      "description": "`optional` agrega un texto debajo del título, pero viene fijo en inglés (\"Optional\") y no se puede traducir. En otros idiomas indicalo en la `description`, como en esta demo.",
+      "texts": {
+        "optional": "Opcional: se puede saltear"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` en un item bloquea ese paso y la navegación con teclado lo saltea. `isDisabled` deshabilita todo el stepper y baja su opacidad, por ejemplo mientras se guarda."
+    },
+    "readOnly": {
+      "title": "Solo lectura",
+      "description": "Con `clickable={false}` los pasos no se pueden tocar y el stepper solo informa el estado. Sirve para seguimientos, como el estado de un pedido, donde el avance lo define el sistema.",
+      "texts": {
+        "navLabel": "Estado del pedido",
+        "steps": {
+          "placed": { "label": "Pedido realizado", "description": "12 de marzo" },
+          "packed": { "label": "Preparado", "description": "13 de marzo" },
+          "shipped": { "label": "En camino", "description": "Llega en 2 días" },
+          "delivered": { "label": "Entregado", "description": "Pendiente" }
+        }
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el indicador (24, 32 o 40px) y el tamaño del texto. El default es `md`."
+    }
+  },
+  "apiLink": "Ver la API completa de Stepper",
+  "api": {
+    "header": {
+      "title": "Stepper API",
+      "description": "Referencia de la API del componente Stepper de React: props, items, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Stepper"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `getStepperStatus(item, index, currentIndex)` devuelve el estado de un paso por si armás tu propia vista."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;nav&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>, salvo <code>children</code>, <code>onChange</code> y <code>defaultValue</code>) y los pasa al elemento raíz. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>list</code>, <code>item</code>, <code>trigger</code>, <code>indicator</code>, <code>label</code>, <code>description</code>, <code>connector</code> y <code>panel</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "nav": "El stepper es un <code>&lt;nav&gt;</code> con <code>aria-label</code> (desde <code>navLabel</code>) y los pasos van en una lista ordenada <code>&lt;ol&gt;</code>.",
+      "current": "El paso actual tiene <code>aria-current=\"step\"</code>.",
+      "keyboard": "Hay un solo punto de tabulación. Las flechas (izquierda y derecha en horizontal, arriba y abajo en vertical), Inicio y Fin mueven el foco entre los pasos que se pueden activar.",
+      "linear": "En modo lineal, los pasos siguientes no son botones: no se pueden enfocar ni activar.",
+      "readOnly": "Con <code>clickable={false}</code> o <code>isDisabled</code> ningún paso es un botón. <code>isDisabled</code> agrega <code>aria-disabled</code> al <code>&lt;nav&gt;</code>.",
+      "panel": "El contenido del paso actual es un <code>role=\"region\"</code> nombrado por su paso (<code>aria-labelledby</code>), y el botón del paso apunta a él con <code>aria-controls</code>.",
+      "icons": "Los indicadores son decorativos (<code>aria-hidden</code>): el estado completado o con error no se anuncia. Si importa, indicalo en la <code>description</code>.",
+      "labels": "<code>navLabel</code> (<code>\"Progress\"</code>) y el texto de <code>optional</code> (<code>\"Optional\"</code>) vienen en inglés. Traducí <code>navLabel</code>; <code>optional</code> no se puede traducir. Usá <code>ariaLabel</code> en un item si su <code>label</code> no es texto."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento `<nav>` raíz. Recibe `className` y `classNames.root` y define las variables del stepper.",
+        "size": "Tamaño del indicador y del texto.",
+        "orientation": "Disposición `horizontal` o `vertical`.",
+        "alt": "Se aplica con `alternativeLabel` en horizontal.",
+        "linear": "Se aplica cuando `linear` es `true`.",
+        "disabled": "Se aplica con `isDisabled`. Baja la opacidad y bloquea el puntero.",
+        "list": "Lista `<ol>` de pasos. Recibe `classNames.list`.",
+        "item": "Cada paso (`<li>`). Recibe `classNames.item`.",
+        "itemStatus": "Estado del paso: `pending`, `current`, `completed` o `error`. Define los colores del indicador y el título.",
+        "trigger": "Botón del paso (o `<div>` si no se puede activar). Recibe `classNames.trigger`.",
+        "triggerStatus": "Estado del paso aplicado al botón. No tiene estilos propios; sirve como gancho.",
+        "indicator": "Círculo con el número, el ícono o la marca. Recibe `classNames.indicator`.",
+        "mark": "Marca de error por defecto.",
+        "copy": "Contenedor del título, la descripción y el texto opcional.",
+        "label": "Título del paso. Recibe `classNames.label`.",
+        "description": "Descripción del paso. Recibe `classNames.description`.",
+        "optional": "Texto \"Optional\" cuando el item tiene `optional`.",
+        "connector": "Línea entre pasos. Recibe `classNames.connector`.",
+        "connectorDone": "Conector después de un paso completado.",
+        "panel": "Contenido del paso actual. Recibe `classNames.panel`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-stepper` y tienen valores propios en el tema oscuro. Para cambiarlas usá un selector con más especificidad, como `.gem-stepper.mi-clase`. `--gem-stepper-indicator-size` también la cambian las clases de tamaño.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-stepper-fg": "Color del texto.",
+        "--gem-stepper-muted": "Color de la descripción y del título de los pasos pendientes.",
+        "--gem-stepper-current": "Color del paso actual y los completados (indicador y título).",
+        "--gem-stepper-current-fg": "Color del número o la marca sobre `--gem-stepper-current`.",
+        "--gem-stepper-completed": "Color del conector después de un paso completado.",
+        "--gem-stepper-pending": "Borde del indicador de los pasos pendientes.",
+        "--gem-stepper-pending-fg": "Número de los pasos pendientes.",
+        "--gem-stepper-error": "Color de los pasos con error.",
+        "--gem-stepper-error-fg": "Color de la marca sobre `--gem-stepper-error`.",
+        "--gem-stepper-track": "Color de los conectores pendientes.",
+        "--gem-stepper-surface": "Fondo del indicador de los pasos pendientes.",
+        "--gem-stepper-indicator-size": "Diámetro del indicador."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Stepper.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Stepper"
+      },
+      "items": {
+        "--gem-color-fg": "Valor por defecto de `--gem-stepper-fg`.",
+        "--gem-color-fg-muted": "Valor por defecto de `--gem-stepper-muted` y `--gem-stepper-pending-fg`.",
+        "--gem-color-primary-600": "Valor por defecto de `--gem-stepper-current` y `--gem-stepper-completed`.",
+        "--gem-color-error-600": "Valor por defecto de `--gem-stepper-error`.",
+        "--gem-color-neutral-0": "Color del texto sobre el paso actual y los pasos con error.",
+        "--gem-color-border": "Valor por defecto de `--gem-stepper-pending` y `--gem-stepper-track`.",
+        "--gem-color-bg": "Valor por defecto de `--gem-stepper-surface`.",
+        "--gem-palette-*": "Colores del tema oscuro (neutral, primary y error).",
+        "--gem-radius-full": "Forma redonda del indicador.",
+        "--gem-shadow-focus": "Anillo de foco del indicador.",
+        "--gem-space-1": "Márgenes chicos del conector vertical y de `alternativeLabel`.",
+        "--gem-space-2": "Separación entre el indicador y el texto, y margen del conector.",
+        "--gem-space-3": "Separación de columnas en vertical.",
+        "--gem-space-4": "Separación entre la lista y el panel.",
+        "--gem-font-sans": "Tipografía."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props del Stepper y de cada item de `items`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "stepper": {
+        "title": "Stepper",
+        "description": "Además acepta los atributos HTML de un `<nav>`.",
+        "items": {
+          "items": "Pasos, en orden.",
+          "value": "`id` del paso actual (modo controlado).",
+          "defaultValue": "`id` del paso inicial (modo no controlado). Por defecto, el primer paso habilitado.",
+          "orientation": "Disposición de los pasos.",
+          "size": "Tamaño del indicador y del texto.",
+          "linear": "Si es `true`, solo se puede ir al paso actual y a los anteriores.",
+          "clickable": "Con `false` los pasos no se pueden activar y el stepper solo muestra el estado.",
+          "alternativeLabel": "Centra los títulos debajo de los indicadores. Solo en horizontal.",
+          "showContent": "Muestra el `content` del paso actual.",
+          "isDisabled": "Deshabilita todo el stepper.",
+          "navLabel": "Nombre accesible del `<nav>`.",
+          "completedIcon": "Ícono de los pasos completados.",
+          "errorIcon": "Ícono de los pasos con error. Por defecto, un signo de alerta.",
+          "className": "Clases extra para el `<nav>`.",
+          "classNames": "Clases por parte: `root`, `list`, `item`, `trigger`, `indicator`, `label`, `description`, `connector` y `panel`.",
+          "onChange": "Se ejecuta al elegir otro paso, con su `id`, el item y su índice. No se ejecuta si el paso no se puede activar."
+        }
+      },
+      "item": {
+        "title": "StepperItem",
+        "description": "Cada elemento de `items`.",
+        "items": {
+          "id": "Identificador único. Es el valor de `value` y el que recibe `onChange`.",
+          "label": "Título del paso.",
+          "description": "Texto secundario debajo del título.",
+          "icon": "Reemplaza el número mientras el paso está pendiente o es el actual.",
+          "content": "Contenido que se muestra cuando es el paso actual.",
+          "optional": "Agrega el texto \"Optional\" (en inglés, no se puede traducir).",
+          "disabled": "Deshabilita el paso.",
+          "error": "Marca el paso con error, aunque sea el actual.",
+          "completed": "Marca el paso como completado aunque esté después del actual.",
+          "ariaLabel": "Nombre accesible del paso cuando `label` no es texto."
+        }
+      }
+    }
+  }
+}

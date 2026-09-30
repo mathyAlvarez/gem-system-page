@@ -1,0 +1,357 @@
+{
+  "header": {
+    "title": "Statistic Card",
+    "description": "Tarjeta para mostrar una métrica: título, valor, tendencia opcional y un ícono. Los números se agrupan y redondean solos. Agrupá varias con `StatisticCard.Group`."
+  },
+  "common": {
+    "separators": { "groupSeparator": ".", "decimalSeparator": "," },
+    "users": {
+      "title": "Usuarios activos",
+      "description": "Iniciaron sesión en las últimas 24 horas",
+      "trendValue": "+4,2 %",
+      "trendLabel": "vs. la semana pasada"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver la tarjeta y el código.",
+    "texts": {
+      "title": "Usuarios activos",
+      "description": "Iniciaron sesión en las últimas 24 horas",
+      "trendValue": "+12 %",
+      "trendLabel": "vs. la semana pasada"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "`title` y `value` son lo esencial. `suffix` agrega una unidad, `icon` un ícono en un recuadro de color y `trend` la fila de tendencia con flecha. Incluí el signo en `trendValue`: la flecha es decorativa.",
+      "texts": {
+        "title": "Tasa de finalización",
+        "trendValue": "+12,4 %",
+        "trendLabel": "vs. la semana pasada"
+      }
+    },
+    "currency": {
+      "title": "Moneda",
+      "description": "`prefix` va antes del valor y `precision` fija los decimales. `groupSeparator` y `decimalSeparator` adaptan el formato al idioma: por defecto son `,` y `.`, como en inglés.",
+      "texts": {
+        "title": "Ingresos del mes",
+        "description": "Sin reembolsos",
+        "trendValue": "+8,1 %",
+        "trendLabel": "vs. el mes pasado"
+      }
+    },
+    "trend": {
+      "title": "Tendencia",
+      "description": "`trend=\"up\"` se pinta de verde, `\"down\"` de rojo y `\"neutral\"` de gris. El color de la tendencia es independiente del `tone`, que solo cambia el recuadro del ícono.",
+      "texts": {
+        "bounce": {
+          "title": "Tasa de rebote",
+          "description": "Sesiones que salieron en la primera página",
+          "trendValue": "−3,2 %",
+          "trendLabel": "vs. ayer"
+        },
+        "nps": {
+          "title": "NPS",
+          "description": "Este trimestre",
+          "trendLabel": "Sin cambios"
+        }
+      }
+    },
+    "invert": {
+      "title": "Tendencia invertida",
+      "description": "`trendInvert` pinta la bajada de verde y la subida de rojo. Sirve para métricas donde bajar es bueno, como errores o bajas.",
+      "texts": {
+        "title": "Incidentes abiertos",
+        "description": "Que baje es bueno para esta métrica",
+        "trendValue": "−4",
+        "trendLabel": "vs. el último sprint"
+      }
+    },
+    "inline": {
+      "title": "Disposición en línea",
+      "description": "`layout=\"inline\"` pone el ícono al costado del valor en lugar de arriba.",
+      "texts": {
+        "title": "Licencias del equipo",
+        "description": "Licencias ocupadas del plan"
+      }
+    },
+    "loading": {
+      "title": "Cargando",
+      "description": "`isLoading` reemplaza el valor, la tendencia y la descripción por placeholders animados, y agrega `aria-busy`. El título y el ícono se mantienen. Probá recargar.",
+      "texts": {
+        "reload": "Recargar"
+      }
+    },
+    "footer": {
+      "title": "Con pie",
+      "description": "`children` (o `footer`) agrega contenido debajo de la métrica, como una barra de progreso. `extra` va al final del título: si es un botón de ícono, pasale `aria-label`.",
+      "texts": {
+        "title": "Almacenamiento usado",
+        "description": "12,4 GB de 18 GB",
+        "more": "Más opciones"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `sm`, `md` (default) y `lg`. Cambia el padding, el tamaño del ícono y la tipografía del valor."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` cambia el color del recuadro del ícono. No afecta a la tendencia ni al valor."
+    },
+    "format": {
+      "title": "Formato de números",
+      "description": "Con un `value` numérico, la tarjeta agrupa los miles y aplica `precision`. Para formatos más complejos, como moneda o notación compacta, pasá `formatValue` con `Intl.NumberFormat`.",
+      "texts": {
+        "defaults": "Por defecto",
+        "separators": "Separadores propios",
+        "compact": "Notación compacta",
+        "currency": "Moneda con Intl"
+      }
+    },
+    "group": {
+      "title": "Grupo",
+      "description": "`StatisticCard.Group` ordena las tarjetas en una grilla. Sin `columns`, las columnas se ajustan solas al ancho disponible; con `columns`, quedan fijas y pasan a una por debajo de 40rem.",
+      "texts": {
+        "users": {
+          "title": "Usuarios activos",
+          "trendValue": "+12 %",
+          "trendLabel": "vs. la semana pasada"
+        },
+        "conversion": {
+          "title": "Conversión",
+          "trendValue": "+0,4 pp",
+          "trendLabel": "vs. la semana pasada"
+        },
+        "churn": {
+          "title": "Bajas",
+          "trendValue": "−0,3 pp",
+          "trendLabel": "vs. la semana pasada"
+        }
+      }
+    },
+    "divided": {
+      "title": "Grupo dividido",
+      "description": "`divided` une las tarjetas en una sola superficie con líneas entre ellas. Ignora `columns`. Usá `bordered={false}` en cada tarjeta.",
+      "texts": {
+        "sessions": {
+          "title": "Sesiones",
+          "description": "Últimos 7 días"
+        },
+        "duration": {
+          "title": "Duración promedio",
+          "value": "4 min 12 s",
+          "description": "Por sesión"
+        },
+        "nps": {
+          "title": "NPS",
+          "description": "Este trimestre",
+          "trendLabel": "Sin cambios"
+        }
+      }
+    },
+    "custom": {
+      "title": "Color y radio propios",
+      "description": "`tone=\"custom\"` con `color` pinta el recuadro del ícono con cualquier color CSS. `rounded` redondea más: `true` usa el token 2xl, un número se toma como porcentaje y un string como CSS.",
+      "texts": {
+        "accent": {
+          "title": "Color propio",
+          "description": "rounded usa --gem-radius-2xl"
+        },
+        "percent": {
+          "title": "Latencia p95",
+          "description": "rounded={12} equivale a 12%"
+        }
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "branded": {
+        "title": "Superficie de marca",
+        "description": "Estilos con className y variables"
+      },
+      "pill": {
+        "title": "Retorno",
+        "description": "Ícono redondo y tono terciario"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Statistic Card",
+  "api": {
+    "header": {
+      "title": "Statistic Card API",
+      "description": "Referencia de la API de StatisticCard de React: props de la tarjeta y del grupo, helpers, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Statistic Card"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `StatisticCard.Group` también se exporta como `StatisticCardGroup`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>StatisticCard</code> acepta los atributos de <code>&lt;article&gt;</code> salvo <code>title</code>, que acá es el nombre de la métrica. Van a la raíz junto con <code>ref</code>. <code>style</code> se combina con <code>--gem-statistic-card-radius</code> y <code>--gem-statistic-card-color</code>. <code>StatisticCard.Group</code> acepta los atributos de <code>&lt;div&gt;</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "semantics": "Cada tarjeta es un <code>&lt;article&gt;</code> con <code>aria-labelledby</code> apuntando al título. Sin título, pasá <code>aria-label</code>.",
+      "heading": "Un <code>title</code> de texto se renderiza como <code>&lt;h3&gt;</code>; si pasás un nodo, es un <code>div</code>. El valor es un <code>&lt;p&gt;</code>, no un encabezado.",
+      "trend": "La flecha de tendencia tiene <code>aria-hidden</code>. El componente agrega un <code>aria-label</code> en inglés (<code>\"Increase\"</code>, <code>\"Decrease\"</code>) sobre un <code>&lt;p&gt;</code>, que muchos lectores de pantalla ignoran. Incluí la dirección en el texto visible: un signo en <code>trendValue</code> (<code>\"+12 %\"</code>) o una palabra en <code>trendLabel</code>.",
+      "color": "El verde y el rojo de la tendencia no alcanzan solos para transmitir si algo mejoró, sobre todo con <code>trendInvert</code>. Sumá contexto en <code>description</code>.",
+      "icon": "El recuadro del ícono tiene <code>aria-hidden</code>: es decorativo.",
+      "loading": "Con <code>isLoading</code> la tarjeta recibe <code>aria-busy=\"true\"</code> y los placeholders tienen <code>aria-hidden</code>. La animación se detiene con <code>prefers-reduced-motion</code>.",
+      "extra": "Los botones de ícono en <code>extra</code> necesitan <code>aria-label</code>. Una <code>ProgressBar</code> en el pie también necesita un nombre."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz `<article>`. Define las variables. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define padding, espacio y tamaño del ícono.",
+        "layout": "Disposición: `--stacked` o `--inline`.",
+        "tone": "Tono: `--tone-primary` … `--tone-neutral` o `--tone-custom`. Define los colores del ícono.",
+        "shadow": "Sombra: `--shadow-none` … `--shadow-xl`.",
+        "radius": "Radio: `--radius-sm`, `--radius-md` o `--radius-lg`, cuando `rounded` está apagado.",
+        "rounded": "Se aplica con `rounded={true}`. Con número o string se aplica `--rounded-custom`.",
+        "bordered": "Se aplica con `bordered`. Sin borde se aplica `--borderless`.",
+        "loading": "Se aplica con `isLoading`.",
+        "header": "`<header>` con el título y `extra`. Recibe `classNames.header`.",
+        "title": "Título. Recibe `classNames.title`.",
+        "extra": "Contenedor de `extra`. Recibe `classNames.extra`.",
+        "body": "Contenedor del ícono y el contenido. Recibe `classNames.body`.",
+        "icon": "Recuadro del ícono. Recibe `classNames.icon`.",
+        "main": "Columna con valor, tendencia y descripción. Recibe `classNames.main`.",
+        "valueRow": "Fila con prefijo, valor y sufijo. Recibe `classNames.value`.",
+        "value": "Valor.",
+        "affix": "Prefijo o sufijo. Recibe `classNames.prefix` o `classNames.suffix`.",
+        "trend": "Fila de tendencia. Recibe `classNames.trend`. Modificadores: `--up`, `--down`, `--neutral`.",
+        "description": "Descripción. Recibe `classNames.description`.",
+        "footer": "Pie con `footer` y `children`. Recibe `classNames.footer`.",
+        "bone": "Placeholder de carga.",
+        "group": "Grilla de `StatisticCard.Group`. `--fixed` con `columns`.",
+        "groupDivided": "Se aplica con `divided`. Superficie única con líneas entre tarjetas."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de StatisticCard. Las definen las clases de tamaño y tono, así que para pisarlas usá `.gem-statistic-card.tu-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-statistic-card-icon-bg": "Fondo del recuadro del ícono.",
+        "--gem-statistic-card-icon-fg": "Color del ícono.",
+        "--gem-statistic-card-pad": "Padding de la tarjeta.",
+        "--gem-statistic-card-gap": "Espacio entre header, cuerpo y pie.",
+        "--gem-statistic-card-icon-size": "Tamaño del recuadro del ícono.",
+        "--gem-statistic-card-color": "Color de acento con `tone=\"custom\"`. Lo define `color`.",
+        "--gem-statistic-card-radius": "Radio con `rounded` numérico o string.",
+        "--gem-statistic-card-cols": "Columnas del grupo. La define `columns`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa StatisticCard.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en StatisticCard"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo.",
+        "--gem-color-fg": "Valor.",
+        "--gem-color-fg-muted": "Título, afijos, descripción y tendencia neutral.",
+        "--gem-color-border": "Borde y líneas del grupo dividido.",
+        "--gem-color-{tone}-{100|700}": "Recuadro del ícono para primary, secondary y tertiary.",
+        "--gem-color-{success|warning|error|info}-{soft|text}": "Recuadro del ícono de esos tonos. `success-text` y `error-text` también pintan la tendencia.",
+        "--gem-color-neutral-{50|100}": "Tono neutral y placeholders de carga.",
+        "--gem-radius-{sm|md|lg|2xl}": "Radio de la tarjeta y del ícono.",
+        "--gem-shadow-{none|xs|sm|md|lg|xl}": "Sombra.",
+        "--gem-space-{1|2|3|4}": "Espacios internos y del grupo.",
+        "--gem-font-sans": "Fuente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "La tarjeta acepta además los atributos de `<article>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "card": {
+        "title": "StatisticCard",
+        "description": "Props de la tarjeta.",
+        "items": {
+          "title": "Nombre de la métrica. Un string se renderiza como `<h3>`.",
+          "value": "Valor principal. Los números se agrupan y se pueden redondear.",
+          "prefix": "Nodo antes del valor, como `$`.",
+          "suffix": "Nodo después del valor, como `%` o `ms`.",
+          "precision": "Decimales cuando `value` es un número. Sin definir, los enteros quedan enteros y los decimales, como están.",
+          "groupSeparator": "Separador de miles.",
+          "decimalSeparator": "Separador decimal.",
+          "formatValue": "Reemplaza el formato numérico por defecto.",
+          "description": "Texto de apoyo debajo del valor.",
+          "icon": "Ícono en un recuadro de color.",
+          "extra": "Contenido al final del título, como un menú o link.",
+          "footer": "Contenido debajo de la métrica.",
+          "children": "Contenido del pie, después de `footer`.",
+          "trend": "Dirección del cambio. Define el color y la flecha. Sin definir, no hay fila de tendencia.",
+          "trendValue": "Variación junto a la flecha. Un número se formatea como `value`.",
+          "trendLabel": "Período de comparación, como \"vs. la semana pasada\".",
+          "trendInvert": "Trata la bajada como positiva.",
+          "tone": "Color del recuadro del ícono.",
+          "color": "Color CSS del acento. Tiene prioridad sobre `tone`.",
+          "size": "Densidad.",
+          "layout": "`stacked` pone el ícono arriba; `inline`, al costado.",
+          "bordered": "Muestra el borde.",
+          "shadow": "Elevación.",
+          "radius": "Radio cuando `rounded` está apagado.",
+          "rounded": "`true` usa el token 2xl, un número es un porcentaje y un string es CSS.",
+          "isLoading": "Reemplaza el contenido por placeholders.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `header`, `title`, `extra`, `body`, `icon`, `main`, `value`, `prefix`, `suffix`, `trend`, `description` y `footer`.",
+          "ref": "Ref del `<article>`."
+        }
+      },
+      "group": {
+        "title": "StatisticCard.Group",
+        "description": "Contenedor para varias tarjetas.",
+        "items": {
+          "columns": "Cantidad de columnas, de 1 a 12. Sin definir, la grilla se ajusta sola.",
+          "divided": "Une las tarjetas en una superficie con líneas entre ellas. Ignora `columns`.",
+          "className": "Clases extra para el grupo.",
+          "classNames": "Clases por parte: `root`.",
+          "children": "Tarjetas.",
+          "ref": "Ref del `<div>` del grupo."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Funciones exportadas que usa la tarjeta para formatear valores.",
+        "items": {
+          "formatStatisticValue": "Formatea un número con separadores y precisión. Devuelve un string vacío si no es finito.",
+          "resolveDisplayedValue": "Devuelve lo que muestra la tarjeta: aplica `formatValue` o `formatStatisticValue` a los números y deja los demás valores igual."
+        }
+      }
+    }
+  }
+}

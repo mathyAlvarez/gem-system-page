@@ -1,0 +1,23 @@
+.gem-avatar.avatar-branded {
+  --gem-avatar-size: 3.5rem;
+  --gem-avatar-font: 1.125rem;
+  --gem-avatar-status: 1rem;
+  --gem-avatar-ring: 0.1875rem;
+  background-color: var(--gem-palette-secondary-600);
+}
+
+.gem-avatar.avatar-branded.gem-avatar--has-image {
+  background-color: var(--gem-color-bg-subtle);
+}
+
+.gem-avatar.avatar-branded .gem-avatar__status {
+  border-width: 0.1875rem;
+}
+
+.gem-avatar.avatar-branded .gem-avatar__status--online {
+  background-color: var(--gem-palette-secondary-400);
+}
+
+[data-theme="dark"] .gem-avatar.avatar-branded {
+  background-color: var(--gem-palette-secondary-500);
+}

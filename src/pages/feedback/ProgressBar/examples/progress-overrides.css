@@ -1,0 +1,14 @@
+.gem-progress.progress-branded {
+  --gem-progress-fill: var(--gem-palette-tertiary-600);
+  --gem-progress-track: var(--gem-palette-tertiary-200);
+  --gem-progress-thumb: var(--gem-palette-tertiary-600);
+  --gem-progress-h: 0.625rem;
+  --gem-progress-radius: var(--gem-radius-sm);
+  --gem-progress-thumb-size: 1.125rem;
+}
+
+[data-theme="dark"] .gem-progress.progress-branded {
+  --gem-progress-fill: var(--gem-palette-tertiary-400);
+  --gem-progress-track: var(--gem-palette-tertiary-900);
+  --gem-progress-thumb: var(--gem-palette-tertiary-400);
+}

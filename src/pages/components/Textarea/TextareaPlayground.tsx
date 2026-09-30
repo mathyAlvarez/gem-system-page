@@ -18,12 +18,13 @@ const toOptions = (values: readonly string[]) => values.map((value) => ({ value,
 
 type Flags = {
   showCount: boolean;
+  clearable: boolean;
   isInvalid: boolean;
   isDisabled: boolean;
   isRequired: boolean;
 };
 
-const flagDefaults: Flags = { showCount: false, isInvalid: false, isDisabled: false, isRequired: false };
+const flagDefaults: Flags = { showCount: false, clearable: false, isInvalid: false, isDisabled: false, isRequired: false };
 const flagOrder = Object.keys(flagDefaults) as (keyof Flags)[];
 
 const pick =

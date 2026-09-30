@@ -1,0 +1,48 @@
+.tree-view-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: min(22rem, 100%);
+  min-width: 0;
+}
+
+.tree-view-demo--wide {
+  width: min(44rem, 100%);
+}
+
+.tree-view-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.tree-view-demo__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.tree-view-demo__status {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tree-view-demo__label {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.gem-tree .tree-view-demo__text {
+  font-weight: 550;
+  letter-spacing: 0.01em;
+}
+
+.tree-view-demo__path {
+  font-family: var(--gem-font-mono, monospace);
+}

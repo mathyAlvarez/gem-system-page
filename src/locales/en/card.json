@@ -1,0 +1,319 @@
+{
+  "header": {
+    "title": "Card",
+    "description": "Container with header, body and footer to group related content. Build it with props (`title`, `subtitle`, `extra`, `footer`) or with the `Card.Header`, `Card.Body` and `Card.Footer` slots. Use `bordered` and `shadow` to choose between outline and elevation."
+  },
+  "common": {
+    "title": "Project overview",
+    "subtitle": "Updated 2 hours ago",
+    "body": "Track delivery, owners and remaining work for this workspace. Cards group related content without becoming a page layout.",
+    "more": "More options",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the card and its code."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`title` and `subtitle` build the header, `extra` adds actions on the right and `footer` the footer. `children` goes in the body. By default it has a border, no shadow, size `md` and radius `md`."
+    },
+    "expandable": {
+      "title": "Expandable",
+      "description": "`expandable` adds a button that collapses the body, footer and `media` with a height animation. Clicking the header also toggles it. `defaultExpanded={false}` starts it closed.",
+      "texts": {
+        "text": "Click the header or the chevron to hide and show the content."
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `expanded` and `onExpandedChange` you drive the state from outside. Collapsed content stays in the DOM and can be reached with Tab, so the example uses slots and passes `inert` to `Card.Body` and `Card.Footer` while closed.",
+      "texts": {
+        "toggle": "Toggle",
+        "open": "Card open",
+        "closed": "Card closed"
+      }
+    },
+    "elevated": {
+      "title": "Elevated",
+      "description": "`bordered={false}` with `shadow=\"md\"` removes the border and relies on shadow only. Useful when the card sits on a busy background.",
+      "texts": {
+        "title": "Elevated card",
+        "subtitle": "No border, with shadow",
+        "text": "The shadow separates the card from the background without a border.",
+        "open": "Open"
+      }
+    },
+    "borderShadow": {
+      "title": "Border and shadow",
+      "description": "Border and shadow can be combined for extra lift.",
+      "texts": {
+        "title": "Outlined and raised",
+        "subtitle": "Both treatments together",
+        "text": "Cards have a border by default. Add shadow when the surface needs to stand out."
+      }
+    },
+    "customHeader": {
+      "title": "Custom header",
+      "description": "`header`, `title`, `subtitle` and `extra` accept any React node, not only text. Pass your component to `header`, or as a child of `Card.Header`, when the header isn't a title plus subtitle.",
+      "texts": {
+        "name": "Ana López",
+        "role": "Workspace owner",
+        "text": "The author goes in the header and the actions on the side.",
+        "compoundText": "Same idea with slots: children of Card.Header replace the title block.",
+        "follow": "Follow"
+      }
+    },
+    "compound": {
+      "title": "Slots",
+      "description": "`Card.Header`, `Card.Body` and `Card.Footer` keep the markup explicit. If every child is a slot, the card doesn't wrap them in another body.",
+      "texts": {
+        "title": "Workspace",
+        "subtitle": "Personal plan",
+        "text": "Slots are useful when the header or footer hold more than a title and buttons.",
+        "manage": "Manage",
+        "dismiss": "Dismiss",
+        "next": "Continue"
+      }
+    },
+    "media": {
+      "title": "With media",
+      "description": "`media` places an image, map or any block above the header. If the image carries information, give it an `alt`; if it's decorative, use `alt=\"\"` or `aria-hidden`.",
+      "texts": {
+        "title": "Cover",
+        "subtitle": "The image sits above the header",
+        "text": "The container spans the full width and clips the overflow.",
+        "alt": "Gem-org banner with the tagline: build your react based app with gem-org system",
+        "view": "View"
+      }
+    },
+    "rounded": {
+      "title": "Rounded",
+      "description": "`rounded` rounds more than `radius`: `true` uses `--gem-radius-2xl`, a number is a percentage and a string is any CSS length.",
+      "texts": {
+        "preset": "System rounding",
+        "percent": "Percentage",
+        "css": "CSS length",
+        "text": "The radius also clips the image and the section edges."
+      }
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` uses the `sm`, `md` (default) or `lg` tokens when `rounded` is off.",
+      "texts": {
+        "text": "Corners follow the radius token."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` adjusts section padding and title size: `sm`, `md` (default) or `lg`.",
+      "texts": {
+        "titles": {
+          "sm": "Small",
+          "md": "Medium",
+          "lg": "Large"
+        },
+        "texts": {
+          "sm": "Compact padding for dense lists.",
+          "md": "Default padding for most layouts.",
+          "lg": "Roomier sections for highlights or empty states."
+        }
+      }
+    },
+    "shadows": {
+      "title": "Shadows",
+      "description": "`shadow` accepts `none` (default), `xs`, `sm`, `md`, `lg` or `xl`. In the example, all but `none` are borderless.",
+      "texts": {
+        "token": "Token"
+      }
+    },
+    "heading": {
+      "title": "Heading level",
+      "description": "`title` always renders as `<h3>`. If that doesn't fit the page hierarchy, pass your own heading in `header` with the right level.",
+      "texts": {
+        "title": "Recent activity",
+        "subtitle": "Last 7 days",
+        "text": "This title is an h4 because the section containing it uses h3."
+      }
+    },
+    "list": {
+      "title": "Card list",
+      "description": "For a collection, wrap the cards in `<ul>` and `<li>` so the count is announced. Each button includes the plan name so there aren't several identical \"Choose\" buttons.",
+      "texts": {
+        "choose": "Choose",
+        "plans": [
+          { "name": "Basic", "price": "€0", "text": "To get started on your own." },
+          { "name": "Team", "price": "€12 / month", "text": "Up to 10 people and shared workspaces." },
+          { "name": "Business", "price": "€30 / month", "text": "Advanced permissions and dedicated support." }
+        ]
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "title": "Branded card",
+      "subtitle": "Secondary colors on surface and sections",
+      "text": "The class goes on the root, so every part can be restyled together.",
+      "open": "Open"
+    }
+  },
+  "apiLink": "See the full Card API",
+  "api": {
+    "header": {
+      "title": "Card API",
+      "description": "API reference for the React Card component: props, slots, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Card"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. Slots live on `Card.Header`, `Card.Body` and `Card.Footer`, and are also exported on their own."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Card</code> accepts <code>&lt;article&gt;</code> attributes except <code>title</code>, and they go to the root along with <code>id</code>, <code>className</code> and <code>style</code>. <code>Card.Header</code> renders a <code>&lt;header&gt;</code>, <code>Card.Body</code> a <code>&lt;div&gt;</code> and <code>Card.Footer</code> a <code>&lt;footer&gt;</code>, each accepting its element's attributes. <code>classNames</code> only applies <code>root</code>, <code>media</code>, <code>header</code>, <code>body</code> and <code>footer</code>: <code>title</code>, <code>subtitle</code> and <code>extra</code> are in the type but ignored."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "article": "The root is an <code>&lt;article&gt;</code>. If the card isn't standalone content, pass another <code>role</code> or wrap it in a list.",
+      "heading": "<code>title</code> always renders as <code>&lt;h3&gt;</code>. For another level, pass your own heading in <code>header</code>.",
+      "toggle": "With <code>expandable</code>, the chevron button has <code>aria-expanded</code> and <code>aria-controls</code> pointing at the content.",
+      "labels": "The button name is fixed in English (<code>\"Collapse\"</code> and <code>\"Expand\"</code>) and there's no prop to change it.",
+      "collapsed": "Collapsed content is only hidden visually: it stays in the DOM and can be focused. Use slots in controlled mode and pass <code>inert</code> to <code>Card.Body</code> and <code>Card.Footer</code> while closed.",
+      "header": "Clicking the header also toggles, but clicks on buttons, links and fields are ignored. Keyboard users use the chevron button.",
+      "media": "<code>media</code> adds no alternative text: pass it on your image, or <code>alt=\"\"</code> if decorative.",
+      "motion": "With <code>prefers-reduced-motion</code> the chevron and height animations are removed."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Sets section padding.",
+        "shadow": "Shadow: `--shadow-none`, `--shadow-xs` … `--shadow-xl`.",
+        "bordered": "`--bordered` with a border or `--borderless` with a transparent border.",
+        "radius": "Token radius: `--radius-sm`, `--radius-md` or `--radius-lg`.",
+        "rounded": "Applied with `rounded` set to `true`. Uses `--gem-radius-2xl`.",
+        "roundedCustom": "Applied when `rounded` is a number or string. Uses `--gem-card-radius`.",
+        "expandable": "Applied with `expandable`.",
+        "expanded": "State: `--expanded` or `--collapsed`.",
+        "media": "`media` wrapper. Receives `classNames.media`.",
+        "header": "Header. Receives `classNames.header`.",
+        "headerSolo": "Applied to the header without a subtitle. Centers content vertically.",
+        "heading": "Title and subtitle wrapper.",
+        "title": "Title (`<h3>`).",
+        "subtitle": "Subtitle (`<p>`).",
+        "extra": "Wrapper for `extra` and the chevron button.",
+        "disclose": "Expand and collapse button.",
+        "collapse": "Collapsible content. Animates with `grid-template-rows`.",
+        "body": "Body. Receives `classNames.body`.",
+        "footer": "Footer. Receives `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Card has a single variable of its own. Colors and spacing come from tokens and classes, so to change them use `.gem-card.your-class` plus a `[data-theme=\"dark\"]` variant.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-card-radius": "Radius when `rounded` is a number or string. Set inline from the prop."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Card.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Card"
+      },
+      "items": {
+        "--gem-color-bg": "Card background.",
+        "--gem-color-bg-subtle": "`media` background and chevron hover.",
+        "--gem-color-fg": "Title and body color.",
+        "--gem-color-fg-muted": "Subtitle and chevron color.",
+        "--gem-color-border": "Card border and section separators.",
+        "--gem-radius-{sm|md|lg}": "Radius per `radius`.",
+        "--gem-radius-2xl": "Radius with `rounded` set to `true`.",
+        "--gem-shadow-{xs|sm|md|lg|xl}": "Shadow per `shadow`.",
+        "--gem-shadow-focus": "Chevron button focus ring.",
+        "--gem-space-2": "Gap between `extra` and footer actions.",
+        "--gem-space-3": "Header gap.",
+        "--gem-palette-neutral-{50|300|500|600}": "Text, subtitle, border and separators in dark theme.",
+        "--gem-font-sans": "Text font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<article>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "card": {
+        "title": "Card",
+        "description": "Root component.",
+        "items": {
+          "title": "Header title, as `<h3>`. Accepts a node.",
+          "subtitle": "Secondary text under the title.",
+          "extra": "Content at the end of the header, such as buttons or a menu.",
+          "header": "Custom header content. Combines with `title`, `subtitle` and `extra`, or goes alone.",
+          "media": "Image or block above the header.",
+          "children": "Body content. If every child is a slot, they render as is.",
+          "footer": "Footer content.",
+          "bordered": "Draws a 1.5px border. With `false`, combine it with `shadow`.",
+          "shadow": "Elevation shadow.",
+          "size": "Section padding and title size.",
+          "radius": "Token radius when `rounded` is off.",
+          "rounded": "Extra rounding: `true` uses `2xl`, a number is a percentage and a string is a CSS length.",
+          "expandable": "The header toggles body, footer and `media` with an animation.",
+          "expanded": "Controlled open state. Use with `onExpandedChange`.",
+          "defaultExpanded": "Uncontrolled initial open state.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `media`, `header`, `body` and `footer`. `title`, `subtitle` and `extra` are ignored.",
+          "style": "Root inline styles. Merged with `--gem-card-radius`.",
+          "onExpandedChange": "Called when the card expands or collapses."
+        }
+      },
+      "header": {
+        "title": "Card.Header",
+        "description": "Header slot. Accepts `<header>` attributes.",
+        "items": {
+          "title": "Title, as `<h3>`.",
+          "subtitle": "Secondary text under the title.",
+          "extra": "Content at the end of the header.",
+          "disclose": "Extra control next to `extra`. With `expandable`, the card adds the chevron here.",
+          "children": "Custom content. Goes after the title block.",
+          "className": "Extra classes for the header."
+        }
+      },
+      "sections": {
+        "title": "Card.Body and Card.Footer",
+        "description": "Body and footer slots. No props of their own.",
+        "items": {
+          "body": "A `<div>` with that element's attributes.",
+          "footer": "A `<footer>` with that element's attributes. Aligns content to the end."
+        }
+      }
+    }
+  }
+}

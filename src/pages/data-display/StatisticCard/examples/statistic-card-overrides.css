@@ -1,0 +1,27 @@
+.gem-statistic-card.statistic-card-branded {
+  --gem-statistic-card-pad: 1.25rem 1.5rem;
+  --gem-statistic-card-icon-bg: var(--gem-palette-secondary-600);
+  --gem-statistic-card-icon-fg: var(--gem-palette-neutral-0);
+
+  border-width: 2px;
+  border-color: var(--gem-palette-secondary-400);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 8%, transparent);
+}
+
+.statistic-card-branded .gem-statistic-card__title {
+  color: var(--gem-palette-secondary-800);
+}
+
+.gem-statistic-card.statistic-card-pill {
+  border-radius: var(--gem-radius-xl);
+  border-color: var(--gem-palette-tertiary-400);
+  background: color-mix(in srgb, var(--gem-palette-tertiary-500) 8%, transparent);
+}
+
+.statistic-card-pill .gem-statistic-card__icon {
+  border-radius: 999px;
+}
+
+.statistic-card-pill .gem-statistic-card__title {
+  color: var(--gem-palette-tertiary-800);
+}

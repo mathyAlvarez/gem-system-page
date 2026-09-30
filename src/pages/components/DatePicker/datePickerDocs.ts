@@ -35,6 +35,8 @@ export const datePickerProps = [
   { name: "minuteStep", type: "number", defaultValue: "1" },
   { name: "weekStartsOn", type: "0 | 1", defaultValue: "1" },
   { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear date"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "isLoading", type: "boolean", defaultValue: "false" },
   { name: "loadingText", type: "string", defaultValue: '"Loading…"' },
   { name: "isInvalid", type: "boolean", defaultValue: "false" },

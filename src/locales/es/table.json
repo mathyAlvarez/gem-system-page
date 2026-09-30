@@ -1,0 +1,347 @@
+{
+  "header": {
+    "title": "Table",
+    "description": "Tabla de datos construida sobre <link>TanStack Table v9</link>. Incluye orden por columnas, selección de filas, grupos de columnas, filas expandibles, columnas fijas, scroll horizontal y virtualización para listas grandes. Las columnas se definen con <code>createTableColumnHelper</code>.",
+    "externalLabel": "Se abre en una pestaña nueva"
+  },
+  "common": {
+    "invoice": {
+      "caption": "Facturas",
+      "columns": {
+        "number": "Factura",
+        "customer": "Cliente",
+        "email": "Email",
+        "amount": "Monto",
+        "status": "Estado",
+        "issued": "Emitida",
+        "city": "Ciudad",
+        "country": "País",
+        "method": "Medio de pago"
+      },
+      "statuses": { "paid": "Pagada", "open": "Pendiente", "overdue": "Vencida" },
+      "methods": { "card": "Tarjeta", "transfer": "Transferencia", "check": "Cheque" }
+    },
+    "labels": {
+      "selectAllLabel": "Seleccionar todas las filas",
+      "selectRowLabel": "Seleccionar fila",
+      "expandRowLabel": "Expandir fila",
+      "collapseRowLabel": "Contraer fila",
+      "emptyMessage": "No hay resultados."
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver la tabla y el código. Con `rows` en 0 aparece el mensaje de vacío."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Definí las columnas con `createTableColumnHelper` y memorizalas con `useMemo`. `cell` personaliza el contenido, como un `Badge` o un monto formateado con `Intl`. `getRowId` le da a cada fila un id estable."
+    },
+    "caption": {
+      "title": "Título de la tabla",
+      "description": "`caption` le da un nombre a la tabla para lectores de pantalla; por defecto está oculto visualmente. `showCaption` lo muestra, `extra` agrega contenido al costado y `captionSide=\"bottom\"` lo pasa abajo, como una nota.",
+      "texts": {
+        "caption": "Últimas facturas emitidas, ordenadas por fecha.",
+        "count": "{count} facturas"
+      }
+    },
+    "sorting": {
+      "title": "Orden",
+      "description": "Hacé clic en un encabezado para ordenar: descendente, ascendente y sin orden. Con Shift + clic sumás otra columna. `sorting` y `onSortingChange` controlan el estado.",
+      "texts": {
+        "sortedBy": "Orden",
+        "none": "sin orden"
+      }
+    },
+    "selection": {
+      "title": "Selección de filas",
+      "description": "`enableRowSelection` agrega una columna de checkboxes. `isRowSelectable` bloquea algunas filas: acá las facturas pagadas. `rowSelection` es un mapa `{ [id]: true }`.",
+      "texts": {
+        "noneSelected": "Ninguna fila seleccionada",
+        "selected": "{count} seleccionadas"
+      }
+    },
+    "rowClick": {
+      "title": "Seleccionar con clic en la fila",
+      "description": "`selectOnRowClick` selecciona al hacer clic en cualquier parte de la fila, y la fila se puede enfocar con Tab y activar con Enter o Espacio. Con `enableMultiRowSelection={false}` solo se elige una.",
+      "texts": {
+        "current": "Factura actual"
+      }
+    },
+    "actions": {
+      "title": "Columna de acciones",
+      "description": "`helper.display()` crea una columna que no lee datos, ideal para botones. Dale a cada botón de ícono un `aria-label` que incluya la fila: \"Eliminar INV-0001\". Probá eliminar una fila.",
+      "texts": {
+        "actions": "Acciones",
+        "download": "Descargar",
+        "remove": "Eliminar",
+        "restore": "Restaurar filas"
+      }
+    },
+    "scroll": {
+      "title": "Scroll horizontal y columnas fijas",
+      "description": "`meta.minWidth` evita que las columnas se aplasten, así que en pantallas angostas aparece scroll horizontal. `meta.sticky: \"start\"` fija la columna Factura y `\"end\"`, el medio de pago."
+    },
+    "groups": {
+      "title": "Grupos de columnas",
+      "description": "`helper.group()` anida columnas bajo un encabezado común y agrega filas al header. Los nombres de país salen de `Intl.DisplayNames` según el idioma.",
+      "texts": {
+        "caption": "Países",
+        "country": "País",
+        "details": "Detalles",
+        "name": "Nombre",
+        "iso": "Código ISO",
+        "population": "Población",
+        "size": "Superficie (km²)",
+        "density": "Densidad"
+      }
+    },
+    "expand": {
+      "title": "Filas expandibles",
+      "description": "`renderExpanded` muestra un panel debajo de la fila, que puede tener otra tabla. `isRowExpandable` oculta el botón en filas sin detalle y `defaultExpanded` abre algunas al inicio.",
+      "texts": {
+        "caption": "Información nutricional",
+        "history": "Pedidos",
+        "orders": "{count} pedidos",
+        "names": {
+          "yoghurt": "Yogur helado",
+          "sandwich": "Sándwich de helado",
+          "eclair": "Éclair",
+          "cupcake": "Cupcake"
+        },
+        "columns": {
+          "name": "Postre (porción de 100 g)",
+          "calories": "Calorías",
+          "fat": "Grasas (g)",
+          "carbs": "Carbohidratos (g)",
+          "protein": "Proteínas (g)"
+        },
+        "historyColumns": {
+          "date": "Fecha",
+          "customer": "Cliente",
+          "amount": "Cantidad",
+          "price": "Total"
+        }
+      }
+    },
+    "stickyHeader": {
+      "title": "Encabezado fijo",
+      "description": "`stickyHeader` con `maxHeight` deja el encabezado visible mientras el cuerpo hace scroll. El área de scroll se puede enfocar con Tab para moverla con el teclado."
+    },
+    "virtualized": {
+      "title": "Virtualización",
+      "description": "`virtualized` renderiza solo las filas visibles, para listas de miles de filas. Necesita una altura: `maxHeight`, o 400px por defecto. Acá hay 1000 filas y solo unas decenas en el DOM.",
+      "texts": {
+        "caption": "Personas",
+        "number": "N.º",
+        "firstName": "Nombre",
+        "lastName": "Apellido",
+        "age": "Edad",
+        "city": "Ciudad"
+      }
+    },
+    "empty": {
+      "title": "Sin resultados",
+      "description": "Sin filas, la tabla muestra `emptyMessage` ocupando todas las columnas. Borrá la búsqueda para ver los datos.",
+      "texts": {
+        "search": "Buscar facturas",
+        "placeholder": "Cliente o número",
+        "noMatches": "Ninguna factura coincide con \"{query}\"."
+      }
+    },
+    "pagination": {
+      "title": "Con paginación",
+      "description": "`footer` agrega contenido debajo de la tabla, como una `Pagination`. La tabla no pagina sola: pasale solo las filas de la página actual.",
+      "texts": {
+        "pagination": {
+          "navLabel": "Páginas de facturas",
+          "pageSizeLabel": "Filas por página",
+          "previousLabel": "Página anterior",
+          "nextLabel": "Página siguiente",
+          "firstLabel": "Primera página",
+          "lastLabel": "Última página"
+        },
+        "pageLabel": "Página {page}"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `sm`, `md` (default) y `lg`. Cambia el padding y la tipografía de las celdas."
+    }
+  },
+  "apiLink": "Ver la API completa de Table",
+  "api": {
+    "header": {
+      "title": "Table API",
+      "description": "Referencia de la API de Table de React: props, meta de columnas, helpers, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Table"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `SortingState`, `RowSelectionState` y `ExpandedState` también se exportan."
+    },
+    "columns": {
+      "title": "Definir columnas",
+      "description": "`createTableColumnHelper<TData>()` devuelve el helper de TanStack Table ya tipado con las features de Gem: `accessor` para columnas de datos, `group` para agruparlas y `display` para columnas sin datos. `meta` agrega alineación, ancho mínimo y columnas fijas."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Table</code> acepta los atributos de <code>&lt;div&gt;</code> salvo <code>children</code>. Van al contenedor raíz, no al <code>&lt;table&gt;</code>. Para estilar partes internas usá <code>classNames</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "caption": "Pasá siempre <code>caption</code>: es el nombre de la tabla para lectores de pantalla, aunque no se vea.",
+      "headers": "Los encabezados son <code>&lt;th scope=\"col\"&gt;</code>, y los grupos, <code>scope=\"colgroup\"</code>.",
+      "sorting": "Las columnas ordenables tienen un <code>&lt;button&gt;</code> en el encabezado y <code>aria-sort</code> en el <code>&lt;th&gt;</code>. El ícono de orden es decorativo.",
+      "labels": "<code>selectAllLabel</code>, <code>selectRowLabel</code>, <code>expandRowLabel</code>, <code>collapseRowLabel</code> y <code>emptyMessage</code> vienen en inglés. Pasalos traducidos.",
+      "rowLabels": "<code>selectRowLabel</code> y <code>expandRowLabel</code> son iguales en todas las filas. Si tu tabla tiene muchas filas, poné el dato que identifica la fila en la primera columna, para que el lector la anuncie junto al checkbox.",
+      "rowClick": "Con <code>selectOnRowClick</code> cada fila recibe <code>tabIndex=\"0\"</code> y se activa con Enter o Espacio. Los clics en botones, links e inputs de la fila no la seleccionan.",
+      "expand": "El botón de expandir tiene <code>aria-expanded</code>. El panel cerrado tiene <code>aria-hidden</code> e <code>inert</code>.",
+      "scroller": "Con <code>maxHeight</code>, el área de scroll recibe <code>tabIndex=\"0\"</code> para poder moverla con el teclado.",
+      "virtualized": "Con <code>virtualized</code>, el encabezado y el cuerpo quedan en dos <code>&lt;table&gt;</code> separadas y solo las filas visibles están en el DOM. Los lectores de pantalla pierden la relación entre celdas y encabezados. Usala solo cuando la cantidad de filas lo justifique, y preferí la paginación."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Cambia padding y tipografía de las celdas.",
+        "radius": "Radio: `--radius-sm`, `--radius-md` o `--radius-lg`.",
+        "bordered": "Se aplica con `bordered`. Sin borde se aplica `--borderless`.",
+        "stickyHeader": "Se aplica con `stickyHeader` o `virtualized`.",
+        "stickyCols": "Se aplica cuando alguna columna tiene `meta.sticky`.",
+        "virtualized": "Se aplica con `virtualized`.",
+        "scroller": "Área de scroll. Recibe `classNames.scroller`. `--y` con `maxHeight`; `--clip-start` y `--clip-end` muestran sombra en las columnas fijas.",
+        "table": "`<table>`. Recibe `classNames.table`.",
+        "caption": "`<caption>`. Recibe `classNames.caption`. Modificadores: `--top`, `--bottom`, `--hidden`.",
+        "extra": "Contenedor de `extra`. Recibe `classNames.extra`.",
+        "header": "`<thead>`. Recibe `classNames.header`. `--grouped` con grupos de columnas.",
+        "th": "Encabezado. Recibe `classNames.headerCell`. Modificadores: `--align-*`, `--sortable`, `--group`, `--sticky-start`, `--sticky-end`.",
+        "sortButton": "Botón de orden dentro del encabezado.",
+        "sort": "Ícono de orden. Recibe `classNames.sort`. `--asc` o `--desc` cuando está ordenada.",
+        "body": "`<tbody>`. Recibe `classNames.body`.",
+        "row": "Fila. Recibe `classNames.row`. Modificadores: `--selected`, `--expanded`, `--selectable`, `--detail`, `--empty`.",
+        "td": "Celda. Recibe `classNames.cell`. Modificadores: `--align-*`, `--select`, `--expand`, `--sticky-start`, `--sticky-end`.",
+        "select": "Contenedor del checkbox. Recibe `classNames.select`.",
+        "expand": "Contenedor del botón de expandir. Recibe `classNames.expand`.",
+        "detail": "Celda del panel expandido. Recibe `classNames.detail`.",
+        "empty": "Celda del mensaje de vacío. Recibe `classNames.empty`.",
+        "footer": "Pie debajo del área de scroll. Recibe `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Table casi no tiene variables propias: para cambiar colores y espacios usá clases o `classNames`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-table-max-height": "Altura máxima del área de scroll. La define `maxHeight`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Table.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Table"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo de la tabla y del encabezado.",
+        "--gem-color-bg-subtle": "Fondo del panel expandido.",
+        "--gem-color-fg": "Texto de celdas y encabezados.",
+        "--gem-color-fg-muted": "Caption, íconos de orden y mensaje de vacío.",
+        "--gem-color-border": "Borde y líneas entre filas.",
+        "--gem-color-primary-{500|600}": "Hover, fila seleccionada e ícono de orden activo.",
+        "--gem-shadow-focus": "Anillo de foco de botones, filas y área de scroll.",
+        "--gem-radius-{sm|md|lg}": "Radio del contenedor.",
+        "--gem-space-{3|4}": "Padding del caption y del pie.",
+        "--gem-font-sans": "Fuente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "La tabla acepta además los atributos de `<div>` (ver Herencia). Todos los estados (orden, selección, expansión) se pueden controlar o dejar sin controlar.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "data": { "title": "Datos y contenido", "description": "Filas, columnas y contenido alrededor de la tabla." },
+      "sorting": { "title": "Orden", "description": "Orden por columnas." },
+      "selection": { "title": "Selección", "description": "Columna de checkboxes y selección de filas." },
+      "expand": { "title": "Filas expandibles", "description": "Panel de detalle debajo de cada fila." },
+      "layout": { "title": "Apariencia y scroll", "description": "Densidad, bordes, encabezado fijo y virtualización." },
+      "meta": { "title": "Meta de columna", "description": "Opciones dentro de `meta` en cada definición de columna." },
+      "helpers": { "title": "Helpers", "description": "Funciones y constantes exportadas." }
+    },
+    "items": {
+      "data": "Filas. Pasá una referencia estable.",
+      "columns": "Definiciones de columnas. Memorizalas con `useMemo`.",
+      "getRowId": "Id único de cada fila. Por defecto es el índice, que cambia al ordenar o filtrar.",
+      "caption": "Nombre de la tabla. Oculto visualmente salvo con `showCaption` o `extra`.",
+      "showCaption": "Muestra el caption.",
+      "captionSide": "Posición del caption visible.",
+      "extra": "Contenido al final de la fila del caption, como acciones.",
+      "footer": "Contenido debajo del área de scroll, como paginación.",
+      "emptyMessage": "Texto cuando no hay filas.",
+      "enableSorting": "Habilita el orden por columnas.",
+      "enableMultiSort": "Permite ordenar por varias columnas con Shift + clic.",
+      "sorting": "Orden controlado. Usalo con `onSortingChange`.",
+      "defaultSorting": "Orden inicial sin controlar.",
+      "onSortingChange": "Se llama al cambiar el orden.",
+      "enableRowSelection": "Agrega la columna de checkboxes.",
+      "isRowSelectable": "Solo las filas que devuelven `true` se pueden seleccionar.",
+      "enableMultiRowSelection": "Permite seleccionar varias filas.",
+      "rowSelection": "Selección controlada: `{ [rowId]: true }`.",
+      "defaultRowSelection": "Selección inicial sin controlar.",
+      "onRowSelectionChange": "Se llama al cambiar la selección.",
+      "selectOnRowClick": "Selecciona al hacer clic en la fila, fuera de los controles.",
+      "selectAllLabel": "Nombre accesible del checkbox del encabezado.",
+      "selectRowLabel": "Nombre accesible del checkbox de cada fila.",
+      "renderExpanded": "Contenido del panel debajo de una fila expandida.",
+      "enableExpanding": "Agrega la columna de expandir.",
+      "isRowExpandable": "Solo las filas que devuelven `true` muestran el botón.",
+      "expanded": "Expansión controlada. `true` expande todas.",
+      "defaultExpanded": "Expansión inicial sin controlar.",
+      "onExpandedChange": "Se llama al expandir o contraer.",
+      "expandRowLabel": "Nombre accesible del botón para expandir.",
+      "collapseRowLabel": "Nombre accesible del botón para contraer.",
+      "size": "Densidad.",
+      "radius": "Radio del contenedor.",
+      "bordered": "Muestra el borde.",
+      "stickyHeader": "Deja el encabezado visible al hacer scroll vertical.",
+      "maxHeight": "Altura máxima del área de scroll. Un número se toma en píxeles.",
+      "virtualized": "Renderiza solo las filas visibles. Necesita una altura.",
+      "estimateRowHeight": "Altura estimada de fila para la virtualización. El default depende de `size`.",
+      "virtualOverscan": "Filas extra que se renderizan arriba y abajo de las visibles.",
+      "className": "Clases extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `scroller`, `table`, `caption`, `header`, `headerRow`, `headerCell`, `body`, `row`, `cell`, `empty`, `footer`, `extra`, `sort`, `select`, `expand` y `detail`.",
+      "align": "Alineación del encabezado y las celdas.",
+      "minWidth": "Ancho mínimo de la columna. Un número se toma en píxeles.",
+      "sticky": "Fija la columna al hacer scroll horizontal: `true` o `\"start\"` a la izquierda, `\"end\"` a la derecha.",
+      "createTableColumnHelper": "Crea el helper de columnas tipado para tus datos.",
+      "gemTableFeatures": "Features de TanStack Table que usa Gem: orden, selección y expansión.",
+      "TABLE_SELECT_COLUMN_ID": "Id de la columna de checkboxes.",
+      "TABLE_EXPAND_COLUMN_ID": "Id de la columna de expandir."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.gem-breadcrumbs.breadcrumbs-branded {
+  --gem-breadcrumbs-current: var(--gem-palette-tertiary-700);
+  --gem-breadcrumbs-hover: var(--gem-palette-tertiary-700);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--gem-radius-lg);
+  background: color-mix(in srgb, var(--gem-palette-tertiary-500) 10%, transparent);
+}
+
+[data-theme="dark"] .gem-breadcrumbs.breadcrumbs-branded {
+  --gem-breadcrumbs-current: var(--gem-palette-tertiary-300);
+  --gem-breadcrumbs-hover: var(--gem-palette-tertiary-300);
+}

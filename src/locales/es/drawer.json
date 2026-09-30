@@ -1,0 +1,316 @@
+{
+  "header": {
+    "title": "Drawer",
+    "description": "Panel que se desliza desde un borde de la pantalla, sobre un fondo oscurecido. Igual que el modal, bloquea el resto de la página y mantiene el foco adentro hasta que se cierra. Usalo para filtros, detalles de un elemento, formularios que acompañan a la página o navegación en pantallas chicas. Con `placement` arriba o abajo funciona como hoja (sheet)."
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "done": "Listo",
+    "closeLabel": "Cerrar"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y abrí el panel para ver el resultado. Los cambios de `placement` se aplican la próxima vez que se abre. En `showHandle`, `auto` muestra la barra solo arriba y abajo.",
+    "texts": {
+      "open": "Abrir panel",
+      "title": "Detalle del pedido",
+      "subtitle": "Pedido #1042",
+      "body": "El pedido está en preparación y se va a despachar en las próximas 24 horas."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Controlá el panel con `open` y `onOpenChange`. `title` y `subtitle` arman el encabezado, `children` el cuerpo y `footer` el pie con las acciones. Por defecto sale desde la derecha. Pasá `closeLabel` traducido: el botón × se anuncia como \"Close\" por defecto.",
+      "texts": {
+        "open": "Filtrar proyectos",
+        "title": "Filtros",
+        "subtitle": "Elegí qué proyectos mostrar",
+        "statusLegend": "Estado",
+        "statuses": {
+          "active": "Activos",
+          "paused": "En pausa",
+          "archived": "Archivados"
+        },
+        "reset": "Restablecer",
+        "apply": "Aplicar"
+      }
+    },
+    "placement": {
+      "title": "Posición",
+      "description": "`placement` elige el borde: `right` (default), `left`, `top` o `bottom`. Arriba y abajo el panel ocupa todo el ancho y muestra una barra para indicar que es una hoja.",
+      "texts": {
+        "title": "Posición",
+        "body": "El panel entra desde el borde elegido y sale por el mismo lado al cerrarse."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` define el ancho en los laterales y el alto arriba y abajo: `sm` (20rem), `md` (24rem, default), `lg` (32rem), `xl` (40rem) y `full`. Nunca supera el ancho de la ventana, y arriba o abajo el alto máximo es el 92% de la ventana.",
+      "texts": {
+        "title": "Tamaño",
+        "body": "El tamaño sale de la variable --gem-drawer-extent, que cada clase de tamaño redefine."
+      }
+    },
+    "customSize": {
+      "title": "Tamaño personalizado",
+      "description": "Además de los tamaños predefinidos, `size` acepta un número (píxeles) o cualquier valor CSS como `\"18rem\"` o `\"40vw\"`. En ese caso el panel recibe la clase `gem-drawer--custom` y el valor va inline en `--gem-drawer-extent`.",
+      "texts": {
+        "title": "Tamaño personalizado",
+        "body": "Útil cuando el contenido necesita un ancho que no coincide con ningún tamaño predefinido."
+      }
+    },
+    "bottomSheet": {
+      "title": "Hoja inferior",
+      "description": "`Sheet` es un alias de `Drawer`, pensado para hojas arriba o abajo. Con `placement=\"bottom\"` la barra superior aparece sola; ocultala con `showHandle={false}`. Funciona bien para menús de acciones en pantallas chicas.",
+      "texts": {
+        "open": "Compartir",
+        "title": "Compartir documento",
+        "subtitle": "Elegí cómo compartirlo",
+        "options": {
+          "link": "Enlace",
+          "email": "Correo",
+          "print": "Imprimir",
+          "copy": "Copiar"
+        }
+      }
+    },
+    "compound": {
+      "title": "Secciones compuestas",
+      "description": "Si todos los hijos son `Drawer.Header`, `Drawer.Body` y `Drawer.Footer`, el panel los usa tal cual en lugar de armar las secciones con props. El botón × se agrega igual al encabezado. En este modo el panel no toma el nombre del título solo: conectalo con `headingId` y `aria-labelledby`.",
+      "texts": {
+        "open": "Ajustes del espacio",
+        "title": "Ajustes del espacio de trabajo",
+        "subtitle": "Plan personal",
+        "badge": "Beta",
+        "body": "Las secciones compuestas dejan explícito el marcado cuando el cuerpo es más que un párrafo.",
+        "hint": "Drawer.Body acepta className y cualquier atributo de un div."
+      }
+    },
+    "form": {
+      "title": "Formulario",
+      "description": "Al abrir, el foco va al primer elemento enfocable que no sea el ×, en este caso el primer campo. El botón de guardar está en el pie, fuera del `<form>`, y se conecta con el atributo `form`, así la validación nativa sigue funcionando.",
+      "texts": {
+        "open": "Nuevo contacto",
+        "title": "Nuevo contacto",
+        "subtitle": "Se guarda en tu agenda",
+        "name": "Nombre",
+        "namePlaceholder": "Ana Pérez",
+        "website": "Sitio web",
+        "websitePlaceholder": "https://ejemplo.com",
+        "saved": "Contacto guardado"
+      }
+    },
+    "navigation": {
+      "title": "Menú de navegación",
+      "description": "Un panel a la izquierda con `size=\"sm\"` sirve como menú en pantallas chicas. Marcá la sección actual con `aria-current` y cerrá el panel al elegir una opción.",
+      "texts": {
+        "open": "Abrir menú",
+        "title": "Menú",
+        "current": "Sección actual",
+        "sections": {
+          "home": "Inicio",
+          "projects": "Proyectos",
+          "calendar": "Calendario",
+          "settings": "Ajustes"
+        }
+      }
+    },
+    "persistent": {
+      "title": "Sin cierre automático",
+      "description": "Con `closeOnBackdrop={false}`, `closeOnEscape={false}` y `showClose={false}` el panel solo se cierra desde una acción del pie. Sirve para no perder lo escrito por un clic accidental en el fondo.",
+      "texts": {
+        "open": "Escribir comentario",
+        "title": "Nuevo comentario",
+        "subtitle": "Guardá o descartá para cerrar",
+        "label": "Comentario",
+        "placeholder": "Escribí tu comentario",
+        "discard": "Descartar"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "open": "Abrir panel con Tailwind",
+      "title": "Panel flotante",
+      "subtitle": "Separado del borde y con fondo desenfocado",
+      "body": "classNames agrega clases a cada parte. Con el variant backdrop: de Tailwind también podés estilar el fondo."
+    },
+    "cva": {
+      "title": "Panel con variantes",
+      "body": "El wrapper aplica las variantes de cva en className y deja pasar el resto de las props."
+    },
+    "css": {
+      "open": "Abrir panel personalizado",
+      "title": "Panel de marca",
+      "subtitle": "Tokens redefinidos en una clase",
+      "body": "La clase cambia el ancho con --gem-drawer-extent y redefine los tokens de color y radio solo dentro de este panel."
+    }
+  },
+  "apiLink": "Ver la API completa de Drawer",
+  "api": {
+    "header": {
+      "title": "Drawer API",
+      "description": "Referencia de la API del componente Drawer de React: props, secciones, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Drawer"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. Las secciones están como `Drawer.Header`, `Drawer.Body` y `Drawer.Footer`, y también como exports sueltos. `isDrawerSizeToken` indica si un valor de `size` es un tamaño predefinido."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;dialog&gt;</code> (<code>DialogHTMLAttributes&lt;HTMLDialogElement&gt;</code>, salvo <code>title</code> y <code>open</code>) y los pasa al elemento, igual que <code>ref</code>. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>handle</code>, <code>header</code>, <code>title</code>, <code>subtitle</code>, <code>extra</code>, <code>body</code>, <code>footer</code> y <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "dialog": "Es un <code>&lt;dialog&gt;</code> nativo abierto con <code>showModal()</code>: el navegador lo pone en la capa superior y deja el resto de la página inerte. Tiene <code>aria-modal=\"true\"</code>.",
+      "name": "Con <code>title</code>, el panel toma su nombre del título (<code>aria-labelledby</code>). Con secciones compuestas, conectá <code>headingId</code> de <code>Drawer.Header</code> con <code>aria-labelledby</code>. Sin título, pasale <code>aria-label</code>.",
+      "focus": "Al abrir, el foco va a <code>initialFocusRef</code> o, si no está, al primer elemento enfocable que no sea el botón ×.",
+      "trap": "Tab y Shift+Tab recorren solo los elementos del panel.",
+      "restore": "Al cerrar, el foco vuelve al elemento que lo tenía antes de abrir, normalmente el botón que abrió el panel.",
+      "dismiss": "Escape cierra el panel (salvo con <code>closeOnEscape={false}</code>).",
+      "scroll": "Mientras está abierto, bloquea el scroll de la página con <code>overflow: hidden</code> en <code>&lt;body&gt;</code>.",
+      "motion": "Con <code>prefers-reduced-motion: reduce</code> el panel aparece y desaparece sin animación.",
+      "labels": "El botón × se llama <code>\"Close\"</code> por defecto. Pasá <code>closeLabel</code> traducido."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento `<dialog>`. Recibe `className` y `classNames.root`.",
+        "placement": "Borde desde el que entra el panel y posición fuera de pantalla antes de abrir.",
+        "size": "Define `--gem-drawer-extent` según `size`.",
+        "custom": "Se aplica cuando `size` es un número o un valor CSS. La variable va inline.",
+        "shadow": "Sombra según `shadow`.",
+        "radius": "Radio en el borde libre según `radius`.",
+        "bordered": "Borde de 1.5px con `--gem-color-border`.",
+        "borderless": "Borde transparente con `bordered={false}`.",
+        "entered": "Se aplica cuando termina de entrar. Mueve el panel a su lugar y muestra el fondo.",
+        "backdrop": "Fondo oscurecido detrás del panel.",
+        "handle": "Barra de las hojas arriba y abajo. Recibe `classNames.handle`.",
+        "handleEnd": "Barra al final del panel, con `placement=\"top\"`.",
+        "header": "Encabezado. Recibe `classNames.header`.",
+        "headerSolo": "Encabezado sin subtítulo. No tiene estilos propios; sirve como gancho.",
+        "heading": "Contenedor del título y el subtítulo.",
+        "title": "Título (`<h2>`). Recibe `classNames.title`.",
+        "subtitle": "Subtítulo. Recibe `classNames.subtitle`.",
+        "extra": "Contenedor de `extra` y el botón ×.",
+        "close": "Botón ×. Recibe `classNames.close`.",
+        "body": "Cuerpo con scroll propio. Recibe `classNames.body`.",
+        "footer": "Pie con las acciones, alineadas a la derecha. Recibe `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Drawer tiene una sola variable propia; el resto de los colores y radios salen de tokens de gem-system, que podés redefinir en una clase (ver Cambio estilos). Las clases de tamaño definen `--gem-drawer-extent`, así que para cambiarla usá un selector como `.gem-drawer.mi-clase` o pasá el valor en `size`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-drawer-extent": "Ancho en los laterales y alto arriba y abajo. Nunca supera el ancho de la ventana ni el 92% de su alto."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Drawer.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Drawer"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo del panel.",
+        "--gem-color-bg-subtle": "Fondo del botón × al pasar el mouse.",
+        "--gem-color-border": "Borde del panel, separadores del encabezado y el pie, y color de la barra.",
+        "--gem-color-fg": "Color del título y el cuerpo.",
+        "--gem-color-fg-muted": "Color del subtítulo y el botón ×.",
+        "--gem-palette-neutral-*": "Colores del tema oscuro.",
+        "--gem-radius-sm": "Radio con `radius=\"sm\"` y del botón ×.",
+        "--gem-radius-md": "Radio por defecto.",
+        "--gem-radius-lg": "Radio con `radius=\"lg\"`.",
+        "--gem-radius-full": "Extremos redondeados de la barra.",
+        "--gem-shadow-*": "Sombra según `shadow` (`none` a `xl`).",
+        "--gem-shadow-focus": "Anillo de foco del panel y el botón ×.",
+        "--gem-space-2": "Separación entre acciones del pie y del encabezado.",
+        "--gem-space-3": "Separación entre el título y `extra`.",
+        "--gem-font-sans": "Tipografía."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props del Drawer y de sus secciones.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "drawer": {
+        "title": "Drawer",
+        "description": "Además acepta los atributos HTML de un `<dialog>`. `Sheet` recibe las mismas props.",
+        "items": {
+          "open": "Estado abierto controlado.",
+          "defaultOpen": "Estado abierto inicial si no es controlado.",
+          "placement": "Borde desde el que entra. Si cambia con el panel abierto, se aplica en la próxima apertura.",
+          "title": "Título del encabezado. También es el nombre accesible.",
+          "subtitle": "Texto secundario debajo del título.",
+          "extra": "Contenido al final del encabezado, antes del botón ×.",
+          "header": "Contenido libre dentro del encabezado. Se combina con `title`, `subtitle` y `extra`.",
+          "footer": "Contenido del pie, normalmente botones.",
+          "children": "Cuerpo del panel, o secciones `Drawer.Header`, `Drawer.Body` y `Drawer.Footer`.",
+          "size": "Ancho en los laterales o alto arriba y abajo. Un número son píxeles y un string es un valor CSS.",
+          "bordered": "Dibuja un borde de 1.5px.",
+          "shadow": "Sombra.",
+          "radius": "Radio en el borde libre con los tokens de gem-system.",
+          "closeOnBackdrop": "Cierra al hacer clic en el fondo.",
+          "closeOnEscape": "Cierra con Escape.",
+          "showClose": "Muestra el botón × en el encabezado.",
+          "closeLabel": "Nombre accesible del botón ×.",
+          "showHandle": "Muestra la barra de hoja. Por defecto es `true` con `placement` `top` o `bottom`.",
+          "initialFocusRef": "Elemento que recibe el foco al abrir.",
+          "container": "Elemento donde se monta el panel (portal).",
+          "className": "Clases extra para el `<dialog>`.",
+          "classNames": "Clases por parte: `root`, `handle`, `header`, `title`, `subtitle`, `extra`, `body`, `footer` y `close`.",
+          "ref": "Referencia al `<dialog>`.",
+          "onOpenChange": "Se ejecuta cuando el panel pide abrirse o cerrarse (Escape, fondo, botón ×)."
+        }
+      },
+      "header": {
+        "title": "Drawer.Header",
+        "description": "Encabezado para usar con secciones compuestas. Además acepta los atributos HTML de un `<header>`.",
+        "items": {
+          "title": "Título (`<h2>`).",
+          "subtitle": "Texto secundario debajo del título.",
+          "extra": "Contenido al final del encabezado.",
+          "close": "Control de cierre propio. El panel agrega su botón × después.",
+          "headingId": "`id` del título, para `aria-labelledby`.",
+          "titleClassName": "Clases extra para el título.",
+          "subtitleClassName": "Clases extra para el subtítulo.",
+          "children": "Contenido libre entre el título y `extra`."
+        }
+      },
+      "sections": {
+        "title": "Drawer.Body y Drawer.Footer",
+        "description": "No tienen props propias: aceptan los atributos HTML de un `<div>` y un `<footer>`, incluidos `className` y `children`."
+      }
+    }
+  }
+}

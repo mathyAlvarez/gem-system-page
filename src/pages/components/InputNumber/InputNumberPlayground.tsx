@@ -19,6 +19,7 @@ const placements: InputNumberLabelPlacement[] = ["above", "outline"];
 type Flags = {
   showSteppers: boolean;
   additionButtons: boolean;
+  clearable: boolean;
   isInvalid: boolean;
   isDisabled: boolean;
   isRequired: boolean;
@@ -27,6 +28,7 @@ type Flags = {
 const flagDefaults: Flags = {
   showSteppers: true,
   additionButtons: false,
+  clearable: false,
   isInvalid: false,
   isDisabled: false,
   isRequired: false,

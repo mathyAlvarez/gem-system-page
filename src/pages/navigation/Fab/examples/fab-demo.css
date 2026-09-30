@@ -1,0 +1,66 @@
+.fab-stage {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 16rem;
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+}
+
+.fab-stage--tall {
+  min-height: 22rem;
+}
+
+.fab-stage--compact {
+  min-height: 9rem;
+}
+
+.fab-stage__hint {
+  max-width: 26rem;
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.fab-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--gem-space-6);
+}
+
+.fab-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.fab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.fab-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono, monospace);
+  font-size: 0.75rem;
+}
+
+.fab-log {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.875rem;
+}
+
+.fab-card-wrap {
+  position: relative;
+  max-width: 22rem;
+}

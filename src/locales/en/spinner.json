@@ -1,0 +1,197 @@
+{
+  "header": {
+    "title": "Spinner",
+    "description": "Circular loading indicator for short waits or waits of unknown length. Accepts sizes as tokens, pixels or any CSS length, three animation styles and a visible label. `Loader` is an alias of the same component."
+  },
+  "common": {
+    "ariaLabel": "Loading"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the indicator and the code. Without `label`, the default name is `Loading`; pass `aria-label` to describe what's loading.",
+    "label": "Loading workspace"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Just the indicator, with size `md` and tone `primary`. It's announced as `role=\"status\"`; without visible text, pass `aria-label`."
+    },
+    "label": {
+      "title": "With label",
+      "description": "`label` adds visible text next to the indicator. That's what gets announced, and `aria-label` is ignored.",
+      "texts": {
+        "label": "Loading workspace"
+      }
+    },
+    "placement": {
+      "title": "Label placement",
+      "description": "`labelPlacement` puts the text beside (`end`, default) or below (`bottom`) the indicator.",
+      "texts": {
+        "label": "Saving changes"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts the tokens `sm`, `md` (default), `lg`, `xl`, `2xl`, `3xl` and `4xl`, which follow the icon scale. The stroke width adapts to the size."
+    },
+    "customSize": {
+      "title": "Custom size",
+      "description": "`size` also accepts a number (pixels) or any CSS length. In that case the `--custom` class is applied."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` sets the color: `primary` (default), `secondary`, `success`, `warning`, `error`, `info`, `neutral` or `current`, which inherits the container color. The label doesn't follow the tone: this example passes `text-current` through `classNames.label`.",
+      "texts": {
+        "inherits": "Inherits color"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` changes the animation: `ring` (spinning ring, default), `dots` (dots in a row) or `circle-dots` (dots in a circle)."
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` (or `isDisabled`) dims the indicator, turns it gray, stops the animation and removes `aria-busy`. Useful for a paused task.",
+      "texts": {
+        "label": "Paused"
+      }
+    },
+    "inline": {
+      "title": "Inline",
+      "description": "With `tone=\"current\"` and `size=\"sm\"` it blends into chips or text with their own color. If the adjacent text already explains the state, use `aria-hidden` to avoid repeating it.",
+      "texts": {
+        "syncing": "Syncing",
+        "saving": "Saving"
+      }
+    },
+    "overlay": {
+      "title": "Over a panel",
+      "description": "A common case: a spinner with a label below covers the panel while it refreshes. The panel gets `aria-busy` while loading.",
+      "texts": {
+        "title": "Weekly sales",
+        "text": "Revenue grew 12% compared to the previous week, with peaks on Thursday and Saturday.",
+        "updating": "Updating data",
+        "refresh": "Refresh"
+      }
+    },
+    "alias": {
+      "title": "Loader alias",
+      "description": "`Loader` is the same component as `Spinner`, with the same props.",
+      "texts": {
+        "label": "Fetching records"
+      }
+    }
+  },
+  "styles": {
+    "label": "Processing order"
+  },
+  "apiLink": "See the full Spinner API",
+  "api": {
+    "header": {
+      "title": "Spinner API",
+      "description": "API reference for the Spinner React component: props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Spinner"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `Loader` is an alias. `spinnerSize` holds the token scale and `resolveSpinnerSize` turns any `size` into a CSS length."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>&lt;div&gt;</code> attributes except <code>children</code>, and they go to the container along with <code>ref</code>, <code>id</code> and <code>className</code>. <code>classNames</code> adds classes to <code>root</code>, <code>indicator</code> and <code>label</code>. The indicator is a gem-system icon with <code>aria-hidden</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "status": "The container has <code>role=\"status\"</code> and <code>aria-busy=\"true\"</code>. If you don't pass another <code>role</code>, it also gets <code>aria-live=\"polite\"</code>.",
+      "label": "Without <code>label</code>, the default name is <code>\"Loading\"</code>. Pass <code>aria-label</code> or <code>aria-labelledby</code> to describe what's loading.",
+      "name": "With <code>label</code>, the visible text is announced and <code>aria-label</code> is ignored.",
+      "decorative": "If the adjacent text already conveys the state, pass <code>aria-hidden</code> to avoid announcing it twice.",
+      "disabled": "<code>disabled</code> removes <code>aria-busy</code> and adds <code>data-disabled</code>; role and name stay.",
+      "motion": "With <code>prefers-reduced-motion</code> the animation stops."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Container. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size token: `--sm`, `--md`, `--lg`, `--xl`, `--2xl`, `--3xl` or `--4xl`. Adjusts text and gap.",
+        "custom": "Applied when `size` is a number or a CSS length.",
+        "tone": "Tone: `--tone-primary`, `--tone-current`, etc. Sets `--gem-spinner-color`.",
+        "variant": "Variant: `--ring`, `--dots` or `--circle-dots`.",
+        "placement": "Label placement: `--label-end` or `--label-bottom`.",
+        "disabled": "Applied with `disabled` or `isDisabled`, along with `data-disabled`.",
+        "indicator": "Animated icon container. Receives `classNames.indicator`.",
+        "label": "Visible text. Receives `classNames.label`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Spinner's own variables. Tone and size classes have the same specificity, so use `.gem-spinner.your-class` and a `[data-theme=\"dark\"]` variant.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-spinner-color": "Indicator color. Set by the tone. The label doesn't use it.",
+        "--gem-spinner-gap": "Gap between indicator and label. Grows with the size."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Spinner.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Spinner"
+      },
+      "items": {
+        "--gem-color-{tone}-600": "Color for each tone (`primary`, `secondary`, `success`, `warning`, `error`, `info`). Dark mode uses the palette.",
+        "--gem-color-neutral-700": "Color for the `neutral` tone.",
+        "--gem-color-neutral-400": "Disabled color.",
+        "--gem-color-fg": "Label color.",
+        "--gem-palette-neutral-50": "Label color in dark theme.",
+        "--gem-space-2": "Default gap between indicator and label.",
+        "--gem-space-3": "Gap for sizes `xl` to `3xl` and custom sizes.",
+        "--gem-space-4": "Gap for size `4xl`.",
+        "--gem-font-sans": "Label font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "size": "Indicator size: a token, a number in pixels or a CSS length.",
+      "tone": "Indicator color. `current` inherits the container color.",
+      "variant": "Animation style.",
+      "label": "Visible text next to the indicator. When present, `aria-label` is ignored.",
+      "labelPlacement": "Label placement: beside or below.",
+      "disabled": "Dims the indicator, stops the animation and removes `aria-busy`.",
+      "isDisabled": "Same as `disabled`.",
+      "role": "Container role. If you change it, `aria-live` isn't added.",
+      "aria-label": "Accessible name when there's no `label`.",
+      "aria-labelledby": "Id of an element that names the indicator.",
+      "className": "Extra classes for the container.",
+      "classNames": "Classes per part: `root`, `indicator` and `label`.",
+      "ref": "Container ref."
+    }
+  }
+}

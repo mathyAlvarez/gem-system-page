@@ -1,0 +1,15 @@
+.gem-copy-to-clipboard.copy-branded {
+  --gem-color-success-solid: var(--gem-palette-tertiary-500);
+}
+
+.copy-branded .gem-copy-to-clipboard__button {
+  border-radius: var(--gem-radius-full);
+}
+
+.copy-branded.gem-copy-to-clipboard--copied .gem-copy-to-clipboard__button .gem-icon {
+  transform: rotate(-10deg) scale(1.2);
+}
+
+.copy-branded.gem-copy-to-clipboard--copied .gem-copy-to-clipboard__button {
+  background-color: color-mix(in srgb, var(--gem-palette-tertiary-500) 14%, transparent);
+}

@@ -43,6 +43,9 @@ export const inputTextProps = [
   { name: "wrapperClassName", type: "string", defaultValue: "—" },
   { name: "onChange", type: "(event: ChangeEvent<HTMLInputElement>) => void", defaultValue: "—" },
   { name: "onValidate", type: "(isValid: boolean, value: string) => void", defaultValue: "—" },
+  { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 
@@ -50,6 +53,7 @@ const messageTones = ["error", "primary", "success", "warning", "info"] as const
 
 export const inputTextCssClasses = [
   { name: ".gem-input-text", rule: "root" as const },
+  { name: ".gem-field-clear", rule: "clear" as const },
   { name: ".gem-input-text__label", rule: "label" as const },
   { name: ".gem-input-text__required", rule: "required" as const },
   { name: ".gem-input-text__field", rule: "field" as const },

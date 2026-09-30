@@ -43,11 +43,15 @@ export const inputNumberProps = [
   { name: "className", type: "string", defaultValue: "—" },
   { name: "wrapperClassName", type: "string", defaultValue: "—" },
   { name: "onChange", type: "(value: number | null) => void", defaultValue: "—" },
+  { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 
 export const inputNumberCssClasses = [
   { name: ".gem-input-number", rule: "root" as const },
+  { name: ".gem-field-clear", rule: "clear" as const },
   { name: ".gem-input-number__label", rule: "label" as const },
   { name: ".gem-input-number__required", rule: "required" as const },
   { name: ".gem-input-number__field", rule: "field" as const },

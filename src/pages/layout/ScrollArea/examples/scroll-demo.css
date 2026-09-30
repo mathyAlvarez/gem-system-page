@@ -1,0 +1,57 @@
+.scroll-frame {
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+}
+
+.scroll-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  max-width: 40rem;
+  padding: var(--gem-space-4);
+}
+
+.scroll-copy p {
+  margin: 0;
+}
+
+.scroll-rail {
+  display: flex;
+  gap: var(--gem-space-3);
+  width: max-content;
+  padding: var(--gem-space-4);
+}
+
+.scroll-chip {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 10rem;
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg-subtle);
+}
+
+.scroll-chip p {
+  margin: 0;
+}
+
+.scroll-sheet {
+  box-sizing: border-box;
+  width: 48rem;
+}
+
+.scroll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--gem-space-5);
+  width: 100%;
+}
+
+.scroll-caption {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}

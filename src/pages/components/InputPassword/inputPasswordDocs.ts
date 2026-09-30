@@ -46,11 +46,15 @@ export const inputPasswordProps = [
   { name: "onChange", type: "(event: ChangeEvent<HTMLInputElement>) => void", defaultValue: "—" },
   { name: "onVisibilityChange", type: "(isVisible: boolean) => void", defaultValue: "—" },
   { name: "onValidate", type: "(isValid: boolean, value: string) => void", defaultValue: "—" },
+  { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 
 export const inputPasswordCssClasses = [
   { name: ".gem-input-password", rule: "root" as const },
+  { name: ".gem-field-clear", rule: "clear" as const },
   { name: ".gem-input-password__toggle", rule: "toggle" as const },
   { name: ".gem-input-password__suffix", rule: "suffix" as const },
   { name: ".gem-input-text__label", rule: "label" as const },

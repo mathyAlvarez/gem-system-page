@@ -1,0 +1,46 @@
+.aspect-caption {
+  margin-bottom: var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}
+
+.aspect-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: var(--gem-space-5);
+  width: 100%;
+}
+
+.aspect-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--gem-space-5);
+  width: 100%;
+}
+
+.aspect-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.aspect-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gem-space-2);
+  width: 100%;
+  height: 100%;
+  padding: var(--gem-space-4);
+  border: 1px dashed var(--gem-color-primary-400);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--gem-color-primary-500) 12%, var(--gem-color-bg-subtle));
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 600;
+  text-align: center;
+}

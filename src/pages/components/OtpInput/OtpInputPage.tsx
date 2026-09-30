@@ -49,6 +49,8 @@ import { TailwindOtpInput } from "./examples/TailwindOtpInput.tsx";
 import tailwindCode from "./examples/TailwindOtpInput.tsx?raw";
 import { VariantOtpInputs } from "./examples/VariantOtpInput.tsx";
 import variantCode from "./examples/VariantOtpInput.tsx?raw";
+import { ClearableOtpInput } from "./examples/ClearableOtpInput.tsx";
+import clearableCode from "./examples/ClearableOtpInput.tsx?raw";
 import "./OtpInputPage.scss";
 
 type StoryId =
@@ -63,6 +65,7 @@ type StoryId =
   | "maskIcon"
   | "outlineLabel"
   | "withInfoIcon"
+  | "clearable"
   | "error"
   | "disabled"
   | "required"
@@ -148,6 +151,12 @@ export function OtpInputPage() {
       file: "InfoOtpInput.tsx",
       code: infoCode,
       preview: <InfoOtpInput {...t("stories.withInfoIcon.texts", { returnObjects: true })} />,
+    },
+    {
+      id: "clearable",
+      file: "ClearableOtpInput.tsx",
+      code: clearableCode,
+      preview: <ClearableOtpInput {...t("stories.clearable.texts", { returnObjects: true })} />,
     },
     {
       id: "error",

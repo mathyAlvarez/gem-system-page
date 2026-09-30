@@ -1,0 +1,24 @@
+.gem-divider.divider-branded {
+  --gem-divider-color: var(--gem-palette-secondary-500);
+  --gem-divider-thickness: 3px;
+  --gem-divider-gap: var(--gem-space-4);
+  border-radius: var(--gem-radius-full);
+}
+
+.gem-divider.divider-branded .gem-divider__line {
+  border-radius: var(--gem-radius-full);
+}
+
+.gem-divider .divider-branded__label {
+  color: var(--gem-palette-secondary-700);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+[data-theme="dark"] .gem-divider.divider-branded {
+  --gem-divider-color: var(--gem-palette-secondary-400);
+}
+
+[data-theme="dark"] .gem-divider .divider-branded__label {
+  color: var(--gem-palette-secondary-300);
+}

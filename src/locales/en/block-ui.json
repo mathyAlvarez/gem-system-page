@@ -1,0 +1,167 @@
+{
+  "header": {
+    "title": "BlockUi",
+    "description": "Layer that covers the whole window and blocks the interface while something loads or saves. By default it's white and translucent, with a large spinner in the center, so the page stays visible but can't be used. While active it blocks clicks, the keyboard and scrolling. Use it for short operations that affect the whole screen; if only one part is loading, a `Spinner` or a skeleton in that area works better."
+  },
+  "demo": {
+    "loading": "Loading",
+    "block": "Block the screen",
+    "title": "Workspace overview",
+    "body": "The layer sits on top of this content. Translucent white keeps the page visible while blocking interaction."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and press the button to see the block. The layer covers the whole window, not just the demo, and goes away on its own after the chosen duration.",
+    "overlay": "overlay",
+    "opacity": "opacity",
+    "content": "children",
+    "duration": "duration (ms)"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`blocking` turns the layer on and off. While it's `true`, the layer renders in a portal on `document.body` and the rest of the page becomes inert. Pass it a translated `aria-label`: it says \"Loading\" by default."
+    },
+    "overlay": {
+      "title": "Custom background",
+      "description": "`overlay` accepts any `background` value: a color, a token or a gradient. Transparency isn't written in the color but in `opacity`, so you can use tokens without building alpha colors.",
+      "texts": {
+        "title": "Invoice details",
+        "body": "Loading keeps the current view in place, so you can see what's being refreshed.",
+        "labels": {
+          "primary": "Primary color",
+          "dark": "Dark",
+          "gradient": "Gradient"
+        }
+      }
+    },
+    "content": {
+      "title": "Custom content",
+      "description": "With `children` you replace the spinner with anything: a `Spinner` with text, a card or a short message. The content stays centered and isn't affected by `opacity`.",
+      "texts": {
+        "title": "Export report",
+        "body": "Visible text helps explain why the screen is blocked and how long it may take.",
+        "action": "Export",
+        "label": "Preparing export"
+      }
+    },
+    "opacity": {
+      "title": "Opacity",
+      "description": "`opacity` goes from 1 (almost clear) to 100 (opaque) and defaults to 56. Out-of-range values are clamped. At low values the content behind stays readable.",
+      "texts": {
+        "title": "Opacity samples",
+        "body": "Each button blocks the screen with a different opacity.",
+        "defaultLabel": "(default)",
+        "label": "Opacity"
+      }
+    },
+    "async": {
+      "title": "While saving",
+      "description": "The most common case: tie `blocking` to the state of a request. Turn it on before starting and off in `finally`, so the screen is released even if the request fails.",
+      "texts": {
+        "title": "Account preferences",
+        "body": "Saving blocks the screen until the server responds, so the form isn't submitted twice.",
+        "action": "Save changes",
+        "saving": "Saving changes",
+        "saved": "Changes saved."
+      }
+    }
+  },
+  "apiLink": "See the full BlockUi API",
+  "api": {
+    "header": {
+      "title": "BlockUi API",
+      "description": "API reference for the BlockUi React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "BlockUi"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>) and passes them to the layer. <code>style</code> is merged with the variables the component writes. <code>classNames</code> adds classes to each part: <code>root</code>, <code>content</code> and <code>spinner</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "status": "The layer has <code>role=\"status\"</code> and <code>aria-live=\"polite\"</code>, so screen readers announce the loading without interrupting. If you pass another <code>role</code>, it doesn't add <code>aria-live</code>.",
+      "busy": "Adds <code>aria-busy=\"true\"</code> to the layer and to <code>&lt;body&gt;</code> while active.",
+      "inert": "Marks the other children of <code>&lt;body&gt;</code> as <code>inert</code>: they can't be focused or clicked. When it turns off it restores their previous value.",
+      "scroll": "Blocks page scrolling with <code>overflow: hidden</code> on <code>&lt;body&gt;</code> and restores it when done.",
+      "spinner": "The default spinner is decorative (<code>aria-hidden</code>); the accessible name is the layer's <code>aria-label</code>.",
+      "labels": "<code>aria-label</code> is in English by default (<code>\"Loading\"</code>). Pass it translated, or use <code>aria-labelledby</code> if the text is already visible in the layer."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Fixed layer that covers the window. Receives `className` and `classNames.root`. Defines the BlockUi variables.",
+        "overlay": "Pseudo-element with the background. Uses `--gem-block-ui-overlay` and `--gem-block-ui-opacity`.",
+        "content": "Centered container for `children` or the spinner. Receives `classNames.content`.",
+        "spinner": "Default spinner, only when there are no `children`. Receives `classNames.spinner`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Defined on `.gem-block-ui`. `--gem-block-ui-opacity` is always written inline from the `opacity` prop, and `--gem-block-ui-overlay` only when you pass `overlay`; to change them from a class, don't pass those props. `--gem-block-ui-spinner-size` can be changed freely.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-block-ui-overlay": "Layer background. Any `background` value.",
+        "--gem-block-ui-opacity": "Background opacity, from 1 to 100.",
+        "--gem-block-ui-spinner-size": "Default spinner size. Drops to `--gem-icon-4xl` on screens under 640px."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by BlockUi.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in BlockUi"
+      },
+      "items": {
+        "--gem-palette-neutral-0": "Default value of `--gem-block-ui-overlay` (white, also in the dark theme).",
+        "--gem-icon-6xl": "Spinner size on large screens.",
+        "--gem-icon-4xl": "Spinner size on small screens.",
+        "--gem-z-max": "Stacking layer, above modals and menus.",
+        "--gem-space-4": "Inner padding of the layer."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of a `<div>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "blocking": "Shows the layer and blocks the page. With `false` it renders nothing.",
+      "overlay": "Layer background: color, token or gradient.",
+      "opacity": "Background opacity, from `1` to `100`. Doesn't affect the centered content.",
+      "children": "Centered content. If omitted, a large spinner is shown.",
+      "aria-label": "Accessible name of the layer. Ignored if you pass `aria-labelledby`.",
+      "role": "Layer role. With any value other than the default, it doesn't add `aria-live`.",
+      "className": "Extra classes for the layer.",
+      "classNames": "Classes per part: `root`, `content` and `spinner`.",
+      "style": "Inline styles. Merged with the variables the component writes."
+    }
+  }
+}

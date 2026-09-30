@@ -1,0 +1,264 @@
+{
+  "header": {
+    "title": "Alert",
+    "description": "Block-level notice that fills its container's width and stays on the page, unlike a `Toast`, which appears and goes away on its own. It has four statuses (`info`, `success`, `warning` and `error`), each with its own color and icon. Use it for messages the user needs to see while working: form errors, scheduled maintenance or account changes. `Banner` is the same component under another name."
+  },
+  "common": {
+    "closeLabel": "Dismiss notice",
+    "copy": {
+      "info": {
+        "title": "Scheduled maintenance",
+        "description": "The dashboard will be unavailable from 01:00 to 03:00 UTC."
+      },
+      "success": {
+        "title": "Changes saved",
+        "description": "Your profile was updated. It can take a minute to appear everywhere."
+      },
+      "warning": {
+        "title": "Payment method expiring",
+        "description": "The card on file expires next week. Add a new one to avoid interruption."
+      },
+      "error": {
+        "title": "Could not send invite",
+        "description": "Check the email address and try again. If it persists, contact support."
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the result. The copy changes with `status`. With `isClosable` the × button shows up; if you dismiss the notice, you can show it again.",
+    "texts": {
+      "show": "Show notice"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`title` is the heading and `children` the description. With no other props, the notice is `info`, `soft` and `md`."
+    },
+    "status": {
+      "title": "Statuses",
+      "description": "`status` sets the color and icon. `info` and `success` use `role=\"status\"`, which screen readers announce without interrupting. `warning` and `error` use `role=\"alert\"`, which is announced right away."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` changes the treatment: `soft` (default) with a light background and a colored start border, `solid` with a filled background and light text, and `outline` with the page background and a colored border."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` adjusts padding, icon and text size: `sm`, `md` (default) and `lg`. With `lg` the × button is larger too."
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` uses gem-system radius tokens: `sm`, `md` (default) and `lg`."
+    },
+    "descriptionOnly": {
+      "title": "Description only",
+      "description": "Without `title`, the notice shows only the description. Useful for short messages, especially with `size=\"sm\"`.",
+      "texts": {
+        "description": "Session restored. You can continue where you left off."
+      }
+    },
+    "closable": {
+      "title": "Closable",
+      "description": "`isClosable` adds the × button, announced as \"Dismiss\" by default: pass a translated `closeAriaLabel`. Without `open` the notice hides itself; with `open` and `onClose` you control when it shows again.",
+      "texts": {
+        "show": "Show notice"
+      }
+    },
+    "action": {
+      "title": "With action",
+      "description": "`action` adds content at the end, before the × button, usually a button to fix the problem.",
+      "texts": {
+        "retry": "Retry",
+        "retried": "Resending the invite"
+      }
+    },
+    "customIcon": {
+      "title": "Custom icon",
+      "description": "`icon` replaces the status icon. Its color still comes from the status. Use a size close to the notice's so it lines up with the title.",
+      "texts": {
+        "title": "New notifications",
+        "description": "You have 3 unread messages in the inbox."
+      }
+    },
+    "hideIcon": {
+      "title": "Hide icon",
+      "description": "`hideIcon` hides the icon. The status is still marked by color and border, so make the title clear about what's going on."
+    },
+    "richContent": {
+      "title": "Structured content",
+      "description": "`children` accepts any content, not just text. A list helps summarize several form errors in a single notice.",
+      "texts": {
+        "title": "Check the form",
+        "intro": "There are 3 fields to fix:",
+        "items": [
+          "The email doesn't have a valid format.",
+          "The password needs at least 8 characters.",
+          "Accept the terms to continue."
+        ]
+      }
+    },
+    "live": {
+      "title": "Notice as a response",
+      "description": "Show the notice when something happens, for example on save. Since its `role` is a live region, screen readers announce it when it appears. Changing the `key` on each attempt remounts it so it's announced again.",
+      "texts": {
+        "save": "Save",
+        "fail": "Simulate error"
+      }
+    },
+    "banner": {
+      "title": "Banner",
+      "description": "`Banner` is an alias of `Alert`. Use it when the notice sits at the top of a page or layout, so the code makes the intent clear.",
+      "texts": {
+        "title": "Workspace update",
+        "description": "Billing moved to the new plan. Review seats in Settings.",
+        "review": "Review"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Payment received",
+      "description": "classNames adds classes to each part: here the icon sits in a circle and the notice has no border."
+    },
+    "cva": {
+      "neutral": "A neutral tone that doesn't depend on the status, built by redefining the --gem-alert-* variables.",
+      "brand": "A brand tone with the colored border on top instead of at the start."
+    },
+    "css": {
+      "title": "Brand notice",
+      "description": "The class redefines the --gem-alert-* color, spacing and size variables only for this notice."
+    }
+  },
+  "apiLink": "See the full Alert API",
+  "api": {
+    "header": {
+      "title": "Alert API",
+      "description": "API reference for the Alert React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Alert"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or its subpath. `Banner` is the same component."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>, except <code>title</code>) and forwards them to the root element, as well as <code>ref</code>. <code>classNames</code> adds classes to each part: <code>root</code>, <code>icon</code>, <code>content</code>, <code>title</code>, <code>description</code>, <code>action</code> and <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "Uses <code>role=\"status\"</code> with <code>info</code> and <code>success</code>, and <code>role=\"alert\"</code> with <code>warning</code> and <code>error</code>. You can change it with the <code>role</code> prop.",
+      "live": "Both roles are live regions: screen readers announce the notice when it appears. <code>alert</code> interrupts and <code>status</code> waits until the current speech ends. For notices already present on page load, consider <code>role=\"note\"</code>.",
+      "icon": "The icon has <code>aria-hidden</code>: the status must be clear from the title or description.",
+      "close": "The × button is a <code>&lt;button&gt;</code> named <code>\"Dismiss\"</code> by default. Pass a translated <code>closeAriaLabel</code>.",
+      "focus": "On close, the notice unmounts and focus on the × button is lost. If the notice matters, move focus to a nearby element in <code>onClose</code>.",
+      "color": "Color alone isn't enough to convey the status. With <code>hideIcon</code> or a custom <code>icon</code>, make sure the text says whether it's an error, a warning or a confirmation."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Container. Receives `className` and `classNames.root`. Sets the default variable values.",
+        "status": "Status colors: redefines `--gem-alert-bg`, `--gem-alert-fg`, `--gem-alert-border`, `--gem-alert-accent` and `--gem-alert-icon`.",
+        "soft": "Light background with a 4px start border. It's the default variant and adds no rules of its own.",
+        "solid": "Background in the status color, light text and transparent border. With `warning` the text is dark.",
+        "outline": "`--gem-color-bg` background with the status border.",
+        "size": "Padding, gap, icon and text size.",
+        "radius": "Radius from `radius`.",
+        "icon": "Icon wrapper. Receives `classNames.icon`.",
+        "content": "Wrapper of the title and description. Receives `classNames.content`.",
+        "title": "Title. Receives `classNames.title`.",
+        "description": "Description. Receives `classNames.description`.",
+        "action": "Wrapper of `action`, aligned to the end. Receives `classNames.action`.",
+        "close": "× button. Takes the notice's text color. Receives `classNames.close`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The status and size classes set these variables on the same element, so to change them use a selector like `.gem-alert.my-class` (see Style changes).",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-alert-bg": "Background color.",
+        "--gem-alert-fg": "Text and × button color.",
+        "--gem-alert-border": "Border color.",
+        "--gem-alert-accent": "Start border color. In `solid` it's also the background.",
+        "--gem-alert-icon": "Icon color.",
+        "--gem-alert-pad-y": "Vertical padding.",
+        "--gem-alert-pad-x": "Horizontal padding.",
+        "--gem-alert-gap": "Gap between the icon, content and actions.",
+        "--gem-alert-icon-size": "Icon size.",
+        "--gem-alert-title": "Title font size.",
+        "--gem-alert-body": "Description font size."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Alert. `{status}` is `info`, `success`, `warning` or `error`.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Alert"
+      },
+      "items": {
+        "--gem-color-{status}-soft": "`soft` background.",
+        "--gem-color-{status}-text": "`soft` and `outline` text.",
+        "--gem-color-{status}-border": "`soft` and `outline` border.",
+        "--gem-color-{status}-solid": "Start border, icon and `solid` background.",
+        "--gem-palette-neutral-0": "`solid` text.",
+        "--gem-palette-neutral-950": "`solid` text with `warning`.",
+        "--gem-color-bg": "`outline` background.",
+        "--gem-radius-sm": "Radius with `radius=\"sm\"`.",
+        "--gem-radius-md": "Default radius.",
+        "--gem-radius-lg": "Radius with `radius=\"lg\"`.",
+        "--gem-space-2": "Gap between actions.",
+        "--gem-font-sans": "Font family."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Also accepts the HTML attributes of a `<div>`. `Banner` takes the same props.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "status": "Status: sets the color, icon and default `role`.",
+      "variant": "Surface treatment.",
+      "size": "Padding, icon and text size.",
+      "radius": "Radius using gem-system tokens.",
+      "title": "Heading above the description.",
+      "children": "Description or content of the notice.",
+      "icon": "Replaces the status icon.",
+      "hideIcon": "Hides the icon.",
+      "action": "Content at the end, before the × button.",
+      "isClosable": "Shows the × button.",
+      "closeAriaLabel": "Accessible name of the × button.",
+      "open": "Controlled visibility.",
+      "defaultOpen": "Initial visibility when uncontrolled.",
+      "role": "ARIA role. Defaults to `status` with `info` and `success`, and `alert` with `warning` and `error`.",
+      "className": "Extra classes for the container.",
+      "classNames": "Classes per part: `root`, `icon`, `content`, `title`, `description`, `action` and `close`.",
+      "ref": "Reference to the container.",
+      "onClose": "Runs when the × button is pressed."
+    }
+  }
+}

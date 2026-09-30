@@ -1,0 +1,209 @@
+{
+  "header": {
+    "title": "Link",
+    "description": "Enlace de texto para ir a otra página o a otro sitio. Renderiza un `<a>` nativo con estados de hover, foco y activo, y detecta solo los enlaces externos. Usalo para navegar; para acciones que cambian algo en la página (guardar, abrir un modal) usá `Button`."
+  },
+  "demo": {
+    "guide": "Leer la guía",
+    "externalLabel": "Se abre en una pestaña nueva",
+    "underline": {
+      "always": "Siempre subrayado",
+      "hover": "Subrayado al pasar el mouse",
+      "none": "Sin subrayado"
+    },
+    "sizes": {
+      "sm": "Chico",
+      "md": "Mediano",
+      "lg": "Grande"
+    },
+    "docs": "Abrir la documentación de <a>",
+    "home": "Volver al inicio",
+    "continue": "Continuar",
+    "download": "Descargar informe",
+    "unavailable": "Enlace no disponible",
+    "nav": {
+      "home": "Inicio",
+      "overview": "Resumen",
+      "api": "API"
+    },
+    "prose": {
+      "before": "gem-system trata los enlaces como navegación, no como botones. Usá los ",
+      "tokens": "tokens de diseño",
+      "middle": " para color y tipografía, y mantené el ",
+      "name": "nombre accesible",
+      "after": " dentro de la oración."
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Con `href` externo aparece el ícono de pestaña nueva. En esta página los enlaces internos de las demos no navegan.",
+    "href": "href",
+    "tone": "tone",
+    "size": "size",
+    "underline": "underline",
+    "icon": "icon",
+    "isDisabled": "isDisabled",
+    "isCurrent": "isCurrent"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Solo necesita `href` y un texto. Por defecto se subraya al pasar el mouse y muestra un anillo al recibir foco con el teclado. En tu app, `href` es la URL de destino; en esta página los enlaces internos de las demos no navegan."
+    },
+    "underline": {
+      "title": "Subrayado",
+      "description": "`underline` define cuándo se subraya: `always`, `hover` (por defecto) o `none`. Dentro de un párrafo usá `always`, así el enlace no depende solo del color para distinguirse del texto."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` cambia el color: `primary` (por defecto), `secondary`, `tertiary`, los de estado (`danger`, `success`, `warning`, `info`), `neutral` y `muted`. Cada tono tiene un color para hover y otro para cuando se presiona, y valores propios en el tema oscuro."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el tamaño del texto: `sm` (13px), `md` (14px, por defecto) o `lg` (16px). Dentro de un párrafo el tamaño lo define el texto que lo rodea, así que conviene que coincidan."
+    },
+    "external": {
+      "title": "Enlaces externos",
+      "description": "Las URLs que empiezan con `http://`, `https://` o `//` se detectan como externas: se abren en una pestaña nueva con `rel=\"noopener noreferrer\"` y muestran un ícono con un texto oculto para lectores de pantalla (`externalLabel`). Con `isExternal={false}` se abren en la misma pestaña y sin ícono. `showExternalIcon` controla solo el ícono."
+    },
+    "icons": {
+      "title": "Con íconos",
+      "description": "`leftIcon` y `rightIcon` agregan íconos antes o después del texto. Son decorativos (`aria-hidden`). En enlaces externos, el ícono de pestaña nueva reemplaza a `rightIcon`. Como es un `<a>`, acepta atributos nativos como `download`."
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` lo muestra apagado, bloquea el clic y lo saca del orden de tabulación, pero sigue en la página con `aria-disabled`. Si el destino no existe, mejor no renderizar el enlace o mostrar texto común."
+    },
+    "current": {
+      "title": "Página actual",
+      "description": "`isCurrent` marca el enlace a la página en la que ya estás: agrega `aria-current=\"page\"`, lo pone en negrita y le quita el subrayado. Sirve para menús y listas de navegación."
+    },
+    "paragraph": {
+      "title": "Dentro de un párrafo",
+      "description": "El enlace es `inline-flex`, así que se acomoda dentro del texto. Escribí un texto que tenga sentido por sí solo (\"tokens de diseño\" y no \"acá\"), porque los lectores de pantalla pueden listar los enlaces fuera de contexto."
+    },
+    "router": {
+      "title": "Con un router",
+      "description": "Link siempre renderiza un `<a>` y no sabe de routers. Para navegar sin recargar, envolvelo en un componente propio que intercepte el clic y llame al router, y que deje pasar Ctrl/Cmd + clic para abrir en otra pestaña. Este ejemplo usa React Router y navega de verdad a la API de Link.",
+      "label": "Ver la API de Link"
+    }
+  },
+  "apiLink": "Ver la API completa de Link",
+  "api": {
+    "header": {
+      "title": "Link API",
+      "description": "Referencia de la API del componente Link de React: props, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Link"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML del <code>&lt;a&gt;</code> (<code>AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</code>), como <code>download</code>, <code>hrefLang</code> o <code>onClick</code>, y los pasa a ese elemento. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>label</code> e <code>icon</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "native": "Es un <code>&lt;a href&gt;</code> nativo: se enfoca con Tab, se activa con Enter y el navegador ofrece abrirlo en otra pestaña.",
+      "external": "Los enlaces externos incluyen un texto oculto con <code>externalLabel</code>, así los lectores de pantalla avisan que se abre una pestaña nueva.",
+      "newTab": "Con <code>target=\"_blank\"</code> agrega <code>rel=\"noopener noreferrer\"</code>, sumado al <code>rel</code> que pases.",
+      "current": "<code>isCurrent</code> agrega <code>aria-current=\"page\"</code>.",
+      "disabled": "<code>isDisabled</code> agrega <code>aria-disabled</code>, <code>tabIndex=-1</code> y bloquea el clic y Enter.",
+      "icons": "Los íconos tienen <code>aria-hidden</code>; el nombre accesible es el texto del enlace.",
+      "focus": "El foco con teclado muestra un anillo con <code>:focus-visible</code>.",
+      "purpose": "Usá textos que describan el destino. Si el enlace es solo un ícono, pasale <code>aria-label</code>.",
+      "labels": "<code>externalLabel</code> viene en inglés por defecto (<code>\"Opens in a new tab\"</code>). Pasalo traducido si tu app está en otro idioma."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento `<a>`. Recibe `className` y `classNames.root`. Define las variables de Link.",
+        "tone": "Se aplica según `tone`. Define los colores.",
+        "size": "Se aplica según `size`. Define el tamaño del texto.",
+        "underline": "Se aplica según `underline`: `always`, `hover` o `none`.",
+        "external": "Se aplica cuando el enlace es externo.",
+        "current": "Se aplica con `isCurrent`. Negrita y sin subrayado.",
+        "disabled": "Se aplica con `isDisabled`. Baja la opacidad y quita el subrayado.",
+        "label": "Texto del enlace. Recibe `classNames.label`.",
+        "icon": "Contenedor de cada ícono. Recibe `classNames.icon`.",
+        "sr": "Texto oculto con `externalLabel`, solo para lectores de pantalla."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-link` y cada tono les da otros valores. Ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-link.mi-clase`) o con utilidades de Tailwind.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-link-fg": "Color del enlace.",
+        "--gem-link-fg-hover": "Color al pasar el mouse.",
+        "--gem-link-fg-active": "Color mientras se presiona."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Link.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Link"
+      },
+      "items": {
+        "--gem-color-primary-600": "Valor por defecto de `--gem-link-fg`.",
+        "--gem-color-primary-700": "Valor por defecto de `--gem-link-fg-hover`.",
+        "--gem-color-primary-800": "Valor por defecto de `--gem-link-fg-active`.",
+        "--gem-color-{tone}-600": "Cada tono usa su escala: 600 normal, 700 hover y 800 activo. En el tema oscuro usa la paleta clara (300, 200 y 100).",
+        "--gem-color-fg-muted": "Color del tono `muted`.",
+        "--gem-color-fg": "Hover del tono `muted`.",
+        "--gem-radius-sm": "Bordes redondeados del anillo de foco.",
+        "--gem-shadow-focus": "Anillo de foco.",
+        "--gem-font-sans": "Fuente del componente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del `<a>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "href": "URL de destino.",
+      "children": "Texto del enlace.",
+      "tone": "Color del enlace.",
+      "size": "Tamaño del texto.",
+      "underline": "Cuándo se subraya.",
+      "leftIcon": "Ícono antes del texto.",
+      "rightIcon": "Ícono después del texto. No se muestra si aparece el ícono de enlace externo.",
+      "isExternal": "Lo abre en una pestaña nueva con `rel` seguro. Por defecto es `true` para URLs `http(s)` o con `target=\"_blank\"`.",
+      "showExternalIcon": "Muestra el ícono de pestaña nueva. Por defecto sigue a `isExternal`.",
+      "externalLabel": "Texto oculto que acompaña al ícono externo.",
+      "isDisabled": "Bloquea la navegación y lo saca del orden de tabulación.",
+      "isCurrent": "Marca la página actual con `aria-current=\"page\"`.",
+      "target": "Dónde se abre. Si no lo pasás, es `_blank` para enlaces externos.",
+      "rel": "Relación con el destino. Con `_blank` se suma `noopener noreferrer`.",
+      "className": "Clases extra para el `<a>`.",
+      "classNames": "Clases por parte: `root`, `label` e `icon`.",
+      "onClick": "Se llama al hacer clic. No se llama si está deshabilitado."
+    }
+  }
+}

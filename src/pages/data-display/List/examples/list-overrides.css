@@ -1,0 +1,18 @@
+.gem-list.list-branded {
+  --gem-list-selected: color-mix(in srgb, var(--gem-color-secondary-500) 14%, transparent);
+  --gem-list-selected-fg: var(--gem-color-secondary-700);
+  --gem-list-row-y: 0.625rem;
+  --gem-list-icon: 1.375rem;
+}
+
+.gem-list.list-branded .gem-list__item--selected {
+  box-shadow: inset 3px 0 0 var(--gem-color-secondary-500);
+}
+
+.gem-list.list-branded .gem-list__label {
+  font-weight: 650;
+}
+
+[data-theme="dark"] .gem-list.list-branded {
+  --gem-list-selected-fg: var(--gem-color-secondary-300);
+}

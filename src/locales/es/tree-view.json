@@ -1,0 +1,305 @@
+{
+  "header": {
+    "title": "TreeView",
+    "description": "Muestra datos jerárquicos, como carpetas u organigramas, en ramas que se abren y cierran. Admite selección simple o múltiple, checkboxes en cascada y navegación con teclado siguiendo el patrón `tree` de ARIA."
+  },
+  "common": {
+    "listLabel": "Archivos del proyecto"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y probá el árbol con el mouse y el teclado. La flecha de cada rama la abre; hacer clic en la fila la selecciona."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasá los nodos en `items`; los que tienen `children` son ramas. `defaultOpen` abre una rama al montar y `defaultSelectedIds` marca la selección inicial. Con `findTreePath` podés armar la ruta del nodo que recibe `onSelect`.",
+      "texts": {
+        "selected": "Seleccionado:"
+      }
+    },
+    "lines": {
+      "title": "Líneas guía",
+      "description": "`showLines` dibuja una línea vertical por cada nivel y ayuda a seguir árboles profundos. `defaultExpandAll` abre todas las ramas en el primer montaje."
+    },
+    "multiple": {
+      "title": "Selección múltiple",
+      "description": "Con `selectionMode=\"multiple\"`, un clic reemplaza la selección y Ctrl o Cmd + clic suma o quita nodos. Con teclado, Ctrl o Cmd + Enter hace lo mismo. No hay selección de rangos con Shift.",
+      "texts": {
+        "count": "{count} seleccionados"
+      }
+    },
+    "checkable": {
+      "title": "Checkboxes",
+      "description": "`checkable` agrega un checkbox por nodo; se marca con clic o con Espacio. Con `cascadeCheck` (activo por defecto), marcar una rama marca a sus hijos, y una rama con algunos hijos marcados queda en estado mixto. `checkedIds` también incluye las ramas completas. Marcar un nodo también lo selecciona.",
+      "texts": {
+        "files": "Archivos marcados:",
+        "none": "ninguno"
+      }
+    },
+    "expand": {
+      "title": "Expansión controlada",
+      "description": "Con `expandedIds` y `onExpandedChange` controlás qué ramas están abiertas. `collectBranchIds` devuelve los ids de todas las ramas y sirve para un botón de expandir todo.",
+      "texts": {
+        "expandAll": "Expandir todo",
+        "collapseAll": "Colapsar todo"
+      }
+    },
+    "filter": {
+      "title": "Filtrar",
+      "description": "El componente no filtra: filtrá `items` vos y conservá los ancestros de cada coincidencia. En este ejemplo, cambiar la `key` vuelve a montar el árbol para abrir las ramas del resultado y reiniciar el foco.",
+      "texts": {
+        "search": "Buscar archivos",
+        "placeholder": "Nombre del archivo",
+        "noMatches": "No hay archivos que coincidan con “{query}”."
+      }
+    },
+    "icons": {
+      "title": "Íconos y contenido final",
+      "description": "`icon` reemplaza los íconos por defecto de carpeta y archivo. `end` agrega contenido al final de la fila, como un contador. El texto de `end` se suma al nombre accesible (“Destacados 2”), así que acá cada nodo con contador tiene un `ariaLabel` más claro. No pongas elementos interactivos en `end`: quedarían dentro de un `treeitem`.",
+      "texts": {
+        "listLabel": "Espacio de trabajo",
+        "count": "{label}, {count} elementos",
+        "labels": {
+          "home": "Inicio",
+          "starred": "Destacados",
+          "brief": "Brief de campaña",
+          "prefs": "Preferencias",
+          "favorites": "Favoritos",
+          "logo": "Logo final",
+          "palette": "Paleta de colores"
+        }
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitados",
+      "description": "`disabled` en un nodo impide seleccionarlo, marcarlo y abrirlo, y el teclado lo saltea. `isDisabled` deshabilita todo el árbol.",
+      "texts": {
+        "listLabel": "Equipos",
+        "teams": {
+          "company": "Acme",
+          "design": "Diseño",
+          "engineering": "Ingeniería",
+          "partners": "Socios"
+        },
+        "whole": "Árbol deshabilitado"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` ajusta la sangría, el alto de fila, la tipografía y los íconos: `sm`, `md` (por defecto) o `lg`.",
+      "texts": {
+        "label": "Tamaño {size}"
+      }
+    },
+    "richLabel": {
+      "title": "Etiquetas personalizadas",
+      "description": "`label` acepta cualquier nodo de React. Cuando no es texto plano, el nombre accesible por defecto es “Item”: pasá `ariaLabel` con un nombre claro. También sirve para quitar símbolos decorativos, como el `#` de los canales. Una etiqueta que no es texto no recibe la tipografía del árbol: envolvé el texto en `Typography` con `variant=\"caption\"` (o `bodySm` en `lg`).",
+      "texts": {
+        "listLabel": "Canales",
+        "workspace": "Acme",
+        "channels": {
+          "general": "general",
+          "design": "diseño",
+          "finance": "finanzas"
+        },
+        "privateLabel": "Privado"
+      }
+    }
+  },
+  "styles": {
+    "variant": {
+      "compact": "Compacto",
+      "spacious": "Espacioso"
+    }
+  },
+  "apiLink": "Ver la API completa de TreeView",
+  "api": {
+    "header": {
+      "title": "TreeView API",
+      "description": "Referencia de la API de TreeView de React: props, forma de los nodos, helpers, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "TreeView"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. Los helpers se exportan desde ambos."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>TreeView</code> acepta los atributos de <code>&lt;ul&gt;</code>, salvo <code>children</code>, <code>onChange</code>, <code>onSelect</code> y <code>defaultValue</code>. Van a la lista raíz. Un <code>onKeyDown</code> propio corre antes que el del componente; si llamás a <code>preventDefault</code>, el componente no maneja esa tecla."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "roles": "Usa <code>role=\"tree\"</code>, <code>treeitem</code> y <code>group</code>, con <code>aria-level</code>, <code>aria-setsize</code>, <code>aria-posinset</code>, <code>aria-expanded</code> y <code>aria-selected</code>. El nombre del árbol es <code>listLabel</code>, que por defecto vale “Tree”, en inglés: pasalo siempre.",
+      "keyboard": "El árbol es una sola parada de Tab. Las flechas arriba y abajo recorren los nodos visibles; derecha abre una rama o baja al primer hijo; izquierda la cierra o sube al padre; <code>Home</code> y <code>End</code> van al primero y al último. <code>Enter</code> selecciona y Espacio selecciona, o marca si es <code>checkable</code>.",
+      "multiple": "Con <code>selectionMode=\"multiple\"</code> agrega <code>aria-multiselectable</code>. Ctrl o Cmd + <code>Enter</code> suma o quita el nodo de la selección.",
+      "checkbox": "Con <code>checkable</code>, cada nodo expone <code>aria-checked</code>, con <code>mixed</code> para las ramas a medias. El checkbox y la flecha visibles quedan fuera del orden de Tab y ocultos para lectores de pantalla: el estado se anuncia en el propio <code>treeitem</code>.",
+      "names": "Si <code>label</code> es texto, el nombre accesible del nodo es ese texto. Si no, el nombre por defecto es “Item”, en inglés: pasá <code>ariaLabel</code>.",
+      "richLabel": "Usá <code>ariaLabel</code> también para quitar símbolos decorativos del nombre o para sumar información que en la etiqueta visual es solo un ícono o color.",
+      "end": "Con una etiqueta de texto, el texto de <code>end</code> se suma al nombre del nodo: una rama “Destacados” con un contador se anuncia “Destacados 2”. Pasá <code>ariaLabel</code> para dar un nombre claro, como “Destacados, 2 elementos”. No pongas botones ni links en <code>end</code>: quedarían anidados en el <code>treeitem</code> y no se pueden alcanzar con Tab.",
+      "focusCollapse": "Si cerrás con el mouse una rama que contiene al nodo con foco, el foco pasa al <code>body</code> y el árbol queda sin nodo enfocable: Tab lo saltea hasta que hagas clic en una fila. Lo mismo pasa si sacás de <code>items</code> el nodo con foco. Si filtrás o reemplazás los datos, volvé a montar el árbol con una <code>key</code> nueva.",
+      "disabled": "Los nodos con <code>disabled</code> reciben <code>aria-disabled</code> y el teclado los saltea. Con <code>isDisabled</code>, el árbol sigue recibiendo foco con Tab pero ignora el teclado y el mouse.",
+      "missing": "No tiene búsqueda por tipeo (typeahead), ni la tecla <code>*</code> para abrir las ramas hermanas, ni selección de rangos con Shift. Si tu árbol es muy grande, sumá un campo de búsqueda como en el ejemplo de filtro."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos. Para que ganen en especificidad, combinalas con tu propia clase, como `.gem-tree.custom-tree`.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Lista raíz. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define sangría, alto de fila e íconos.",
+        "radius": "Radio del borde con `bordered`: `--radius-sm`, `--radius-md` o `--radius-lg`.",
+        "bordered": "Se aplica con `bordered`: agrega borde y padding.",
+        "lines": "Se aplica con `showLines`: dibuja las líneas guía de cada grupo.",
+        "checkable": "Se aplica con `checkable`.",
+        "disabled": "Se aplica con `isDisabled`: baja la opacidad y desactiva el puntero.",
+        "node": "Cada `<li role=\"treeitem\">`. Recibe `classNames.node`.",
+        "branch": "Nodo con hijos.",
+        "open": "Rama abierta. Rota la flecha.",
+        "selected": "Nodo seleccionado.",
+        "nodeDisabled": "Nodo deshabilitado.",
+        "row": "Fila visible del nodo. Recibe `classNames.row` y la sangría por nivel.",
+        "toggle": "Botón con la flecha de las ramas. Recibe `classNames.toggle`.",
+        "spacer": "Espacio vacío en lugar de la flecha, para alinear las hojas.",
+        "check": "Contenedor del checkbox. Recibe `classNames.check`.",
+        "icon": "Contenedor del ícono. Recibe `classNames.icon`.",
+        "label": "Etiqueta. Se trunca con puntos suspensivos. Recibe `classNames.label`.",
+        "end": "Contenido final de la fila. Recibe `classNames.end`.",
+        "group": "`<ul role=\"group\">` con los hijos de una rama abierta. Recibe `classNames.group`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se definen en `.gem-tree` y se pueden pisar desde tu clase o con utilidades de Tailwind.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-tree-fg": "Color del texto.",
+        "--gem-tree-muted": "Color de íconos, flechas y contenido final.",
+        "--gem-tree-border": "Color del borde con `bordered`.",
+        "--gem-tree-bg": "Fondo del árbol.",
+        "--gem-tree-hover": "Fondo de la fila al pasar el mouse.",
+        "--gem-tree-selected": "Fondo de la fila seleccionada.",
+        "--gem-tree-selected-fg": "Texto e ícono de la fila seleccionada.",
+        "--gem-tree-line": "Color de las líneas guía.",
+        "--gem-tree-radius": "Radio del borde con `bordered`.",
+        "--gem-tree-indent": "Sangría por nivel.",
+        "--gem-tree-row-y": "Padding vertical de la fila.",
+        "--gem-tree-row-x": "Padding horizontal de la fila.",
+        "--gem-tree-gap": "Espacio entre flecha, checkbox, ícono y etiqueta.",
+        "--gem-tree-icon": "Tamaño del contenedor del ícono.",
+        "--gem-tree-toggle": "Tamaño del botón de la flecha. También ubica las líneas guía.",
+        "--gem-tree-level": "Nivel del nodo, definido inline en cada fila y grupo. No lo pises: se usa para calcular la sangría."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens del sistema que usan los valores por defecto. Si los cambiás, cambian todos los árboles.",
+      "columns": {
+        "name": "Token",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-color-fg": "Texto.",
+        "--gem-color-fg-muted": "Íconos, flechas y contenido final.",
+        "--gem-color-border": "Borde y líneas guía.",
+        "--gem-color-bg": "Fondo.",
+        "--gem-color-bg-subtle": "Hover de la fila.",
+        "--gem-color-primary-{500|600|700}": "Selección (500 mezclado al 12 %, texto 700), ícono de las ramas (600) y anillo de foco de respaldo.",
+        "--gem-color-ring": "Anillo de foco.",
+        "--gem-radius-{sm|md|lg}": "Radio del árbol con `bordered` y de las filas (`sm`).",
+        "--gem-space-1": "Padding del árbol.",
+        "--gem-font-sans": "Tipografía.",
+        "--gem-palette-neutral-{50|300|600|700}": "Texto, íconos, líneas y borde en modo oscuro.",
+        "--gem-palette-primary-{200|400}": "Selección en modo oscuro."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. También se exportan `FlatTreeNode` y `TreeCheckState`."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "TreeView acepta además los atributos de `<ul>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "content": { "title": "Contenido y apariencia", "description": "Datos, nombre accesible y aspecto." },
+      "selection": { "title": "Selección", "description": "Qué nodos quedan seleccionados al activarlos." },
+      "expansion": { "title": "Expansión", "description": "Qué ramas están abiertas." },
+      "check": { "title": "Checkboxes", "description": "Marcado de nodos, con o sin cascada." },
+      "styling": { "title": "Estilos", "description": "Clases y referencias." },
+      "node": { "title": "TreeNode", "description": "Forma de cada elemento de `items`." },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Funciones exportadas para trabajar con los mismos datos que recibe el árbol."
+      }
+    },
+    "items": {
+      "items": "Nodos del primer nivel. Cada `id` tiene que ser único en todo el árbol.",
+      "listLabel": "Nombre accesible del árbol. Por defecto es “Tree”, en inglés.",
+      "aria-label": "Si lo pasás, reemplaza a `listLabel`.",
+      "size": "Densidad y tamaño de texto.",
+      "showLines": "Dibuja líneas guía en los grupos anidados.",
+      "hideIcons": "Oculta los íconos por defecto de carpeta y archivo. Los `icon` propios se siguen mostrando.",
+      "bordered": "Agrega borde y padding alrededor del árbol.",
+      "radius": "Radio del borde. Solo se nota con `bordered`.",
+      "isDisabled": "Deshabilita todos los nodos.",
+      "selectionMode": "`single` selecciona un nodo, `multiple` permite sumar con Ctrl o Cmd y `none` desactiva la selección.",
+      "selectedIds": "Ids seleccionados, en modo controlado.",
+      "defaultSelectedIds": "Selección inicial, en modo no controlado. El primero también recibe el foco inicial.",
+      "onSelect": "Se llama al cambiar la selección, con los ids nuevos y el nodo activado.",
+      "expandedIds": "Ids de las ramas abiertas, en modo controlado.",
+      "defaultExpandedIds": "Ramas abiertas al montar. Si lo pasás, se ignoran `defaultOpen` y `defaultExpandAll`.",
+      "defaultExpandAll": "Abre todas las ramas en el primer montaje.",
+      "onExpandedChange": "Se llama al abrir o cerrar una rama, con los ids abiertos y la rama que cambió.",
+      "checkable": "Muestra un checkbox en cada nodo.",
+      "checkedIds": "Ids marcados, en modo controlado.",
+      "defaultCheckedIds": "Ids marcados al montar, en modo no controlado.",
+      "cascadeCheck": "Marcar una rama marca a sus hijos, y el estado de la rama sigue al de sus hijos. Los hijos deshabilitados no cambian.",
+      "onCheckedChange": "Se llama al marcar o desmarcar, con los ids marcados, el nodo y su nuevo estado.",
+      "className": "Clases extra para la lista raíz.",
+      "classNames": "Clases por parte: `root`, `node`, `row`, `toggle`, `check`, `icon`, `label`, `end` y `group`.",
+      "ref": "Se reenvía a la lista raíz."
+    },
+    "node": {
+      "id": "Clave estable. Se usa para selección, expansión, checkboxes e ids del DOM.",
+      "label": "Contenido visible. Si no es texto, pasá `ariaLabel`.",
+      "icon": "Ícono inicial. Si no lo pasás, usa carpeta para ramas y archivo para hojas.",
+      "children": "Hijos del nodo. Si tiene al menos uno, el nodo es una rama.",
+      "defaultOpen": "Abre la rama en el primer montaje, en modo no controlado.",
+      "disabled": "Impide seleccionar, marcar y abrir el nodo, y lo saltea con el teclado.",
+      "end": "Contenido al final de la fila, como un contador. Evitá elementos interactivos.",
+      "ariaLabel": "Nombre accesible del nodo. Necesario cuando `label` no es texto."
+    },
+    "helpers": {
+      "findTreeNode": "Busca un nodo por id.",
+      "findTreePath": "Devuelve los nodos desde la raíz hasta el id, o `null`.",
+      "collectTreeIds": "Ids de todos los nodos.",
+      "collectBranchIds": "Ids de todas las ramas. Sirve para expandir todo.",
+      "collectDescendantIds": "Ids de todos los descendientes de un nodo.",
+      "collectDefaultExpandedIds": "Ramas con `defaultOpen`, o todas si `expandAll` es `true`.",
+      "flattenVisibleTree": "Lista plana de los nodos visibles, con nivel, padre y posición.",
+      "isTreeBranch": "`true` si el nodo tiene hijos.",
+      "hasTreeNode": "`true` si el valor se renderiza (no es `null`, `false` ni texto vacío).",
+      "treeCheckState": "Estado de un nodo: `checked`, `unchecked` o `indeterminate`.",
+      "applyTreeCheck": "Calcula los ids marcados después de alternar un nodo, con o sin cascada.",
+      "nodeName": "Nombre accesible que el componente pone en `aria-label`: `ariaLabel`, nada si la etiqueta es texto, o “Item”."
+    }
+  }
+}

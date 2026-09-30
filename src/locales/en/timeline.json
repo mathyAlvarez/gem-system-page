@@ -1,0 +1,329 @@
+{
+  "header": {
+    "title": "Timeline",
+    "description": "Vertical chronological history for orders, activity or logs. Pass events in `items`, and each one can have a title, description, time, icon, tone and extra content. `pending` appends an in-progress event at the end."
+  },
+  "common": {
+    "order": {
+      "listLabel": "Order history",
+      "steps": {
+        "placed": {
+          "title": "Order placed",
+          "description": "Checkout completed. Waiting for payment confirmation.",
+          "time": "09:12"
+        },
+        "paid": {
+          "title": "Payment received",
+          "description": "Visa ending in 4242. Receipt sent to billing@acme.test.",
+          "time": "09:14"
+        },
+        "packed": {
+          "title": "Packed at the warehouse",
+          "description": "Two items, one box. Tracking appears once it ships.",
+          "time": "11:40"
+        },
+        "shipped": {
+          "title": "Shipped",
+          "description": "Carrier: DHL. Arrives Friday.",
+          "time": "14:02"
+        },
+        "delivered": {
+          "title": "Delivered",
+          "description": "Left at the front desk.",
+          "time": "16:28"
+        }
+      }
+    },
+    "activity": {
+      "listLabel": "Team activity",
+      "events": {
+        "invite": {
+          "title": "Invited a teammate",
+          "description": "maya@gem.test joined as Editor.",
+          "time": "2 min ago"
+        },
+        "upload": {
+          "title": "Uploaded files",
+          "description": "brand-kit.zip, 14 files.",
+          "time": "18 min ago"
+        },
+        "fail": {
+          "title": "Deploy failed",
+          "description": "The preview environment timed out during migration.",
+          "time": "1 h ago"
+        },
+        "ok": {
+          "title": "Checks passed",
+          "description": "Lint, types and visual snapshots are green.",
+          "time": "Yesterday"
+        }
+      },
+      "badges": { "type": "ZIP", "weight": "2.4 MB" }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the Timeline and the code.",
+    "pendingLabel": "Waiting for carrier pickup"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Each event needs a stable `id`. `title`, `description` and `time` are optional. Pass `listLabel` to name the list."
+    },
+    "icons": {
+      "title": "Icons and content",
+      "description": "`icon` replaces the dot with an icon inside a circle. `content` adds content below the description, like badges, links or buttons."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` changes the marker color of each event. Color only supports the text: the status must be in the text too.",
+      "texts": {
+        "listLabel": "Status tones",
+        "tones": {
+          "neutral": { "title": "Neutral", "time": "Note" },
+          "primary": { "title": "Primary", "time": "In progress" },
+          "secondary": { "title": "Secondary", "time": "Assigned" },
+          "success": { "title": "Success", "time": "Done" },
+          "warning": { "title": "Warning", "time": "Retry" },
+          "error": { "title": "Error", "time": "Blocked" },
+          "info": { "title": "Info", "time": "Logged" }
+        }
+      }
+    },
+    "end": {
+      "title": "End aligned",
+      "description": "`align=\"end\"` puts the text on the left and the rail on the right."
+    },
+    "alternate": {
+      "title": "Alternate",
+      "description": "`align=\"alternate\"` zigzags events on both sides of the rail. It needs more width: use it on wide screens."
+    },
+    "reverse": {
+      "title": "Reverse order",
+      "description": "`reverse` shows the newest event first without changing `items`. It also changes the DOM order and adds `reversed` to the `<ol>`, so screen readers read the same order you see."
+    },
+    "pending": {
+      "title": "Pending event",
+      "description": "`pending` appends an in-progress event with an animated marker. A string is used as its title; `pendingDot` changes the icon. Advance the order to see it change.",
+      "texts": {
+        "advance": "Advance",
+        "restart": "Restart",
+        "status": "Latest event: {step}",
+        "waiting": {
+          "paid": "Waiting for payment",
+          "packed": "Preparing the order",
+          "shipped": "Waiting for carrier pickup",
+          "delivered": "On its way"
+        }
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It changes the marker, the spacing and, in `lg`, the title style.",
+      "texts": {
+        "label": "Size {size}"
+      }
+    },
+    "dates": {
+      "title": "Dates and times",
+      "description": "When `time` is a string, it renders as a `<time>` without `dateTime`. For a machine-readable date, pass your own `<time dateTime>`. Here the date is formatted with `Intl.DateTimeFormat` for the current language.",
+      "texts": {
+        "listLabel": "Release history",
+        "events": {
+          "created": { "title": "Release created", "description": "Release branch cut from main." },
+          "approved": { "title": "Review approved", "description": "Two approvals from the platform team." },
+          "deployed": { "title": "Deployed to production", "description": "100% of traffic is on the new version." }
+        }
+      }
+    },
+    "richTitle": {
+      "title": "Rich title",
+      "description": "`title` accepts any node, like text with a `Badge`. In that case pass `ariaLabel`: otherwise the event is announced as \"Event\".",
+      "texts": {
+        "listLabel": "Versions",
+        "events": {
+          "release": {
+            "title": "Version released",
+            "description": "New filters in the invoices table.",
+            "time": "Mon"
+          },
+          "hotfix": {
+            "title": "Hotfix",
+            "description": "Fixes tax calculation on card payments.",
+            "time": "Tue"
+          }
+        }
+      }
+    },
+    "card": {
+      "title": "Inside a card",
+      "description": "With `size=\"sm\"` it fits side panels or activity cards.",
+      "texts": {
+        "title": "Activity"
+      }
+    }
+  },
+  "apiLink": "See the full Timeline API",
+  "api": {
+    "header": {
+      "title": "Timeline API",
+      "description": "API reference for the React Timeline: props, event shape, helpers, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Timeline"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Timeline</code> accepts <code>&lt;ol&gt;</code> attributes except <code>children</code>: events are passed with <code>items</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "list": "It renders an <code>&lt;ol&gt;</code> with <code>aria-label</code>. <code>listLabel</code> defaults to <code>\"Timeline\"</code>: pass a descriptive, translated name like \"Order history\".",
+      "order": "With <code>reverse</code>, the DOM order matches the visual order and the <code>&lt;ol&gt;</code> gets <code>reversed</code>.",
+      "headings": "String titles are <code>&lt;h3&gt;</code>. Place the Timeline under an <code>&lt;h2&gt;</code> so the heading hierarchy makes sense.",
+      "itemLabel": "When <code>title</code> isn't a string, the <code>&lt;li&gt;</code> gets <code>aria-label=\"Event\"</code>, which replaces all of its content. Pass <code>ariaLabel</code> on every event with a rich title.",
+      "pending": "The pending event has <code>aria-busy</code>. With <code>pending={true}</code> it's announced as \"Pending\" and can't be translated: prefer passing a string.",
+      "time": "String times go in a <code>&lt;time&gt;</code> without <code>dateTime</code>. For real dates, pass your own <code>&lt;time dateTime&gt;</code>.",
+      "color": "The tone only changes the marker color. Write the status in the title or description.",
+      "icons": "The marker, icon and rail have <code>aria-hidden</code>: they're decorative.",
+      "motion": "The pending marker pulses and ignores <code>prefers-reduced-motion</code>. Add <code>@media (prefers-reduced-motion: reduce)</code> with <code>animation: none</code> on <code>.gem-timeline__item--loading .gem-timeline__marker</code>, like these examples do."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root `<ol>`. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`.",
+        "align": "Alignment: `--start`, `--end` or `--alternate`.",
+        "reverse": "Applied with `reverse`.",
+        "item": "Each event's `<li>`. Receives `classNames.item`.",
+        "tone": "Event tone: `--neutral`, `--primary`, `--secondary`, `--success`, `--warning`, `--error` or `--info`.",
+        "side": "Text side: `--side-start` or `--side-end`. Alternates with `alternate`.",
+        "last": "Last event. It has no rail line or bottom spacing.",
+        "loading": "Event with `loading`, like the pending one. The marker pulses.",
+        "hasIcon": "Event with `icon`. The marker grows.",
+        "rail": "Column holding the marker and line. Receives `classNames.rail`.",
+        "marker": "Dot or icon circle. Receives `classNames.marker`.",
+        "connector": "Line to the next event. Receives `classNames.connector`.",
+        "body": "Text container. Receives `classNames.body`.",
+        "header": "Title and time row. Receives `classNames.header`.",
+        "title": "Title. Receives `classNames.title`.",
+        "time": "Time. Receives `classNames.time`.",
+        "description": "Description. Receives `classNames.description`.",
+        "content": "Extra content. Receives `classNames.content`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Variables you can override on the root. Marker variables can also be changed per event with `classNames.item`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-timeline-gap": "Space between the marker and the line.",
+        "--gem-timeline-col-gap": "Space between the rail and the text. Changes with `size`.",
+        "--gem-timeline-body-pad": "Text padding; sets the spacing between events. Changes with `size`.",
+        "--gem-timeline-dot": "Size of the dot without an icon. Changes with `size`.",
+        "--gem-timeline-icon-well": "Rail column width and icon circle size. Changes with `size`.",
+        "--gem-timeline-line": "Line color.",
+        "--gem-timeline-marker-bg": "Marker color. Set by `tone`.",
+        "--gem-timeline-marker-fg": "Icon color inside the marker.",
+        "--gem-timeline-marker-border": "Marker border, to separate it from the background.",
+        "--gem-timeline-fg": "Title color.",
+        "--gem-timeline-muted": "Time and description color."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Timeline.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Timeline"
+      },
+      "items": {
+        "--gem-color-bg": "Marker border.",
+        "--gem-color-fg": "Title.",
+        "--gem-color-fg-muted": "Time and description.",
+        "--gem-color-border": "Line.",
+        "--gem-color-{primary|secondary}-600": "Marker with the `primary` or `secondary` tone.",
+        "--gem-color-{success|warning|error|info}-solid": "Marker with status tones.",
+        "--gem-color-neutral-{400|500}": "Neutral marker.",
+        "--gem-palette-neutral-{50|300|600}": "Text and line in dark mode.",
+        "--gem-radius-full": "Marker and line shape.",
+        "--gem-space-{1|2|3|4|5|6}": "Spacing between parts and between events.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Timeline also accepts `<ol>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "timeline": {
+        "title": "Timeline",
+        "description": "Component props.",
+        "items": {
+          "items": "Events in chronological order, oldest to newest.",
+          "size": "Density.",
+          "align": "Text side relative to the rail. `alternate` zigzags them.",
+          "reverse": "Shows the newest first. Doesn't change `items`.",
+          "pending": "Appends an in-progress event. `true` shows only the marker; a node is used as its title.",
+          "pendingDot": "Replaces the pending event marker.",
+          "listLabel": "Accessible name of the list.",
+          "aria-label": "Takes priority over `listLabel`.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `item`, `rail`, `marker`, `connector`, `body`, `header`, `title`, `time`, `description` and `content`.",
+          "ref": "Forwarded to the `<ol>`."
+        }
+      },
+      "item": {
+        "title": "TimelineItem",
+        "description": "Shape of each event in `items`.",
+        "items": {
+          "id": "Stable key. Used as `key` and in the `<li>` `id`.",
+          "title": "Title. A string renders as `<h3>`.",
+          "description": "Secondary text below the title.",
+          "time": "Time or date. A string renders as `<time>`.",
+          "icon": "Replaces the dot with an icon.",
+          "tone": "Marker color.",
+          "content": "Extra content: badges, links, buttons or other UI.",
+          "loading": "Animated in-progress marker.",
+          "ariaLabel": "Accessible name when `title` isn't a string."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Exported functions and constants.",
+        "items": {
+          "PENDING_TIMELINE_ID": "`id` of the event created by `pending`.",
+          "hasTimelineNode": "Whether a value renders: ignores `null`, booleans and empty strings.",
+          "itemSide": "Text side of an event based on `align` and its position.",
+          "resolveTimelineItems": "Returns the ordered events, with the pending one appended when needed."
+        }
+      }
+    }
+  }
+}

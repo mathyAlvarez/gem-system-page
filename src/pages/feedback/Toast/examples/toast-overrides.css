@@ -1,0 +1,16 @@
+.gem-toast.toast-branded {
+  --gem-toast-bg: var(--gem-palette-tertiary-50, white);
+  --gem-toast-fg: var(--gem-palette-tertiary-900);
+  --gem-toast-border: var(--gem-palette-tertiary-200);
+  --gem-toast-accent: var(--gem-palette-tertiary-500);
+  --gem-toast-icon: var(--gem-palette-tertiary-600);
+  --gem-toast-pad-y: 1rem;
+  --gem-toast-title: 1rem;
+}
+
+[data-theme="dark"] .gem-toast.toast-branded {
+  --gem-toast-bg: var(--gem-palette-tertiary-900);
+  --gem-toast-fg: var(--gem-palette-tertiary-50, white);
+  --gem-toast-border: var(--gem-palette-tertiary-700);
+  --gem-toast-icon: var(--gem-palette-tertiary-300);
+}

@@ -1,0 +1,339 @@
+{
+  "header": {
+    "title": "Popconfirm",
+    "description": "Burbuja de confirmación que aparece junto al botón que la abre. Pide confirmar una acción sin abrir un modal: eliminar un elemento, descartar cambios o publicar. La acción se ejecuta recién al confirmar."
+  },
+  "common": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y abrí la burbuja. Los botones dicen `Confirm` y `Cancel` por defecto, así que el ejemplo pasa `confirmLabel` y `cancelLabel` traducidos.",
+    "texts": {
+      "trigger": "Eliminar proyecto",
+      "title": "¿Eliminar este proyecto?",
+      "description": "Se borran también sus archivos y tareas.",
+      "done": "Proyecto eliminado"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Envolvé el botón con `Popconfirm` y pasá `title`. Al hacer clic se abre la burbuja; `onConfirm` se ejecuta solo si el usuario confirma. Por defecto usa el tono `danger` y el foco va a Cancelar.",
+      "texts": {
+        "trigger": "Eliminar",
+        "title": "¿Eliminar este archivo?",
+        "description": "No vas a poder recuperarlo.",
+        "confirm": "Eliminar",
+        "done": "Archivo eliminado"
+      }
+    },
+    "placements": {
+      "title": "Posición",
+      "description": "`placement` elige el lado: `top` (default), `bottom`, `left` o `right`. No cambia de lado si falta espacio: solo se ajusta para no salirse de la pantalla. Elegí el lado según dónde esté el botón.",
+      "texts": {
+        "title": "¿Aplicar este cambio?"
+      }
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` define el ícono y la variante del botón de confirmar: `danger` para acciones destructivas, `warning` para acciones con consecuencias y `primary` para confirmaciones neutras.",
+      "texts": {
+        "danger": {
+          "trigger": "Eliminar cuenta",
+          "title": "¿Eliminar la cuenta?",
+          "description": "Se borran todos tus datos.",
+          "confirm": "Eliminar"
+        },
+        "warning": {
+          "trigger": "Descartar cambios",
+          "title": "¿Descartar los cambios?",
+          "description": "Vas a perder lo que no guardaste.",
+          "confirm": "Descartar"
+        },
+        "primary": {
+          "trigger": "Publicar",
+          "title": "¿Publicar el artículo?",
+          "description": "Va a quedar visible para todos.",
+          "confirm": "Publicar"
+        }
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `md` (default) y `sm`, más compacto para tablas y listas.",
+      "texts": {
+        "title": "¿Archivar la conversación?",
+        "description": "Podés recuperarla desde Archivados."
+      }
+    },
+    "icon": {
+      "title": "Ícono",
+      "description": "`icon` reemplaza el ícono del tono. Con `hideIcon` (o `icon={null}`) se oculta.",
+      "texts": {
+        "customTrigger": "Silenciar",
+        "customTitle": "¿Silenciar las notificaciones?",
+        "hiddenTrigger": "Sin ícono",
+        "hiddenTitle": "¿Continuar sin guardar?"
+      }
+    },
+    "withoutCancel": {
+      "title": "Sin cancelar",
+      "description": "Con `showCancel={false}` queda solo el botón de confirmar. Se puede cerrar igual con Escape o con un clic afuera.",
+      "texts": {
+        "trigger": "Marcar como leído",
+        "title": "¿Marcar todo como leído?",
+        "confirm": "Marcar",
+        "done": "Todo marcado como leído"
+      }
+    },
+    "async": {
+      "title": "Confirmación asíncrona",
+      "description": "Si `onConfirm` devuelve una promesa, el botón muestra un spinner y la burbuja queda abierta hasta que termine. Mientras tanto no se puede cancelar ni cerrar con Escape o un clic afuera.",
+      "texts": {
+        "trigger": "Eliminar equipo",
+        "title": "¿Eliminar el equipo?",
+        "description": "Los miembros pierden acceso a sus proyectos.",
+        "confirm": "Eliminar",
+        "done": "Equipo eliminado"
+      }
+    },
+    "error": {
+      "title": "Error al confirmar",
+      "description": "Si la promesa se rechaza, la burbuja queda abierta para reintentar, pero el componente no muestra el error. Avisalo vos antes de relanzarlo, por ejemplo con un toast. El primer intento de este ejemplo falla.",
+      "texts": {
+        "trigger": "Sincronizar",
+        "title": "¿Sincronizar ahora?",
+        "description": "Se reemplazan los datos locales.",
+        "confirm": "Sincronizar",
+        "failed": "No se pudo sincronizar. Probá de nuevo.",
+        "done": "Datos sincronizados"
+      }
+    },
+    "customButtons": {
+      "title": "Botones propios",
+      "description": "`confirmButton` y `cancelButton` aceptan un elemento, que recibe el clic, o una función que recibe `ref`, `onClick`, `disabled`, `isLoading` y `className`. Para cambios menores alcanza con `confirmProps` y `cancelProps`.",
+      "texts": {
+        "element": {
+          "trigger": "Con elementos",
+          "title": "¿Salir sin guardar?",
+          "description": "Los cambios se van a perder.",
+          "confirm": "Salir",
+          "cancel": "Seguir editando",
+          "done": "Saliste del editor"
+        },
+        "render": {
+          "trigger": "Con funciones",
+          "title": "¿Vaciar la papelera?",
+          "description": "Se eliminan 12 elementos.",
+          "confirm": "Vaciar",
+          "cancel": "Ahora no",
+          "done": "Papelera vacía"
+        }
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `open` y `onOpenChange` manejás el estado vos. Sirve para abrir la burbuja desde otro lugar, como un atajo o un botón externo.",
+      "texts": {
+        "openOutside": "Abrir desde afuera",
+        "trigger": "Cerrar sesión",
+        "title": "¿Cerrar la sesión?",
+        "confirm": "Cerrar sesión",
+        "done": "Sesión cerrada",
+        "state": "open"
+      }
+    },
+    "initialFocus": {
+      "title": "Foco inicial",
+      "description": "Al abrir, el foco va a Cancelar para evitar confirmaciones por error. Con `initialFocus=\"confirm\"` va a Confirmar; usalo solo en acciones seguras.",
+      "texts": {
+        "trigger": "Guardar borrador",
+        "title": "¿Guardar el borrador?",
+        "description": "Podés seguir editándolo después.",
+        "confirm": "Guardar",
+        "done": "Borrador guardado"
+      }
+    },
+    "list": {
+      "title": "En una lista",
+      "description": "Un caso común: botones solo ícono para eliminar filas. Cada botón necesita un `aria-label` que diga qué elimina. Usá `size=\"sm\"` y `placement=\"left\"` para que la burbuja no tape la fila.",
+      "texts": {
+        "files": ["informe-anual.pdf", "presupuesto.xlsx", "logo.svg"],
+        "remove": "Eliminar",
+        "title": "¿Eliminar",
+        "confirm": "Eliminar",
+        "removed": "eliminado",
+        "reset": "Restaurar archivos"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` evita que se abra, pero no deshabilita el botón. Pasale `disabled` también al botón para que se vea y se anuncie como deshabilitado.",
+      "texts": {
+        "trigger": "Eliminar",
+        "title": "¿Eliminar?"
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "trigger": "Abrir",
+      "title": "¿Duplicar el tablero?",
+      "description": "Se copian las columnas y las tarjetas."
+    }
+  },
+  "apiLink": "Ver la API completa de Popconfirm",
+  "api": {
+    "header": {
+      "title": "Popconfirm API",
+      "description": "Referencia de la API del componente Popconfirm de React: props, render props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Popconfirm"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `confirmVariantForTone` devuelve la variante del botón de confirmar para cada tono, y `resolvePopconfirmPosition` calcula la posición de la burbuja."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "No pasa atributos HTML sueltos. <code>className</code> y <code>style</code> van a la burbuja, <code>wrapperClassName</code> al contenedor del botón y <code>classNames</code> agrega clases a cada parte. Los botones por defecto son <code>Button</code>: <code>confirmProps</code> y <code>cancelProps</code> aceptan sus props salvo <code>children</code> y <code>onClick</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "La burbuja tiene <code>role=\"alertdialog\"</code>, con <code>aria-labelledby</code> apuntando a <code>title</code> y <code>aria-describedby</code> a <code>description</code>.",
+      "trigger": "El botón recibe <code>aria-haspopup=\"dialog\"</code>, <code>aria-expanded</code> y <code>aria-controls</code>. Su clic no ejecuta la acción por defecto: si es un botón <code>submit</code>, no envía el formulario.",
+      "focus": "Al abrir, el foco va a Cancelar (o a Confirmar con <code>initialFocus=\"confirm\"</code>). Al cerrar o confirmar vuelve al botón.",
+      "keyboard": "Tab recorre los dos botones sin salir de la burbuja y Escape la cierra, salvo con <code>closeOnEscape={false}</code>.",
+      "labels": "Los botones dicen <code>\"Confirm\"</code> y <code>\"Cancel\"</code> por defecto. Pasá <code>confirmLabel</code> y <code>cancelLabel</code> traducidos.",
+      "async": "Mientras una promesa de <code>onConfirm</code> está pendiente, Confirmar muestra <code>isLoading</code> y no se puede cerrar. Si falla, el error no se muestra: avisalo vos.",
+      "disabled": "<code>disabled</code> evita que se abra, pero el botón sigue activo. Deshabilitalo también.",
+      "custom": "Con <code>confirmButton</code> o <code>cancelButton</code> como función, conectá <code>ref</code> para que el foco funcione y <code>disabled</code> e <code>isLoading</code> para bloquear la acción pendiente."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor del botón. Recibe `wrapperClassName` y `classNames.root`.",
+        "panel": "Burbuja, en un portal. Recibe `className`, `style` y `classNames.panel`.",
+        "placement": "Lado de la burbuja: `--top`, `--bottom`, `--left` o `--right`. Ubica la flecha.",
+        "sm": "Tamaño compacto. No hay clase para `md`.",
+        "tone": "Tono: `--danger`, `--warning` o `--primary`. Define `--gem-popconfirm-icon`.",
+        "ready": "Se agrega cuando la posición ya está calculada y activa la animación de entrada.",
+        "header": "Fila con el ícono y el texto. Recibe `classNames.header`.",
+        "icon": "Ícono del tono. Recibe `classNames.icon`.",
+        "body": "Contenedor del título y la descripción. Recibe `classNames.body`.",
+        "title": "Título. Recibe `classNames.title`.",
+        "description": "Descripción. Recibe `classNames.description`.",
+        "actions": "Fila de botones. Recibe `classNames.actions`.",
+        "arrow": "Flecha. Usa `--gem-color-bg` y `--gem-color-border`. Recibe `classNames.arrow`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Popconfirm tiene una sola variable propia. Para el fondo, el borde o el radio, redefiní los tokens en la burbuja: así la flecha cambia junto con el panel.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-popconfirm-icon": "Color del ícono. Lo definen las clases de tono."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Popconfirm, además de los de los botones.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Popconfirm"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo de la burbuja y de la flecha.",
+        "--gem-color-border": "Borde de la burbuja y de la flecha.",
+        "--gem-color-fg": "Color del título.",
+        "--gem-color-fg-muted": "Color de la descripción.",
+        "--gem-color-error-solid": "Ícono del tono `danger`.",
+        "--gem-color-warning-solid": "Ícono del tono `warning`.",
+        "--gem-color-primary-solid": "Ícono del tono `primary`.",
+        "--gem-font-sans": "Fuente de la burbuja.",
+        "--gem-radius-md": "Radio de la burbuja.",
+        "--gem-shadow-lg": "Sombra de la burbuja.",
+        "--gem-space-2": "Espacio entre botones y en `sm`.",
+        "--gem-space-3": "Padding y espacio entre ícono y texto.",
+        "--gem-z-popover": "Capa de la burbuja."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props del componente y de la función que podés pasar a `confirmButton` o `cancelButton`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "popconfirm": {
+        "title": "Popconfirm",
+        "description": "`title` y `children` son obligatorias.",
+        "items": {
+          "title": "Pregunta de la burbuja.",
+          "description": "Texto de apoyo debajo del título.",
+          "children": "Un único elemento que abre la burbuja al hacer clic.",
+          "tone": "Ícono y variante del botón de confirmar.",
+          "size": "Densidad de la burbuja.",
+          "placement": "Lado preferido. No cambia si falta espacio.",
+          "offset": "Distancia en píxeles entre el botón y la burbuja.",
+          "confirmLabel": "Texto del botón de confirmar.",
+          "cancelLabel": "Texto del botón de cancelar.",
+          "confirmProps": "Props extra para el botón de confirmar. `variant` reemplaza la del tono.",
+          "cancelProps": "Props extra para el botón de cancelar.",
+          "confirmButton": "Reemplaza el botón de confirmar: un elemento o una función.",
+          "cancelButton": "Reemplaza el botón de cancelar: un elemento o una función.",
+          "icon": "Ícono propio. Con `null` se oculta.",
+          "hideIcon": "Oculta el ícono.",
+          "showCancel": "Muestra el botón de cancelar.",
+          "initialFocus": "Botón que recibe el foco al abrir.",
+          "disabled": "Evita que se abra. No deshabilita el botón.",
+          "open": "Estado abierto controlado.",
+          "defaultOpen": "Estado abierto inicial sin controlar.",
+          "closeOnConfirm": "Cierra después de confirmar sin errores.",
+          "closeOnClickOutside": "Cierra con un clic afuera.",
+          "closeOnEscape": "Cierra con Escape.",
+          "className": "Clases extra para la burbuja.",
+          "classNames": "Clases por parte: `root`, `trigger`, `panel`, `arrow`, `header`, `icon`, `body`, `title`, `description`, `actions`, `cancel` y `confirm`.",
+          "wrapperClassName": "Clases extra para el contenedor del botón.",
+          "style": "Estilos inline de la burbuja.",
+          "onOpenChange": "Se ejecuta al abrir o cerrar, con el nuevo estado.",
+          "onConfirm": "Se ejecuta al confirmar. Si devuelve una promesa, la burbuja espera a que termine.",
+          "onCancel": "Se ejecuta al cancelar, con Escape o con un clic afuera."
+        }
+      },
+      "action": {
+        "title": "Render props de acción",
+        "description": "Lo que recibe la función de `confirmButton` o `cancelButton`.",
+        "items": {
+          "ref": "Ref del botón. Conectala para que funcione el foco.",
+          "onClick": "Confirma o cancela. Conectalo al clic de tu botón.",
+          "disabled": "`true` mientras hay una confirmación pendiente.",
+          "isLoading": "`true` en el botón de confirmar mientras la promesa está pendiente.",
+          "className": "Clases de la acción (`classNames.confirm` o `classNames.cancel`)."
+        }
+      }
+    }
+  }
+}

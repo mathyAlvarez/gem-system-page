@@ -1,0 +1,193 @@
+{
+  "header": {
+    "title": "Divider",
+    "description": "Horizontal or vertical rule to separate content. Pass `children` for a labeled separator. `tone` changes the color. Without a label it is purely visual; with a label it is announced as `role=\"separator\"`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the divider and its code. When vertical, the divider stretches to the height of its flex container.",
+    "label": "or continue with",
+    "start": "Content before the divider",
+    "end": "Content after the divider"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "With no props, it draws a 1px horizontal rule in the border color that spans the available width.",
+      "texts": {
+        "heading": "Section heading",
+        "body": "Body copy sits on either side of the rule to show how it separates blocks of content."
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`orientation=\"vertical\"` draws a rule that stretches with `align-self: stretch`. Put it inside a flex container with a height; otherwise it falls back to a `1.5rem` minimum.",
+      "texts": {
+        "left": "Left pane",
+        "right": "Right pane"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` sets the line style: `solid` (default), `dashed` or `dotted`."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` sets the thickness: `sm` 1px (default), `md` 1.5px and `lg` 2px."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` fills the line and the label: `default` uses the border color; the rest use the tone color. The example uses `size=\"md\"` so the color stands out."
+    },
+    "label": {
+      "title": "With label",
+      "description": "`children` sit on the rule. `labelPlacement` puts them at the `start`, `center` (default) or `end`. With a label, the divider gets `role=\"separator\"`.",
+      "texts": {
+        "label": "or continue with"
+      }
+    },
+    "verticalLabel": {
+      "title": "Vertical label",
+      "description": "Labels work vertically too: the line splits above and below the text. It needs at least `6rem` of height.",
+      "texts": {
+        "left": "Sign in",
+        "right": "Create account",
+        "label": "or"
+      }
+    },
+    "inContent": {
+      "title": "In content",
+      "description": "Separate list entries or mark a date change with a label. In a toolbar, a vertical divider groups actions.",
+      "texts": {
+        "first": "Shipping updates land in this feed as soon as a parcel leaves the warehouse.",
+        "second": "Delivery windows are estimates. Open the tracking page for the latest scan.",
+        "today": "Today",
+        "third": "A courier attempted delivery at 14:20. The parcel is held at the local depot.",
+        "toolbar": "Editing",
+        "cut": "Cut",
+        "copy": "Copy",
+        "paste": "Paste"
+      }
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "`decorative` forces the behavior: with `false` and no label, the divider is announced as a separator, so give it an `aria-label`. With `true` and a label, it is hidden from screen readers.",
+      "texts": {
+        "results": "Showing all 12 results.",
+        "end": "End of results",
+        "or": "or"
+      }
+    }
+  },
+  "styles": {
+    "label": "Section"
+  },
+  "apiLink": "See the full Divider API",
+  "api": {
+    "header": {
+      "title": "Divider API",
+      "description": "API reference for the React Divider component: props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Divider"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Divider</code> accepts <code>&lt;div&gt;</code> attributes except <code>children</code>, which is replaced by the label. They go to the root along with <code>ref</code>. <code>role</code>, <code>aria-orientation</code> and <code>aria-hidden</code> override the values the component computes."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "decorative": "Without a label, the divider is decorative: it has <code>role=\"none\"</code> and <code>aria-hidden</code>, so screen readers skip it.",
+      "label": "With a label it has <code>role=\"separator\"</code> and the label is its accessible name. The lines on each side have <code>aria-hidden</code>.",
+      "semantic": "If the separation matters and there is no label, pass <code>decorative={false}</code> and an <code>aria-label</code>.",
+      "orientation": "When not decorative, <code>aria-orientation</code> follows <code>orientation</code>.",
+      "override": "Pass <code>role</code>, <code>aria-orientation</code> or <code>aria-hidden</code> to override the automatic values.",
+      "contrast": "The label uses the tone color. With <code>warning</code>, <code>success</code> or <code>tertiary</code> on a light background, contrast may fall below 4.5:1."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Defines the variables and paints the line when there is no label. Receives `className` and `classNames.root`.",
+        "orientation": "Orientation: `--horizontal` or `--vertical`.",
+        "variant": "Line style: `--solid`, `--dashed` or `--dotted`.",
+        "size": "Thickness: `--sm`, `--md` or `--lg`. Sets `--gem-divider-thickness`.",
+        "tone": "Tone: `--default`, `--primary`, `--danger`, etc. Sets `--gem-divider-color`.",
+        "withLabel": "Applied when there are `children`. The root becomes flex with two lines and the label.",
+        "placement": "Label position: `--label-start`, `--label-center` or `--label-end`.",
+        "line": "Each line segment next to the label. Receives `classNames.line`.",
+        "label": "Label. Receives `classNames.label`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Divider's own variables. The size and tone classes set them, so use `.gem-divider.your-class` to override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-divider-color": "Color of the line and of a toned label.",
+        "--gem-divider-thickness": "Line thickness.",
+        "--gem-divider-gap": "Space between the label and the lines."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Divider.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Divider"
+      },
+      "items": {
+        "--gem-color-border": "Color of the `default` tone.",
+        "--gem-color-{primary|secondary|tertiary}-500": "Color of the brand tones.",
+        "--gem-color-{success|warning|error|info}-solid": "Color of the status tones. `danger` uses `error`.",
+        "--gem-color-neutral-400": "Color of the `neutral` tone.",
+        "--gem-color-fg-muted": "Label color in the `default` tone.",
+        "--gem-space-3": "Default value of `--gem-divider-gap`.",
+        "--gem-font-sans": "Label font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "orientation": "Axis of the rule.",
+      "variant": "Line style.",
+      "size": "Line thickness.",
+      "tone": "Color of the line and the label.",
+      "children": "Label on the rule. With a label, the divider is no longer decorative.",
+      "labelPlacement": "Label position along the rule.",
+      "decorative": "Hides the divider from screen readers. Defaults to `true` without a label and `false` with one.",
+      "role": "Root role. Defaults to `none` when decorative and `separator` otherwise.",
+      "aria-orientation": "Defaults to `orientation` when not decorative.",
+      "aria-hidden": "Defaults to `true` when decorative.",
+      "className": "Extra classes for the root.",
+      "classNames": "Per-part classes: `root`, `line` and `label`.",
+      "ref": "Root ref."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.gem-dropdown-menu__panel.ctx-branded {
+  --gem-color-bg-subtle: var(--gem-palette-tertiary-50);
+  --gem-color-primary-600: var(--gem-palette-tertiary-600);
+  border-color: var(--gem-palette-tertiary-300);
+}
+
+.gem-context-menu.ctx-branded-target[aria-expanded="true"] .ctx-surface {
+  border-color: var(--gem-palette-tertiary-400);
+}
+
+[data-theme="dark"] .gem-dropdown-menu__panel.ctx-branded {
+  --gem-color-bg-subtle: color-mix(in srgb, var(--gem-palette-tertiary-400) 18%, transparent);
+  border-color: var(--gem-palette-tertiary-600);
+}

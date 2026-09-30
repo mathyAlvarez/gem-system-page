@@ -1,0 +1,27 @@
+.alert-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 100%;
+}
+
+.alert-label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alert-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.alert-list {
+  margin: var(--gem-space-1) 0 0;
+  padding-inline-start: 1.25rem;
+}

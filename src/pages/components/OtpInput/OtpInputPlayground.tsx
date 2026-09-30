@@ -23,6 +23,7 @@ type Flags = {
   uppercase: boolean;
   mask: boolean;
   separator: boolean;
+  clearable: boolean;
   isInvalid: boolean;
   isDisabled: boolean;
   isRequired: boolean;
@@ -32,6 +33,7 @@ const flagDefaults: Flags = {
   uppercase: true,
   mask: false,
   separator: false,
+  clearable: false,
   isInvalid: false,
   isDisabled: false,
   isRequired: false,

@@ -1,0 +1,190 @@
+{
+  "header": {
+    "title": "Shine",
+    "description": "Brillo animado sobre una superficie: una imagen, una tarjeta o un tile. `effect=\"sweep\"` pasa una banda en diagonal y `effect=\"burst\"` lanza destellos desde el centro. `duration` es lo que dura el movimiento e `interval`, cada cuánto se repite."
+  },
+  "common": {
+    "label": "Edición limitada",
+    "promo": "Oferta"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el brillo y el código. Con `trigger=\"hover\"`, pasá el mouse por encima.",
+    "label": "Edición limitada"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Envolvé cualquier nodo con `Shine`. Por defecto la banda pasa cada 4 segundos, en diagonal de arriba a la izquierda hacia abajo a la derecha."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` elige el color de la banda: `light` (blanco), `gold` o `accent`. Se nota más sobre fondos oscuros."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` controla qué tan opaca es la banda: `sm`, `md` (default) o `lg`."
+    },
+    "burst": {
+      "title": "Destellos",
+      "description": "`effect=\"burst\"` lanza destellos desde el centro hacia afuera. Usa los mismos `tone`, `interval` y `trigger` que la banda. Con una `duration` más corta queda más ágil."
+    },
+    "hover": {
+      "title": "Al pasar el mouse",
+      "description": "`trigger=\"hover\"` dispara el brillo al pasar el mouse o al hacer foco con el teclado en algo de adentro, y lo repite cada `interval` mientras siga ahí. Probá con Tab.",
+      "texts": {
+        "label": "Ver colección"
+      }
+    },
+    "interval": {
+      "title": "Intervalo",
+      "description": "`interval` es el tiempo entre el inicio de cada pasada. Si es menor que `duration`, se espera a que termine la anterior. Con `0`, se repite apenas termina."
+    },
+    "angle": {
+      "title": "Ángulo",
+      "description": "`angle` cambia la dirección de la banda en grados. `90` la hace vertical y `180`, horizontal."
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "`radius` recorta las esquinas del brillo. Hacelo coincidir con el del contenido para que la banda no se salga."
+    },
+    "card": {
+      "title": "Sobre una tarjeta",
+      "description": "`block` estira `Shine` al ancho del contenedor. El contenido no cambia: los botones y links de adentro siguen funcionando porque la banda no recibe clics.",
+      "texts": {
+        "title": "Plan Studio",
+        "subtitle": "Destacá un plan pago",
+        "body": "Agregá un brillo a una tarjeta, una imagen o cualquier superficie sin tocar el contenido.",
+        "action": "Mejorar plan"
+      }
+    },
+    "color": {
+      "title": "Color propio",
+      "description": "`color` reemplaza al `tone` con cualquier color CSS. Preferí tokens, como `var(--gem-palette-tertiary-200)`."
+    },
+    "control": {
+      "title": "Activar y pausar",
+      "description": "`isActive={false}` oculta el brillo sin desmontar el contenido. `isPaused` congela la animación donde está.",
+      "texts": {
+        "active": "Activo",
+        "paused": "Pausado"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Shine",
+  "api": {
+    "header": {
+      "title": "Shine API",
+      "description": "Referencia de la API de Shine de React: props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Shine"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Shine</code> acepta los atributos de <code>&lt;div&gt;</code> salvo <code>color</code>, que acá es el color de la banda. Van a la raíz junto con <code>ref</code>. <code>style</code> se combina con <code>--gem-shine-duration</code>, <code>--gem-shine-angle</code>, <code>--gem-shine-strength</code> y <code>--gem-shine-color</code>. Tus <code>onMouseEnter</code>, <code>onMouseLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que los internos."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "decorative": "La banda y los destellos tienen <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncian ni bloquean clics.",
+      "motion": "Con <code>prefers-reduced-motion: reduce</code> el brillo no se muestra, ni en JavaScript ni en CSS.",
+      "hover": "<code>trigger=\"hover\"</code> también responde al foco de un elemento interno. <code>Shine</code> no es enfocable: poné adentro un botón o link si querés que se active con el teclado.",
+      "content": "No uses el brillo como única señal de algo importante: acompañalo con texto, como un badge de \"Nuevo\".",
+      "flashing": "Evitá intervalos muy cortos con <code>intensity=\"lg\"</code> en superficies grandes: un parpadeo de más de tres veces por segundo puede molestar a personas con fotosensibilidad.",
+      "pause": "Si el brillo se repite indefinidamente en algo importante, ofrecé una forma de pausarlo con <code>isPaused</code> o apagarlo con <code>isActive</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Define las variables y recorta el contenido. Recibe `className` y `classNames.root`.",
+        "tone": "Tono: `--light`, `--gold` o `--accent`. Define `--gem-shine-color`.",
+        "radius": "Radio: `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg` o `--radius-full`.",
+        "trigger": "Disparador: `--always` o `--hover`.",
+        "effect": "Efecto: `--sweep` o `--burst`.",
+        "block": "Se aplica con `block`. Ocupa todo el ancho.",
+        "paused": "Se aplica con `isPaused`. Pausa las animaciones.",
+        "inactive": "Se aplica con `isActive={false}`. Oculta la banda.",
+        "surface": "Contenedor del contenido. Recibe `classNames.surface`.",
+        "gleam": "Capa del brillo, con `aria-hidden`. Recibe `classNames.gleam`. Se vuelve a montar en cada pasada.",
+        "spark": "Cada destello con `effect=\"burst\"`. Recibe `classNames.spark`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Shine. `intensity`, `duration` y `angle` las escriben como estilo inline, así que el CSS común no las pisa: usá las props, `style` o utilidades con `!important`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-shine-color": "Color de la banda. Lo definen `tone` o `color`.",
+        "--gem-shine-strength": "Opacidad de la banda. La define `intensity`.",
+        "--gem-shine-duration": "Duración de cada pasada. La define `duration`.",
+        "--gem-shine-angle": "Ángulo del gradiente. Lo define `angle`.",
+        "--gem-shine-spark-angle": "Dirección de cada destello.",
+        "--gem-shine-spark-delay": "Retraso de cada destello.",
+        "--gem-shine-spark-travel": "Distancia que recorre cada destello.",
+        "--gem-shine-spark-size": "Tamaño de cada destello."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Shine.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Shine"
+      },
+      "items": {
+        "--gem-palette-neutral-0": "Color de `tone=\"light\"`.",
+        "--gem-palette-tertiary-100": "Color de `tone=\"gold\"`.",
+        "--gem-palette-primary-100": "Color de `tone=\"accent\"`.",
+        "--gem-radius-{none|sm|md|lg|full}": "Radio de la raíz."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Shine acepta además los atributos de `<div>` (ver Herencia). Los tiempos van en milisegundos.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "children": "Superficie que recibe el brillo.",
+      "tone": "Color de la banda.",
+      "color": "Color CSS que reemplaza a `tone`.",
+      "intensity": "Opacidad de la banda.",
+      "radius": "Recorte de las esquinas.",
+      "trigger": "`always` repite siempre; `hover` solo con el mouse encima o con foco adentro.",
+      "effect": "`sweep` es la banda diagonal; `burst`, destellos desde el centro.",
+      "duration": "Duración de cada pasada.",
+      "interval": "Tiempo entre el inicio de cada pasada. Nunca es menor que `duration`. Con `0` se repite apenas termina.",
+      "delay": "Espera antes de la primera pasada.",
+      "angle": "Ángulo del gradiente en grados.",
+      "block": "Ocupa todo el ancho del contenedor.",
+      "isActive": "Con `false` oculta el brillo sin desmontar el contenido.",
+      "isPaused": "Congela la animación.",
+      "className": "Clases extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `gleam` y `spark`.",
+      "ref": "Ref del `<div>` raíz."
+    }
+  }
+}

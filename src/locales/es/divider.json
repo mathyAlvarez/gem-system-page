@@ -1,0 +1,193 @@
+{
+  "header": {
+    "title": "Divider",
+    "description": "Línea horizontal o vertical para separar contenido. Con `children` muestra una etiqueta sobre la línea. `tone` cambia el color. Sin etiqueta es solo visual; con etiqueta se anuncia como `role=\"separator\"`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el divider y el código. En vertical, el divider se estira a la altura de su contenedor flex.",
+    "label": "o continuá con",
+    "start": "Contenido antes del divider",
+    "end": "Contenido después del divider"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Sin props, dibuja una línea horizontal de 1px con el color de borde que ocupa todo el ancho disponible.",
+      "texts": {
+        "heading": "Título de la sección",
+        "body": "El texto a cada lado de la línea muestra cómo separa bloques de contenido."
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`orientation=\"vertical\"` dibuja una línea que se estira con `align-self: stretch`. Ponelo dentro de un contenedor flex con altura; si no, usa un mínimo de `1.5rem`.",
+      "texts": {
+        "left": "Panel izquierdo",
+        "right": "Panel derecho"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia el estilo de la línea: `solid` (default), `dashed` o `dotted`."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` define el grosor: `sm` 1px (default), `md` 1.5px y `lg` 2px."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` colorea la línea y la etiqueta: `default` usa el color de borde; el resto, el color del tono. El ejemplo usa `size=\"md\"` para que se note el color."
+    },
+    "label": {
+      "title": "Con etiqueta",
+      "description": "Los `children` se muestran sobre la línea. `labelPlacement` los ubica al inicio (`start`), al centro (`center`, default) o al final (`end`). Con etiqueta, el divider tiene `role=\"separator\"`.",
+      "texts": {
+        "label": "o continuá con"
+      }
+    },
+    "verticalLabel": {
+      "title": "Etiqueta vertical",
+      "description": "La etiqueta también funciona en vertical: la línea se parte arriba y abajo del texto. Necesita al menos `6rem` de alto.",
+      "texts": {
+        "left": "Iniciar sesión",
+        "right": "Crear cuenta",
+        "label": "o"
+      }
+    },
+    "inContent": {
+      "title": "En contenido",
+      "description": "Separá entradas de una lista o marcá un cambio de fecha con una etiqueta. En una barra de herramientas, un divider vertical agrupa acciones.",
+      "texts": {
+        "first": "Las novedades del envío aparecen acá apenas el paquete sale del depósito.",
+        "second": "Los horarios de entrega son estimados. Abrí el seguimiento para ver el último escaneo.",
+        "today": "Hoy",
+        "third": "El repartidor intentó entregar a las 14:20. El paquete quedó en la sucursal.",
+        "toolbar": "Edición",
+        "cut": "Cortar",
+        "copy": "Copiar",
+        "paste": "Pegar"
+      }
+    },
+    "accessibility": {
+      "title": "Accesibilidad",
+      "description": "`decorative` fuerza el comportamiento: con `false` y sin etiqueta el divider se anuncia como separador, así que pasale un `aria-label`. Con `true` y con etiqueta queda oculto para lectores de pantalla.",
+      "texts": {
+        "results": "Mostrando los 12 resultados.",
+        "end": "Fin de los resultados",
+        "or": "o"
+      }
+    }
+  },
+  "styles": {
+    "label": "Sección"
+  },
+  "apiLink": "Ver la API completa de Divider",
+  "api": {
+    "header": {
+      "title": "Divider API",
+      "description": "Referencia de la API de Divider de React: props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Divider"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Divider</code> acepta los atributos de <code>&lt;div&gt;</code> salvo <code>children</code>, que se reemplaza por la etiqueta. Van a la raíz junto con <code>ref</code>. <code>role</code>, <code>aria-orientation</code> y <code>aria-hidden</code> pisan los valores que calcula el componente."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "decorative": "Sin etiqueta, el divider es decorativo: tiene <code>role=\"none\"</code> y <code>aria-hidden</code>, y los lectores de pantalla lo ignoran.",
+      "label": "Con etiqueta tiene <code>role=\"separator\"</code> y la etiqueta es su nombre accesible. Las líneas a los costados tienen <code>aria-hidden</code>.",
+      "semantic": "Si la separación importa y no hay etiqueta, pasá <code>decorative={false}</code> y un <code>aria-label</code>.",
+      "orientation": "Cuando no es decorativo, <code>aria-orientation</code> toma el valor de <code>orientation</code>.",
+      "override": "<code>role</code>, <code>aria-orientation</code> y <code>aria-hidden</code> se pueden pasar para pisar los valores automáticos.",
+      "contrast": "La etiqueta usa el color del tono. Con <code>warning</code>, <code>success</code> o <code>tertiary</code> sobre fondo claro el contraste puede no alcanzar 4.5:1."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Define las variables y pinta la línea cuando no hay etiqueta. Recibe `className` y `classNames.root`.",
+        "orientation": "Orientación: `--horizontal` o `--vertical`.",
+        "variant": "Estilo de línea: `--solid`, `--dashed` o `--dotted`.",
+        "size": "Grosor: `--sm`, `--md` o `--lg`. Define `--gem-divider-thickness`.",
+        "tone": "Tono: `--default`, `--primary`, `--danger`, etc. Define `--gem-divider-color`.",
+        "withLabel": "Se aplica cuando hay `children`. La raíz pasa a ser flex con dos líneas y la etiqueta.",
+        "placement": "Posición de la etiqueta: `--label-start`, `--label-center` o `--label-end`.",
+        "line": "Cada tramo de línea junto a la etiqueta. Recibe `classNames.line`.",
+        "label": "Etiqueta. Recibe `classNames.label`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Divider. Las definen las clases de tamaño y tono, así que para pisarlas usá `.gem-divider.tu-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-divider-color": "Color de la línea y de la etiqueta con tono.",
+        "--gem-divider-thickness": "Grosor de la línea.",
+        "--gem-divider-gap": "Espacio entre la etiqueta y las líneas."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Divider.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Divider"
+      },
+      "items": {
+        "--gem-color-border": "Color del tono `default`.",
+        "--gem-color-{primary|secondary|tertiary}-500": "Color de los tonos de marca.",
+        "--gem-color-{success|warning|error|info}-solid": "Color de los tonos de estado. `danger` usa `error`.",
+        "--gem-color-neutral-400": "Color del tono `neutral`.",
+        "--gem-color-fg-muted": "Color de la etiqueta en el tono `default`.",
+        "--gem-space-3": "Valor por defecto de `--gem-divider-gap`.",
+        "--gem-font-sans": "Fuente de la etiqueta."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<div>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "orientation": "Eje de la línea.",
+      "variant": "Estilo de la línea.",
+      "size": "Grosor de la línea.",
+      "tone": "Color de la línea y de la etiqueta.",
+      "children": "Etiqueta sobre la línea. Con etiqueta, el divider deja de ser decorativo.",
+      "labelPlacement": "Posición de la etiqueta a lo largo de la línea.",
+      "decorative": "Oculta el divider de los lectores de pantalla. Por defecto es `true` sin etiqueta y `false` con etiqueta.",
+      "role": "Rol de la raíz. Por defecto `none` si es decorativo y `separator` si no.",
+      "aria-orientation": "Por defecto usa `orientation` cuando no es decorativo.",
+      "aria-hidden": "Por defecto es `true` cuando es decorativo.",
+      "className": "Clases extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `line` y `label`.",
+      "ref": "Ref de la raíz."
+    }
+  }
+}

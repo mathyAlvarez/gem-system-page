@@ -1,0 +1,209 @@
+{
+  "header": {
+    "title": "Breadcrumbs",
+    "description": "Shows the path from home to the current page, so people know where they are and can go back to a previous level with one click. Use it above the title on pages that are several levels deep, like a product detail or a settings screen. It renders a `<nav>` with an ordered `<ol>` list."
+  },
+  "demo": {
+    "navLabel": "Breadcrumb",
+    "overflowLabel": "Show more levels",
+    "crumbs": {
+      "home": "Home",
+      "docs": "Docs",
+      "components": "Components",
+      "breadcrumbs": "Breadcrumbs",
+      "workspace": "Workspace",
+      "projects": "Projects",
+      "navigation": "Navigation",
+      "files": "Files",
+      "settings": "Settings"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Tweak the props and see the result and the code instantly. With the long trail and `maxItems` you can see how the middle levels collapse.",
+    "trail": "trail",
+    "size": "size",
+    "separator": "separator",
+    "maxItems": "maxItems",
+    "itemsBeforeCollapse": "itemsBeforeCollapse",
+    "itemsAfterCollapse": "itemsAfterCollapse"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass the path in `items`, from the top level to the current one. Each item needs an `id` and a `label`. The last one is the current page: it's highlighted, it isn't a link and it gets `aria-current=\"page\"`. An item with `href` renders as an `<a>`; without `href`, as a `<button>`. In your app, use `href` with each level's URL."
+    },
+    "current": {
+      "title": "Current page in the middle",
+      "description": "By default the current page is the last item. With `current` you can mark another one, for example when the trail also shows the following levels. Items after the current one are still links."
+    },
+    "icons": {
+      "title": "With icons",
+      "description": "`icon` adds an icon before the text. It's decorative (`aria-hidden`), so the text has to work on its own. Use it sparingly: one icon on the first level is usually enough."
+    },
+    "separator": {
+      "title": "Separator",
+      "description": "`separator` replaces the arrow between levels with any node: text like `\"/\"` or an icon. The separator is decorative and screen readers ignore it."
+    },
+    "collapsed": {
+      "title": "Long trails",
+      "description": "When the trail has more items than `maxItems`, the middle ones hide behind a three-dot button that opens a menu. `itemsBeforeCollapse` and `itemsAfterCollapse` set how many stay visible at the start and the end; the button counts as one more slot. The menu closes with Escape, an outside click or choosing a level."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the text size: `sm` (12px), `md` (14px, default) or `lg` (16px). Use `sm` in tables or dense panels and `lg` in large headers."
+    },
+    "navigation": {
+      "title": "Navigate with onItemClick",
+      "description": "`onItemClick` receives the chosen item and the one that was the current page before the click. Use it to navigate with a router or to log the move. Here the trail is cut down to the chosen level. Each item also accepts its own `onClick` with the same arguments.",
+      "texts": {
+        "lastClick": "Last move",
+        "none": "none",
+        "reset": "Reset trail"
+      }
+    },
+    "mobile": {
+      "title": "Small screens",
+      "description": "The trail wraps onto another line when it doesn't fit the available width, and each level is truncated with an ellipsis past 16rem. On small screens, use `maxItems` to show only the start and the last levels, and `size=\"sm\"` to save space. These boxes simulate a phone width.",
+      "texts": {
+        "wrapped": "Without maxItems",
+        "collapsed": "maxItems={3}"
+      }
+    }
+  },
+  "apiLink": "See the full Breadcrumbs API",
+  "api": {
+    "header": {
+      "title": "Breadcrumbs API",
+      "description": "API reference for the Breadcrumbs React component: props, items, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Breadcrumbs"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It accepts the <code>&lt;nav&gt;</code> HTML attributes (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) and passes them to that element, including <code>ref</code>. <code>classNames</code> adds classes to each part: <code>root</code>, <code>list</code>, <code>item</code>, <code>link</code>, <code>current</code>, <code>separator</code> and <code>overflow</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "landmark": "The root is a <code>&lt;nav&gt;</code> with <code>navLabel</code> as its <code>aria-label</code>, so screen readers announce it as navigation.",
+      "list": "Levels live in an ordered <code>&lt;ol&gt;</code> list, which announces the number of levels and each one's position.",
+      "current": "The current page is a <code>&lt;span&gt;</code> with <code>aria-current=\"page\"</code>, not a link.",
+      "separator": "Separators have <code>aria-hidden</code> and aren't read.",
+      "overflow": "The hidden-levels button has <code>aria-expanded</code>, <code>aria-haspopup</code> and <code>aria-controls</code> pointing to the menu. Its name is <code>overflowLabel</code>.",
+      "escape": "With the menu open, <code>Escape</code> or an outside click closes it.",
+      "disabled": "Disabled items render as <code>&lt;button disabled&gt;</code> and can't be activated.",
+      "labels": "<code>navLabel</code> and <code>overflowLabel</code> default to English (<code>\"Breadcrumb\"</code>, <code>\"Show more path\"</code>). Pass translated values if your app uses another language."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "The `<nav>` element. Receives `className` and `classNames.root`. Defines the Breadcrumbs variables.",
+        "size": "Applied based on `size`. Sets the text size.",
+        "list": "The `<ol>` list. Wraps when it doesn't fit.",
+        "item": "Each `<li>` with its separator and link.",
+        "link": "Link or button of a previous level. Truncated with an ellipsis past 16rem.",
+        "current": "Current page, with `aria-current=\"page\"`.",
+        "icon": "Container of an item's `icon`.",
+        "separator": "Separator between levels.",
+        "overflow": "Container of the hidden-levels button and menu.",
+        "trigger": "Three-dot button that opens the menu.",
+        "menu": "Menu with the hidden levels."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They're defined on `.gem-breadcrumbs` and none are written inline, so you can change them from your own class (`.gem-breadcrumbs.my-class`) or with Tailwind utilities.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-breadcrumbs-fg": "Base color of the component.",
+        "--gem-breadcrumbs-muted": "Color of links and separators.",
+        "--gem-breadcrumbs-current": "Color of the current page.",
+        "--gem-breadcrumbs-hover": "Link color on hover."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Breadcrumbs.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Breadcrumbs"
+      },
+      "items": {
+        "--gem-color-fg": "Default value of `--gem-breadcrumbs-fg`.",
+        "--gem-color-fg-muted": "Default value of `--gem-breadcrumbs-muted`.",
+        "--gem-color-primary-600": "Default value of `--gem-breadcrumbs-current`.",
+        "--gem-color-primary-700": "Default value of `--gem-breadcrumbs-hover`.",
+        "--gem-color-bg": "Background of the hidden-levels menu.",
+        "--gem-color-bg-subtle": "Link background on hover.",
+        "--gem-color-border": "Menu border.",
+        "--gem-radius-sm": "Rounded corners of links.",
+        "--gem-radius-md": "Rounded corners of the menu.",
+        "--gem-shadow-md": "Menu shadow.",
+        "--gem-shadow-focus": "Focus ring of links and the button.",
+        "--gem-z-dropdown": "Menu layer."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the `<nav>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "breadcrumbs": {
+        "title": "Breadcrumbs",
+        "description": "Props of the main component.",
+        "items": {
+          "items": "Trail levels, from the top one to the current one.",
+          "navLabel": "Accessible name of the `<nav>` (`aria-label`).",
+          "separator": "Node between levels. An arrow by default.",
+          "size": "Text size.",
+          "maxItems": "Number of items above which the middle ones collapse.",
+          "itemsBeforeCollapse": "Visible items at the start when the trail is collapsed.",
+          "itemsAfterCollapse": "Visible items at the end when the trail is collapsed. Minimum 1.",
+          "overflowLabel": "Accessible name of the hidden-levels button.",
+          "className": "Extra classes for the `<nav>`.",
+          "classNames": "Classes per part: `root`, `list`, `item`, `link`, `current`, `separator` and `overflow`.",
+          "onItemClick": "Called when a level other than the current one is chosen. Receives the chosen item and the previous current one."
+        }
+      },
+      "item": {
+        "title": "BreadcrumbItem",
+        "description": "Each object in the `items` array.",
+        "items": {
+          "id": "Unique identifier. Used as the `key`.",
+          "label": "Level text. Accepts any node.",
+          "href": "Target URL. With `href` it renders an `<a>`; without it, a `<button>`.",
+          "icon": "Decorative icon before the text.",
+          "current": "Marks this level as the current page. Defaults to the last one.",
+          "disabled": "Dims it and it can't be activated.",
+          "onClick": "Called when this level is chosen. Receives the item and the previous current one."
+        }
+      }
+    }
+  }
+}

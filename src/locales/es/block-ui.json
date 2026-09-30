@@ -1,0 +1,167 @@
+{
+  "header": {
+    "title": "BlockUi",
+    "description": "Capa que cubre toda la ventana y bloquea la interfaz mientras algo se carga o se guarda. Por defecto es blanca y semitransparente, con un spinner grande en el centro, así que la página se sigue viendo pero no se puede usar. Mientras está activa bloquea el clic, el teclado y el scroll. Usala para operaciones cortas que afectan a toda la pantalla; si solo se carga una parte, mejor un `Spinner` o un esqueleto en esa zona."
+  },
+  "demo": {
+    "loading": "Cargando",
+    "block": "Bloquear la pantalla",
+    "title": "Resumen del espacio de trabajo",
+    "body": "La capa se pone encima de este contenido. El blanco semitransparente deja ver la página mientras bloquea la interacción."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y tocá el botón para ver el bloqueo. La capa cubre toda la ventana, no solo la demo, y se quita sola cuando termina la duración elegida.",
+    "overlay": "overlay",
+    "opacity": "opacity",
+    "content": "children",
+    "duration": "duración (ms)"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "`blocking` activa y desactiva la capa. Mientras es `true`, la capa se renderiza en un portal sobre `document.body` y el resto de la página queda inerte. Pasale un `aria-label` traducido: por defecto dice \"Loading\"."
+    },
+    "overlay": {
+      "title": "Fondo personalizado",
+      "description": "`overlay` acepta cualquier valor de `background`: un color, un token o un degradado. La transparencia no se escribe en el color sino en `opacity`, así podés usar tokens sin armar colores con alfa.",
+      "texts": {
+        "title": "Detalle de la factura",
+        "body": "Cargar mantiene la vista actual, así se ve qué se está actualizando.",
+        "labels": {
+          "primary": "Color primario",
+          "dark": "Oscuro",
+          "gradient": "Degradado"
+        }
+      }
+    },
+    "content": {
+      "title": "Contenido personalizado",
+      "description": "Con `children` reemplazás el spinner por lo que quieras: un `Spinner` con texto, una tarjeta o un mensaje corto. El contenido queda centrado y no se ve afectado por `opacity`.",
+      "texts": {
+        "title": "Exportar informe",
+        "body": "Un texto visible ayuda a entender por qué la pantalla está bloqueada y cuánto puede tardar.",
+        "action": "Exportar",
+        "label": "Preparando la exportación"
+      }
+    },
+    "opacity": {
+      "title": "Opacidad",
+      "description": "`opacity` va de 1 (casi transparente) a 100 (opaco) y por defecto es 56. Los valores fuera de rango se ajustan al límite. Con valores bajos el contenido de atrás se sigue leyendo.",
+      "texts": {
+        "title": "Muestras de opacidad",
+        "body": "Cada botón bloquea la pantalla con una opacidad distinta.",
+        "defaultLabel": "(por defecto)",
+        "label": "Opacidad"
+      }
+    },
+    "async": {
+      "title": "Mientras se guarda",
+      "description": "El caso más común: conectar `blocking` al estado de una petición. Activalo antes de empezar y desactivalo en `finally`, así la pantalla se libera aunque la petición falle.",
+      "texts": {
+        "title": "Preferencias de la cuenta",
+        "body": "Guardar bloquea la pantalla hasta que responde el servidor, para que no se envíe el formulario dos veces.",
+        "action": "Guardar cambios",
+        "saving": "Guardando cambios",
+        "saved": "Cambios guardados."
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de BlockUi",
+  "api": {
+    "header": {
+      "title": "BlockUi API",
+      "description": "Referencia de la API del componente BlockUi de React: props, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "BlockUi"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>) y los pasa a la capa. <code>style</code> se combina con las variables que escribe el componente. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>content</code> y <code>spinner</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "status": "La capa tiene <code>role=\"status\"</code> y <code>aria-live=\"polite\"</code>, así los lectores de pantalla anuncian la carga sin interrumpir. Si pasás otro <code>role</code>, no agrega <code>aria-live</code>.",
+      "busy": "Agrega <code>aria-busy=\"true\"</code> a la capa y a <code>&lt;body&gt;</code> mientras está activa.",
+      "inert": "Marca como <code>inert</code> al resto de los hijos de <code>&lt;body&gt;</code>: no se pueden enfocar ni hacer clic. Al desactivarse les devuelve su valor anterior.",
+      "scroll": "Bloquea el scroll de la página con <code>overflow: hidden</code> en <code>&lt;body&gt;</code> y lo restaura al terminar.",
+      "spinner": "El spinner por defecto es decorativo (<code>aria-hidden</code>); el nombre accesible es el <code>aria-label</code> de la capa.",
+      "labels": "<code>aria-label</code> viene en inglés por defecto (<code>\"Loading\"</code>). Pasalo traducido, o usá <code>aria-labelledby</code> si el texto ya está visible en la capa."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Capa fija que cubre la ventana. Recibe `className` y `classNames.root`. Define las variables de BlockUi.",
+        "overlay": "Pseudo-elemento con el fondo. Usa `--gem-block-ui-overlay` y `--gem-block-ui-opacity`.",
+        "content": "Contenedor centrado de `children` o del spinner. Recibe `classNames.content`.",
+        "spinner": "Spinner por defecto, solo cuando no hay `children`. Recibe `classNames.spinner`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-block-ui`. `--gem-block-ui-opacity` siempre se escribe inline desde la prop `opacity`, y `--gem-block-ui-overlay` solo cuando pasás `overlay`; para cambiarlas desde una clase no pases esas props. `--gem-block-ui-spinner-size` se cambia libremente.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-block-ui-overlay": "Fondo de la capa. Cualquier valor de `background`.",
+        "--gem-block-ui-opacity": "Opacidad del fondo, de 1 a 100.",
+        "--gem-block-ui-spinner-size": "Tamaño del spinner por defecto. Baja a `--gem-icon-4xl` en pantallas de menos de 640px."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa BlockUi.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en BlockUi"
+      },
+      "items": {
+        "--gem-palette-neutral-0": "Valor por defecto de `--gem-block-ui-overlay` (blanco, también en el tema oscuro).",
+        "--gem-icon-6xl": "Tamaño del spinner en pantallas grandes.",
+        "--gem-icon-4xl": "Tamaño del spinner en pantallas chicas.",
+        "--gem-z-max": "Capa de apilado, por encima de modales y menús.",
+        "--gem-space-4": "Margen interno de la capa."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML de un `<div>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "blocking": "Muestra la capa y bloquea la página. Con `false` no renderiza nada.",
+      "overlay": "Fondo de la capa: color, token o degradado.",
+      "opacity": "Opacidad del fondo, de `1` a `100`. No afecta al contenido centrado.",
+      "children": "Contenido centrado. Si no lo pasás, muestra un spinner grande.",
+      "aria-label": "Nombre accesible de la capa. Se ignora si pasás `aria-labelledby`.",
+      "role": "Rol de la capa. Con otro valor que no sea el default, no agrega `aria-live`.",
+      "className": "Clases extra para la capa.",
+      "classNames": "Clases por parte: `root`, `content` y `spinner`.",
+      "style": "Estilos inline. Se combinan con las variables que escribe el componente."
+    }
+  }
+}

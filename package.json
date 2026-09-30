@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gem-org/gem-system": "^2.0.1",
+    "@gem-org/gem-system": "^2.1.0",
     "@gem-org/gemffects": "^1.0.0",
     "@gem-org/gemsitions": "^1.0.0-beta.1",
     "@monaco-editor/react": "^4.7.0",

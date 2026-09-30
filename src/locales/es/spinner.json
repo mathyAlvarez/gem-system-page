@@ -1,0 +1,197 @@
+{
+  "header": {
+    "title": "Spinner",
+    "description": "Indicador circular de carga para esperas cortas o sin duración conocida. Acepta tamaños por token, en píxeles o con cualquier medida CSS, tres estilos de animación y un texto visible. `Loader` es un alias del mismo componente."
+  },
+  "common": {
+    "ariaLabel": "Cargando"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el indicador y el código. Sin `label`, el nombre por defecto es `Loading`, así que el ejemplo pasa `aria-label` traducido.",
+    "label": "Cargando espacio de trabajo"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Solo el indicador, con tamaño `md` y tono `primary`. Se anuncia como `role=\"status\"`; sin texto visible, pasá `aria-label`."
+    },
+    "label": {
+      "title": "Con texto",
+      "description": "`label` agrega un texto visible junto al indicador. Es lo que se anuncia, y `aria-label` se ignora.",
+      "texts": {
+        "label": "Cargando espacio de trabajo"
+      }
+    },
+    "placement": {
+      "title": "Posición del texto",
+      "description": "`labelPlacement` ubica el texto al lado (`end`, default) o debajo (`bottom`) del indicador.",
+      "texts": {
+        "label": "Guardando cambios"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta los tokens `sm`, `md` (default), `lg`, `xl`, `2xl`, `3xl` y `4xl`, que siguen la escala de íconos. El grosor del trazo se ajusta al tamaño."
+    },
+    "customSize": {
+      "title": "Tamaño propio",
+      "description": "`size` también acepta un número (píxeles) o cualquier medida CSS. En ese caso se aplica la clase `--custom`."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` define el color: `primary` (default), `secondary`, `success`, `warning`, `error`, `info`, `neutral` o `current`, que hereda el color del contenedor. El texto no sigue el tono: en este ejemplo se le pasa `text-current` por `classNames.label`.",
+      "texts": {
+        "inherits": "Hereda el color"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia la animación: `ring` (anillo que gira, default), `dots` (puntos en fila) o `circle-dots` (puntos en círculo)."
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` (o `isDisabled`) atenúa el indicador, lo pinta en gris, frena la animación y quita `aria-busy`. Sirve para mostrar una tarea en pausa.",
+      "texts": {
+        "label": "En pausa"
+      }
+    },
+    "inline": {
+      "title": "En línea",
+      "description": "Con `tone=\"current\"` y `size=\"sm\"` se integra en chips o textos con su propio color. Si el texto de al lado ya explica el estado, usá `aria-hidden` para no repetirlo.",
+      "texts": {
+        "syncing": "Sincronizando",
+        "saving": "Guardando"
+      }
+    },
+    "overlay": {
+      "title": "Sobre un panel",
+      "description": "Un caso común: un spinner con texto debajo tapa el panel mientras se actualiza. El panel lleva `aria-busy` mientras carga.",
+      "texts": {
+        "title": "Ventas de la semana",
+        "text": "Los ingresos crecieron un 12% respecto de la semana anterior, con picos el jueves y el sábado.",
+        "updating": "Actualizando datos",
+        "refresh": "Actualizar"
+      }
+    },
+    "alias": {
+      "title": "Alias Loader",
+      "description": "`Loader` es el mismo componente que `Spinner`, con las mismas props.",
+      "texts": {
+        "label": "Buscando registros"
+      }
+    }
+  },
+  "styles": {
+    "label": "Procesando pedido"
+  },
+  "apiLink": "Ver la API completa de Spinner",
+  "api": {
+    "header": {
+      "title": "Spinner API",
+      "description": "Referencia de la API del componente Spinner de React: props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Spinner"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `Loader` es un alias. `spinnerSize` tiene la escala de tokens y `resolveSpinnerSize` convierte cualquier `size` en una medida CSS."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>&lt;div&gt;</code> salvo <code>children</code>, y van al contenedor junto con <code>ref</code>, <code>id</code> y <code>className</code>. <code>classNames</code> agrega clases a <code>root</code>, <code>indicator</code> y <code>label</code>. El indicador es un ícono de gem-system con <code>aria-hidden</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "status": "El contenedor tiene <code>role=\"status\"</code> y <code>aria-busy=\"true\"</code>. Si no pasás otro <code>role</code>, también <code>aria-live=\"polite\"</code>.",
+      "label": "Sin <code>label</code>, el nombre por defecto es <code>\"Loading\"</code>, en inglés. Pasá <code>aria-label</code> o <code>aria-labelledby</code> traducido.",
+      "name": "Con <code>label</code>, se anuncia el texto visible y se ignora <code>aria-label</code>.",
+      "decorative": "Si el texto de al lado ya comunica el estado, pasá <code>aria-hidden</code> para no anunciarlo dos veces.",
+      "disabled": "<code>disabled</code> quita <code>aria-busy</code> y agrega <code>data-disabled</code>; el rol y el nombre se mantienen.",
+      "motion": "Con <code>prefers-reduced-motion</code> se detiene la animación."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor. Define las variables. Recibe `className` y `classNames.root`.",
+        "size": "Token de tamaño: `--sm`, `--md`, `--lg`, `--xl`, `--2xl`, `--3xl` o `--4xl`. Ajusta el texto y el espacio.",
+        "custom": "Se aplica cuando `size` es un número o una medida CSS.",
+        "tone": "Tono: `--tone-primary`, `--tone-current`, etc. Define `--gem-spinner-color`.",
+        "variant": "Variante: `--ring`, `--dots` o `--circle-dots`.",
+        "placement": "Posición del texto: `--label-end` o `--label-bottom`.",
+        "disabled": "Se aplica con `disabled` o `isDisabled`, junto con `data-disabled`.",
+        "indicator": "Contenedor del ícono animado. Recibe `classNames.indicator`.",
+        "label": "Texto visible. Recibe `classNames.label`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Spinner. Las de tono y tamaño se pisan con una clase de igual especificidad, así que usá `.gem-spinner.tu-clase` y una variante para `[data-theme=\"dark\"]`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-spinner-color": "Color del indicador. Lo define el tono. El texto no lo usa.",
+        "--gem-spinner-gap": "Espacio entre el indicador y el texto. Crece con el tamaño."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Spinner.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Spinner"
+      },
+      "items": {
+        "--gem-color-{tone}-600": "Color de cada tono (`primary`, `secondary`, `success`, `warning`, `error`, `info`). En oscuro usa la paleta.",
+        "--gem-color-neutral-700": "Color del tono `neutral`.",
+        "--gem-color-neutral-400": "Color deshabilitado.",
+        "--gem-color-fg": "Color del texto.",
+        "--gem-palette-neutral-50": "Color del texto en tema oscuro.",
+        "--gem-space-2": "Espacio por defecto entre indicador y texto.",
+        "--gem-space-3": "Espacio en tamaños `xl` a `3xl` y personalizados.",
+        "--gem-space-4": "Espacio en tamaño `4xl`.",
+        "--gem-font-sans": "Fuente del texto."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<div>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "size": "Tamaño del indicador: un token, un número en píxeles o una medida CSS.",
+      "tone": "Color del indicador. `current` hereda el color del contenedor.",
+      "variant": "Estilo de la animación.",
+      "label": "Texto visible junto al indicador. Si está, se ignora `aria-label`.",
+      "labelPlacement": "Posición del texto: al lado o debajo.",
+      "disabled": "Atenúa el indicador, frena la animación y quita `aria-busy`.",
+      "isDisabled": "Igual que `disabled`.",
+      "role": "Rol del contenedor. Si lo cambiás, no se agrega `aria-live`.",
+      "aria-label": "Nombre accesible cuando no hay `label`.",
+      "aria-labelledby": "Id de un elemento que nombra el indicador.",
+      "className": "Clases extra para el contenedor.",
+      "classNames": "Clases por parte: `root`, `indicator` y `label`.",
+      "ref": "Ref del contenedor."
+    }
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "header": {
+    "title": "Aspect Ratio",
+    "description": "Keeps a fixed proportion (width : height) no matter how much width is available. Use it for images, videos, embeds and placeholders: it reserves the space before the content loads and prevents layout shifts. Content is centered, and images or videos are cropped according to `objectFit`."
+  },
+  "alt": {
+    "banner": "gem-system banner",
+    "mark": "gem-system logo"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result and code instantly. Try the square image with `objectFit=\"contain\"` to see the background around it.",
+    "ratio": "ratio",
+    "objectFit": "objectFit",
+    "objectPosition": "objectPosition",
+    "radius": "radius",
+    "maxWidth": "maxWidth",
+    "image": "Image"
+  },
+  "presets": {
+    "columns": {
+      "name": "Name",
+      "ratio": "Ratio",
+      "usage": "Typical use"
+    },
+    "items": {
+      "square": "Avatars, thumbnails and product grids.",
+      "video": "Videos and full-width covers.",
+      "photo": "Camera photos.",
+      "ultrawide": "Banners and panoramic covers.",
+      "portrait": "Stories and vertical videos.",
+      "tcg": "Trading cards (63 × 88 mm)."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Without props, the ratio is 16:9. The container takes the full available width and computes the height; here `maxWidth={640}` caps the width. The image is a direct child of the inner box, so it is cropped with `object-fit: cover`. The examples use these demo styles."
+    },
+    "presets": {
+      "title": "Preset ratios",
+      "description": "`ratio` accepts presets like `\"1:1\"`, `\"4:3\"` or `\"9:16\"`, and also names. The table lists the available names and the ratio each one maps to."
+    },
+    "card": {
+      "title": "Cards",
+      "description": "`ratio=\"tcg\"`, `\"2.5:3.5\"` and `\"5:7\"` give the same card format. With `maxWidth` they all share the same width and, since the ratio is fixed, the same height too."
+    },
+    "custom": {
+      "title": "Custom ratio",
+      "description": "Besides presets, `ratio` accepts `\"W:H\"`, `\"W/H\"`, `\"WxH\"`, a decimal number (`1.618`) or a `{ width, height }` object. Invalid values fall back to 16:9. Type a value and apply it: the text above shows what `resolveAspectRatio` returns.",
+      "texts": {
+        "label": "Ratio",
+        "helperText": "For example: 3:2, 4/5, 1920x1080 or 1.618",
+        "apply": "Apply"
+      }
+    },
+    "objectFit": {
+      "title": "Image fit",
+      "description": "`objectFit` sets how the image adapts to the box: `cover` (default) crops, `contain` shows it whole with background around it, `fill` stretches it, `none` keeps the original size and `scale-down` picks the smaller of `none` and `contain`. It only affects `img`, `video`, `iframe`, `canvas` and `svg` direct children."
+    },
+    "objectPosition": {
+      "title": "Image position",
+      "description": "When the image is cropped, `objectPosition` picks which part stays visible. It accepts any `object-position` value: keywords (`left`, `top right`) or percentages (`\"30% 50%\"`)."
+    },
+    "placeholder": {
+      "title": "Placeholder while loading",
+      "description": "Since the space is already reserved, you can show a placeholder over the image until it finishes loading, and the page doesn't jump. Loading is delayed a bit so you can notice it; press the button to repeat it.",
+      "texts": {
+        "loading": "Loading image…",
+        "reload": "Reload"
+      }
+    },
+    "embed": {
+      "title": "Embeds",
+      "description": "A direct `iframe` child fills the whole box, ideal for embedded videos or maps. Give it a `title` so screen readers announce it.",
+      "texts": {
+        "title": "Sample embedded content",
+        "body": "This content lives inside an iframe."
+      }
+    },
+    "radius": {
+      "title": "Rounded corners",
+      "description": "`radius` uses the gem-system token scale; it defaults to `md`. With `full` and `ratio=\"1:1\"` you get a circle, handy for avatars."
+    },
+    "maxWidth": {
+      "title": "Max width",
+      "description": "`maxWidth` caps the width and, because of the ratio, the height as well. A number is read as pixels and a string as a CSS length (`\"60%\"`, `\"20rem\"`). It doesn't center the box: add `mx-auto` for that."
+    },
+    "figure": {
+      "title": "With figure and caption",
+      "description": "For an image with a caption, wrap the AspectRatio in a `figure` and put the caption in a `figcaption` outside the box, so it isn't cropped and doesn't cover the image.",
+      "caption": "gem-system banner in photo format (3:2)."
+    }
+  },
+  "styled": {
+    "title": "Autumn collection"
+  },
+  "apiLink": "See the full AspectRatio API",
+  "api": {
+    "header": {
+      "title": "AspectRatio API",
+      "description": "API reference for the AspectRatio React component: props, CSS classes, CSS variables, tokens, utilities and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Aspect Ratio"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath, which also exports `toCssLength`."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts HTML attributes (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) and forwards them to the root element. <code>ref</code> reaches the root element. <code>ratio</code>, <code>objectFit</code>, <code>objectPosition</code> and <code>maxWidth</code> become CSS variables inside <code>style</code>, merged with the <code>style</code> you pass. Children render inside <code>.gem-aspect-ratio__inner</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "alt": "AspectRatio adds no semantics: the image inside needs its own <code>alt</code> describing the content.",
+      "decorative": "If the image is decorative, use <code>alt=\"\"</code> so screen readers skip it.",
+      "iframe": "An <code>iframe</code> needs a <code>title</code> so its content is announced.",
+      "figure": "For images with a caption use <code>figure</code> and <code>figcaption</code>, keeping the caption outside the box so it isn't cropped.",
+      "landmark": "With <code>as</code> you can render <code>figure</code>, <code>section</code> or <code>article</code> instead of a <code>&lt;div&gt;</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root element. Receives `className` and `classNames.root`. Has `width: 100%`, the ratio, the radius and the `--gem-color-bg-subtle` background.",
+        "radius": "Applied according to `radius`. Sets `--gem-aspect-ratio-radius` to the matching token.",
+        "inner": "Absolute inner box that fills the space and centers the content. Receives `classNames.inner`.",
+        "media": "Direct media children: they fill the box and use `object-fit` and `object-position`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The ratio, fit, position and max width are written inline, so they can only be overridden with `!important` (this site's Tailwind utilities already use it). The radius comes from the `radius` class and can be changed from your own class such as `.gem-aspect-ratio.my-class`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-aspect-ratio": "Ratio used by `aspect-ratio`. Set by `ratio`.",
+        "--gem-aspect-ratio-fit": "`object-fit` value for media children. Set by `objectFit`.",
+        "--gem-aspect-ratio-position": "`object-position` value for media children. Set by `objectPosition`.",
+        "--gem-aspect-ratio-max": "Max width of the root element. Set by `maxWidth`; without it there is no limit.",
+        "--gem-aspect-ratio-radius": "Border radius. Set by the `radius` class."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by AspectRatio.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in AspectRatio"
+      },
+      "items": {
+        "--gem-radius-{token}": "Radius scale used by `radius`.",
+        "--gem-color-bg-subtle": "Box background; visible around the content with `contain` or while loading."
+      }
+    },
+    "utils": {
+      "title": "Utilities",
+      "description": "Functions and constants exported alongside the component.",
+      "columns": {
+        "name": "Name",
+        "signature": "Signature",
+        "entry": "Entry",
+        "description": "Description"
+      },
+      "items": {
+        "resolveAspectRatio": "Turns any value accepted by `ratio` into the CSS `aspect-ratio` value (for example `\"4:3\"` → `\"4 / 3\"`). Invalid values return `DEFAULT_ASPECT_RATIO`.",
+        "DEFAULT_ASPECT_RATIO": "Ratio used when `ratio` is missing or invalid.",
+        "toCssLength": "Turns a number into pixels (`320` → `\"320px\"`) and leaves strings as they are. It's what `maxWidth` uses."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the root element.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "as": "HTML element to render.",
+      "ratio": "Ratio: preset, `\"W:H\"`, `\"W/H\"`, `\"WxH\"`, decimal number or `{ width, height }` object. Invalid values fall back to 16:9.",
+      "objectFit": "How media children adapt to the box (`object-fit`).",
+      "objectPosition": "Which part of media children stays visible when cropped (`object-position`).",
+      "radius": "Border radius from the token scale.",
+      "maxWidth": "Max width. A number is read as pixels and a string as a CSS length. It doesn't center the element.",
+      "className": "Extra classes for the root element.",
+      "classNames": "Per-slot classes: `root` for the root element and `inner` for the inner box.",
+      "style": "Inline styles. Merged with the component's CSS variables.",
+      "ref": "Ref to the root element.",
+      "children": "Box content. Images, videos and iframes must be direct children to fill the space."
+    }
+  }
+}

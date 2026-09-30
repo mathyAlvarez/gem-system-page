@@ -1,0 +1,283 @@
+{
+  "header": {
+    "title": "Command Palette",
+    "description": "Floating command search for moving around the app with the keyboard. It opens with Ctrl+K (⌘K on Mac), filters as you type and runs the chosen command with Enter. Use it to go to pages, launch frequent actions or search long lists without the mouse. It opens as a modal `<dialog>` on top of the page."
+  },
+  "demo": {
+    "open": "Open palette",
+    "placeholder": "Search commands…",
+    "label": "Command palette",
+    "empty": "No results found.",
+    "loading": "Searching…",
+    "lastCommand": "Last command:",
+    "shortcutHint": "or press",
+    "groups": {
+      "navigation": "Navigation",
+      "actions": "Actions"
+    },
+    "items": {
+      "home": { "label": "Home", "description": "Workspace overview", "keywords": ["dashboard", "start"] },
+      "projects": { "label": "Projects", "description": "Open the project list" },
+      "calendar": { "label": "Calendar", "description": "Upcoming events" },
+      "profile": { "label": "Open profile", "keywords": ["account", "user"] },
+      "settings": { "label": "Settings", "description": "Theme, language and shortcuts" },
+      "docs": { "label": "<dialog> documentation (MDN)", "keywords": ["help", "guide"] },
+      "delete": { "label": "Delete workspace", "keywords": ["remove", "destroy"] }
+    },
+    "hints": {
+      "navigate": "Navigate",
+      "select": "Select",
+      "close": "Close"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props, open the palette and see the code instantly. Type to filter, move with the arrows and pick with Enter.",
+    "size": "size",
+    "shadow": "shadow",
+    "radius": "radius",
+    "closeOnSelect": "closeOnSelect",
+    "loop": "loop",
+    "loading": "loading"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass `items` and control opening with `open` and `onOpenChange`. By default it listens for Ctrl+K (⌘K on Mac) across the page to open and close; in this example the shortcut is active. Arrows move the highlight, Enter runs the command and Escape closes. `onSelect` receives the `id` of the chosen command."
+    },
+    "grouped": {
+      "title": "Grouped commands",
+      "description": "With `type: \"group\"` you group commands under a heading. Groups hide automatically when none of their commands match the search. The filter looks at the label, description, `keywords` and shortcut: try typing \"account\" to find \"Open profile\"."
+    },
+    "async": {
+      "title": "Async search",
+      "description": "To search on a server, control the search with `query` and `onQueryChange`, turn off the built-in filter with `shouldFilter={false}` and show `loading` while results arrive. Keep a request counter to discard stale responses if the user keeps typing."
+    },
+    "empty": {
+      "title": "No results",
+      "description": "`emptyText` is the message when there are no commands or none match the search. It's in English by default, so pass it translated if needed.",
+      "emptyText": "Nothing matches that search."
+    },
+    "disabledDanger": {
+      "title": "Disabled and danger",
+      "description": "Commands with `disabled` look dimmed and the keyboard skips them. With `danger` they show in red, for destructive actions like deleting.",
+      "texts": {
+        "rename": "Rename",
+        "archive": "Archive",
+        "archiveHint": "Unavailable in the trial plan",
+        "deleteProject": "Delete project"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the panel width (`sm` 28rem, `md` 36rem and `lg` 42rem) and the inner spacing of the search and commands. On small screens the panel takes the available width."
+    },
+    "footer": {
+      "title": "Custom footer",
+      "description": "By default the footer shows the keys to navigate, select and close, in English. On this page every palette gets it translated; with `footer` you can also show your own tip or pass `null` to hide it.",
+      "texts": {
+        "tip": "Tip: type a page name, then press Enter.",
+        "labels": {
+          "tip": "With a tip",
+          "none": "No footer"
+        }
+      }
+    },
+    "router": {
+      "title": "With a router",
+      "description": "Commands with `href` do a full navigation (they reload the page). In a SPA use `onSelect` on each command and call the router. This example uses React Router and actually navigates to other pages of these docs.",
+      "texts": {
+        "open": "Go to a component",
+        "groups": {
+          "components": "Components",
+          "navigation": "Navigation"
+        }
+      }
+    }
+  },
+  "apiLink": "See the full Command Palette API",
+  "api": {
+    "header": {
+      "title": "Command Palette API",
+      "description": "API reference for the CommandPalette React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Command Palette"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. It's also exported under the `Command` alias."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of the <code>&lt;dialog&gt;</code> (<code>DialogHTMLAttributes&lt;HTMLDialogElement&gt;</code>), except <code>title</code>, <code>open</code> and <code>onSelect</code>, and passes them to that element. For the search field use <code>inputProps</code>. <code>classNames</code> accepts <code>root</code>, <code>input</code>, <code>list</code>, <code>group</code>, <code>item</code>, <code>empty</code>, <code>footer</code> and <code>shortcut</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "dialog": "It opens with <code>showModal()</code> in a <code>&lt;dialog&gt;</code> with <code>aria-modal</code>: the rest of the page becomes inert and scrolling is locked.",
+      "combobox": "The search field has <code>role=\"combobox\"</code>, <code>aria-controls</code> and <code>aria-activedescendant</code>, so focus stays in the field while the highlight moves.",
+      "listbox": "The list has <code>role=\"listbox\"</code> and each command <code>role=\"option\"</code> with <code>aria-selected</code>. While loading it adds <code>aria-busy</code>.",
+      "keyboard": "Up and down arrows move the highlight, Home and End jump to the first and last, Enter runs and Escape closes.",
+      "focus": "When it opens it focuses the search, and when it closes it returns focus to the previously active element.",
+      "disabled": "Commands with <code>disabled</code> get <code>aria-disabled</code> and the keyboard skips them.",
+      "shortcut": "The global Ctrl+K / ⌘K shortcut is heard across the page. If several palettes are mounted, keep it active on just one and set <code>shortcut={false}</code> on the rest.",
+      "labels": "<code>placeholder</code>, <code>label</code>, <code>emptyText</code>, <code>loadingText</code> and the footer are in English. Pass them translated if your app uses another language."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "`<dialog>` element. Receives `className` and `classNames.root`.",
+        "size": "Applied from `size`. Defines `--gem-command-palette-width`.",
+        "shadow": "Applied from `shadow`.",
+        "radius": "Applied from `radius`.",
+        "backdrop": "Dark background behind the panel.",
+        "panel": "Inner column container.",
+        "search": "Search row, with the icon and the field.",
+        "searchIcon": "Magnifier icon.",
+        "input": "Search field. Receives `classNames.input` and `inputProps.className`.",
+        "list": "Scrollable command list. Receives `classNames.list`.",
+        "group": "Group heading. Receives `classNames.group`.",
+        "item": "Each command. Receives `classNames.item`. It's an `<a>` when it has `href`.",
+        "active": "Highlighted command.",
+        "disabled": "Command with `disabled`.",
+        "danger": "Command with `danger`.",
+        "icon": "Command icon container.",
+        "body": "Container for the label and description.",
+        "label": "Command label.",
+        "description": "Command description.",
+        "shortcut": "Shortcut container. Receives `classNames.shortcut`.",
+        "kbd": "Each key of the shortcut and of the footer hints.",
+        "mark": "Part of the text that matches the search.",
+        "status": "Loading or empty message. Receives `classNames.empty` when there are no results.",
+        "footer": "Footer. Receives `classNames.footer`.",
+        "hints": "Row of default footer hints.",
+        "hint": "Each default footer hint."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The other colors come from tokens, so to change them redefine the tokens in your own class (`.gem-command-palette.my-class`).",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-command-palette-width": "Maximum panel width. Set by the size classes; to change it use your own class with higher specificity."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Command Palette.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Command Palette"
+      },
+      "items": {
+        "--gem-color-bg": "Panel background.",
+        "--gem-color-bg-subtle": "Background of the highlighted command and keys.",
+        "--gem-color-fg": "Text color.",
+        "--gem-color-fg-muted": "Icons, descriptions, group headings, messages and footer.",
+        "--gem-color-border": "Panel border, dividers and keys.",
+        "--gem-color-error-600": "Color of `danger` commands.",
+        "--gem-color-primary-500": "Highlight of the text that matches the search (at 28%).",
+        "--gem-radius-{radius}": "Panel corners from `radius`. `--gem-radius-sm` is also used on commands and keys.",
+        "--gem-shadow-{shadow}": "Panel shadow from `shadow`.",
+        "--gem-shadow-focus": "Panel focus ring.",
+        "--gem-font-sans": "Component font.",
+        "--gem-font-mono": "Key font.",
+        "--gem-palette-neutral-{n}": "Text, borders and muted colors in the dark theme.",
+        "--gem-palette-error-400": "`danger` color in the dark theme."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. Utilities like `defaultCommandFilter` and `highlightCommandMatch` are exported too."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props of the palette and of each entry in `items`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "commandPalette": {
+        "title": "CommandPalette",
+        "description": "Component props. It also accepts the HTML attributes of the `<dialog>`.",
+        "items": {
+          "items": "Commands and command groups.",
+          "open": "Controls whether it's open.",
+          "defaultOpen": "Initial state when you don't control `open`.",
+          "query": "Controls the search text.",
+          "defaultQuery": "Initial search when you don't control `query`.",
+          "placeholder": "Hint text of the search field.",
+          "label": "Accessible name of the dialog and the list.",
+          "emptyText": "Message when there are no results.",
+          "loading": "Shows a loading row instead of the commands.",
+          "loadingText": "Text of the loading row.",
+          "shortcut": "Global shortcut to open and close: `true` uses Ctrl/⌘+K, a letter changes the key and `false` turns it off.",
+          "shouldFilter": "Filters commands by the search. Turn it off if you filter yourself, for example on the server.",
+          "filter": "Custom function to decide whether a command matches. By default it looks at label, description, `keywords` and shortcut.",
+          "closeOnSelect": "Closes the palette when a command is chosen.",
+          "closeOnBackdrop": "Closes when clicking the backdrop.",
+          "closeOnEscape": "Closes with Escape.",
+          "resetOnOpen": "Clears the search every time it opens.",
+          "loop": "Reaching the end with the arrows wraps to the start, and vice versa.",
+          "footer": "Footer content. By default shows the help keys; `null` hides it.",
+          "size": "Panel width and inner spacing.",
+          "shadow": "Panel shadow.",
+          "radius": "Panel corners.",
+          "container": "Element where the portal mounts.",
+          "inputProps": "Extra props for the search `<input>`.",
+          "className": "Extra classes for the `<dialog>`.",
+          "classNames": "Classes per part: `root`, `input`, `list`, `group`, `item`, `empty`, `footer` and `shortcut`.",
+          "onOpenChange": "Called when opening or closing, also via the shortcut, Escape or backdrop click.",
+          "onQueryChange": "Called when the search changes.",
+          "onSelect": "Called when a command is chosen, with its `id` and the full command."
+        }
+      },
+      "command": {
+        "title": "Command",
+        "description": "Each entry of `items` (or of a group) that isn't a group.",
+        "items": {
+          "id": "Unique identifier. Passed to `onSelect`.",
+          "label": "Command text.",
+          "description": "Secondary text below the label.",
+          "icon": "Leading icon.",
+          "shortcut": "Shortcut shown at the end (`\"Ctrl+K\"` or `[\"Ctrl\", \"K\"]`). Visual only.",
+          "href": "Turns the command into a link and navigates when chosen.",
+          "target": "Where the `href` opens. With `_blank` it opens a new tab.",
+          "rel": "Link relationship. With `_blank` it defaults to `noopener noreferrer`.",
+          "disabled": "Shows it dimmed and the keyboard skips it.",
+          "danger": "Shows it in red, for destructive actions.",
+          "keywords": "Extra words used by the filter.",
+          "searchText": "Replaces the searched text when `label` isn't plain text.",
+          "closeOnSelect": "Overrides the palette `closeOnSelect` for this command.",
+          "ariaLabel": "Accessible name when `label` isn't plain text.",
+          "onSelect": "Called when this command is chosen."
+        }
+      },
+      "group": {
+        "title": "Group",
+        "description": "Groups commands under a heading.",
+        "items": {
+          "type": "Always `\"group\"`.",
+          "id": "Unique identifier.",
+          "label": "Group heading.",
+          "items": "Commands in the group."
+        }
+      }
+    }
+  }
+}

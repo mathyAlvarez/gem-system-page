@@ -329,6 +329,7 @@
       "minuteStep": "Minute interval in the time picker.",
       "weekStartsOn": "First day of the week: 0 = Sunday, 1 = Monday.",
       "clearable": "Shows an X to clear without opening the calendar.",
+      "clearLabel": "Accessible name of the clear button. Defaults to \"Clear date\".",
       "isLoading": "Shows a spinner and blocks the calendar.",
       "loadingText": "Visible copy while `isLoading` is true.",
       "isInvalid": "Marks the field as invalid (aria-invalid).",
@@ -345,7 +346,8 @@
       "onYearChange": "Fires when the visible year changes.",
       "onTimeChange": "Fires when the hour or minute changes.",
       "onHourChange": "Fires when the hour changes.",
-      "onMinuteChange": "Fires when the minute changes."
+      "onMinuteChange": "Fires when the minute changes.",
+      "onClear": "Fires after the date is cleared with the button."
     }
   }
 }

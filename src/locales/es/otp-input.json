@@ -16,6 +16,7 @@
     "uppercase": "uppercase",
     "mask": "mask",
     "separator": "separator",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -108,6 +109,16 @@
         "label": "Código de verificación",
         "infoText": "Los códigos vencen a los 10 minutos.",
         "helperText": "El ícono de información aparece arriba a la derecha cuando hay infoText."
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` muestra un botón para vaciar el campo mientras tiene un valor. Limpia a través del `onChange` normal, así funciona igual controlado o no controlado, y después dispara `onClear`. `clearLabel` es el nombre accesible del botón; por defecto es \"Clear\", en inglés, así que conviene traducirlo. Vacía todas las casillas y enfoca la primera.",
+      "texts": {
+        "label": "Código de verificación",
+        "clearLabel": "Limpiar código",
+        "helperText": "El botón aparece mientras el campo tiene un valor.",
+        "clearedText": "Campo limpiado: se disparó onClear."
       }
     },
     "error": {
@@ -250,6 +261,7 @@
       },
       "rules": {
         "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "clear": "Botón de limpiar. Se muestra con `clearable` mientras el campo tiene un valor.",
         "label": "Label del campo.",
         "required": "Asterisco de campo requerido.",
         "field": "Contenedor del grupo de casillas.",
@@ -350,13 +362,16 @@
       "isDisabled": "Deshabilita todas las casillas.",
       "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
       "aria-label": "Nombre accesible del grupo cuando no hay label.",
+      "clearable": "Muestra un botón para vaciar el campo mientras tiene un valor.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto está en inglés.",
       "className": "Clases extra para cada casilla.",
       "wrapperClassName": "Clases extra para el contenedor raíz.",
       "onChange": "Recibe el código completo después de cada cambio.",
       "onComplete": "Se dispara una vez cuando el código llega a length caracteres.",
       "onFocus": "Foco dentro del grupo de casillas.",
       "onBlur": "Pérdida de foco del grupo de casillas.",
-      "onInfoClick": "Se dispara al activar el ícono de información."
+      "onInfoClick": "Se dispara al activar el ícono de información.",
+      "onClear": "Se dispara después de limpiar el campo con el botón."
     }
   }
 }

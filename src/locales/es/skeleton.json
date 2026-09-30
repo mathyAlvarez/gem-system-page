@@ -1,0 +1,210 @@
+{
+  "header": {
+    "title": "Skeleton",
+    "description": "Marcador animado que ocupa el lugar del contenido mientras carga. `variant` define la forma, `count` apila líneas de texto e `isLoaded` muestra el contenido real. Si envolvés el contenido, el marcador toma su tamaño y el diseño no salta al cargar."
+  },
+  "common": {
+    "ariaLabel": "Cargando"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el marcador y el código. El nombre accesible por defecto es `Loading`, así que el ejemplo pasa `aria-label` traducido.",
+    "ariaLabel": "Cargando contenido"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Sin props se muestra una línea de texto con animación `wave`. Cada Skeleton se anuncia como `role=\"status\"` con el nombre `Loading`: pasá `aria-label` traducido."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` define la forma: `text` (línea, default), `circular` (disco de 2,5 rem) o `rectangular` (bloque de 6 rem de alto)."
+    },
+    "textLines": {
+      "title": "Líneas de texto",
+      "description": "`count` apila líneas (de 1 a 32). `gap` define el espacio entre ellas y `lastLineWidth` el ancho de la última, que por defecto es 72% para que parezca un párrafo."
+    },
+    "animations": {
+      "title": "Animaciones",
+      "description": "`animation` acepta `wave` (default), `pulse` o `none`. `duration` define el ciclo en milisegundos (1600 por defecto). Con movimiento reducido, la animación se detiene."
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "`radius` redondea las esquinas: `none`, `sm`, `md`, `lg` o `full`. Por defecto depende de la variante: `sm` en texto, `md` en rectangular y `full` en circular."
+    },
+    "customSize": {
+      "title": "Tamaño propio",
+      "description": "`width` y `height` aceptan un número (píxeles) o cualquier medida CSS. En `circular`, si pasás solo `width`, el alto toma el mismo valor."
+    },
+    "card": {
+      "title": "Tarjeta",
+      "description": "Combiná variantes para imitar el diseño final. Para no generar un anuncio por cada pieza, poné `role=\"status\"` y un nombre en el contenedor, y `aria-hidden` en cada Skeleton.",
+      "texts": {
+        "ariaLabel": "Cargando publicación"
+      }
+    },
+    "loaded": {
+      "title": "Contenido cargado",
+      "description": "Con `children`, el marcador toma el tamaño del contenido (oculto) mientras carga. Con `isLoaded` se muestra el contenido en su lugar, sin agregar cajas al diseño.",
+      "texts": {
+        "person": {
+          "name": "Lucía Romero",
+          "role": "Diseñadora de producto",
+          "summary": "Actividad del equipo en las últimas 24 horas, con revisiones y notas de entrega."
+        },
+        "load": "Cargar contenido",
+        "reset": "Ver marcadores"
+      }
+    },
+    "fit": {
+      "title": "Ajustado al contenido",
+      "description": "Envolvé cualquier elemento, como un título, un badge o un botón, y el marcador copia su tamaño exacto. Con `children`, `count` se ignora y se muestra un solo marcador.",
+      "texts": {
+        "heading": "Resumen mensual",
+        "badge": "Activo",
+        "action": "Ver detalle",
+        "toggle": "Alternar carga"
+      }
+    },
+    "list": {
+      "title": "Lista",
+      "description": "Un caso común: filas de marcadores mientras llega una lista. En este ejemplo hay un solo `role=\"status\"` para toda la lista y los marcadores quedan ocultos para lectores de pantalla.",
+      "texts": {
+        "members": [
+          { "name": "Tomás Herrera", "role": "Desarrollador" },
+          { "name": "Valentina Ruiz", "role": "Product manager" },
+          { "name": "Martín Castro", "role": "Soporte" }
+        ],
+        "loading": "Cargando miembros",
+        "reload": "Recargar"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` (o `isDisabled`) detiene la animación y deja el marcador estático."
+    }
+  },
+  "apiLink": "Ver la API completa de Skeleton",
+  "api": {
+    "header": {
+      "title": "Skeleton API",
+      "description": "Referencia de la API del componente Skeleton de React: props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Skeleton"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `toSkeletonLength` convierte un número en píxeles y deja pasar cualquier otra medida CSS."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>&lt;div&gt;</code> y van al contenedor junto con <code>ref</code>, <code>id</code>, <code>className</code> y <code>style</code>. <code>classNames</code> agrega clases a <code>root</code>, <code>bone</code> (cada marcador) y <code>content</code> (el contenido oculto). Con <code>isLoaded</code>, el contenedor usa <code>display: contents</code>, así que sus estilos de caja no se aplican."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "status": "Mientras carga, el contenedor tiene <code>role=\"status\"</code>, <code>aria-busy=\"true\"</code> y <code>aria-live=\"polite\"</code>. Si pasás otro <code>role</code>, no se agrega <code>aria-live</code>.",
+      "label": "El nombre por defecto es <code>\"Loading\"</code>, en inglés. Pasá <code>aria-label</code> o <code>aria-labelledby</code> traducido.",
+      "group": "Con varios Skeleton juntos, cada uno es una región de estado. Poné <code>role=\"status\"</code> y un nombre en el contenedor, y <code>aria-hidden</code> en cada Skeleton.",
+      "loaded": "Con <code>isLoaded</code> se quitan <code>role</code>, <code>aria-busy</code> y el nombre, y el contenido queda visible para todos.",
+      "fit": "El contenido que da tamaño al marcador tiene <code>aria-hidden</code> y <code>visibility: hidden</code> mientras carga.",
+      "motion": "Con <code>prefers-reduced-motion</code> se detienen las animaciones.",
+      "disabled": "<code>disabled</code> solo detiene la animación y agrega <code>data-disabled</code>. Sigue anunciándose como cargando."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor. Define las variables. Recibe `className` y `classNames.root`.",
+        "variant": "Forma: `--text`, `--circular` o `--rectangular`. Define alto, radio y, en circular, ancho.",
+        "radius": "Radio: `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg` o `--radius-full`.",
+        "animation": "Animación: `--wave`, `--pulse` o `--none`.",
+        "stack": "Se aplica con `count` mayor a 1. Apila los marcadores con `--gem-skeleton-gap`.",
+        "fit": "Se aplica con `children` mientras carga. El marcador toma el tamaño del contenido.",
+        "loaded": "Se aplica con `isLoaded`. Usa `display: contents`.",
+        "paused": "Se aplica con `disabled` o `isDisabled`. Detiene la animación.",
+        "bone": "Cada marcador. Recibe `classNames.bone`.",
+        "content": "Contenido oculto que da el tamaño. Recibe `classNames.content`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Skeleton. Las de variante y radio se pisan con una clase de igual especificidad, así que usá `.gem-skeleton.tu-clase` y una variante para `[data-theme=\"dark\"]`. Algunas se definen inline desde las props y no se pueden pisar con una clase.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-skeleton-bg": "Color del marcador.",
+        "--gem-skeleton-shine": "Color del brillo de `wave`.",
+        "--gem-skeleton-duration": "Duración del ciclo. Siempre se define inline desde `duration`, así que cambiala con la prop.",
+        "--gem-skeleton-w": "Ancho. Se define inline si pasás `width`.",
+        "--gem-skeleton-h": "Alto. Lo define la variante o, inline, `height`.",
+        "--gem-skeleton-radius": "Radio. Lo definen la variante y `radius`.",
+        "--gem-skeleton-gap": "Espacio entre líneas. Se define inline si pasás `gap`.",
+        "--gem-skeleton-last-w": "Ancho de la última línea. Se define inline si pasás `lastLineWidth`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Skeleton.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Skeleton"
+      },
+      "items": {
+        "--gem-color-neutral-200": "Color del marcador, en claro y oscuro.",
+        "--gem-palette-neutral-0": "Base del brillo de `wave`.",
+        "--gem-radius-{none|sm|md|lg|full}": "Radios de `radius` y de cada variante.",
+        "--gem-space-2": "Espacio entre líneas por defecto.",
+        "--gem-font-sans": "Fuente del componente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<div>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "variant": "Forma de cada marcador.",
+      "animation": "Movimiento del marcador.",
+      "radius": "Radio de las esquinas. Por defecto depende de `variant`.",
+      "width": "Ancho de cada marcador. Un número es en píxeles.",
+      "height": "Alto de cada marcador. En `circular`, si falta, usa `width`.",
+      "count": "Cantidad de marcadores apilados, de 1 a 32. Se ignora con `children`.",
+      "gap": "Espacio entre marcadores cuando `count` es mayor a 1.",
+      "lastLineWidth": "Ancho de la última línea de texto cuando `count` es mayor a 1.",
+      "duration": "Duración del ciclo de animación en milisegundos.",
+      "isLoaded": "Muestra `children` en lugar del marcador.",
+      "children": "Contenido que da tamaño al marcador mientras carga y se muestra con `isLoaded`.",
+      "disabled": "Detiene la animación.",
+      "isDisabled": "Igual que `disabled`.",
+      "role": "Rol del contenedor mientras carga.",
+      "aria-label": "Nombre accesible mientras carga.",
+      "aria-labelledby": "Id de un elemento que nombra el marcador.",
+      "aria-busy": "Estado ocupado mientras carga.",
+      "aria-live": "Cortesía del anuncio. Solo se agrega sola si no pasás `role`.",
+      "aria-hidden": "Oculta el marcador a lectores de pantalla. Útil cuando el contenedor ya anuncia la carga.",
+      "className": "Clases extra para el contenedor.",
+      "classNames": "Clases por parte: `root`, `bone` y `content`.",
+      "style": "Estilos inline del contenedor.",
+      "ref": "Ref del contenedor."
+    }
+  }
+}

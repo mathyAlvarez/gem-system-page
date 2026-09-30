@@ -54,6 +54,7 @@
     "copy": "Copy",
     "copied": "Copied",
     "copyAria": "Copy to clipboard",
-    "copiedAria": "Copied to clipboard"
+    "copiedAria": "Copied to clipboard",
+    "files": "Example files"
   }
 }

@@ -16,6 +16,7 @@
     "uppercase": "uppercase",
     "mask": "mask",
     "separator": "separator",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -108,6 +109,16 @@
         "label": "Verification code",
         "infoText": "Codes expire after 10 minutes.",
         "helperText": "The info control sits at the top-right when infoText is set."
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` shows a button that empties the field while it has a value. It clears through the normal `onChange` path, so it works the same controlled or uncontrolled, and then fires `onClear`. `clearLabel` is the button's accessible name; it defaults to \"Clear\". It empties every slot and focuses the first one.",
+      "texts": {
+        "label": "Verification code",
+        "clearLabel": "Clear code",
+        "helperText": "The button shows while the field has a value.",
+        "clearedText": "Field cleared: onClear fired."
       }
     },
     "error": {
@@ -250,6 +261,7 @@
       },
       "rules": {
         "root": "Root container. Receives `wrapperClassName`.",
+        "clear": "Clear button. Shown with `clearable` while the field has a value.",
         "label": "Field label.",
         "required": "Required asterisk.",
         "field": "Container for the slot group.",
@@ -350,13 +362,16 @@
       "isDisabled": "Disables every slot.",
       "isRequired": "Marks the field as required (aria-required + asterisk).",
       "aria-label": "Accessible name of the group when there is no label.",
+      "clearable": "Shows a button that empties the field while it has a value.",
+      "clearLabel": "Accessible name of the clear button.",
       "className": "Extra classes for each slot.",
       "wrapperClassName": "Extra classes for the root container.",
       "onChange": "Receives the full code after every change.",
       "onComplete": "Fires once when the code reaches length characters.",
       "onFocus": "Focus inside the slot group.",
       "onBlur": "Focus leaves the slot group.",
-      "onInfoClick": "Fires when the info icon is activated."
+      "onInfoClick": "Fires when the info icon is activated.",
+      "onClear": "Fires after the field is cleared with the button."
     }
   }
 }

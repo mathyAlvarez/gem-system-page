@@ -1,0 +1,266 @@
+{
+  "header": {
+    "title": "Sidebar",
+    "description": "Navegación lateral para apps con muchas secciones, como paneles de administración o herramientas internas. Muestra un encabezado arriba, la lista de enlaces en el medio y un pie abajo. Se puede colapsar a una barra angosta de íconos para dejarle más espacio al contenido, y en pantallas chicas se convierte en un panel que se abre con un botón de menú. Renderiza un `<aside>` con un `<nav>` adentro."
+  },
+  "demo": {
+    "navLabel": "Navegación lateral",
+    "expandLabel": "Expandir barra lateral",
+    "collapseLabel": "Colapsar barra lateral",
+    "menuLabel": "Abrir menú",
+    "closeLabel": "Cerrar menú",
+    "pageTitle": "Contenido de la página",
+    "user": "Alex Rivera",
+    "newProject": "Nuevo proyecto",
+    "items": {
+      "home": "Inicio",
+      "projects": "Proyectos",
+      "team": "Equipo",
+      "messages": "Mensajes",
+      "starred": "Destacados",
+      "settings": "Configuración",
+      "workspace": "Espacio de trabajo",
+      "files": "Archivos",
+      "archive": "Archivados",
+      "people": "Personas",
+      "guests": "Invitados"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Usá el botón con la flecha para colapsar la barra.",
+    "note": "La demo usa position=\"static\" para que la barra ocupe el alto del recuadro.",
+    "side": "side",
+    "shadow": "shadow",
+    "bordered": "bordered",
+    "collapsible": "collapsible",
+    "items": "items",
+    "footer": "footer"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasá `header`, `items` y `footer`. Cada item necesita `id` y `label`, y conviene darle un `icon`: si no tiene, se muestra la primera letra del texto. El botón con la flecha colapsa la barra a una fila de íconos; con la barra colapsada, cada ícono muestra su texto en un tooltip. Las demos usan `position=\"static\"` porque están dentro de un recuadro con alto fijo.",
+      "note": "Usá la flecha para colapsar la barra. Con el foco adentro, Escape también la colapsa. Pasá el mouse sobre un ícono para ver su texto."
+    },
+    "collapsed": {
+      "title": "Colapsada y controlada",
+      "description": "Con `collapsed` y `onCollapsedChange` el estado queda en tu componente, por ejemplo para guardarlo en `localStorage` y recordarlo entre visitas. Si solo querés que arranque colapsada, usá `defaultCollapsed`. Para ocultar el botón y dejar la barra siempre expandida, pasá `collapsible={false}`.",
+      "texts": {
+        "note": "Este ejemplo arranca colapsado. Pasá el mouse o enfocá un ícono para leer su texto.",
+        "state": "Estado de la barra",
+        "collapsed": "colapsada",
+        "expanded": "expandida"
+      }
+    },
+    "nested": {
+      "title": "Grupos anidados",
+      "description": "Un item con `items` se convierte en un grupo que se abre y se cierra. `defaultOpen` define si arranca abierto. El grupo no navega: solo muestra u oculta sus hijos. Con la barra colapsada los hijos se esconden y queda solo el ícono del grupo, así que conviene dejar los enlaces más usados en el primer nivel.",
+      "note": "Espacio de trabajo arranca abierto y Archivados está deshabilitado. Colapsá la barra para ver cómo se ocultan los grupos."
+    },
+    "end": {
+      "title": "Del lado derecho",
+      "description": "`side=\"end\"` ubica la barra del lado final (a la derecha en idiomas que se leen de izquierda a derecha). El borde y la flecha de colapsar se invierten solos. En el layout, el contenedor tiene que poner la barra después del contenido, por ejemplo con `flex-direction: row-reverse`.",
+      "note": "La barra está a la derecha y la flecha apunta hacia afuera para colapsarla."
+    },
+    "slots": {
+      "title": "Encabezado, contenido extra y pie",
+      "description": "`header`, `children` y `footer` aceptan cualquier nodo. `children` se renderiza debajo de los enlaces, útil para un botón de acción, y se oculta con la barra colapsada. El pie queda siempre abajo, separado por un borde. Acá la barra usa `bordered={false}` y `shadow=\"md\"` para separarse del contenido con una sombra.",
+      "note": "El botón Nuevo proyecto va en children y la tarjeta del usuario en footer."
+    },
+    "responsive": {
+      "title": "Pantallas chicas",
+      "description": "Por debajo de `overlayBreakpoint` la barra se esconde y aparece un botón de menú. Al tocarlo, la barra se abre como un panel que cubre el 90 % del ancho, con un fondo oscuro detrás; se cierra con el botón de cerrar, con Escape, tocando el fondo o eligiendo un enlace (`closeOnItemClick`). Se basa en el ancho de la ventana, no del recuadro: este ejemplo usa `overlayBreakpoint=\"lg\"`, así que achicá la ventana por debajo de 1024px para verlo. Con `isOpen` y `onOpenChange` podés controlar el panel.",
+      "note": "Achicá la ventana por debajo de 1024px: la barra se reemplaza por un botón de menú que abre el panel."
+    }
+  },
+  "breakpoints": {
+    "columns": {
+      "breakpoint": "Valor",
+      "width": "Panel con ventana",
+      "usage": "Cuándo usarlo"
+    },
+    "items": {
+      "sm": "Por defecto. La barra se ve en tablets y solo pasa a panel en teléfonos.",
+      "md": "Cuando el contenido necesita más ancho en tablets verticales.",
+      "lg": "Para layouts con contenido ancho, como tablas o editores.",
+      "never": "La barra se mantiene en todos los tamaños. Útil si ya manejás el responsive por tu cuenta."
+    }
+  },
+  "position": {
+    "title": "Ubicación en el layout",
+    "description": "`position` define cómo se ubica la barra. `sticky` (por defecto) queda pegada arriba con el alto de la ventana mientras la página hace scroll. `fixed` la fija al borde de la ventana: el contenido tiene que dejarle espacio con un margen del ancho de la barra. `static` ocupa el alto de su contenedor, como en las demos. En una app, poné la barra y el contenido en un contenedor flex y dale al contenido `min-w-0` para que no empuje la barra."
+  },
+  "styles": {
+    "tailwindNote": "Ancho de 14rem, fondo sutil, borde de color e items redondeados con utilidades de Tailwind.",
+    "cssNote": "Una clase propia cambia las variables del Sidebar y los colores de los items y botones."
+  },
+  "apiLink": "Ver la API completa de Sidebar",
+  "api": {
+    "header": {
+      "title": "Sidebar API",
+      "description": "Referencia de la API del componente Sidebar de React: props, items, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Sidebar"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML del <code>&lt;aside&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasa a ese elemento. El <code>&lt;aside&gt;</code> va dentro de un <code>.gem-sidebar-root</code> con <code>display: contents</code>, que también contiene el botón de menú y el fondo del panel en pantallas chicas. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>header</code>, <code>nav</code>, <code>list</code>, <code>item</code>, <code>extras</code>, <code>footer</code>, <code>toggle</code>, <code>menu</code> y <code>backdrop</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "landmark": "La raíz es un <code>&lt;aside&gt;</code> y los enlaces van dentro de un <code>&lt;nav&gt;</code> con <code>navLabel</code> como <code>aria-label</code>.",
+      "toggle": "El botón de colapsar tiene <code>aria-expanded</code> y <code>aria-controls</code> apuntando al <code>&lt;nav&gt;</code>. Su texto cambia entre <code>expandLabel</code> y <code>collapseLabel</code>.",
+      "collapsed": "Con la barra colapsada, cada item recibe su texto como <code>aria-label</code> y lo muestra en un tooltip al pasar el mouse o al enfocarlo.",
+      "nested": "Los grupos son botones con <code>aria-expanded</code>. Cuando están cerrados, sus hijos quedan <code>inert</code> y no reciben foco.",
+      "current": "El item con <code>current</code> recibe <code>aria-current=\"page\"</code>. Los items deshabilitados se renderizan como <code>&lt;button disabled&gt;</code>.",
+      "escape": "Con el foco dentro de la barra expandida, <code>Escape</code> la colapsa. Con el panel abierto en pantallas chicas, <code>Escape</code> lo cierra.",
+      "overlay": "En pantallas chicas, el botón de menú tiene <code>aria-expanded</code>. Con el panel cerrado, el <code>&lt;aside&gt;</code> queda <code>inert</code>; con el panel abierto, la página no hace scroll detrás.",
+      "labels": "<code>navLabel</code>, <code>expandLabel</code>, <code>collapseLabel</code>, <code>menuLabel</code> y <code>closeLabel</code> vienen en inglés por defecto. Pasalos traducidos si tu app está en otro idioma."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "wrapper": "Contenedor con `display: contents`. Suma `--overlay` y `--open` en pantallas chicas.",
+        "root": "Elemento `<aside>`. Recibe `className` y `classNames.root`. Define las variables del Sidebar.",
+        "side": "Se aplica según `side`: `start` o `end`.",
+        "position": "Se aplica según `position`: `static`, `sticky` o `fixed`.",
+        "shadow": "Se aplica según `shadow`.",
+        "bordered": "Se aplica con `bordered`. Dibuja el borde del lado del contenido.",
+        "collapsed": "Se aplica con la barra colapsada. Usa `--gem-sidebar-width-collapsed` y oculta textos, grupos y `children`.",
+        "overlay": "Se aplica por debajo de `overlayBreakpoint`. Convierte la barra en un panel fijo.",
+        "open": "Se aplica con el panel abierto en pantallas chicas.",
+        "header": "Encabezado con el contenido de `header` y el botón de colapsar o cerrar.",
+        "toggle": "Botón de colapsar, o de cerrar en pantallas chicas.",
+        "nav": "Elemento `<nav>` con scroll propio. Contiene la lista y `children`.",
+        "list": "Lista `<ul>` de items. Los grupos usan además `.gem-sidebar__list--nested`.",
+        "item": "Cada enlace o botón. Usa `aria-current` para el estado activo.",
+        "control": "Botón de un grupo con hijos.",
+        "icon": "Contenedor del ícono de cada item.",
+        "fallback": "Inicial que se muestra cuando el item no tiene `icon`.",
+        "label": "Texto del item. Se corta con puntos suspensivos si no entra.",
+        "panel": "Contenedor animado de los hijos de un grupo. Suma `--open` cuando está abierto.",
+        "extras": "Contenedor de `children`, debajo de la lista.",
+        "footer": "Contenedor de `footer`, abajo, con borde superior.",
+        "menu": "Botón de menú que abre el panel en pantallas chicas.",
+        "backdrop": "Fondo oscuro detrás del panel. Al tocarlo se cierra."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-sidebar` y ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-sidebar.mi-clase`) o con utilidades de Tailwind.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-sidebar-bg": "Fondo de la barra.",
+        "--gem-sidebar-fg": "Color del texto y de los íconos.",
+        "--gem-sidebar-border": "Color del borde lateral y del borde del pie.",
+        "--gem-sidebar-width": "Ancho de la barra expandida. Por defecto `16rem`.",
+        "--gem-sidebar-width-collapsed": "Ancho de la barra colapsada. Por defecto `4.5rem`.",
+        "--gem-sidebar-scrollbar-size": "Grosor de la barra de scroll del `<nav>`.",
+        "--gem-sidebar-scrollbar-thumb": "Color del thumb. Por defecto, el color del texto al 28 %.",
+        "--gem-sidebar-scrollbar-thumb-hover": "Color del thumb al pasar el mouse. Por defecto, el color del texto al 45 %.",
+        "--gem-sidebar-scrollbar-track": "Color del riel. Por defecto es transparente."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Sidebar.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Sidebar"
+      },
+      "items": {
+        "--gem-color-bg": "Valor por defecto de `--gem-sidebar-bg`.",
+        "--gem-color-fg": "Valor por defecto de `--gem-sidebar-fg`.",
+        "--gem-color-border": "Valor por defecto de `--gem-sidebar-border`.",
+        "--gem-color-bg-subtle": "Fondo de los items al pasar el mouse.",
+        "--gem-color-primary-500": "Base del fondo del item activo y de la inicial.",
+        "--gem-color-primary-700": "Texto del item activo y al pasar el mouse.",
+        "--gem-radius-md": "Bordes redondeados de los items.",
+        "--gem-shadow-{sm|md|lg}": "Sombras que usa `shadow`.",
+        "--gem-shadow-xl": "Sombra del panel en pantallas chicas.",
+        "--gem-shadow-focus": "Anillo de foco de los items.",
+        "--gem-z-fixed": "Capa de la barra con `position=\"fixed\"`.",
+        "--gem-z-overlay": "Capa del fondo oscuro del panel.",
+        "--gem-z-modal": "Capa del panel en pantallas chicas."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del `<aside>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "sidebar": {
+        "title": "Sidebar",
+        "description": "Props del componente principal.",
+        "items": {
+          "header": "Contenido del encabezado: marca, título o cualquier nodo.",
+          "items": "Items de navegación. Un item con `items` se convierte en grupo.",
+          "navLabel": "Nombre accesible del `<nav>` (`aria-label`).",
+          "footer": "Contenido del pie: tarjeta de usuario, botón o cualquier nodo.",
+          "children": "Contenido extra debajo de la lista. Se oculta con la barra colapsada.",
+          "side": "Lado de la barra: inicio o final.",
+          "position": "Cómo se ubica la barra: dentro de su contenedor, pegada arriba al hacer scroll o fija a la ventana.",
+          "bordered": "Dibuja un borde del lado del contenido.",
+          "shadow": "Sombra de la barra.",
+          "collapsible": "Muestra el botón para colapsar y expandir.",
+          "collapsed": "Estado colapsado en modo controlado. Usalo junto con `onCollapsedChange`.",
+          "defaultCollapsed": "Estado colapsado inicial en modo no controlado.",
+          "expandLabel": "Texto accesible del botón cuando la barra está colapsada.",
+          "collapseLabel": "Texto accesible del botón cuando la barra está expandida.",
+          "overlayBreakpoint": "Ancho de ventana por debajo del cual la barra pasa a ser un panel con botón de menú. `never` la mantiene siempre.",
+          "isOpen": "Estado del panel en pantallas chicas, en modo controlado. Usalo junto con `onOpenChange`.",
+          "defaultOpen": "Estado inicial del panel en pantallas chicas.",
+          "menuLabel": "Texto accesible del botón de menú.",
+          "closeLabel": "Texto accesible del botón de cerrar y del fondo del panel.",
+          "closeOnItemClick": "Cierra el panel al elegir un item, solo en pantallas chicas.",
+          "className": "Clases extra para el `<aside>`.",
+          "classNames": "Clases por parte: `root`, `header`, `nav`, `list`, `item`, `extras`, `footer`, `toggle`, `menu` y `backdrop`.",
+          "onCollapsedChange": "Se llama al colapsar o expandir la barra.",
+          "onOpenChange": "Se llama al abrir o cerrar el panel, incluido el cierre automático al pasar el breakpoint."
+        }
+      },
+      "item": {
+        "title": "SidebarItem",
+        "description": "Cada objeto del array `items`.",
+        "items": {
+          "id": "Identificador único. Se usa como `key`.",
+          "label": "Texto del item. También se usa en el tooltip con la barra colapsada.",
+          "href": "URL de destino. Con `href` se renderiza un `<a>`; sin `href`, un `<button>`.",
+          "icon": "Ícono a la izquierda. Si no hay, se muestra la primera letra de `label`.",
+          "current": "Marca la página activa y agrega `aria-current=\"page\"`.",
+          "disabled": "Lo muestra apagado y no se puede activar.",
+          "items": "Hijos del item. El item se convierte en un grupo que se abre y se cierra.",
+          "defaultOpen": "Si el grupo arranca abierto.",
+          "onClick": "Se llama al elegir el item. Útil para navegar con un router."
+        }
+      }
+    }
+  }
+}

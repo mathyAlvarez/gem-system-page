@@ -1,0 +1,316 @@
+{
+  "header": {
+    "title": "Drawer",
+    "description": "Panel that slides in from an edge of the screen over a dimmed backdrop. Like the modal, it blocks the rest of the page and keeps focus inside until it closes. Use it for filters, item details, forms that accompany the page, or navigation on small screens. With `placement` top or bottom it works as a sheet."
+  },
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "done": "Done",
+    "closeLabel": "Close"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and open the panel to see the result. `placement` changes apply the next time it opens. In `showHandle`, `auto` shows the grabber only on top and bottom.",
+    "texts": {
+      "open": "Open panel",
+      "title": "Order details",
+      "subtitle": "Order #1042",
+      "body": "The order is being prepared and will ship within the next 24 hours."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Control the panel with `open` and `onOpenChange`. `title` and `subtitle` build the header, `children` the body and `footer` the action bar. It slides in from the right by default. Pass a translated `closeLabel`: the × button is announced as \"Close\" by default.",
+      "texts": {
+        "open": "Filter projects",
+        "title": "Filters",
+        "subtitle": "Choose which projects to show",
+        "statusLegend": "Status",
+        "statuses": {
+          "active": "Active",
+          "paused": "Paused",
+          "archived": "Archived"
+        },
+        "reset": "Reset",
+        "apply": "Apply"
+      }
+    },
+    "placement": {
+      "title": "Placement",
+      "description": "`placement` picks the edge: `right` (default), `left`, `top` or `bottom`. On top and bottom the panel spans the full width and shows a grabber to signal it's a sheet.",
+      "texts": {
+        "title": "Placement",
+        "body": "The panel enters from the chosen edge and leaves the same way when it closes."
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` sets the width on the sides and the height on top and bottom: `sm` (20rem), `md` (24rem, default), `lg` (32rem), `xl` (40rem) and `full`. It never exceeds the viewport width, and on top or bottom the maximum height is 92% of the viewport.",
+      "texts": {
+        "title": "Size",
+        "body": "The size comes from the --gem-drawer-extent variable, which each size class redefines."
+      }
+    },
+    "customSize": {
+      "title": "Custom size",
+      "description": "Besides the presets, `size` accepts a number (pixels) or any CSS value like `\"18rem\"` or `\"40vw\"`. In that case the panel gets the `gem-drawer--custom` class and the value is set inline on `--gem-drawer-extent`.",
+      "texts": {
+        "title": "Custom size",
+        "body": "Useful when the content needs a width that doesn't match any preset."
+      }
+    },
+    "bottomSheet": {
+      "title": "Bottom sheet",
+      "description": "`Sheet` is an alias of `Drawer`, meant for top or bottom sheets. With `placement=\"bottom\"` the grabber shows up on its own; hide it with `showHandle={false}`. It works well for action menus on small screens.",
+      "texts": {
+        "open": "Share",
+        "title": "Share document",
+        "subtitle": "Choose how to share it",
+        "options": {
+          "link": "Link",
+          "email": "Email",
+          "print": "Print",
+          "copy": "Copy"
+        }
+      }
+    },
+    "compound": {
+      "title": "Compound sections",
+      "description": "If every child is `Drawer.Header`, `Drawer.Body` or `Drawer.Footer`, the panel uses them as-is instead of building the sections from props. The × button is still added to the header. In this mode the panel doesn't take its name from the title: connect it with `headingId` and `aria-labelledby`.",
+      "texts": {
+        "open": "Workspace settings",
+        "title": "Workspace settings",
+        "subtitle": "Personal plan",
+        "badge": "Beta",
+        "body": "Compound sections make the markup explicit when the body is more than a paragraph.",
+        "hint": "Drawer.Body accepts className and any div attribute."
+      }
+    },
+    "form": {
+      "title": "Form",
+      "description": "On open, focus goes to the first focusable element other than the ×, here the first field. The save button lives in the footer, outside the `<form>`, and connects through the `form` attribute, so native validation still works.",
+      "texts": {
+        "open": "New contact",
+        "title": "New contact",
+        "subtitle": "Saved to your address book",
+        "name": "Name",
+        "namePlaceholder": "Jane Doe",
+        "website": "Website",
+        "websitePlaceholder": "https://example.com",
+        "saved": "Contact saved"
+      }
+    },
+    "navigation": {
+      "title": "Navigation menu",
+      "description": "A left panel with `size=\"sm\"` works as a menu on small screens. Mark the current section with `aria-current` and close the panel when an option is chosen.",
+      "texts": {
+        "open": "Open menu",
+        "title": "Menu",
+        "current": "Current section",
+        "sections": {
+          "home": "Home",
+          "projects": "Projects",
+          "calendar": "Calendar",
+          "settings": "Settings"
+        }
+      }
+    },
+    "persistent": {
+      "title": "No automatic dismissal",
+      "description": "With `closeOnBackdrop={false}`, `closeOnEscape={false}` and `showClose={false}` the panel only closes from a footer action. It keeps what was typed from being lost by an accidental backdrop click.",
+      "texts": {
+        "open": "Write comment",
+        "title": "New comment",
+        "subtitle": "Save or discard to close",
+        "label": "Comment",
+        "placeholder": "Write your comment",
+        "discard": "Discard"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "open": "Open Tailwind panel",
+      "title": "Floating panel",
+      "subtitle": "Detached from the edge with a blurred backdrop",
+      "body": "classNames adds classes to each part. With Tailwind's backdrop: variant you can also style the backdrop."
+    },
+    "cva": {
+      "title": "Panel with variants",
+      "body": "The wrapper applies the cva variants to className and forwards the rest of the props."
+    },
+    "css": {
+      "open": "Open custom panel",
+      "title": "Brand panel",
+      "subtitle": "Tokens redefined in a class",
+      "body": "The class changes the width with --gem-drawer-extent and redefines the color and radius tokens only inside this panel."
+    }
+  },
+  "apiLink": "See the full Drawer API",
+  "api": {
+    "header": {
+      "title": "Drawer API",
+      "description": "API reference for the Drawer React component: props, sections, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Drawer"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or its subpath. The sections are available as `Drawer.Header`, `Drawer.Body` and `Drawer.Footer`, and also as standalone exports. `isDrawerSizeToken` tells whether a `size` value is a preset."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;dialog&gt;</code> (<code>DialogHTMLAttributes&lt;HTMLDialogElement&gt;</code>, except <code>title</code> and <code>open</code>) and forwards them to the element, as well as <code>ref</code>. <code>classNames</code> adds classes to each part: <code>root</code>, <code>handle</code>, <code>header</code>, <code>title</code>, <code>subtitle</code>, <code>extra</code>, <code>body</code>, <code>footer</code> and <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "dialog": "It's a native <code>&lt;dialog&gt;</code> opened with <code>showModal()</code>: the browser puts it in the top layer and makes the rest of the page inert. It has <code>aria-modal=\"true\"</code>.",
+      "name": "With <code>title</code>, the panel takes its name from the title (<code>aria-labelledby</code>). With compound sections, connect the <code>headingId</code> of <code>Drawer.Header</code> with <code>aria-labelledby</code>. Without a title, pass <code>aria-label</code>.",
+      "focus": "On open, focus goes to <code>initialFocusRef</code> or, if missing, to the first focusable element other than the × button.",
+      "trap": "Tab and Shift+Tab cycle only through the panel's elements.",
+      "restore": "On close, focus returns to the element that had it before opening, usually the button that opened the panel.",
+      "dismiss": "Escape closes the panel (unless <code>closeOnEscape={false}</code>).",
+      "scroll": "While open, it locks page scroll with <code>overflow: hidden</code> on <code>&lt;body&gt;</code>.",
+      "motion": "With <code>prefers-reduced-motion: reduce</code> the panel appears and disappears without animation.",
+      "labels": "The × button is named <code>\"Close\"</code> by default. Pass a translated <code>closeLabel</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "`<dialog>` element. Receives `className` and `classNames.root`.",
+        "placement": "Edge the panel enters from and its off-screen position before opening.",
+        "size": "Sets `--gem-drawer-extent` from `size`.",
+        "custom": "Applied when `size` is a number or a CSS value. The variable is set inline.",
+        "shadow": "Shadow from `shadow`.",
+        "radius": "Radius on the free edge from `radius`.",
+        "bordered": "1.5px border with `--gem-color-border`.",
+        "borderless": "Transparent border with `bordered={false}`.",
+        "entered": "Applied once the panel has entered. Moves it into place and shows the backdrop.",
+        "backdrop": "Dimmed backdrop behind the panel.",
+        "handle": "Grabber of top and bottom sheets. Receives `classNames.handle`.",
+        "handleEnd": "Grabber at the end of the panel, with `placement=\"top\"`.",
+        "header": "Header. Receives `classNames.header`.",
+        "headerSolo": "Header without subtitle. No styles of its own; it's a hook.",
+        "heading": "Wrapper of the title and subtitle.",
+        "title": "Title (`<h2>`). Receives `classNames.title`.",
+        "subtitle": "Subtitle. Receives `classNames.subtitle`.",
+        "extra": "Wrapper of `extra` and the × button.",
+        "close": "× button. Receives `classNames.close`.",
+        "body": "Body with its own scroll. Receives `classNames.body`.",
+        "footer": "Footer with the actions, aligned to the end. Receives `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Drawer has a single variable of its own; the other colors and radii come from gem-system tokens, which you can redefine in a class (see Style changes). The size classes set `--gem-drawer-extent`, so to change it use a selector like `.gem-drawer.my-class` or pass the value in `size`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-drawer-extent": "Width on the sides and height on top and bottom. Never exceeds the viewport width or 92% of its height."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Drawer.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Drawer"
+      },
+      "items": {
+        "--gem-color-bg": "Panel background.",
+        "--gem-color-bg-subtle": "× button background on hover.",
+        "--gem-color-border": "Panel border, header and footer dividers, and grabber color.",
+        "--gem-color-fg": "Title and body color.",
+        "--gem-color-fg-muted": "Subtitle and × button color.",
+        "--gem-palette-neutral-*": "Dark theme colors.",
+        "--gem-radius-sm": "Radius with `radius=\"sm\"` and of the × button.",
+        "--gem-radius-md": "Default radius.",
+        "--gem-radius-lg": "Radius with `radius=\"lg\"`.",
+        "--gem-radius-full": "Rounded ends of the grabber.",
+        "--gem-shadow-*": "Shadow from `shadow` (`none` to `xl`).",
+        "--gem-shadow-focus": "Focus ring of the panel and the × button.",
+        "--gem-space-2": "Gap between footer and header actions.",
+        "--gem-space-3": "Gap between the title and `extra`.",
+        "--gem-font-sans": "Font family."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props of the Drawer and its sections.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "drawer": {
+        "title": "Drawer",
+        "description": "Also accepts the HTML attributes of a `<dialog>`. `Sheet` takes the same props.",
+        "items": {
+          "open": "Controlled open state.",
+          "defaultOpen": "Initial open state when uncontrolled.",
+          "placement": "Edge it enters from. If it changes while open, it applies on the next open.",
+          "title": "Header title. Also the accessible name.",
+          "subtitle": "Secondary text under the title.",
+          "extra": "Content at the end of the header, before the × button.",
+          "header": "Free content inside the header. Combines with `title`, `subtitle` and `extra`.",
+          "footer": "Footer content, usually buttons.",
+          "children": "Panel body, or `Drawer.Header`, `Drawer.Body` and `Drawer.Footer` sections.",
+          "size": "Width on the sides or height on top and bottom. A number is pixels and a string is a CSS value.",
+          "bordered": "Draws a 1.5px border.",
+          "shadow": "Shadow.",
+          "radius": "Radius on the free edge using gem-system tokens.",
+          "closeOnBackdrop": "Closes on backdrop click.",
+          "closeOnEscape": "Closes on Escape.",
+          "showClose": "Shows the × button in the header.",
+          "closeLabel": "Accessible name of the × button.",
+          "showHandle": "Shows the sheet grabber. Defaults to `true` with `placement` `top` or `bottom`.",
+          "initialFocusRef": "Element that receives focus on open.",
+          "container": "Element where the panel is mounted (portal).",
+          "className": "Extra classes for the `<dialog>`.",
+          "classNames": "Classes per part: `root`, `handle`, `header`, `title`, `subtitle`, `extra`, `body`, `footer` and `close`.",
+          "ref": "Reference to the `<dialog>`.",
+          "onOpenChange": "Runs when the panel requests to open or close (Escape, backdrop, × button)."
+        }
+      },
+      "header": {
+        "title": "Drawer.Header",
+        "description": "Header for compound sections. Also accepts the HTML attributes of a `<header>`.",
+        "items": {
+          "title": "Title (`<h2>`).",
+          "subtitle": "Secondary text under the title.",
+          "extra": "Content at the end of the header.",
+          "close": "Custom close control. The panel adds its × button after it.",
+          "headingId": "Title `id`, for `aria-labelledby`.",
+          "titleClassName": "Extra classes for the title.",
+          "subtitleClassName": "Extra classes for the subtitle.",
+          "children": "Free content between the title and `extra`."
+        }
+      },
+      "sections": {
+        "title": "Drawer.Body and Drawer.Footer",
+        "description": "They have no props of their own: they accept the HTML attributes of a `<div>` and a `<footer>`, including `className` and `children`."
+      }
+    }
+  }
+}

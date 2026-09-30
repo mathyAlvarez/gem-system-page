@@ -1,0 +1,218 @@
+{
+  "header": {
+    "title": "Indicator",
+    "description": "Marca en una esquina que destaca a su hijo. Envolvé una card, un tile o una imagen. `variant` es la forma (`ribbon`, `fold` o `flag`) y `placement` la esquina."
+  },
+  "common": {
+    "featured": "Destacado",
+    "new": "Nuevo",
+    "hot": "Top"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver la marca y el código. Con `fold` el ejemplo usa una palabra corta. Sin `label`, pasa un `aria-label` traducido porque el nombre por defecto es `Featured`, en inglés.",
+    "label": "Destacado",
+    "short": "Nuevo",
+    "featured": "Destacado"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Envolvé cualquier superficie. Por defecto es una cinta (`ribbon`) `tertiary` en la esquina superior derecha."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` define la forma: `ribbon` es una cinta diagonal, `fold` una esquina doblada y `flag` una pestaña sobre la esquina."
+    },
+    "placements": {
+      "title": "Posición",
+      "description": "`placement` elige la esquina: `top-end` (default), `top-start`, `bottom-end` o `bottom-start`. `start` y `end` usan izquierda y derecha."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` cambia el color de fondo y del texto: `primary`, `secondary`, `tertiary` (default), `success`, `warning`, `error`, `info` o `neutral`."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `sm`, `md` (default) y `lg`. Escala el ancho de la cinta, la esquina, la pestaña, el texto y el ícono."
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "La marca se recorta con `radius`: `none`, `sm`, `md` (default), `lg` o `full`. Usá el mismo radio que el hijo para que la cinta no se salga de las esquinas."
+    },
+    "fold": {
+      "title": "Esquina doblada",
+      "description": "`variant=\"fold\"` muestra el texto completo en diagonal, así que usá palabras cortas. Funciona en las cuatro esquinas."
+    },
+    "typography": {
+      "title": "Tipografía",
+      "description": "`textStyle` aplica un token de tipografía (`caption`, `label`, `bodySm`, `code`, etc.) a un `label` de texto y quita las mayúsculas. Un nodo de React en `label` se muestra tal cual; en ese caso pasá `aria-label`."
+    },
+    "card": {
+      "title": "Con una card",
+      "description": "`block` hace que el indicador ocupe todo el ancho del contenedor, útil con cards. El `radius` por defecto (`md`) coincide con el de `Card`.",
+      "texts": {
+        "title": "Refugio en la costa",
+        "subtitle": "Disponible este fin de semana",
+        "body": "Cabaña con vista al mar, desayuno incluido y cancelación gratis hasta 48 horas antes."
+      }
+    },
+    "icon": {
+      "title": "Ícono",
+      "description": "`icon` agrega un ícono antes del texto. Sin `label` se muestra una estrella; pasá `aria-label` para nombrar la marca.",
+      "texts": {
+        "loved": "Favorito"
+      }
+    },
+    "offset": {
+      "title": "Desplazamiento",
+      "description": "`offset` separa la marca de la esquina, en píxeles. Útil cuando el hijo tiene borde o padding propio."
+    },
+    "toggle": {
+      "title": "Mostrar y ocultar",
+      "description": "`isInvisible` quita la marca sin desmontar el contenido. Sirve para mostrarla según el estado sin que el layout cambie.",
+      "texts": {
+        "hide": "Ocultar marca",
+        "show": "Mostrar marca"
+      }
+    }
+  },
+  "styles": {
+    "cva": {
+      "sale": "Oferta",
+      "limited": "Edición limitada",
+      "eco": "Eco"
+    }
+  },
+  "apiLink": "Ver la API completa de Indicator",
+  "api": {
+    "header": {
+      "title": "Indicator API",
+      "description": "Referencia de la API de Indicator de React: props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Indicator"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Indicator</code> acepta los atributos de <code>&lt;div&gt;</code> y van a la raíz junto con <code>ref</code>, salvo <code>role</code> y <code>aria-label</code>, que van a la capa de la marca. <code>style</code> se combina con <code>--gem-indicator-offset</code> cuando pasás <code>offset</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "La capa de la marca tiene <code>role=\"img\"</code>. Podés cambiarlo con <code>role</code>.",
+      "name": "El nombre accesible es <code>aria-label</code> o, si no está, el <code>label</code> de texto.",
+      "fallback": "Sin <code>label</code> de texto ni <code>aria-label</code>, el nombre es <code>\"Featured\"</code>, en inglés. Pasá un <code>aria-label</code> traducido.",
+      "custom": "Si <code>label</code> es un nodo de React, no se usa como nombre: pasá <code>aria-label</code>.",
+      "decorative": "El ícono tiene <code>aria-hidden</code>. Con <code>isInvisible</code> la capa se quita del DOM y no se anuncia.",
+      "surface": "La marca va después del hijo en el DOM, así que se lee después del contenido. Tiene <code>pointer-events: none</code> y no bloquea clics.",
+      "contrast": "Cada tono define un color de texto con buen contraste. Si cambiás <code>--gem-indicator-bg</code> o <code>--gem-indicator-fg</code>, revisá que llegue a 4.5:1: el texto es chico."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Define las variables. Recibe `className` y `classNames.root`.",
+        "tone": "Tono: `--primary`, `--error`, `--neutral`, etc. Define `--gem-indicator-bg` y `--gem-indicator-fg`.",
+        "variant": "Forma: `--ribbon`, `--fold` o `--flag`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define las variables de medida.",
+        "radius": "Radio: `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg` o `--radius-full`. Define `--gem-indicator-radius`.",
+        "placement": "Esquina: `--top-end`, `--top-start`, `--bottom-end` o `--bottom-start`.",
+        "block": "Se aplica con `block`. Ocupa todo el ancho.",
+        "hasLabel": "Se aplica cuando hay `label`. En `fold` agranda la esquina y rota el texto.",
+        "surface": "Contenedor del hijo. Recibe `classNames.surface`.",
+        "layer": "Capa que recorta la marca con el radio. Tiene el rol y el nombre. Recibe `classNames.layer`.",
+        "mark": "La marca con el color. Recibe `classNames.mark`.",
+        "content": "Contenedor del ícono y el texto.",
+        "icon": "Ícono. Recibe `classNames.icon`.",
+        "label": "Texto de un `label` de texto. Recibe `classNames.label`.",
+        "labelToken": "Se aplica con `textStyle`. Quita las mayúsculas.",
+        "slot": "Contenedor de un `label` que es nodo de React. Recibe `classNames.label`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Indicator. Las definen las clases de tono, tamaño y radio, así que para pisarlas usá `.gem-indicator.tu-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-indicator-bg": "Color de fondo de la marca.",
+        "--gem-indicator-fg": "Color del texto y del ícono.",
+        "--gem-indicator-offset": "Separación de la esquina. La define `offset`.",
+        "--gem-indicator-radius": "Radio con el que se recorta la marca.",
+        "--gem-indicator-ribbon": "Largo de la cinta en `ribbon`.",
+        "--gem-indicator-inset": "Distancia de la cinta al borde en `ribbon`.",
+        "--gem-indicator-overhang": "Cuánto sobresale la cinta en `ribbon` (valor negativo).",
+        "--gem-indicator-fold": "Lado de la esquina en `fold`.",
+        "--gem-indicator-flag-h": "Altura mínima de la pestaña en `flag`.",
+        "--gem-indicator-pad": "Padding vertical de la cinta.",
+        "--gem-indicator-font": "Tamaño del texto.",
+        "--gem-indicator-icon": "Tamaño del ícono.",
+        "--gem-indicator-gap": "Espacio entre el ícono y el texto."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Indicator.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Indicator"
+      },
+      "items": {
+        "--gem-color-{primary|secondary}-600": "Fondo de los tonos `primary` y `secondary`.",
+        "--gem-color-tertiary-500": "Fondo del tono `tertiary`.",
+        "--gem-color-{success|warning|error|info}-solid": "Fondo de los tonos de estado.",
+        "--gem-color-neutral-700": "Fondo del tono `neutral`.",
+        "--gem-palette-neutral-{0|950}": "Color del texto: blanco o casi negro según el tono.",
+        "--gem-radius-{none|sm|md|lg|full}": "Radio de la capa y esquinas de la pestaña.",
+        "--gem-shadow-sm": "Sombra de la cinta y la pestaña.",
+        "--gem-font-sans": "Fuente del texto."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<div>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "children": "Superficie a destacar: card, tile o imagen.",
+      "tone": "Color de la marca.",
+      "variant": "Forma de la marca.",
+      "size": "Tamaño de la marca.",
+      "radius": "Radio con el que se recorta la marca. Usá el mismo que el hijo.",
+      "placement": "Esquina donde va la marca.",
+      "offset": "Separación extra de la esquina, en píxeles.",
+      "label": "Texto de la marca o un nodo propio. En `fold` usá una palabra corta.",
+      "textStyle": "Token de tipografía para un `label` de texto. Se ignora si `label` es un nodo.",
+      "icon": "Ícono antes del texto. Sin `label`, se muestra una estrella.",
+      "block": "Ocupa todo el ancho del contenedor.",
+      "isInvisible": "Oculta la marca sin desmontar el hijo.",
+      "role": "Rol de la capa de la marca.",
+      "aria-label": "Nombre accesible de la marca. Por defecto el `label` de texto o `\"Featured\"`.",
+      "className": "Clases extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `mark`, `icon` y `label`.",
+      "ref": "Ref de la raíz."
+    }
+  }
+}

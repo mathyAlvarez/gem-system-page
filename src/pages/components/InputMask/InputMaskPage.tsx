@@ -41,6 +41,8 @@ import { ValuePayloadInputMask } from "./examples/ValuePayloadInputMask.tsx";
 import valuePayloadCode from "./examples/ValuePayloadInputMask.tsx?raw";
 import { VariantInputMasks } from "./examples/VariantInputMask.tsx";
 import variantCode from "./examples/VariantInputMask.tsx?raw";
+import { ClearableInputMask } from "./examples/ClearableInputMask.tsx";
+import clearableCode from "./examples/ClearableInputMask.tsx?raw";
 import "./InputMaskPage.scss";
 
 type StoryId =
@@ -55,6 +57,7 @@ type StoryId =
   | "card"
   | "customMask"
   | "outlineLabel"
+  | "clearable"
   | "invalid"
   | "disabled"
   | "valuePayload"
@@ -136,6 +139,12 @@ export function InputMaskPage() {
       file: "OutlineLabelInputMask.tsx",
       code: outlineLabelCode,
       preview: <OutlineLabelInputMask {...t("stories.outlineLabel.texts", { returnObjects: true })} />,
+    },
+    {
+      id: "clearable",
+      file: "ClearableInputMask.tsx",
+      code: clearableCode,
+      preview: <ClearableInputMask {...t("stories.clearable.texts", { returnObjects: true })} />,
     },
     {
       id: "invalid",

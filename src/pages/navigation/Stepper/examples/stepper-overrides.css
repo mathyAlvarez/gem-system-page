@@ -1,0 +1,14 @@
+.gem-stepper.stepper-branded {
+  --gem-stepper-current: var(--gem-palette-tertiary-600);
+  --gem-stepper-completed: var(--gem-palette-tertiary-600);
+  --gem-stepper-track: var(--gem-palette-tertiary-200);
+  --gem-stepper-pending: var(--gem-palette-tertiary-200);
+  --gem-stepper-indicator-size: 2.25rem;
+}
+
+[data-theme="dark"] .gem-stepper.stepper-branded {
+  --gem-stepper-current: var(--gem-palette-tertiary-300);
+  --gem-stepper-completed: var(--gem-palette-tertiary-300);
+  --gem-stepper-track: var(--gem-palette-tertiary-800);
+  --gem-stepper-pending: var(--gem-palette-tertiary-800);
+}

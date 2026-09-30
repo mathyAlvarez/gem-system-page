@@ -1,0 +1,123 @@
+.transition-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gem-space-4);
+  width: min(32rem, 100%);
+  min-width: 0;
+}
+
+.transition-demo--wide {
+  width: min(48rem, 100%);
+}
+
+.transition-demo__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.transition-demo__stage {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 7.5rem;
+}
+
+.transition-demo__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  width: min(20rem, 100%);
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  box-shadow: var(--gem-shadow-sm);
+}
+
+.transition-demo__panel--block {
+  width: 100%;
+}
+
+.transition-demo__panel-title {
+  margin: 0;
+  color: var(--gem-color-fg);
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+
+.transition-demo__panel-body {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.transition-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.transition-demo__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.transition-demo__cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-height: 5rem;
+}
+
+.transition-demo__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  width: 100%;
+  min-height: 12rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.transition-demo__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg);
+  font-size: 0.875rem;
+}
+
+.transition-demo__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.transition-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  width: 100%;
+  min-height: 9rem;
+  margin: 0;
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono, monospace);
+  font-size: 0.8125rem;
+  list-style: none;
+}

@@ -1,0 +1,258 @@
+{
+  "header": {
+    "title": "Pagination",
+    "description": "Splits a long list into pages and lets people move between them. It includes the result range (`1–10 of 87`), the page buttons and a page-size selector. Use it below tables and lists when showing everything at once would be too much. It renders a `<nav>` with a list of buttons."
+  },
+  "demo": {
+    "navLabel": "Invoice pagination",
+    "pageSizeLabel": "Rows per page",
+    "firstLabel": "First page",
+    "previousLabel": "Previous page",
+    "nextLabel": "Next page",
+    "lastLabel": "Last page",
+    "page": "Page {page}",
+    "summary": "{start}–{end} of {total}",
+    "invoice": "Invoice",
+    "status": {
+      "paid": "Paid",
+      "open": "Open",
+      "overdue": "Overdue"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result and the code instantly. With `total` at 480 or 5000 and different `siblingCount` and `boundaryCount` values you can see how pages are trimmed.",
+    "variant": "variant",
+    "size": "size",
+    "total": "total",
+    "siblingCount": "siblingCount",
+    "boundaryCount": "boundaryCount",
+    "showFirstLast": "showFirstLast",
+    "showPageSize": "showPageSize",
+    "showSummary": "showSummary",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "It only needs `total`, the total number of items. It computes the pages from the page size (10 by default) and manages the current page on its own. All texts default to English, so these examples pass them translated with a `paginationLabels` helper that groups `navLabel`, `pageSizeLabel`, the button labels, `pageLabel` and `showSummary`."
+    },
+    "rows": {
+      "title": "With rows",
+      "description": "The typical case: keep `page` and `pageSize` in your state and slice the list with them. When the page size changes, go back to page 1. `pageSizeOptions` sets the selector options."
+    },
+    "firstLast": {
+      "title": "First and last",
+      "description": "`showFirstLast` (on by default) adds buttons to jump to the first and last page. With `false` only previous and next remain. They are hidden on narrow screens anyway."
+    },
+    "manyPages": {
+      "title": "Many pages",
+      "description": "With many pages, the middle ones are replaced by an ellipsis. `siblingCount` sets how many pages show on each side of the current one and `boundaryCount` how many stay fixed at the start and end."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the button height and text size: `sm`, `md` (default) or `lg`. It also applies to the page-size selector."
+    },
+    "ghost": {
+      "title": "Variants",
+      "description": "`outlined` (default) joins the buttons in a bordered bar. `ghost` separates them, without borders or dividers; the current page stays highlighted."
+    },
+    "hiddenPageSize": {
+      "title": "Without page-size selector",
+      "description": "`showPageSize={false}` hides the selector. Use it when the page size is fixed."
+    },
+    "customSummary": {
+      "title": "Custom summary",
+      "description": "`showSummary` accepts a function that receives the range (`start`, `end`, `total`, `page`, `pageSize` and `pageCount`) and returns the text. With `false` it is hidden.",
+      "texts": {
+        "summary": "Showing {start} to {end} · {pageCount} pages"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` disables every button and the selector, for example while data loads."
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `page` and `onPageChange` the page lives in your state, so you can change it from outside. The same goes for `pageSize` and `onPageSizeChange`.",
+      "texts": {
+        "current": "Current page",
+        "goToFirst": "Go to first page"
+      }
+    },
+    "mobile": {
+      "title": "Small screens",
+      "description": "Pagination measures its own width and compacts itself. Up to 768px the first and last buttons hide, the bar takes the full row and fewer pages show. Up to 480px only the first, current and last remain. Also, in windows narrower than 1024px the bar moves to its own row. These boxes simulate a tablet and a phone.",
+      "texts": {
+        "compact": "Up to 768px",
+        "tight": "Up to 480px"
+      }
+    }
+  },
+  "apiLink": "See the full Pagination API",
+  "api": {
+    "header": {
+      "title": "Pagination API",
+      "description": "API reference for the Pagination React component: props, texts, range, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Pagination"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of the <code>&lt;nav&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>), except <code>onChange</code> and <code>defaultValue</code>. The buttons are gem-system <code>Button</code>s and the selector is a <code>Select</code>. <code>classNames</code> adds classes to each part: <code>root</code>, <code>summary</code>, <code>controls</code>, <code>list</code>, <code>item</code>, <code>ellipsis</code> and <code>pageSize</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "landmark": "The root is a <code>&lt;nav&gt;</code> with <code>navLabel</code> as its <code>aria-label</code>.",
+      "current": "The current page has <code>aria-current=\"page\"</code>.",
+      "buttons": "Each page is a button with <code>pageLabel(page)</code> as its <code>aria-label</code>, so it is announced as \"Page 3\" instead of just \"3\".",
+      "edges": "The first, previous, next and last buttons use <code>firstLabel</code>, <code>previousLabel</code>, <code>nextLabel</code> and <code>lastLabel</code>, and are disabled at either end.",
+      "keyboard": "With focus inside the component, the left and right arrows change page, and <code>Home</code> and <code>End</code> go to the first and last. It doesn't apply inside the selector.",
+      "summary": "The summary has <code>aria-live=\"polite\"</code>, so screen readers announce the new range when the page changes.",
+      "pageSize": "The selector is named by the visible <code>pageSizeLabel</code> text through <code>aria-labelledby</code>.",
+      "ellipsis": "The ellipses have <code>aria-hidden</code> and are not read.",
+      "labels": "All texts default to English (<code>\"Pagination\"</code>, <code>\"Rows per page\"</code>, <code>\"Page 1\"</code>, <code>\"1–10 of 87\"</code>). Pass them translated if your app uses another language."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "`<nav>` element. Receives `className` and `classNames.root`. Defines the Pagination variables.",
+        "size": "Applied based on `size`. Sets the text and button size.",
+        "variant": "Applied based on `variant`: `outlined` or `ghost`.",
+        "compact": "Applied when the component is up to 768px wide. Hides first and last and shows fewer pages.",
+        "tight": "Applied when the component is up to 480px wide. Shows only the first, current and last pages.",
+        "disabled": "Applied with `isDisabled`. Lowers the opacity.",
+        "summary": "Range text. Receives `classNames.summary`.",
+        "bar": "`<ul>` list with the buttons. Receives `classNames.controls` and `classNames.list`.",
+        "item": "Each `<li>` in the bar.",
+        "edges": "`<li>` of the first, previous, next and last buttons.",
+        "current": "`<li>` of the current page.",
+        "control": "Each button in the bar.",
+        "page": "A page button. Receives `classNames.item`.",
+        "active": "Current page button.",
+        "ellipsis": "Ellipsis. Receives `classNames.ellipsis`.",
+        "pageSize": "Selector container. Receives `classNames.pageSize`.",
+        "pageSizeLabel": "`pageSizeLabel` text.",
+        "select": "Page-size `Select`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They are defined on `.gem-pagination` and none are written inline, so you can change them from your own class (`.gem-pagination.my-class`) or with Tailwind utilities. The dark theme uses other values.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-pagination-fg": "Base color of the component.",
+        "--gem-pagination-muted": "Color of the summary and `pageSizeLabel`.",
+        "--gem-pagination-bg": "Background of the bar and buttons.",
+        "--gem-pagination-border": "Bar border and dividers between buttons.",
+        "--gem-pagination-accent": "Button color and current page background.",
+        "--gem-pagination-accent-hover": "Color on hover.",
+        "--gem-pagination-hover": "Button background on hover."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Pagination.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Pagination"
+      },
+      "items": {
+        "--gem-color-fg": "Default value of `--gem-pagination-fg`.",
+        "--gem-color-fg-muted": "Default value of `--gem-pagination-muted`.",
+        "--gem-color-bg": "Default value of `--gem-pagination-bg`.",
+        "--gem-color-border": "Default value of `--gem-pagination-border`.",
+        "--gem-color-primary-50": "Default value of `--gem-pagination-hover`.",
+        "--gem-color-primary-600": "Default value of `--gem-pagination-accent`.",
+        "--gem-color-primary-700": "Default value of `--gem-pagination-accent-hover`.",
+        "--gem-space-2": "Gap between `pageSizeLabel` and the selector.",
+        "--gem-space-3": "Vertical gap between the summary, bar and selector.",
+        "--gem-space-4": "Horizontal gap between the summary, bar and selector.",
+        "--gem-radius-md": "Rounded corners of the bar and of the buttons in `ghost`.",
+        "--gem-shadow-focus": "Focus ring of the buttons in `ghost`.",
+        "--gem-font-sans": "Component font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the `<nav>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "pagination": {
+        "title": "Pagination",
+        "description": "Props of the main component.",
+        "items": {
+          "total": "Total number of items.",
+          "page": "Current page, starting at 1. Controlled mode.",
+          "defaultPage": "Initial page. Uncontrolled mode.",
+          "pageSize": "Items per page. Controlled mode.",
+          "defaultPageSize": "Initial items per page. Uncontrolled mode.",
+          "pageSizeOptions": "Options of the page-size selector.",
+          "showPageSize": "Shows the page-size selector.",
+          "showSummary": "Shows the result range. With a function, customizes the text.",
+          "siblingCount": "Pages visible on each side of the current one.",
+          "boundaryCount": "Pages fixed at the start and end. Minimum 1.",
+          "showFirstLast": "Adds the first and last page buttons.",
+          "variant": "Visual style: joined bar (`outlined`) or separate buttons (`ghost`).",
+          "size": "Button and text size.",
+          "isDisabled": "Disables every control.",
+          "className": "Extra classes for the `<nav>`.",
+          "classNames": "Classes per part: `root`, `summary`, `controls`, `list`, `item`, `ellipsis` and `pageSize`.",
+          "onPageChange": "Called when the page changes. Receives the new page.",
+          "onPageSizeChange": "Called when the page size changes. Receives the new value."
+        }
+      },
+      "labels": {
+        "title": "Texts",
+        "description": "Accessible names and visible texts. All default to English.",
+        "items": {
+          "navLabel": "Accessible name of the `<nav>` (`aria-label`).",
+          "pageSizeLabel": "Visible text next to the selector.",
+          "firstLabel": "Accessible name of the first page button.",
+          "previousLabel": "Accessible name of the previous page button.",
+          "nextLabel": "Accessible name of the next page button.",
+          "lastLabel": "Accessible name of the last page button.",
+          "pageLabel": "Returns the accessible name of each page button. Receives the page number."
+        }
+      },
+      "range": {
+        "title": "PaginationRange",
+        "description": "Object passed to `showSummary` when it is a function.",
+        "items": {
+          "start": "Position of the first item on the page. `0` if there are no items.",
+          "end": "Position of the last item on the page.",
+          "total": "Total number of items.",
+          "page": "Current page.",
+          "pageSize": "Items per page.",
+          "pageCount": "Number of pages."
+        }
+      }
+    }
+  }
+}

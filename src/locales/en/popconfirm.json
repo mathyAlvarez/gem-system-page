@@ -1,0 +1,339 @@
+{
+  "header": {
+    "title": "Popconfirm",
+    "description": "Confirmation bubble shown next to the button that opens it. Asks to confirm an action without opening a modal: delete an item, discard changes or publish. The action runs only after confirming."
+  },
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and open the bubble. The buttons say `Confirm` and `Cancel` by default; pass `confirmLabel` and `cancelLabel` to change them.",
+    "texts": {
+      "trigger": "Delete project",
+      "title": "Delete this project?",
+      "description": "Its files and tasks are deleted too.",
+      "done": "Project deleted"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Wrap the button with `Popconfirm` and pass `title`. Clicking opens the bubble; `onConfirm` runs only if the user confirms. It uses the `danger` tone by default and focus goes to Cancel.",
+      "texts": {
+        "trigger": "Delete",
+        "title": "Delete this file?",
+        "description": "You won't be able to recover it.",
+        "confirm": "Delete",
+        "done": "File deleted"
+      }
+    },
+    "placements": {
+      "title": "Placement",
+      "description": "`placement` picks the side: `top` (default), `bottom`, `left` or `right`. It doesn't flip when space runs out: it only shifts to stay on screen. Pick the side based on where the button is.",
+      "texts": {
+        "title": "Apply this change?"
+      }
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` sets the icon and the confirm button variant: `danger` for destructive actions, `warning` for actions with consequences and `primary` for neutral confirmations.",
+      "texts": {
+        "danger": {
+          "trigger": "Delete account",
+          "title": "Delete the account?",
+          "description": "All your data is deleted.",
+          "confirm": "Delete"
+        },
+        "warning": {
+          "trigger": "Discard changes",
+          "title": "Discard the changes?",
+          "description": "You'll lose anything you haven't saved.",
+          "confirm": "Discard"
+        },
+        "primary": {
+          "trigger": "Publish",
+          "title": "Publish the article?",
+          "description": "It will be visible to everyone.",
+          "confirm": "Publish"
+        }
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `md` (default) and `sm`, more compact for tables and lists.",
+      "texts": {
+        "title": "Archive the conversation?",
+        "description": "You can restore it from Archived."
+      }
+    },
+    "icon": {
+      "title": "Icon",
+      "description": "`icon` replaces the tone icon. `hideIcon` (or `icon={null}`) hides it.",
+      "texts": {
+        "customTrigger": "Mute",
+        "customTitle": "Mute notifications?",
+        "hiddenTrigger": "No icon",
+        "hiddenTitle": "Continue without saving?"
+      }
+    },
+    "withoutCancel": {
+      "title": "Without cancel",
+      "description": "With `showCancel={false}` only the confirm button remains. It can still be closed with Escape or an outside click.",
+      "texts": {
+        "trigger": "Mark as read",
+        "title": "Mark everything as read?",
+        "confirm": "Mark",
+        "done": "Everything marked as read"
+      }
+    },
+    "async": {
+      "title": "Async confirmation",
+      "description": "If `onConfirm` returns a promise, the button shows a spinner and the bubble stays open until it settles. Meanwhile it can't be cancelled or closed with Escape or an outside click.",
+      "texts": {
+        "trigger": "Delete team",
+        "title": "Delete the team?",
+        "description": "Members lose access to their projects.",
+        "confirm": "Delete",
+        "done": "Team deleted"
+      }
+    },
+    "error": {
+      "title": "Confirmation error",
+      "description": "If the promise rejects, the bubble stays open to retry, but the component doesn't show the error. Report it yourself before rethrowing, for example with a toast. The first attempt in this example fails.",
+      "texts": {
+        "trigger": "Sync",
+        "title": "Sync now?",
+        "description": "Local data will be replaced.",
+        "confirm": "Sync",
+        "failed": "Couldn't sync. Try again.",
+        "done": "Data synced"
+      }
+    },
+    "customButtons": {
+      "title": "Custom buttons",
+      "description": "`confirmButton` and `cancelButton` accept an element, which receives the click, or a function that receives `ref`, `onClick`, `disabled`, `isLoading` and `className`. For small changes, `confirmProps` and `cancelProps` are enough.",
+      "texts": {
+        "element": {
+          "trigger": "With elements",
+          "title": "Leave without saving?",
+          "description": "Your changes will be lost.",
+          "confirm": "Leave",
+          "cancel": "Keep editing",
+          "done": "You left the editor"
+        },
+        "render": {
+          "trigger": "With functions",
+          "title": "Empty the trash?",
+          "description": "12 items will be deleted.",
+          "confirm": "Empty",
+          "cancel": "Not now",
+          "done": "Trash emptied"
+        }
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `open` and `onOpenChange` you manage the state. Useful to open the bubble from elsewhere, such as a shortcut or an external button.",
+      "texts": {
+        "openOutside": "Open from outside",
+        "trigger": "Sign out",
+        "title": "Sign out?",
+        "confirm": "Sign out",
+        "done": "Signed out",
+        "state": "open"
+      }
+    },
+    "initialFocus": {
+      "title": "Initial focus",
+      "description": "On open, focus goes to Cancel to prevent accidental confirmations. With `initialFocus=\"confirm\"` it goes to Confirm; use it only for safe actions.",
+      "texts": {
+        "trigger": "Save draft",
+        "title": "Save the draft?",
+        "description": "You can keep editing it later.",
+        "confirm": "Save",
+        "done": "Draft saved"
+      }
+    },
+    "list": {
+      "title": "In a list",
+      "description": "A common case: icon-only buttons to delete rows. Each button needs an `aria-label` saying what it deletes. Use `size=\"sm\"` and `placement=\"left\"` so the bubble doesn't cover the row.",
+      "texts": {
+        "files": ["annual-report.pdf", "budget.xlsx", "logo.svg"],
+        "remove": "Delete",
+        "title": "Delete",
+        "confirm": "Delete",
+        "removed": "deleted",
+        "reset": "Restore files"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` prevents opening, but doesn't disable the button. Pass `disabled` to the button too so it looks and is announced as disabled.",
+      "texts": {
+        "trigger": "Delete",
+        "title": "Delete?"
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "trigger": "Open",
+      "title": "Duplicate the board?",
+      "description": "Columns and cards are copied."
+    }
+  },
+  "apiLink": "See the full Popconfirm API",
+  "api": {
+    "header": {
+      "title": "Popconfirm API",
+      "description": "API reference for the Popconfirm React component: props, render props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Popconfirm"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `confirmVariantForTone` returns the confirm button variant for each tone, and `resolvePopconfirmPosition` computes the bubble position."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It doesn't forward loose HTML attributes. <code>className</code> and <code>style</code> go to the bubble, <code>wrapperClassName</code> to the trigger wrapper and <code>classNames</code> adds classes to each part. The default buttons are <code>Button</code>: <code>confirmProps</code> and <code>cancelProps</code> accept its props except <code>children</code> and <code>onClick</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "The bubble has <code>role=\"alertdialog\"</code>, with <code>aria-labelledby</code> pointing to <code>title</code> and <code>aria-describedby</code> to <code>description</code>.",
+      "trigger": "The button gets <code>aria-haspopup=\"dialog\"</code>, <code>aria-expanded</code> and <code>aria-controls</code>. Its click doesn't run the default action: a <code>submit</code> button won't submit the form.",
+      "focus": "On open, focus goes to Cancel (or Confirm with <code>initialFocus=\"confirm\"</code>). On close or confirm it returns to the button.",
+      "keyboard": "Tab cycles between both buttons without leaving the bubble and Escape closes it, unless <code>closeOnEscape={false}</code>.",
+      "labels": "The buttons say <code>\"Confirm\"</code> and <code>\"Cancel\"</code> by default. Pass translated <code>confirmLabel</code> and <code>cancelLabel</code>.",
+      "async": "While an <code>onConfirm</code> promise is pending, Confirm shows <code>isLoading</code> and the bubble can't be closed. If it fails, the error isn't shown: report it yourself.",
+      "disabled": "<code>disabled</code> prevents opening, but the button stays active. Disable it too.",
+      "custom": "With <code>confirmButton</code> or <code>cancelButton</code> as a function, wire <code>ref</code> so focus works, and <code>disabled</code> and <code>isLoading</code> to block the pending action."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Trigger wrapper. Receives `wrapperClassName` and `classNames.root`.",
+        "panel": "Bubble, rendered in a portal. Receives `className`, `style` and `classNames.panel`.",
+        "placement": "Bubble side: `--top`, `--bottom`, `--left` or `--right`. Positions the arrow.",
+        "sm": "Compact size. There's no class for `md`.",
+        "tone": "Tone: `--danger`, `--warning` or `--primary`. Sets `--gem-popconfirm-icon`.",
+        "ready": "Added once the position is computed; enables the enter animation.",
+        "header": "Row with the icon and the text. Receives `classNames.header`.",
+        "icon": "Tone icon. Receives `classNames.icon`.",
+        "body": "Title and description container. Receives `classNames.body`.",
+        "title": "Title. Receives `classNames.title`.",
+        "description": "Description. Receives `classNames.description`.",
+        "actions": "Button row. Receives `classNames.actions`.",
+        "arrow": "Arrow. Uses `--gem-color-bg` and `--gem-color-border`. Receives `classNames.arrow`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Popconfirm has a single variable of its own. For the background, border or radius, redefine the tokens on the bubble so the arrow changes along with the panel.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-popconfirm-icon": "Icon color. Set by the tone classes."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Popconfirm, besides the button ones.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Popconfirm"
+      },
+      "items": {
+        "--gem-color-bg": "Bubble and arrow background.",
+        "--gem-color-border": "Bubble and arrow border.",
+        "--gem-color-fg": "Title color.",
+        "--gem-color-fg-muted": "Description color.",
+        "--gem-color-error-solid": "Icon for the `danger` tone.",
+        "--gem-color-warning-solid": "Icon for the `warning` tone.",
+        "--gem-color-primary-solid": "Icon for the `primary` tone.",
+        "--gem-font-sans": "Bubble font.",
+        "--gem-radius-md": "Bubble radius.",
+        "--gem-shadow-lg": "Bubble shadow.",
+        "--gem-space-2": "Gap between buttons and `sm` spacing.",
+        "--gem-space-3": "Padding and gap between icon and text.",
+        "--gem-z-popover": "Bubble layer."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Component props and the function you can pass to `confirmButton` or `cancelButton`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "popconfirm": {
+        "title": "Popconfirm",
+        "description": "`title` and `children` are required.",
+        "items": {
+          "title": "Question in the bubble.",
+          "description": "Supporting text below the title.",
+          "children": "A single element that opens the bubble on click.",
+          "tone": "Icon and confirm button variant.",
+          "size": "Bubble density.",
+          "placement": "Preferred side. Doesn't flip when space runs out.",
+          "offset": "Distance in pixels between the button and the bubble.",
+          "confirmLabel": "Confirm button text.",
+          "cancelLabel": "Cancel button text.",
+          "confirmProps": "Extra props for the confirm button. `variant` overrides the tone one.",
+          "cancelProps": "Extra props for the cancel button.",
+          "confirmButton": "Replaces the confirm button: an element or a function.",
+          "cancelButton": "Replaces the cancel button: an element or a function.",
+          "icon": "Custom icon. `null` hides it.",
+          "hideIcon": "Hides the icon.",
+          "showCancel": "Shows the cancel button.",
+          "initialFocus": "Button that receives focus on open.",
+          "disabled": "Prevents opening. Doesn't disable the button.",
+          "open": "Controlled open state.",
+          "defaultOpen": "Uncontrolled initial open state.",
+          "closeOnConfirm": "Closes after a successful confirm.",
+          "closeOnClickOutside": "Closes on an outside click.",
+          "closeOnEscape": "Closes on Escape.",
+          "className": "Extra classes for the bubble.",
+          "classNames": "Classes per part: `root`, `trigger`, `panel`, `arrow`, `header`, `icon`, `body`, `title`, `description`, `actions`, `cancel` and `confirm`.",
+          "wrapperClassName": "Extra classes for the trigger wrapper.",
+          "style": "Inline styles for the bubble.",
+          "onOpenChange": "Runs on open or close, with the new state.",
+          "onConfirm": "Runs on confirm. If it returns a promise, the bubble waits for it to settle.",
+          "onCancel": "Runs on cancel, Escape or an outside click."
+        }
+      },
+      "action": {
+        "title": "Action render props",
+        "description": "What the `confirmButton` or `cancelButton` function receives.",
+        "items": {
+          "ref": "Button ref. Wire it so focus works.",
+          "onClick": "Confirms or cancels. Wire it to your button click.",
+          "disabled": "`true` while a confirmation is pending.",
+          "isLoading": "`true` on the confirm button while the promise is pending.",
+          "className": "Action classes (`classNames.confirm` or `classNames.cancel`)."
+        }
+      }
+    }
+  }
+}

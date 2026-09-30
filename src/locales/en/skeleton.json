@@ -1,0 +1,210 @@
+{
+  "header": {
+    "title": "Skeleton",
+    "description": "Animated placeholder that takes the place of content while it loads. `variant` sets the shape, `count` stacks text lines and `isLoaded` shows the real content. If you wrap the content, the placeholder takes its size and the layout doesn't jump on load."
+  },
+  "common": {
+    "ariaLabel": "Loading"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the placeholder and the code. The default accessible name is `Loading`; pass `aria-label` to describe what's loading.",
+    "ariaLabel": "Loading content"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "With no props it shows a text line with the `wave` animation. Each Skeleton is announced as `role=\"status\"` with the name `Loading`: pass a more specific `aria-label` when possible."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` sets the shape: `text` (line, default), `circular` (2.5 rem disc) or `rectangular` (6 rem tall block)."
+    },
+    "textLines": {
+      "title": "Text lines",
+      "description": "`count` stacks lines (1 to 32). `gap` sets the space between them and `lastLineWidth` the width of the last one, 72% by default so it looks like a paragraph."
+    },
+    "animations": {
+      "title": "Animations",
+      "description": "`animation` accepts `wave` (default), `pulse` or `none`. `duration` sets the cycle in milliseconds (1600 by default). With reduced motion, the animation stops."
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` rounds the corners: `none`, `sm`, `md`, `lg` or `full`. The default depends on the variant: `sm` for text, `md` for rectangular and `full` for circular."
+    },
+    "customSize": {
+      "title": "Custom size",
+      "description": "`width` and `height` accept a number (pixels) or any CSS length. For `circular`, if you only pass `width`, the height takes the same value."
+    },
+    "card": {
+      "title": "Card",
+      "description": "Combine variants to mimic the final layout. To avoid one announcement per piece, put `role=\"status\"` and a name on the container, and `aria-hidden` on each Skeleton.",
+      "texts": {
+        "ariaLabel": "Loading post"
+      }
+    },
+    "loaded": {
+      "title": "Loaded content",
+      "description": "With `children`, the placeholder takes the size of the (hidden) content while loading. With `isLoaded` the content is shown in its place, without adding boxes to the layout.",
+      "texts": {
+        "person": {
+          "name": "Lucy Romero",
+          "role": "Product designer",
+          "summary": "Team activity from the last 24 hours, including reviews and shipping notes."
+        },
+        "load": "Load content",
+        "reset": "Show placeholders"
+      }
+    },
+    "fit": {
+      "title": "Fit to content",
+      "description": "Wrap any element, such as a heading, a badge or a button, and the placeholder copies its exact size. With `children`, `count` is ignored and a single placeholder is shown.",
+      "texts": {
+        "heading": "Monthly summary",
+        "badge": "Active",
+        "action": "View details",
+        "toggle": "Toggle loading"
+      }
+    },
+    "list": {
+      "title": "List",
+      "description": "A common case: placeholder rows while a list arrives. In this example there's a single `role=\"status\"` for the whole list and the placeholders are hidden from screen readers.",
+      "texts": {
+        "members": [
+          { "name": "Thomas Harris", "role": "Developer" },
+          { "name": "Valerie Reed", "role": "Product manager" },
+          { "name": "Martin Cole", "role": "Support" }
+        ],
+        "loading": "Loading members",
+        "reload": "Reload"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` (or `isDisabled`) stops the animation and leaves the placeholder static."
+    }
+  },
+  "apiLink": "See the full Skeleton API",
+  "api": {
+    "header": {
+      "title": "Skeleton API",
+      "description": "API reference for the Skeleton React component: props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Skeleton"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `toSkeletonLength` turns a number into pixels and passes any other CSS length through."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>&lt;div&gt;</code> attributes and they go to the container along with <code>ref</code>, <code>id</code>, <code>className</code> and <code>style</code>. <code>classNames</code> adds classes to <code>root</code>, <code>bone</code> (each placeholder) and <code>content</code> (the hidden content). With <code>isLoaded</code>, the container uses <code>display: contents</code>, so its box styles don't apply."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "status": "While loading, the container has <code>role=\"status\"</code>, <code>aria-busy=\"true\"</code> and <code>aria-live=\"polite\"</code>. If you pass another <code>role</code>, <code>aria-live</code> isn't added.",
+      "label": "The default name is <code>\"Loading\"</code>. Pass <code>aria-label</code> or <code>aria-labelledby</code> to describe what's loading.",
+      "group": "With several Skeletons together, each one is a status region. Put <code>role=\"status\"</code> and a name on the container, and <code>aria-hidden</code> on each Skeleton.",
+      "loaded": "With <code>isLoaded</code>, <code>role</code>, <code>aria-busy</code> and the name are removed, and the content is visible to everyone.",
+      "fit": "The content that sizes the placeholder has <code>aria-hidden</code> and <code>visibility: hidden</code> while loading.",
+      "motion": "With <code>prefers-reduced-motion</code> the animations stop.",
+      "disabled": "<code>disabled</code> only stops the animation and adds <code>data-disabled</code>. It's still announced as loading."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Container. Defines the variables. Receives `className` and `classNames.root`.",
+        "variant": "Shape: `--text`, `--circular` or `--rectangular`. Sets height, radius and, for circular, width.",
+        "radius": "Radius: `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg` or `--radius-full`.",
+        "animation": "Animation: `--wave`, `--pulse` or `--none`.",
+        "stack": "Applied when `count` is greater than 1. Stacks placeholders with `--gem-skeleton-gap`.",
+        "fit": "Applied with `children` while loading. The placeholder takes the content size.",
+        "loaded": "Applied with `isLoaded`. Uses `display: contents`.",
+        "paused": "Applied with `disabled` or `isDisabled`. Stops the animation.",
+        "bone": "Each placeholder. Receives `classNames.bone`.",
+        "content": "Hidden content that provides the size. Receives `classNames.content`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Skeleton's own variables. Variant and radius classes have the same specificity, so use `.gem-skeleton.your-class` and a `[data-theme=\"dark\"]` variant. Some are set inline from props and can't be overridden with a class.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-skeleton-bg": "Placeholder color.",
+        "--gem-skeleton-shine": "`wave` highlight color.",
+        "--gem-skeleton-duration": "Cycle duration. Always set inline from `duration`, so change it with the prop.",
+        "--gem-skeleton-w": "Width. Set inline when you pass `width`.",
+        "--gem-skeleton-h": "Height. Set by the variant or, inline, by `height`.",
+        "--gem-skeleton-radius": "Radius. Set by the variant and `radius`.",
+        "--gem-skeleton-gap": "Gap between lines. Set inline when you pass `gap`.",
+        "--gem-skeleton-last-w": "Last line width. Set inline when you pass `lastLineWidth`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Skeleton.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Skeleton"
+      },
+      "items": {
+        "--gem-color-neutral-200": "Placeholder color, in light and dark.",
+        "--gem-palette-neutral-0": "Base of the `wave` highlight.",
+        "--gem-radius-{none|sm|md|lg|full}": "Radii for `radius` and each variant.",
+        "--gem-space-2": "Default gap between lines.",
+        "--gem-font-sans": "Component font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "variant": "Shape of each placeholder.",
+      "animation": "Placeholder motion.",
+      "radius": "Corner radius. The default depends on `variant`.",
+      "width": "Width of each placeholder. A number is in pixels.",
+      "height": "Height of each placeholder. For `circular`, if missing, it uses `width`.",
+      "count": "Number of stacked placeholders, 1 to 32. Ignored with `children`.",
+      "gap": "Space between placeholders when `count` is greater than 1.",
+      "lastLineWidth": "Width of the last text line when `count` is greater than 1.",
+      "duration": "Animation cycle duration in milliseconds.",
+      "isLoaded": "Shows `children` instead of the placeholder.",
+      "children": "Content that sizes the placeholder while loading and is shown with `isLoaded`.",
+      "disabled": "Stops the animation.",
+      "isDisabled": "Same as `disabled`.",
+      "role": "Container role while loading.",
+      "aria-label": "Accessible name while loading.",
+      "aria-labelledby": "Id of an element that names the placeholder.",
+      "aria-busy": "Busy state while loading.",
+      "aria-live": "Announcement politeness. Only added automatically if you don't pass `role`.",
+      "aria-hidden": "Hides the placeholder from screen readers. Useful when the container already announces loading.",
+      "className": "Extra classes for the container.",
+      "classNames": "Classes per part: `root`, `bone` and `content`.",
+      "style": "Container inline styles.",
+      "ref": "Container ref."
+    }
+  }
+}

@@ -1,0 +1,33 @@
+/**
+ * Gem System Page — Table
+ * Playground controls for the Table docs page.
+ */
+
+$bp-md: 48rem;
+
+.table-playground {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gem-space-4);
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-2);
+    min-width: 0;
+  }
+
+  &__detail {
+    margin: 0;
+    color: var(--gem-color-fg-muted);
+    font-size: 0.875rem;
+  }
+}

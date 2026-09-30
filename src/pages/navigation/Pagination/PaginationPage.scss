@@ -1,0 +1,27 @@
+/**
+ * Gem System Page — Pagination
+ * Props playground controls.
+ */
+
+$bp-md: 48rem;
+
+.pagination-playground {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gem-space-4);
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-2);
+    min-width: 0;
+  }
+}

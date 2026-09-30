@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Alert, Typography } from "@gem-org/gem-system";
-import { Trans, useTranslation } from "react-i18next";
+import { Typography } from "@gem-org/gem-system";
+import { useTranslation } from "react-i18next";
 import { ApiLinkSection } from "../../../components/ApiLinkSection.tsx";
 import { ApiTable } from "../../../components/ApiTable.tsx";
 import { CodeBlock, DemoBlock, DocsPageHeader, DocsSection } from "../../../components/DocsPrimitives.tsx";
@@ -16,7 +16,6 @@ import { BaseGrid } from "./examples/BaseGrid.tsx";
 import baseCode from "./examples/BaseGrid.tsx?raw";
 import { GapGrid } from "./examples/GapGrid.tsx";
 import gapCode from "./examples/GapGrid.tsx?raw";
-import colFixCss from "./examples/grid-col-fix.css?raw";
 import demoCss from "./examples/grid-demo.css?raw";
 import overridesCss from "./examples/grid-overrides.css?raw";
 import cellCode from "./examples/GridCell.tsx?raw";
@@ -69,8 +68,6 @@ const trackModes = [
   { id: "auto", prop: 'auto="fit"', css: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))" },
 ] as const;
 
-const rich = { code: <code /> };
-
 export function GridPage() {
   const { t } = useTranslation("grid");
 
@@ -95,7 +92,6 @@ export function GridPage() {
       code: responsiveCode,
       preview: <ResponsiveGrid />,
       extra: (
-        <>
           <ApiTable
             columns={[
               t("stories.responsive.columns.breakpoint"),
@@ -117,11 +113,6 @@ export function GridPage() {
               ],
             }))}
           />
-          <Alert status="warning" title={t("stories.responsive.bug.title")}>
-            <Trans t={t} i18nKey="stories.responsive.bug.body" components={rich} />
-          </Alert>
-          <CodeBlock code={colFixCss} label="grid-col-fix.css" language="css" />
-        </>
       ),
     },
     { id: "gap", file: "GapGrid.tsx", code: gapCode, preview: <GapGrid /> },

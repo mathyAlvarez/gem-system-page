@@ -1,0 +1,27 @@
+.gem-sidebar.sidebar-inverted {
+  --gem-sidebar-bg: var(--gem-palette-neutral-900);
+  --gem-sidebar-fg: var(--gem-palette-neutral-50);
+  --gem-sidebar-border: var(--gem-palette-neutral-800);
+}
+
+.sidebar-inverted .gem-sidebar__item:hover,
+.sidebar-inverted .gem-sidebar__control:hover {
+  background-color: var(--gem-palette-neutral-800);
+  color: var(--gem-palette-primary-300);
+}
+
+.sidebar-inverted .gem-sidebar__item[aria-current="page"] {
+  background-color: color-mix(in srgb, var(--gem-palette-primary-400) 16%, transparent);
+  color: var(--gem-palette-primary-300);
+}
+
+.sidebar-inverted .gem-button.gem-sidebar__toggle,
+.sidebar-inverted .gem-sidebar__extras .gem-button--transparent {
+  --gem-btn-fg: var(--gem-palette-neutral-50);
+  --gem-btn-bg-hover: var(--gem-palette-neutral-800);
+  --gem-btn-fg-hover: var(--gem-palette-primary-300);
+}
+
+.sidebar-inverted .gem-sidebar__extras .gem-button--transparent {
+  justify-content: flex-start;
+}

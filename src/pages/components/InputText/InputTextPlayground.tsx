@@ -20,6 +20,7 @@ const placements: InputTextLabelPlacement[] = ["above", "outline"];
 
 type Flags = {
   uppercase: boolean;
+  clearable: boolean;
   isInvalid: boolean;
   isDisabled: boolean;
   isRequired: boolean;
@@ -27,6 +28,7 @@ type Flags = {
 
 const flagDefaults: Flags = {
   uppercase: false,
+  clearable: false,
   isInvalid: false,
   isDisabled: false,
   isRequired: false,

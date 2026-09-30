@@ -1,0 +1,84 @@
+.avatar-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  min-width: 0;
+}
+
+.avatar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-3);
+}
+
+.avatar-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.avatar-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.avatar-people {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.avatar-person {
+  display: flex;
+  align-items: center;
+  gap: var(--gem-space-3);
+  min-width: 0;
+}
+
+.avatar-person__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.avatar-person__name {
+  color: var(--gem-color-fg);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.avatar-person__role {
+  color: var(--gem-color-fg-muted);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.avatar-table {
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.avatar-table th,
+.avatar-table td {
+  padding: var(--gem-space-2) var(--gem-space-3);
+  border-bottom: 1px solid var(--gem-color-border);
+  text-align: start;
+}
+
+.avatar-table th {
+  color: var(--gem-color-fg-muted);
+  font-weight: 650;
+}
+
+[data-theme="dark"] .avatar-person__name {
+  color: var(--gem-palette-neutral-50);
+}

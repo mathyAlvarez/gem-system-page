@@ -329,6 +329,7 @@
       "minuteStep": "Intervalo de minutos del selector.",
       "weekStartsOn": "Primer día de la semana: 0 = domingo, 1 = lunes.",
       "clearable": "Muestra una X para limpiar sin abrir el calendario.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto es \"Clear date\", en inglés.",
       "isLoading": "Muestra un spinner y bloquea el calendario.",
       "loadingText": "Texto visible mientras `isLoading` es true.",
       "isInvalid": "Marca el campo como inválido (aria-invalid).",
@@ -345,7 +346,8 @@
       "onYearChange": "Se dispara al cambiar el año visible.",
       "onTimeChange": "Se dispara al cambiar la hora o los minutos.",
       "onHourChange": "Se dispara al cambiar la hora.",
-      "onMinuteChange": "Se dispara al cambiar los minutos."
+      "onMinuteChange": "Se dispara al cambiar los minutos.",
+      "onClear": "Se dispara después de limpiar la fecha con el botón."
     }
   }
 }

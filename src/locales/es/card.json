@@ -1,0 +1,319 @@
+{
+  "header": {
+    "title": "Card",
+    "description": "Contenedor con encabezado, cuerpo y pie para agrupar contenido relacionado. Se arma con props (`title`, `subtitle`, `extra`, `footer`) o con los slots `Card.Header`, `Card.Body` y `Card.Footer`. Usá `bordered` y `shadow` para elegir entre borde o elevación."
+  },
+  "common": {
+    "title": "Resumen del proyecto",
+    "subtitle": "Actualizado hace 2 horas",
+    "body": "Seguí las entregas, los responsables y el trabajo pendiente de este espacio. Las tarjetas agrupan contenido relacionado sin convertirse en el layout de la página.",
+    "more": "Más opciones",
+    "cancel": "Cancelar",
+    "save": "Guardar"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver la tarjeta y el código."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "`title` y `subtitle` arman el encabezado, `extra` agrega acciones a la derecha y `footer` el pie. `children` va en el cuerpo. Por defecto tiene borde, sin sombra, tamaño `md` y radio `md`."
+    },
+    "expandable": {
+      "title": "Expandible",
+      "description": "`expandable` agrega un botón para colapsar el cuerpo, el pie y `media` con una animación de altura. También se abre y cierra con un clic en el encabezado. `defaultExpanded={false}` la muestra cerrada.",
+      "texts": {
+        "text": "Hacé clic en el encabezado o en la flecha para ocultar y mostrar el contenido."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `expanded` y `onExpandedChange` manejás el estado desde afuera. El contenido colapsado sigue en el DOM y se puede enfocar con Tab, así que el ejemplo usa slots y pasa `inert` a `Card.Body` y `Card.Footer` mientras está cerrada.",
+      "texts": {
+        "toggle": "Alternar",
+        "open": "Tarjeta abierta",
+        "closed": "Tarjeta cerrada"
+      }
+    },
+    "elevated": {
+      "title": "Elevada",
+      "description": "`bordered={false}` con `shadow=\"md\"` quita el borde y usa solo sombra. Sirve cuando la tarjeta está sobre un fondo con mucho contenido.",
+      "texts": {
+        "title": "Tarjeta elevada",
+        "subtitle": "Sin borde y con sombra",
+        "text": "La sombra separa la tarjeta del fondo sin necesidad de un borde.",
+        "open": "Abrir"
+      }
+    },
+    "borderShadow": {
+      "title": "Borde y sombra",
+      "description": "El borde y la sombra se pueden combinar para dar más relieve.",
+      "texts": {
+        "title": "Con borde y sombra",
+        "subtitle": "Los dos estilos juntos",
+        "text": "Por defecto las tarjetas tienen borde. Agregá sombra cuando necesites que se destaque."
+      }
+    },
+    "customHeader": {
+      "title": "Encabezado propio",
+      "description": "`header`, `title`, `subtitle` y `extra` aceptan cualquier nodo de React, no solo texto. Pasá tu componente a `header`, o como hijo de `Card.Header`, cuando el encabezado no es un título con subtítulo.",
+      "texts": {
+        "name": "Ana López",
+        "role": "Dueña del espacio",
+        "text": "El autor va en el encabezado y las acciones en el costado.",
+        "compoundText": "Lo mismo con slots: los hijos de Card.Header reemplazan el bloque del título.",
+        "follow": "Seguir"
+      }
+    },
+    "compound": {
+      "title": "Slots",
+      "description": "`Card.Header`, `Card.Body` y `Card.Footer` hacen explícito el marcado. Si todos los hijos son slots, la tarjeta no los envuelve en otro cuerpo.",
+      "texts": {
+        "title": "Espacio de trabajo",
+        "subtitle": "Plan personal",
+        "text": "Los slots son útiles cuando el encabezado o el pie llevan más que un título y botones.",
+        "manage": "Administrar",
+        "dismiss": "Descartar",
+        "next": "Continuar"
+      }
+    },
+    "media": {
+      "title": "Con imagen",
+      "description": "`media` ubica una imagen, un mapa o cualquier bloque arriba del encabezado. Si la imagen aporta información, dale un `alt`; si es decorativa, usá `alt=\"\"` o `aria-hidden`.",
+      "texts": {
+        "title": "Portada",
+        "subtitle": "La imagen va arriba del encabezado",
+        "text": "El contenedor ocupa todo el ancho y recorta lo que sobra.",
+        "alt": "Banner de Gem-org con el lema: build your react based app with gem-org system",
+        "view": "Ver"
+      }
+    },
+    "rounded": {
+      "title": "Redondeo",
+      "description": "`rounded` redondea más que `radius`: `true` usa `--gem-radius-2xl`, un número es un porcentaje y un texto es cualquier medida CSS.",
+      "texts": {
+        "preset": "Redondeo del sistema",
+        "percent": "Porcentaje",
+        "css": "Medida CSS",
+        "text": "El radio también recorta la imagen y los bordes de las secciones."
+      }
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "`radius` usa los tokens `sm`, `md` (default) o `lg` cuando `rounded` está apagado.",
+      "texts": {
+        "text": "Esquinas según el token de radio."
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` ajusta el espacio interno de las secciones y el tamaño del título: `sm`, `md` (default) o `lg`.",
+      "texts": {
+        "titles": {
+          "sm": "Chica",
+          "md": "Mediana",
+          "lg": "Grande"
+        },
+        "texts": {
+          "sm": "Espacio compacto para listas densas.",
+          "md": "Espacio por defecto para la mayoría de los layouts.",
+          "lg": "Más aire para secciones destacadas o estados vacíos."
+        }
+      }
+    },
+    "shadows": {
+      "title": "Sombras",
+      "description": "`shadow` acepta `none` (default), `xs`, `sm`, `md`, `lg` o `xl`. En el ejemplo, todas salvo `none` van sin borde.",
+      "texts": {
+        "token": "Token"
+      }
+    },
+    "heading": {
+      "title": "Nivel del título",
+      "description": "`title` siempre se renderiza como `<h3>`. Si no encaja en la jerarquía de la página, pasá tu propio encabezado en `header` con el nivel correcto.",
+      "texts": {
+        "title": "Actividad reciente",
+        "subtitle": "Últimos 7 días",
+        "text": "Este título es un h4 porque la sección que lo contiene usa h3."
+      }
+    },
+    "list": {
+      "title": "Lista de tarjetas",
+      "description": "Para una colección, envolvé las tarjetas en `<ul>` y `<li>` para que se anuncie la cantidad. Cada botón incluye el nombre del plan para que no queden varios \"Elegir\" iguales.",
+      "texts": {
+        "choose": "Elegir",
+        "plans": [
+          { "name": "Básico", "price": "0 €", "text": "Para empezar solo." },
+          { "name": "Equipo", "price": "12 € / mes", "text": "Hasta 10 personas y espacios compartidos." },
+          { "name": "Empresa", "price": "30 € / mes", "text": "Permisos avanzados y soporte dedicado." }
+        ]
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "title": "Tarjeta de marca",
+      "subtitle": "Colores secundarios en superficie y secciones",
+      "text": "La clase va en la raíz, así que se pueden cambiar todas las partes juntas.",
+      "open": "Abrir"
+    }
+  },
+  "apiLink": "Ver la API completa de Card",
+  "api": {
+    "header": {
+      "title": "Card API",
+      "description": "Referencia de la API del componente Card de React: props, slots, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Card"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. Los slots están en `Card.Header`, `Card.Body` y `Card.Footer`, y también se exportan sueltos."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Card</code> acepta los atributos de <code>&lt;article&gt;</code> salvo <code>title</code>, y van a la raíz junto con <code>id</code>, <code>className</code> y <code>style</code>. <code>Card.Header</code> renderiza un <code>&lt;header&gt;</code>, <code>Card.Body</code> un <code>&lt;div&gt;</code> y <code>Card.Footer</code> un <code>&lt;footer&gt;</code>, y cada uno acepta los atributos de su elemento. <code>classNames</code> solo aplica <code>root</code>, <code>media</code>, <code>header</code>, <code>body</code> y <code>footer</code>: <code>title</code>, <code>subtitle</code> y <code>extra</code> están en el tipo pero se ignoran."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "article": "La raíz es un <code>&lt;article&gt;</code>. Si la tarjeta no es contenido independiente, pasá otro <code>role</code> o envolvela en una lista.",
+      "heading": "<code>title</code> se renderiza siempre como <code>&lt;h3&gt;</code>. Para otro nivel, pasá tu propio encabezado en <code>header</code>.",
+      "toggle": "Con <code>expandable</code>, el botón de la flecha tiene <code>aria-expanded</code> y <code>aria-controls</code> apuntando al contenido.",
+      "labels": "El nombre del botón está fijo en inglés (<code>\"Collapse\"</code> y <code>\"Expand\"</code>) y no hay una prop para cambiarlo.",
+      "collapsed": "El contenido colapsado solo se oculta visualmente: sigue en el DOM y se puede enfocar. Usá slots en modo controlado y pasá <code>inert</code> a <code>Card.Body</code> y <code>Card.Footer</code> mientras está cerrada.",
+      "header": "El clic en el encabezado también alterna, pero ignora los clics en botones, enlaces y campos. Con teclado se usa el botón de la flecha.",
+      "media": "<code>media</code> no agrega texto alternativo: pasalo en tu imagen, o <code>alt=\"\"</code> si es decorativa.",
+      "motion": "Con <code>prefers-reduced-motion</code> se quitan las animaciones de la flecha y de la altura."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define el espacio de las secciones.",
+        "shadow": "Sombra: `--shadow-none`, `--shadow-xs` … `--shadow-xl`.",
+        "bordered": "`--bordered` con borde o `--borderless` con borde transparente.",
+        "radius": "Radio por token: `--radius-sm`, `--radius-md` o `--radius-lg`.",
+        "rounded": "Se aplica con `rounded` en `true`. Usa `--gem-radius-2xl`.",
+        "roundedCustom": "Se aplica cuando `rounded` es un número o un texto. Usa `--gem-card-radius`.",
+        "expandable": "Se aplica con `expandable`.",
+        "expanded": "Estado: `--expanded` o `--collapsed`.",
+        "media": "Contenedor de `media`. Recibe `classNames.media`.",
+        "header": "Encabezado. Recibe `classNames.header`.",
+        "headerSolo": "Se aplica al encabezado sin subtítulo. Centra el contenido verticalmente.",
+        "heading": "Contenedor del título y el subtítulo.",
+        "title": "Título (`<h3>`).",
+        "subtitle": "Subtítulo (`<p>`).",
+        "extra": "Contenedor de `extra` y del botón de la flecha.",
+        "disclose": "Botón para expandir y colapsar.",
+        "collapse": "Contenido colapsable. Anima con `grid-template-rows`.",
+        "body": "Cuerpo. Recibe `classNames.body`.",
+        "footer": "Pie. Recibe `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Card tiene una sola variable propia. Los colores y espacios salen de tokens y clases, así que para cambiarlos usá `.gem-card.tu-clase` y una variante para `[data-theme=\"dark\"]`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-card-radius": "Radio cuando `rounded` es un número o un texto. Se define en línea desde la prop."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Card.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Card"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo de la tarjeta.",
+        "--gem-color-bg-subtle": "Fondo de `media` y hover del botón de la flecha.",
+        "--gem-color-fg": "Color del título y el cuerpo.",
+        "--gem-color-fg-muted": "Color del subtítulo y de la flecha.",
+        "--gem-color-border": "Borde de la tarjeta y separadores de secciones.",
+        "--gem-radius-{sm|md|lg}": "Radio según `radius`.",
+        "--gem-radius-2xl": "Radio con `rounded` en `true`.",
+        "--gem-shadow-{xs|sm|md|lg|xl}": "Sombra según `shadow`.",
+        "--gem-shadow-focus": "Foco del botón de la flecha.",
+        "--gem-space-2": "Espacio entre acciones de `extra` y del pie.",
+        "--gem-space-3": "Espacio en el encabezado.",
+        "--gem-palette-neutral-{50|300|500|600}": "Texto, subtítulo, borde y separadores en tema oscuro.",
+        "--gem-font-sans": "Fuente del texto."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<article>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "card": {
+        "title": "Card",
+        "description": "Componente raíz.",
+        "items": {
+          "title": "Título del encabezado, como `<h3>`. Acepta un nodo.",
+          "subtitle": "Texto secundario debajo del título.",
+          "extra": "Contenido al final del encabezado, por ejemplo botones o un menú.",
+          "header": "Contenido propio del encabezado. Se combina con `title`, `subtitle` y `extra`, o va solo.",
+          "media": "Imagen o bloque arriba del encabezado.",
+          "children": "Contenido del cuerpo. Si todos los hijos son slots, se renderizan tal cual.",
+          "footer": "Contenido del pie.",
+          "bordered": "Dibuja un borde de 1.5px. Con `false`, combinalo con `shadow`.",
+          "shadow": "Sombra de elevación.",
+          "size": "Espacio interno de las secciones y tamaño del título.",
+          "radius": "Radio por token cuando `rounded` está apagado.",
+          "rounded": "Redondeo extra: `true` usa `2xl`, un número es un porcentaje y un texto es una medida CSS.",
+          "expandable": "El encabezado alterna el cuerpo, el pie y `media` con animación.",
+          "expanded": "Estado abierto controlado. Usalo con `onExpandedChange`.",
+          "defaultExpanded": "Estado abierto inicial sin controlar.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `media`, `header`, `body` y `footer`. `title`, `subtitle` y `extra` se ignoran.",
+          "style": "Estilos en línea de la raíz. Se combina con `--gem-card-radius`.",
+          "onExpandedChange": "Se llama al expandir o colapsar."
+        }
+      },
+      "header": {
+        "title": "Card.Header",
+        "description": "Slot del encabezado. Acepta los atributos de `<header>`.",
+        "items": {
+          "title": "Título, como `<h3>`.",
+          "subtitle": "Texto secundario debajo del título.",
+          "extra": "Contenido al final del encabezado.",
+          "disclose": "Control extra junto a `extra`. Con `expandable`, la tarjeta agrega la flecha acá.",
+          "children": "Contenido propio. Va después del bloque del título.",
+          "className": "Clases extra para el encabezado."
+        }
+      },
+      "sections": {
+        "title": "Card.Body y Card.Footer",
+        "description": "Slots del cuerpo y el pie. Sin props propias.",
+        "items": {
+          "body": "Un `<div>` con los atributos de ese elemento.",
+          "footer": "Un `<footer>` con los atributos de ese elemento. Alinea el contenido a la derecha."
+        }
+      }
+    }
+  }
+}

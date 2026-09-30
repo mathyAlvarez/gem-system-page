@@ -1,0 +1,239 @@
+{
+  "header": {
+    "title": "Accordion",
+    "description": "Sections that open and close to reveal content on demand. With `type=\"multiple\"` each panel is independent; with `type=\"single\"` only one stays open at a time. Sections are passed as data in `items`."
+  },
+  "common": {
+    "sections": [
+      {
+        "id": "billing",
+        "title": "Billing and invoices",
+        "subtitle": "Plans, receipts and payment methods",
+        "content": "Download invoices, update the card on file and switch between monthly or annual billing. Changes apply at the start of the next cycle."
+      },
+      {
+        "id": "members",
+        "title": "Members and roles",
+        "subtitle": "Who can view or edit this workspace",
+        "content": "Invite teammates, assign admin or viewer roles and revoke access. Guests only see the projects you share with them."
+      },
+      {
+        "id": "notifications",
+        "title": "Notifications",
+        "content": "Choose email and in-app alerts for comments, mentions and status changes. Digest emails can be sent daily or weekly."
+      }
+    ]
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the accordion and its code. Changing `type` or `collapsible` resets the example to `defaultValue`."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "By default `type` is `multiple`: each section opens on its own and several can stay open. `defaultValue` sets which ones start open. Enter or Space toggles the focused section and the arrows move focus between headers. The example data lives in `demo.ts`."
+    },
+    "single": {
+      "title": "One at a time",
+      "description": "With `type=\"single\"`, opening a section closes the others. `collapsible` (default `true`) also lets you close the open one."
+    },
+    "requiredOpen": {
+      "title": "Always one open",
+      "description": "With `type=\"single\"` and `collapsible={false}`, one panel always stays open. If none is, the first enabled one opens."
+    },
+    "icons": {
+      "title": "With icons",
+      "description": "`icon` adds an icon before the title. It's decorative: hidden from screen readers.",
+      "texts": {
+        "sections": [
+          { "id": "home", "title": "Workspace", "content": "Overview, shortcuts and recent activity for this workspace." },
+          { "id": "files", "title": "Files", "content": "Project documents grouped by folder." },
+          { "id": "calendar", "title": "Calendar", "content": "Upcoming dates, reminders and shared events." },
+          { "id": "settings", "title": "Settings", "content": "Visibility, notifications and archive options." }
+        ]
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` on an item keeps it closed and non-interactive, and the arrows skip it. `isDisabled` disables the whole accordion but keeps open panels open.",
+      "texts": {
+        "itemLabel": "One disabled item",
+        "allLabel": "isDisabled"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` changes the style: `connected` (one border around, default), `separated` (each section with its own border) or `flush` (no outer border, only separators)."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` adjusts padding and text size: `sm`, `md` (default) or `lg`."
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `value` and `onChange` you drive the open sections from your state. `onChange` receives the list of open ids and the item that changed.",
+      "texts": {
+        "openMembers": "Open Members",
+        "expandAll": "Expand all",
+        "collapseAll": "Collapse all"
+      }
+    },
+    "rich": {
+      "title": "Rich content",
+      "description": "`title` and `content` accept any node. If the title isn't plain text, pass `ariaLabel` so the button has a clear name. Closed panels use `inert`, so their buttons don't receive focus.",
+      "texts": {
+        "title": "Integrations",
+        "badge": "New",
+        "steps": [
+          "Connect your calendar.",
+          "Choose which projects to sync.",
+          "Confirm the permissions."
+        ],
+        "action": "Connect"
+      }
+    }
+  },
+  "apiLink": "See the full Accordion API",
+  "api": {
+    "header": {
+      "title": "Accordion API",
+      "description": "API reference for the React Accordion component: props, items, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Accordion"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. `AccordionItem` types each section in `items`."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "It accepts <code>&lt;div&gt;</code> attributes except <code>children</code>, <code>onChange</code> and <code>defaultValue</code>, and they go to the root along with <code>ref</code>, <code>id</code> and <code>className</code>. <code>classNames</code> adds classes to <code>root</code>, <code>item</code>, <code>heading</code>, <code>trigger</code>, <code>icon</code>, <code>title</code>, <code>subtitle</code>, <code>indicator</code>, <code>panel</code> and <code>content</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "structure": "Each header is a real <code>&lt;button&gt;</code> with <code>aria-expanded</code> and <code>aria-controls</code> pointing at its panel.",
+      "heading": "Buttons sit inside a fixed <code>&lt;h3&gt;</code>. There's no prop to change the level; if the accordion is under an <code>&lt;h3&gt;</code>, the hierarchy goes flat.",
+      "name": "If <code>title</code> is text, it's used as <code>aria-label</code> and the subtitle isn't part of the name. If <code>title</code> is a node, pass <code>ariaLabel</code>.",
+      "keyboard": "Enter or Space toggles the section. Arrow down and up move focus between headers (wrapping around); Home and End go to the first and last.",
+      "panel": "Each panel has <code>role=\"region\"</code> with <code>aria-labelledby</code> pointing at its button. Closed ones get <code>aria-hidden</code> and <code>inert</code>, so their content isn't read or focused.",
+      "disabled": "Disabled items use native <code>disabled</code>: they leave the tab order and the arrows skip them.",
+      "regions": "Each panel is a named region. With many open sections, the screen reader's region list can get crowded.",
+      "motion": "With <code>prefers-reduced-motion</code> the panel and chevron animations are removed."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Defines the variables. Receives `className` and `classNames.root`.",
+        "variant": "Variant: `--connected`, `--separated` or `--flush`.",
+        "size": "Size: `--sm`, `--md` or `--lg`.",
+        "type": "Behavior: `--multiple` or `--single`.",
+        "disabled": "Applied with `isDisabled`. Turns off pointer events.",
+        "item": "Each section. Receives `classNames.item`.",
+        "itemOpen": "Applied to the open section.",
+        "itemDisabled": "Applied to the disabled section.",
+        "heading": "The `<h3>` wrapping the button. Receives `classNames.heading`.",
+        "trigger": "Header button. Receives `classNames.trigger`.",
+        "icon": "Icon before the title. Receives `classNames.icon`.",
+        "label": "Title and subtitle wrapper.",
+        "title": "Title. Receives `classNames.title`.",
+        "subtitle": "Subtitle. Receives `classNames.subtitle`.",
+        "indicator": "Chevron that rotates when open. Receives `classNames.indicator`.",
+        "panel": "Collapsible panel. Animates with `grid-template-rows`. Receives `classNames.panel`.",
+        "panelInner": "Clips the content during the animation.",
+        "content": "Panel content. Receives `classNames.content`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Accordion's own variables. The dark theme redefines them with a selector of the same specificity, so use `.gem-accordion.your-class` plus a `[data-theme=\"dark\"]` variant.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-accordion-fg": "Title and content color.",
+        "--gem-accordion-muted": "Subtitle, icon and chevron color.",
+        "--gem-accordion-border": "Border and separator color.",
+        "--gem-accordion-bg": "Background of each section.",
+        "--gem-accordion-subtle": "Header background on hover.",
+        "--gem-accordion-radius": "Radius in `connected` and `separated`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Accordion.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Accordion"
+      },
+      "items": {
+        "--gem-color-fg": "Value of `--gem-accordion-fg`.",
+        "--gem-color-fg-muted": "Value of `--gem-accordion-muted`.",
+        "--gem-color-border": "Value of `--gem-accordion-border`.",
+        "--gem-color-bg": "Value of `--gem-accordion-bg`.",
+        "--gem-color-bg-subtle": "Value of `--gem-accordion-subtle`.",
+        "--gem-radius-md": "Value of `--gem-accordion-radius`.",
+        "--gem-space-3": "Gap inside the header and between sections in `separated`.",
+        "--gem-shadow-focus": "Header button focus ring.",
+        "--gem-palette-neutral-{50|300|500}": "Text, subtitle and border in dark theme.",
+        "--gem-font-sans": "Text font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "accordion": {
+        "title": "Accordion",
+        "description": "Root component.",
+        "items": {
+          "items": "Sections to render. See AccordionItem.",
+          "type": "`multiple`: independent sections. `single`: one open at a time.",
+          "value": "Open ids, in controlled mode. With `single` it accepts a single string.",
+          "defaultValue": "Initially open ids, uncontrolled.",
+          "collapsible": "With `single`, allows closing the open section. Ignored with `multiple`.",
+          "variant": "Border style.",
+          "size": "Padding and text size.",
+          "isDisabled": "Disables every section.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `item`, `heading`, `trigger`, `icon`, `title`, `subtitle`, `indicator`, `panel` and `content`.",
+          "onChange": "Called when a section opens or closes, with the open ids and the item that changed.",
+          "onKeyDown": "Called for key presses inside the accordion."
+        }
+      },
+      "item": {
+        "title": "AccordionItem",
+        "description": "Each element of `items`.",
+        "items": {
+          "id": "Stable key. Used in `value`, accessibility ids and `onChange`.",
+          "title": "Header text. Accepts a node.",
+          "subtitle": "Secondary text under the title.",
+          "content": "Panel content.",
+          "icon": "Decorative icon before the title.",
+          "disabled": "Keeps the section closed and non-interactive.",
+          "ariaLabel": "Accessible name of the button when `title` isn't text."
+        }
+      }
+    }
+  }
+}

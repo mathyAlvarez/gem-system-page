@@ -1,0 +1,288 @@
+{
+  "header": {
+    "title": "Empty State",
+    "description": "Lo que se muestra cuando una lista, tabla o búsqueda no tiene resultados. Tiene ícono o ilustración, título, descripción y hasta dos acciones. Pasá botones del design system en `action` y `secondaryAction`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el estado vacío y el código.",
+    "sampleTitle": "Todavía no hay pedidos",
+    "sampleDescription": "Cuando un cliente haga un pedido, va a aparecer acá.",
+    "create": "Nuevo pedido",
+    "import": "Importar"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "`title` y `description` alcanzan. Sin `icon` ni `image`, muestra el ícono de `kind` (por defecto, una carpeta).",
+      "texts": {
+        "title": "Todavía no hay pedidos",
+        "description": "Cuando un cliente haga un pedido, va a aparecer acá."
+      }
+    },
+    "kinds": {
+      "title": "Tipos",
+      "description": "`kind` elige el ícono y su color: `empty` (carpeta, neutro), `search` (lupa, `secondary`) y `filter` (embudo, `tertiary`).",
+      "texts": {
+        "empty": {
+          "title": "No hay archivos",
+          "description": "Subí un archivo para empezar."
+        },
+        "search": {
+          "title": "Sin coincidencias",
+          "description": "Nada coincide con “gem-system”. Probá con otra palabra."
+        },
+        "filter": {
+          "title": "Ninguna fila cumple los filtros",
+          "description": "Quitá el estado o el rango de fechas para ver toda la tabla."
+        }
+      }
+    },
+    "actions": {
+      "title": "Con acciones",
+      "description": "`action` es la acción principal y `secondaryAction` va al lado. Usá `size=\"sm\"` en los botones para que no compitan con el título.",
+      "texts": {
+        "title": "Creá tu primer proyecto",
+        "description": "Los proyectos agrupan tableros, miembros y facturación en un solo lugar.",
+        "create": "Nuevo proyecto",
+        "importLabel": "Importar"
+      }
+    },
+    "filter": {
+      "title": "Filtros sin resultados",
+      "description": "Con `kind=\"filter\"`, ofrecé una acción para limpiar los filtros. Probá el botón: vuelve a mostrar la lista.",
+      "texts": {
+        "title": "Ninguna fila cumple los filtros",
+        "description": "Quitá el estado o el rango de fechas para ver toda la tabla.",
+        "clear": "Limpiar filtros",
+        "restore": "Volver a filtrar",
+        "rows": ["Pedido #1042 · Pagado", "Pedido #1041 · Pendiente", "Pedido #1040 · Enviado"]
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `sm`, `md` (default) y `lg`. Cambia el padding, el espacio, el ícono, el título (`h6`, `h5`, `h4`) y el ancho máximo del texto.",
+      "texts": {
+        "title": "Tamaño",
+        "description": "El ícono y la tipografía siguen al tamaño."
+      }
+    },
+    "start": {
+      "title": "Alineado al inicio",
+      "description": "`align=\"start\"` alinea todo a la izquierda. Sirve en paneles laterales o formularios. `bordered` agrega borde y fondo, y `radius` redondea las esquinas.",
+      "texts": {
+        "title": "No hay notificaciones",
+        "description": "Las notificaciones de facturación y comentarios van a aparecer acá.",
+        "settings": "Abrir configuración"
+      }
+    },
+    "icon": {
+      "title": "Ícono propio",
+      "description": "`icon` reemplaza el ícono de `kind`, pero el fondo sigue el color de `kind`. `hideIcon` lo oculta.",
+      "texts": {
+        "icon": {
+          "title": "Estás al día",
+          "description": "No tenés notificaciones sin leer."
+        },
+        "hidden": {
+          "title": "Sin ícono",
+          "description": "Solo queda el texto."
+        }
+      }
+    },
+    "image": {
+      "title": "Con ilustración",
+      "description": "`image` muestra una ilustración en lugar del ícono. `children` se renderiza debajo de las acciones: sirve para ayudas o links. Si la ilustración es decorativa, pasale `aria-hidden` o `alt=\"\"`.",
+      "texts": {
+        "title": "Este espacio está vacío",
+        "description": "Soltá archivos acá o empezá desde una plantilla.",
+        "create": "Nuevo archivo",
+        "help": "¿Necesitás ayuda? Leé la guía de",
+        "link": "primeros pasos"
+      }
+    },
+    "card": {
+      "title": "Dentro de una card",
+      "description": "`minHeight` fija la altura mínima para ocupar el espacio de una tabla o panel. Un número se toma en píxeles.",
+      "texts": {
+        "title": "No se encontraron facturas",
+        "description": "Cambiá la búsqueda o creá una factura para empezar.",
+        "create": "Nueva factura"
+      }
+    },
+    "search": {
+      "title": "Con búsqueda",
+      "description": "Mostrá el estado vacío cuando la búsqueda no devuelve nada. Borrá o cambiá el texto para ver la lista.",
+      "texts": {
+        "label": "Miembros",
+        "placeholder": "Buscar miembros",
+        "title": "No se encontraron miembros",
+        "description": "Nadie coincide con “{query}”. Invitá a alguien o probá otro nombre.",
+        "invite": "Invitar",
+        "members": ["Amina Costa", "Noah Berg", "Sofía Rahman", "Liam Chen"]
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Soltá tus archivos",
+      "description": "PNG, JPG o PDF de hasta 10 MB.",
+      "action": "Elegir archivos"
+    },
+    "cva": {
+      "muted": {
+        "title": "Sin actividad",
+        "description": "Los cambios del equipo van a aparecer acá."
+      },
+      "danger": {
+        "title": "No pudimos cargar los datos",
+        "description": "Revisá la conexión y volvé a intentar."
+      }
+    },
+    "css": {
+      "title": "Invitá a tu equipo",
+      "description": "Trabajá con otras personas en tus proyectos.",
+      "action": "Invitar"
+    }
+  },
+  "apiLink": "Ver la API completa de EmptyState",
+  "api": {
+    "header": {
+      "title": "EmptyState API",
+      "description": "Referencia de la API de EmptyState de React: props, helper, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "EmptyState"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `hasEmptyStateNode` es la función que decide si una prop tiene contenido."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>EmptyState</code> acepta los atributos de <code>&lt;section&gt;</code> salvo <code>title</code>, que se reemplaza por el título. Van a la raíz junto con <code>ref</code>. <code>style</code> se combina con <code>--gem-empty-state-min-h</code> cuando pasás <code>minHeight</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "status": "La raíz es un <code>&lt;section&gt;</code> con <code>role=\"status\"</code>. Pasá otro <code>role</code> si no querés ese comportamiento.",
+      "live": "<code>status</code> es una región viva: si el estado vacío aparece después de una búsqueda o un filtro, los lectores de pantalla lo anuncian.",
+      "labelledby": "Si hay <code>title</code>, la raíz usa <code>aria-labelledby</code> con el id del título. Podés pasar <code>aria-label</code> o <code>aria-labelledby</code> para cambiarlo.",
+      "heading": "Un <code>title</code> de texto se renderiza como <code>&lt;h3&gt;</code>. Si pasás un nodo, se envuelve en un <code>&lt;div&gt;</code> y no es un encabezado.",
+      "icon": "El ícono tiene <code>aria-hidden</code>.",
+      "image": "El contenedor de <code>image</code> no se oculta. Si la ilustración es decorativa, pasale <code>aria-hidden</code> o <code>alt=\"\"</code>.",
+      "actions": "Usá <code>Button</code> o <code>Link</code> en las acciones para que se puedan enfocar y usar con teclado."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz. Define las variables. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define padding, espacio, ícono y ancho del texto.",
+        "align": "Alineación: `--center` o `--start`.",
+        "kind": "Tipo: `--kind-empty`, `--kind-search` o `--kind-filter`. Define los colores del ícono.",
+        "radius": "Radio: `--radius-sm`, `--radius-md` o `--radius-lg`.",
+        "bordered": "Se aplica con `bordered`. Agrega borde y fondo.",
+        "minHeight": "Se aplica con `minHeight`. Usa `--gem-empty-state-min-h`.",
+        "media": "Contenedor de `image`. Recibe `classNames.media`.",
+        "icon": "Círculo del ícono. Recibe `classNames.icon`.",
+        "content": "Contenedor del título y la descripción. Recibe `classNames.content`.",
+        "title": "Título. Recibe `classNames.title`.",
+        "description": "Descripción. Recibe `classNames.description`.",
+        "actions": "Contenedor de `action` y `secondaryAction`. Recibe `classNames.actions`.",
+        "extra": "Contenedor de `children`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de EmptyState. Las definen las clases de tamaño y tipo, así que para pisarlas usá `.gem-empty-state.tu-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-empty-state-pad": "Padding de la raíz.",
+        "--gem-empty-state-gap": "Espacio entre ícono, texto y acciones.",
+        "--gem-empty-state-icon-size": "Diámetro del círculo del ícono.",
+        "--gem-empty-state-copy": "Ancho máximo del texto y de `children`.",
+        "--gem-empty-state-icon-bg": "Fondo del círculo del ícono.",
+        "--gem-empty-state-icon-fg": "Color del ícono.",
+        "--gem-empty-state-min-h": "Altura mínima. La define `minHeight`; por defecto `16rem` si la clase está."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa EmptyState.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en EmptyState"
+      },
+      "items": {
+        "--gem-color-fg": "Color del texto y del título.",
+        "--gem-color-fg-muted": "Color de la descripción y del ícono en `empty`.",
+        "--gem-color-bg": "Fondo con `bordered`.",
+        "--gem-color-border": "Borde con `bordered`.",
+        "--gem-color-neutral-100": "Fondo del ícono en `empty`.",
+        "--gem-color-secondary-{100|700}": "Fondo y color del ícono en `search`.",
+        "--gem-color-tertiary-{100|700}": "Fondo y color del ícono en `filter`.",
+        "--gem-space-{2|3|4|5}": "Espacios según el tamaño.",
+        "--gem-radius-{sm|md|lg|full}": "Radio de la raíz y círculo del ícono.",
+        "--gem-font-sans": "Fuente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos de `<section>` (ver Herencia).",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "emptyState": {
+        "title": "EmptyState",
+        "description": "El componente.",
+        "items": {
+          "title": "Título. Un texto se renderiza como `<h3>`.",
+          "description": "Texto debajo del título.",
+          "kind": "Ícono por defecto y su color cuando no hay `icon` ni `image`.",
+          "icon": "Reemplaza el ícono de `kind`.",
+          "hideIcon": "Oculta el círculo del ícono.",
+          "image": "Ilustración sobre el texto. Si está, no se muestra el ícono.",
+          "action": "Acción principal, normalmente un `Button`.",
+          "secondaryAction": "Acción secundaria, al lado de `action`.",
+          "children": "Contenido extra debajo de las acciones, como ayudas o links.",
+          "size": "Densidad: padding, ícono y tipografía.",
+          "align": "Alineación del contenido.",
+          "bordered": "Agrega borde y fondo.",
+          "radius": "Redondeo de las esquinas. Se nota con `bordered`.",
+          "minHeight": "Altura mínima. Un número se toma en píxeles.",
+          "role": "Rol de la raíz.",
+          "aria-labelledby": "Por defecto, el id del título si hay `title`.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `media`, `icon`, `content`, `title`, `description` y `actions`.",
+          "ref": "Ref de la raíz."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Funciones exportadas.",
+        "items": {
+          "hasNode": "`false` para `null`, `undefined`, booleanos y textos vacíos. Es la regla que usa EmptyState para decidir qué partes mostrar."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.toast-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 100%;
+  max-width: 24rem;
+}
+
+.toast-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.toast-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono, monospace);
+  font-size: 0.75rem;
+}
+
+.toast-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 100%;
+}
+
+.toast-host {
+  position: relative;
+  width: 100%;
+  min-height: 16rem;
+  overflow: hidden;
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+}
+
+.toast-custom {
+  display: flex;
+  align-items: center;
+  gap: var(--gem-space-3);
+  width: 100%;
+}
+
+.toast-custom__copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 0.8125rem;
+}
+
+.toast-custom__name {
+  font-weight: 650;
+}

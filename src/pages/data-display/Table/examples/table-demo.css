@@ -1,0 +1,27 @@
+.table-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  min-width: 0;
+}
+
+.table-demo--narrow {
+  width: min(36rem, 100%);
+}
+
+.table-demo__status {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.table-demo__actions {
+  display: inline-flex;
+  gap: var(--gem-space-1);
+}
+
+.table-demo__search {
+  width: min(20rem, 100%);
+}

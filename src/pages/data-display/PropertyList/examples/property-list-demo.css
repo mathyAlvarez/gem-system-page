@@ -1,0 +1,31 @@
+.property-list-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: min(44rem, 100%);
+  min-width: 0;
+}
+
+.property-list-demo--narrow {
+  width: min(24rem, 100%);
+}
+
+.property-list-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.property-list-value-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-1) var(--gem-space-2);
+  min-width: 0;
+}
+
+.property-list-mono {
+  font-family: var(--gem-font-mono, monospace);
+  font-size: 0.8125rem;
+}

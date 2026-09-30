@@ -1,7 +1,6 @@
 import { useSyncExternalStore } from "react";
 import { Col, Row } from "@gem-org/gem-system";
 import { GridCell } from "./GridCell.tsx";
-import "./grid-col-fix.css";
 
 const steps = [
   { query: "(min-width: 1024px)", label: "lg → span 4" },

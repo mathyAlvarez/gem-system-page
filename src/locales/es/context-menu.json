@@ -1,0 +1,292 @@
+{
+  "header": {
+    "title": "Context Menu",
+    "description": "Menú de acciones que se abre con clic derecho sobre un elemento, en lugar del menú del navegador. En pantallas táctiles se abre manteniendo presionado, y con el teclado con Shift+F10 o la tecla de menú. Sirve para acciones rápidas sobre algo concreto: un archivo, una fila o una tarjeta. Como no se ve a simple vista, no pongas ahí acciones que solo existan en este menú: ofrecelas también en un botón o un Dropdown Menu."
+  },
+  "demo": {
+    "menuLabel": "Acciones del documento",
+    "lastAction": "Última acción",
+    "none": "ninguna",
+    "hint": "Hacé clic derecho acá, o mantené presionado en una pantalla táctil.",
+    "items": {
+      "edit": "Editar",
+      "duplicate": "Duplicar",
+      "share": "Compartir",
+      "download": "Descargar",
+      "guide": "Evento contextmenu (MDN)",
+      "delete": "Eliminar"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y hacé clic derecho en la superficie para ver el resultado. Con el foco en la superficie también podés usar Shift+F10.",
+    "surface": "Superficie de prueba",
+    "size": "size",
+    "closeOnLeave": "closeOnLeave",
+    "longPressMs": "longPressMs",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Envolvé el elemento con `ContextMenu` y pasá las opciones en `items`. El menú aparece donde hiciste clic, se queda dentro del área del elemento y se cierra al elegir, con Escape, al hacer clic afuera o cuando el puntero sale del área. `onAction` recibe el `id` elegido. Los items son los mismos que en Dropdown Menu: `icon`, `shortcut`, `href` y separadores.",
+      "texts": {
+        "title": "Borrador de factura",
+        "hint": "Clic derecho para editar, compartir o eliminar."
+      }
+    },
+    "card": {
+      "title": "Sobre una tarjeta",
+      "description": "Podés envolver cualquier bloque, como una `Card`. El menú del navegador se reemplaza solo en ese elemento; en el resto de la página sigue funcionando normal. `className` va al contenedor que envuelve al elemento.",
+      "texts": {
+        "menuLabel": "Acciones del proyecto",
+        "title": "Inventario del depósito",
+        "subtitle": "Actualizado hace 2 horas",
+        "body": "Stock, responsables y tareas pendientes. Hacé clic derecho en la tarjeta para ver las acciones del documento."
+      }
+    },
+    "disabledDanger": {
+      "title": "Deshabilitados y destructivos",
+      "description": "`disabled` deja el item visible pero apagado, y el teclado lo saltea. `description` agrega una línea de ayuda. `danger` pinta el item en rojo para acciones destructivas; conviene separarlo del resto.",
+      "texts": {
+        "title": "Proyecto bloqueado",
+        "hint": "Archivar está deshabilitado y eliminar es destructivo.",
+        "edit": "Editar",
+        "archive": "Archivar",
+        "archiveHint": "No disponible en el plan de prueba",
+        "deleteProject": "Eliminar proyecto"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el padding y el texto de los items: `sm`, `md` (por defecto) o `lg`. Probá cada superficie por separado."
+    },
+    "selection": {
+      "title": "Casillas y opciones",
+      "description": "`type: \"checkbox\"` agrega una opción que se activa y desactiva, y `type: \"radio-group\"` un grupo de opciones excluyentes. El menú queda abierto después de cambiarlas. `type: \"label\"` agrega un título de sección.",
+      "texts": {
+        "title": "Lienzo",
+        "hint": "Clic derecho para cambiar la vista.",
+        "menuLabel": "Opciones de vista",
+        "section": "Vista",
+        "grid": "Mostrar cuadrícula",
+        "density": "Densidad",
+        "compact": "Compacta",
+        "comfortable": "Cómoda",
+        "spacious": "Amplia",
+        "on": "activada",
+        "off": "desactivada"
+      }
+    },
+    "submenu": {
+      "title": "Submenú",
+      "description": "`type: \"submenu\"` agrupa opciones en un segundo nivel. Se abre al pasar el mouse o con la flecha derecha, y se cierra con la flecha izquierda o Escape. Como el menú se cierra al salir del área, el submenú tiene que quedar dentro del elemento: usalo en superficies anchas.",
+      "texts": {
+        "title": "Integrante del equipo",
+        "hint": "Clic derecho para ver el perfil o compartir.",
+        "menuLabel": "Menú de la cuenta",
+        "profile": "Perfil",
+        "share": "Compartir",
+        "copyLink": "Copiar enlace",
+        "email": "Enviar por correo",
+        "exportPdf": "Exportar PDF",
+        "signOut": "Cerrar sesión"
+      }
+    },
+    "disabledTarget": {
+      "title": "Elemento deshabilitado",
+      "description": "Con `isDisabled` no se abre el menú propio y el clic derecho muestra el menú normal del navegador. El elemento deja de ser enfocable y recibe `aria-disabled`.",
+      "texts": {
+        "title": "Archivo de solo lectura",
+        "hint": "El clic derecho abre el menú del navegador."
+      }
+    },
+    "multiple": {
+      "title": "Varios elementos",
+      "description": "Cada elemento puede tener su propio menú con acciones distintas. Al abrir otro, el anterior se cierra. Si el puntero sale del elemento el menú se cierra, aunque el panel quede encima de un vecino.",
+      "texts": {
+        "lastAction": "Última acción",
+        "none": "ninguna",
+        "file": {
+          "title": "Informe trimestral.pdf",
+          "hint": "Abrir, renombrar o descargar.",
+          "menuLabel": "Acciones del archivo",
+          "open": "Abrir",
+          "rename": "Renombrar",
+          "download": "Descargar",
+          "delete": "Eliminar archivo"
+        },
+        "folder": {
+          "title": "Facturas",
+          "hint": "Abrir, crear un archivo o compartir.",
+          "menuLabel": "Acciones de la carpeta",
+          "open": "Abrir carpeta",
+          "newFile": "Nuevo archivo",
+          "share": "Compartir"
+        },
+        "message": {
+          "title": "Mensaje de Finanzas",
+          "hint": "Responder, destacar o eliminar.",
+          "menuLabel": "Acciones del mensaje",
+          "reply": "Responder",
+          "forward": "Reenviar",
+          "star": "Destacar",
+          "delete": "Eliminar"
+        },
+        "person": {
+          "title": "Alex Rivera",
+          "hint": "Menú con un submenú para compartir.",
+          "menuLabel": "Acciones de la persona",
+          "profile": "Ver perfil",
+          "message": "Enviar mensaje",
+          "share": "Compartir",
+          "copyLink": "Copiar enlace",
+          "emailCard": "Enviar contacto por correo"
+        }
+      }
+    },
+    "list": {
+      "title": "En filas de una lista",
+      "description": "En elementos chicos, como las filas de una lista, el menú es más alto que la fila y queda en parte afuera. Con `closeOnLeave={false}` no se cierra al mover el puntero hacia el panel; se cierra al elegir, con Escape o al hacer clic afuera. Mientras está abierto, la fila tiene `aria-expanded=\"true\"`, que podés usar para resaltarla.",
+      "texts": {
+        "menuLabel": "Acciones",
+        "files": ["Presupuesto 2026.xlsx", "Notas de la reunión.docx", "Logo final.svg"],
+        "open": "Abrir",
+        "rename": "Renombrar",
+        "delete": "Eliminar",
+        "lastAction": "Última acción",
+        "none": "ninguna"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Context Menu",
+  "api": {
+    "header": {
+      "title": "Context Menu API",
+      "description": "Referencia de la API del componente ContextMenu de React: props, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Context Menu"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>), salvo <code>children</code> y <code>onChange</code>, y los pasa al contenedor que envuelve al elemento, no al panel. Lo mismo pasa con <code>className</code>. Para el panel usá <code>classNames.menu</code>. <code>classNames</code> acepta <code>root</code>, <code>target</code> (los dos van al contenedor), <code>menu</code>, <code>item</code>, <code>label</code> y <code>separator</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "target": "El contenedor es enfocable (<code>tabIndex=0</code>) y tiene <code>aria-haspopup=\"menu\"</code>, <code>aria-expanded</code> y <code>aria-controls</code>.",
+      "open": "Se abre con clic derecho, con <code>Shift+F10</code> o la tecla de menú cuando el elemento tiene el foco, y manteniendo presionado en pantallas táctiles.",
+      "menu": "El panel tiene <code>role=\"menu\"</code> con <code>menuLabel</code> como <code>aria-label</code>, y los items los mismos roles que en Dropdown Menu.",
+      "keyboard": "Las flechas recorren los items, <code>Home</code> y <code>End</code> van a los extremos, <code>Enter</code> o <code>Espacio</code> eligen, <code>Escape</code> cierra y escribir una letra salta al item que empieza así.",
+      "focus": "Al abrirse con mouse o teclado, el foco pasa al panel; al cerrar con Escape o al elegir, vuelve al elemento. Tab cierra el menú.",
+      "leave": "Con <code>closeOnLeave</code> (por defecto) el menú se cierra cuando el puntero sale del área del elemento.",
+      "touch": "Mantener presionado abre el menú a los 500 ms (<code>longPressMs</code>). Si el dedo se mueve más de 10 px, se cancela. En táctil el foco no pasa al panel, para no abrir el teclado virtual.",
+      "labels": "<code>menuLabel</code> viene en inglés por defecto (<code>\"Actions\"</code>). Pasalo traducido. Como el menú no se ve, ofrecé las mismas acciones también en un control visible."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Context Menu usa el mismo panel que Dropdown Menu, así que comparte sus clases. El panel se renderiza en `document.body`, fuera del elemento, así que no lo alcanzan los selectores que dependen de él.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor que envuelve al elemento. Recibe `className`, `classNames.root` y `classNames.target`. Muestra el anillo de foco.",
+        "panel": "Panel del menú (`role=\"menu\"`). Recibe `classNames.menu`.",
+        "ready": "Se aplica cuando el panel ya está posicionado. Antes queda invisible.",
+        "size": "Se aplica al panel según `size`.",
+        "item": "Cada item. Recibe `classNames.item`.",
+        "active": "Item activo, con el mouse encima o elegido con el teclado.",
+        "disabled": "Item deshabilitado.",
+        "danger": "Item con `danger`.",
+        "icon": "Contenedor del `icon`.",
+        "labelText": "Texto del item. Se corta con puntos suspensivos.",
+        "description": "Texto de `description`.",
+        "shortcut": "Texto de `shortcut`.",
+        "check": "Marca de las casillas y opciones.",
+        "chevron": "Flecha de los submenús.",
+        "section": "Títulos de sección y de grupos. Recibe `classNames.label`.",
+        "separator": "Separador. Recibe `classNames.separator`.",
+        "submenu": "Panel del submenú."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Context Menu no tiene variables propias: usa directamente los tokens de gem-system. Para cambiar colores en un solo menú, redefiní esos tokens en una clase y pasala en `classNames.menu`."
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Context Menu.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Context Menu"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo del panel y de los submenús.",
+        "--gem-color-bg-subtle": "Fondo del item activo.",
+        "--gem-color-border": "Borde del panel y separadores.",
+        "--gem-color-fg": "Texto de los items.",
+        "--gem-color-fg-muted": "Descripciones, atajos, títulos de sección y flechas.",
+        "--gem-color-primary-600": "Marca de casillas y opciones.",
+        "--gem-color-error-500": "Fondo del item destructivo activo.",
+        "--gem-color-error-600": "Texto de los items destructivos.",
+        "--gem-radius-sm": "Bordes redondeados de los items.",
+        "--gem-radius-md": "Bordes redondeados del panel.",
+        "--gem-shadow-lg": "Sombra del panel.",
+        "--gem-shadow-focus": "Anillo de foco del elemento.",
+        "--gem-z-dropdown": "Capa del panel.",
+        "--gem-font-sans": "Fuente del componente.",
+        "--gem-font-mono": "Fuente de los atajos."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers. Los tipos de item son alias de los de Dropdown Menu."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del contenedor.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "contextMenu": {
+        "title": "ContextMenu",
+        "description": "Props del componente principal.",
+        "items": {
+          "items": "Entradas del menú: acciones, separadores, títulos, casillas, opciones y submenús.",
+          "children": "Elemento que abre el menú con clic derecho.",
+          "menuLabel": "Nombre accesible del panel (`aria-label`).",
+          "size": "Tamaño de los items.",
+          "isDisabled": "No abre el menú propio y deja el del navegador.",
+          "closeOnLeave": "Cierra el menú cuando el puntero sale del área del elemento.",
+          "longPressMs": "Milisegundos que hay que mantener presionado en táctil para abrirlo. Con `0` o `false` se desactiva.",
+          "open": "Si el menú está abierto. Modo controlado.",
+          "defaultOpen": "Si empieza abierto. Modo no controlado.",
+          "className": "Clases extra para el contenedor.",
+          "classNames": "Clases por parte: `root`, `target`, `menu`, `item`, `label` y `separator`.",
+          "onOpenChange": "Se llama al abrir o cerrar. Recibe el nuevo estado.",
+          "onAction": "Se llama al elegir una acción. Recibe su `id`.",
+          "onCheckedChange": "Se llama al cambiar una casilla. Recibe el `id` y el nuevo valor.",
+          "onRadioChange": "Se llama al elegir una opción. Recibe el `id` del grupo y el de la opción."
+        }
+      },
+      "items": {
+        "title": "Tipos de item",
+        "description": "`ContextMenuItem` es el mismo tipo que `DropdownMenuItem`: acciones, casillas, grupos de opciones, submenús, separadores y títulos, con las mismas props.",
+        "link": "Ver las props de cada item en la API de Dropdown Menu"
+      }
+    }
+  }
+}

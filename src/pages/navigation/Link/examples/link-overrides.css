@@ -1,0 +1,12 @@
+.gem-link.link-branded {
+  --gem-link-fg: var(--gem-palette-tertiary-600);
+  --gem-link-fg-hover: var(--gem-palette-tertiary-700);
+  --gem-link-fg-active: var(--gem-palette-tertiary-800);
+  text-decoration-thickness: 2px;
+}
+
+[data-theme="dark"] .gem-link.link-branded {
+  --gem-link-fg: var(--gem-palette-tertiary-300);
+  --gem-link-fg-hover: var(--gem-palette-tertiary-200);
+  --gem-link-fg-active: var(--gem-palette-tertiary-100);
+}

@@ -1,0 +1,43 @@
+.timeline-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: min(28rem, 100%);
+  min-width: 0;
+}
+
+.timeline-demo--wide {
+  width: min(44rem, 100%);
+}
+
+.timeline-demo__label {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.timeline-demo__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.timeline-demo__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.timeline-demo__time {
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gem-timeline__item--loading .gem-timeline__marker {
+    animation: none;
+  }
+}

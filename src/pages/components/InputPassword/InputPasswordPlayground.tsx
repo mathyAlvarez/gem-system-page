@@ -19,6 +19,7 @@ const maskOptions = ["native", "●", "*"];
 
 type Flags = {
   showToggle: boolean;
+  clearable: boolean;
   isInvalid: boolean;
   isDisabled: boolean;
   isRequired: boolean;
@@ -26,6 +27,7 @@ type Flags = {
 
 const flagDefaults: Flags = {
   showToggle: true,
+  clearable: false,
   isInvalid: false,
   isDisabled: false,
   isRequired: false,

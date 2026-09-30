@@ -1,0 +1,209 @@
+{
+  "header": {
+    "title": "Link",
+    "description": "Text link to go to another page or site. It renders a native `<a>` with hover, focus and active states, and detects external links on its own. Use it to navigate; for actions that change something on the page (save, open a modal) use `Button`."
+  },
+  "demo": {
+    "guide": "Read the guide",
+    "externalLabel": "Opens in a new tab",
+    "underline": {
+      "always": "Always underlined",
+      "hover": "Underline on hover",
+      "none": "No underline"
+    },
+    "sizes": {
+      "sm": "Small",
+      "md": "Medium",
+      "lg": "Large"
+    },
+    "docs": "Open the <a> documentation",
+    "home": "Back to home",
+    "continue": "Continue",
+    "download": "Download report",
+    "unavailable": "Unavailable link",
+    "nav": {
+      "home": "Home",
+      "overview": "Overview",
+      "api": "API"
+    },
+    "prose": {
+      "before": "gem-system treats links as navigation, not buttons. Use ",
+      "tokens": "design tokens",
+      "middle": " for color and type, and keep the ",
+      "name": "accessible name",
+      "after": " inside the sentence."
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result and the code instantly. With an external `href` the new-tab icon appears. On this page, internal demo links don't navigate.",
+    "href": "href",
+    "tone": "tone",
+    "size": "size",
+    "underline": "underline",
+    "icon": "icon",
+    "isDisabled": "isDisabled",
+    "isCurrent": "isCurrent"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "It only needs `href` and some text. By default it underlines on hover and shows a ring on keyboard focus. In your app, `href` is the destination URL; on this page, internal demo links don't navigate."
+    },
+    "underline": {
+      "title": "Underline",
+      "description": "`underline` sets when it is underlined: `always`, `hover` (default) or `none`. Inside a paragraph use `always`, so the link doesn't rely on color alone to stand out from the text."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` changes the color: `primary` (default), `secondary`, `tertiary`, the status ones (`danger`, `success`, `warning`, `info`), `neutral` and `muted`. Each tone has a hover color and a pressed color, and its own values in the dark theme."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the text size: `sm` (13px), `md` (14px, default) or `lg` (16px). Inside a paragraph the surrounding text sets the size, so keep them matched."
+    },
+    "external": {
+      "title": "External links",
+      "description": "URLs starting with `http://`, `https://` or `//` are detected as external: they open in a new tab with `rel=\"noopener noreferrer\"` and show an icon with hidden text for screen readers (`externalLabel`). With `isExternal={false}` they open in the same tab without the icon. `showExternalIcon` only controls the icon."
+    },
+    "icons": {
+      "title": "With icons",
+      "description": "`leftIcon` and `rightIcon` add icons before or after the text. They are decorative (`aria-hidden`). On external links, the new-tab icon replaces `rightIcon`. Since it is an `<a>`, it accepts native attributes like `download`."
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` dims it, blocks the click and removes it from the tab order, but it stays on the page with `aria-disabled`. If the destination doesn't exist, it's better not to render the link or to show plain text."
+    },
+    "current": {
+      "title": "Current page",
+      "description": "`isCurrent` marks the link to the page you are already on: it adds `aria-current=\"page\"`, makes it bold and removes the underline. Useful for menus and navigation lists."
+    },
+    "paragraph": {
+      "title": "Inside a paragraph",
+      "description": "The link is `inline-flex`, so it fits within the text. Write text that makes sense on its own (\"design tokens\", not \"here\"), because screen readers can list links out of context."
+    },
+    "router": {
+      "title": "With a router",
+      "description": "Link always renders an `<a>` and knows nothing about routers. To navigate without reloading, wrap it in your own component that intercepts the click and calls the router, while letting Ctrl/Cmd + click open another tab. This example uses React Router and actually navigates to the Link API.",
+      "label": "See the Link API"
+    }
+  },
+  "apiLink": "See the full Link API",
+  "api": {
+    "header": {
+      "title": "Link API",
+      "description": "API reference for the Link React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Link"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of the <code>&lt;a&gt;</code> (<code>AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</code>), like <code>download</code>, <code>hrefLang</code> or <code>onClick</code>, and passes them to that element. <code>classNames</code> adds classes to each part: <code>root</code>, <code>label</code> and <code>icon</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "native": "It is a native <code>&lt;a href&gt;</code>: it focuses with Tab, activates with Enter and the browser offers to open it in another tab.",
+      "external": "External links include hidden text with <code>externalLabel</code>, so screen readers announce that a new tab opens.",
+      "newTab": "With <code>target=\"_blank\"</code> it adds <code>rel=\"noopener noreferrer\"</code>, on top of any <code>rel</code> you pass.",
+      "current": "<code>isCurrent</code> adds <code>aria-current=\"page\"</code>.",
+      "disabled": "<code>isDisabled</code> adds <code>aria-disabled</code>, <code>tabIndex=-1</code> and blocks click and Enter.",
+      "icons": "Icons have <code>aria-hidden</code>; the accessible name is the link text.",
+      "focus": "Keyboard focus shows a ring with <code>:focus-visible</code>.",
+      "purpose": "Use text that describes the destination. If the link is only an icon, pass <code>aria-label</code>.",
+      "labels": "<code>externalLabel</code> defaults to English (<code>\"Opens in a new tab\"</code>). Pass it translated if your app uses another language."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "`<a>` element. Receives `className` and `classNames.root`. Defines the Link variables.",
+        "tone": "Applied based on `tone`. Sets the colors.",
+        "size": "Applied based on `size`. Sets the text size.",
+        "underline": "Applied based on `underline`: `always`, `hover` or `none`.",
+        "external": "Applied when the link is external.",
+        "current": "Applied with `isCurrent`. Bold and without underline.",
+        "disabled": "Applied with `isDisabled`. Lowers the opacity and removes the underline.",
+        "label": "Link text. Receives `classNames.label`.",
+        "icon": "Container of each icon. Receives `classNames.icon`.",
+        "sr": "Hidden `externalLabel` text, only for screen readers."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They are defined on `.gem-link` and each tone gives them other values. None are written inline, so you can change them from your own class (`.gem-link.my-class`) or with Tailwind utilities.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-link-fg": "Link color.",
+        "--gem-link-fg-hover": "Color on hover.",
+        "--gem-link-fg-active": "Color while pressed."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Link.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Link"
+      },
+      "items": {
+        "--gem-color-primary-600": "Default value of `--gem-link-fg`.",
+        "--gem-color-primary-700": "Default value of `--gem-link-fg-hover`.",
+        "--gem-color-primary-800": "Default value of `--gem-link-fg-active`.",
+        "--gem-color-{tone}-600": "Each tone uses its scale: 600 normal, 700 hover and 800 active. The dark theme uses the light palette (300, 200 and 100).",
+        "--gem-color-fg-muted": "Color of the `muted` tone.",
+        "--gem-color-fg": "Hover of the `muted` tone.",
+        "--gem-radius-sm": "Rounded corners of the focus ring.",
+        "--gem-shadow-focus": "Focus ring.",
+        "--gem-font-sans": "Component font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the `<a>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "href": "Destination URL.",
+      "children": "Link text.",
+      "tone": "Link color.",
+      "size": "Text size.",
+      "underline": "When it is underlined.",
+      "leftIcon": "Icon before the text.",
+      "rightIcon": "Icon after the text. Not shown when the external icon appears.",
+      "isExternal": "Opens it in a new tab with a safe `rel`. Defaults to `true` for `http(s)` URLs or with `target=\"_blank\"`.",
+      "showExternalIcon": "Shows the new-tab icon. Follows `isExternal` by default.",
+      "externalLabel": "Hidden text next to the external icon.",
+      "isDisabled": "Blocks navigation and removes it from the tab order.",
+      "isCurrent": "Marks the current page with `aria-current=\"page\"`.",
+      "target": "Where it opens. If omitted, it is `_blank` for external links.",
+      "rel": "Relationship with the destination. With `_blank`, `noopener noreferrer` is added.",
+      "className": "Extra classes for the `<a>`.",
+      "classNames": "Classes per part: `root`, `label` and `icon`.",
+      "onClick": "Called on click. Not called when disabled."
+    }
+  }
+}

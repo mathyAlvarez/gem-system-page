@@ -83,7 +83,7 @@
     },
     "withRow": {
       "title": "Flex with Row",
-      "description": "Flex and Grid work together: Flex builds the header row (title and actions, with `wrap` for narrow screens) and `Row` with `Col` splits the content into columns. The Grid page explains the CSS that per-breakpoint spans need.",
+      "description": "Flex and Grid work together: Flex builds the header row (title and actions, with `wrap` for narrow screens) and `Row` with `Col` splits the content into columns. From 768px, filters span 4 columns and results span 8.",
       "texts": {
         "title": "Inventory",
         "filter": "Filter",

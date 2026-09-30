@@ -47,6 +47,9 @@ export const otpInputProps = [
   { name: "onComplete", type: "(value: string) => void", defaultValue: "—" },
   { name: "onFocus", type: "FocusEventHandler<HTMLDivElement>", defaultValue: "—" },
   { name: "onBlur", type: "FocusEventHandler<HTMLDivElement>", defaultValue: "—" },
+  { name: "clearable", type: "boolean", defaultValue: "false" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "onInfoClick", type: "MouseEventHandler<HTMLButtonElement>", defaultValue: "—" },
 ] as const;
 
@@ -54,6 +57,7 @@ const messageTones = ["error", "primary", "success", "warning", "info"] as const
 
 export const otpInputCssClasses = [
   { name: ".gem-otp-input", rule: "root" as const },
+  { name: ".gem-field-clear", rule: "clear" as const },
   { name: ".gem-otp-input__label", rule: "label" as const },
   { name: ".gem-otp-input__required", rule: "required" as const },
   { name: ".gem-otp-input__field", rule: "field" as const },

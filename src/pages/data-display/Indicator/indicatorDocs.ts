@@ -1,0 +1,73 @@
+export const indicatorProps = [
+  { name: "children", type: "ReactNode", defaultValue: "—" },
+  {
+    name: "tone",
+    type: '"primary" | "secondary" | "tertiary" | "success" | "warning" | "error" | "info" | "neutral"',
+    defaultValue: '"tertiary"',
+  },
+  { name: "variant", type: '"ribbon" | "fold" | "flag"', defaultValue: '"ribbon"' },
+  { name: "size", type: '"sm" | "md" | "lg"', defaultValue: '"md"' },
+  { name: "radius", type: '"none" | "sm" | "md" | "lg" | "full"', defaultValue: '"md"' },
+  {
+    name: "placement",
+    type: '"top-start" | "top-end" | "bottom-start" | "bottom-end"',
+    defaultValue: '"top-end"',
+  },
+  { name: "offset", type: "number", defaultValue: "0" },
+  { name: "label", type: "ReactNode", defaultValue: "—" },
+  { name: "textStyle", type: "TextStyleName", defaultValue: "—" },
+  { name: "icon", type: "ReactNode", defaultValue: "<Star />" },
+  { name: "block", type: "boolean", defaultValue: "false" },
+  { name: "isInvisible", type: "boolean", defaultValue: "false" },
+  { name: "role", type: "AriaRole", defaultValue: '"img"' },
+  { name: "aria-label", type: "string", defaultValue: "label" },
+  { name: "className", type: "string", defaultValue: "—" },
+  { name: "classNames", type: "IndicatorClassNames", defaultValue: "—" },
+  { name: "ref", type: "Ref<HTMLDivElement>", defaultValue: "—" },
+] as const;
+
+export const indicatorCssClasses = [
+  { name: ".gem-indicator", rule: "root" },
+  { name: ".gem-indicator--tertiary", rule: "tone" },
+  { name: ".gem-indicator--ribbon", rule: "variant" },
+  { name: ".gem-indicator--md", rule: "size" },
+  { name: ".gem-indicator--radius-md", rule: "radius" },
+  { name: ".gem-indicator--top-end", rule: "placement" },
+  { name: ".gem-indicator--block", rule: "block" },
+  { name: ".gem-indicator--has-label", rule: "hasLabel" },
+  { name: ".gem-indicator__surface", rule: "surface" },
+  { name: ".gem-indicator__layer", rule: "layer" },
+  { name: ".gem-indicator__mark", rule: "mark" },
+  { name: ".gem-indicator__content", rule: "content" },
+  { name: ".gem-indicator__icon", rule: "icon" },
+  { name: ".gem-indicator__label", rule: "label" },
+  { name: ".gem-indicator__label--token", rule: "labelToken" },
+  { name: ".gem-indicator__slot", rule: "slot" },
+] as const;
+
+export const indicatorCssVariables = [
+  "--gem-indicator-bg",
+  "--gem-indicator-fg",
+  "--gem-indicator-offset",
+  "--gem-indicator-radius",
+  "--gem-indicator-ribbon",
+  "--gem-indicator-inset",
+  "--gem-indicator-overhang",
+  "--gem-indicator-fold",
+  "--gem-indicator-flag-h",
+  "--gem-indicator-pad",
+  "--gem-indicator-font",
+  "--gem-indicator-icon",
+  "--gem-indicator-gap",
+] as const;
+
+export const indicatorTokens = [
+  "--gem-color-{primary|secondary}-600",
+  "--gem-color-tertiary-500",
+  "--gem-color-{success|warning|error|info}-solid",
+  "--gem-color-neutral-700",
+  "--gem-palette-neutral-{0|950}",
+  "--gem-radius-{none|sm|md|lg|full}",
+  "--gem-shadow-sm",
+  "--gem-font-sans",
+] as const;

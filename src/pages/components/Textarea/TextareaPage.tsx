@@ -35,6 +35,8 @@ import { TextareaSizes } from "./examples/TextareaSizes.tsx";
 import sizesCode from "./examples/TextareaSizes.tsx?raw";
 import { VariantTextareas } from "./examples/VariantTextarea.tsx";
 import variantCode from "./examples/VariantTextarea.tsx?raw";
+import { ClearableTextarea } from "./examples/ClearableTextarea.tsx";
+import clearableCode from "./examples/ClearableTextarea.tsx?raw";
 import "./TextareaPage.scss";
 
 type StoryId =
@@ -46,6 +48,7 @@ type StoryId =
   | "withCounter"
   | "counterOnly"
   | "noResize"
+  | "clearable"
   | "error"
   | "disabled"
   | "sizes"
@@ -110,6 +113,12 @@ export function TextareaPage() {
       file: "NoResizeTextarea.tsx",
       code: noResizeCode,
       preview: <NoResizeTextarea {...t("stories.noResize.texts", { returnObjects: true })} />,
+    },
+    {
+      id: "clearable",
+      file: "ClearableTextarea.tsx",
+      code: clearableCode,
+      preview: <ClearableTextarea {...t("stories.clearable.texts", { returnObjects: true })} />,
     },
     {
       id: "error",

@@ -1,0 +1,320 @@
+{
+  "header": {
+    "title": "Property List",
+    "description": "Pares de clave y valor compactos, con semántica de `<dl>`. Sirve para mostrar detalles de un pedido, una cuenta o una configuración. Las filas se arman con `items` o con `PropertyList.Item`."
+  },
+  "common": {
+    "shortRows": [
+      { "key": "plan", "label": "Plan", "children": "Pro" },
+      { "key": "seats", "label": "Licencias", "children": "12" },
+      { "key": "renewal", "label": "Renovación", "children": "1 de marzo de 2027" }
+    ],
+    "edit": "Editar"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver la lista y el código. Por debajo de 40rem todas las columnas se apilan en una."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasá `title` e `items`. Cada item tiene `label` (el término) y `children` (el valor). Por defecto las filas están divididas y el label termina en dos puntos.",
+      "texts": {
+        "title": "Envío",
+        "items": [
+          { "key": "order", "label": "Pedido", "children": "#GEM-10492" },
+          { "key": "status", "label": "Estado", "children": "En camino" },
+          { "key": "carrier", "label": "Transportista", "children": "Correo Gem" },
+          { "key": "eta", "label": "Llegada estimada", "children": "3 de octubre de 2026" }
+        ]
+      }
+    },
+    "columns": {
+      "title": "Columnas",
+      "description": "`columns` reparte las filas en una grilla de 1 a 6 columnas. `span` hace que un item ocupe más de una columna; nunca supera `columns`.",
+      "texts": {
+        "title": "Cuenta",
+        "items": [
+          { "key": "name", "label": "Nombre", "children": "Ada Lovelace" },
+          { "key": "email", "label": "Email", "children": "ada@gem.org" },
+          { "key": "role", "label": "Rol", "children": "Administradora" },
+          { "key": "team", "label": "Equipo", "children": "Plataforma" },
+          { "key": "address", "label": "Dirección", "children": "Av. Motor Analítico 12, Londres", "span": 2 }
+        ]
+      }
+    },
+    "bordered": {
+      "title": "Con borde",
+      "description": "`bordered` agrega un borde, fondo y padding, y separa el encabezado. Con `divided` las celdas se marcan con líneas internas.",
+      "texts": {
+        "title": "Factura",
+        "items": [
+          { "key": "number", "label": "Número", "children": "FAC-2026-0087" },
+          { "key": "issued", "label": "Emitida", "children": "15 de septiembre de 2026" },
+          { "key": "due", "label": "Vence", "children": "15 de octubre de 2026" },
+          { "key": "total", "label": "Total", "children": "USD 1.240,00" }
+        ]
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`layout=\"vertical\"` pone el label arriba del valor. Queda mejor sin dos puntos: `colon={false}`.",
+      "texts": {
+        "title": "Perfil",
+        "items": [
+          { "key": "name", "label": "Nombre", "children": "Grace Hopper" },
+          { "key": "position", "label": "Puesto", "children": "Ingeniera principal" },
+          { "key": "location", "label": "Ubicación", "children": "Nueva York" },
+          { "key": "timezone", "label": "Zona horaria", "children": "GMT-4" },
+          { "key": "language", "label": "Idioma", "children": "Inglés" },
+          { "key": "since", "label": "Miembro desde", "children": "2019" }
+        ]
+      }
+    },
+    "striped": {
+      "title": "Rayada",
+      "description": "`striped` pinta el fondo de las filas pares. Combinalo con `divided={false}` para que no se sumen las líneas. No aplica con `bordered`.",
+      "texts": {
+        "title": "Entorno",
+        "items": [
+          { "key": "node", "label": "Node", "children": "22.4.0" },
+          { "key": "region", "label": "Región", "children": "sa-east-1" },
+          { "key": "memory", "label": "Memoria", "children": "1024 MB" },
+          { "key": "timeout", "label": "Timeout", "children": "30 s" },
+          { "key": "build", "label": "Build", "children": "a1b2c3d" }
+        ]
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `sm`, `md` (default) y `lg`. Cambia el padding y los espacios entre label, valor y columnas."
+    },
+    "compound": {
+      "title": "Composición",
+      "description": "`PropertyList.Item` arma las filas como children, útil cuando el valor es JSX. `extra` agrega contenido al final del encabezado, como un `Badge`.",
+      "texts": {
+        "title": "Pedido #GEM-10492",
+        "paid": "Pagado",
+        "customer": "Cliente",
+        "channel": "Canal",
+        "web": "Tienda online",
+        "quantity": "Cantidad",
+        "address": "Dirección de envío"
+      }
+    },
+    "copy": {
+      "title": "Valores con acciones",
+      "description": "El valor puede tener cualquier nodo: acá un `CopyToClipboard` y un `Badge`. Pasale al botón de copiar un `copyAriaLabel` que diga qué copia.",
+      "texts": {
+        "title": "Credenciales de API",
+        "clientId": "Client ID",
+        "status": "Estado",
+        "active": "Activa",
+        "webhook": "Webhook",
+        "created": "Creada",
+        "createdValue": "2 de agosto de 2026",
+        "copy": "Copiar",
+        "copied": "Copiado"
+      }
+    },
+    "align": {
+      "title": "Alineación y ancho del label",
+      "description": "`align=\"end\"` alinea los valores a la derecha, ideal para importes. `labelWidth` fija el ancho de la columna de labels; un número se toma en píxeles.",
+      "texts": {
+        "title": "Resumen",
+        "items": [
+          { "key": "subtotal", "label": "Subtotal", "children": "USD 1.100,00" },
+          { "key": "shipping", "label": "Envío", "children": "USD 40,00" },
+          { "key": "taxes", "label": "Impuestos", "children": "USD 100,00" },
+          { "key": "total", "label": "Total", "children": "USD 1.240,00" }
+        ]
+      }
+    },
+    "hidden": {
+      "title": "Filas ocultas",
+      "description": "`hidden: true` omite un item sin sacarlo del array. Sirve para mostrar campos según permisos o preferencias. Activá el switch.",
+      "texts": {
+        "title": "Empleado",
+        "toggle": "Mostrar datos sensibles",
+        "items": [
+          { "key": "name", "label": "Nombre", "children": "Alan Turing" },
+          { "key": "area", "label": "Área", "children": "Investigación" }
+        ],
+        "sensitive": [
+          { "key": "salary", "label": "Salario", "children": "USD 8.500" },
+          { "key": "id", "label": "Documento", "children": "30.123.456" }
+        ]
+      }
+    },
+    "empty": {
+      "title": "Valores vacíos",
+      "description": "Si un valor es `null`, `undefined`, un booleano o un string vacío, se muestra `emptyText` (por defecto una raya). Los lectores de pantalla pueden no leer la raya: pasá un texto como \"Sin definir\".",
+      "texts": {
+        "title": "Contacto",
+        "emptyText": "Sin definir",
+        "items": [
+          { "key": "name", "label": "Nombre", "children": "Katherine Johnson" },
+          { "key": "phone", "label": "Teléfono" },
+          { "key": "website", "label": "Sitio web", "children": "" }
+        ]
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Property List",
+  "api": {
+    "header": {
+      "title": "Property List API",
+      "description": "Referencia de la API de PropertyList de React: props de la lista y de los items, helpers, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Property List"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `PropertyListItemConfig` tipa el array `items`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>PropertyList</code> acepta los atributos de <code>&lt;section&gt;</code> salvo <code>title</code>, que acá es el encabezado. Van a la raíz junto con <code>ref</code>. <code>style</code> se combina con <code>--gem-property-list-cols</code> y <code>--gem-property-list-label-width</code>. <code>PropertyList.Item</code> acepta los atributos de <code>&lt;div&gt;</code> salvo <code>children</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "semantics": "Las filas usan <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> y <code>&lt;dd&gt;</code>, así que los lectores de pantalla anuncian cada par como término y definición.",
+      "heading": "Un <code>title</code> de texto se renderiza como <code>&lt;h3&gt;</code>. Si pasás un nodo, es un <code>div</code> y no aparece como encabezado; incluí vos el heading si lo necesitás.",
+      "region": "La raíz es un <code>&lt;section&gt;</code> con <code>aria-labelledby</code> apuntando al título. Sin título, pasá <code>aria-label</code> o <code>aria-labelledby</code>.",
+      "colon": "Los dos puntos salen de CSS (<code>::after</code>), no forman parte del texto del label.",
+      "empty": "El <code>emptyText</code> por defecto es una raya (<code>—</code>), que muchos lectores no leen o leen como \"raya\". Pasá un texto como <code>\"Sin definir\"</code>.",
+      "values": "Si el valor tiene botones de ícono, como <code>CopyToClipboard</code>, dales un nombre que incluya el término: <code>\"Copiar Client ID\"</code>.",
+      "responsive": "Por debajo de 40rem la grilla pasa a una columna y se ignora <code>span</code>, así el orden de lectura no cambia."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz `<section>`. Define las variables. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define las variables de padding y espacios.",
+        "layout": "Disposición: `--horizontal` o `--vertical`.",
+        "align": "Alineación del valor: `--align-start` o `--align-end`.",
+        "radius": "Radio: `--radius-sm`, `--radius-md` o `--radius-lg`.",
+        "bordered": "Se aplica con `bordered`. Sin borde se aplica `--borderless`.",
+        "divided": "Se aplica con `divided`. Línea entre filas, o líneas internas con `bordered`.",
+        "striped": "Se aplica con `striped`. Fondo en filas pares, solo sin `bordered`.",
+        "colon": "Se aplica con `colon`; si no, `--no-colon`. Agrega los dos puntos con `::after`.",
+        "header": "`<header>` con el título y `extra`. Recibe `classNames.header`.",
+        "title": "Título. Recibe `classNames.title`.",
+        "extra": "Contenedor de `extra`. Recibe `classNames.extra`.",
+        "list": "`<dl>` con la grilla. Recibe `classNames.list`.",
+        "item": "Cada fila. Recibe `classNames.item`, el `className` del item y `classNames.item` del item.",
+        "span": "Fila con `span` mayor a 1. Usa `--gem-property-list-span`.",
+        "label": "`<dt>` con el término. Recibe `classNames.label`.",
+        "value": "`<dd>` con el valor. Recibe `classNames.value`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de PropertyList. Las definen la raíz y las clases de tamaño, así que para pisarlas usá `.gem-property-list.tu-clase` o una clase propia en `className`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-property-list-pad-y": "Padding vertical de cada fila.",
+        "--gem-property-list-pad-x": "Padding horizontal con `bordered`.",
+        "--gem-property-list-gap": "Espacio entre label y valor.",
+        "--gem-property-list-col-gap": "Espacio entre columnas.",
+        "--gem-property-list-label-width": "Ancho de la columna de labels en horizontal. La define `labelWidth`.",
+        "--gem-property-list-rule": "Color del borde y las líneas.",
+        "--gem-property-list-cols": "Cantidad de columnas. La define `columns`.",
+        "--gem-property-list-span": "Columnas que ocupa un item. La define `span`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa PropertyList.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en PropertyList"
+      },
+      "items": {
+        "--gem-color-fg": "Título y valores.",
+        "--gem-color-fg-muted": "Labels.",
+        "--gem-color-border": "Borde y líneas.",
+        "--gem-color-bg": "Fondo con `bordered`.",
+        "--gem-color-neutral-50": "Fondo de las filas con `striped`.",
+        "--gem-space-{1|2|3|4|6|8|10}": "Espacios entre filas, columnas, label y valor.",
+        "--gem-radius-{sm|md|lg}": "Radio de la raíz y de las filas rayadas.",
+        "--gem-font-sans": "Fuente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "La lista acepta además los atributos de `<section>` (ver Herencia). Las filas se pasan con `items`, con `PropertyList.Item` o con ambos: primero van las de `items`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "root": {
+        "title": "PropertyList",
+        "description": "Props del componente.",
+        "items": {
+          "title": "Encabezado. Un string se renderiza como `<h3>`.",
+          "extra": "Contenido al final del encabezado, como un botón o badge.",
+          "items": "Filas como objetos.",
+          "children": "Filas como `PropertyList.Item`.",
+          "columns": "Columnas de la grilla, de 1 a 6.",
+          "layout": "`horizontal` pone label y valor lado a lado; `vertical`, uno arriba del otro.",
+          "size": "Densidad: padding y espacios.",
+          "bordered": "Agrega borde, fondo y padding.",
+          "divided": "Agrega líneas entre filas.",
+          "striped": "Fondo en filas pares. No aplica con `bordered`.",
+          "colon": "Agrega dos puntos después del label.",
+          "labelWidth": "Ancho de la columna de labels en horizontal. Un número se toma en píxeles.",
+          "align": "Alineación del valor.",
+          "radius": "Radio de la raíz.",
+          "emptyText": "Contenido cuando el valor está vacío.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `header`, `title`, `extra`, `list`, `item`, `label` y `value`.",
+          "ref": "Ref del `<section>`."
+        }
+      },
+      "item": {
+        "title": "PropertyListItemConfig / PropertyList.Item",
+        "description": "Una fila, como objeto dentro de `items` o como componente. `key` y `hidden` solo existen en el objeto.",
+        "items": {
+          "key": "Key estable al renderizar desde `items`.",
+          "label": "Término: el nombre de la propiedad.",
+          "children": "Valor. Si está vacío se muestra `emptyText`.",
+          "span": "Columnas que ocupa. Se limita a `columns`.",
+          "hidden": "Omite la fila.",
+          "className": "Clases extra para la fila.",
+          "classNames": "Clases por parte: `item`, `label` y `value`."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Funciones exportadas que usa el componente, útiles para wrappers propios.",
+        "items": {
+          "clampColumns": "Limita un número de columnas entre 1 y 6. Sin valor devuelve 1.",
+          "clampSpan": "Limita un `span` entre 1 y la cantidad de columnas.",
+          "collectPropertyListItems": "Une `items` y los `PropertyList.Item` de `children` en un solo array, sin las filas ocultas.",
+          "hasPropertyNode": "Indica si un valor se puede mostrar: no es `null`, `undefined`, un booleano ni un string vacío o con solo espacios."
+        }
+      }
+    }
+  }
+}

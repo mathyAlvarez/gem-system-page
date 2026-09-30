@@ -1,0 +1,236 @@
+{
+  "header": {
+    "title": "Scroll Area",
+    "description": "A box with a limited height or width that scrolls its content with a native scrollbar styled with gem-system tokens. Use it for lists, side panels or text blocks that must keep a fixed size without growing the page. To scroll, the box needs a limit: `height`, `maxHeight` or its container's height."
+  },
+  "paragraphs": [
+    "ScrollArea is a constrained viewport with a token-styled native scrollbar. Height and width come from props or the parent flex or grid track.",
+    "The thumb uses a translucent text color on a transparent track and gets darker on hover.",
+    "Vertical is the default orientation. Horizontal clips the unused axis so the pane only moves in the direction you chose.",
+    "Type auto shows the bar when content overflows. Always reserves the bar's space. Hover shows it on hover or focus. Hidden scrolls without a visible bar.",
+    "Pass a label when the box is a named region so screen readers announce it. The scrollable node is the root, so a ref can call scrollTo.",
+    "Pair it with Card or List when a panel must keep a fixed height while the rest of the page doesn't grow."
+  ],
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result and code instantly. With `horizontal` and `both` the content is wider than the box so the horizontal bar shows up.",
+    "orientation": "orientation",
+    "type": "type",
+    "size": "size",
+    "radius": "radius",
+    "maxHeight": "maxHeight",
+    "label": "Example region"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "With `maxHeight`, the box grows with its content up to that limit and then scrolls. `label` gives the region an accessible name. The examples use this content and these demo styles.",
+      "label": "Sample text"
+    },
+    "horizontal": {
+      "title": "Horizontal",
+      "description": "`orientation=\"horizontal\"` scrolls left to right and clips the vertical axis. The content must be wider than the box: here the row uses `width: max-content`. `maxWidth=\"100%\"` keeps the box from growing past its container.",
+      "texts": {
+        "label": "Cards",
+        "item": "Card",
+        "hint": "Scroll sideways"
+      }
+    },
+    "both": {
+      "title": "Both axes",
+      "description": "`orientation=\"both\"` scrolls in both directions. Useful for wide tables, code or diagrams: the content must exceed the box's height and width.",
+      "label": "Wide sheet"
+    },
+    "types": {
+      "title": "Scrollbar visibility",
+      "description": "`type` sets when the bar is visible: `auto` (default) shows it only on overflow, `always` always reserves its space so content doesn't shift, `hover` shows it on hover or focus, and `hidden` hides it while wheel, touch and keyboard scrolling keep working. Each box has `tabIndex={0}` so you can try `hover` with Tab."
+    },
+    "sizes": {
+      "title": "Scrollbar thickness",
+      "description": "`size` sets the bar thickness: `sm` (4px), `md` (6px, default) or `lg` (8px). Firefox doesn't allow choosing the thickness: it uses its thin bar with the `scrollbar-color` colors."
+    },
+    "height": {
+      "title": "height or maxHeight",
+      "description": "`height` fixes the height even when content is short, leaving empty space. `maxHeight` adapts to the content and only scrolls when it exceeds the limit. A number is read as pixels and a string as CSS (`\"50vh\"`, `\"20rem\"`). If a child has a background and must cover the whole box, give it `min-height: 100%` instead of `height: 100%`, because with `height` the background gets cut off when scrolling.",
+      "texts": {
+        "fixed": "fixed height",
+        "short": "short content",
+        "long": "long content"
+      }
+    },
+    "fillParent": {
+      "title": "Fill the available space",
+      "description": "In a layout with header and footer, make the container `flex flex-col` with a height and give the ScrollArea `flex-1 min-h-0`: it takes the remaining space and scrolls inside. Without `min-h-0`, the flex child won't shrink and pushes the footer out of the box.",
+      "texts": {
+        "title": "Conversation",
+        "label": "Messages",
+        "send": "Reply",
+        "messages": [
+          { "author": "Ana", "text": "Did you upload the new tokens version?" },
+          { "author": "Leo", "text": "Yes, it's published. The border colors changed." },
+          { "author": "Ana", "text": "Great, I'll update the docs today." },
+          { "author": "Leo", "text": "Check the ScrollArea page too, it has new examples." }
+        ]
+      }
+    },
+    "card": {
+      "title": "Inside a Card",
+      "description": "A common case: a Card with a fixed height and a long list inside. The ScrollArea goes inside `CardBody`, with a smaller `radius` to match the Card's corners.",
+      "texts": {
+        "title": "Activity",
+        "label": "Activity log",
+        "events": [
+          "Ana published version 2.1.0.",
+          "Leo commented on the Grid page.",
+          "The ScrollArea page was added.",
+          "Ana changed the border color in the tokens.",
+          "Leo closed 3 accessibility issues.",
+          "The English translations were updated.",
+          "Ana uploaded new playground screenshots.",
+          "Leo reviewed the Tailwind examples.",
+          "The Col column width was fixed."
+        ]
+      }
+    },
+    "scrollTo": {
+      "title": "Controlling the scroll",
+      "description": "The `ref` points to the scrolling element, so you can call `scrollTo` or read `scrollTop` directly. `onScroll` is passed to the root, and here it computes the scrolled percentage. With `tabIndex={0}` the box can be focused and scrolled with the arrow keys.",
+      "texts": {
+        "label": "Long text",
+        "top": "Go to top",
+        "bottom": "Go to bottom",
+        "progress": "Scrolled"
+      }
+    },
+    "mobile": {
+      "title": "Small screens",
+      "description": "On touch screens scrolling works with your finger. `overscroll-behavior: contain` keeps the page from scrolling when you reach the end of the box. `size=\"lg\"` makes the bar a bit more visible.",
+      "label": "Text on a small screen"
+    }
+  },
+  "styles": {
+    "label": "Text with a custom scrollbar",
+    "codeLabel": "Sample code"
+  },
+  "apiLink": "See the full ScrollArea API",
+  "api": {
+    "header": {
+      "title": "ScrollArea API",
+      "description": "API reference for the ScrollArea React component: props, CSS classes, CSS variables, tokens, utilities and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Scroll Area"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath, which also exports `toCssLength`."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts HTML attributes (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) and forwards them to the root element, which is also the scrolling one: <code>ref</code>, <code>onScroll</code> and <code>tabIndex</code> land there. <code>height</code>, <code>maxHeight</code>, <code>width</code> and <code>maxWidth</code> are written to <code>style</code> and merged with the <code>style</code> you pass. There are no inner elements: children render directly in the root."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "label": "<code>label</code> is applied as <code>aria-label</code>. Use it when the box is a region with its own name.",
+      "focus": "The root isn't focusable by default. If the content has no interactive elements, add <code>tabIndex={0}</code> so it can be scrolled with the keyboard.",
+      "keyboard": "With focus inside, arrow keys, <code>PageUp</code>/<code>PageDown</code>, <code>Home</code>/<code>End</code> and the space bar use the browser's native scrolling.",
+      "hidden": "With <code>type=\"hidden\"</code> there's no visual hint that there's more content. Show some cue (a gradient or text) so it's noticeable.",
+      "landmark": "With <code>as</code> you can render <code>nav</code>, <code>aside</code>, <code>section</code> or <code>main</code> instead of a <code>&lt;div&gt;</code>.",
+      "motion": "If you use <code>scrollTo</code> with <code>behavior: \"smooth\"</code>, respect <code>prefers-reduced-motion</code> for people who prefer less animation."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root element and the scrolling one. Receives `className` and `classNames.root`. Has `overscroll-behavior: contain`.",
+        "orientation": "Applied according to `orientation`. Sets which axis scrolls and clips the other.",
+        "type": "Applied according to `type`. `always` uses `overflow: scroll`, `hover` hides the thumb until hover or focus and `hidden` hides the bar.",
+        "size": "Applied according to `size`. Sets `--gem-scroll-area-size`.",
+        "radius": "Applied according to `radius`. Sets `--gem-scroll-area-radius`.",
+        "thumb": "Scrollbar thumb in Chrome, Edge and Safari. Firefox uses `scrollbar-color` with the same variables."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They're all defined on `.gem-scroll-area` and none are written inline, so you can change them from your own class (`.gem-scroll-area.my-class`) or with Tailwind utilities.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-scroll-area-fg": "Text color. The thumb color is derived from it.",
+        "--gem-scroll-area-bg": "Box background.",
+        "--gem-scroll-area-size": "Bar thickness. Set by the `size` class.",
+        "--gem-scroll-area-radius": "Box radius. Set by the `radius` class.",
+        "--gem-scroll-area-thumb": "Thumb color. Defaults to the text color at 28%.",
+        "--gem-scroll-area-thumb-hover": "Thumb color on hover. Defaults to the text color at 45%.",
+        "--gem-scroll-area-track": "Track color. Transparent by default."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by ScrollArea.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in ScrollArea"
+      },
+      "items": {
+        "--gem-color-fg": "Text color and base of the thumb color.",
+        "--gem-color-bg": "Box background.",
+        "--gem-radius-{token}": "Radius scale used by `radius`.",
+        "--gem-radius-full": "Rounded thumb corners.",
+        "--gem-space-1": "Track margin at both ends."
+      }
+    },
+    "utils": {
+      "title": "Utilities",
+      "description": "Only exported from `@gem-org/gem-system/scroll-area`.",
+      "columns": {
+        "name": "Name",
+        "signature": "Signature",
+        "description": "Description"
+      },
+      "items": {
+        "toCssLength": "Turns a number into pixels (`240` → `\"240px\"`) and leaves strings as they are. It's what `height`, `maxHeight`, `width` and `maxWidth` use."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the root element.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "as": "HTML element to render.",
+      "orientation": "Axis that scrolls. The other is clipped; `both` allows both.",
+      "type": "When the bar is visible: only on overflow, always, on hover or never.",
+      "size": "Bar thickness.",
+      "radius": "Box border radius.",
+      "height": "Fixed height. A number is read as pixels and a string as CSS.",
+      "maxHeight": "Max height: grows with the content up to this limit.",
+      "width": "Fixed width. A number is read as pixels and a string as CSS.",
+      "maxWidth": "Max width. Useful with `horizontal` or `both` to stay within the container.",
+      "label": "Region accessible name (`aria-label`).",
+      "className": "Extra classes for the root element.",
+      "classNames": "Per-slot classes. `root` is added to the root element.",
+      "style": "Inline styles. Merged with the height and width from props.",
+      "ref": "Ref to the scrolling element. Use it to call `scrollTo`.",
+      "children": "Content that scrolls."
+    }
+  }
+}

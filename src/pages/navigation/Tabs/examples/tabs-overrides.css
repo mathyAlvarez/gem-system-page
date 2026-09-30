@@ -1,0 +1,9 @@
+.gem-tabs.tabs-branded {
+  --gem-tabs-indicator: var(--gem-palette-tertiary-600);
+  --gem-tabs-selected: var(--gem-palette-tertiary-700);
+}
+
+[data-theme="dark"] .gem-tabs.tabs-branded {
+  --gem-tabs-indicator: var(--gem-palette-tertiary-300);
+  --gem-tabs-selected: var(--gem-palette-tertiary-200);
+}

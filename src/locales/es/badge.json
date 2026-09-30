@@ -1,0 +1,300 @@
+{
+  "header": {
+    "title": "Badge",
+    "description": "Etiqueta chica para marcar un estado, una categoría o un contador. Puede ir sola, junto a un texto, o superpuesta sobre un botón o un avatar para mostrar notificaciones o presencia. `Tag` es el mismo componente con otro nombre, pensado para filtros y etiquetas que se pueden quitar."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el resultado. Con `isDot` el badge se vuelve un punto y deja de mostrar el texto, el ícono y el botón ×.",
+    "texts": {
+      "label": "Nuevo",
+      "remove": "Quitar"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "El texto va en `children`. Sin más props, el badge es `primary`, `soft`, `md` y totalmente redondeado.",
+      "texts": {
+        "label": "Nuevo"
+      }
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` define el color. `primary`, `secondary` y `tertiary` salen de las paletas de marca; `success`, `warning`, `error` e `info` usan los colores de estado; `neutral` sirve para etiquetas sin significado especial."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia el tratamiento: `soft` (default) con fondo suave, `solid` con fondo lleno y `outline` con el fondo de la página y el borde de color. En `solid`, `warning` y `tertiary` usan texto oscuro."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` ajusta el alto, el padding y el tamaño del texto: `sm`, `md` (default) y `lg`. También cambia el tamaño del punto y del ícono."
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "`radius` usa los tokens de radio de gem-system: `sm`, `md`, `lg` y `full` (default)."
+    },
+    "icon": {
+      "title": "Con ícono",
+      "description": "`icon` agrega un ícono antes del texto. Toma el color del texto del badge y se oculta para los lectores de pantalla.",
+      "texts": {
+        "paid": "Pagado",
+        "pending": "Pendiente",
+        "featured": "Destacado"
+      }
+    },
+    "count": {
+      "title": "Contador",
+      "description": "Con `count` y sin `children`, el badge muestra un número. Si supera `max` (99 por defecto) se muestra como `99+`. Con `0` no se muestra nada, salvo que pases `showZero`."
+    },
+    "overlay": {
+      "title": "Superpuesto",
+      "description": "Si `children` es un elemento de React y pasás `count`, `content` o `isDot`, el badge envuelve al elemento y se ubica en una esquina. El indicador no forma parte del nombre del botón: pasá `aria-label` al Badge para darle contexto al número.",
+      "texts": {
+        "notifications": "Notificaciones",
+        "favorites": "Favoritos",
+        "unread": "sin leer",
+        "name": "Ana Pérez"
+      }
+    },
+    "liveCount": {
+      "title": "Contador que cambia",
+      "description": "El contador tiene `role=\"status\"`, así que los lectores de pantalla anuncian los cambios. Al llegar a `0` se oculta solo. `isInvisible` lo oculta sin desmontar el elemento de adentro.",
+      "texts": {
+        "inbox": "Bandeja de entrada",
+        "unread": "sin leer",
+        "receive": "Recibir mensaje",
+        "markRead": "Marcar como leídos",
+        "hide": "Ocultar contador"
+      }
+    },
+    "content": {
+      "title": "Contenido propio",
+      "description": "`content` reemplaza al número por cualquier contenido y tiene prioridad sobre `count`. Si es un símbolo, como `!`, pasá `role=\"img\"` y un `aria-label` que explique qué significa.",
+      "texts": {
+        "updates": "Novedades",
+        "newLabel": "Nuevo",
+        "name": "Marco Rossi",
+        "attention": "Requiere atención"
+      }
+    },
+    "placement": {
+      "title": "Posición",
+      "description": "`placement` elige la esquina: `top-end` (default), `top-start`, `bottom-end` o `bottom-start`. `offset` (en píxeles) acerca el indicador al centro, útil sobre avatares redondos, donde la esquina queda fuera del círculo.",
+      "texts": {
+        "name": "Ana Pérez"
+      }
+    },
+    "dot": {
+      "title": "Punto",
+      "description": "`isDot` muestra un punto en lugar de texto, para indicar presencia o novedades. El punto está oculto para los lectores de pantalla: incluí el estado en el nombre del elemento, como en el `aria-label` del botón.",
+      "texts": {
+        "name": "Ana Pérez",
+        "online": "en línea",
+        "inbox": "Bandeja de entrada",
+        "newMessages": "hay mensajes nuevos"
+      }
+    },
+    "statusList": {
+      "title": "Punto con texto",
+      "description": "Un punto sin `children` sirve como indicador de color junto a un texto. El texto es el que comunica el estado; el punto solo lo refuerza.",
+      "texts": {
+        "statuses": {
+          "online": "En línea",
+          "away": "Ausente",
+          "offline": "Desconectado"
+        }
+      }
+    },
+    "closable": {
+      "title": "Con cierre",
+      "description": "`isClosable` agrega un botón × que llama a `onClose`. El badge no se oculta solo: sacalo de la lista en `onClose`. El botón se anuncia como \"Remove\" por defecto; pasá un `closeAriaLabel` que incluya el nombre de la etiqueta.",
+      "texts": {
+        "tags": ["Diseño", "React", "Accesible"],
+        "remove": "Quitar",
+        "reset": "Restablecer etiquetas"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` atenúa el badge, bloquea el botón × y agrega `aria-disabled`.",
+      "texts": {
+        "active": "Editable",
+        "locked": "Bloqueada",
+        "remove": "Quitar"
+      }
+    },
+    "tag": {
+      "title": "Tag",
+      "description": "`Tag` es un alias de `Badge`. Usalo para filtros y etiquetas que se pueden quitar, así el código deja clara la intención.",
+      "texts": {
+        "featured": "Destacado",
+        "draft": "Borrador",
+        "remove": "Quitar"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "pro": "Pro",
+      "notifications": "Notificaciones"
+    },
+    "cva": {
+      "draft": "Borrador",
+      "review": "En revisión",
+      "published": "Publicado"
+    },
+    "css": {
+      "label": "Edición limitada",
+      "notifications": "Notificaciones"
+    }
+  },
+  "apiLink": "Ver la API completa de Badge",
+  "api": {
+    "header": {
+      "title": "Badge API",
+      "description": "Referencia de la API del componente Badge de React: props, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Badge"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `Tag` es el mismo componente. `formatBadgeCount` aplica la misma regla de `max` que el badge, por si necesitás el texto en otro lugar."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;span&gt;</code> (<code>HTMLAttributes&lt;HTMLSpanElement&gt;</code>, salvo <code>content</code>) y los pasa al elemento raíz, igual que <code>ref</code>. En modo superpuesto la raíz es el contenedor <code>gem-badge-anchor</code>; <code>role</code> y <code>aria-label</code> van al indicador. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>indicator</code> (solo superpuesto), <code>icon</code>, <code>label</code> y <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "count": "Un contador tiene <code>role=\"status\"</code> y, si no pasás <code>aria-label</code>, se llama con el número formateado (por ejemplo <code>\"99+\"</code>). Los cambios se anuncian.",
+      "overlay": "En modo superpuesto el indicador queda al lado del elemento, no adentro, así que no forma parte de su nombre. Pasá <code>aria-label</code> al Badge (por ejemplo <code>\"8 sin leer\"</code>) o incluí el número en el nombre del botón.",
+      "dot": "El punto tiene <code>role=\"presentation\"</code> y <code>aria-hidden</code>: no se anuncia. El estado tiene que estar en un texto o en el nombre del elemento.",
+      "content": "Con <code>content</code> el indicador no tiene rol. Si es un símbolo, pasá <code>role=\"img\"</code> y <code>aria-label</code>.",
+      "close": "El botón × es un <code>&lt;button&gt;</code> que se llama <code>\"Remove\"</code> por defecto. Pasá un <code>closeAriaLabel</code> traducido que incluya el nombre de la etiqueta. El clic no se propaga al contenedor.",
+      "disabled": "Con <code>isDisabled</code> el badge tiene <code>aria-disabled</code> y el botón × queda deshabilitado."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "El badge. Recibe `className` y `classNames.root` cuando va solo. Define los valores por defecto de las variables.",
+        "tone": "Colores del tono: redefine `--gem-badge-bg`, `--gem-badge-fg`, `--gem-badge-border` y `--gem-badge-solid`.",
+        "soft": "Fondo suave. Es la variante por defecto y no agrega reglas propias.",
+        "solid": "Fondo `--gem-badge-solid`, texto claro y borde transparente. Con `warning` y `tertiary` el texto es oscuro.",
+        "outline": "Fondo `--gem-color-bg` con el borde del tono.",
+        "size": "Alto, padding, separación, tamaño del texto, del ícono y del punto.",
+        "radius": "Radio según `radius`.",
+        "dot": "Punto sin texto con el color `--gem-badge-solid`.",
+        "count": "Padding horizontal más ajustado para números.",
+        "disabled": "Opacidad reducida y sin eventos del mouse.",
+        "invisible": "Oculta el indicador con `visibility: hidden`.",
+        "overlay": "Indicador superpuesto con posición absoluta. No recibe eventos del mouse.",
+        "placement": "Esquina del indicador superpuesto.",
+        "outlineRing": "Anillo con `--gem-color-bg` alrededor del indicador superpuesto, con `showOutline`.",
+        "icon": "Contenedor del ícono. Recibe `classNames.icon`.",
+        "label": "Texto. Se corta con puntos suspensivos si no entra. Recibe `classNames.label`.",
+        "close": "Botón ×. Toma el color del texto. Recibe `classNames.close`.",
+        "anchor": "Contenedor del elemento y el indicador en modo superpuesto. Recibe `className` y `classNames.root`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Las clases de tono y de tamaño definen estas variables en el mismo elemento, así que para cambiarlas usá un selector como `.gem-badge.mi-clase` (ver Cambio estilos). En modo superpuesto, usá `classNames.indicator`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-badge-bg": "Color de fondo.",
+        "--gem-badge-fg": "Color del texto, el ícono y el botón ×.",
+        "--gem-badge-border": "Color del borde.",
+        "--gem-badge-solid": "Fondo de `solid` y color del punto.",
+        "--gem-badge-h": "Alto y ancho mínimos.",
+        "--gem-badge-pad-x": "Padding horizontal.",
+        "--gem-badge-pad-y": "Padding vertical.",
+        "--gem-badge-gap": "Separación entre el ícono, el texto y el botón ×.",
+        "--gem-badge-font": "Tamaño de letra.",
+        "--gem-badge-leading": "Alto de línea.",
+        "--gem-badge-icon": "Tamaño del ícono y del botón ×.",
+        "--gem-badge-dot": "Tamaño del punto.",
+        "--gem-badge-offset": "Desplazamiento del indicador superpuesto. Se escribe inline desde `offset`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Badge. `{tone}` es `primary`, `secondary`, `tertiary` o `neutral`, y `{status}` es `success`, `warning`, `error` o `info`.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Badge"
+      },
+      "items": {
+        "--gem-color-{tone}-100": "Fondo de `soft` en los tonos de marca y `neutral`.",
+        "--gem-color-{tone}-300": "Borde en los tonos de marca y `neutral`.",
+        "--gem-color-{tone}-600": "Fondo de `solid` y punto (`tertiary` usa el 500 y `neutral` el 700).",
+        "--gem-color-{tone}-800": "Texto de `soft` y `outline` en los tonos de marca y `neutral`.",
+        "--gem-color-{status}-soft": "Fondo de `soft` en los tonos de estado.",
+        "--gem-color-{status}-text": "Texto de `soft` y `outline` en los tonos de estado.",
+        "--gem-color-{status}-border": "Borde en los tonos de estado.",
+        "--gem-color-{status}-solid": "Fondo de `solid` y punto en los tonos de estado.",
+        "--gem-palette-neutral-0": "Texto de `solid`.",
+        "--gem-palette-neutral-950": "Texto de `solid` con `warning` y `tertiary`.",
+        "--gem-color-bg": "Fondo de `outline` y anillo del indicador superpuesto.",
+        "--gem-radius-sm": "Radio con `radius=\"sm\"`.",
+        "--gem-radius-md": "Radio con `radius=\"md\"`.",
+        "--gem-radius-lg": "Radio con `radius=\"lg\"`.",
+        "--gem-radius-full": "Radio por defecto.",
+        "--gem-font-sans": "Tipografía."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML de un `<span>`. `Tag` recibe las mismas props.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "tone": "Color.",
+      "variant": "Tratamiento de la superficie.",
+      "size": "Alto, padding y tamaño del texto.",
+      "radius": "Radio con los tokens de gem-system.",
+      "children": "Texto del badge, o el elemento sobre el que se superpone el indicador.",
+      "content": "Contenido propio del badge o del indicador. Tiene prioridad sobre `count`.",
+      "count": "Número a mostrar, formateado con `max`.",
+      "max": "Límite antes de mostrar `{max}+`.",
+      "showZero": "Muestra el contador cuando `count` es `0`.",
+      "placement": "Esquina del indicador superpuesto.",
+      "offset": "Desplazamiento del indicador superpuesto hacia el centro, en píxeles.",
+      "icon": "Ícono antes del texto.",
+      "isDot": "Muestra un punto en lugar de texto.",
+      "isInvisible": "Oculta el indicador sin desmontar el elemento de adentro.",
+      "showOutline": "Anillo alrededor del indicador superpuesto para separarlo del elemento.",
+      "isClosable": "Muestra el botón × (solo cuando el badge va solo).",
+      "closeAriaLabel": "Nombre accesible del botón ×.",
+      "isDisabled": "Atenúa el badge y bloquea el botón ×.",
+      "role": "Rol ARIA. Por defecto `status` en contadores y `presentation` en puntos.",
+      "aria-label": "Nombre accesible del badge o del indicador. En contadores reemplaza al número.",
+      "className": "Clases extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `indicator`, `icon`, `label` y `close`.",
+      "ref": "Referencia a la raíz.",
+      "onClose": "Se ejecuta al presionar el botón ×."
+    }
+  }
+}

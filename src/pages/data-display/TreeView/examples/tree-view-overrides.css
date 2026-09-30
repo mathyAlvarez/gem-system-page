@@ -1,0 +1,21 @@
+.gem-tree.custom-tree {
+  --gem-tree-bg: var(--gem-color-neutral-950);
+  --gem-tree-fg: var(--gem-color-neutral-100);
+  --gem-tree-muted: var(--gem-color-neutral-400);
+  --gem-tree-border: var(--gem-color-neutral-800);
+  --gem-tree-hover: color-mix(in srgb, white 8%, transparent);
+  --gem-tree-line: var(--gem-color-neutral-700);
+  --gem-tree-selected: color-mix(in srgb, var(--gem-color-primary-400) 22%, transparent);
+  --gem-tree-selected-fg: var(--gem-color-primary-200);
+  --gem-tree-radius: 0.875rem;
+  padding: 0.5rem;
+}
+
+.gem-tree.custom-tree .gem-tree__label {
+  font-family: var(--gem-font-mono, monospace);
+  font-weight: 500;
+}
+
+.gem-tree.custom-tree .gem-tree__node--selected > .gem-tree__row {
+  box-shadow: inset 3px 0 0 var(--gem-color-primary-400);
+}

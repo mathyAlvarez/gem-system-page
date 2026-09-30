@@ -56,6 +56,8 @@ import { ValidRegexInputText } from "./examples/ValidRegexInputText.tsx";
 import validRegexCode from "./examples/ValidRegexInputText.tsx?raw";
 import { VariantInputTexts } from "./examples/VariantInputText.tsx";
 import variantCode from "./examples/VariantInputText.tsx?raw";
+import { ClearableInputText } from "./examples/ClearableInputText.tsx";
+import clearableCode from "./examples/ClearableInputText.tsx?raw";
 import "./InputTextPage.scss";
 
 type StoryId =
@@ -73,6 +75,7 @@ type StoryId =
   | "withSuffixText"
   | "withPrefixAndSuffix"
   | "withIcons"
+  | "clearable"
   | "error"
   | "disabled"
   | "required"
@@ -178,6 +181,12 @@ export function InputTextPage() {
       file: "IconsInputText.tsx",
       code: iconsCode,
       preview: <IconsInputText {...t("stories.withIcons.texts", { returnObjects: true })} />,
+    },
+    {
+      id: "clearable",
+      file: "ClearableInputText.tsx",
+      code: clearableCode,
+      preview: <ClearableInputText {...t("stories.clearable.texts", { returnObjects: true })} />,
     },
     {
       id: "error",

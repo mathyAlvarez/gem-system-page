@@ -1,0 +1,16 @@
+.gem-command-palette.palette-branded {
+  --gem-command-palette-width: 40rem;
+  --gem-color-bg-subtle: var(--gem-palette-tertiary-50);
+  --gem-color-primary-500: var(--gem-palette-tertiary-500);
+  border-color: var(--gem-palette-tertiary-300);
+}
+
+.gem-command-palette.palette-branded::backdrop {
+  background-color: color-mix(in srgb, var(--gem-palette-tertiary-900) 40%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .gem-command-palette.palette-branded {
+  --gem-color-bg-subtle: color-mix(in srgb, var(--gem-palette-tertiary-400) 18%, transparent);
+  border-color: var(--gem-palette-tertiary-600);
+}

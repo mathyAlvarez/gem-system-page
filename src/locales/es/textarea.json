@@ -14,6 +14,7 @@
     "labelPlacement": "labelPlacement",
     "resize": "resize",
     "showCount": "showCount",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -87,6 +88,17 @@
       "texts": {
         "label": "Alto fijo",
         "helperText": "resize=\"none\" con 4 filas."
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` muestra un botón para vaciar el campo mientras tiene un valor. Limpia a través del `onChange` normal, así funciona igual controlado o no controlado, y después dispara `onClear`. `clearLabel` es el nombre accesible del botón; por defecto es \"Clear\", en inglés, así que conviene traducirlo. El botón se ubica arriba a la derecha.",
+      "texts": {
+        "label": "Notas",
+        "defaultValue": "Notas para limpiar.",
+        "clearLabel": "Limpiar notas",
+        "helperText": "El botón aparece mientras el campo tiene un valor.",
+        "clearedText": "Campo limpiado: se disparó onClear."
       }
     },
     "error": {
@@ -186,6 +198,7 @@
       },
       "rules": {
         "root": "Contenedor raíz. Recibe `wrapperClassName`.",
+        "clear": "Botón de limpiar. Se muestra con `clearable` mientras el campo tiene un valor.",
         "label": "Label del campo.",
         "required": "Asterisco de campo requerido.",
         "field": "Contenedor del textarea (y del label sobre el borde).",
@@ -264,11 +277,14 @@
       "isInvalid": "Marca el campo como inválido (aria-invalid).",
       "isDisabled": "Deshabilita el campo.",
       "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "clearable": "Muestra un botón para vaciar el campo mientras tiene un valor.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto está en inglés.",
       "className": "Clases extra para el <textarea>.",
       "wrapperClassName": "Clases extra para el contenedor raíz.",
       "onChange": "Evento nativo en cada cambio.",
       "onValidate": "Se dispara cuando cambia la validez (y al montar si hay `validRegex`).",
-      "onInfoClick": "Se dispara al activar el ícono de información."
+      "onInfoClick": "Se dispara al activar el ícono de información.",
+      "onClear": "Se dispara después de limpiar el campo con el botón."
     }
   }
 }

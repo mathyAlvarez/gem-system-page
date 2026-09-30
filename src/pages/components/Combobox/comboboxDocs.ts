@@ -45,6 +45,8 @@ export const comboboxProps = [
   { name: "size", type: union(comboboxSizes), defaultValue: '"md"' },
   { name: "border", type: "ComboboxBorder", defaultValue: '"default"' },
   { name: "clearable", type: "boolean", defaultValue: "true" },
+  { name: "clearLabel", type: "string", defaultValue: '"Clear"' },
+  { name: "onClear", type: "() => void", defaultValue: "—" },
   { name: "showExpand", type: "boolean", defaultValue: "false" },
   { name: "suffixIcon", type: "ReactNode | null", defaultValue: "<Search />" },
   { name: "isLoading", type: "boolean", defaultValue: "false" },

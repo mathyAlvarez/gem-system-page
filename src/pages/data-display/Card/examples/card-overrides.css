@@ -1,0 +1,40 @@
+.gem-card.card-branded {
+  --gem-card-radius: var(--gem-radius-xl);
+  border: 2px solid var(--gem-palette-secondary-400);
+  border-radius: var(--gem-card-radius);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 8%, transparent);
+}
+
+.gem-card.card-branded .gem-card__header,
+.gem-card.card-branded .gem-card__footer {
+  border-color: color-mix(in srgb, var(--gem-palette-secondary-400) 45%, transparent);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 10%, transparent);
+}
+
+.gem-card.card-branded .gem-card__title {
+  color: var(--gem-palette-secondary-800);
+}
+
+.gem-card.card-branded .gem-card__subtitle,
+.gem-card.card-branded .gem-card__body {
+  color: var(--gem-palette-secondary-700);
+}
+
+[data-theme="dark"] .gem-card.card-branded {
+  border-color: var(--gem-palette-secondary-500);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 16%, transparent);
+}
+
+[data-theme="dark"] .gem-card.card-branded .gem-card__header,
+[data-theme="dark"] .gem-card.card-branded .gem-card__footer {
+  border-color: color-mix(in srgb, var(--gem-palette-secondary-400) 35%, transparent);
+}
+
+[data-theme="dark"] .gem-card.card-branded .gem-card__title,
+[data-theme="dark"] .gem-card.card-branded .gem-card__body {
+  color: var(--gem-palette-secondary-200);
+}
+
+[data-theme="dark"] .gem-card.card-branded .gem-card__subtitle {
+  color: var(--gem-palette-secondary-300);
+}

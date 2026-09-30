@@ -1,0 +1,288 @@
+{
+  "header": {
+    "title": "Empty State",
+    "description": "Fallback shown when a list, table or search has nothing to show. It has an icon or illustration, a title, a description and up to two actions. Pass design system buttons to `action` and `secondaryAction`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the empty state and its code.",
+    "sampleTitle": "No orders yet",
+    "sampleDescription": "When a customer places an order, it will show up here.",
+    "create": "New order",
+    "import": "Import"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`title` and `description` are enough. Without `icon` or `image`, it shows the `kind` icon (a folder by default).",
+      "texts": {
+        "title": "No orders yet",
+        "description": "When a customer places an order, it will show up here."
+      }
+    },
+    "kinds": {
+      "title": "Kinds",
+      "description": "`kind` picks the icon and its color: `empty` (folder, neutral), `search` (magnifier, `secondary`) and `filter` (funnel, `tertiary`).",
+      "texts": {
+        "empty": {
+          "title": "No files",
+          "description": "Upload a file to get started."
+        },
+        "search": {
+          "title": "No matches",
+          "description": "Nothing matched “gem-system”. Try a different keyword."
+        },
+        "filter": {
+          "title": "No rows match these filters",
+          "description": "Clear status or date range to see the full table again."
+        }
+      }
+    },
+    "actions": {
+      "title": "With actions",
+      "description": "`action` is the main action and `secondaryAction` sits next to it. Use `size=\"sm\"` buttons so they don't compete with the title.",
+      "texts": {
+        "title": "Create your first project",
+        "description": "Projects group boards, members and billing in one place.",
+        "create": "New project",
+        "importLabel": "Import"
+      }
+    },
+    "filter": {
+      "title": "Filters with no results",
+      "description": "With `kind=\"filter\"`, offer an action to clear the filters. Try the button: it brings the list back.",
+      "texts": {
+        "title": "No rows match these filters",
+        "description": "Clear status or date range to see the full table again.",
+        "clear": "Clear filters",
+        "restore": "Filter again",
+        "rows": ["Order #1042 · Paid", "Order #1041 · Pending", "Order #1040 · Shipped"]
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It changes padding, gap, icon, title (`h6`, `h5`, `h4`) and the max width of the copy.",
+      "texts": {
+        "title": "Size",
+        "description": "Icon and type scale follow the size."
+      }
+    },
+    "start": {
+      "title": "Start aligned",
+      "description": "`align=\"start\"` aligns everything to the start. Useful in side panels or forms. `bordered` adds a border and background, and `radius` rounds the corners.",
+      "texts": {
+        "title": "Inbox is empty",
+        "description": "Notifications from billing and comments will land here.",
+        "settings": "Open settings"
+      }
+    },
+    "icon": {
+      "title": "Custom icon",
+      "description": "`icon` replaces the `kind` icon, but the well still follows the `kind` color. `hideIcon` hides it.",
+      "texts": {
+        "icon": {
+          "title": "You're all caught up",
+          "description": "You have no unread notifications."
+        },
+        "hidden": {
+          "title": "No icon",
+          "description": "Only the copy remains."
+        }
+      }
+    },
+    "image": {
+      "title": "With illustration",
+      "description": "`image` shows an illustration instead of the icon. `children` render below the actions: use them for hints or links. If the illustration is decorative, give it `aria-hidden` or `alt=\"\"`.",
+      "texts": {
+        "title": "Nothing in this workspace",
+        "description": "Drop files here or start from a template.",
+        "create": "New file",
+        "help": "Need help? Read the",
+        "link": "getting started guide"
+      }
+    },
+    "card": {
+      "title": "In a card",
+      "description": "`minHeight` sets a minimum height to fill a table or panel. A number is taken as pixels.",
+      "texts": {
+        "title": "No invoices found",
+        "description": "Adjust the query or create an invoice to get started.",
+        "create": "New invoice"
+      }
+    },
+    "search": {
+      "title": "With search",
+      "description": "Show the empty state when the search returns nothing. Clear or change the text to see the list.",
+      "texts": {
+        "label": "Members",
+        "placeholder": "Search members",
+        "title": "No members found",
+        "description": "Nobody matches “{query}”. Invite a teammate or try another name.",
+        "invite": "Invite",
+        "members": ["Amina Costa", "Noah Berg", "Sofia Rahman", "Liam Chen"]
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Drop your files",
+      "description": "PNG, JPG or PDF up to 10 MB.",
+      "action": "Choose files"
+    },
+    "cva": {
+      "muted": {
+        "title": "No activity",
+        "description": "Team changes will show up here."
+      },
+      "danger": {
+        "title": "We couldn't load the data",
+        "description": "Check your connection and try again."
+      }
+    },
+    "css": {
+      "title": "Invite your team",
+      "description": "Work with other people on your projects.",
+      "action": "Invite"
+    }
+  },
+  "apiLink": "See the full EmptyState API",
+  "api": {
+    "header": {
+      "title": "EmptyState API",
+      "description": "API reference for the React EmptyState component: props, helper, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "EmptyState"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `hasEmptyStateNode` is the function that decides whether a prop has content."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>EmptyState</code> accepts <code>&lt;section&gt;</code> attributes except <code>title</code>, which is replaced by the heading. They go to the root along with <code>ref</code>. <code>style</code> is merged with <code>--gem-empty-state-min-h</code> when you pass <code>minHeight</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "status": "The root is a <code>&lt;section&gt;</code> with <code>role=\"status\"</code>. Pass another <code>role</code> if you don't want that behavior.",
+      "live": "<code>status</code> is a live region: if the empty state appears after a search or filter, screen readers announce it.",
+      "labelledby": "When there is a <code>title</code>, the root uses <code>aria-labelledby</code> with the title id. Pass <code>aria-label</code> or <code>aria-labelledby</code> to change it.",
+      "heading": "A text <code>title</code> renders as <code>&lt;h3&gt;</code>. If you pass a node, it is wrapped in a <code>&lt;div&gt;</code> and is not a heading.",
+      "icon": "The icon has <code>aria-hidden</code>.",
+      "image": "The <code>image</code> wrapper is not hidden. If the illustration is decorative, give it <code>aria-hidden</code> or <code>alt=\"\"</code>.",
+      "actions": "Use <code>Button</code> or <code>Link</code> for actions so they are focusable and keyboard operable."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Sets padding, gap, icon and copy width.",
+        "align": "Alignment: `--center` or `--start`.",
+        "kind": "Kind: `--kind-empty`, `--kind-search` or `--kind-filter`. Sets the icon colors.",
+        "radius": "Radius: `--radius-sm`, `--radius-md` or `--radius-lg`.",
+        "bordered": "Applied with `bordered`. Adds border and background.",
+        "minHeight": "Applied with `minHeight`. Uses `--gem-empty-state-min-h`.",
+        "media": "`image` wrapper. Receives `classNames.media`.",
+        "icon": "Icon well. Receives `classNames.icon`.",
+        "content": "Title and description wrapper. Receives `classNames.content`.",
+        "title": "Title. Receives `classNames.title`.",
+        "description": "Description. Receives `classNames.description`.",
+        "actions": "`action` and `secondaryAction` wrapper. Receives `classNames.actions`.",
+        "extra": "`children` wrapper."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "EmptyState's own variables. The size and kind classes set them, so use `.gem-empty-state.your-class` to override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-empty-state-pad": "Root padding.",
+        "--gem-empty-state-gap": "Gap between icon, copy and actions.",
+        "--gem-empty-state-icon-size": "Icon well diameter.",
+        "--gem-empty-state-copy": "Max width of the copy and `children`.",
+        "--gem-empty-state-icon-bg": "Icon well background.",
+        "--gem-empty-state-icon-fg": "Icon color.",
+        "--gem-empty-state-min-h": "Minimum height. Set by `minHeight`; defaults to `16rem` when the class is present."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by EmptyState.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in EmptyState"
+      },
+      "items": {
+        "--gem-color-fg": "Text and title color.",
+        "--gem-color-fg-muted": "Description color and `empty` icon color.",
+        "--gem-color-bg": "Background with `bordered`.",
+        "--gem-color-border": "Border with `bordered`.",
+        "--gem-color-neutral-100": "`empty` icon well background.",
+        "--gem-color-secondary-{100|700}": "`search` icon well background and icon color.",
+        "--gem-color-tertiary-{100|700}": "`filter` icon well background and icon color.",
+        "--gem-space-{2|3|4|5}": "Spacing per size.",
+        "--gem-radius-{sm|md|lg|full}": "Root radius and icon well.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<section>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "emptyState": {
+        "title": "EmptyState",
+        "description": "The component.",
+        "items": {
+          "title": "Heading. Text renders as `<h3>`.",
+          "description": "Supporting copy under the title.",
+          "kind": "Default icon and its color when there is no `icon` or `image`.",
+          "icon": "Replaces the `kind` icon.",
+          "hideIcon": "Hides the icon well.",
+          "image": "Illustration above the copy. When set, the icon is not shown.",
+          "action": "Main action, usually a `Button`.",
+          "secondaryAction": "Secondary action, next to `action`.",
+          "children": "Extra content below the actions, like hints or links.",
+          "size": "Density: padding, icon and type scale.",
+          "align": "Content alignment.",
+          "bordered": "Adds border and background.",
+          "radius": "Corner rounding. Visible with `bordered`.",
+          "minHeight": "Minimum height. A number is taken as pixels.",
+          "role": "Root role.",
+          "aria-labelledby": "Defaults to the title id when there is a `title`.",
+          "className": "Extra classes for the root.",
+          "classNames": "Per-part classes: `root`, `media`, `icon`, `content`, `title`, `description` and `actions`.",
+          "ref": "Root ref."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Exported functions.",
+        "items": {
+          "hasNode": "`false` for `null`, `undefined`, booleans and empty strings. It's the rule EmptyState uses to decide which parts to render."
+        }
+      }
+    }
+  }
+}

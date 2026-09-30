@@ -1,0 +1,190 @@
+{
+  "header": {
+    "title": "Shine",
+    "description": "Animated gleam over a surface: an image, a card or a tile. `effect=\"sweep\"` passes a diagonal band and `effect=\"burst\"` shoots sparkles from the center. `duration` is how long the motion lasts and `interval` is how often it repeats."
+  },
+  "common": {
+    "label": "Limited edition",
+    "promo": "Sale"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the gleam and the code. With `trigger=\"hover\"`, hover over it.",
+    "label": "Limited edition"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Wrap any node with `Shine`. By default the band passes every 4 seconds, diagonally from top left to bottom right."
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` picks the band color: `light` (white), `gold` or `accent`. It stands out more on dark backgrounds."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` controls how opaque the band is: `sm`, `md` (default) or `lg`."
+    },
+    "burst": {
+      "title": "Burst",
+      "description": "`effect=\"burst\"` shoots sparkles from the center outward. It uses the same `tone`, `interval` and `trigger` as the band. A shorter `duration` makes it snappier."
+    },
+    "hover": {
+      "title": "On hover",
+      "description": "`trigger=\"hover\"` fires the gleam on hover or when something inside gets keyboard focus, and repeats it every `interval` while it stays there. Try it with Tab.",
+      "texts": {
+        "label": "View collection"
+      }
+    },
+    "interval": {
+      "title": "Interval",
+      "description": "`interval` is the time between the start of each pass. If it's shorter than `duration`, it waits for the previous one to end. With `0`, it repeats as soon as it ends."
+    },
+    "angle": {
+      "title": "Angle",
+      "description": "`angle` changes the band direction in degrees. `90` makes it vertical and `180`, horizontal."
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` clips the gleam corners. Match it to the content radius so the band doesn't spill out."
+    },
+    "card": {
+      "title": "On a card",
+      "description": "`block` stretches `Shine` to the container width. The content doesn't change: buttons and links inside keep working because the band doesn't take clicks.",
+      "texts": {
+        "title": "Studio plan",
+        "subtitle": "Highlight a paid tier",
+        "body": "Add a gleam to a card, an image or any surface without touching the content.",
+        "action": "Upgrade"
+      }
+    },
+    "color": {
+      "title": "Custom color",
+      "description": "`color` replaces `tone` with any CSS color. Prefer tokens, like `var(--gem-palette-tertiary-200)`."
+    },
+    "control": {
+      "title": "Enable and pause",
+      "description": "`isActive={false}` hides the gleam without unmounting the content. `isPaused` freezes the animation where it is.",
+      "texts": {
+        "active": "Active",
+        "paused": "Paused"
+      }
+    }
+  },
+  "apiLink": "See the full Shine API",
+  "api": {
+    "header": {
+      "title": "Shine API",
+      "description": "API reference for the React Shine: props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Shine"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Shine</code> accepts <code>&lt;div&gt;</code> attributes except <code>color</code>, which is the band color here. They go to the root along with <code>ref</code>. <code>style</code> is merged with <code>--gem-shine-duration</code>, <code>--gem-shine-angle</code>, <code>--gem-shine-strength</code> and <code>--gem-shine-color</code>. Your <code>onMouseEnter</code>, <code>onMouseLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the internal ones."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "decorative": "The band and sparkles have <code>aria-hidden</code> and <code>pointer-events: none</code>: they aren't announced and don't block clicks.",
+      "motion": "With <code>prefers-reduced-motion: reduce</code> the gleam isn't shown, in JavaScript or in CSS.",
+      "hover": "<code>trigger=\"hover\"</code> also responds to focus on an inner element. <code>Shine</code> isn't focusable: put a button or link inside if you want it to fire from the keyboard.",
+      "content": "Don't use the gleam as the only signal of something important: pair it with text, like a \"New\" badge.",
+      "flashing": "Avoid very short intervals with <code>intensity=\"lg\"</code> on large surfaces: flashing more than three times per second can bother people with photosensitivity.",
+      "pause": "If the gleam repeats forever on something important, offer a way to pause it with <code>isPaused</code> or turn it off with <code>isActive</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root. Defines the variables and clips the content. Receives `className` and `classNames.root`.",
+        "tone": "Tone: `--light`, `--gold` or `--accent`. Defines `--gem-shine-color`.",
+        "radius": "Radius: `--radius-none`, `--radius-sm`, `--radius-md`, `--radius-lg` or `--radius-full`.",
+        "trigger": "Trigger: `--always` or `--hover`.",
+        "effect": "Effect: `--sweep` or `--burst`.",
+        "block": "Applied with `block`. Takes the full width.",
+        "paused": "Applied with `isPaused`. Pauses the animations.",
+        "inactive": "Applied with `isActive={false}`. Hides the band.",
+        "surface": "Content container. Receives `classNames.surface`.",
+        "gleam": "Gleam layer, with `aria-hidden`. Receives `classNames.gleam`. Remounts on every pass.",
+        "spark": "Each sparkle with `effect=\"burst\"`. Receives `classNames.spark`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Shine's own variables. `intensity`, `duration` and `angle` write them as inline style, so plain CSS doesn't override them: use the props, `style` or `!important` utilities.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-shine-color": "Band color. Set by `tone` or `color`.",
+        "--gem-shine-strength": "Band opacity. Set by `intensity`.",
+        "--gem-shine-duration": "Duration of each pass. Set by `duration`.",
+        "--gem-shine-angle": "Gradient angle. Set by `angle`.",
+        "--gem-shine-spark-angle": "Direction of each sparkle.",
+        "--gem-shine-spark-delay": "Delay of each sparkle.",
+        "--gem-shine-spark-travel": "Distance each sparkle travels.",
+        "--gem-shine-spark-size": "Size of each sparkle."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Shine.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Shine"
+      },
+      "items": {
+        "--gem-palette-neutral-0": "Color of `tone=\"light\"`.",
+        "--gem-palette-tertiary-100": "Color of `tone=\"gold\"`.",
+        "--gem-palette-primary-100": "Color of `tone=\"accent\"`.",
+        "--gem-radius-{none|sm|md|lg|full}": "Root radius."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Shine also accepts `<div>` attributes (see Inheritance). Times are in milliseconds.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "children": "Surface that receives the gleam.",
+      "tone": "Band color.",
+      "color": "CSS color that replaces `tone`.",
+      "intensity": "Band opacity.",
+      "radius": "Corner clipping.",
+      "trigger": "`always` repeats forever; `hover` only while hovered or with focus inside.",
+      "effect": "`sweep` is the diagonal band; `burst`, sparkles from the center.",
+      "duration": "Duration of each pass.",
+      "interval": "Time between the start of each pass. Never shorter than `duration`. With `0` it repeats as soon as it ends.",
+      "delay": "Wait before the first pass.",
+      "angle": "Gradient angle in degrees.",
+      "block": "Takes the full container width.",
+      "isActive": "With `false` hides the gleam without unmounting the content.",
+      "isPaused": "Freezes the animation.",
+      "className": "Extra classes for the root.",
+      "classNames": "Classes per part: `root`, `surface`, `gleam` and `spark`.",
+      "ref": "Ref to the root `<div>`."
+    }
+  }
+}

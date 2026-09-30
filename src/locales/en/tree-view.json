@@ -1,0 +1,305 @@
+{
+  "header": {
+    "title": "TreeView",
+    "description": "Shows hierarchical data, such as folders or org charts, in branches that open and close. Supports single or multiple selection, cascading checkboxes, and keyboard navigation that follows the ARIA `tree` pattern."
+  },
+  "common": {
+    "listLabel": "Project files"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and try the tree with the mouse and keyboard. Each branch's arrow opens it; clicking the row selects it."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass the nodes in `items`; nodes with `children` are branches. `defaultOpen` opens a branch on mount and `defaultSelectedIds` sets the initial selection. Use `findTreePath` to build the path of the node that `onSelect` receives.",
+      "texts": {
+        "selected": "Selected:"
+      }
+    },
+    "lines": {
+      "title": "Guide lines",
+      "description": "`showLines` draws a vertical line for each level, which helps follow deep trees. `defaultExpandAll` opens every branch on first mount."
+    },
+    "multiple": {
+      "title": "Multiple selection",
+      "description": "With `selectionMode=\"multiple\"`, a click replaces the selection and Ctrl or Cmd + click adds or removes nodes. On the keyboard, Ctrl or Cmd + Enter does the same. There is no Shift range selection.",
+      "texts": {
+        "count": "{count} selected"
+      }
+    },
+    "checkable": {
+      "title": "Checkboxes",
+      "description": "`checkable` adds a checkbox to each node; toggle it with a click or Space. With `cascadeCheck` (on by default), checking a branch checks its children, and a branch with some children checked becomes mixed. `checkedIds` also includes fully checked branches. Checking a node also selects it.",
+      "texts": {
+        "files": "Checked files:",
+        "none": "none"
+      }
+    },
+    "expand": {
+      "title": "Controlled expansion",
+      "description": "`expandedIds` and `onExpandedChange` control which branches are open. `collectBranchIds` returns the ids of every branch, which is handy for an expand-all button.",
+      "texts": {
+        "expandAll": "Expand all",
+        "collapseAll": "Collapse all"
+      }
+    },
+    "filter": {
+      "title": "Filtering",
+      "description": "The component does not filter: filter `items` yourself and keep the ancestors of each match. In this example, changing the `key` remounts the tree so the result's branches open and focus resets.",
+      "texts": {
+        "search": "Search files",
+        "placeholder": "File name",
+        "noMatches": "No files match “{query}”."
+      }
+    },
+    "icons": {
+      "title": "Icons and trailing content",
+      "description": "`icon` replaces the default folder and file icons. `end` adds content at the end of the row, like a count. The `end` text is added to the accessible name (“Starred 2”), so here each node with a count has a clearer `ariaLabel`. Don't put interactive elements in `end`: they would end up inside a `treeitem`.",
+      "texts": {
+        "listLabel": "Workspace",
+        "count": "{label}, {count} items",
+        "labels": {
+          "home": "Home",
+          "starred": "Starred",
+          "brief": "Campaign brief",
+          "prefs": "Preferences",
+          "favorites": "Favorites",
+          "logo": "Final logo",
+          "palette": "Color palette"
+        }
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` on a node prevents selecting, checking, and opening it, and the keyboard skips it. `isDisabled` disables the whole tree.",
+      "texts": {
+        "listLabel": "Teams",
+        "teams": {
+          "company": "Acme",
+          "design": "Design",
+          "engineering": "Engineering",
+          "partners": "Partners"
+        },
+        "whole": "Disabled tree"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` adjusts indentation, row height, type, and icons: `sm`, `md` (default), or `lg`.",
+      "texts": {
+        "label": "Size {size}"
+      }
+    },
+    "richLabel": {
+      "title": "Custom labels",
+      "description": "`label` accepts any React node. When it isn't plain text, the default accessible name is “Item”: pass `ariaLabel` with a clear name. It also helps drop decorative symbols, like the `#` in channel names. A non-text label doesn't get the tree's type styles: wrap the text in `Typography` with `variant=\"caption\"` (or `bodySm` at `lg`).",
+      "texts": {
+        "listLabel": "Channels",
+        "workspace": "Acme",
+        "channels": {
+          "general": "general",
+          "design": "design",
+          "finance": "finance"
+        },
+        "privateLabel": "Private"
+      }
+    }
+  },
+  "styles": {
+    "variant": {
+      "compact": "Compact",
+      "spacious": "Spacious"
+    }
+  },
+  "apiLink": "See the full TreeView API",
+  "api": {
+    "header": {
+      "title": "TreeView API",
+      "description": "API reference for the React TreeView: props, node shape, helpers, CSS classes, variables, tokens, and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component's demo page.",
+      "link": "TreeView"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. The helpers are exported from both."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>TreeView</code> accepts <code>&lt;ul&gt;</code> attributes, except <code>children</code>, <code>onChange</code>, <code>onSelect</code>, and <code>defaultValue</code>. They go to the root list. Your own <code>onKeyDown</code> runs before the component's; if you call <code>preventDefault</code>, the component skips that key."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "roles": "Uses <code>role=\"tree\"</code>, <code>treeitem</code>, and <code>group</code>, with <code>aria-level</code>, <code>aria-setsize</code>, <code>aria-posinset</code>, <code>aria-expanded</code>, and <code>aria-selected</code>. The tree's name is <code>listLabel</code>, which defaults to “Tree”: always pass it.",
+      "keyboard": "The tree is a single Tab stop. Up and Down arrows move through visible nodes; Right opens a branch or moves to its first child; Left closes it or moves to the parent; <code>Home</code> and <code>End</code> go to the first and last node. <code>Enter</code> selects, and Space selects, or checks when <code>checkable</code>.",
+      "multiple": "With <code>selectionMode=\"multiple\"</code> it adds <code>aria-multiselectable</code>. Ctrl or Cmd + <code>Enter</code> adds or removes the node from the selection.",
+      "checkbox": "With <code>checkable</code>, each node exposes <code>aria-checked</code>, with <code>mixed</code> for partially checked branches. The visible checkbox and arrow are out of the Tab order and hidden from screen readers: the state is announced on the <code>treeitem</code> itself.",
+      "names": "When <code>label</code> is text, the node's accessible name is that text. Otherwise the default name is “Item”: pass <code>ariaLabel</code>.",
+      "richLabel": "Also use <code>ariaLabel</code> to drop decorative symbols from the name, or to add information the visual label only shows as an icon or color.",
+      "end": "With a text label, the <code>end</code> text is added to the node's name: a “Starred” branch with a count is announced as “Starred 2”. Pass <code>ariaLabel</code> for a clear name, like “Starred, 2 items”. Don't put buttons or links in <code>end</code>: they would be nested in the <code>treeitem</code> and can't be reached with Tab.",
+      "focusCollapse": "If you close with the mouse a branch that contains the focused node, focus moves to the <code>body</code> and the tree is left with no focusable node: Tab skips it until you click a row. The same happens if you remove the focused node from <code>items</code>. If you filter or replace the data, remount the tree with a new <code>key</code>.",
+      "disabled": "Nodes with <code>disabled</code> get <code>aria-disabled</code> and the keyboard skips them. With <code>isDisabled</code>, the tree still receives Tab focus but ignores keyboard and mouse input.",
+      "missing": "There is no typeahead, no <code>*</code> key to open sibling branches, and no Shift range selection. For large trees, add a search field like in the filtering example."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles. To win on specificity, combine them with your own class, like `.gem-tree.custom-tree`.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root list. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md`, or `--lg`. Sets indentation, row height, and icons.",
+        "radius": "Border radius with `bordered`: `--radius-sm`, `--radius-md`, or `--radius-lg`.",
+        "bordered": "Applied with `bordered`: adds a border and padding.",
+        "lines": "Applied with `showLines`: draws each group's guide line.",
+        "checkable": "Applied with `checkable`.",
+        "disabled": "Applied with `isDisabled`: lowers opacity and turns off pointer events.",
+        "node": "Each `<li role=\"treeitem\">`. Receives `classNames.node`.",
+        "branch": "Node with children.",
+        "open": "Open branch. Rotates the arrow.",
+        "selected": "Selected node.",
+        "nodeDisabled": "Disabled node.",
+        "row": "Visible row of the node. Receives `classNames.row` and the per-level indentation.",
+        "toggle": "Arrow button on branches. Receives `classNames.toggle`.",
+        "spacer": "Empty space instead of the arrow, to align leaves.",
+        "check": "Checkbox wrapper. Receives `classNames.check`.",
+        "icon": "Icon wrapper. Receives `classNames.icon`.",
+        "label": "Label. Truncates with an ellipsis. Receives `classNames.label`.",
+        "end": "Trailing content of the row. Receives `classNames.end`.",
+        "group": "`<ul role=\"group\">` with an open branch's children. Receives `classNames.group`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Defined on `.gem-tree`; override them from your class or with Tailwind utilities.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-tree-fg": "Text color.",
+        "--gem-tree-muted": "Color of icons, arrows, and trailing content.",
+        "--gem-tree-border": "Border color with `bordered`.",
+        "--gem-tree-bg": "Tree background.",
+        "--gem-tree-hover": "Row background on hover.",
+        "--gem-tree-selected": "Selected row background.",
+        "--gem-tree-selected-fg": "Selected row text and icon.",
+        "--gem-tree-line": "Guide line color.",
+        "--gem-tree-radius": "Border radius with `bordered`.",
+        "--gem-tree-indent": "Indentation per level.",
+        "--gem-tree-row-y": "Row vertical padding.",
+        "--gem-tree-row-x": "Row horizontal padding.",
+        "--gem-tree-gap": "Space between arrow, checkbox, icon, and label.",
+        "--gem-tree-icon": "Icon wrapper size.",
+        "--gem-tree-toggle": "Arrow button size. Also positions the guide lines.",
+        "--gem-tree-level": "Node level, set inline on each row and group. Don't override it: it's used to compute indentation."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "System tokens behind the default values. Changing them changes every tree.",
+      "columns": {
+        "name": "Token",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-color-fg": "Text.",
+        "--gem-color-fg-muted": "Icons, arrows, and trailing content.",
+        "--gem-color-border": "Border and guide lines.",
+        "--gem-color-bg": "Background.",
+        "--gem-color-bg-subtle": "Row hover.",
+        "--gem-color-primary-{500|600|700}": "Selection (500 mixed at 12%, text 700), branch icon (600), and fallback focus ring.",
+        "--gem-color-ring": "Focus ring.",
+        "--gem-radius-{sm|md|lg}": "Tree radius with `bordered`, and row radius (`sm`).",
+        "--gem-space-1": "Tree padding.",
+        "--gem-font-sans": "Typeface.",
+        "--gem-palette-neutral-{50|300|600|700}": "Text, icons, lines, and border in dark mode.",
+        "--gem-palette-primary-{200|400}": "Selection in dark mode."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers. `FlatTreeNode` and `TreeCheckState` are exported too."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "TreeView also accepts `<ul>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "content": { "title": "Content and appearance", "description": "Data, accessible name, and look." },
+      "selection": { "title": "Selection", "description": "Which nodes are selected when activated." },
+      "expansion": { "title": "Expansion", "description": "Which branches are open." },
+      "check": { "title": "Checkboxes", "description": "Node checking, with or without cascade." },
+      "styling": { "title": "Styling", "description": "Classes and refs." },
+      "node": { "title": "TreeNode", "description": "Shape of each item in `items`." },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Exported functions for working with the same data the tree receives."
+      }
+    },
+    "items": {
+      "items": "Top-level nodes. Every `id` must be unique across the whole tree.",
+      "listLabel": "Accessible name of the tree. Defaults to “Tree”.",
+      "aria-label": "Replaces `listLabel` when passed.",
+      "size": "Density and text size.",
+      "showLines": "Draws guide lines along nested groups.",
+      "hideIcons": "Hides the default folder and file icons. Custom `icon` values still render.",
+      "bordered": "Adds a border and padding around the tree.",
+      "radius": "Border radius. Only visible with `bordered`.",
+      "isDisabled": "Disables every node.",
+      "selectionMode": "`single` selects one node, `multiple` lets you add with Ctrl or Cmd, and `none` turns selection off.",
+      "selectedIds": "Selected ids, in controlled mode.",
+      "defaultSelectedIds": "Initial selection, in uncontrolled mode. The first one also gets initial focus.",
+      "onSelect": "Called when the selection changes, with the new ids and the activated node.",
+      "expandedIds": "Open branch ids, in controlled mode.",
+      "defaultExpandedIds": "Branches open on mount. When passed, `defaultOpen` and `defaultExpandAll` are ignored.",
+      "defaultExpandAll": "Opens every branch on first mount.",
+      "onExpandedChange": "Called when a branch opens or closes, with the open ids and the branch that changed.",
+      "checkable": "Shows a checkbox on every node.",
+      "checkedIds": "Checked ids, in controlled mode.",
+      "defaultCheckedIds": "Ids checked on mount, in uncontrolled mode.",
+      "cascadeCheck": "Checking a branch checks its children, and the branch state follows its children. Disabled children don't change.",
+      "onCheckedChange": "Called when a node is checked or unchecked, with the checked ids, the node, and its new state.",
+      "className": "Extra classes for the root list.",
+      "classNames": "Per-part classes: `root`, `node`, `row`, `toggle`, `check`, `icon`, `label`, `end`, and `group`.",
+      "ref": "Forwarded to the root list."
+    },
+    "node": {
+      "id": "Stable key. Used for selection, expansion, checkboxes, and DOM ids.",
+      "label": "Visible content. When it isn't text, pass `ariaLabel`.",
+      "icon": "Leading icon. Defaults to a folder for branches and a file for leaves.",
+      "children": "Child nodes. With at least one, the node is a branch.",
+      "defaultOpen": "Opens the branch on first mount, in uncontrolled mode.",
+      "disabled": "Prevents selecting, checking, and opening the node, and the keyboard skips it.",
+      "end": "Content at the end of the row, like a count. Avoid interactive elements.",
+      "ariaLabel": "Accessible name of the node. Required when `label` isn't text."
+    },
+    "helpers": {
+      "findTreeNode": "Finds a node by id.",
+      "findTreePath": "Returns the nodes from the root to the id, or `null`.",
+      "collectTreeIds": "Ids of every node.",
+      "collectBranchIds": "Ids of every branch. Handy for expanding everything.",
+      "collectDescendantIds": "Ids of all descendants of a node.",
+      "collectDefaultExpandedIds": "Branches with `defaultOpen`, or all of them when `expandAll` is `true`.",
+      "flattenVisibleTree": "Flat list of visible nodes, with level, parent, and position.",
+      "isTreeBranch": "`true` when the node has children.",
+      "hasTreeNode": "`true` when the value renders (not `null`, `false`, or empty text).",
+      "treeCheckState": "State of a node: `checked`, `unchecked`, or `indeterminate`.",
+      "applyTreeCheck": "Computes the checked ids after toggling a node, with or without cascade.",
+      "nodeName": "Accessible name the component sets as `aria-label`: `ariaLabel`, nothing when the label is text, or “Item”."
+    }
+  }
+}

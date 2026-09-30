@@ -12,6 +12,7 @@
     "border": "border",
     "labelPlacement": "labelPlacement",
     "preset": "preset",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -105,6 +106,16 @@
         "helperText": "El mismo label en el borde que InputText."
       }
     },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` muestra un botón para vaciar el campo mientras tiene un valor. Limpia a través del `onChange` normal, así funciona igual controlado o no controlado, y después dispara `onClear`. `clearLabel` es el nombre accesible del botón; por defecto es \"Clear\", en inglés, así que conviene traducirlo. El valor se limpia a través de la máscara y emite un valor vacío.",
+      "texts": {
+        "label": "Teléfono",
+        "clearLabel": "Limpiar teléfono",
+        "helperText": "El botón aparece mientras el campo tiene un valor.",
+        "clearedText": "Campo limpiado: se disparó onClear."
+      }
+    },
     "invalid": {
       "title": "Inválido",
       "description": "`isInvalid` y `errorMessage` fuerzan el borde de error.",
@@ -193,6 +204,7 @@
       },
       "rules": {
         "root": "Contenedor raíz (junto a gem-input-text). Recibe `wrapperClassName`.",
+        "clear": "Botón de limpiar. Se muestra con `clearable` mientras el campo tiene un valor.",
         "label": "Label del campo.",
         "required": "Asterisco de campo requerido.",
         "field": "Contenedor del input y sus íconos.",
@@ -279,13 +291,16 @@
       "isInvalid": "Marca el campo como inválido (aria-invalid).",
       "isDisabled": "Deshabilita el campo.",
       "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
+      "clearable": "Muestra un botón para vaciar el campo mientras tiene un valor.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto está en inglés.",
       "className": "Clases extra para el <input>.",
       "wrapperClassName": "Clases extra para el contenedor raíz.",
       "onChange": "Evento nativo. event.target.value es el valor formateado.",
       "onValueChange": "Recibe { value, unmaskedValue, isComplete } en cada cambio.",
       "onComplete": "Se dispara cuando el valor pasa a estar completo.",
       "onValidate": "Se dispara cuando cambia la validez según `validRegex`.",
-      "onInfoClick": "Se dispara al activar el ícono de información."
+      "onInfoClick": "Se dispara al activar el ícono de información.",
+      "onClear": "Se dispara después de limpiar el campo con el botón."
     }
   }
 }

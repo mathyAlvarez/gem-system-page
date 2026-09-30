@@ -1,0 +1,45 @@
+.block-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 100%;
+  max-width: 36rem;
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+}
+
+.block-panel__title {
+  margin: 0;
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-md);
+  font-weight: 650;
+}
+
+.block-panel__body {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.block-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.block-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-xs);
+}
+
+.block-status {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: var(--gem-font-size-sm);
+}

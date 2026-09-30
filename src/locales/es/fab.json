@@ -1,0 +1,307 @@
+{
+  "header": {
+    "title": "FAB",
+    "description": "Botón de acción flotante: un botón redondo que queda fijo en una esquina, encima del contenido, para la acción principal de la pantalla (crear, redactar, agregar). Por defecto usa `position=\"fixed\"` y se ancla abajo a la derecha de la ventana. Con `actions` se convierte en un speed dial que despliega acciones relacionadas. Usá uno solo por pantalla; si tenés varias acciones del mismo peso, mejor botones comunes en la interfaz."
+  },
+  "demo": {
+    "create": "Crear elemento",
+    "created": "Elemento creado",
+    "newRecord": "Nuevo registro",
+    "actionsLabel": "Acciones rápidas",
+    "lastAction": "Última acción",
+    "none": "ninguna",
+    "hint": "Las demos usan position=\"absolute\" para que el FAB quede dentro de este recuadro. En una app dejá el default fixed y se ancla a la ventana.",
+    "actions": {
+      "edit": "Editar",
+      "share": "Compartir",
+      "email": "Enviar por correo",
+      "delete": "Eliminar",
+      "print": "Imprimir",
+      "save": "Guardar",
+      "copy": "Copiar"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado. La vista previa usa `position=\"absolute\"` dentro de un contenedor con `position: relative`. `actionVariant` y `transition` solo aplican cuando hay `actions`.",
+    "tone": "tone",
+    "size": "size",
+    "placement": "placement",
+    "shadow": "shadow",
+    "content": "contenido",
+    "actionVariant": "actionVariant",
+    "transition": "transition"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Un FAB solo con ícono. Como no tiene texto visible, pasale siempre un `aria-label` traducido: si no, se anuncia como \"Quick action\". Si no pasás `icon`, muestra un `+`."
+    },
+    "extended": {
+      "title": "Extendido",
+      "description": "Con `label` el botón se vuelve una píldora con ícono y texto. Si `label` es un string, también es el nombre accesible, así que no hace falta `aria-label`. Sirve cuando la acción no se entiende solo con el ícono."
+    },
+    "tones": {
+      "title": "Tonos",
+      "description": "`tone` define el color con la paleta de gem-system. El default es `primary`. `tertiary` y `warning` usan texto oscuro para mantener el contraste. Acá se muestran con `position=\"static\"` para verlos en fila."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` puede ser `sm` (40px), `md` (56px, default) o `lg` (64px). También cambia el tamaño de las acciones del speed dial."
+    },
+    "placements": {
+      "title": "Esquinas",
+      "description": "`placement` elige la esquina y `offset` la distancia a los bordes en píxeles (default `24`). `offset` también acepta `{ x, y }` para separar cada eje. Las esquinas `-start` y `-end` respetan la dirección del texto."
+    },
+    "speedDial": {
+      "title": "Speed dial",
+      "description": "Con `actions` el FAB despliega acciones relacionadas. Cada acción tiene `id`, `icon` y `label`, y puede tener su propio `tone`. `onAction` recibe el `id` elegido y, por defecto, el menú se cierra después de cada acción. Escape o un clic afuera lo cierran, y las flechas mueven el foco entre acciones."
+    },
+    "direction": {
+      "title": "Dirección",
+      "description": "Las acciones se abren hacia arriba si el FAB está abajo y hacia abajo si está arriba. Con `direction` podés abrirlas de costado (`start` o `end`), útil en pantallas bajas. De costado conviene `showActionLabels={false}` para que los textos no se superpongan."
+    },
+    "custom": {
+      "title": "Chips de superficie y tooltips",
+      "description": "`actionVariant=\"surface\"` muestra las acciones como chips claros en lugar del color del FAB. `transition=\"opacity\"` las hace aparecer con un fundido escalonado, y `showActionLabels={false}` cambia los textos laterales por tooltips. Esta demo arranca abierta con `defaultOpen`.",
+      "texts": {
+        "toasts": {
+          "share": {
+            "title": "Enlace copiado",
+            "description": "Cualquiera con el enlace puede ver este registro."
+          },
+          "print": {
+            "title": "Enviado a imprimir",
+            "description": "El documento está en la cola de impresión."
+          },
+          "save": {
+            "title": "Borrador guardado",
+            "description": "Tus cambios quedaron guardados."
+          },
+          "copy": {
+            "title": "Copiado",
+            "description": "La selección está en el portapapeles."
+          }
+        }
+      }
+    },
+    "customIcon": {
+      "title": "Ícono al abrir",
+      "description": "`icon` es el ícono del botón cerrado y `openIcon` el que se muestra mientras el speed dial está abierto. Sin `openIcon`, el ícono gira 45° (el `+` se convierte en una ×)."
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `open` y `onOpenChange` manejás el estado desde afuera, por ejemplo para abrirlo desde otro botón. Con `closeOnAction={false}` el menú queda abierto después de elegir una acción.",
+      "texts": {
+        "open": "Abrir acciones",
+        "close": "Cerrar acciones",
+        "state": "Estado",
+        "opened": "abierto",
+        "closed": "cerrado"
+      }
+    },
+    "onCard": {
+      "title": "Sobre una tarjeta",
+      "description": "Con `position=\"absolute\"` el FAB se ancla al contenedor posicionado más cercano en lugar de la ventana. Poné `position: relative` en el contenedor y bajá el `offset` para que quede en la esquina de la tarjeta.",
+      "texts": {
+        "title": "Notas de campo",
+        "subtitle": "Borrador",
+        "body": "Agregá una nueva observación sin salir de la tarjeta. El FAB queda en la esquina de este contenedor.",
+        "action": "Agregar a la colección",
+        "added": "Agregado a la colección"
+      }
+    },
+    "loading": {
+      "title": "Cargando",
+      "description": "`isLoading` reemplaza el ícono por un spinner y deshabilita el botón, así no se envía dos veces. Tocá el segundo botón para ver el cambio.",
+      "texts": {
+        "save": "Guardar",
+        "saving": "Guardando"
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`disabled` baja la opacidad y bloquea el clic. Si la acción no está disponible por un rato, considerá ocultar el FAB en lugar de dejarlo deshabilitado."
+    }
+  },
+  "apiLink": "Ver la API completa de FAB",
+  "api": {
+    "header": {
+      "title": "FAB API",
+      "description": "Referencia de la API del componente Fab de React: props, acciones del speed dial, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "FAB"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. Las listas de valores (`FAB_TONES`, `FAB_SIZES`, `FAB_PLACEMENTS`, etc.) solo se exportan desde el subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;button&gt;</code> (<code>ButtonHTMLAttributes&lt;HTMLButtonElement&gt;</code>) y los pasa al botón principal, igual que <code>ref</code>. La excepción es <code>className</code>, que va al contenedor raíz. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>trigger</code>, <code>icon</code>, <code>label</code>, <code>spinner</code>, <code>actions</code>, <code>action</code>, <code>actionIcon</code> y <code>actionLabel</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "name": "El nombre accesible es <code>aria-label</code> o, si no está, el <code>label</code> cuando es un string. Un FAB solo con ícono necesita <code>aria-label</code>.",
+      "menu": "Con <code>actions</code>, el botón tiene <code>aria-haspopup=\"menu\"</code>, <code>aria-expanded</code> y <code>aria-controls</code>, y la lista de acciones tiene <code>role=\"menu\"</code>.",
+      "keyboard": "Flecha arriba o abajo sobre el botón abre el speed dial y enfoca una acción. Las flechas, Inicio y Fin mueven el foco entre acciones, y Tab cierra el menú.",
+      "dismiss": "Escape cierra el speed dial y devuelve el foco al botón. Un clic afuera también lo cierra.",
+      "hidden": "Cuando está cerrado, la lista de acciones queda con <code>inert</code> y <code>aria-hidden</code>, así no se puede enfocar.",
+      "tooltips": "Con <code>showActionLabels={false}</code> cada acción usa su <code>label</code> (o <code>ariaLabel</code>) como nombre accesible y lo muestra en un tooltip.",
+      "loading": "<code>isLoading</code> agrega <code>aria-busy</code> y deshabilita el botón. El spinner es decorativo.",
+      "labels": "Los nombres por defecto están en inglés (<code>\"Quick action\"</code>, <code>\"Open actions\"</code> y <code>\"Close actions\"</code>). Pasá un <code>aria-label</code> traducido."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor raíz. Recibe `className` y `classNames.root` y define las variables del FAB.",
+        "tone": "Colores de cada `tone`. Define `--gem-fab-bg`, `--gem-fab-fg`, `--gem-fab-border` y sus variantes hover.",
+        "size": "Tamaño del botón y de las acciones.",
+        "position": "Esquema de posición: `fixed`, `absolute` o `static`.",
+        "placement": "Esquina en la que se ancla.",
+        "direction": "Hacia dónde se abren las acciones.",
+        "shadow": "Elevación. Define `--gem-fab-shadow`.",
+        "actionVariant": "Estilo de las acciones: `tone` o `surface`.",
+        "transition": "Animación de entrada de las acciones: `scale` u `opacity`.",
+        "extended": "Se aplica cuando hay `label` y el botón es una píldora.",
+        "open": "Se aplica mientras el speed dial está abierto.",
+        "rotate": "Gira el ícono 45° al abrir. No se aplica con `openIcon` ni con `label`.",
+        "loading": "Se aplica con `isLoading`.",
+        "disabled": "Se aplica con `disabled` o `isLoading`.",
+        "trigger": "Botón principal. Recibe `classNames.trigger`.",
+        "icon": "Ícono del botón. Recibe `classNames.icon`.",
+        "spinner": "Spinner de carga. Recibe `classNames.spinner`.",
+        "label": "Texto de la versión extendida. Recibe `classNames.label`.",
+        "actions": "Lista de acciones (`role=\"menu\"`). Recibe `classNames.actions`.",
+        "actionItem": "Fila de cada acción, con el botón y el texto.",
+        "action": "Botón redondo de cada acción. Recibe `classNames.action`.",
+        "actionTone": "Colores de una acción según su `tone`.",
+        "actionSurface": "Chip claro cuando `actionVariant=\"surface\"`.",
+        "actionIcon": "Ícono de la acción. Recibe `classNames.actionIcon`.",
+        "actionLabel": "Texto lateral de la acción. Recibe `classNames.actionLabel`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-fab` y en las clases de tono y tamaño. Para cambiarlas usá un selector con más especificidad, como `.gem-fab.mi-clase`. `--gem-fab-inset-x` y `--gem-fab-inset-y` se escriben inline desde `offset`, y `--gem-fab-count` y `--gem-fab-stagger` también son inline.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-fab-size": "Tamaño del botón principal (alto en la versión extendida).",
+        "--gem-fab-action-size": "Tamaño de cada acción del speed dial.",
+        "--gem-fab-bg": "Fondo del botón.",
+        "--gem-fab-bg-hover": "Fondo al pasar el mouse.",
+        "--gem-fab-border": "Color del borde.",
+        "--gem-fab-border-hover": "Color del borde al pasar el mouse.",
+        "--gem-fab-fg": "Color del ícono y el texto.",
+        "--gem-fab-fg-hover": "Color del ícono y el texto al pasar el mouse.",
+        "--gem-fab-focus": "Anillo de foco (`box-shadow`).",
+        "--gem-fab-shadow": "Sombra del botón. La define `shadow`.",
+        "--gem-fab-z": "Capa de apilado. Por defecto `--gem-z-fixed`.",
+        "--gem-fab-inset-x": "Distancia al borde horizontal. Inline desde `offset`.",
+        "--gem-fab-inset-y": "Distancia al borde vertical. Inline desde `offset`.",
+        "--gem-fab-count": "Cantidad de acciones. Inline, se usa para escalonar la animación.",
+        "--gem-fab-stagger": "Índice de cada acción. Inline, define su retraso en la animación."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa FAB.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en FAB"
+      },
+      "items": {
+        "--gem-palette-*": "Colores de cada `tone` (tonos 500 a 700 según el color) y sus variantes en tema oscuro.",
+        "--gem-shadow-sm": "Sombra con `shadow=\"sm\"`.",
+        "--gem-shadow-md": "Sombra con `shadow=\"md\"`.",
+        "--gem-shadow-lg": "Sombra por defecto (`shadow=\"lg\"`).",
+        "--gem-shadow-xl": "Sombra con `shadow=\"xl\"`.",
+        "--gem-shadow-focus": "Anillo de foco del tono `primary`.",
+        "--gem-radius-full": "Forma redonda del botón y las acciones.",
+        "--gem-radius-sm": "Borde del texto lateral de las acciones.",
+        "--gem-space-2": "Separación entre el ícono y el texto, y entre acciones.",
+        "--gem-space-3": "Margen interno de la versión extendida y del texto lateral.",
+        "--gem-space-6": "Valor base de `--gem-fab-inset-x` y `--gem-fab-inset-y`.",
+        "--gem-z-fixed": "Valor por defecto de `--gem-fab-z`.",
+        "--gem-font-sans": "Tipografía del texto.",
+        "--gem-color-bg": "Fondo de las acciones `surface` y del texto lateral.",
+        "--gem-color-fg": "Color del ícono en las acciones `surface`.",
+        "--gem-color-bg-subtle": "Fondo de las acciones `surface` al pasar el mouse."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props del FAB y de cada acción del speed dial.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "fab": {
+        "title": "Fab",
+        "description": "Además acepta los atributos HTML de un `<button>`.",
+        "items": {
+          "icon": "Ícono del botón. Si no lo pasás usa `children` o un `+`.",
+          "label": "Texto al lado del ícono. Lo convierte en píldora y, si es un string, es el nombre accesible.",
+          "children": "Contenido del botón cuando no pasás `icon`.",
+          "aria-label": "Nombre accesible. Obligatorio si no hay `label`. Sin él dice `\"Quick action\"` u `\"Open actions\"` / `\"Close actions\"`.",
+          "tone": "Color del botón.",
+          "size": "Tamaño del botón y de las acciones.",
+          "position": "`fixed` lo ancla a la ventana, `absolute` al contenedor posicionado y `static` lo deja en el flujo.",
+          "placement": "Esquina en la que se ancla con `fixed` o `absolute`.",
+          "offset": "Distancia a los bordes en píxeles. Un número aplica a los dos ejes.",
+          "shadow": "Elevación del botón.",
+          "actions": "Acciones del speed dial. Si las pasás, el botón abre y cierra el menú en lugar de ejecutar una acción.",
+          "direction": "Hacia dónde se abren las acciones. Por defecto `up` si está abajo y `down` si está arriba.",
+          "actionVariant": "`tone` usa el color del FAB en las acciones; `surface` las muestra como chips claros.",
+          "transition": "Animación de las acciones: `scale` o `opacity` con fundido escalonado.",
+          "showActionLabels": "Muestra los textos al lado de las acciones. Con `false` usa tooltips.",
+          "closeOnAction": "Cierra el speed dial después de elegir una acción.",
+          "openIcon": "Ícono mientras el speed dial está abierto. Sin él, el ícono gira 45°.",
+          "open": "Estado abierto controlado.",
+          "defaultOpen": "Estado abierto inicial si no es controlado.",
+          "isLoading": "Muestra un spinner y deshabilita el botón.",
+          "disabled": "Deshabilita el botón.",
+          "className": "Clases para el contenedor raíz (no para el botón).",
+          "classNames": "Clases por parte: `root`, `trigger`, `icon`, `label`, `spinner`, `actions`, `action`, `actionIcon` y `actionLabel`.",
+          "ref": "Referencia al `<button>` principal.",
+          "onClick": "Se ejecuta al hacer clic en el botón. Con `actions` también abre o cierra el menú.",
+          "onOpenChange": "Se ejecuta cuando el speed dial se abre o se cierra.",
+          "onAction": "Se ejecuta con el `id` de la acción elegida."
+        }
+      },
+      "action": {
+        "title": "FabAction",
+        "description": "Cada elemento de `actions`.",
+        "items": {
+          "id": "Identificador único. Es el valor que recibe `onAction`.",
+          "icon": "Ícono dentro del botón redondo.",
+          "label": "Texto visible al lado (o en el tooltip). También es el nombre accesible.",
+          "ariaLabel": "Nombre accesible si querés que `label` sea solo visual.",
+          "tone": "Color de la acción. Si no lo pasás usa el `tone` del FAB, o el chip claro con `actionVariant=\"surface\"`.",
+          "disabled": "Deshabilita la acción.",
+          "onClick": "Se ejecuta al elegir la acción, antes de `onAction`."
+        }
+      }
+    }
+  }
+}

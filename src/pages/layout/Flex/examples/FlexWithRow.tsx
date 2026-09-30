@@ -1,6 +1,5 @@
 import { Button, Col, Flex, Row, Typography } from "@gem-org/gem-system";
 import { FlexItem } from "./FlexItem.tsx";
-import "../../Grid/examples/grid-col-fix.css";
 
 type FlexWithRowProps = {
   texts: { title: string; filter: string; add: string; filters: string; results: string };

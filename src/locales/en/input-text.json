@@ -14,6 +14,7 @@
     "labelPlacement": "labelPlacement",
     "type": "type",
     "uppercase": "uppercase",
+    "clearable": "clearable",
     "isInvalid": "isInvalid",
     "isDisabled": "isDisabled",
     "isRequired": "isRequired"
@@ -144,6 +145,17 @@
         "label": "Username",
         "placeholder": "username",
         "helperText": "Prefix and suffix icons."
+      }
+    },
+    "clearable": {
+      "title": "Clearable",
+      "description": "`clearable` shows a button that empties the field while it has a value. It clears through the normal `onChange` path, so it works the same controlled or uncontrolled, and then fires `onClear`. `clearLabel` is the button's accessible name; it defaults to \"Clear\".",
+      "texts": {
+        "label": "Full name",
+        "defaultValue": "Jane Doe",
+        "clearLabel": "Clear name",
+        "helperText": "The button shows while the field has a value.",
+        "clearedText": "Field cleared: onClear fired."
       }
     },
     "error": {
@@ -320,6 +332,7 @@
       },
       "rules": {
         "root": "Root container. Receives `wrapperClassName`.",
+        "clear": "Clear button. Shown with `clearable` while the field has a value.",
         "label": "Field label.",
         "required": "Required asterisk.",
         "field": "Container for the input and the prefix and suffix slots.",
@@ -409,11 +422,14 @@
       "isInvalid": "Marks the field as invalid (aria-invalid).",
       "isDisabled": "Disables the field.",
       "isRequired": "Marks the field as required (aria-required + asterisk).",
+      "clearable": "Shows a button that empties the field while it has a value.",
+      "clearLabel": "Accessible name of the clear button.",
       "className": "Extra classes for the <input>.",
       "wrapperClassName": "Extra classes for the root container.",
       "onChange": "Native event on every change.",
       "onValidate": "Fires when validity changes (and on mount when `validRegex` is set).",
-      "onInfoClick": "Fires when the info icon is activated."
+      "onInfoClick": "Fires when the info icon is activated.",
+      "onClear": "Fires after the field is cleared with the button."
     }
   }
 }

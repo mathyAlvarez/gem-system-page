@@ -1,0 +1,287 @@
+{
+  "header": {
+    "title": "Dropdown Menu",
+    "description": "Menú que se abre desde un botón y muestra una lista de acciones sobre algo concreto: editar, duplicar o eliminar un documento, o las opciones de una cuenta. También admite casillas, opciones excluyentes y submenús. El panel se renderiza en un portal sobre la página, así que no lo recorta ningún contenedor."
+  },
+  "demo": {
+    "trigger": "Acciones",
+    "menuLabel": "Acciones del documento",
+    "moreActions": "Más acciones",
+    "lastAction": "Última acción",
+    "none": "ninguna",
+    "items": {
+      "edit": "Editar",
+      "duplicate": "Duplicar",
+      "share": "Compartir",
+      "download": "Descargar",
+      "guide": "Guía de menús (MDN)",
+      "delete": "Eliminar"
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Abrí el menú con un clic o con las flechas del teclado desde el botón.",
+    "size": "size",
+    "placement": "placement",
+    "offset": "offset",
+    "matchTriggerWidth": "matchTriggerWidth",
+    "isDisabled": "isDisabled"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasá el botón en `trigger` y las opciones en `items`. Se abre con un clic y se cierra al elegir, con Escape o al hacer clic afuera. `onAction` recibe el `id` elegido. Cada item puede tener `icon`, `shortcut` (solo visual, no registra el atajo) y `href` para funcionar como enlace. Usá `type: \"separator\"` para agrupar."
+    },
+    "iconTrigger": {
+      "title": "Botón de ícono",
+      "description": "El trigger puede ser cualquier elemento que acepte `onClick`, por ejemplo un `Button` con `iconOnly`. Como no tiene texto, pasale `aria-label`. Es el patrón típico de los tres puntos en una fila o una tarjeta; con `placement=\"bottom-end\"` el menú queda alineado a la derecha.",
+      "texts": {
+        "title": "Informe trimestral.pdf"
+      }
+    },
+    "disabledDanger": {
+      "title": "Deshabilitados y destructivos",
+      "description": "`disabled` deja el item visible pero apagado, y el teclado lo saltea. `description` agrega una línea de ayuda, útil para explicar por qué no está disponible. `danger` pinta el item en rojo para acciones destructivas; conviene separarlo del resto.",
+      "texts": {
+        "archive": "Archivar",
+        "archiveHint": "No disponible en el plan de prueba",
+        "deleteProject": "Eliminar proyecto"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el padding y el texto de los items: `sm`, `md` (por defecto) o `lg`. El tamaño del trigger lo definís vos; conviene que coincidan."
+    },
+    "placement": {
+      "title": "Posición",
+      "description": "`placement` define de qué lado del trigger se abre y cómo se alinea. Si el menú no entra de ese lado de la ventana, se abre del otro (arriba o abajo) y nunca queda cortado; por eso, cerca del borde de la pantalla, puede no respetar el lado pedido. `offset` es la distancia en píxeles con el trigger."
+    },
+    "selection": {
+      "title": "Casillas y opciones",
+      "description": "`type: \"checkbox\"` agrega una opción que se activa y desactiva, y `type: \"radio-group\"` un grupo de opciones excluyentes. A diferencia de las acciones, el menú queda abierto después de cambiarlas. `type: \"label\"` agrega un título de sección.",
+      "texts": {
+        "trigger": "Vista",
+        "menuLabel": "Opciones de vista",
+        "section": "Vista",
+        "grid": "Mostrar cuadrícula",
+        "density": "Densidad",
+        "compact": "Compacta",
+        "comfortable": "Cómoda",
+        "spacious": "Amplia",
+        "on": "activada",
+        "off": "desactivada"
+      }
+    },
+    "submenu": {
+      "title": "Submenú",
+      "description": "`type: \"submenu\"` agrupa opciones en un segundo nivel. Se abre al pasar el mouse o con la flecha derecha, y se cierra con la flecha izquierda o Escape. Si no hay lugar a los costados, como en un teléfono, se muestra dentro del mismo panel.",
+      "texts": {
+        "trigger": "Cuenta",
+        "menuLabel": "Menú de la cuenta",
+        "profile": "Perfil",
+        "share": "Compartir",
+        "copyLink": "Copiar enlace",
+        "email": "Enviar por correo",
+        "exportPdf": "Exportar PDF",
+        "signOut": "Cerrar sesión"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Dropdown Menu",
+  "api": {
+    "header": {
+      "title": "Dropdown Menu API",
+      "description": "Referencia de la API del componente DropdownMenu de React: props, tipos de item, clases CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Dropdown Menu"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>) y los pasa al <strong>panel</strong> del menú, no al contenedor. Lo mismo pasa con <code>className</code>. Para el contenedor del trigger usá <code>classNames.root</code>. <code>classNames</code> acepta <code>root</code>, <code>trigger</code>, <code>menu</code>, <code>item</code>, <code>label</code>, <code>separator</code> y <code>shortcut</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "trigger": "El trigger recibe <code>aria-haspopup=\"menu\"</code>, <code>aria-expanded</code> y <code>aria-controls</code> apuntando al panel.",
+      "menu": "El panel tiene <code>role=\"menu\"</code> con <code>menuLabel</code> como <code>aria-label</code>, y marca el item activo con <code>aria-activedescendant</code>.",
+      "items": "Las acciones tienen <code>role=\"menuitem\"</code>, las casillas <code>menuitemcheckbox</code> y las opciones <code>menuitemradio</code>, con <code>aria-checked</code>. Los grupos de opciones tienen <code>role=\"group\"</code>.",
+      "keyboard": "Desde el trigger, las flechas abajo y arriba abren el menú en el primer o el último item. Adentro, las flechas recorren los items, <code>Home</code> y <code>End</code> van a los extremos, <code>Enter</code> o <code>Espacio</code> eligen y <code>Escape</code> cierra.",
+      "typeahead": "Escribir una letra salta al primer item cuyo texto empieza así.",
+      "submenu": "Los submenús tienen <code>aria-haspopup</code> y <code>aria-expanded</code>. La flecha derecha los abre y la izquierda vuelve al nivel anterior.",
+      "focus": "Al cerrar con Escape o al elegir, el foco vuelve al trigger. Tab cierra el menú.",
+      "disabled": "Los items deshabilitados tienen <code>aria-disabled</code> y el teclado los saltea.",
+      "labels": "<code>menuLabel</code> viene en inglés por defecto (<code>\"Actions\"</code>). Pasalo traducido. Si un <code>label</code> no es texto, usá <code>ariaLabel</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos. El panel se renderiza en `document.body`, fuera del contenedor, así que no lo alcanzan los selectores que dependen de él.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor del trigger. Recibe `classNames.root`.",
+        "trigger": "`<span>` que envuelve al trigger.",
+        "panel": "Panel del menú (`role=\"menu\"`). Recibe `className` y `classNames.menu`.",
+        "ready": "Se aplica cuando el panel ya está posicionado. Antes queda invisible.",
+        "size": "Se aplica al panel según `size`.",
+        "item": "Cada item. Recibe `classNames.item`.",
+        "active": "Item activo, con el mouse encima o elegido con el teclado.",
+        "disabled": "Item deshabilitado.",
+        "danger": "Item con `danger`.",
+        "icon": "Contenedor del `icon`.",
+        "labelText": "Texto del item. Se corta con puntos suspensivos.",
+        "description": "Texto de `description`.",
+        "shortcut": "Texto de `shortcut`. Recibe `classNames.shortcut`.",
+        "check": "Marca de las casillas y opciones.",
+        "chevron": "Flecha de los submenús.",
+        "section": "Títulos de sección y de grupos. Recibe `classNames.label`.",
+        "separator": "Separador. Recibe `classNames.separator`.",
+        "submenu": "Panel del submenú.",
+        "submenuLayout": "`start` abre el submenú a la izquierda y `nested` lo muestra dentro del panel cuando no hay lugar a los costados."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Dropdown Menu no tiene variables propias: usa directamente los tokens de gem-system. Para cambiar colores en un solo menú, redefiní esos tokens en una clase sobre el panel."
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Dropdown Menu.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Dropdown Menu"
+      },
+      "items": {
+        "--gem-color-bg": "Fondo del panel y de los submenús.",
+        "--gem-color-bg-subtle": "Fondo del item activo.",
+        "--gem-color-border": "Borde del panel y separadores.",
+        "--gem-color-fg": "Texto de los items.",
+        "--gem-color-fg-muted": "Descripciones, atajos, títulos de sección y flechas.",
+        "--gem-color-primary-600": "Marca de casillas y opciones.",
+        "--gem-color-error-500": "Fondo del item destructivo activo.",
+        "--gem-color-error-600": "Texto de los items destructivos.",
+        "--gem-radius-sm": "Bordes redondeados de los items.",
+        "--gem-radius-md": "Bordes redondeados del panel.",
+        "--gem-shadow-lg": "Sombra del panel.",
+        "--gem-z-dropdown": "Capa del panel.",
+        "--gem-font-sans": "Fuente del componente.",
+        "--gem-font-mono": "Fuente de los atajos."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del panel.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "dropdownMenu": {
+        "title": "DropdownMenu",
+        "description": "Props del componente principal.",
+        "items": {
+          "items": "Entradas del menú: acciones, separadores, títulos, casillas, opciones y submenús.",
+          "trigger": "Elemento que abre el menú, normalmente un `Button`. Recibe los atributos ARIA y el `onClick`.",
+          "menuLabel": "Nombre accesible del panel (`aria-label`).",
+          "size": "Tamaño de los items.",
+          "placement": "Lado y alineación del panel: `bottom-start`, `bottom`, `bottom-end`, `top-start`, `top` o `top-end`.",
+          "offset": "Distancia en píxeles entre el trigger y el panel.",
+          "matchTriggerWidth": "Hace que el panel mida al menos lo mismo que el trigger.",
+          "isDisabled": "Deshabilita el trigger y evita que se abra.",
+          "open": "Si el menú está abierto. Modo controlado.",
+          "defaultOpen": "Si empieza abierto. Modo no controlado.",
+          "className": "Clases extra para el panel.",
+          "classNames": "Clases por parte: `root`, `trigger`, `menu`, `item`, `label`, `separator` y `shortcut`.",
+          "onOpenChange": "Se llama al abrir o cerrar. Recibe el nuevo estado.",
+          "onAction": "Se llama al elegir una acción. Recibe su `id`.",
+          "onCheckedChange": "Se llama al cambiar una casilla. Recibe el `id` y el nuevo valor.",
+          "onRadioChange": "Se llama al elegir una opción. Recibe el `id` del grupo y el de la opción."
+        }
+      },
+      "action": {
+        "title": "DropdownMenuActionItem",
+        "description": "Acción común. Es el tipo por defecto, así que `type` es opcional.",
+        "items": {
+          "type": "Tipo de item.",
+          "id": "Identificador único. Lo recibe `onAction`.",
+          "label": "Texto del item.",
+          "description": "Línea de ayuda debajo del texto.",
+          "icon": "Ícono decorativo antes del texto.",
+          "shortcut": "Atajo que se muestra a la derecha. Solo es visual.",
+          "href": "Convierte el item en un enlace `<a>`.",
+          "target": "Dónde se abre el enlace.",
+          "rel": "Relación con el destino. Con `_blank` es `noopener noreferrer` por defecto.",
+          "disabled": "Lo muestra apagado y no se puede elegir.",
+          "danger": "Lo pinta en rojo para acciones destructivas.",
+          "closeOnSelect": "Cierra el menú al elegirlo.",
+          "ariaLabel": "Nombre accesible cuando `label` no es texto.",
+          "onSelect": "Se llama al elegirlo, antes de `onAction`."
+        }
+      },
+      "checkbox": {
+        "title": "DropdownMenuCheckboxItem",
+        "description": "Opción que se activa y desactiva.",
+        "items": {
+          "type": "Tipo de item.",
+          "id": "Identificador único. Lo recibe `onCheckedChange` del menú.",
+          "label": "Texto del item.",
+          "checked": "Si está activada.",
+          "description": "Línea de ayuda debajo del texto.",
+          "icon": "Ícono decorativo antes del texto.",
+          "disabled": "La muestra apagada y no se puede cambiar.",
+          "closeOnSelect": "Cierra el menú al cambiarla. Por defecto queda abierto.",
+          "ariaLabel": "Nombre accesible cuando `label` no es texto.",
+          "onCheckedChange": "Se llama al cambiarla. Recibe el nuevo valor."
+        }
+      },
+      "radio": {
+        "title": "DropdownMenuRadioGroupItem",
+        "description": "Grupo de opciones excluyentes. Cada opción (`DropdownMenuRadioOption`) tiene `id`, `label`, `description` y `disabled`.",
+        "items": {
+          "type": "Tipo de item.",
+          "id": "Identificador del grupo. Lo recibe `onRadioChange` del menú.",
+          "label": "Título del grupo. También es su nombre accesible.",
+          "value": "`id` de la opción elegida.",
+          "items": "Opciones del grupo.",
+          "onValueChange": "Se llama al elegir una opción. Recibe su `id`."
+        }
+      },
+      "submenu": {
+        "title": "DropdownMenuSubmenuItem",
+        "description": "Item que abre un segundo nivel.",
+        "items": {
+          "type": "Tipo de item.",
+          "id": "Identificador único.",
+          "label": "Texto del item.",
+          "icon": "Ícono decorativo antes del texto.",
+          "items": "Entradas del submenú. Admite acciones y casillas.",
+          "disabled": "Lo muestra apagado y no se puede abrir.",
+          "ariaLabel": "Nombre accesible cuando `label` no es texto."
+        }
+      },
+      "other": {
+        "title": "Separadores y títulos",
+        "description": "Items sin acción para organizar el menú.",
+        "items": {
+          "separator": "Línea divisoria entre grupos.",
+          "label": "Título de sección. No se puede elegir."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "Tabs",
+    "description": "Divide el contenido relacionado en secciones y muestra una por vez, sin salir de la página. Sirve para alternar entre vistas del mismo objeto, como el resumen, la actividad y la configuración de un proyecto. Sigue el patrón de pestañas de WAI-ARIA: cada pestaña es un `<button role=\"tab\">` y cada panel un `role=\"tabpanel\"`."
+  },
+  "demo": {
+    "listLabel": "Secciones del proyecto",
+    "tabs": {
+      "overview": { "label": "Resumen", "content": "Resumen del proyecto, responsables y la actividad más reciente." },
+      "activity": { "label": "Actividad", "content": "Comentarios, commits y cambios de estado recientes." },
+      "settings": { "label": "Configuración", "content": "Visibilidad, notificaciones y opciones de archivo." },
+      "members": { "label": "Miembros", "content": "Personas con acceso a este espacio de trabajo." },
+      "billing": { "label": "Facturación", "content": "Plan, facturas y métodos de pago." }
+    },
+    "icons": {
+      "home": { "label": "Inicio", "content": "Panel principal y accesos directos." },
+      "files": { "label": "Archivos", "content": "Documentos adjuntos a este espacio de trabajo." },
+      "calendar": { "label": "Calendario", "content": "Próximas fechas y recordatorios." },
+      "settings": { "label": "Configuración", "content": "Preferencias del espacio de trabajo." }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Probá también el teclado: con el foco en una pestaña, las flechas mueven la selección.",
+    "variant": "variant",
+    "size": "size",
+    "orientation": "orientation",
+    "activation": "activation",
+    "fullWidth": "fullWidth",
+    "icons": "icon"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Pasá las pestañas en `items`. Cada item necesita `id` y `label`, y su `content` se muestra en el panel cuando está seleccionado. Por defecto se selecciona la primera pestaña habilitada; usá `defaultValue` para empezar en otra. Un indicador se desliza hasta la pestaña seleccionada."
+    },
+    "icons": {
+      "title": "Con íconos",
+      "description": "`icon` agrega un ícono antes del texto. Es decorativo (`aria-hidden`), así que el `label` tiene que alcanzar por sí solo."
+    },
+    "disabled": {
+      "title": "Pestaña deshabilitada",
+      "description": "Con `disabled` la pestaña se ve apagada, no se puede elegir y el teclado la saltea. Para deshabilitar todas, usá `isDisabled` en el componente."
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`orientation=\"vertical\"` pone la lista a la izquierda y el panel a la derecha. El indicador acompaña a la pestaña por el borde de inicio, y el teclado usa las flechas arriba y abajo. Sirve para configuraciones con muchas secciones."
+    },
+    "manual": {
+      "title": "Activación manual",
+      "description": "Por defecto (`activation=\"automatic\"`), las flechas cambian de pestaña al instante. Con `activation=\"manual\"` solo mueven el foco, y la pestaña se elige con Enter o Espacio. Usalo cuando mostrar un panel es costoso, por ejemplo si carga datos."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia el estilo: `line` (por defecto) subraya la pestaña seleccionada, `enclosed` la muestra como una tarjeta dentro de un contenedor y `pills` la resalta con un fondo redondeado."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` cambia el alto y el texto de las pestañas: `sm` (32px), `md` (40px, por defecto) o `lg` (48px)."
+    },
+    "fullWidth": {
+      "title": "Ancho completo",
+      "description": "`fullWidth` reparte el ancho disponible en partes iguales entre las pestañas. Queda bien con `enclosed` y pocas pestañas, como un control segmentado."
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `value` y `onChange` la pestaña seleccionada vive en tu estado, así podés cambiarla desde afuera. `onChange` recibe el `id` y el item elegido.",
+      "texts": {
+        "selected": "Seleccionada",
+        "goToSettings": "Ir a Configuración"
+      }
+    },
+    "mobile": {
+      "title": "Pantallas chicas",
+      "description": "En horizontal, si las pestañas no entran, la lista se desplaza hacia los costados en lugar de desbordar la página. La pestaña seleccionada se desplaza hasta quedar a la vista. Este recuadro simula el ancho de un teléfono."
+    }
+  },
+  "apiLink": "Ver la API completa de Tabs",
+  "api": {
+    "header": {
+      "title": "Tabs API",
+      "description": "Referencia de la API del componente Tabs de React: props, items, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Tabs"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML del <code>&lt;div&gt;</code> raíz (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>), salvo <code>children</code>, <code>onChange</code> y <code>defaultValue</code>, que tienen otro significado. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>list</code>, <code>tab</code>, <code>panel</code> e <code>indicator</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "roles": "La lista tiene <code>role=\"tablist\"</code> con <code>aria-orientation</code>, cada pestaña <code>role=\"tab\"</code> y cada panel <code>role=\"tabpanel\"</code>.",
+      "selected": "La pestaña seleccionada tiene <code>aria-selected=\"true\"</code>; las demás, <code>false</code>.",
+      "relations": "Cada pestaña apunta a su panel con <code>aria-controls</code>, y cada panel se nombra con su pestaña mediante <code>aria-labelledby</code>. Los ids se generan con <code>useId</code>.",
+      "roving": "Solo una pestaña está en el orden de tabulación. Tab entra a la lista y el siguiente Tab pasa al panel.",
+      "keyboard": "Las flechas izquierda y derecha (arriba y abajo en vertical) recorren las pestañas en círculo. <code>Home</code> y <code>End</code> van a la primera y a la última.",
+      "manual": "Con <code>activation=\"manual\"</code>, las flechas solo mueven el foco y <code>Enter</code> o <code>Espacio</code> eligen la pestaña.",
+      "disabled": "Las pestañas deshabilitadas tienen <code>disabled</code> y <code>aria-disabled</code>, y el teclado las saltea.",
+      "panel": "Los paneles no seleccionados tienen <code>hidden</code>. El panel visible tiene <code>tabIndex=0</code> para que se pueda llegar con Tab aunque no tenga elementos enfocables.",
+      "labels": "<code>listLabel</code> es el <code>aria-label</code> de la lista y viene en inglés por defecto (<code>\"Tabs\"</code>). Pasalo traducido. Si el <code>label</code> de una pestaña no es texto, usá <code>ariaLabel</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento raíz. Recibe `className` y `classNames.root`. Define las variables de Tabs.",
+        "variant": "Se aplica según `variant`: `line`, `enclosed` o `pills`.",
+        "size": "Se aplica según `size`. Define el alto, el padding y el texto de las pestañas.",
+        "orientation": "Se aplica según `orientation`. En `vertical` la lista y el panel quedan en fila.",
+        "full": "Se aplica con `fullWidth`. Las pestañas ocupan partes iguales.",
+        "disabled": "Se aplica con `isDisabled`. Baja la opacidad de todo el componente.",
+        "list": "Lista con `role=\"tablist\"`. En horizontal se desplaza hacia los costados si no entra.",
+        "track": "Contenedor interno de las pestañas y del indicador.",
+        "indicator": "Indicador que se desliza hasta la pestaña seleccionada. Es visible con `data-visible=\"true\"`.",
+        "tab": "Cada pestaña (`<button role=\"tab\">`).",
+        "selected": "Pestaña seleccionada.",
+        "icon": "Contenedor del `icon` de una pestaña.",
+        "label": "Texto de la pestaña.",
+        "panel": "Cada panel con `role=\"tabpanel\"`.",
+        "active": "Panel visible."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-tabs` y ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-tabs.mi-clase`) o con utilidades de Tailwind. En el tema oscuro toman otros valores.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-tabs-fg": "Color del texto del panel y de las pestañas al pasar el mouse.",
+        "--gem-tabs-muted": "Color de las pestañas no seleccionadas.",
+        "--gem-tabs-indicator": "Color del indicador en `line` y base del fondo en `pills`.",
+        "--gem-tabs-selected": "Color del texto de la pestaña seleccionada.",
+        "--gem-tabs-track": "Línea de fondo en `line` y borde de la lista en `enclosed`.",
+        "--gem-tabs-surface": "Fondo de la lista en `enclosed`.",
+        "--gem-tabs-bg": "Fondo del indicador en `enclosed`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Tabs.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Tabs"
+      },
+      "items": {
+        "--gem-color-fg": "Valor por defecto de `--gem-tabs-fg`.",
+        "--gem-color-fg-muted": "Valor por defecto de `--gem-tabs-muted`.",
+        "--gem-color-primary-600": "Valor por defecto de `--gem-tabs-indicator`.",
+        "--gem-color-primary-700": "Valor por defecto de `--gem-tabs-selected`.",
+        "--gem-color-border": "Valor por defecto de `--gem-tabs-track`.",
+        "--gem-color-bg-subtle": "Valor por defecto de `--gem-tabs-surface`.",
+        "--gem-color-bg": "Valor por defecto de `--gem-tabs-bg`.",
+        "--gem-space-2": "Espacio entre el ícono y el texto.",
+        "--gem-space-4": "Espacio entre la lista y el panel.",
+        "--gem-radius-sm": "Bordes redondeados de las pestañas y del indicador.",
+        "--gem-radius-md": "Bordes redondeados de la lista en `enclosed` y `pills`.",
+        "--gem-radius-full": "Pestañas en `pills` e indicador en `line`.",
+        "--gem-shadow-sm": "Sombra del indicador en `enclosed`.",
+        "--gem-shadow-focus": "Anillo de foco de las pestañas y del panel.",
+        "--gem-font-sans": "Fuente del componente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del `<div>` raíz.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "tabs": {
+        "title": "Tabs",
+        "description": "Props del componente principal.",
+        "items": {
+          "items": "Pestañas con su contenido.",
+          "value": "`id` de la pestaña seleccionada. Modo controlado.",
+          "defaultValue": "`id` de la pestaña seleccionada al inicio. Modo no controlado.",
+          "variant": "Estilo visual.",
+          "size": "Tamaño de las pestañas.",
+          "orientation": "Dirección de la lista.",
+          "activation": "Si las flechas eligen la pestaña al instante (`automatic`) o solo mueven el foco (`manual`).",
+          "fullWidth": "Reparte el ancho en partes iguales entre las pestañas.",
+          "isDisabled": "Deshabilita todas las pestañas.",
+          "listLabel": "Nombre accesible de la lista (`aria-label`).",
+          "className": "Clases extra para el elemento raíz.",
+          "classNames": "Clases por parte: `root`, `list`, `tab`, `panel` e `indicator`.",
+          "onChange": "Se llama al elegir una pestaña. Recibe el `id` y el item."
+        }
+      },
+      "item": {
+        "title": "TabItem",
+        "description": "Cada objeto del array `items`.",
+        "items": {
+          "id": "Identificador único. Se usa para la selección, los ids y `onChange`.",
+          "label": "Texto de la pestaña. Acepta cualquier nodo.",
+          "content": "Contenido del panel.",
+          "icon": "Ícono decorativo antes del texto.",
+          "disabled": "La muestra apagada y no se puede elegir.",
+          "ariaLabel": "Nombre accesible cuando `label` no es texto."
+        }
+      }
+    }
+  }
+}

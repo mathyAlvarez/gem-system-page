@@ -1,0 +1,300 @@
+{
+  "header": {
+    "title": "Badge",
+    "description": "Small label to mark a status, a category or a count. It can stand alone, sit next to text, or overlay a button or avatar to show notifications or presence. `Tag` is the same component under another name, meant for filters and removable labels."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the result. With `isDot` the badge becomes a dot and stops showing the text, icon and × button.",
+    "texts": {
+      "label": "New",
+      "remove": "Remove"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "The text goes in `children`. With no other props, the badge is `primary`, `soft`, `md` and fully rounded.",
+      "texts": {
+        "label": "New"
+      }
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` sets the color. `primary`, `secondary` and `tertiary` come from the brand palettes; `success`, `warning`, `error` and `info` use the status colors; `neutral` is for labels with no special meaning."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` changes the treatment: `soft` (default) with a light background, `solid` with a filled background and `outline` with the page background and a colored border. In `solid`, `warning` and `tertiary` use dark text."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` adjusts height, padding and text size: `sm`, `md` (default) and `lg`. It also changes the dot and icon size."
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` uses gem-system radius tokens: `sm`, `md`, `lg` and `full` (default)."
+    },
+    "icon": {
+      "title": "With icon",
+      "description": "`icon` adds an icon before the text. It takes the badge's text color and is hidden from screen readers.",
+      "texts": {
+        "paid": "Paid",
+        "pending": "Pending",
+        "featured": "Featured"
+      }
+    },
+    "count": {
+      "title": "Count",
+      "description": "With `count` and no `children`, the badge shows a number. Above `max` (99 by default) it shows as `99+`. With `0` nothing renders unless you pass `showZero`."
+    },
+    "overlay": {
+      "title": "Overlay",
+      "description": "If `children` is a React element and you pass `count`, `content` or `isDot`, the badge wraps the element and sits in a corner. The indicator isn't part of the button's name: pass `aria-label` to the Badge to give the number context.",
+      "texts": {
+        "notifications": "Notifications",
+        "favorites": "Favorites",
+        "unread": "unread",
+        "name": "Jane Doe"
+      }
+    },
+    "liveCount": {
+      "title": "Changing count",
+      "description": "The count has `role=\"status\"`, so screen readers announce changes. At `0` it hides on its own. `isInvisible` hides it without unmounting the inner element.",
+      "texts": {
+        "inbox": "Inbox",
+        "unread": "unread",
+        "receive": "Receive message",
+        "markRead": "Mark as read",
+        "hide": "Hide count"
+      }
+    },
+    "content": {
+      "title": "Custom content",
+      "description": "`content` replaces the number with any content and wins over `count`. If it's a symbol, like `!`, pass `role=\"img\"` and an `aria-label` that explains it.",
+      "texts": {
+        "updates": "Updates",
+        "newLabel": "New",
+        "name": "Marco Rossi",
+        "attention": "Needs attention"
+      }
+    },
+    "placement": {
+      "title": "Placement",
+      "description": "`placement` picks the corner: `top-end` (default), `top-start`, `bottom-end` or `bottom-start`. `offset` (in pixels) moves the indicator toward the center, useful on round avatars where the corner falls outside the circle.",
+      "texts": {
+        "name": "Jane Doe"
+      }
+    },
+    "dot": {
+      "title": "Dot",
+      "description": "`isDot` shows a dot instead of text, to signal presence or news. The dot is hidden from screen readers: include the state in the element's name, like the button's `aria-label`.",
+      "texts": {
+        "name": "Jane Doe",
+        "online": "online",
+        "inbox": "Inbox",
+        "newMessages": "new messages"
+      }
+    },
+    "statusList": {
+      "title": "Dot with text",
+      "description": "A dot without `children` works as a color cue next to text. The text conveys the status; the dot only reinforces it.",
+      "texts": {
+        "statuses": {
+          "online": "Online",
+          "away": "Away",
+          "offline": "Offline"
+        }
+      }
+    },
+    "closable": {
+      "title": "Closable",
+      "description": "`isClosable` adds a × button that calls `onClose`. The badge doesn't hide itself: remove it from the list in `onClose`. The button is announced as \"Remove\" by default; pass a `closeAriaLabel` that includes the tag name.",
+      "texts": {
+        "tags": ["Design", "React", "Accessible"],
+        "remove": "Remove",
+        "reset": "Reset tags"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`isDisabled` dims the badge, blocks the × button and adds `aria-disabled`.",
+      "texts": {
+        "active": "Editable",
+        "locked": "Locked",
+        "remove": "Remove"
+      }
+    },
+    "tag": {
+      "title": "Tag",
+      "description": "`Tag` is an alias of `Badge`. Use it for filters and removable labels so the code makes the intent clear.",
+      "texts": {
+        "featured": "Featured",
+        "draft": "Draft",
+        "remove": "Remove"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "pro": "Pro",
+      "notifications": "Notifications"
+    },
+    "cva": {
+      "draft": "Draft",
+      "review": "In review",
+      "published": "Published"
+    },
+    "css": {
+      "label": "Limited edition",
+      "notifications": "Notifications"
+    }
+  },
+  "apiLink": "See the full Badge API",
+  "api": {
+    "header": {
+      "title": "Badge API",
+      "description": "API reference for the Badge React component: props, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Badge"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or its subpath. `Tag` is the same component. `formatBadgeCount` applies the same `max` rule as the badge, in case you need the text elsewhere."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;span&gt;</code> (<code>HTMLAttributes&lt;HTMLSpanElement&gt;</code>, except <code>content</code>) and forwards them to the root element, as well as <code>ref</code>. In overlay mode the root is the <code>gem-badge-anchor</code> wrapper; <code>role</code> and <code>aria-label</code> go to the indicator. <code>classNames</code> adds classes to each part: <code>root</code>, <code>indicator</code> (overlay only), <code>icon</code>, <code>label</code> and <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "count": "A count has <code>role=\"status\"</code> and, without <code>aria-label</code>, is named with the formatted number (e.g. <code>\"99+\"</code>). Changes are announced.",
+      "overlay": "In overlay mode the indicator sits next to the element, not inside it, so it isn't part of its name. Pass <code>aria-label</code> to the Badge (e.g. <code>\"8 unread\"</code>) or include the number in the button's name.",
+      "dot": "The dot has <code>role=\"presentation\"</code> and <code>aria-hidden</code>: it isn't announced. The state must be in a text or in the element's name.",
+      "content": "With <code>content</code> the indicator has no role. If it's a symbol, pass <code>role=\"img\"</code> and <code>aria-label</code>.",
+      "close": "The × button is a <code>&lt;button&gt;</code> named <code>\"Remove\"</code> by default. Pass a translated <code>closeAriaLabel</code> that includes the tag name. The click doesn't propagate to the wrapper.",
+      "disabled": "With <code>isDisabled</code> the badge has <code>aria-disabled</code> and the × button is disabled."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "The badge. Receives `className` and `classNames.root` when standalone. Sets the default variable values.",
+        "tone": "Tone colors: redefines `--gem-badge-bg`, `--gem-badge-fg`, `--gem-badge-border` and `--gem-badge-solid`.",
+        "soft": "Light background. It's the default variant and adds no rules of its own.",
+        "solid": "`--gem-badge-solid` background, light text and transparent border. With `warning` and `tertiary` the text is dark.",
+        "outline": "`--gem-color-bg` background with the tone border.",
+        "size": "Height, padding, gap, text, icon and dot size.",
+        "radius": "Radius from `radius`.",
+        "dot": "Dot without text in the `--gem-badge-solid` color.",
+        "count": "Tighter horizontal padding for numbers.",
+        "disabled": "Reduced opacity and no pointer events.",
+        "invisible": "Hides the indicator with `visibility: hidden`.",
+        "overlay": "Absolutely positioned overlay indicator. Receives no pointer events.",
+        "placement": "Corner of the overlay indicator.",
+        "outlineRing": "`--gem-color-bg` ring around the overlay indicator, with `showOutline`.",
+        "icon": "Icon wrapper. Receives `classNames.icon`.",
+        "label": "Text. Truncates with an ellipsis if it doesn't fit. Receives `classNames.label`.",
+        "close": "× button. Takes the text color. Receives `classNames.close`.",
+        "anchor": "Wrapper of the element and the indicator in overlay mode. Receives `className` and `classNames.root`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The tone and size classes set these variables on the same element, so to change them use a selector like `.gem-badge.my-class` (see Style changes). In overlay mode, use `classNames.indicator`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-badge-bg": "Background color.",
+        "--gem-badge-fg": "Text, icon and × button color.",
+        "--gem-badge-border": "Border color.",
+        "--gem-badge-solid": "`solid` background and dot color.",
+        "--gem-badge-h": "Minimum height and width.",
+        "--gem-badge-pad-x": "Horizontal padding.",
+        "--gem-badge-pad-y": "Vertical padding.",
+        "--gem-badge-gap": "Gap between icon, text and × button.",
+        "--gem-badge-font": "Font size.",
+        "--gem-badge-leading": "Line height.",
+        "--gem-badge-icon": "Icon and × button size.",
+        "--gem-badge-dot": "Dot size.",
+        "--gem-badge-offset": "Overlay indicator offset. Set inline from `offset`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Badge. `{tone}` is `primary`, `secondary`, `tertiary` or `neutral`, and `{status}` is `success`, `warning`, `error` or `info`.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Badge"
+      },
+      "items": {
+        "--gem-color-{tone}-100": "`soft` background for brand tones and `neutral`.",
+        "--gem-color-{tone}-300": "Border for brand tones and `neutral`.",
+        "--gem-color-{tone}-600": "`solid` background and dot (`tertiary` uses 500 and `neutral` 700).",
+        "--gem-color-{tone}-800": "`soft` and `outline` text for brand tones and `neutral`.",
+        "--gem-color-{status}-soft": "`soft` background for status tones.",
+        "--gem-color-{status}-text": "`soft` and `outline` text for status tones.",
+        "--gem-color-{status}-border": "Border for status tones.",
+        "--gem-color-{status}-solid": "`solid` background and dot for status tones.",
+        "--gem-palette-neutral-0": "`solid` text.",
+        "--gem-palette-neutral-950": "`solid` text with `warning` and `tertiary`.",
+        "--gem-color-bg": "`outline` background and overlay indicator ring.",
+        "--gem-radius-sm": "Radius with `radius=\"sm\"`.",
+        "--gem-radius-md": "Radius with `radius=\"md\"`.",
+        "--gem-radius-lg": "Radius with `radius=\"lg\"`.",
+        "--gem-radius-full": "Default radius.",
+        "--gem-font-sans": "Font family."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Also accepts the HTML attributes of a `<span>`. `Tag` takes the same props.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "tone": "Color.",
+      "variant": "Surface treatment.",
+      "size": "Height, padding and text size.",
+      "radius": "Radius using gem-system tokens.",
+      "children": "Badge text, or the element the indicator overlays.",
+      "content": "Custom content for the badge or indicator. Wins over `count`.",
+      "count": "Number to show, formatted with `max`.",
+      "max": "Limit before showing `{max}+`.",
+      "showZero": "Shows the count when `count` is `0`.",
+      "placement": "Corner of the overlay indicator.",
+      "offset": "Offset of the overlay indicator toward the center, in pixels.",
+      "icon": "Icon before the text.",
+      "isDot": "Shows a dot instead of text.",
+      "isInvisible": "Hides the indicator without unmounting the inner element.",
+      "showOutline": "Ring around the overlay indicator to separate it from the element.",
+      "isClosable": "Shows the × button (standalone only).",
+      "closeAriaLabel": "Accessible name of the × button.",
+      "isDisabled": "Dims the badge and blocks the × button.",
+      "role": "ARIA role. Defaults to `status` on counts and `presentation` on dots.",
+      "aria-label": "Accessible name of the badge or indicator. On counts it replaces the number.",
+      "className": "Extra classes for the root.",
+      "classNames": "Classes per part: `root`, `indicator`, `icon`, `label` and `close`.",
+      "ref": "Reference to the root.",
+      "onClose": "Runs when the × button is pressed."
+    }
+  }
+}

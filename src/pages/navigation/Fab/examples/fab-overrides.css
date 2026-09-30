@@ -1,0 +1,19 @@
+.gem-fab.fab-branded {
+  --gem-fab-bg: var(--gem-palette-secondary-50);
+  --gem-fab-border: var(--gem-palette-secondary-200);
+  --gem-fab-fg: var(--gem-palette-secondary-800);
+  --gem-fab-bg-hover: var(--gem-palette-secondary-100);
+  --gem-fab-border-hover: var(--gem-palette-secondary-300);
+  --gem-fab-fg-hover: var(--gem-palette-secondary-900);
+  --gem-fab-shadow: var(--gem-shadow-sm);
+  --gem-fab-size: 3rem;
+}
+
+[data-theme="dark"] .gem-fab.fab-branded {
+  --gem-fab-bg: var(--gem-palette-secondary-900);
+  --gem-fab-border: var(--gem-palette-secondary-700);
+  --gem-fab-fg: var(--gem-palette-secondary-100);
+  --gem-fab-bg-hover: var(--gem-palette-secondary-800);
+  --gem-fab-border-hover: var(--gem-palette-secondary-600);
+  --gem-fab-fg-hover: var(--gem-palette-secondary-50);
+}

@@ -1,0 +1,45 @@
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-3);
+}
+
+.badge-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+}
+
+.badge-label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+}
+
+.badge-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.badge-status-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--gem-space-2);
+}

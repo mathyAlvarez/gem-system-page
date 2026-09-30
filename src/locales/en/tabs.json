@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "Tabs",
+    "description": "Splits related content into sections and shows one at a time, without leaving the page. Use it to switch between views of the same object, such as a project's overview, activity and settings. It follows the WAI-ARIA tabs pattern: each tab is a `<button role=\"tab\">` and each panel a `role=\"tabpanel\"`."
+  },
+  "demo": {
+    "listLabel": "Project sections",
+    "tabs": {
+      "overview": { "label": "Overview", "content": "Project summary, owners, and the latest activity." },
+      "activity": { "label": "Activity", "content": "Recent comments, commits, and status changes." },
+      "settings": { "label": "Settings", "content": "Visibility, notifications, and archive options." },
+      "members": { "label": "Members", "content": "People with access to this workspace." },
+      "billing": { "label": "Billing", "content": "Plan, invoices, and payment methods." }
+    },
+    "icons": {
+      "home": { "label": "Home", "content": "Dashboard and shortcuts." },
+      "files": { "label": "Files", "content": "Documents attached to this workspace." },
+      "calendar": { "label": "Calendar", "content": "Upcoming dates and reminders." },
+      "settings": { "label": "Settings", "content": "Workspace preferences." }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and see the result and the code instantly. Try the keyboard too: with focus on a tab, the arrow keys move the selection.",
+    "variant": "variant",
+    "size": "size",
+    "orientation": "orientation",
+    "activation": "activation",
+    "fullWidth": "fullWidth",
+    "icons": "icon"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass the tabs in `items`. Each item needs an `id` and a `label`, and its `content` shows in the panel when selected. The first enabled tab is selected by default; use `defaultValue` to start on another. An indicator slides to the selected tab."
+    },
+    "icons": {
+      "title": "With icons",
+      "description": "`icon` adds an icon before the text. It is decorative (`aria-hidden`), so the `label` must be enough on its own."
+    },
+    "disabled": {
+      "title": "Disabled tab",
+      "description": "With `disabled` the tab looks dimmed, can't be selected and the keyboard skips it. To disable all of them, use `isDisabled` on the component."
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`orientation=\"vertical\"` puts the list on the left and the panel on the right. The indicator follows the tab along the start edge, and the keyboard uses the up and down arrows. Useful for settings with many sections."
+    },
+    "manual": {
+      "title": "Manual activation",
+      "description": "By default (`activation=\"automatic\"`), the arrow keys switch tabs instantly. With `activation=\"manual\"` they only move focus, and the tab is selected with Enter or Space. Use it when showing a panel is expensive, for example if it loads data."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` changes the style: `line` (default) underlines the selected tab, `enclosed` shows it as a card inside a container and `pills` highlights it with a rounded background."
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the height and text of the tabs: `sm` (32px), `md` (40px, default) or `lg` (48px)."
+    },
+    "fullWidth": {
+      "title": "Full width",
+      "description": "`fullWidth` splits the available width equally between the tabs. It works well with `enclosed` and few tabs, like a segmented control."
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `value` and `onChange` the selected tab lives in your state, so you can change it from outside. `onChange` receives the `id` and the selected item.",
+      "texts": {
+        "selected": "Selected",
+        "goToSettings": "Go to Settings"
+      }
+    },
+    "mobile": {
+      "title": "Small screens",
+      "description": "When horizontal tabs don't fit, the list scrolls sideways instead of overflowing the page. The selected tab scrolls into view. This box simulates a phone width."
+    }
+  },
+  "apiLink": "See the full Tabs API",
+  "api": {
+    "header": {
+      "title": "Tabs API",
+      "description": "API reference for the Tabs React component: props, items, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Tabs"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of the root <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>), except <code>children</code>, <code>onChange</code> and <code>defaultValue</code>, which mean something else here. <code>classNames</code> adds classes to each part: <code>root</code>, <code>list</code>, <code>tab</code>, <code>panel</code> and <code>indicator</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "roles": "The list has <code>role=\"tablist\"</code> with <code>aria-orientation</code>, each tab <code>role=\"tab\"</code> and each panel <code>role=\"tabpanel\"</code>.",
+      "selected": "The selected tab has <code>aria-selected=\"true\"</code>; the others, <code>false</code>.",
+      "relations": "Each tab points to its panel with <code>aria-controls</code>, and each panel is named by its tab through <code>aria-labelledby</code>. Ids are generated with <code>useId</code>.",
+      "roving": "Only one tab is in the tab order. Tab enters the list and the next Tab moves to the panel.",
+      "keyboard": "The left and right arrows (up and down when vertical) cycle through the tabs. <code>Home</code> and <code>End</code> go to the first and last.",
+      "manual": "With <code>activation=\"manual\"</code>, the arrows only move focus and <code>Enter</code> or <code>Space</code> select the tab.",
+      "disabled": "Disabled tabs have <code>disabled</code> and <code>aria-disabled</code>, and the keyboard skips them.",
+      "panel": "Unselected panels have <code>hidden</code>. The visible panel has <code>tabIndex=0</code> so it can be reached with Tab even without focusable content.",
+      "labels": "<code>listLabel</code> is the list's <code>aria-label</code> and defaults to English (<code>\"Tabs\"</code>). Pass it translated. If a tab's <code>label</code> is not text, use <code>ariaLabel</code>."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root element. Receives `className` and `classNames.root`. Defines the Tabs variables.",
+        "variant": "Applied based on `variant`: `line`, `enclosed` or `pills`.",
+        "size": "Applied based on `size`. Sets the height, padding and text of the tabs.",
+        "orientation": "Applied based on `orientation`. In `vertical` the list and panel sit in a row.",
+        "full": "Applied with `fullWidth`. Tabs take equal parts.",
+        "disabled": "Applied with `isDisabled`. Lowers the opacity of the whole component.",
+        "list": "List with `role=\"tablist\"`. When horizontal it scrolls sideways if it doesn't fit.",
+        "track": "Inner container of the tabs and the indicator.",
+        "indicator": "Indicator that slides to the selected tab. Visible with `data-visible=\"true\"`.",
+        "tab": "Each tab (`<button role=\"tab\">`).",
+        "selected": "Selected tab.",
+        "icon": "Container of a tab's `icon`.",
+        "label": "Tab text.",
+        "panel": "Each panel with `role=\"tabpanel\"`.",
+        "active": "Visible panel."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They are defined on `.gem-tabs` and none are written inline, so you can change them from your own class (`.gem-tabs.my-class`) or with Tailwind utilities. The dark theme uses other values.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-tabs-fg": "Text color of the panel and of tabs on hover.",
+        "--gem-tabs-muted": "Color of unselected tabs.",
+        "--gem-tabs-indicator": "Indicator color in `line` and background base in `pills`.",
+        "--gem-tabs-selected": "Text color of the selected tab.",
+        "--gem-tabs-track": "Bottom line in `line` and list border in `enclosed`.",
+        "--gem-tabs-surface": "List background in `enclosed`.",
+        "--gem-tabs-bg": "Indicator background in `enclosed`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Tabs.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Tabs"
+      },
+      "items": {
+        "--gem-color-fg": "Default value of `--gem-tabs-fg`.",
+        "--gem-color-fg-muted": "Default value of `--gem-tabs-muted`.",
+        "--gem-color-primary-600": "Default value of `--gem-tabs-indicator`.",
+        "--gem-color-primary-700": "Default value of `--gem-tabs-selected`.",
+        "--gem-color-border": "Default value of `--gem-tabs-track`.",
+        "--gem-color-bg-subtle": "Default value of `--gem-tabs-surface`.",
+        "--gem-color-bg": "Default value of `--gem-tabs-bg`.",
+        "--gem-space-2": "Gap between the icon and the text.",
+        "--gem-space-4": "Gap between the list and the panel.",
+        "--gem-radius-sm": "Rounded corners of the tabs and the indicator.",
+        "--gem-radius-md": "Rounded corners of the list in `enclosed` and `pills`.",
+        "--gem-radius-full": "Tabs in `pills` and indicator in `line`.",
+        "--gem-shadow-sm": "Indicator shadow in `enclosed`.",
+        "--gem-shadow-focus": "Focus ring of the tabs and the panel.",
+        "--gem-font-sans": "Component font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts the HTML attributes of the root `<div>`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "tabs": {
+        "title": "Tabs",
+        "description": "Props of the main component.",
+        "items": {
+          "items": "Tabs with their content.",
+          "value": "`id` of the selected tab. Controlled mode.",
+          "defaultValue": "`id` of the initially selected tab. Uncontrolled mode.",
+          "variant": "Visual style.",
+          "size": "Tab size.",
+          "orientation": "List direction.",
+          "activation": "Whether the arrows select the tab instantly (`automatic`) or only move focus (`manual`).",
+          "fullWidth": "Splits the width equally between the tabs.",
+          "isDisabled": "Disables all tabs.",
+          "listLabel": "Accessible name of the list (`aria-label`).",
+          "className": "Extra classes for the root element.",
+          "classNames": "Classes per part: `root`, `list`, `tab`, `panel` and `indicator`.",
+          "onChange": "Called when a tab is selected. Receives the `id` and the item."
+        }
+      },
+      "item": {
+        "title": "TabItem",
+        "description": "Each object in the `items` array.",
+        "items": {
+          "id": "Unique identifier. Used for selection, ids and `onChange`.",
+          "label": "Tab text. Accepts any node.",
+          "content": "Panel content.",
+          "icon": "Decorative icon before the text.",
+          "disabled": "Shows it dimmed and it can't be selected.",
+          "ariaLabel": "Accessible name when `label` is not text."
+        }
+      }
+    }
+  }
+}

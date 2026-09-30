@@ -1,0 +1,210 @@
+{
+  "header": {
+    "title": "Aspect Ratio",
+    "description": "Mantiene una proporción fija (ancho : alto) sin importar el ancho disponible. Sirve para imágenes, videos, embeds y placeholders: reserva el espacio antes de que cargue el contenido y evita saltos en el layout. El contenido se centra y las imágenes o videos se recortan según `objectFit`."
+  },
+  "alt": {
+    "banner": "Banner de gem-system",
+    "mark": "Logo de gem-system"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Probá la imagen cuadrada con `objectFit=\"contain\"` para ver el fondo que queda alrededor.",
+    "ratio": "ratio",
+    "objectFit": "objectFit",
+    "objectPosition": "objectPosition",
+    "radius": "radius",
+    "maxWidth": "maxWidth",
+    "image": "Imagen"
+  },
+  "presets": {
+    "columns": {
+      "name": "Nombre",
+      "ratio": "Proporción",
+      "usage": "Uso típico"
+    },
+    "items": {
+      "square": "Avatares, miniaturas y grillas de productos.",
+      "video": "Videos y portadas de ancho completo.",
+      "photo": "Fotos de cámara.",
+      "ultrawide": "Banners y portadas panorámicas.",
+      "portrait": "Historias y videos verticales.",
+      "tcg": "Cartas coleccionables (63 × 88 mm)."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Sin props, la proporción es 16:9. El contenedor ocupa todo el ancho disponible y calcula la altura; acá `maxWidth={640}` limita el ancho. La imagen es hija directa del recuadro interno, así que se recorta con `object-fit: cover`. Los ejemplos usan estos estilos de demo."
+    },
+    "presets": {
+      "title": "Proporciones predefinidas",
+      "description": "`ratio` acepta presets como `\"1:1\"`, `\"4:3\"` o `\"9:16\"`, y también nombres. La tabla muestra los nombres disponibles y a qué proporción equivalen."
+    },
+    "card": {
+      "title": "Cartas",
+      "description": "`ratio=\"tcg\"`, `\"2.5:3.5\"` y `\"5:7\"` dan el mismo formato de carta. Con `maxWidth` todas tienen el mismo ancho y, como la proporción es fija, también la misma altura."
+    },
+    "custom": {
+      "title": "Proporción personalizada",
+      "description": "Además de los presets, `ratio` acepta `\"W:H\"`, `\"W/H\"`, `\"WxH\"`, un número decimal (`1.618`) o un objeto `{ width, height }`. Si el valor no es válido, se usa 16:9. Escribí un valor y aplicalo: el texto de arriba muestra lo que devuelve `resolveAspectRatio`.",
+      "texts": {
+        "label": "Proporción",
+        "helperText": "Por ejemplo: 3:2, 4/5, 1920x1080 o 1.618",
+        "apply": "Aplicar"
+      }
+    },
+    "objectFit": {
+      "title": "Ajuste de la imagen",
+      "description": "`objectFit` define cómo se adapta la imagen al recuadro: `cover` (por defecto) recorta, `contain` la muestra entera con fondo alrededor, `fill` la deforma, `none` usa el tamaño original y `scale-down` elige el más chico entre `none` y `contain`. Solo afecta a `img`, `video`, `iframe`, `canvas` y `svg` que sean hijos directos."
+    },
+    "objectPosition": {
+      "title": "Posición de la imagen",
+      "description": "Cuando la imagen se recorta, `objectPosition` elige qué parte queda visible. Acepta cualquier valor de `object-position`: palabras clave (`left`, `top right`) o porcentajes (`\"30% 50%\"`)."
+    },
+    "placeholder": {
+      "title": "Placeholder mientras carga",
+      "description": "Como el espacio ya está reservado, podés mostrar un placeholder encima de la imagen hasta que termine de cargar y la página no salta. La carga se demora un poco para que se note; tocá el botón para repetirla.",
+      "texts": {
+        "loading": "Cargando imagen…",
+        "reload": "Volver a cargar"
+      }
+    },
+    "embed": {
+      "title": "Embeds",
+      "description": "Un `iframe` hijo directo ocupa todo el recuadro, ideal para videos o mapas incrustados. Dale un `title` para que el lector de pantalla lo anuncie.",
+      "texts": {
+        "title": "Contenido incrustado de ejemplo",
+        "body": "Este contenido vive dentro de un iframe."
+      }
+    },
+    "radius": {
+      "title": "Bordes redondeados",
+      "description": "`radius` usa la escala de tokens de gem-system; por defecto es `md`. Con `full` y `ratio=\"1:1\"` queda un círculo, útil para avatares."
+    },
+    "maxWidth": {
+      "title": "Ancho máximo",
+      "description": "`maxWidth` limita el ancho y, por la proporción, también la altura. Un número se toma como píxeles y un texto como largo CSS (`\"60%\"`, `\"20rem\"`). No centra el recuadro: para eso agregá `mx-auto`."
+    },
+    "figure": {
+      "title": "Con figure y leyenda",
+      "description": "Para una imagen con leyenda, envolvé el AspectRatio en un `figure` y poné la leyenda en un `figcaption` fuera del recuadro, así no se recorta ni tapa la imagen.",
+      "caption": "Banner de gem-system en formato foto (3:2)."
+    }
+  },
+  "styled": {
+    "title": "Colección de otoño"
+  },
+  "apiLink": "Ver la API completa de AspectRatio",
+  "api": {
+    "header": {
+      "title": "AspectRatio API",
+      "description": "Referencia de la API del componente AspectRatio de React: props, clases CSS, variables CSS, tokens, utilidades y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Aspect Ratio"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath, que además exporta `toCssLength`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasa al elemento raíz. <code>ref</code> llega al elemento raíz. <code>ratio</code>, <code>objectFit</code>, <code>objectPosition</code> y <code>maxWidth</code> se convierten en variables CSS dentro de <code>style</code>, que se combinan con el <code>style</code> que pases. Los hijos se renderizan dentro de <code>.gem-aspect-ratio__inner</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "alt": "AspectRatio no agrega semántica: la imagen de adentro necesita su propio <code>alt</code> que describa el contenido.",
+      "decorative": "Si la imagen es decorativa, usá <code>alt=\"\"</code> para que el lector de pantalla la ignore.",
+      "iframe": "Un <code>iframe</code> necesita <code>title</code> para que se anuncie qué contiene.",
+      "figure": "Para imágenes con leyenda usá <code>figure</code> y <code>figcaption</code>, con la leyenda fuera del recuadro para que no se recorte.",
+      "landmark": "Con <code>as</code> podés renderizar <code>figure</code>, <code>section</code> o <code>article</code> en lugar de un <code>&lt;div&gt;</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento raíz. Recibe `className` y `classNames.root`. Tiene `width: 100%`, la proporción, el radio y el fondo `--gem-color-bg-subtle`.",
+        "radius": "Se aplica según `radius`. Define `--gem-aspect-ratio-radius` con el token correspondiente.",
+        "inner": "Recuadro interno absoluto que ocupa todo el espacio y centra el contenido. Recibe `classNames.inner`.",
+        "media": "Hijos directos multimedia: ocupan todo el recuadro y usan `object-fit` y `object-position`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "La proporción, el ajuste, la posición y el ancho máximo se escriben inline, así que solo se pisan con `!important` (las utilidades de Tailwind del sitio ya lo usan). El radio sale de la clase de `radius` y se puede cambiar desde una clase propia como `.gem-aspect-ratio.mi-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-aspect-ratio": "Proporción que usa `aspect-ratio`. La define `ratio`.",
+        "--gem-aspect-ratio-fit": "Valor de `object-fit` de los hijos multimedia. La define `objectFit`.",
+        "--gem-aspect-ratio-position": "Valor de `object-position` de los hijos multimedia. La define `objectPosition`.",
+        "--gem-aspect-ratio-max": "Ancho máximo del elemento raíz. La define `maxWidth`; sin ella no hay límite.",
+        "--gem-aspect-ratio-radius": "Radio del borde. La define la clase de `radius`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa AspectRatio.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en AspectRatio"
+      },
+      "items": {
+        "--gem-radius-{token}": "Escala de radios que usa `radius`.",
+        "--gem-color-bg-subtle": "Fondo del recuadro; se ve alrededor del contenido con `contain` o mientras carga."
+      }
+    },
+    "utils": {
+      "title": "Utilidades",
+      "description": "Funciones y constantes exportadas junto al componente.",
+      "columns": {
+        "name": "Nombre",
+        "signature": "Firma",
+        "entry": "Entry",
+        "description": "Descripción"
+      },
+      "items": {
+        "resolveAspectRatio": "Convierte cualquier valor aceptado por `ratio` en el valor CSS de `aspect-ratio` (por ejemplo `\"4:3\"` → `\"4 / 3\"`). Si no es válido, devuelve `DEFAULT_ASPECT_RATIO`.",
+        "DEFAULT_ASPECT_RATIO": "Proporción que se usa cuando `ratio` falta o no es válido.",
+        "toCssLength": "Convierte un número en píxeles (`320` → `\"320px\"`) y deja los textos como están. Es lo que usa `maxWidth`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del elemento raíz.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "as": "Elemento HTML que se renderiza.",
+      "ratio": "Proporción: preset, `\"W:H\"`, `\"W/H\"`, `\"WxH\"`, número decimal u objeto `{ width, height }`. Si no es válida, se usa 16:9.",
+      "objectFit": "Cómo se adaptan los hijos multimedia al recuadro (`object-fit`).",
+      "objectPosition": "Qué parte de los hijos multimedia queda visible al recortar (`object-position`).",
+      "radius": "Radio del borde según la escala de tokens.",
+      "maxWidth": "Ancho máximo. Un número se toma como píxeles y un texto como largo CSS. No centra el elemento.",
+      "className": "Clases extra para el elemento raíz.",
+      "classNames": "Clases por slot: `root` para el elemento raíz e `inner` para el recuadro interno.",
+      "style": "Estilos inline. Se combinan con las variables CSS del componente.",
+      "ref": "Ref al elemento raíz.",
+      "children": "Contenido del recuadro. Las imágenes, videos e iframes deben ser hijos directos para ocupar todo el espacio."
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "header": {
+    "title": "Scroll Area",
+    "description": "Un recuadro con alto o ancho limitado que desplaza su contenido con una barra de scroll nativa estilizada con los tokens de gem-system. Usalo para listas, paneles laterales o bloques de texto que tienen que mantener un tamaño fijo sin agrandar la página. Para que haya scroll, el recuadro necesita un límite: `height`, `maxHeight` o la altura de su contenedor."
+  },
+  "paragraphs": [
+    "ScrollArea es un recuadro con tamaño limitado y una barra de scroll nativa estilizada con tokens. El alto y el ancho salen de las props o del contenedor flex o grid.",
+    "La barra usa un color de texto translúcido sobre un riel transparente y se oscurece al pasar el mouse.",
+    "La orientación por defecto es vertical. En horizontal se recorta el eje que no se usa, así el panel solo se mueve en la dirección que elegiste.",
+    "Con type auto la barra aparece si el contenido desborda. Always reserva el espacio de la barra. Hover la muestra al pasar el mouse o al enfocar. Hidden permite desplazar sin barra visible.",
+    "Pasá un label cuando el recuadro es una región con nombre, así el lector de pantalla la anuncia. El elemento que hace scroll es la raíz, así que un ref puede llamar a scrollTo.",
+    "Combinalo con Card o List cuando un panel tiene que mantener una altura fija sin que crezca el resto de la página."
+  ],
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. En `horizontal` y `both` el contenido es más ancho que el recuadro para que aparezca la barra horizontal.",
+    "orientation": "orientation",
+    "type": "type",
+    "size": "size",
+    "radius": "radius",
+    "maxHeight": "maxHeight",
+    "label": "Región de ejemplo"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Con `maxHeight`, el recuadro crece con el contenido hasta ese límite y después hace scroll. `label` le da un nombre accesible a la región. Los ejemplos usan este contenido y estos estilos de demo.",
+      "label": "Texto de ejemplo"
+    },
+    "horizontal": {
+      "title": "Horizontal",
+      "description": "`orientation=\"horizontal\"` desplaza de izquierda a derecha y recorta el eje vertical. El contenido tiene que ser más ancho que el recuadro: acá la fila usa `width: max-content`. `maxWidth=\"100%\"` evita que el recuadro se agrande más que su contenedor.",
+      "texts": {
+        "label": "Tarjetas",
+        "item": "Tarjeta",
+        "hint": "Desplazá hacia los costados"
+      }
+    },
+    "both": {
+      "title": "Ambos ejes",
+      "description": "`orientation=\"both\"` permite desplazar en los dos sentidos. Sirve para tablas anchas, código o planos: el contenido tiene que superar el alto y el ancho del recuadro.",
+      "label": "Hoja ancha"
+    },
+    "types": {
+      "title": "Visibilidad de la barra",
+      "description": "`type` define cuándo se ve la barra: `auto` (por defecto) la muestra solo si hay desborde, `always` reserva siempre su espacio para que el contenido no se mueva, `hover` la muestra al pasar el mouse o al enfocar y `hidden` la oculta pero el scroll sigue funcionando con la rueda, el dedo o el teclado. Cada recuadro tiene `tabIndex={0}` para probar `hover` con Tab."
+    },
+    "sizes": {
+      "title": "Grosor de la barra",
+      "description": "`size` define el grosor de la barra: `sm` (4px), `md` (6px, por defecto) o `lg` (8px). Firefox no permite elegir el grosor: usa su barra fina con los colores de `scrollbar-color`."
+    },
+    "height": {
+      "title": "height o maxHeight",
+      "description": "`height` fija la altura aunque el contenido sea corto y deja espacio vacío. `maxHeight` se adapta al contenido y solo hace scroll cuando lo supera. Un número se toma como píxeles y un texto como CSS (`\"50vh\"`, `\"20rem\"`). Si un hijo tiene fondo y tiene que cubrir todo el recuadro, dale `min-height: 100%` y no `height: 100%`, porque con `height` el fondo se corta al scrollear.",
+      "texts": {
+        "fixed": "altura fija",
+        "short": "contenido corto",
+        "long": "contenido largo"
+      }
+    },
+    "fillParent": {
+      "title": "Ocupar el espacio disponible",
+      "description": "En un layout con encabezado y pie, poné el contenedor en `flex flex-col` con una altura y dale al ScrollArea `flex-1 min-h-0`: ocupa lo que queda y hace scroll adentro. Sin `min-h-0`, el hijo flex no se achica y empuja al pie fuera del recuadro.",
+      "texts": {
+        "title": "Conversación",
+        "label": "Mensajes",
+        "send": "Responder",
+        "messages": [
+          { "author": "Ana", "text": "¿Subiste la nueva versión de los tokens?" },
+          { "author": "Leo", "text": "Sí, ya está publicada. Cambiaron los colores del borde." },
+          { "author": "Ana", "text": "Perfecto, actualizo la documentación hoy." },
+          { "author": "Leo", "text": "Revisá también la página de ScrollArea, tiene ejemplos nuevos." }
+        ]
+      }
+    },
+    "card": {
+      "title": "Dentro de una Card",
+      "description": "Un caso común: una Card con altura fija y una lista larga adentro. El ScrollArea va dentro de `CardBody`, con un `radius` más chico para acompañar los bordes de la Card.",
+      "texts": {
+        "title": "Actividad",
+        "label": "Registro de actividad",
+        "events": [
+          "Ana publicó la versión 2.1.0.",
+          "Leo comentó en la página de Grid.",
+          "Se agregó la página de ScrollArea.",
+          "Ana cambió el color del borde en los tokens.",
+          "Leo cerró 3 incidencias de accesibilidad.",
+          "Se actualizaron las traducciones al inglés.",
+          "Ana subió nuevas capturas del playground.",
+          "Leo revisó los ejemplos de Tailwind.",
+          "Se corrigió el ancho de las columnas en Col."
+        ]
+      }
+    },
+    "scrollTo": {
+      "title": "Controlar el scroll",
+      "description": "El `ref` apunta al elemento que hace scroll, así podés llamar a `scrollTo` o leer `scrollTop` directamente. `onScroll` se pasa a la raíz, y acá calcula el porcentaje recorrido. Con `tabIndex={0}` el recuadro se puede enfocar y desplazar con las flechas.",
+      "texts": {
+        "label": "Texto largo",
+        "top": "Ir al inicio",
+        "bottom": "Ir al final",
+        "progress": "Recorrido"
+      }
+    },
+    "mobile": {
+      "title": "Pantallas chicas",
+      "description": "En pantallas táctiles el scroll funciona con el dedo. `overscroll-behavior: contain` evita que la página se desplace cuando llegás al final del recuadro. `size=\"lg\"` hace la barra un poco más visible.",
+      "label": "Texto en pantalla chica"
+    }
+  },
+  "styles": {
+    "label": "Texto con barra personalizada",
+    "codeLabel": "Código de ejemplo"
+  },
+  "apiLink": "Ver la API completa de ScrollArea",
+  "api": {
+    "header": {
+      "title": "ScrollArea API",
+      "description": "Referencia de la API del componente ScrollArea de React: props, clases CSS, variables CSS, tokens, utilidades y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Scroll Area"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath, que además exporta `toCssLength`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasa al elemento raíz, que es el mismo que hace scroll: <code>ref</code>, <code>onScroll</code> y <code>tabIndex</code> llegan ahí. <code>height</code>, <code>maxHeight</code>, <code>width</code> y <code>maxWidth</code> se escriben en <code>style</code> y se combinan con el <code>style</code> que pases. No hay elementos internos: los hijos se renderizan directo en la raíz."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "label": "<code>label</code> se aplica como <code>aria-label</code>. Usalo cuando el recuadro es una región con nombre propio.",
+      "focus": "La raíz no es enfocable por defecto. Si el contenido no tiene elementos interactivos, agregá <code>tabIndex={0}</code> para que se pueda desplazar con el teclado.",
+      "keyboard": "Con el foco adentro, las flechas, <code>PageUp</code>/<code>PageDown</code>, <code>Home</code>/<code>End</code> y la barra espaciadora usan el scroll nativo del navegador.",
+      "hidden": "Con <code>type=\"hidden\"</code> no hay indicación visual de que hay más contenido. Mostrá alguna pista (un degradado o un texto) para que se note.",
+      "landmark": "Con <code>as</code> podés renderizar <code>nav</code>, <code>aside</code>, <code>section</code> o <code>main</code> en lugar de un <code>&lt;div&gt;</code>.",
+      "motion": "Si usás <code>scrollTo</code> con <code>behavior: \"smooth\"</code>, respetá <code>prefers-reduced-motion</code> para quien prefiere menos animación."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento raíz y el que hace scroll. Recibe `className` y `classNames.root`. Tiene `overscroll-behavior: contain`.",
+        "orientation": "Se aplica según `orientation`. Define qué eje hace scroll y recorta el otro.",
+        "type": "Se aplica según `type`. `always` usa `overflow: scroll`, `hover` oculta el thumb hasta hover o foco y `hidden` oculta la barra.",
+        "size": "Se aplica según `size`. Define `--gem-scroll-area-size`.",
+        "radius": "Se aplica según `radius`. Define `--gem-scroll-area-radius`.",
+        "thumb": "Thumb de la barra en Chrome, Edge y Safari. Firefox usa `scrollbar-color` con las mismas variables."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas están definidas en `.gem-scroll-area` y ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-scroll-area.mi-clase`) o con utilidades de Tailwind.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-scroll-area-fg": "Color del texto. El color del thumb se calcula a partir de este.",
+        "--gem-scroll-area-bg": "Fondo del recuadro.",
+        "--gem-scroll-area-size": "Grosor de la barra. La define la clase de `size`.",
+        "--gem-scroll-area-radius": "Radio del recuadro. La define la clase de `radius`.",
+        "--gem-scroll-area-thumb": "Color del thumb. Por defecto, el color del texto al 28 %.",
+        "--gem-scroll-area-thumb-hover": "Color del thumb al pasar el mouse. Por defecto, el color del texto al 45 %.",
+        "--gem-scroll-area-track": "Color del riel. Por defecto es transparente."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa ScrollArea.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en ScrollArea"
+      },
+      "items": {
+        "--gem-color-fg": "Color del texto y base del color del thumb.",
+        "--gem-color-bg": "Fondo del recuadro.",
+        "--gem-radius-{token}": "Escala de radios que usa `radius`.",
+        "--gem-radius-full": "Bordes redondeados del thumb.",
+        "--gem-space-1": "Margen del riel en los extremos."
+      }
+    },
+    "utils": {
+      "title": "Utilidades",
+      "description": "Se exporta solo desde `@gem-org/gem-system/scroll-area`.",
+      "columns": {
+        "name": "Nombre",
+        "signature": "Firma",
+        "description": "Descripción"
+      },
+      "items": {
+        "toCssLength": "Convierte un número en píxeles (`240` → `\"240px\"`) y deja los textos como están. Es lo que usan `height`, `maxHeight`, `width` y `maxWidth`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del elemento raíz.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "as": "Elemento HTML que se renderiza.",
+      "orientation": "Eje que hace scroll. El otro se recorta; `both` permite los dos.",
+      "type": "Cuándo se ve la barra: solo con desborde, siempre, al pasar el mouse o nunca.",
+      "size": "Grosor de la barra.",
+      "radius": "Radio del borde del recuadro.",
+      "height": "Altura fija. Un número se toma como píxeles y un texto como CSS.",
+      "maxHeight": "Altura máxima: crece con el contenido hasta este límite.",
+      "width": "Ancho fijo. Un número se toma como píxeles y un texto como CSS.",
+      "maxWidth": "Ancho máximo. Útil con `horizontal` o `both` para no pasar del contenedor.",
+      "label": "Nombre accesible de la región (`aria-label`).",
+      "className": "Clases extra para el elemento raíz.",
+      "classNames": "Clases por slot. `root` se suma al elemento raíz.",
+      "style": "Estilos inline. Se combinan con el alto y el ancho de las props.",
+      "ref": "Ref al elemento que hace scroll. Sirve para llamar a `scrollTo`.",
+      "children": "Contenido que se desplaza."
+    }
+  }
+}

@@ -337,6 +337,7 @@
       "size": "Tamaño del control.",
       "border": "Tono del borde. Se fuerza a error si el campo es inválido.",
       "clearable": "Muestra un botón para limpiar la selección o la búsqueda.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto es \"Clear\", en inglés.",
       "showExpand": "Muestra el chevron para abrir y cerrar la lista.",
       "suffixIcon": "Ícono al inicio del campo. null lo oculta.",
       "isLoading": "Muestra un spinner. La lista sigue disponible.",
@@ -346,7 +347,8 @@
       "isRequired": "Marca el campo como requerido (aria-required + asterisco).",
       "name": "`name` nativo para los inputs ocultos del formulario.",
       "className": "Clases extra para el control.",
-      "wrapperClassName": "Clases extra para el contenedor raíz."
+      "wrapperClassName": "Clases extra para el contenedor raíz.",
+      "onClear": "Se dispara después de limpiar el valor con el botón."
     }
   }
 }

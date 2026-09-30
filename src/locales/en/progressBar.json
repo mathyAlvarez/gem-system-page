@@ -1,0 +1,273 @@
+{
+  "header": {
+    "title": "ProgressBar",
+    "description": "Linear progress bar. With `value` it shows how far a task has gone (0 to 100 by default) and with `isIndeterminate` it signals that something is running without knowing how long it will take. Adds a label, a value, an indicator at the edge of the fill and seven tones. `Progress` is an alias of the same component."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the bar and the code.",
+    "label": "Uploading report"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "`value` fills the bar. If there's no visible `label`, pass `aria-label` so the bar has a name.",
+      "texts": {
+        "ariaLabel": "Loading"
+      }
+    },
+    "determinate": {
+      "title": "Determinate",
+      "description": "`label` shows text above the bar and names it. `showValue` adds the value on the right: with `max` at 100 and an integer, it's shown as a percentage.",
+      "texts": {
+        "label": "Uploading report"
+      }
+    },
+    "indeterminate": {
+      "title": "Indeterminate",
+      "description": "`isIndeterminate` animates a segment across the bar. Use it when you don't know how much is left. `value`, `showValue` and the indicator are ignored.",
+      "texts": {
+        "label": "Preparing export"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` changes the height: `sm`, `md` (default) and `lg`. It also adjusts the text and the indicator.",
+      "texts": {
+        "ariaLabel": "Progress"
+      }
+    },
+    "radius": {
+      "title": "Radius",
+      "description": "`radius` rounds the bar and the fill: `sm`, `md`, `lg` or `full` (default).",
+      "texts": {
+        "ariaLabel": "Progress"
+      }
+    },
+    "tones": {
+      "title": "Tones",
+      "description": "`tone` sets the fill color: `primary` (default), `secondary`, `success`, `warning`, `error`, `info` or `neutral`. Don't rely on color alone to convey a state: pair it with text.",
+      "texts": {
+        "ariaLabel": "Progress"
+      }
+    },
+    "loadPosition": {
+      "title": "Direction",
+      "description": "`loadPosition` picks where the fill grows from: `right` (default) grows left to right and `left` grows right to left.",
+      "texts": {
+        "download": "Download",
+        "upload": "Upload"
+      }
+    },
+    "thumb": {
+      "title": "Indicator",
+      "description": "`showThumb` adds a circle at the edge of the fill. `thumbIcon` replaces it with an icon: a component receives `size` based on the bar size; an element is used as is.",
+      "texts": {
+        "syncing": "Syncing workspace",
+        "uploading": "Uploading photos",
+        "done": "Upload complete"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "`disabled` (or `isDisabled`) dims the bar, turns it gray and stops the indeterminate animation. Useful for a paused process.",
+      "texts": {
+        "paused": "Upload paused",
+        "waiting": "Waiting for connection"
+      }
+    },
+    "customValue": {
+      "title": "Custom value",
+      "description": "`min` and `max` change the range. `formatValue` builds the visible text and the one screen readers read. `valueLabel` only changes the visible text: also pass `aria-valuetext` with the same data.",
+      "texts": {
+        "files": "Files processed",
+        "of": "of",
+        "storage": "Storage used",
+        "storageValue": "7.8 GB / 10 GB",
+        "storageValueText": "7.8 GB of 10 GB"
+      }
+    },
+    "live": {
+      "title": "Live",
+      "description": "The fill and the indicator animate when `value` changes. In this example, pausing uses `disabled` to show the state.",
+      "texts": {
+        "label": "Syncing workspace",
+        "restart": "Restart",
+        "pause": "Pause",
+        "resume": "Resume"
+      }
+    },
+    "upload": {
+      "title": "Upload flow",
+      "description": "A full case: indeterminate while preparing, then determinate, and when done it switches to `success` with an icon. The bar doesn't announce completion by itself, so the example shows a toast.",
+      "texts": {
+        "file": "final-presentation.pdf",
+        "start": "Upload file",
+        "again": "Upload again",
+        "preparing": "Preparing file",
+        "uploading": "Uploading final-presentation.pdf",
+        "done": "File uploaded"
+      }
+    },
+    "threshold": {
+      "title": "Thresholds",
+      "description": "Change `tone` based on the value to warn when something approaches its limit. In this example: `success` below 70, `warning` from 70 and `error` from 90.",
+      "texts": {
+        "of": "of",
+        "quotas": [
+          { "name": "Documents", "used": 45 },
+          { "name": "Photos", "used": 76 },
+          { "name": "Backups", "used": 94 }
+        ]
+      }
+    },
+    "alias": {
+      "title": "Progress alias",
+      "description": "`Progress` is the same component as `ProgressBar`, with the same props.",
+      "texts": {
+        "label": "Build"
+      }
+    }
+  },
+  "styles": {
+    "label": "Course progress"
+  },
+  "apiLink": "See the full ProgressBar API",
+  "api": {
+    "header": {
+      "title": "ProgressBar API",
+      "description": "API reference for the ProgressBar React component: props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "ProgressBar"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `Progress` is an alias with the same props."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>&lt;div&gt;</code> attributes except <code>children</code>, and they go to the container along with <code>ref</code>, <code>id</code> and <code>className</code>. The exceptions are <code>role</code>, <code>aria-label</code>, <code>aria-labelledby</code> and <code>aria-valuetext</code>, which go to the bar (the element with <code>role=\"progressbar\"</code>). <code>classNames</code> adds classes to <code>root</code>, <code>header</code>, <code>label</code>, <code>value</code>, <code>track</code>, <code>fill</code> and <code>thumb</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "The bar has <code>role=\"progressbar\"</code> with <code>aria-valuemin</code>, <code>aria-valuemax</code> and <code>aria-valuenow</code>. The value is clamped between <code>min</code> and <code>max</code>.",
+      "name": "With <code>label</code>, the bar is named through <code>aria-labelledby</code> and <code>aria-label</code> is ignored. Without a visible <code>label</code>, pass <code>aria-label</code> or <code>aria-labelledby</code>.",
+      "valuetext": "<code>aria-valuetext</code> comes from <code>formatValue</code> (or the default format). <code>valueLabel</code> only changes the visible text: pass <code>aria-valuetext</code> with the same data.",
+      "indeterminate": "With <code>isIndeterminate</code> the values are removed and <code>aria-busy=\"true\"</code> is added.",
+      "disabled": "<code>disabled</code> adds <code>aria-disabled=\"true\"</code>. It's visual only: the value stays whatever you pass.",
+      "thumb": "The indicator and its icon have <code>aria-hidden</code>.",
+      "live": "Value changes aren't announced automatically. To report completion, use a toast or a region with <code>role=\"status\"</code>.",
+      "motion": "With <code>prefers-reduced-motion</code> transitions are removed and the indeterminate animation stays still."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Container. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Sets `--gem-progress-h` and `--gem-progress-thumb-size`.",
+        "tone": "Tone: `--tone-primary`, `--tone-secondary`, etc. Sets `--gem-progress-fill`.",
+        "radius": "Radius: `--radius-sm`, `--radius-md`, `--radius-lg` or `--radius-full`. Sets `--gem-progress-radius`.",
+        "load": "Direction: `--load-right` or `--load-left`.",
+        "determinate": "Applied when not indeterminate.",
+        "indeterminate": "Applied with `isIndeterminate`. Animates the fill.",
+        "withThumb": "Applied when the indicator is shown.",
+        "thumbIcon": "Applied with `thumbIcon`. Enlarges the indicator.",
+        "disabled": "Applied with `disabled` or `isDisabled`, along with `data-disabled`.",
+        "header": "Label and value row. Receives `classNames.header`.",
+        "label": "Label. Receives `classNames.label`.",
+        "value": "Value. Receives `classNames.value`.",
+        "rail": "Wraps the bar and the indicator. Only exists with an indicator and has no `classNames` key.",
+        "track": "Bar (`role=\"progressbar\"`). Receives `classNames.track`.",
+        "fill": "Fill. Receives `classNames.fill`.",
+        "thumb": "Indicator. Receives `classNames.thumb`.",
+        "thumbIconSlot": "Indicator with an icon. Paints the icon with `--gem-progress-fill`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "ProgressBar's own variables. Redefine them in a class on `.gem-progress`; tone and size classes have the same specificity, so use `.gem-progress.your-class` and a `[data-theme=\"dark\"]` variant.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-progress-fill": "Fill color and indicator border. Set by the tone.",
+        "--gem-progress-track": "Bar background color.",
+        "--gem-progress-h": "Bar height. Set by the size.",
+        "--gem-progress-radius": "Bar radius. Set by `radius`.",
+        "--gem-progress-thumb": "Indicator background.",
+        "--gem-progress-thumb-size": "Indicator size. Set by the size."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by ProgressBar.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in ProgressBar"
+      },
+      "items": {
+        "--gem-color-{tone}-600": "Fill for each tone (`primary`, `secondary`, `success`, `warning`, `error`, `info`). Dark mode uses the palette.",
+        "--gem-color-neutral-700": "Fill for the `neutral` tone.",
+        "--gem-color-neutral-100": "Bar background.",
+        "--gem-color-neutral-400": "Disabled fill.",
+        "--gem-color-bg-subtle": "Bar background in dark theme.",
+        "--gem-palette-neutral-50": "Indicator background.",
+        "--gem-color-fg": "Label color.",
+        "--gem-color-fg-muted": "Value color.",
+        "--gem-radius-{sm|md|lg|full}": "Radii for `radius` and the indicator.",
+        "--gem-space-2": "Gap between the header and the bar.",
+        "--gem-space-3": "Gap between label and value.",
+        "--gem-font-sans": "Component font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "It also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "items": {
+      "value": "Current value. Clamped between `min` and `max`. Ignored when indeterminate.",
+      "min": "Minimum value.",
+      "max": "Maximum value. If it isn't greater than `min`, `min + 100` is used.",
+      "isIndeterminate": "Progress with an unknown value. Animates the fill and removes ARIA values.",
+      "label": "Visible text above the bar. Gives it an accessible name.",
+      "showValue": "Shows the value when determinate.",
+      "valueLabel": "Replaces the value text. Shown even if `showValue` is `false`.",
+      "formatValue": "Formats the visible value and `aria-valuetext`. By default it adds `%` only if `max` is 100 and the value is an integer.",
+      "size": "Bar height.",
+      "tone": "Fill color.",
+      "radius": "Corner radius.",
+      "loadPosition": "Fill direction: `right` grows left to right and `left` the opposite.",
+      "showThumb": "Shows a circle at the edge of the fill. Hidden when indeterminate.",
+      "thumbIcon": "Indicator icon: an element or a component that receives `size`. Takes priority over `showThumb`.",
+      "disabled": "Dims the bar and stops the animation.",
+      "isDisabled": "Same as `disabled`.",
+      "aria-label": "Bar name when there's no `label`. Ignored if there's a `label`.",
+      "aria-labelledby": "Id of an element that names the bar. Combined with the `label` one.",
+      "aria-valuetext": "Value text for screen readers. Overrides the `formatValue` one.",
+      "role": "Bar role.",
+      "id": "Container id. Also builds the label id.",
+      "className": "Extra classes for the container.",
+      "classNames": "Classes per part: `root`, `header`, `label`, `value`, `track`, `fill` and `thumb`.",
+      "ref": "Container ref."
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.list-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: min(22.5rem, 100%);
+  min-width: 0;
+}
+
+.list-demo--wide {
+  width: min(36rem, 100%);
+}
+
+.list-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}

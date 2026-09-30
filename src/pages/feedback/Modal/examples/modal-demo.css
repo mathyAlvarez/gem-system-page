@@ -1,0 +1,23 @@
+.modal-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-2);
+}
+
+.modal-copy {
+  margin: 0;
+}
+
+.modal-form,
+.modal-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+}
+
+.modal-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+}

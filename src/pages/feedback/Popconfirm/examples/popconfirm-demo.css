@@ -1,0 +1,38 @@
+.popconfirm-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gem-space-3);
+}
+
+.popconfirm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: var(--gem-space-6) var(--gem-space-8);
+  justify-content: center;
+  padding: var(--gem-space-8) var(--gem-space-4);
+}
+
+.popconfirm-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 26rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+}
+
+.popconfirm-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-2) var(--gem-space-2) var(--gem-space-2) var(--gem-space-4);
+}
+
+.popconfirm-list li + li {
+  border-top: 1px solid var(--gem-color-border);
+}

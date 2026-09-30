@@ -10,11 +10,7 @@
   "grid": {
     "title": "Demo de la grilla",
     "meta": "{{columns}} columnas · división {{gap}} / {{gapLg}}",
-    "description": "<code>Grid</code> + <code>Col</code>: ancho completo hasta <code>md</code>, después el span indicado.",
-    "bug": {
-      "title": "Bug conocido en Col",
-      "body": "En <code>gem-system/styles.css</code> la clase <code>.gem-grid__col-*</code> que agrega <code>Col</code> se declara después de las reglas de breakpoint, así que <code>span</code> siempre gana y se ignoran <code>sm</code>, <code>md</code>, <code>lg</code>…"
-    }
+    "description": "<code>Grid</code> + <code>Col</code>: ancho completo hasta <code>md</code>, después el span indicado."
   },
   "containers": {
     "title": "Contenedores",

@@ -1,0 +1,26 @@
+.gem-timeline.timeline-branded {
+  --gem-timeline-line: var(--gem-palette-secondary-200);
+  --gem-timeline-dot: 0.75rem;
+  --gem-timeline-col-gap: var(--gem-space-4);
+  --gem-timeline-body-pad: 0;
+}
+
+.timeline-branded .gem-timeline__body {
+  margin-bottom: var(--gem-space-3);
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px solid var(--gem-palette-secondary-200);
+  border-radius: var(--gem-radius-md);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 6%, transparent);
+}
+
+.timeline-branded .gem-timeline__item--last .gem-timeline__body {
+  margin-bottom: 0;
+}
+
+.timeline-branded .gem-timeline__marker {
+  margin-top: var(--gem-space-4);
+}
+
+.timeline-branded .gem-timeline__title {
+  color: var(--gem-palette-secondary-700);
+}

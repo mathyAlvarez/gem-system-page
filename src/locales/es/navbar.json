@@ -1,0 +1,239 @@
+{
+  "header": {
+    "title": "Navbar",
+    "description": "Barra de navegación principal de la app. Muestra la marca a la izquierda, los enlaces en el centro y las acciones (ingresar, perfil, botones) a la derecha. En pantallas chicas los enlaces se esconden detrás de un botón de menú y se abren como un panel debajo de la barra. Renderiza un `<header>` con un `<nav>` adentro, así los lectores de pantalla la reconocen como navegación principal."
+  },
+  "demo": {
+    "brandLabel": "gem-system, ir al inicio",
+    "navLabel": "Principal",
+    "menuLabel": "Abrir menú",
+    "closeLabel": "Cerrar menú",
+    "pageTitle": "Contenido de la página",
+    "signIn": "Ingresar",
+    "getStarted": "Empezar",
+    "items": ["Inicio", "Producto", "Documentación", "Precios"]
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. El menú se colapsa según el ancho de la ventana, no del recuadro: achicá el navegador por debajo del breakpoint elegido para ver el botón de menú.",
+    "collapseBreakpoint": "collapseBreakpoint",
+    "shadow": "shadow",
+    "bordered": "bordered",
+    "items": "items",
+    "actions": "actions"
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Lo mínimo es `brand`, `items` y `actions`. `brand` puede ser texto, un logo o cualquier nodo. Cada item necesita `id` y `label`; el que tiene `current` se marca como la página activa. Los ejemplos usan estos datos de demo y un marco que simula una página, porque el Navbar ocupa todo el ancho de su contenedor.",
+      "note": "El Navbar ocupa todo el ancho. Su contenido se limita al ancho máximo del contenedor de gem-system y se centra."
+    },
+    "items": {
+      "title": "Tipos de enlaces",
+      "description": "Un item con `href` se renderiza como `<a>` y sirve para navegar a otra página o a un sitio externo. Sin `href` se renderiza como `<button>` y la acción va en `onClick`, útil con un router o para cambiar de vista. `disabled` lo muestra apagado y no se puede activar.",
+      "texts": {
+        "note": "Los primeros items usan onClick para cambiar la página activa y el último está deshabilitado.",
+        "disabled": "Próximamente"
+      }
+    },
+    "responsive": {
+      "title": "Breakpoints de colapso",
+      "description": "`collapseBreakpoint` define desde qué ancho de ventana los enlaces se esconden detrás del botón de menú. Se basa en media queries, así que depende del ancho del navegador y no del recuadro de la demo: achicá la ventana para ver cómo cada barra colapsa en un punto distinto. Elegí un breakpoint más grande (`lg`) cuando tenés muchos enlaces o acciones."
+    },
+    "controlled": {
+      "title": "Menú controlado",
+      "description": "Con `isOpen` y `onOpenChange` el estado del menú queda en tu componente, por ejemplo para cerrarlo al cambiar de ruta o abrirlo desde otro botón. Si solo querés que arranque abierto, usá `defaultOpen`. Al pasar por encima del breakpoint el menú se cierra solo y llama a `onOpenChange(false)`.",
+      "texts": {
+        "note": "Este ejemplo usa collapseBreakpoint=\"lg\": con la ventana por debajo de 1024px vas a ver el menú abierto y el estado arriba.",
+        "state": "Estado del menú",
+        "open": "abierto",
+        "closed": "cerrado"
+      }
+    },
+    "sticky": {
+      "title": "Fija al hacer scroll",
+      "description": "`position` define cómo se ubica la barra. `static` (por defecto) se desplaza con la página. `sticky` queda pegada arriba de su contenedor con scroll, y `shadow` ayuda a separarla del contenido. `fixed` la fija a la ventana y no se muestra acá porque se saldría de la demo; si la usás, agregá un `padding-top` al contenido del alto de la barra.",
+      "texts": {
+        "note": "Desplazá este recuadro: la barra queda arriba mientras pasa el contenido.",
+        "section": "Sección"
+      }
+    },
+    "shadow": {
+      "title": "Borde y sombra",
+      "description": "`bordered` (activo por defecto) dibuja una línea abajo para separar la barra del contenido. `shadow` agrega una sombra `sm`, `md` o `lg`. Lo habitual es usar uno de los dos: borde para barras estáticas y sombra para barras `sticky` o `fixed`."
+    },
+    "brandOnly": {
+      "title": "Solo marca y acción",
+      "description": "Sin `items` no se renderiza la lista de enlaces, útil para pantallas de ingreso o landings simples. Con `brandHref` la marca se vuelve un enlace; si la marca es solo un logo, pasá `brandLabel` para darle un nombre accesible. Por debajo del breakpoint las acciones también pasan al panel del menú, así que el botón de menú sigue apareciendo.",
+      "note": "La marca es un enlace al inicio y la única acción es Ingresar."
+    },
+    "slots": {
+      "title": "Contenido extra",
+      "description": "`children` se renderiza entre los enlaces y las acciones, por ejemplo un buscador. `classNames` permite ubicar cada parte: acá el buscador ocupa el espacio del centro y las acciones se alinean a la derecha. Los botones con solo ícono necesitan `aria-label`.",
+      "texts": {
+        "note": "El buscador va en children y las acciones combinan botones con ícono y un botón principal.",
+        "search": "Buscar componentes",
+        "notifications": "Notificaciones",
+        "account": "Mi cuenta"
+      }
+    }
+  },
+  "breakpoints": {
+    "columns": {
+      "breakpoint": "Valor",
+      "width": "Colapsa con ventana",
+      "usage": "Cuándo usarlo"
+    },
+    "items": {
+      "sm": "Pocos enlaces cortos. El menú completo se ve hasta en tablets verticales.",
+      "md": "Por defecto. Funciona bien con 3 o 4 enlaces y una o dos acciones.",
+      "lg": "Muchos enlaces, textos largos o un buscador en el centro."
+    }
+  },
+  "apiLink": "Ver la API completa de Navbar",
+  "api": {
+    "header": {
+      "title": "Navbar API",
+      "description": "Referencia de la API del componente Navbar de React: props, items, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Navbar"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `Header` es un alias de `Navbar` con las mismas props."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML del <code>&lt;header&gt;</code> (<code>HTMLAttributes&lt;HTMLElement&gt;</code>) y los pasa al elemento raíz, incluido <code>ref</code>. <code>classNames</code> agrega clases a cada parte interna: <code>root</code>, <code>inner</code>, <code>brand</code>, <code>nav</code>, <code>list</code>, <code>extras</code>, <code>actions</code> y <code>toggle</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "landmark": "La raíz es un <code>&lt;header&gt;</code> y los enlaces van dentro de un <code>&lt;nav&gt;</code>, así los lectores de pantalla los listan como regiones de la página.",
+      "navLabel": "<code>navLabel</code> se aplica como <code>aria-label</code> del <code>&lt;nav&gt;</code>. Si hay más de una navegación en la página, dale a cada una un nombre distinto.",
+      "current": "El item con <code>current</code> recibe <code>aria-current=\"page\"</code>, que anuncia la página activa.",
+      "toggle": "El botón de menú tiene <code>aria-expanded</code> y <code>aria-controls</code> apuntando al <code>&lt;nav&gt;</code>. Su texto cambia entre <code>menuLabel</code> y <code>closeLabel</code>.",
+      "escape": "Con el menú abierto, <code>Escape</code> lo cierra. <code>closeOnItemClick</code> lo cierra al elegir un item, solo cuando la barra está colapsada.",
+      "hidden": "Con el menú cerrado en pantallas chicas, el <code>&lt;nav&gt;</code> y las acciones quedan ocultos (<code>hidden</code>) y no reciben foco.",
+      "labels": "<code>navLabel</code>, <code>menuLabel</code> y <code>closeLabel</code> vienen en inglés por defecto (<code>\"Primary\"</code>, <code>\"Open menu\"</code>, <code>\"Close menu\"</code>). Pasalos traducidos si tu app está en otro idioma.",
+      "brand": "Si la marca es solo un logo, pasá <code>brandLabel</code> para que el enlace tenga un nombre accesible. Los items deshabilitados se renderizan como <code>&lt;button disabled&gt;</code>."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Elemento raíz (`<header>`). Recibe `className` y `classNames.root`. Define las variables del Navbar.",
+        "position": "Se aplica según `position`: `static`, `sticky` o `fixed`.",
+        "shadow": "Se aplica según `shadow` cuando no es `none`.",
+        "bordered": "Se aplica con `bordered`. Dibuja el borde inferior con `--gem-navbar-border`.",
+        "collapse": "Se aplica según `collapseBreakpoint`. Define desde qué ancho se colapsan los enlaces.",
+        "open": "Se aplica con el menú abierto en pantallas chicas.",
+        "inner": "Contenedor interno. Limita el ancho al contenedor de gem-system y centra el contenido.",
+        "brand": "Marca. Es un `<a>` si hay `brandHref` y un `<div>` si no.",
+        "brandMark": "Clase opcional para un ícono o logo cuadrado dentro de la marca.",
+        "toggle": "Botón de menú. Solo se ve con la barra colapsada y abre el panel con los enlaces, el contenido extra y las acciones.",
+        "nav": "Elemento `<nav>` que envuelve la lista y el contenido extra.",
+        "list": "Lista `<ul>` de enlaces.",
+        "link": "Cada enlace o botón de la lista. Usa `aria-current` para el estado activo.",
+        "extras": "Contenedor de `children`, entre los enlaces y las acciones.",
+        "actions": "Contenedor de `actions`, a la derecha."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Están definidas en `.gem-navbar` y ninguna se escribe inline, así que las podés cambiar desde una clase propia (`.gem-navbar.mi-clase`) o con utilidades de Tailwind. Los enlaces usan `--gem-color-fg`, así que para cambiar su color apuntá a `.gem-navbar__link`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-navbar-bg": "Fondo de la barra y del panel del menú.",
+        "--gem-navbar-fg": "Color del texto de la marca y de las acciones.",
+        "--gem-navbar-border": "Color del borde inferior y del separador del menú."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Navbar.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Navbar"
+      },
+      "items": {
+        "--gem-color-bg": "Valor por defecto de `--gem-navbar-bg`.",
+        "--gem-color-fg": "Valor por defecto de `--gem-navbar-fg` y color de los enlaces.",
+        "--gem-color-border": "Valor por defecto de `--gem-navbar-border`.",
+        "--gem-color-bg-subtle": "Fondo de los enlaces al pasar el mouse.",
+        "--gem-color-primary-500": "Indicador del enlace activo.",
+        "--gem-color-primary-600": "Texto del enlace activo.",
+        "--gem-color-primary-700": "Texto del enlace activo al pasar el mouse.",
+        "--gem-shadow-{sm|md|lg}": "Sombras que usa `shadow`.",
+        "--gem-shadow-focus": "Anillo de foco de enlaces, marca y botón de menú.",
+        "--gem-z-sticky": "Capa de la barra con `position=\"sticky\"`.",
+        "--gem-z-fixed": "Capa de la barra con `position=\"fixed\"`.",
+        "--gem-container-xl": "Ancho máximo de `.gem-navbar__inner`.",
+        "--gem-grid-margin": "Margen lateral del contenido."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML del elemento raíz.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "navbar": {
+        "title": "Navbar",
+        "description": "Props del componente principal.",
+        "items": {
+          "brand": "Marca a la izquierda: texto, logo o cualquier nodo.",
+          "brandHref": "Convierte la marca en un enlace a esta URL.",
+          "brandLabel": "Nombre accesible del enlace de la marca. Usalo si la marca es solo un logo.",
+          "items": "Enlaces de navegación. Sin items no se renderiza la lista.",
+          "navLabel": "Nombre accesible del `<nav>` (`aria-label`).",
+          "actions": "Contenido a la derecha: botones, avatar o menús.",
+          "children": "Contenido extra entre los enlaces y las acciones, por ejemplo un buscador.",
+          "position": "Cómo se ubica la barra: con la página, pegada arriba al hacer scroll o fija a la ventana.",
+          "bordered": "Dibuja un borde inferior.",
+          "shadow": "Sombra de la barra.",
+          "collapseBreakpoint": "Ancho de ventana por debajo del cual los enlaces se esconden detrás del botón de menú.",
+          "isOpen": "Estado del menú en modo controlado. Usalo junto con `onOpenChange`.",
+          "defaultOpen": "Estado inicial del menú en modo no controlado.",
+          "menuLabel": "Texto accesible del botón para abrir el menú.",
+          "closeLabel": "Texto accesible del botón para cerrar el menú.",
+          "closeOnItemClick": "Cierra el menú al elegir un item, solo con la barra colapsada.",
+          "className": "Clases extra para el elemento raíz.",
+          "classNames": "Clases por parte: `root`, `inner`, `brand`, `nav`, `list`, `extras`, `actions` y `toggle`.",
+          "onOpenChange": "Se llama al abrir o cerrar el menú, incluido el cierre automático al pasar el breakpoint."
+        }
+      },
+      "item": {
+        "title": "NavbarItem",
+        "description": "Cada objeto del array `items`.",
+        "items": {
+          "id": "Identificador único. Se usa como `key`.",
+          "label": "Texto del enlace.",
+          "href": "URL de destino. Con `href` se renderiza un `<a>`; sin `href`, un `<button>`.",
+          "current": "Marca la página activa y agrega `aria-current=\"page\"`.",
+          "disabled": "Lo muestra apagado y no se puede activar. Se renderiza como `<button disabled>`.",
+          "onClick": "Se llama al elegir el item. Útil para navegar con un router."
+        }
+      }
+    }
+  }
+}

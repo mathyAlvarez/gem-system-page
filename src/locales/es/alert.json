@@ -1,0 +1,264 @@
+{
+  "header": {
+    "title": "Alert",
+    "description": "Aviso en bloque que ocupa el ancho de su contenedor y queda en la página, a diferencia de un `Toast`, que aparece y desaparece solo. Tiene cuatro estados (`info`, `success`, `warning` y `error`), cada uno con su color e ícono. Usalo para mensajes que el usuario tiene que ver mientras trabaja: errores de un formulario, mantenimientos programados o cambios en la cuenta. `Banner` es el mismo componente con otro nombre."
+  },
+  "common": {
+    "closeLabel": "Cerrar aviso",
+    "copy": {
+      "info": {
+        "title": "Mantenimiento programado",
+        "description": "El panel no va a estar disponible de 01:00 a 03:00 UTC."
+      },
+      "success": {
+        "title": "Cambios guardados",
+        "description": "Tu perfil se actualizó. Puede tardar un minuto en verse en todos lados."
+      },
+      "warning": {
+        "title": "Tu tarjeta está por vencer",
+        "description": "La tarjeta registrada vence la semana que viene. Agregá una nueva para evitar interrupciones."
+      },
+      "error": {
+        "title": "No se pudo enviar la invitación",
+        "description": "Revisá el correo y probá de nuevo. Si el problema sigue, contactá a soporte."
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el resultado. El texto cambia según `status`. Con `isClosable` aparece el botón ×; si cerrás el aviso, podés volver a mostrarlo.",
+    "texts": {
+      "show": "Mostrar aviso"
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "`title` es el encabezado y `children` la descripción. Sin más props, el aviso es `info`, `soft` y `md`."
+    },
+    "status": {
+      "title": "Estados",
+      "description": "`status` define el color y el ícono. `info` y `success` usan `role=\"status\"`, que los lectores de pantalla anuncian sin interrumpir. `warning` y `error` usan `role=\"alert\"`, que se anuncia de inmediato."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia el tratamiento: `soft` (default) con fondo suave y borde de color al inicio, `solid` con fondo lleno y texto claro, y `outline` con el fondo de la página y el borde de color."
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` ajusta el padding, el ícono y el tamaño del texto: `sm`, `md` (default) y `lg`. Con `lg` el botón × también es más grande."
+    },
+    "radius": {
+      "title": "Radio",
+      "description": "`radius` usa los tokens de radio de gem-system: `sm`, `md` (default) y `lg`."
+    },
+    "descriptionOnly": {
+      "title": "Solo descripción",
+      "description": "Sin `title`, el aviso muestra solo la descripción. Sirve para mensajes cortos, sobre todo con `size=\"sm\"`.",
+      "texts": {
+        "description": "Sesión restaurada. Podés seguir donde lo dejaste."
+      }
+    },
+    "closable": {
+      "title": "Con cierre",
+      "description": "`isClosable` agrega el botón ×, que se anuncia como \"Dismiss\" por defecto: pasá `closeAriaLabel` traducido. Sin `open` el aviso se oculta solo; con `open` y `onClose` controlás cuándo vuelve a aparecer.",
+      "texts": {
+        "show": "Mostrar aviso"
+      }
+    },
+    "action": {
+      "title": "Con acción",
+      "description": "`action` agrega contenido al final, antes del botón ×, normalmente un botón para resolver el problema.",
+      "texts": {
+        "retry": "Reintentar",
+        "retried": "Reenviando la invitación"
+      }
+    },
+    "customIcon": {
+      "title": "Ícono propio",
+      "description": "`icon` reemplaza el ícono del estado. El color sigue saliendo del estado. Usá un tamaño parecido al del aviso para que quede alineado con el título.",
+      "texts": {
+        "title": "Notificaciones nuevas",
+        "description": "Tenés 3 mensajes sin leer en la bandeja de entrada."
+      }
+    },
+    "hideIcon": {
+      "title": "Sin ícono",
+      "description": "`hideIcon` oculta el ícono. El estado sigue marcado por el color y el borde, así que conviene que el título deje claro de qué se trata."
+    },
+    "richContent": {
+      "title": "Contenido con estructura",
+      "description": "`children` acepta cualquier contenido, no solo texto. Una lista ayuda a resumir varios errores de un formulario en un solo aviso.",
+      "texts": {
+        "title": "Revisá el formulario",
+        "intro": "Hay 3 campos para corregir:",
+        "items": [
+          "El correo no tiene un formato válido.",
+          "La contraseña necesita al menos 8 caracteres.",
+          "Aceptá los términos para continuar."
+        ]
+      }
+    },
+    "live": {
+      "title": "Aviso como respuesta",
+      "description": "Mostrá el aviso cuando pasa algo, por ejemplo al guardar. Como tiene `role` de región activa, los lectores de pantalla lo anuncian al aparecer. Cambiar la `key` en cada intento vuelve a montarlo para que se anuncie de nuevo.",
+      "texts": {
+        "save": "Guardar",
+        "fail": "Simular error"
+      }
+    },
+    "banner": {
+      "title": "Banner",
+      "description": "`Banner` es un alias de `Alert`. Usalo cuando el aviso va arriba de una página o un layout, para que el código deje clara la intención.",
+      "texts": {
+        "title": "Novedades del espacio",
+        "description": "La facturación pasó al plan nuevo. Revisá los puestos en Ajustes.",
+        "review": "Revisar"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Pago recibido",
+      "description": "classNames agrega clases a cada parte: acá el ícono va en un círculo y el aviso no tiene borde."
+    },
+    "cva": {
+      "neutral": "Un tono neutro que no depende del estado, armado redefiniendo las variables --gem-alert-*.",
+      "brand": "Un tono de marca con el borde de color arriba en lugar de al inicio."
+    },
+    "css": {
+      "title": "Aviso de marca",
+      "description": "La clase redefine las variables --gem-alert-* de color, espaciado y tamaño solo para este aviso."
+    }
+  },
+  "apiLink": "Ver la API completa de Alert",
+  "api": {
+    "header": {
+      "title": "Alert API",
+      "description": "Referencia de la API del componente Alert de React: props, clases CSS, variables CSS, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Alert"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `Banner` es el mismo componente."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos HTML de un <code>&lt;div&gt;</code> (<code>HTMLAttributes&lt;HTMLDivElement&gt;</code>, salvo <code>title</code>) y los pasa al elemento raíz, igual que <code>ref</code>. <code>classNames</code> agrega clases a cada parte: <code>root</code>, <code>icon</code>, <code>content</code>, <code>title</code>, <code>description</code>, <code>action</code> y <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "Usa <code>role=\"status\"</code> con <code>info</code> y <code>success</code>, y <code>role=\"alert\"</code> con <code>warning</code> y <code>error</code>. Podés cambiarlo con la prop <code>role</code>.",
+      "live": "Los dos roles son regiones activas: los lectores de pantalla anuncian el aviso cuando aparece. <code>alert</code> interrumpe la lectura y <code>status</code> espera a que termine. Para avisos que ya están al cargar la página, considerá <code>role=\"note\"</code>.",
+      "icon": "El ícono tiene <code>aria-hidden</code>: el estado tiene que quedar claro con el título o la descripción.",
+      "close": "El botón × es un <code>&lt;button&gt;</code> que se llama <code>\"Dismiss\"</code> por defecto. Pasá <code>closeAriaLabel</code> traducido.",
+      "focus": "Al cerrar, el aviso se desmonta y el foco que estaba en el botón × se pierde. Si el aviso es importante, mové el foco a un elemento cercano en <code>onClose</code>.",
+      "color": "El color solo no alcanza para comunicar el estado. Con <code>hideIcon</code> o un <code>icon</code> propio, asegurate de que el texto diga si es un error, una advertencia o una confirmación."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Contenedor. Recibe `className` y `classNames.root`. Define los valores por defecto de las variables.",
+        "status": "Colores del estado: redefine `--gem-alert-bg`, `--gem-alert-fg`, `--gem-alert-border`, `--gem-alert-accent` y `--gem-alert-icon`.",
+        "soft": "Fondo suave con borde de 4px al inicio. Es la variante por defecto y no agrega reglas propias.",
+        "solid": "Fondo con el color del estado, texto claro y borde transparente. Con `warning` el texto es oscuro.",
+        "outline": "Fondo `--gem-color-bg` con el borde del estado.",
+        "size": "Padding, separación, tamaño del ícono y del texto.",
+        "radius": "Radio según `radius`.",
+        "icon": "Contenedor del ícono. Recibe `classNames.icon`.",
+        "content": "Contenedor del título y la descripción. Recibe `classNames.content`.",
+        "title": "Título. Recibe `classNames.title`.",
+        "description": "Descripción. Recibe `classNames.description`.",
+        "action": "Contenedor de `action`, alineado al final. Recibe `classNames.action`.",
+        "close": "Botón ×. Toma el color del texto del aviso. Recibe `classNames.close`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Las clases de estado y de tamaño definen estas variables en el mismo elemento, así que para cambiarlas usá un selector como `.gem-alert.mi-clase` (ver Cambio estilos).",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-alert-bg": "Color de fondo.",
+        "--gem-alert-fg": "Color del texto y del botón ×.",
+        "--gem-alert-border": "Color del borde.",
+        "--gem-alert-accent": "Color del borde inicial. En `solid` también es el fondo.",
+        "--gem-alert-icon": "Color del ícono.",
+        "--gem-alert-pad-y": "Padding vertical.",
+        "--gem-alert-pad-x": "Padding horizontal.",
+        "--gem-alert-gap": "Separación entre el ícono, el contenido y las acciones.",
+        "--gem-alert-icon-size": "Tamaño del ícono.",
+        "--gem-alert-title": "Tamaño de letra del título.",
+        "--gem-alert-body": "Tamaño de letra de la descripción."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Alert. `{status}` es `info`, `success`, `warning` o `error`.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Alert"
+      },
+      "items": {
+        "--gem-color-{status}-soft": "Fondo de `soft`.",
+        "--gem-color-{status}-text": "Texto de `soft` y `outline`.",
+        "--gem-color-{status}-border": "Borde de `soft` y `outline`.",
+        "--gem-color-{status}-solid": "Borde inicial, ícono y fondo de `solid`.",
+        "--gem-palette-neutral-0": "Texto de `solid`.",
+        "--gem-palette-neutral-950": "Texto de `solid` con `warning`.",
+        "--gem-color-bg": "Fondo de `outline`.",
+        "--gem-radius-sm": "Radio con `radius=\"sm\"`.",
+        "--gem-radius-md": "Radio por defecto.",
+        "--gem-radius-lg": "Radio con `radius=\"lg\"`.",
+        "--gem-space-2": "Separación entre acciones.",
+        "--gem-font-sans": "Tipografía."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además acepta los atributos HTML de un `<div>`. `Banner` recibe las mismas props.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "items": {
+      "status": "Estado: define el color, el ícono y el `role` por defecto.",
+      "variant": "Tratamiento de la superficie.",
+      "size": "Padding, ícono y tamaño del texto.",
+      "radius": "Radio con los tokens de gem-system.",
+      "title": "Encabezado sobre la descripción.",
+      "children": "Descripción o contenido del aviso.",
+      "icon": "Reemplaza el ícono del estado.",
+      "hideIcon": "Oculta el ícono.",
+      "action": "Contenido al final, antes del botón ×.",
+      "isClosable": "Muestra el botón ×.",
+      "closeAriaLabel": "Nombre accesible del botón ×.",
+      "open": "Visibilidad controlada.",
+      "defaultOpen": "Visibilidad inicial si no es controlado.",
+      "role": "Rol ARIA. Por defecto `status` con `info` y `success`, y `alert` con `warning` y `error`.",
+      "className": "Clases extra para el contenedor.",
+      "classNames": "Clases por parte: `root`, `icon`, `content`, `title`, `description`, `action` y `close`.",
+      "ref": "Referencia al contenedor.",
+      "onClose": "Se ejecuta al presionar el botón ×."
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "header": {
+    "title": "Transition",
+    "description": "Animates its content in and out. Control presence with `in` and pick the motion with `effect`: fade, scale, four slides and collapse. By default the content unmounts once it finishes exiting."
+  },
+  "common": {
+    "toggle": { "show": "Show", "hide": "Hide" },
+    "panel": {
+      "title": "Weekly summary",
+      "body": "12 tasks closed, 3 in review and 1 blocked."
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and use the button to see the enter and exit."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Wrap the content and change `in` to show or hide it. With no other props it uses a 220 ms `fade`. The first time it mounts with `in` set to `true`, it appears without animation."
+    },
+    "effects": {
+      "title": "Effects",
+      "description": "`effect` accepts `fade`, `scale`, `slide-up`, `slide-down`, `slide-left`, `slide-right` and `collapse`. Slides combine movement and opacity; `collapse` animates the height."
+    },
+    "collapse": {
+      "title": "Show and hide content",
+      "description": "For a disclosure, use `collapse` with a button that has `aria-expanded` and `aria-controls`. Pass `unmountOnExit={false}` so the `id` that `aria-controls` points to always exists.",
+      "texts": {
+        "trigger": "Advanced options",
+        "title": "Advanced options",
+        "body": "These options change how the report is exported. You rarely need to touch them."
+      }
+    },
+    "timing": {
+      "title": "Duration, delay and easing",
+      "description": "`duration` takes milliseconds, or `{ enter, exit }` for split timing. `delay` applies to both enter and exit, and `easing` accepts any CSS curve."
+    },
+    "stagger": {
+      "title": "Staggered entrance",
+      "description": "With a different `delay` per element, items appear one by one. On exit the order is reversed. `Transition` goes inside each `<li>` so the list structure stays intact.",
+      "texts": {
+        "listLabel": "Integrations",
+        "items": [
+          { "name": "GitHub", "detail": "Connected" },
+          { "name": "Slack", "detail": "Connected" },
+          { "name": "Figma", "detail": "Pending" },
+          { "name": "Linear", "detail": "Not connected" }
+        ]
+      }
+    },
+    "appear": {
+      "title": "Animate on mount",
+      "description": "With `appear`, the first mount also animates even when already visible. Useful for content that arrives after loading.",
+      "texts": {
+        "replay": "Mount again"
+      }
+    },
+    "keepMounted": {
+      "title": "Keep mounted",
+      "description": "By default, content unmounts on exit and loses its state. With `unmountOnExit={false}` it stays in the DOM, transparent and inert, and keeps taking up space. Type in both fields, hide them and show them again.",
+      "texts": {
+        "unmounted": "Unmounts",
+        "mounted": "Stays mounted",
+        "field": "Note",
+        "placeholder": "Type something"
+      }
+    },
+    "renderProp": {
+      "title": "Transition status",
+      "description": "`children` can be a function that receives the status: `entering`, `entered`, `exiting` or `exited`. Use it to adapt the content to each phase.",
+      "texts": {
+        "statuses": {
+          "entering": "Entering",
+          "entered": "Visible",
+          "exiting": "Exiting",
+          "exited": "Hidden"
+        }
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onEnter`, `onEntering` and `onEntered` report each enter phase; `onExit`, `onExiting` and `onExited`, the exit ones. `onExited` runs before unmounting.",
+      "texts": {
+        "logLabel": "Event log",
+        "clear": "Clear"
+      }
+    }
+  },
+  "apiLink": "See the full Transition API",
+  "api": {
+    "header": {
+      "title": "Transition API",
+      "description": "API reference for the React Transition: props, events, CSS classes, variables and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Transition"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Transition</code> accepts <code>&lt;div&gt;</code> attributes. They go to the container it adds around the content. <code>children</code> also accepts a function that receives the status."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "reducedMotion": "It respects <code>prefers-reduced-motion</code>: with that preference, it enters and exits instantly.",
+      "hidden": "When it exits and stays mounted, it gets <code>hidden</code>, <code>inert</code> and <code>aria-hidden</code>: it can't be focused and screen readers skip it. Because the component class sets <code>display</code>, <code>hidden</code> doesn't remove it from the layout: it keeps taking up space, transparent.",
+      "focus": "It doesn't move focus. If focus was inside the content that exits, it's lost: return it to the button that hid it.",
+      "disclosure": "To show and hide content, use a button with <code>aria-expanded</code> and <code>aria-controls</code>. <code>aria-controls</code> needs <code>unmountOnExit={false}</code> so the element always exists.",
+      "announce": "Appearing content isn't announced. If it's an important notice, put it in an <code>aria-live</code> region or use a component that has one, like Toast.",
+      "wrapper": "It adds a <code>&lt;div&gt;</code> around the content. Inside lists or tables, place it inside each <code>&lt;li&gt;</code> or cell so the structure stays valid.",
+      "duration": "Keep animations short and don't use motion as the only way to communicate something."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles. Only one phase class is applied at a time.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Container. Receives `className` and `classNames.root`. It's `inline-block` by default.",
+        "effect": "Effect: `--fade`, `--scale`, `--slide-up`, `--slide-down`, `--slide-left`, `--slide-right` or `--collapse`.",
+        "enter": "First enter frame, with the initial state.",
+        "enterActive": "Enter in progress. Holds the CSS `transition`.",
+        "entered": "Visible, without animation.",
+        "exit": "First exit frame.",
+        "exitActive": "Exit in progress. Holds the CSS `transition`.",
+        "exited": "Hidden: transparent with no pointer events. If it stays mounted, it keeps its space.",
+        "block": "Applied with `block` or `collapse`: takes the full width.",
+        "inner": "Inner container, only with `collapse`. Receives `classNames.inner`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Duration, delay and easing are set as inline styles from the props, so regular CSS doesn't override them.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-transition-duration": "Duration of the current phase. Set by `duration`. Change it only through the prop: the component uses that value to know when the phase ends.",
+        "--gem-transition-delay": "Delay. Set by `delay`.",
+        "--gem-transition-easing": "Easing. Set by `easing`. It can be overridden with an `!important` utility, like in the Tailwind example.",
+        "--gem-transition-offset": "Slide distance. Defaults to `0.75rem` and can be changed with CSS."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Transition also accepts `<div>` attributes (see Inheritance).",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "presence": { "title": "Presence", "description": "When it shows and what happens on exit." },
+      "motion": { "title": "Motion", "description": "Effect, timing and easing." },
+      "events": { "title": "Events", "description": "Callbacks for each phase." },
+      "styling": { "title": "Styling", "description": "Classes and refs." }
+    },
+    "items": {
+      "in": "`true` makes the content enter and `false` makes it exit.",
+      "children": "Content, or a function that receives the current status.",
+      "appear": "Also animates the first mount when `in` is already `true`.",
+      "unmountOnExit": "Unmounts the content once it finishes exiting. With `false` it stays in the DOM, transparent and inert, taking up space.",
+      "effect": "Enter and exit motion.",
+      "duration": "Duration in milliseconds. `{ enter, exit }` splits the timing.",
+      "delay": "Delay in milliseconds, on enter and exit.",
+      "easing": "CSS easing.",
+      "block": "Takes the full container width. `collapse` always does.",
+      "onEnter": "Enter starts, with the initial state applied.",
+      "onEntering": "The enter transition is running.",
+      "onEntered": "Enter finished. Also runs on the first mount without `appear`.",
+      "onExit": "Exit starts.",
+      "onExiting": "The exit transition is running.",
+      "onExited": "Exit finished, before unmounting.",
+      "className": "Extra classes for the container.",
+      "classNames": "Classes per part: `root` and `inner` (only with `collapse`).",
+      "style": "Inline styles. Merged with the variables the component sets.",
+      "ref": "Forwarded to the container."
+    }
+  }
+}

@@ -337,6 +337,7 @@
       "size": "Control size.",
       "border": "Border tone. Forced to error when the field is invalid.",
       "clearable": "Shows a control to clear the selection or query.",
+      "clearLabel": "Accessible name of the clear button. Defaults to \"Clear\".",
       "showExpand": "Shows the chevron that opens and closes the list.",
       "suffixIcon": "Icon at the start of the field. null hides it.",
       "isLoading": "Shows a spinner. The list stays available.",
@@ -346,7 +347,8 @@
       "isRequired": "Marks the field as required (aria-required + asterisk).",
       "name": "Native name for hidden form inputs.",
       "className": "Extra classes for the control.",
-      "wrapperClassName": "Extra classes for the root container."
+      "wrapperClassName": "Extra classes for the root container.",
+      "onClear": "Fires after the value is cleared with the button."
     }
   }
 }

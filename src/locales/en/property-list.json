@@ -1,0 +1,320 @@
+{
+  "header": {
+    "title": "Property List",
+    "description": "Compact key/value pairs with `<dl>` semantics. Use it to show details of an order, an account or a configuration. Build rows with `items` or with `PropertyList.Item`."
+  },
+  "common": {
+    "shortRows": [
+      { "key": "plan", "label": "Plan", "children": "Pro" },
+      { "key": "seats", "label": "Seats", "children": "12" },
+      { "key": "renewal", "label": "Renewal", "children": "March 1, 2027" }
+    ],
+    "edit": "Edit"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the list and the code. Below 40rem all columns stack into one."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Pass `title` and `items`. Each item has a `label` (the term) and `children` (the value). By default rows are divided and the label ends with a colon.",
+      "texts": {
+        "title": "Shipment",
+        "items": [
+          { "key": "order", "label": "Order", "children": "#GEM-10492" },
+          { "key": "status", "label": "Status", "children": "In transit" },
+          { "key": "carrier", "label": "Carrier", "children": "Gem Post" },
+          { "key": "eta", "label": "Estimated arrival", "children": "October 3, 2026" }
+        ]
+      }
+    },
+    "columns": {
+      "title": "Columns",
+      "description": "`columns` lays rows out in a grid of 1 to 6 columns. `span` makes an item take more than one column; it never exceeds `columns`.",
+      "texts": {
+        "title": "Account",
+        "items": [
+          { "key": "name", "label": "Name", "children": "Ada Lovelace" },
+          { "key": "email", "label": "Email", "children": "ada@gem.org" },
+          { "key": "role", "label": "Role", "children": "Admin" },
+          { "key": "team", "label": "Team", "children": "Platform" },
+          { "key": "address", "label": "Address", "children": "12 Analytical Engine Rd, London", "span": 2 }
+        ]
+      }
+    },
+    "bordered": {
+      "title": "Bordered",
+      "description": "`bordered` adds a border, background and padding, and separates the header. With `divided`, cells get inner lines.",
+      "texts": {
+        "title": "Invoice",
+        "items": [
+          { "key": "number", "label": "Number", "children": "INV-2026-0087" },
+          { "key": "issued", "label": "Issued", "children": "September 15, 2026" },
+          { "key": "due", "label": "Due", "children": "October 15, 2026" },
+          { "key": "total", "label": "Total", "children": "USD 1,240.00" }
+        ]
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`layout=\"vertical\"` puts the label above the value. It looks better without a colon: `colon={false}`.",
+      "texts": {
+        "title": "Profile",
+        "items": [
+          { "key": "name", "label": "Name", "children": "Grace Hopper" },
+          { "key": "position", "label": "Position", "children": "Principal engineer" },
+          { "key": "location", "label": "Location", "children": "New York" },
+          { "key": "timezone", "label": "Time zone", "children": "GMT-4" },
+          { "key": "language", "label": "Language", "children": "English" },
+          { "key": "since", "label": "Member since", "children": "2019" }
+        ]
+      }
+    },
+    "striped": {
+      "title": "Striped",
+      "description": "`striped` fills the background of even rows. Combine it with `divided={false}` so lines don't add up. It doesn't apply with `bordered`.",
+      "texts": {
+        "title": "Environment",
+        "items": [
+          { "key": "node", "label": "Node", "children": "22.4.0" },
+          { "key": "region", "label": "Region", "children": "sa-east-1" },
+          { "key": "memory", "label": "Memory", "children": "1024 MB" },
+          { "key": "timeout", "label": "Timeout", "children": "30 s" },
+          { "key": "build", "label": "Build", "children": "a1b2c3d" }
+        ]
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It changes the padding and the gaps between label, value and columns."
+    },
+    "compound": {
+      "title": "Composition",
+      "description": "`PropertyList.Item` builds rows as children, handy when the value is JSX. `extra` adds content at the end of the header, like a `Badge`.",
+      "texts": {
+        "title": "Order #GEM-10492",
+        "paid": "Paid",
+        "customer": "Customer",
+        "channel": "Channel",
+        "web": "Online store",
+        "quantity": "Quantity",
+        "address": "Shipping address"
+      }
+    },
+    "copy": {
+      "title": "Values with actions",
+      "description": "The value can hold any node: here a `CopyToClipboard` and a `Badge`. Give the copy button a `copyAriaLabel` that says what it copies.",
+      "texts": {
+        "title": "API credentials",
+        "clientId": "Client ID",
+        "status": "Status",
+        "active": "Active",
+        "webhook": "Webhook",
+        "created": "Created",
+        "createdValue": "August 2, 2026",
+        "copy": "Copy",
+        "copied": "Copied"
+      }
+    },
+    "align": {
+      "title": "Alignment and label width",
+      "description": "`align=\"end\"` right-aligns the values, great for amounts. `labelWidth` fixes the width of the label column; a number is read as pixels.",
+      "texts": {
+        "title": "Summary",
+        "items": [
+          { "key": "subtotal", "label": "Subtotal", "children": "USD 1,100.00" },
+          { "key": "shipping", "label": "Shipping", "children": "USD 40.00" },
+          { "key": "taxes", "label": "Taxes", "children": "USD 100.00" },
+          { "key": "total", "label": "Total", "children": "USD 1,240.00" }
+        ]
+      }
+    },
+    "hidden": {
+      "title": "Hidden rows",
+      "description": "`hidden: true` skips an item without removing it from the array. Use it to show fields based on permissions or preferences. Turn on the switch.",
+      "texts": {
+        "title": "Employee",
+        "toggle": "Show sensitive data",
+        "items": [
+          { "key": "name", "label": "Name", "children": "Alan Turing" },
+          { "key": "area", "label": "Department", "children": "Research" }
+        ],
+        "sensitive": [
+          { "key": "salary", "label": "Salary", "children": "USD 8,500" },
+          { "key": "id", "label": "ID number", "children": "30.123.456" }
+        ]
+      }
+    },
+    "empty": {
+      "title": "Empty values",
+      "description": "When a value is `null`, `undefined`, a boolean or an empty string, `emptyText` is shown (an em dash by default). Screen readers may skip the dash: pass text like \"Not set\".",
+      "texts": {
+        "title": "Contact",
+        "emptyText": "Not set",
+        "items": [
+          { "key": "name", "label": "Name", "children": "Katherine Johnson" },
+          { "key": "phone", "label": "Phone" },
+          { "key": "website", "label": "Website", "children": "" }
+        ]
+      }
+    }
+  },
+  "apiLink": "See the full Property List API",
+  "api": {
+    "header": {
+      "title": "Property List API",
+      "description": "API reference for the React PropertyList: list and item props, helpers, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Property List"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `PropertyListItemConfig` types the `items` array."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>PropertyList</code> accepts <code>&lt;section&gt;</code> attributes except <code>title</code>, which is the header here. They go to the root along with <code>ref</code>. <code>style</code> is merged with <code>--gem-property-list-cols</code> and <code>--gem-property-list-label-width</code>. <code>PropertyList.Item</code> accepts <code>&lt;div&gt;</code> attributes except <code>children</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "semantics": "Rows use <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code>, so screen readers announce each pair as term and definition.",
+      "heading": "A text <code>title</code> renders as an <code>&lt;h3&gt;</code>. If you pass a node, it's a <code>div</code> and isn't exposed as a heading; include the heading yourself if you need one.",
+      "region": "The root is a <code>&lt;section&gt;</code> with <code>aria-labelledby</code> pointing to the title. Without a title, pass <code>aria-label</code> or <code>aria-labelledby</code>.",
+      "colon": "The colon comes from CSS (<code>::after</code>); it isn't part of the label text.",
+      "empty": "The default <code>emptyText</code> is an em dash (<code>—</code>), which many screen readers skip or read as \"dash\". Pass text like <code>\"Not set\"</code>.",
+      "values": "If the value has icon buttons, like <code>CopyToClipboard</code>, give them a name that includes the term: <code>\"Copy Client ID\"</code>.",
+      "responsive": "Below 40rem the grid switches to one column and <code>span</code> is ignored, so the reading order stays the same."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root `<section>`. Defines the variables. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Defines the padding and gap variables.",
+        "layout": "Layout: `--horizontal` or `--vertical`.",
+        "align": "Value alignment: `--align-start` or `--align-end`.",
+        "radius": "Radius: `--radius-sm`, `--radius-md` or `--radius-lg`.",
+        "bordered": "Applied with `bordered`. Without a border, `--borderless` is applied.",
+        "divided": "Applied with `divided`. Line between rows, or inner lines with `bordered`.",
+        "striped": "Applied with `striped`. Background on even rows, only without `bordered`.",
+        "colon": "Applied with `colon`; otherwise `--no-colon`. Adds the colon with `::after`.",
+        "header": "`<header>` with the title and `extra`. Receives `classNames.header`.",
+        "title": "Title. Receives `classNames.title`.",
+        "extra": "`extra` container. Receives `classNames.extra`.",
+        "list": "`<dl>` with the grid. Receives `classNames.list`.",
+        "item": "Each row. Receives `classNames.item`, the item's `className` and the item's `classNames.item`.",
+        "span": "Row with `span` greater than 1. Uses `--gem-property-list-span`.",
+        "label": "`<dt>` with the term. Receives `classNames.label`.",
+        "value": "`<dd>` with the value. Receives `classNames.value`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "PropertyList's own variables. The root and size classes define them, so override them with `.gem-property-list.your-class` or your own class in `className`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-property-list-pad-y": "Vertical padding of each row.",
+        "--gem-property-list-pad-x": "Horizontal padding with `bordered`.",
+        "--gem-property-list-gap": "Gap between label and value.",
+        "--gem-property-list-col-gap": "Gap between columns.",
+        "--gem-property-list-label-width": "Width of the label column in horizontal layout. Set by `labelWidth`.",
+        "--gem-property-list-rule": "Color of the border and lines.",
+        "--gem-property-list-cols": "Number of columns. Set by `columns`.",
+        "--gem-property-list-span": "Columns an item takes. Set by `span`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by PropertyList.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in PropertyList"
+      },
+      "items": {
+        "--gem-color-fg": "Title and values.",
+        "--gem-color-fg-muted": "Labels.",
+        "--gem-color-border": "Border and lines.",
+        "--gem-color-bg": "Background with `bordered`.",
+        "--gem-color-neutral-50": "Background of rows with `striped`.",
+        "--gem-space-{1|2|3|4|6|8|10}": "Gaps between rows, columns, label and value.",
+        "--gem-radius-{sm|md|lg}": "Radius of the root and of striped rows.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "The list also accepts `<section>` attributes (see Inheritance). Pass rows with `items`, with `PropertyList.Item` or both: rows from `items` come first.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "root": {
+        "title": "PropertyList",
+        "description": "Component props.",
+        "items": {
+          "title": "Header. A string renders as an `<h3>`.",
+          "extra": "Content at the end of the header, like a button or badge.",
+          "items": "Rows as objects.",
+          "children": "Rows as `PropertyList.Item`.",
+          "columns": "Grid columns, from 1 to 6.",
+          "layout": "`horizontal` puts label and value side by side; `vertical`, one above the other.",
+          "size": "Density: padding and gaps.",
+          "bordered": "Adds a border, background and padding.",
+          "divided": "Adds lines between rows.",
+          "striped": "Background on even rows. Doesn't apply with `bordered`.",
+          "colon": "Adds a colon after the label.",
+          "labelWidth": "Width of the label column in horizontal layout. A number is read as pixels.",
+          "align": "Value alignment.",
+          "radius": "Root radius.",
+          "emptyText": "Content shown when the value is empty.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `header`, `title`, `extra`, `list`, `item`, `label` and `value`.",
+          "ref": "Ref to the `<section>`."
+        }
+      },
+      "item": {
+        "title": "PropertyListItemConfig / PropertyList.Item",
+        "description": "A row, as an object inside `items` or as a component. `key` and `hidden` only exist on the object.",
+        "items": {
+          "key": "Stable key when rendering from `items`.",
+          "label": "Term: the property name.",
+          "children": "Value. When empty, `emptyText` is shown.",
+          "span": "Columns it takes. Clamped to `columns`.",
+          "hidden": "Skips the row.",
+          "className": "Extra classes for the row.",
+          "classNames": "Classes per part: `item`, `label` and `value`."
+        }
+      },
+      "helpers": {
+        "title": "Helpers",
+        "description": "Exported functions used by the component, handy for your own wrappers.",
+        "items": {
+          "clampColumns": "Clamps a column count between 1 and 6. Without a value it returns 1.",
+          "clampSpan": "Clamps a `span` between 1 and the column count.",
+          "collectPropertyListItems": "Merges `items` and the `PropertyList.Item` children into one array, without hidden rows.",
+          "hasPropertyNode": "Tells whether a value can be shown: it isn't `null`, `undefined`, a boolean, or an empty or whitespace-only string."
+        }
+      }
+    }
+  }
+}

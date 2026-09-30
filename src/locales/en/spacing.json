@@ -10,11 +10,7 @@
   "grid": {
     "title": "Grid demo",
     "meta": "{{columns}} cols · gap {{gap}} / {{gapLg}}",
-    "description": "<code>Grid</code> + <code>Col</code>: full width until <code>md</code>, then the listed span.",
-    "bug": {
-      "title": "Known Col bug",
-      "body": "In <code>gem-system/styles.css</code> the <code>.gem-grid__col-*</code> class added by <code>Col</code> is declared after the breakpoint rules, so <code>span</code> always wins and <code>sm</code>, <code>md</code>, <code>lg</code>… are ignored."
-    }
+    "description": "<code>Grid</code> + <code>Col</code>: full width until <code>md</code>, then the listed span."
   },
   "containers": {
     "title": "Containers",

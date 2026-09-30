@@ -1,6 +1,5 @@
 import { Col, Container, Grid, Row } from "@gem-org/gem-system";
 import { GridCell } from "./GridCell.tsx";
-import "./grid-col-fix.css";
 
 type PageLayoutGridProps = {
   texts: { header: string; sidebar: string; card: string; footer: string };

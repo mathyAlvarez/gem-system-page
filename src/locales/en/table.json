@@ -1,0 +1,347 @@
+{
+  "header": {
+    "title": "Table",
+    "description": "Data table built on <link>TanStack Table v9</link>. It includes column sorting, row selection, column groups, expandable rows, sticky columns, horizontal scroll and virtualization for large lists. Columns are defined with <code>createTableColumnHelper</code>.",
+    "externalLabel": "Opens in a new tab"
+  },
+  "common": {
+    "invoice": {
+      "caption": "Invoices",
+      "columns": {
+        "number": "Invoice",
+        "customer": "Customer",
+        "email": "Email",
+        "amount": "Amount",
+        "status": "Status",
+        "issued": "Issued",
+        "city": "City",
+        "country": "Country",
+        "method": "Payment method"
+      },
+      "statuses": { "paid": "Paid", "open": "Open", "overdue": "Overdue" },
+      "methods": { "card": "Card", "transfer": "Transfer", "check": "Check" }
+    },
+    "labels": {
+      "selectAllLabel": "Select all rows",
+      "selectRowLabel": "Select row",
+      "expandRowLabel": "Expand row",
+      "collapseRowLabel": "Collapse row",
+      "emptyMessage": "No results."
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to see the table and the code. With `rows` set to 0 the empty message appears."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Define columns with `createTableColumnHelper` and memoize them with `useMemo`. `cell` customizes the content, like a `Badge` or an amount formatted with `Intl`. `getRowId` gives each row a stable id."
+    },
+    "caption": {
+      "title": "Table caption",
+      "description": "`caption` names the table for screen readers; it's visually hidden by default. `showCaption` displays it, `extra` adds content beside it and `captionSide=\"bottom\"` moves it below, like a note.",
+      "texts": {
+        "caption": "Latest issued invoices, sorted by date.",
+        "count": "{count} invoices"
+      }
+    },
+    "sorting": {
+      "title": "Sorting",
+      "description": "Click a header to sort: descending, ascending and unsorted. Shift + click adds another column. `sorting` and `onSortingChange` control the state.",
+      "texts": {
+        "sortedBy": "Sort",
+        "none": "unsorted"
+      }
+    },
+    "selection": {
+      "title": "Row selection",
+      "description": "`enableRowSelection` adds a checkbox column. `isRowSelectable` locks some rows: here, paid invoices. `rowSelection` is a `{ [id]: true }` map.",
+      "texts": {
+        "noneSelected": "No rows selected",
+        "selected": "{count} selected"
+      }
+    },
+    "rowClick": {
+      "title": "Select on row click",
+      "description": "`selectOnRowClick` selects when clicking anywhere on the row, and the row can be focused with Tab and activated with Enter or Space. With `enableMultiRowSelection={false}` only one can be chosen.",
+      "texts": {
+        "current": "Current invoice"
+      }
+    },
+    "actions": {
+      "title": "Actions column",
+      "description": "`helper.display()` creates a column that reads no data, ideal for buttons. Give each icon button an `aria-label` that includes the row: \"Delete INV-0001\". Try deleting a row.",
+      "texts": {
+        "actions": "Actions",
+        "download": "Download",
+        "remove": "Delete",
+        "restore": "Restore rows"
+      }
+    },
+    "scroll": {
+      "title": "Horizontal scroll and sticky columns",
+      "description": "`meta.minWidth` keeps columns from being squeezed, so narrow screens get horizontal scroll. `meta.sticky: \"start\"` pins the Invoice column and `\"end\"` pins the payment method."
+    },
+    "groups": {
+      "title": "Column groups",
+      "description": "`helper.group()` nests columns under a shared header and adds rows to the header. Country names come from `Intl.DisplayNames` for the current language.",
+      "texts": {
+        "caption": "Countries",
+        "country": "Country",
+        "details": "Details",
+        "name": "Name",
+        "iso": "ISO code",
+        "population": "Population",
+        "size": "Area (km²)",
+        "density": "Density"
+      }
+    },
+    "expand": {
+      "title": "Expandable rows",
+      "description": "`renderExpanded` shows a panel below the row, which can hold another table. `isRowExpandable` hides the button on rows without details and `defaultExpanded` opens some at start.",
+      "texts": {
+        "caption": "Nutrition facts",
+        "history": "Orders",
+        "orders": "{count} orders",
+        "names": {
+          "yoghurt": "Frozen yoghurt",
+          "sandwich": "Ice cream sandwich",
+          "eclair": "Eclair",
+          "cupcake": "Cupcake"
+        },
+        "columns": {
+          "name": "Dessert (100 g serving)",
+          "calories": "Calories",
+          "fat": "Fat (g)",
+          "carbs": "Carbs (g)",
+          "protein": "Protein (g)"
+        },
+        "historyColumns": {
+          "date": "Date",
+          "customer": "Customer",
+          "amount": "Quantity",
+          "price": "Total"
+        }
+      }
+    },
+    "stickyHeader": {
+      "title": "Sticky header",
+      "description": "`stickyHeader` with `maxHeight` keeps the header visible while the body scrolls. The scroll area can be focused with Tab to move it with the keyboard."
+    },
+    "virtualized": {
+      "title": "Virtualization",
+      "description": "`virtualized` renders only the visible rows, for lists with thousands of rows. It needs a height: `maxHeight`, or 400px by default. There are 1000 rows here and only a few dozen in the DOM.",
+      "texts": {
+        "caption": "People",
+        "number": "No.",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "age": "Age",
+        "city": "City"
+      }
+    },
+    "empty": {
+      "title": "No results",
+      "description": "With no rows, the table shows `emptyMessage` spanning every column. Clear the search to see the data.",
+      "texts": {
+        "search": "Search invoices",
+        "placeholder": "Customer or number",
+        "noMatches": "No invoice matches \"{query}\"."
+      }
+    },
+    "pagination": {
+      "title": "With pagination",
+      "description": "`footer` adds content below the table, like a `Pagination`. The table doesn't paginate by itself: pass only the current page's rows.",
+      "texts": {
+        "pagination": {
+          "navLabel": "Invoice pages",
+          "pageSizeLabel": "Rows per page",
+          "previousLabel": "Previous page",
+          "nextLabel": "Next page",
+          "firstLabel": "First page",
+          "lastLabel": "Last page"
+        },
+        "pageLabel": "Page {page}"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` accepts `sm`, `md` (default) and `lg`. It changes cell padding and typography."
+    }
+  },
+  "apiLink": "See the full Table API",
+  "api": {
+    "header": {
+      "title": "Table API",
+      "description": "API reference for the React Table: props, column meta, helpers, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demo page.",
+      "link": "Table"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from the main entry or from its subpath. `SortingState`, `RowSelectionState` and `ExpandedState` are exported too."
+    },
+    "columns": {
+      "title": "Defining columns",
+      "description": "`createTableColumnHelper<TData>()` returns the TanStack Table helper already typed with Gem's features: `accessor` for data columns, `group` to group them and `display` for columns without data. `meta` adds alignment, minimum width and sticky columns."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Table</code> accepts <code>&lt;div&gt;</code> attributes except <code>children</code>. They go to the root container, not the <code>&lt;table&gt;</code>. Use <code>classNames</code> to style inner parts."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "caption": "Always pass <code>caption</code>: it's the table's name for screen readers, even when it isn't visible.",
+      "headers": "Headers are <code>&lt;th scope=\"col\"&gt;</code>, and groups are <code>scope=\"colgroup\"</code>.",
+      "sorting": "Sortable columns have a <code>&lt;button&gt;</code> in the header and <code>aria-sort</code> on the <code>&lt;th&gt;</code>. The sort icon is decorative.",
+      "labels": "<code>selectAllLabel</code>, <code>selectRowLabel</code>, <code>expandRowLabel</code>, <code>collapseRowLabel</code> and <code>emptyMessage</code> default to English. Pass them translated.",
+      "rowLabels": "<code>selectRowLabel</code> and <code>expandRowLabel</code> are the same on every row. If your table has many rows, put the identifying value in the first column so screen readers announce it next to the checkbox.",
+      "rowClick": "With <code>selectOnRowClick</code> each row gets <code>tabIndex=\"0\"</code> and activates with Enter or Space. Clicks on buttons, links and inputs inside the row don't select it.",
+      "expand": "The expand button has <code>aria-expanded</code>. The collapsed panel has <code>aria-hidden</code> and <code>inert</code>.",
+      "scroller": "With <code>maxHeight</code>, the scroll area gets <code>tabIndex=\"0\"</code> so it can be moved with the keyboard.",
+      "virtualized": "With <code>virtualized</code>, the header and body live in two separate <code>&lt;table&gt;</code> elements and only visible rows are in the DOM. Screen readers lose the link between cells and headers. Use it only when the row count justifies it, and prefer pagination."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Root container. Receives `className` and `classNames.root`.",
+        "size": "Size: `--sm`, `--md` or `--lg`. Changes cell padding and typography.",
+        "radius": "Radius: `--radius-sm`, `--radius-md` or `--radius-lg`.",
+        "bordered": "Applied with `bordered`. Without a border, `--borderless` is applied.",
+        "stickyHeader": "Applied with `stickyHeader` or `virtualized`.",
+        "stickyCols": "Applied when any column has `meta.sticky`.",
+        "virtualized": "Applied with `virtualized`.",
+        "scroller": "Scroll area. Receives `classNames.scroller`. `--y` with `maxHeight`; `--clip-start` and `--clip-end` show a shadow on sticky columns.",
+        "table": "`<table>`. Receives `classNames.table`.",
+        "caption": "`<caption>`. Receives `classNames.caption`. Modifiers: `--top`, `--bottom`, `--hidden`.",
+        "extra": "`extra` container. Receives `classNames.extra`.",
+        "header": "`<thead>`. Receives `classNames.header`. `--grouped` with column groups.",
+        "th": "Header cell. Receives `classNames.headerCell`. Modifiers: `--align-*`, `--sortable`, `--group`, `--sticky-start`, `--sticky-end`.",
+        "sortButton": "Sort button inside the header.",
+        "sort": "Sort icon. Receives `classNames.sort`. `--asc` or `--desc` when sorted.",
+        "body": "`<tbody>`. Receives `classNames.body`.",
+        "row": "Row. Receives `classNames.row`. Modifiers: `--selected`, `--expanded`, `--selectable`, `--detail`, `--empty`.",
+        "td": "Cell. Receives `classNames.cell`. Modifiers: `--align-*`, `--select`, `--expand`, `--sticky-start`, `--sticky-end`.",
+        "select": "Checkbox container. Receives `classNames.select`.",
+        "expand": "Expand button container. Receives `classNames.expand`.",
+        "detail": "Expanded panel cell. Receives `classNames.detail`.",
+        "empty": "Empty message cell. Receives `classNames.empty`.",
+        "footer": "Footer below the scroll area. Receives `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Table has almost no variables of its own: use classes or `classNames` to change colors and spacing.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-table-max-height": "Maximum height of the scroll area. Set by `maxHeight`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Table.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Table"
+      },
+      "items": {
+        "--gem-color-bg": "Table and header background.",
+        "--gem-color-bg-subtle": "Expanded panel background.",
+        "--gem-color-fg": "Cell and header text.",
+        "--gem-color-fg-muted": "Caption, sort icons and empty message.",
+        "--gem-color-border": "Border and row separators.",
+        "--gem-color-primary-{500|600}": "Hover, selected row and active sort icon.",
+        "--gem-shadow-focus": "Focus ring on buttons, rows and the scroll area.",
+        "--gem-radius-{sm|md|lg}": "Container radius.",
+        "--gem-space-{3|4}": "Caption and footer padding.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "The table also accepts `<div>` attributes (see Inheritance). Every state (sorting, selection, expansion) can be controlled or left uncontrolled.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "data": { "title": "Data and content", "description": "Rows, columns and content around the table." },
+      "sorting": { "title": "Sorting", "description": "Column sorting." },
+      "selection": { "title": "Selection", "description": "Checkbox column and row selection." },
+      "expand": { "title": "Expandable rows", "description": "Detail panel below each row." },
+      "layout": { "title": "Appearance and scroll", "description": "Density, borders, sticky header and virtualization." },
+      "meta": { "title": "Column meta", "description": "Options inside `meta` on each column definition." },
+      "helpers": { "title": "Helpers", "description": "Exported functions and constants." }
+    },
+    "items": {
+      "data": "Rows. Pass a stable reference.",
+      "columns": "Column definitions. Memoize them with `useMemo`.",
+      "getRowId": "Unique id for each row. Defaults to the index, which changes when sorting or filtering.",
+      "caption": "Table name. Visually hidden unless `showCaption` or `extra` is set.",
+      "showCaption": "Shows the caption.",
+      "captionSide": "Position of the visible caption.",
+      "extra": "Content at the end of the caption row, like actions.",
+      "footer": "Content below the scroll area, like pagination.",
+      "emptyMessage": "Text when there are no rows.",
+      "enableSorting": "Enables column sorting.",
+      "enableMultiSort": "Allows sorting by several columns with Shift + click.",
+      "sorting": "Controlled sorting. Use it with `onSortingChange`.",
+      "defaultSorting": "Initial uncontrolled sorting.",
+      "onSortingChange": "Called when the sorting changes.",
+      "enableRowSelection": "Adds the checkbox column.",
+      "isRowSelectable": "Only rows that return `true` can be selected.",
+      "enableMultiRowSelection": "Allows selecting several rows.",
+      "rowSelection": "Controlled selection: `{ [rowId]: true }`.",
+      "defaultRowSelection": "Initial uncontrolled selection.",
+      "onRowSelectionChange": "Called when the selection changes.",
+      "selectOnRowClick": "Selects when clicking the row, outside its controls.",
+      "selectAllLabel": "Accessible name of the header checkbox.",
+      "selectRowLabel": "Accessible name of each row checkbox.",
+      "renderExpanded": "Content of the panel below an expanded row.",
+      "enableExpanding": "Adds the expand column.",
+      "isRowExpandable": "Only rows that return `true` show the button.",
+      "expanded": "Controlled expansion. `true` expands all.",
+      "defaultExpanded": "Initial uncontrolled expansion.",
+      "onExpandedChange": "Called when a row expands or collapses.",
+      "expandRowLabel": "Accessible name of the expand button.",
+      "collapseRowLabel": "Accessible name of the collapse button.",
+      "size": "Density.",
+      "radius": "Container radius.",
+      "bordered": "Shows the border.",
+      "stickyHeader": "Keeps the header visible on vertical scroll.",
+      "maxHeight": "Maximum height of the scroll area. A number is read as pixels.",
+      "virtualized": "Renders only visible rows. Needs a height.",
+      "estimateRowHeight": "Estimated row height for virtualization. The default depends on `size`.",
+      "virtualOverscan": "Extra rows rendered above and below the visible ones.",
+      "className": "Extra classes for the root.",
+      "classNames": "Classes per part: `root`, `scroller`, `table`, `caption`, `header`, `headerRow`, `headerCell`, `body`, `row`, `cell`, `empty`, `footer`, `extra`, `sort`, `select`, `expand` and `detail`.",
+      "align": "Header and cell alignment.",
+      "minWidth": "Minimum column width. A number is read as pixels.",
+      "sticky": "Pins the column on horizontal scroll: `true` or `\"start\"` on the left, `\"end\"` on the right.",
+      "createTableColumnHelper": "Creates the typed column helper for your data.",
+      "gemTableFeatures": "TanStack Table features used by Gem: sorting, selection and expansion.",
+      "TABLE_SELECT_COLUMN_ID": "Id of the checkbox column.",
+      "TABLE_EXPAND_COLUMN_ID": "Id of the expand column."
+    }
+  }
+}

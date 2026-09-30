@@ -1,0 +1,26 @@
+.gem-transition.transition-soft {
+  --gem-transition-offset: 1.5rem;
+}
+
+.gem-transition.transition-soft.gem-transition--enter,
+.gem-transition.transition-soft.gem-transition--exit-active,
+.gem-transition.transition-soft.gem-transition--exited {
+  filter: blur(6px);
+}
+
+.gem-transition.transition-soft.gem-transition--enter-active,
+.gem-transition.transition-soft.gem-transition--entered,
+.gem-transition.transition-soft.gem-transition--exit {
+  filter: blur(0);
+}
+
+.gem-transition.transition-soft.gem-transition--enter-active,
+.gem-transition.transition-soft.gem-transition--exit-active {
+  transition-property: opacity, transform, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gem-transition.transition-soft {
+    filter: none;
+  }
+}

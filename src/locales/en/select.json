@@ -26,31 +26,101 @@
   },
   "options": {
     "countries": [
-      { "value": "br", "label": "Brazil" },
-      { "value": "ca", "label": "Canada" },
-      { "value": "cl", "label": "Chile" },
-      { "value": "es", "label": "Spain" },
-      { "value": "fr", "label": "France" },
-      { "value": "it", "label": "Italy" },
-      { "value": "jp", "label": "Japan" },
-      { "value": "mx", "label": "Mexico" }
+      {
+        "value": "br",
+        "label": "Brazil"
+      },
+      {
+        "value": "ca",
+        "label": "Canada"
+      },
+      {
+        "value": "cl",
+        "label": "Chile"
+      },
+      {
+        "value": "es",
+        "label": "Spain"
+      },
+      {
+        "value": "fr",
+        "label": "France"
+      },
+      {
+        "value": "it",
+        "label": "Italy"
+      },
+      {
+        "value": "jp",
+        "label": "Japan"
+      },
+      {
+        "value": "mx",
+        "label": "Mexico"
+      }
     ],
     "roles": [
-      { "value": "admin", "label": "Admin", "description": "Full access" },
-      { "value": "editor", "label": "Editor", "description": "Can publish content" },
-      { "value": "viewer", "label": "Viewer", "description": "Read only" },
-      { "value": "guest", "label": "Guest", "description": "Limited preview", "disabled": true }
+      {
+        "value": "admin",
+        "label": "Admin",
+        "description": "Full access"
+      },
+      {
+        "value": "editor",
+        "label": "Editor",
+        "description": "Can publish content"
+      },
+      {
+        "value": "viewer",
+        "label": "Viewer",
+        "description": "Read only"
+      },
+      {
+        "value": "guest",
+        "label": "Guest",
+        "description": "Limited preview",
+        "disabled": true
+      }
     ],
     "workspaces": [
-      { "value": "personal", "label": "Personal" },
-      { "value": "team", "label": "Team" },
-      { "value": "enterprise", "label": "Enterprise" }
+      {
+        "value": "personal",
+        "label": "Personal"
+      },
+      {
+        "value": "team",
+        "label": "Team"
+      },
+      {
+        "value": "enterprise",
+        "label": "Enterprise"
+      }
     ],
     "users": [
-      { "id": "u1", "name": "Ada Lovelace", "role": "Admin", "active": true },
-      { "id": "u2", "name": "Alan Turing", "role": "Editor", "active": true },
-      { "id": "u3", "name": "Grace Hopper", "role": "Viewer", "active": false },
-      { "id": "u4", "name": "Katherine Johnson", "role": "Editor", "active": true }
+      {
+        "id": "u1",
+        "name": "Ada Lovelace",
+        "role": "Admin",
+        "active": true
+      },
+      {
+        "id": "u2",
+        "name": "Alan Turing",
+        "role": "Editor",
+        "active": true
+      },
+      {
+        "id": "u3",
+        "name": "Grace Hopper",
+        "role": "Viewer",
+        "active": false
+      },
+      {
+        "id": "u4",
+        "name": "Katherine Johnson",
+        "role": "Editor",
+        "active": true
+      }
     ]
   },
   "data": {
@@ -315,6 +385,7 @@
       "multiple": "Allows more than one selected option.",
       "searchable": "Shows a search field inside the menu.",
       "clearable": "Shows a button to clear the selection.",
+      "clearLabel": "Accessible name of the clear button. Defaults to \"Clear\".",
       "showExpand": "Shows the trigger chevron.",
       "optionValue": "Field or getter for each option value.",
       "optionLabel": "Field or getter for the visible label.",
@@ -341,7 +412,8 @@
       "className": "Extra classes for the trigger.",
       "wrapperClassName": "Extra classes for the root container.",
       "onChange": "Receives the new value: string in single mode, string[] with `multiple`.",
-      "onInfoClick": "Fires when the info icon is activated."
+      "onInfoClick": "Fires when the info icon is activated.",
+      "onClear": "Fires after the selection is cleared with the button."
     }
   }
 }

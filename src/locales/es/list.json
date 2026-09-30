@@ -1,0 +1,333 @@
+{
+  "header": {
+    "title": "List",
+    "description": "Lista vertical de textos, íconos, avatares y acciones. Se arma con un array `items`: filas, separadores y subtítulos. Las filas pueden seleccionarse, abrir subitems, tener checkbox o switch y una acción secundaria."
+  },
+  "common": {
+    "mail": {
+      "inbox": "Bandeja de entrada",
+      "drafts": "Borradores",
+      "sent": "Enviados",
+      "trash": "Papelera",
+      "spam": "Spam",
+      "starred": "Destacados",
+      "important": "Importantes"
+    },
+    "folders": [
+      { "id": "photos", "label": "Fotos", "description": "9 de enero de 2014" },
+      { "id": "work", "label": "Trabajo", "description": "7 de enero de 2014" },
+      { "id": "vacation", "label": "Vacaciones", "description": "20 de julio de 2014" }
+    ],
+    "roles": ["Diseñadora de producto", "Ingeniero frontend", "Líder de investigación"]
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver la lista y el código. Hacé clic en una fila para seleccionarla."
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Cada item necesita `id` y `label`. `{ type: \"separator\" }` agrega una línea divisoria. Por defecto las filas son botones."
+    },
+    "icons": {
+      "title": "Con íconos",
+      "description": "`icon` agrega un ícono al inicio de la fila. `bordered` rodea la lista con un borde."
+    },
+    "folders": {
+      "title": "Con descripción",
+      "description": "`description` agrega una segunda línea debajo del `label`."
+    },
+    "nested": {
+      "title": "Anidada",
+      "description": "`items` dentro de un item lo convierte en un desplegable. `defaultOpen` lo abre al inicio. La flecha rota al abrir."
+    },
+    "selected": {
+      "title": "Selección",
+      "description": "`value` y `onChange` controlan la fila seleccionada; `defaultValue` la define sin controlarla. La fila elegida tiene `aria-current`."
+    },
+    "avatars": {
+      "title": "Con avatar",
+      "description": "`avatar` reemplaza al ícono. Pasale `alt=\"\"` al `Avatar` porque el nombre ya está en el `label`."
+    },
+    "alignStart": {
+      "title": "Alineado arriba",
+      "description": "Con tres líneas o más, usá `align: \"start\"` para que el avatar quede arriba. `divided` separa las filas con una línea.",
+      "texts": {
+        "messages": [
+          {
+            "id": "brunch",
+            "from": "Ali Connors",
+            "subject": "¿Brunch este fin de semana?",
+            "preview": "Voy a estar por tu barrio haciendo trámites, ¿te sumás a desayunar?"
+          },
+          {
+            "id": "bbq",
+            "from": "Travis Howard",
+            "subject": "Asado de verano",
+            "preview": "Para Scott, Alex y Jennifer: me encantaría ir, pero ese fin de semana estoy de viaje."
+          }
+        ]
+      }
+    },
+    "checkboxes": {
+      "title": "Checkboxes",
+      "description": "`type: \"checkbox\"` agrega un checkbox y toda la fila lo activa. `checked` y `onCheckedChange` controlan el estado.",
+      "texts": {
+        "tasks": [
+          { "id": "copy", "label": "Revisar textos" },
+          { "id": "icons", "label": "Exportar íconos" },
+          { "id": "qa", "label": "Probar en mobile" }
+        ],
+        "done": "completadas"
+      }
+    },
+    "secondaryCheckbox": {
+      "title": "Checkbox al final",
+      "description": "`controlPlacement: \"end\"` pone el checkbox al final. Ahí es un control separado: la fila y el checkbox son dos objetivos distintos."
+    },
+    "switches": {
+      "title": "Switches",
+      "description": "`type: \"switch\"` agrega un switch al final. Toda la fila lo activa.",
+      "texts": {
+        "wifi": "Wi-Fi",
+        "darkMode": "Modo oscuro",
+        "notifications": "Notificaciones",
+        "notificationsHint": "Avisos de comentarios y menciones"
+      }
+    },
+    "secondaryAction": {
+      "title": "Acción secundaria",
+      "description": "`secondaryAction` agrega un elemento al final, como un botón de ícono. Es un objetivo aparte: su clic no activa la fila. Probá borrar un archivo.",
+      "texts": {
+        "files": ["informe-anual.pdf", "presupuesto.xlsx", "logo-final.svg"],
+        "remove": "Eliminar",
+        "restore": "Restaurar archivos"
+      }
+    },
+    "sticky": {
+      "title": "Subtítulos fijos",
+      "description": "`{ type: \"subheader\", sticky: true }` queda fijo arriba mientras la lista se desplaza. Necesita `maxHeight` para que la lista tenga scroll.",
+      "texts": {
+        "sections": [
+          { "id": "a", "label": "A", "items": ["Abril", "Agustín", "Ana"] },
+          { "id": "b", "label": "B", "items": ["Bautista", "Belén", "Bruno"] },
+          { "id": "c", "label": "C", "items": ["Camila", "Carlos", "Clara"] },
+          { "id": "d", "label": "D", "items": ["Daniel", "Delfina", "Diego"] }
+        ]
+      }
+    },
+    "inset": {
+      "title": "Sangría",
+      "description": "`inset` agrega espacio al inicio para que una fila sin ícono quede alineada con las que tienen. También funciona en separadores.",
+      "texts": {
+        "favorite": "favorito"
+      }
+    },
+    "gutterless": {
+      "title": "Sin márgenes laterales",
+      "description": "`disableGutters` quita el padding horizontal de todas las filas; también se puede usar por item. Sirve cuando la lista va dentro de un contenedor con su propio padding.",
+      "texts": {
+        "lines": ["Línea 1", "Línea 2", "Línea 3"],
+        "comment": "Comentar"
+      }
+    },
+    "sizes": {
+      "title": "Tamaños",
+      "description": "`size` acepta `sm`, `md` (default) y `lg`. Cambia el padding, la tipografía y el tamaño del ícono."
+    },
+    "disabled": {
+      "title": "Deshabilitada",
+      "description": "`disabled` deshabilita un item. `isDisabled` deshabilita toda la lista.",
+      "texts": {
+        "archive": "Archivo (solo admins)"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de List",
+  "api": {
+    "header": {
+      "title": "List API",
+      "description": "Referencia de la API de List de React: props de la lista y de los items, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "List"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `ListItem` tipa el array `items`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>List</code> acepta los atributos de <code>&lt;ul&gt;</code> salvo <code>children</code>, <code>onChange</code> y <code>defaultValue</code>, que tienen otro significado. Van a la raíz junto con <code>ref</code>. <code>style</code> se combina con <code>--gem-list-max-h</code> cuando pasás <code>maxHeight</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "semantics": "La raíz es un <code>&lt;ul&gt;</code> y cada fila un <code>&lt;li&gt;</code>. Los subtítulos son texto, no encabezados.",
+      "rows": "Una fila común es un <code>&lt;button&gt;</code> y la seleccionada tiene <code>aria-current=\"true\"</code>. Con <code>href</code> es un <code>&lt;a&gt;</code> con <code>aria-current=\"page\"</code>. Con <code>secondaryAction</code> es un <code>div</code> con <code>role=\"button\"</code> que responde a Enter y Espacio.",
+      "nested": "Un item con <code>items</code> tiene <code>aria-expanded</code> y <code>aria-controls</code>. El panel cerrado tiene <code>aria-hidden</code> e <code>inert</code>.",
+      "controls": "Checkbox y switch son inputs reales. Al inicio (o siempre, en switch) la fila es su <code>&lt;label&gt;</code>. Sin <code>label</code> de texto ni <code>ariaLabel</code>, se llaman <code>\"Select\"</code> o <code>\"Toggle\"</code>, en inglés.",
+      "secondary": "<code>secondaryAction</code> es un objetivo aparte. Si es un botón de ícono, pasale <code>aria-label</code>.",
+      "names": "La fila usa <code>ariaLabel</code> o el <code>label</code> de texto como <code>aria-label</code>, así que la <code>description</code> no se anuncia. Si el <code>label</code> es un nodo, pasá <code>ariaLabel</code>.",
+      "separator": "Los separadores tienen <code>aria-hidden</code>.",
+      "disabled": "Las filas deshabilitadas son botones <code>disabled</code>; los links usan <code>aria-disabled</code> y salen del orden de tabulación."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz `<ul>`. Define las variables. Recibe `className` y `classNames.root`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`. Define las variables de medida.",
+        "radius": "Radio: `--radius-sm`, `--radius-md` o `--radius-lg`. Define `--gem-list-radius`.",
+        "bordered": "Se aplica con `bordered`. Agrega borde y recorta las esquinas.",
+        "divided": "Se aplica con `divided`. Agrega una línea entre filas.",
+        "noPadding": "Se aplica con `disablePadding`.",
+        "noGutters": "Se aplica con `disableGutters`.",
+        "disabled": "Se aplica con `isDisabled`.",
+        "scroll": "Se aplica con `maxHeight`. Activa el scroll.",
+        "item": "Cada `<li>` de fila. Recibe `classNames.item`. Modificadores: `--disabled`, `--inset`, `--no-gutters`, `--align-start`, `--with-end`.",
+        "selected": "Fila seleccionada.",
+        "open": "Item anidado abierto.",
+        "row": "Objetivo de la fila (`button`, `a`, `label` o `div`). Recibe `classNames.row`.",
+        "icon": "Ícono. Recibe `classNames.icon`.",
+        "avatar": "Avatar. Recibe `classNames.avatar`.",
+        "text": "Contenedor del label y la descripción. Recibe `classNames.text`.",
+        "label": "Label. Recibe `classNames.label`.",
+        "description": "Descripción. Recibe `classNames.description`.",
+        "control": "Contenedor del checkbox o switch. `--end` cuando va al final.",
+        "secondary": "Contenedor de `secondaryAction`. Recibe `classNames.secondary`.",
+        "indicator": "Flecha de un item anidado.",
+        "nested": "`<ul>` de los subitems. Recibe `classNames.nested`.",
+        "subheader": "Subtítulo. Recibe `classNames.subheader`. `--sticky` cuando es fijo.",
+        "separator": "Separador. Recibe `classNames.separator`. `--inset` con sangría."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de List. Las definen las clases de tamaño y radio, así que para pisarlas usá `.gem-list.tu-clase`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-list-fg": "Color del texto.",
+        "--gem-list-muted": "Color de descripciones, íconos y subtítulos.",
+        "--gem-list-border": "Color del borde, divisores y separadores.",
+        "--gem-list-bg": "Fondo de la lista y los subtítulos.",
+        "--gem-list-subtle": "Fondo de la fila al pasar el mouse.",
+        "--gem-list-selected": "Fondo de la fila seleccionada.",
+        "--gem-list-selected-fg": "Color del texto de la fila seleccionada.",
+        "--gem-list-radius": "Radio con `bordered`.",
+        "--gem-list-pad-y": "Padding vertical de la lista.",
+        "--gem-list-row-y": "Padding vertical de cada fila.",
+        "--gem-list-row-x": "Padding horizontal de cada fila.",
+        "--gem-list-gap": "Espacio entre ícono y texto.",
+        "--gem-list-label": "Tamaño del label.",
+        "--gem-list-description": "Tamaño de la descripción.",
+        "--gem-list-icon": "Tamaño del contenedor del ícono. También define la sangría de `inset`.",
+        "--gem-list-max-h": "Altura máxima. La define `maxHeight`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa List.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en List"
+      },
+      "items": {
+        "--gem-color-fg": "Color del texto.",
+        "--gem-color-fg-muted": "Descripciones, íconos y subtítulos.",
+        "--gem-color-border": "Borde y divisores.",
+        "--gem-color-bg": "Fondo.",
+        "--gem-color-bg-subtle": "Hover de la fila.",
+        "--gem-color-primary-{500|700}": "Fondo y texto de la fila seleccionada.",
+        "--gem-radius-{sm|md|lg}": "Radio con `bordered`.",
+        "--gem-shadow-focus": "Anillo de foco de la fila.",
+        "--gem-font-sans": "Fuente."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "La lista acepta además los atributos de `<ul>` (ver Herencia). Los items son objetos dentro de `items`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "list": {
+        "title": "List",
+        "description": "Props del componente.",
+        "items": {
+          "items": "Filas, separadores y subtítulos.",
+          "value": "Id de la fila seleccionada. Modo controlado.",
+          "defaultValue": "Id seleccionado al inicio. Modo no controlado.",
+          "onChange": "Se llama al activar una fila seleccionable (sin subitems ni control).",
+          "onAction": "Se llama al activar cualquier fila, incluidos links.",
+          "onCheckedChange": "Se llama al cambiar un checkbox o switch.",
+          "size": "Densidad y tipografía.",
+          "bordered": "Agrega borde alrededor de la lista.",
+          "divided": "Agrega una línea entre filas.",
+          "radius": "Radio con `bordered`.",
+          "disablePadding": "Quita el padding vertical de la lista.",
+          "disableGutters": "Quita el padding horizontal de todas las filas.",
+          "isDisabled": "Deshabilita todos los items.",
+          "maxHeight": "Altura máxima con scroll. Un número se toma en píxeles.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `item`, `row`, `icon`, `avatar`, `text`, `label`, `description`, `secondary`, `nested`, `subheader` y `separator`.",
+          "ref": "Ref del `<ul>`."
+        }
+      },
+      "item": {
+        "title": "ListActionItem",
+        "description": "Una fila dentro de `items`.",
+        "items": {
+          "id": "Identificador estable para selección, ids y callbacks.",
+          "label": "Texto principal.",
+          "description": "Segunda línea debajo del label.",
+          "icon": "Ícono al inicio.",
+          "avatar": "Avatar al inicio. Tiene prioridad sobre `icon`.",
+          "type": "`checkbox` o `switch` agregan ese control.",
+          "checked": "Estado del checkbox o switch.",
+          "control": "Control explícito. Por defecto sale de `type`.",
+          "controlPlacement": "Dónde va el control. Por defecto `start` para checkbox y `end` para switch.",
+          "items": "Subitems. La fila pasa a ser un desplegable.",
+          "defaultOpen": "Abre los subitems al inicio.",
+          "href": "Convierte la fila en un link.",
+          "target": "`target` del link.",
+          "rel": "`rel` del link.",
+          "secondaryAction": "Elemento al final, separado de la fila.",
+          "selected": "Marca la fila como actual. Preferí `value` en la lista.",
+          "disabled": "Deshabilita la fila.",
+          "inset": "Agrega espacio al inicio para alinear con filas que tienen ícono.",
+          "disableGutters": "Quita el padding horizontal de esta fila.",
+          "align": "Alineación vertical del inicio. Usá `start` con tres líneas o más.",
+          "onClick": "Se llama al activar la fila.",
+          "onCheckedChange": "Se llama al cambiar el control de esta fila.",
+          "ariaLabel": "Nombre accesible cuando `label` no es texto."
+        }
+      },
+      "special": {
+        "title": "Separadores y subtítulos",
+        "description": "Items especiales dentro de `items`.",
+        "items": {
+          "separator": "Línea divisoria. `inset` la alinea con el texto.",
+          "subheader": "Título de sección. `sticky` lo deja fijo al hacer scroll."
+        }
+      }
+    }
+  }
+}

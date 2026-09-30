@@ -31,6 +31,12 @@ function useSidebarOverlay() {
   return isOverlay;
 }
 
+function resetScroll(container: HTMLElement | null, hash: string) {
+  const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+  if (target) target.scrollIntoView({ block: "start" });
+  else container?.scrollTo({ top: 0 });
+}
+
 function Brand() {
   return (
     <span className="docs-brand">
@@ -60,10 +66,12 @@ export function DocsLayout() {
   }, [location.pathname]);
 
   // The page scrolls inside <main>, so the browser does not reset it on navigation.
+  // Re-applied on the next frame because gem-system Tabs scroll their selected tab into view on mount,
+  // and StrictMode re-runs those effects after this one.
   useLayoutEffect(() => {
-    const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
-    if (target) target.scrollIntoView({ block: "start" });
-    else contentRef.current?.scrollTo({ top: 0 });
+    resetScroll(contentRef.current, location.hash);
+    const frame = requestAnimationFrame(() => resetScroll(contentRef.current, location.hash));
+    return () => cancelAnimationFrame(frame);
   }, [location.pathname, location.hash]);
 
   const sidebarItems = useMemo<SidebarItem[]>(() => {

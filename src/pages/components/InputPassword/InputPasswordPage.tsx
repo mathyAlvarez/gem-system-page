@@ -39,6 +39,8 @@ import { ValidRegexInputPassword } from "./examples/ValidRegexInputPassword.tsx"
 import validRegexCode from "./examples/ValidRegexInputPassword.tsx?raw";
 import { VariantInputPasswords } from "./examples/VariantInputPassword.tsx";
 import variantCode from "./examples/VariantInputPassword.tsx?raw";
+import { ClearableInputPassword } from "./examples/ClearableInputPassword.tsx";
+import clearableCode from "./examples/ClearableInputPassword.tsx?raw";
 import "./InputPasswordPage.scss";
 
 type StoryId =
@@ -51,6 +53,7 @@ type StoryId =
   | "asteriskMask"
   | "defaultVisible"
   | "withoutToggle"
+  | "clearable"
   | "error"
   | "validRegex"
   | "disabled"
@@ -121,6 +124,12 @@ export function InputPasswordPage() {
       file: "NoToggleInputPassword.tsx",
       code: noToggleCode,
       preview: <NoToggleInputPassword {...t("stories.withoutToggle.texts", { returnObjects: true })} />,
+    },
+    {
+      id: "clearable",
+      file: "ClearableInputPassword.tsx",
+      code: clearableCode,
+      preview: <ClearableInputPassword {...t("stories.clearable.texts", { returnObjects: true })} />,
     },
     {
       id: "error",

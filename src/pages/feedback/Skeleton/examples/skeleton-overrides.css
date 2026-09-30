@@ -1,0 +1,11 @@
+.gem-skeleton.skeleton-branded {
+  --gem-skeleton-bg: var(--gem-palette-tertiary-200);
+  --gem-skeleton-shine: color-mix(in srgb, var(--gem-palette-tertiary-50, white) 75%, transparent);
+  --gem-skeleton-radius: var(--gem-radius-md);
+  --gem-skeleton-h: 0.75rem;
+}
+
+[data-theme="dark"] .gem-skeleton.skeleton-branded {
+  --gem-skeleton-bg: var(--gem-palette-tertiary-900);
+  --gem-skeleton-shine: color-mix(in srgb, var(--gem-palette-tertiary-400) 30%, transparent);
+}

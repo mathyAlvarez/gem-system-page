@@ -181,6 +181,7 @@
 
     &--stack {
       flex-direction: column;
+      flex-wrap: nowrap;
       align-items: stretch;
     }
   }
@@ -225,6 +226,30 @@
     min-height: 2.5rem;
     padding: var(--gem-space-1) var(--gem-space-2) var(--gem-space-1) var(--gem-space-4);
     border-bottom: 1px solid var(--gem-color-border);
+  }
+
+  &__tabs {
+    position: relative;
+  }
+
+  .gem-tabs.docs-code__tabs-root {
+    gap: 0;
+  }
+
+  &__tab-list {
+    min-height: 2.5rem;
+    padding-inline: var(--gem-space-2) 3rem;
+  }
+
+  .gem-tabs__panel.docs-code__panel {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__copy {
+    position: absolute;
+    top: var(--gem-space-1);
+    inset-inline-end: var(--gem-space-2);
   }
 }
 

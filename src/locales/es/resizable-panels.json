@@ -1,0 +1,459 @@
+{
+  "header": {
+    "title": "Resizable Panels",
+    "description": "Divide un área en paneles que el usuario puede redimensionar arrastrando un separador o con el teclado. Se arma con tres piezas: `ResizablePanels` es el grupo, `ResizablePanel` cada panel y `ResizableHandle` el separador entre dos paneles. Los tamaños son porcentajes del grupo y siempre suman 100."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props y mirá el resultado y el código al instante. Arrastrá los separadores o enfocalos con Tab y usá las flechas.",
+    "orientation": "orientation",
+    "size": "size",
+    "radius": "radius",
+    "count": "Cantidad de paneles",
+    "padding": "padding",
+    "withHandle": "withHandle",
+    "isDisabled": "isDisabled",
+    "pane": "Panel",
+    "paneBody": "Arrastrá el separador para cambiar el tamaño."
+  },
+  "keyboard": {
+    "columns": {
+      "keys": "Tecla",
+      "action": "Acción"
+    },
+    "items": {
+      "arrows": {
+        "keys": "← → / ↑ ↓",
+        "action": "Mueven el separador `keyboardStep` puntos (2 % por defecto). En horizontal se usan ← y →; en vertical, ↑ y ↓."
+      },
+      "page": {
+        "keys": "PageUp / PageDown",
+        "action": "Mueven el separador 5 veces `keyboardStep`."
+      },
+      "edges": {
+        "keys": "Home / End",
+        "action": "Llevan el panel anterior a su tamaño mínimo o máximo."
+      },
+      "enter": {
+        "keys": "Enter",
+        "action": "Colapsa o expande el panel `collapsible` junto al separador. Al expandir, vuelve al tamaño que tenía."
+      },
+      "doubleClick": {
+        "keys": "Doble clic",
+        "action": "Igual que Enter, con el mouse."
+      }
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Uso básico",
+      "description": "Poné `ResizablePanel` y `ResizableHandle` alternados dentro de `ResizablePanels` y dale una altura al grupo con `height`. `defaultLayout` define los tamaños iniciales en porcentaje y `minSize` evita que un panel se achique de más. Los ejemplos usan este panel y estos estilos de demo.",
+      "texts": {
+        "navigation": {
+          "title": "Navegación",
+          "body": "Arrastrá el separador. Con el separador enfocado, las flechas también lo mueven."
+        },
+        "canvas": {
+          "title": "Contenido",
+          "body": "Los tamaños son porcentajes del grupo. Si el contenido desborda, combinalo con ScrollArea."
+        }
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`orientation=\"vertical\"` apila los paneles de arriba hacia abajo. El grupo necesita una altura (con `height` o desde el contenedor padre) para poder repartirla; el separador cambia a cursor de fila y a un grip horizontal.",
+      "texts": {
+        "editor": {
+          "title": "Editor",
+          "body": "En vertical, el grupo reparte su altura entre los paneles."
+        },
+        "output": {
+          "title": "Salida",
+          "body": "El separador usa el cursor row-resize y un grip horizontal."
+        }
+      }
+    },
+    "threePanes": {
+      "title": "Tres paneles",
+      "description": "Podés usar la cantidad de paneles que quieras, con un separador entre cada par. Cada separador mueve solo los dos paneles que tiene al lado. Acá el inspector tiene `maxSize={40}`: no pasa del 40 % aunque sigas arrastrando.",
+      "texts": {
+        "list": {
+          "title": "Lista",
+          "body": "Cada separador mueve solo los dos paneles vecinos."
+        },
+        "detail": {
+          "title": "Detalle",
+          "body": "minSize evita que el panel desaparezca al arrastrar."
+        },
+        "inspector": {
+          "title": "Inspector",
+          "body": "maxSize={40}: nunca ocupa más del 40 %."
+        }
+      }
+    },
+    "collapsible": {
+      "title": "Colapsables y anidados",
+      "description": "Con `collapsible`, un panel se puede cerrar del todo: arrastrá por debajo de `minSize` y queda en `collapsedSize` (0 por defecto). Doble clic o Enter sobre el separador lo colapsan y lo vuelven a abrir. Un grupo puede ir dentro de un panel para armar layouts tipo IDE; el anidado usa `height=\"100%\"` para ocupar el panel.",
+      "texts": {
+        "files": {
+          "title": "Archivos",
+          "body": "Panel colapsable. Hacé doble clic en el separador o presioná Enter para cerrarlo."
+        },
+        "editor": {
+          "title": "Editor",
+          "body": "Los grupos anidados usan los mismos tokens. Los separadores internos solo mueven su par."
+        },
+        "terminal": {
+          "title": "Terminal",
+          "body": "También es colapsable: doble clic en el separador de arriba."
+        }
+      }
+    },
+    "scrollArea": {
+      "title": "Con ScrollArea",
+      "description": "Los paneles cortan lo que desborda (`overflow: hidden`). Para que un panel tenga su propio scroll, envolvé el contenido en `ScrollArea` con `height=\"100%\"`. Cambiar el tamaño no reinicia la posición del scroll. Si el contenido tiene fondo, usá `min-height: 100%` y no `height: 100%`: con `height` el fondo se corta al scrollear (pasa con cualquier contenedor con scroll).",
+      "texts": {
+        "indexTitle": "Índice",
+        "articleTitle": "Artículo",
+        "paragraphs": [
+          "Cada panel envuelve su contenido en un ScrollArea, así lo que desborda queda dentro de la división en lugar de agrandar la página.",
+          "Dale una altura al grupo. Los paneles tienen min-height 0, así que el scroll se puede achicar cuando arrastrás el separador.",
+          "La lista de la izquierda es más larga que el recuadro. La rueda del mouse la mueve sin afectar al artículo de la derecha.",
+          "Cambiar la proporción no reinicia el scroll: cada ScrollArea guarda su propia posición.",
+          "Poné un label en cada ScrollArea para que el lector de pantalla pueda nombrar la región."
+        ]
+      }
+    },
+    "sizes": {
+      "title": "Grosor del separador",
+      "description": "`size` define el grosor del separador: `sm` (4px), `md` (6px, por defecto) o `lg` (8px). El área que responde al mouse es más ancha que la línea visible, así que es fácil de agarrar incluso con `sm`.",
+      "texts": {
+        "start": "Inicio",
+        "end": "Fin",
+        "hint": "Arrastrá el separador."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Pasá `layout` y `onLayoutChange` para manejar los tamaños desde tu estado: los botones escriben el mismo estado que actualiza el arrastre. `onLayoutChange` se dispara en cada movimiento, así que podés guardar el layout (por ejemplo en localStorage). Acá `keyboardStep={5}` hace que cada flecha mueva 5 puntos.",
+      "texts": {
+        "reset": "Volver a 30 / 70",
+        "split": "Dividir 50 / 50",
+        "sidebar": {
+          "title": "Lateral",
+          "body": "layout + onLayoutChange controlados."
+        },
+        "main": {
+          "title": "Principal",
+          "body": "Los botones escriben el mismo estado que actualiza el arrastre."
+        }
+      }
+    },
+    "customization": {
+      "title": "Padding, separador e ícono",
+      "description": "`padding` en el grupo aplica el mismo espacio interno a todos los paneles (token, píxeles o CSS) y `padding` en un panel lo reemplaza solo ahí. `handleColor`, `handleHoverColor` y `handleThickness` cambian el separador de todo el grupo; en un `ResizableHandle`, `color`, `hoverColor`, `thickness` e `icon` cambian solo ese separador y `gripStyle` estila el recuadro del ícono.",
+      "texts": {
+        "shared": {
+          "title": "Padding compartido",
+          "body": "padding={4} en el grupo equivale a --gem-space-4."
+        },
+        "override": {
+          "title": "Padding propio",
+          "body": "Este panel usa padding={8}. El separador toma el ícono Menu del grupo."
+        },
+        "cssPadding": {
+          "title": "Padding CSS",
+          "body": "padding=\"12px 16px\" es CSS directo."
+        },
+        "handle": {
+          "title": "Props del separador",
+          "body": "icon, color, hoverColor, thickness y gripStyle solo en este separador."
+        }
+      }
+    },
+    "customIcon": {
+      "title": "Ícono personalizado",
+      "description": "`icon` en `ResizablePanels` cambia el ícono de todos los separadores y en un `ResizableHandle` solo el de ese. Acepta cualquier nodo: íconos de gem-system o tu propio SVG. Si el grupo cambia de orientación, `horizontalIcon` y `verticalIcon` eligen un ícono para cada eje.",
+      "texts": {
+        "group": {
+          "title": "Ícono del grupo",
+          "body": "Los botones cambian el ícono del grupo; el arrastre sigue funcionando."
+        },
+        "perHandle": "Un ícono por separador",
+        "first": {
+          "title": "A",
+          "body": "Menu en el primer separador."
+        },
+        "second": {
+          "title": "B",
+          "body": "GripVertical en el segundo."
+        },
+        "third": {
+          "title": "C",
+          "body": "El icon de cada ResizableHandle es independiente."
+        }
+      }
+    },
+    "withoutGrip": {
+      "title": "Sin grip",
+      "description": "`withHandle={false}` oculta el ícono y deja solo una línea fina. El separador sigue siendo enfocable y responde al teclado.",
+      "texts": {
+        "start": {
+          "title": "A",
+          "body": "withHandle={false} deja solo la línea."
+        },
+        "end": {
+          "title": "B",
+          "body": "Con el separador enfocado, el teclado sigue funcionando."
+        }
+      }
+    },
+    "disabled": {
+      "title": "Deshabilitado",
+      "description": "`isDisabled` en el grupo bloquea todos los separadores y baja la opacidad; en un `ResizableHandle` bloquea solo ese. Un separador deshabilitado sale del orden de tabulación y no responde al mouse ni al teclado.",
+      "texts": {
+        "group": "isDisabled en el grupo",
+        "handle": "isDisabled en el primer separador",
+        "start": {
+          "title": "Bloqueado",
+          "body": "Este tamaño no se puede cambiar."
+        },
+        "middle": {
+          "title": "Centro",
+          "body": "Solo se mueve el separador de la derecha."
+        },
+        "end": {
+          "title": "Libre",
+          "body": "Probá arrastrar los separadores."
+        }
+      }
+    },
+    "mobile": {
+      "title": "Pantallas chicas",
+      "description": "En pantallas angostas conviene una división vertical y `size=\"lg\"` para que el separador sea más fácil de tocar. El separador usa `touch-action: none`, así la página no se desplaza mientras arrastrás.",
+      "texts": {
+        "primary": {
+          "title": "Principal",
+          "body": "En pantallas chicas, una división vertical es más fácil de arrastrar."
+        },
+        "secondary": {
+          "title": "Secundario",
+          "body": "La página no se desplaza mientras arrastrás el separador."
+        }
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "start": {
+        "title": "Inicio",
+        "body": "Arrastrá el separador."
+      },
+      "end": {
+        "title": "Fin",
+        "body": "Los estilos vienen de clases, no de props."
+      },
+      "explorer": "EXPLORADOR",
+      "editor": "App.tsx",
+      "files": ["App.tsx", "main.tsx", "routes.ts", "theme.css", "package.json"]
+    }
+  },
+  "apiLink": "Ver la API completa de ResizablePanels",
+  "api": {
+    "header": {
+      "title": "ResizablePanels API",
+      "description": "Referencia de la API de los componentes ResizablePanels, ResizablePanel y ResizableHandle de React: props, clases CSS, variables CSS, tokens, utilidades y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Resizable Panels"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlos desde el entry principal o desde su subpath, que además exporta las utilidades. También podés usar `ResizablePanels.Panel` y `ResizablePanels.Handle`; `ResizablePanelGroup` es un alias de `ResizablePanels`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Los tres aceptan los atributos HTML y los pasan a su elemento: <code>ResizablePanels</code> y <code>ResizablePanel</code> usan <code>HTMLAttributes&lt;HTMLElement&gt;</code> y <code>ResizableHandle</code> usa <code>HTMLAttributes&lt;HTMLDivElement&gt;</code>. Los eventos de puntero, teclado y doble clic del separador se llaman antes que los internos; si llamás <code>event.preventDefault()</code>, el separador no hace su acción. <code>ResizableHandle</code> tiene que estar dentro de <code>ResizablePanels</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "separator": "Cada separador tiene <code>role=\"separator\"</code>, <code>aria-orientation</code> y <code>aria-controls</code> apuntando al panel anterior.",
+      "value": "<code>aria-valuenow</code> indica el tamaño del panel anterior en porcentaje, entre <code>aria-valuemin=\"0\"</code> y <code>aria-valuemax=\"100\"</code>.",
+      "keyboard": "El separador es enfocable con Tab. Las flechas, <code>PageUp</code>/<code>PageDown</code>, <code>Home</code>/<code>End</code> y <code>Enter</code> lo mueven o colapsan el panel.",
+      "label": "El nombre accesible por defecto es <code>Resize panels</code> (en inglés). Cambialo con <code>label</code>, por ejemplo <code>label=\"Cambiar ancho del lateral\"</code>.",
+      "labels": "Si un panel tiene scroll, poné <code>label</code> en su <code>ScrollArea</code> para nombrar la región. Con <code>as</code> podés usar <code>aside</code>, <code>main</code> o <code>section</code>.",
+      "disabled": "Un separador deshabilitado tiene <code>aria-disabled</code> y <code>tabIndex=-1</code>.",
+      "touch": "El separador usa <code>touch-action: none</code> y captura el puntero, así el arrastre funciona igual con mouse, lápiz o dedo."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Grupo. Recibe `className` y `classNames.root`. Tiene borde, radio y `overflow: hidden`.",
+        "orientation": "Se aplica según `orientation`: `horizontal` (fila) o `vertical` (columna).",
+        "size": "Se aplica según `size`. Define el grosor de `--gem-resizable-handle`.",
+        "radius": "Se aplica según `radius`. Define `--gem-resizable-radius`.",
+        "disabled": "Se aplica con `isDisabled` en el grupo. Baja la opacidad.",
+        "resizing": "Se aplica mientras se arrastra. Desactiva la selección de texto.",
+        "panel": "Cada panel. Recibe `className`, `classNames.root` del panel y `classNames.panel` del grupo.",
+        "handle": "Cada separador. Recibe `className`, `classNames.root` del separador y `classNames.handle` del grupo.",
+        "handleOrientation": "Define el cursor (`col-resize` o `row-resize`) y el área ampliada para el mouse.",
+        "withGrip": "Se aplica cuando `withHandle` es `true`.",
+        "active": "Se aplica al separador mientras se arrastra. Usa el color de hover.",
+        "handleDisabled": "Se aplica al separador deshabilitado.",
+        "grip": "Recuadro del ícono. Recibe `classNames.grip` y `gripStyle`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas están definidas en `.gem-resizable`, así que las podés cambiar desde una clase propia como `.gem-resizable.mi-clase`. Las props `padding`, `handleColor`, `handleHoverColor` y `handleThickness` (y `color`, `hoverColor` y `thickness` del separador) las escriben inline y solo se pisan con `!important`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-resizable-fg": "Color del texto del grupo.",
+        "--gem-resizable-bg": "Fondo del grupo.",
+        "--gem-resizable-border": "Color del borde del grupo y color por defecto del separador.",
+        "--gem-resizable-radius": "Radio del grupo. La define la clase de `radius`.",
+        "--gem-resizable-panel-padding": "Espacio interno de los paneles. La definen `padding` del grupo o del panel; por defecto vale 0.",
+        "--gem-resizable-handle": "Grosor del separador. La definen `size`, `handleThickness` o `thickness`.",
+        "--gem-resizable-handle-bg": "Color del separador. La definen `handleColor` o `color`.",
+        "--gem-resizable-handle-hover": "Color del separador con hover, foco o mientras se arrastra. La definen `handleHoverColor` o `hoverColor`.",
+        "--gem-resizable-panel-size": "Tamaño actual del panel en porcentaje, escrito inline en cada panel. Es de solo lectura: sirve para estilos que dependan del tamaño."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa ResizablePanels.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en ResizablePanels"
+      },
+      "items": {
+        "--gem-color-fg": "Color del texto.",
+        "--gem-color-bg": "Fondo del grupo y del recuadro del ícono.",
+        "--gem-color-border": "Borde del grupo y color del separador.",
+        "--gem-color-fg-muted": "Color del ícono del separador.",
+        "--gem-color-primary-500": "Color del separador con hover, foco o arrastre.",
+        "--gem-color-primary-700": "Color del ícono con hover o foco.",
+        "--gem-radius-{token}": "Escala de radios que usa `radius`.",
+        "--gem-space-{n}": "Escala de espaciado que usa `padding` cuando recibe un token.",
+        "--gem-shadow-focus": "Anillo de foco del separador."
+      }
+    },
+    "utils": {
+      "title": "Utilidades",
+      "description": "Solo se exportan desde `@gem-org/gem-system/resizable-panels`. Sirven para calcular layouts fuera del componente, por ejemplo al restaurar un layout guardado.",
+      "columns": {
+        "name": "Nombre",
+        "signature": "Firma",
+        "description": "Descripción"
+      },
+      "items": {
+        "DEFAULT_MIN_SIZE": "`minSize` por defecto de cada panel, en porcentaje.",
+        "DEFAULT_MAX_SIZE": "`maxSize` por defecto de cada panel, en porcentaje.",
+        "DEFAULT_KEYBOARD_STEP": "`keyboardStep` por defecto, en puntos porcentuales.",
+        "DEFAULT_COLLAPSED_SIZE": "`collapsedSize` por defecto de los paneles colapsables.",
+        "resolveConstraints": "Completa `minSize`, `maxSize`, `collapsible` y `collapsedSize` de un panel con los valores por defecto y los limita entre 0 y 100.",
+        "resolveInitialLayout": "Calcula el layout inicial: usa `layout` si tiene la cantidad correcta; si no, usa `defaultSize` y reparte el resto en partes iguales.",
+        "normalizeLayout": "Ajusta cada tamaño a sus límites y escala el total a 100.",
+        "resizePair": "Mueve el separador `handleIndex` una cantidad de puntos, respetando los límites de los dos paneles vecinos.",
+        "toCssLength": "Convierte un número en píxeles (`320` → `\"320px\"`) y deja los textos como están. Es lo que usan `height`, `width` y `handleThickness`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Además aceptan los atributos HTML de su elemento.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "group": {
+        "title": "ResizablePanels",
+        "description": "El grupo: define la orientación, los tamaños y el estilo compartido.",
+        "items": {
+          "as": "Elemento HTML que se renderiza.",
+          "orientation": "`horizontal` pone los paneles uno al lado del otro; `vertical` los apila.",
+          "size": "Grosor del separador.",
+          "radius": "Radio del borde del grupo.",
+          "layout": "Tamaños controlados en porcentaje, uno por panel. Se normalizan para sumar 100.",
+          "defaultLayout": "Tamaños iniciales en porcentaje (no controlado). Sin él, los paneles se reparten en partes iguales.",
+          "keyboardStep": "Puntos porcentuales que mueve cada flecha. `PageUp` y `PageDown` mueven 5 veces este valor.",
+          "isDisabled": "Deshabilita todos los separadores.",
+          "height": "Altura del grupo. Un número se toma como píxeles y un texto como CSS. Obligatoria en vertical si el padre no tiene altura.",
+          "minHeight": "Altura mínima del grupo.",
+          "width": "Ancho del grupo. Por defecto ocupa el 100 %.",
+          "minWidth": "Ancho mínimo del grupo.",
+          "padding": "Espacio interno de todos los paneles: token, píxeles o CSS.",
+          "icon": "Ícono de todos los separadores. El `icon` de cada separador tiene prioridad.",
+          "horizontalIcon": "Ícono para divisiones horizontales. Si falta, usa `icon`.",
+          "verticalIcon": "Ícono para divisiones verticales. Si falta, usa `icon`.",
+          "handleColor": "Color de todos los separadores (cualquier color CSS).",
+          "handleHoverColor": "Color de los separadores con hover, foco o mientras se arrastran.",
+          "handleThickness": "Grosor de los separadores. Tiene prioridad sobre `size`.",
+          "className": "Clases extra para el grupo.",
+          "classNames": "Clases por slot: `root`, `panel` (todos los paneles), `handle` (todos los separadores) y `grip`.",
+          "styles": "Estilos inline por slot: `root`, `panel`, `handle` y `grip`.",
+          "style": "Estilos inline. Se combinan con las variables CSS del grupo.",
+          "ref": "Ref al elemento del grupo.",
+          "children": "`ResizablePanel` y `ResizableHandle` alternados.",
+          "onLayoutChange": "Se dispara en cada arrastre o movimiento con teclado con los tamaños actuales."
+        }
+      },
+      "panel": {
+        "title": "ResizablePanel",
+        "description": "Cada panel: define sus límites de tamaño y su espacio interno.",
+        "items": {
+          "as": "Elemento HTML que se renderiza.",
+          "defaultSize": "Tamaño inicial en porcentaje. Se usa si el grupo no tiene `defaultLayout` ni `layout`.",
+          "minSize": "Tamaño mínimo en porcentaje mientras está abierto.",
+          "maxSize": "Tamaño máximo en porcentaje.",
+          "collapsible": "Permite cerrar el panel por debajo de `minSize` hasta `collapsedSize`.",
+          "collapsedSize": "Tamaño en porcentaje cuando está colapsado.",
+          "id": "Id del elemento, usado por `aria-controls` del separador. Se genera si falta.",
+          "padding": "Espacio interno de este panel. Reemplaza el `padding` del grupo.",
+          "className": "Clases extra para el panel.",
+          "classNames": "Clases por slot. `root` se suma al panel.",
+          "style": "Estilos inline del panel.",
+          "ref": "Ref al elemento del panel.",
+          "children": "Contenido del panel."
+        }
+      },
+      "handle": {
+        "title": "ResizableHandle",
+        "description": "El separador entre dos paneles. Tiene que ir dentro de ResizablePanels.",
+        "items": {
+          "label": "Nombre accesible del separador.",
+          "withHandle": "Muestra el recuadro con el ícono.",
+          "icon": "Ícono de este separador. Reemplaza al del grupo.",
+          "color": "Color de este separador.",
+          "hoverColor": "Color de este separador con hover o mientras se arrastra.",
+          "thickness": "Grosor de este separador. Un número se toma como píxeles.",
+          "isDisabled": "Deshabilita solo este separador.",
+          "className": "Clases extra para el separador.",
+          "classNames": "Clases por slot: `root` para el separador y `grip` para el recuadro del ícono.",
+          "gripStyle": "Estilos inline del recuadro del ícono.",
+          "style": "Estilos inline del separador.",
+          "ref": "Ref al elemento del separador.",
+          "children": "Contenido propio del grip. Tiene prioridad sobre `icon`."
+        }
+      }
+    }
+  }
+}

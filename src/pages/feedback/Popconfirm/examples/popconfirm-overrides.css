@@ -1,0 +1,13 @@
+.gem-popconfirm__panel.popconfirm-branded {
+  --gem-popconfirm-icon: var(--gem-palette-tertiary-500);
+  --gem-color-border: var(--gem-palette-tertiary-300);
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 6%, white);
+  --gem-radius-md: 1rem;
+
+  max-width: min(22rem, calc(100vw - 1.5rem));
+}
+
+[data-theme="dark"] .gem-popconfirm__panel.popconfirm-branded {
+  --gem-color-border: var(--gem-palette-tertiary-700);
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 10%, var(--gem-palette-neutral-900));
+}

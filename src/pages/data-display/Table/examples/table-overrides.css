@@ -1,0 +1,25 @@
+.gem-table.table-branded {
+  border-color: var(--gem-color-primary-300);
+}
+
+.gem-table.table-branded .gem-table__th {
+  background: var(--gem-color-primary-700);
+  color: var(--gem-palette-neutral-0);
+  border-bottom-color: var(--gem-color-primary-800);
+}
+
+.gem-table.table-branded .gem-table__sort-button:focus-visible {
+  outline-color: var(--gem-palette-neutral-0);
+}
+
+.gem-table.table-branded .gem-table__row:hover .gem-table__td {
+  background-color: var(--gem-color-primary-50);
+}
+
+.gem-table.table-branded .gem-table__row--selected .gem-table__td {
+  background-color: var(--gem-color-primary-100);
+}
+
+.gem-table.table-branded .gem-table__footer {
+  background: var(--gem-color-bg-subtle);
+}

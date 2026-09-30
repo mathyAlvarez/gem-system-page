@@ -1,0 +1,374 @@
+{
+  "header": {
+    "title": "Toast",
+    "description": "Notificaciones breves que aparecen sobre la interfaz para confirmar una acción o avisar de un problema. Se lanzan con `toast()` desde cualquier parte y se muestran en un `Toaster`, o se usa `Toast` directamente dentro de la página. `Snackbar` es un alias de `Toast`."
+  },
+  "common": {
+    "closeLabel": "Cerrar notificación",
+    "viewportLabel": "Notificaciones",
+    "copy": {
+      "info": {
+        "title": "Nueva versión disponible",
+        "description": "Recargá la página para usar las últimas mejoras."
+      },
+      "success": {
+        "title": "Cambios guardados",
+        "description": "El documento se guardó correctamente."
+      },
+      "warning": {
+        "title": "Espacio casi lleno",
+        "description": "Usaste el 90% del almacenamiento disponible."
+      },
+      "error": {
+        "title": "No se pudo enviar",
+        "description": "Revisá la conexión e intentá de nuevo."
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Ajustá las props para ver el toast y el código. El botón lo lanza en el `Toaster` global de la página. `closeAriaLabel` se pasa en cada llamada porque el default es `Dismiss`.",
+    "launch": "Lanzar toast"
+  },
+  "stories": {
+    "system": {
+      "title": "Sistema de notificaciones",
+      "description": "`toast()` y sus atajos `toast.info`, `toast.success`, `toast.warning` y `toast.error` agregan una notificación al `Toaster` de su `scope`. Cada llamada devuelve el id. `autoClose: 0` la deja fija sin barra e `Infinity` la deja fija con una barra indeterminada. `toast.dismiss()` sin id las cierra todas. Los ejemplos usan un `Toaster` local (`ToastHost`) para no mezclarse con el global.",
+      "texts": {
+        "labels": {
+          "info": "Info",
+          "success": "Éxito",
+          "warning": "Advertencia",
+          "error": "Error",
+          "persistent": "Fijo",
+          "infinite": "Sin tiempo",
+          "dismissAll": "Cerrar todos"
+        },
+        "persistent": {
+          "title": "Sesión por vencer",
+          "description": "Guardá tu trabajo: la sesión se cierra en 5 minutos."
+        },
+        "infinite": {
+          "title": "Sincronizando archivos",
+          "description": "Queda visible hasta que la cierres."
+        }
+      }
+    },
+    "base": {
+      "title": "Uso básico",
+      "description": "`Toast` también se puede usar solo, dentro de la página. Muestra `title`, el contenido de `children` y el botón de cerrar. Solo, no se cierra por tiempo: `autoClose` es `0`."
+    },
+    "status": {
+      "title": "Estados",
+      "description": "`status` define el color y el ícono: `info` (default), `success`, `warning` o `error`. `warning` y `error` se anuncian con `role=\"alert\"`; los demás con `role=\"status\"`."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`variant` cambia el estilo: `soft` (fondo suave, default), `solid` (fondo lleno) u `outline` (fondo neutro con borde de color)."
+    },
+    "sizes": {
+      "title": "Tamaños y bordes",
+      "description": "`size` ajusta el espacio interno y el texto: `sm`, `md` (default) o `lg`. `radius` redondea las esquinas con `sm`, `md` (default) o `lg`."
+    },
+    "description": {
+      "title": "Solo texto",
+      "description": "Sin `title`, el contenido se muestra como texto principal. `isClosable={false}` quita el botón de cerrar.",
+      "texts": {
+        "text": "Se copió el enlace al portapapeles."
+      }
+    },
+    "action": {
+      "title": "Con acción",
+      "description": "`action` agrega un botón al costado, por ejemplo para reintentar o deshacer. En `solid`, el botón transparente necesita `text-current` para tomar el color del toast.",
+      "texts": {
+        "retry": "Reintentar",
+        "retrying": "Reintentando envío",
+        "undo": "Deshacer",
+        "undone": "Cambio deshecho"
+      }
+    },
+    "icon": {
+      "title": "Ícono",
+      "description": "`icon` reemplaza el ícono del estado y `hideIcon` lo oculta.",
+      "texts": {
+        "title": "Recordatorio",
+        "description": "La reunión de equipo empieza en 10 minutos.",
+        "plain": "Tenés 3 mensajes sin leer."
+      }
+    },
+    "custom": {
+      "title": "Contenido propio",
+      "description": "`custom` reemplaza todo el contenido (ícono, textos y acción) por el tuyo. El botón de cerrar se mantiene.",
+      "texts": {
+        "name": "Laura Méndez",
+        "message": "Te mencionó en un comentario.",
+        "open": "Ver"
+      }
+    },
+    "autoClose": {
+      "title": "Cierre automático",
+      "description": "`autoClose` cierra el toast después de esos milisegundos y muestra una barra de progreso. `Infinity` lo deja fijo con una barra indeterminada y `showProgress={false}` oculta la barra. Con `pauseOnHover` (default) el tiempo se pausa al pasar el mouse o enfocar el toast.",
+      "texts": {
+        "again": "Mostrar de nuevo",
+        "infiniteTitle": "Sin tiempo límite",
+        "infiniteText": "Queda visible hasta que la cierres.",
+        "hiddenTitle": "Sin barra de progreso",
+        "hiddenText": "Se cierra en 6 segundos."
+      }
+    },
+    "controlled": {
+      "title": "Controlado",
+      "description": "Con `open` y `onOpenChange` manejás la visibilidad desde tu estado. `onClose` se llama cuando se cierra.",
+      "texts": {
+        "show": "Mostrar",
+        "hide": "Ocultar"
+      }
+    },
+    "placement": {
+      "title": "Posición",
+      "description": "`placement` del `Toaster` ubica las notificaciones en una esquina o en el centro, arriba o abajo. Default: `bottom-end`.",
+      "texts": {
+        "description": "Las notificaciones aparecen en esta posición."
+      }
+    },
+    "stack": {
+      "title": "Límite en pantalla",
+      "description": "`max` del `Toaster` limita cuántas se ven a la vez (default `5`). Al pasarse, se descarta la más vieja.",
+      "texts": {
+        "push": "Agregar tarea",
+        "task": "Tarea",
+        "description": "Se agregó a la lista de pendientes."
+      }
+    },
+    "update": {
+      "title": "Actualizar",
+      "description": "Con un `id` fijo, `toast.update(id, options)` cambia un toast abierto, por ejemplo al terminar una carga. Si ya se cerró, no hace nada. Lanzar otro con el mismo `id` reemplaza el anterior.",
+      "texts": {
+        "trigger": "Subir informe",
+        "uploading": {
+          "title": "Subiendo informe",
+          "description": "Esto puede tardar unos segundos."
+        },
+        "done": {
+          "title": "Informe subido",
+          "description": "Ya está disponible para el equipo."
+        }
+      }
+    },
+    "snackbar": {
+      "title": "Alias Snackbar",
+      "description": "`Snackbar` es el mismo componente que `Toast`, con las mismas props.",
+      "texts": {
+        "title": "Conversación archivada",
+        "description": "La encontrás en la carpeta de archivados."
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "title": "Pedido confirmado",
+      "description": "Te avisamos cuando salga para entrega."
+    }
+  },
+  "apiLink": "Ver la API completa de Toast",
+  "api": {
+    "header": {
+      "title": "Toast API",
+      "description": "Referencia de la API de Toast de React: la función toast, las opciones, el Toaster, props, clases CSS, variables, tokens y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Para ejemplos y detalles de uso, visitá la página de demos del componente.",
+      "link": "Toast"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Podés importarlo desde el entry principal o desde su subpath. `Snackbar` es un alias de `Toast` y `ToastProvider` renderiza sus `children` junto con un `Toaster`."
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "<code>Toast</code> acepta los atributos de <code>&lt;div&gt;</code> salvo <code>title</code>, y van a la raíz junto con <code>ref</code>, <code>id</code> y <code>className</code>. <code>classNames</code> agrega clases a cada parte. Las opciones de <code>toast()</code> son un subconjunto de las props de <code>Toast</code>: sin atributos HTML, <code>className</code>, <code>role</code> ni eventos. <code>Toaster</code> renderiza la región en un portal sobre <code>container</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "role": "<code>info</code> y <code>success</code> usan <code>role=\"status\"</code>; <code>warning</code> y <code>error</code> usan <code>role=\"alert\"</code>, que se anuncia de inmediato. Podés cambiarlo con <code>role</code>.",
+      "viewport": "El <code>Toaster</code> es una región con <code>role=\"region\"</code>, <code>aria-live=\"polite\"</code> y nombre <code>viewportLabel</code>.",
+      "labels": "Los nombres por defecto están en inglés: <code>\"Notifications\"</code> en la región y <code>\"Dismiss\"</code> en el botón de cerrar. Pasá <code>viewportLabel</code> al <code>Toaster</code> y <code>closeAriaLabel</code> en cada toast.",
+      "close": "El botón de cerrar es un <code>&lt;button&gt;</code> real y se activa con teclado.",
+      "pause": "Con <code>pauseOnHover</code>, el tiempo se pausa al pasar el mouse o al enfocar el toast, para que dé tiempo a leerlo o usar la acción.",
+      "timing": "Para mensajes importantes o con acciones, usá <code>autoClose: 0</code> o <code>Infinity</code> para que no desaparezcan solos.",
+      "action": "La acción es tu propio botón: dale un texto claro. Si es crítica, ofrecé otra forma de hacerla fuera del toast.",
+      "motion": "Con <code>prefers-reduced-motion</code> se quitan las animaciones de entrada y salida."
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "description": "Clases que podés usar para sobrescribir estilos.",
+      "columns": {
+        "name": "Clase",
+        "rule": "Regla",
+        "description": "Descripción"
+      },
+      "rules": {
+        "root": "Raíz del toast. Define las variables. Recibe `className` y `classNames.root`.",
+        "status": "Estado: `--info`, `--success`, `--warning` o `--error`.",
+        "variant": "Variante: `--soft`, `--solid` u `--outline`.",
+        "size": "Tamaño: `--sm`, `--md` o `--lg`.",
+        "radius": "Borde: `--radius-sm`, `--radius-md` o `--radius-lg`.",
+        "withProgress": "Se aplica cuando se muestra la barra de progreso.",
+        "custom": "Se aplica cuando se usa `custom`.",
+        "row": "Fila con ícono, textos, acción y botón de cerrar.",
+        "icon": "Ícono del estado. Recibe `classNames.icon`.",
+        "content": "Contenedor de título y descripción. Recibe `classNames.content`.",
+        "title": "Título. Recibe `classNames.title`.",
+        "description": "Descripción o `children`. Recibe `classNames.description`.",
+        "action": "Contenedor de `action`. Recibe `classNames.action`.",
+        "customSlot": "Contenedor de `custom`. Recibe `classNames.custom`.",
+        "close": "Botón de cerrar. Recibe `classNames.close`.",
+        "progress": "Barra de progreso. Recibe `classNames.progress`.",
+        "viewport": "Región del `Toaster`. Recibe `className` y `classNames.viewport`.",
+        "viewportEdge": "Borde vertical: `--top` o `--bottom`.",
+        "viewportAlign": "Alineación: `--start`, `--center` o `--end`.",
+        "viewportAbsolute": "Se aplica con `position=\"absolute\"`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Variables propias de Toast. Las de estado y variante se pisan con una clase de igual especificidad, así que usá `.gem-toast.tu-clase` y una variante para `[data-theme=\"dark\"]`.",
+      "columns": {
+        "name": "Variable",
+        "description": "Descripción"
+      },
+      "items": {
+        "--gem-toast-bg": "Fondo. Lo definen el estado y la variante.",
+        "--gem-toast-fg": "Color del texto.",
+        "--gem-toast-border": "Color del borde.",
+        "--gem-toast-accent": "Color de acento: barra de progreso y detalles.",
+        "--gem-toast-icon": "Color del ícono.",
+        "--gem-toast-pad-y": "Espacio interno vertical. Lo define el tamaño.",
+        "--gem-toast-pad-x": "Espacio interno horizontal. Lo define el tamaño.",
+        "--gem-toast-gap": "Espacio entre ícono, textos y acción.",
+        "--gem-toast-icon-size": "Tamaño del ícono.",
+        "--gem-toast-title": "Tamaño de letra del título.",
+        "--gem-toast-body": "Tamaño de letra de la descripción.",
+        "--gem-toast-auto-close": "Duración de la barra de progreso. Se calcula desde `autoClose`.",
+        "--gem-toast-offset": "Distancia de la región al borde. La define `offset` del `Toaster`.",
+        "--gem-toast-from-y": "Desplazamiento vertical de la animación de entrada."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Tokens de gem-system que usa Toast.",
+      "columns": {
+        "name": "Token",
+        "description": "Uso en Toast"
+      },
+      "items": {
+        "--gem-color-{status}-soft": "Fondo en `soft`.",
+        "--gem-color-{status}-text": "Texto e ícono en `soft` y `outline`.",
+        "--gem-color-{status}-border": "Borde en `soft` y `outline`.",
+        "--gem-color-{status}-solid": "Fondo en `solid` y color de acento.",
+        "--gem-color-bg": "Fondo en `outline`.",
+        "--gem-palette-neutral-0": "Texto en `solid`.",
+        "--gem-palette-neutral-950": "Texto en `solid` para `warning`.",
+        "--gem-radius-{sm|md|lg}": "Borde según `radius`.",
+        "--gem-shadow-lg": "Sombra del toast.",
+        "--gem-space-2": "Espacio entre toasts en la región.",
+        "--gem-space-3": "Espacio interno por defecto.",
+        "--gem-z-toast": "Capa de la región del `Toaster`.",
+        "--gem-font-sans": "Fuente del texto."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados",
+      "description": "Disponibles desde @gem-org/gem-system para tipar tus propios wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "La API se divide en la función `toast`, sus opciones, el `Toaster` y el componente `Toast`.",
+    "columns": {
+      "name": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción"
+    },
+    "groups": {
+      "api": {
+        "title": "Función toast",
+        "description": "Se importa y se llama desde cualquier parte. Necesita un `Toaster` montado con el mismo `scope`.",
+        "items": {
+          "message": "Muestra un toast con ese título y devuelve su id.",
+          "options": "Igual, pero el título y el resto de las opciones van en un objeto.",
+          "status": "Atajos que fijan `status`. Aceptan los mismos argumentos.",
+          "update": "Cambia las opciones de un toast abierto. Si ya se cerró, no hace nada.",
+          "dismiss": "Cierra el toast con ese id. Sin id, cierra todos, de todos los scopes.",
+          "useToast": "Hook que devuelve `toasts` (los abiertos) y las funciones `toast`, `update` y `dismiss`."
+        }
+      },
+      "options": {
+        "title": "Opciones de toast()",
+        "description": "Segundo argumento de `toast()`.",
+        "items": {
+          "id": "Id del toast. Si ya existe uno con ese id, lo reemplaza.",
+          "scope": "`Toaster` donde se muestra.",
+          "autoClose": "Milisegundos hasta cerrarse. Si no se pasa, usa el del `Toaster`. `0` o `Infinity` lo dejan fijo.",
+          "rest": "Estas props de `Toast`: `title`, `description`, `status`, `variant`, `size`, `radius`, `icon`, `hideIcon`, `action`, `custom`, `isClosable`, `closeAriaLabel`, `duration`, `showProgress` y `pauseOnHover`."
+        }
+      },
+      "toaster": {
+        "title": "Toaster",
+        "description": "Región donde aparecen los toasts. Montá uno por `scope`. Sus valores son el default de cada toast.",
+        "items": {
+          "placement": "Posición de la región: `top-start`, `top`, `top-end`, `bottom-start`, `bottom` o `bottom-end`.",
+          "autoClose": "Tiempo por defecto hasta cerrarse, en milisegundos.",
+          "duration": "Alias de `autoClose`.",
+          "showProgress": "Muestra la barra de progreso por defecto.",
+          "max": "Cantidad máxima visible. Al pasarse, se descarta la más vieja.",
+          "offset": "Distancia al borde. Un número se toma en píxeles.",
+          "variant": "Variante por defecto.",
+          "size": "Tamaño por defecto.",
+          "radius": "Borde por defecto.",
+          "isClosable": "Muestra el botón de cerrar por defecto.",
+          "pauseOnHover": "Pausa el tiempo al pasar el mouse o enfocar, por defecto.",
+          "viewportLabel": "Nombre accesible de la región. El default está en inglés.",
+          "scope": "Solo muestra los toasts de este scope.",
+          "container": "Elemento donde se renderiza el portal.",
+          "position": "`fixed` sobre la ventana o `absolute` dentro de `container`.",
+          "className": "Clases extra para la región.",
+          "classNames": "Clases para `viewport` y para cada toast."
+        }
+      },
+      "toast": {
+        "title": "Toast",
+        "description": "Componente visual. También se usa solo, dentro de la página.",
+        "items": {
+          "title": "Título en negrita.",
+          "children": "Contenido. Si no hay `title`, se muestra como texto principal.",
+          "description": "Texto secundario. Se usa en lugar de `children`.",
+          "status": "Estado: define el color, el ícono y el `role`.",
+          "variant": "Estilo: suave, lleno o con borde.",
+          "size": "Espacio interno y tamaño del texto.",
+          "radius": "Redondeo de las esquinas.",
+          "icon": "Reemplaza el ícono del estado.",
+          "hideIcon": "Oculta el ícono.",
+          "action": "Contenido al costado, por ejemplo un botón.",
+          "custom": "Reemplaza ícono, textos y acción por tu propio contenido.",
+          "isClosable": "Muestra el botón de cerrar.",
+          "closeAriaLabel": "Nombre accesible del botón de cerrar. El default está en inglés.",
+          "autoClose": "Milisegundos hasta cerrarse. Solo, el default es `0` (no se cierra).",
+          "duration": "Alias de `autoClose`.",
+          "showProgress": "Muestra la barra de progreso cuando hay `autoClose`. Con `Infinity`, la barra es indeterminada.",
+          "pauseOnHover": "Pausa el tiempo al pasar el mouse o enfocar.",
+          "open": "Visibilidad controlada.",
+          "defaultOpen": "Visibilidad inicial sin controlar.",
+          "role": "Rol de la raíz. Por defecto depende de `status`.",
+          "className": "Clases extra para la raíz.",
+          "classNames": "Clases por parte: `root`, `icon`, `content`, `title`, `description`, `action`, `custom`, `close` y `progress`.",
+          "ref": "Ref de la raíz.",
+          "onClose": "Se llama al cerrarse, por el botón o por tiempo.",
+          "onOpenChange": "Se llama cuando cambia la visibilidad."
+        }
+      }
+    }
+  }
+}

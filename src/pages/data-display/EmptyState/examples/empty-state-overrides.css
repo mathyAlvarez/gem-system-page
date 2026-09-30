@@ -1,0 +1,23 @@
+.gem-empty-state.empty-state-branded {
+  --gem-empty-state-icon-size: 4rem;
+  --gem-empty-state-copy: 26rem;
+  --gem-empty-state-icon-bg: color-mix(in srgb, var(--gem-palette-secondary-500) 18%, transparent);
+  --gem-empty-state-icon-fg: var(--gem-palette-secondary-700);
+  border-width: 2px;
+  border-color: var(--gem-palette-secondary-400);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 8%, transparent);
+}
+
+.gem-empty-state.empty-state-branded .gem-empty-state__title {
+  color: var(--gem-palette-secondary-800);
+}
+
+[data-theme="dark"] .gem-empty-state.empty-state-branded {
+  --gem-empty-state-icon-fg: var(--gem-palette-secondary-200);
+  border-color: var(--gem-palette-secondary-500);
+  background: color-mix(in srgb, var(--gem-palette-secondary-500) 16%, transparent);
+}
+
+[data-theme="dark"] .gem-empty-state.empty-state-branded .gem-empty-state__title {
+  color: var(--gem-palette-secondary-200);
+}

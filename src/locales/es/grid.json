@@ -57,10 +57,6 @@
         "lg": "lg (desktop)",
         "xl": "xl",
         "xxl": "xxl (2xl)"
-      },
-      "bug": {
-        "title": "Bug conocido en Col",
-        "body": "En gem-system 2.0.1, la clase <code>.gem-grid__col-*</code> que agrega <code>Col</code> se declara después de las reglas de breakpoint. Por eso <code>span</code> siempre gana y se ignoran <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> y <code>xxl</code>. Mientras no se corrija, agregá este CSS global. Los ejemplos de esta página lo usan."
       }
     },
     "gap": {
@@ -155,7 +151,7 @@
         "justify": "Se aplica con `justify` en Grid o Row (`justify-content`).",
         "row": "Se suma en Row, además de `.gem-grid`.",
         "col": "Elemento raíz de Col. Recibe `className` y `classNames.root`.",
-        "colSpan": "Se aplica según `span`. Es la clase que hoy pisa los spans por breakpoint.",
+        "colSpan": "Se aplica según `span`. En una Col solo define `--gem-col-span`; en elementos sin `.gem-col` también ubica la columna, así podés usarla en HTML plano.",
         "colAlign": "Se aplica con `align` en Col (`align-self`)."
       }
     },

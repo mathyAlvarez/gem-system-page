@@ -1,0 +1,38 @@
+.gem-resizable.ide-split {
+  --gem-resizable-bg: #16181d;
+  --gem-resizable-fg: #e6e8eb;
+  --gem-resizable-border: #2a2e36;
+  --gem-resizable-handle: 1px;
+  --gem-resizable-handle-bg: #2a2e36;
+  --gem-resizable-handle-hover: var(--gem-color-primary-400);
+  --gem-resizable-radius: var(--gem-radius-lg);
+}
+
+.ide-split .gem-resizable__panel {
+  padding: var(--gem-space-4);
+  font-family: var(--gem-text-code-font-family);
+  font-size: var(--gem-font-size-sm);
+}
+
+.ide-split .gem-resizable__panel + .gem-resizable__handle + .gem-resizable__panel {
+  background: #1d2026;
+}
+
+.ide-split .gem-resizable__grip {
+  opacity: 0;
+  background: #16181d;
+  color: var(--gem-color-primary-300);
+  transition: opacity 150ms ease;
+}
+
+.ide-split .gem-resizable__handle:hover .gem-resizable__grip,
+.ide-split .gem-resizable__handle:focus-visible .gem-resizable__grip,
+.ide-split .gem-resizable__handle--active .gem-resizable__grip {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ide-split .gem-resizable__grip {
+    transition: none;
+  }
+}

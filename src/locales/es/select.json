@@ -26,31 +26,101 @@
   },
   "options": {
     "countries": [
-      { "value": "br", "label": "Brasil" },
-      { "value": "ca", "label": "Canadá" },
-      { "value": "cl", "label": "Chile" },
-      { "value": "es", "label": "España" },
-      { "value": "fr", "label": "Francia" },
-      { "value": "it", "label": "Italia" },
-      { "value": "jp", "label": "Japón" },
-      { "value": "mx", "label": "México" }
+      {
+        "value": "br",
+        "label": "Brasil"
+      },
+      {
+        "value": "ca",
+        "label": "Canadá"
+      },
+      {
+        "value": "cl",
+        "label": "Chile"
+      },
+      {
+        "value": "es",
+        "label": "España"
+      },
+      {
+        "value": "fr",
+        "label": "Francia"
+      },
+      {
+        "value": "it",
+        "label": "Italia"
+      },
+      {
+        "value": "jp",
+        "label": "Japón"
+      },
+      {
+        "value": "mx",
+        "label": "México"
+      }
     ],
     "roles": [
-      { "value": "admin", "label": "Administrador", "description": "Acceso total" },
-      { "value": "editor", "label": "Editor", "description": "Puede publicar contenido" },
-      { "value": "viewer", "label": "Lector", "description": "Solo lectura" },
-      { "value": "guest", "label": "Invitado", "description": "Vista previa limitada", "disabled": true }
+      {
+        "value": "admin",
+        "label": "Administrador",
+        "description": "Acceso total"
+      },
+      {
+        "value": "editor",
+        "label": "Editor",
+        "description": "Puede publicar contenido"
+      },
+      {
+        "value": "viewer",
+        "label": "Lector",
+        "description": "Solo lectura"
+      },
+      {
+        "value": "guest",
+        "label": "Invitado",
+        "description": "Vista previa limitada",
+        "disabled": true
+      }
     ],
     "workspaces": [
-      { "value": "personal", "label": "Personal" },
-      { "value": "team", "label": "Equipo" },
-      { "value": "enterprise", "label": "Empresa" }
+      {
+        "value": "personal",
+        "label": "Personal"
+      },
+      {
+        "value": "team",
+        "label": "Equipo"
+      },
+      {
+        "value": "enterprise",
+        "label": "Empresa"
+      }
     ],
     "users": [
-      { "id": "u1", "name": "Ada Lovelace", "role": "Admin", "active": true },
-      { "id": "u2", "name": "Alan Turing", "role": "Editor", "active": true },
-      { "id": "u3", "name": "Grace Hopper", "role": "Lector", "active": false },
-      { "id": "u4", "name": "Katherine Johnson", "role": "Editor", "active": true }
+      {
+        "id": "u1",
+        "name": "Ada Lovelace",
+        "role": "Admin",
+        "active": true
+      },
+      {
+        "id": "u2",
+        "name": "Alan Turing",
+        "role": "Editor",
+        "active": true
+      },
+      {
+        "id": "u3",
+        "name": "Grace Hopper",
+        "role": "Lector",
+        "active": false
+      },
+      {
+        "id": "u4",
+        "name": "Katherine Johnson",
+        "role": "Editor",
+        "active": true
+      }
     ]
   },
   "data": {
@@ -315,6 +385,7 @@
       "multiple": "Permite elegir más de una opción.",
       "searchable": "Muestra un buscador dentro del menú.",
       "clearable": "Muestra un botón para vaciar la selección.",
+      "clearLabel": "Nombre accesible del botón de limpiar. Por defecto es \"Clear\", en inglés.",
       "showExpand": "Muestra la flecha del trigger.",
       "optionValue": "Campo o función para el valor de cada opción.",
       "optionLabel": "Campo o función para el label visible.",
@@ -341,7 +412,8 @@
       "className": "Clases extra para el trigger.",
       "wrapperClassName": "Clases extra para el contenedor raíz.",
       "onChange": "Recibe el nuevo valor: string en modo simple, string[] con `multiple`.",
-      "onInfoClick": "Se dispara al activar el ícono de información."
+      "onInfoClick": "Se dispara al activar el ícono de información.",
+      "onClear": "Se dispara después de limpiar la selección con el botón."
     }
   }
 }

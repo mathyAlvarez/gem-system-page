@@ -1,0 +1,13 @@
+.gem-pagination.pagination-branded {
+  --gem-pagination-accent: var(--gem-palette-tertiary-600);
+  --gem-pagination-accent-hover: var(--gem-palette-tertiary-700);
+  --gem-pagination-hover: var(--gem-palette-tertiary-50);
+  --gem-pagination-muted: var(--gem-palette-tertiary-700);
+}
+
+[data-theme="dark"] .gem-pagination.pagination-branded {
+  --gem-pagination-accent: var(--gem-palette-tertiary-400);
+  --gem-pagination-accent-hover: var(--gem-palette-tertiary-300);
+  --gem-pagination-hover: color-mix(in srgb, var(--gem-palette-tertiary-400) 18%, transparent);
+  --gem-pagination-muted: var(--gem-palette-tertiary-300);
+}

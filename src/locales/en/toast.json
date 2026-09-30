@@ -1,0 +1,374 @@
+{
+  "header": {
+    "title": "Toast",
+    "description": "Short notifications shown above the interface to confirm an action or report a problem. Fire them with `toast()` from anywhere and render them in a `Toaster`, or use `Toast` directly inside the page. `Snackbar` is an alias of `Toast`."
+  },
+  "common": {
+    "closeLabel": "Close notification",
+    "viewportLabel": "Notifications",
+    "copy": {
+      "info": {
+        "title": "New version available",
+        "description": "Reload the page to get the latest improvements."
+      },
+      "success": {
+        "title": "Changes saved",
+        "description": "The document was saved successfully."
+      },
+      "warning": {
+        "title": "Storage almost full",
+        "description": "You have used 90% of the available storage."
+      },
+      "error": {
+        "title": "Could not send",
+        "description": "Check your connection and try again."
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props to preview the toast and its code. The button fires it on the page's global `Toaster`. `closeAriaLabel` is passed on every call because the default is `Dismiss`.",
+    "launch": "Fire toast"
+  },
+  "stories": {
+    "system": {
+      "title": "Notification system",
+      "description": "`toast()` and its shortcuts `toast.info`, `toast.success`, `toast.warning` and `toast.error` add a notification to the `Toaster` of its `scope`. Each call returns the id. `autoClose: 0` keeps it open with no bar and `Infinity` keeps it open with an indeterminate bar. `toast.dismiss()` without an id closes them all. The examples use a local `Toaster` (`ToastHost`) so they don't mix with the global one.",
+      "texts": {
+        "labels": {
+          "info": "Info",
+          "success": "Success",
+          "warning": "Warning",
+          "error": "Error",
+          "persistent": "Persistent",
+          "infinite": "No timer",
+          "dismissAll": "Dismiss all"
+        },
+        "persistent": {
+          "title": "Session about to expire",
+          "description": "Save your work: the session ends in 5 minutes."
+        },
+        "infinite": {
+          "title": "Syncing files",
+          "description": "Stays visible until you close it."
+        }
+      }
+    },
+    "base": {
+      "title": "Basic usage",
+      "description": "`Toast` can also be used on its own, inside the page. It shows `title`, the `children` content and the close button. Standalone, it doesn't close on a timer: `autoClose` is `0`."
+    },
+    "status": {
+      "title": "Status",
+      "description": "`status` sets the color and icon: `info` (default), `success`, `warning` or `error`. `warning` and `error` are announced with `role=\"alert\"`; the others with `role=\"status\"`."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`variant` changes the style: `soft` (tinted background, default), `solid` (filled background) or `outline` (neutral background with a colored border)."
+    },
+    "sizes": {
+      "title": "Sizes and radius",
+      "description": "`size` adjusts padding and text: `sm`, `md` (default) or `lg`. `radius` rounds the corners with `sm`, `md` (default) or `lg`."
+    },
+    "description": {
+      "title": "Text only",
+      "description": "Without `title`, the content is shown as the main text. `isClosable={false}` removes the close button.",
+      "texts": {
+        "text": "Link copied to the clipboard."
+      }
+    },
+    "action": {
+      "title": "With action",
+      "description": "`action` adds a button on the side, for example to retry or undo. On `solid`, the transparent button needs `text-current` to take the toast color.",
+      "texts": {
+        "retry": "Retry",
+        "retrying": "Retrying send",
+        "undo": "Undo",
+        "undone": "Change undone"
+      }
+    },
+    "icon": {
+      "title": "Icon",
+      "description": "`icon` replaces the status icon and `hideIcon` hides it.",
+      "texts": {
+        "title": "Reminder",
+        "description": "The team meeting starts in 10 minutes.",
+        "plain": "You have 3 unread messages."
+      }
+    },
+    "custom": {
+      "title": "Custom content",
+      "description": "`custom` replaces the whole content (icon, texts and action) with your own. The close button stays.",
+      "texts": {
+        "name": "Laura Méndez",
+        "message": "Mentioned you in a comment.",
+        "open": "View"
+      }
+    },
+    "autoClose": {
+      "title": "Auto close",
+      "description": "`autoClose` closes the toast after that many milliseconds and shows a progress bar. `Infinity` keeps it open with an indeterminate bar and `showProgress={false}` hides the bar. With `pauseOnHover` (default) the timer pauses on hover or focus.",
+      "texts": {
+        "again": "Show again",
+        "infiniteTitle": "No time limit",
+        "infiniteText": "Stays visible until you close it.",
+        "hiddenTitle": "No progress bar",
+        "hiddenText": "Closes in 6 seconds."
+      }
+    },
+    "controlled": {
+      "title": "Controlled",
+      "description": "With `open` and `onOpenChange` you drive visibility from your state. `onClose` is called when it closes.",
+      "texts": {
+        "show": "Show",
+        "hide": "Hide"
+      }
+    },
+    "placement": {
+      "title": "Placement",
+      "description": "The `Toaster` `placement` puts notifications in a corner or in the center, top or bottom. Default: `bottom-end`.",
+      "texts": {
+        "description": "Notifications appear in this position."
+      }
+    },
+    "stack": {
+      "title": "On-screen limit",
+      "description": "The `Toaster` `max` limits how many are visible at once (default `5`). When exceeded, the oldest is dropped.",
+      "texts": {
+        "push": "Add task",
+        "task": "Task",
+        "description": "Added to the to-do list."
+      }
+    },
+    "update": {
+      "title": "Update",
+      "description": "With a fixed `id`, `toast.update(id, options)` changes an open toast, for example when an upload finishes. If it was already closed, it does nothing. Firing another one with the same `id` replaces the previous one.",
+      "texts": {
+        "trigger": "Upload report",
+        "uploading": {
+          "title": "Uploading report",
+          "description": "This may take a few seconds."
+        },
+        "done": {
+          "title": "Report uploaded",
+          "description": "It's now available to the team."
+        }
+      }
+    },
+    "snackbar": {
+      "title": "Snackbar alias",
+      "description": "`Snackbar` is the same component as `Toast`, with the same props.",
+      "texts": {
+        "title": "Conversation archived",
+        "description": "You can find it in the archive folder."
+      }
+    }
+  },
+  "styles": {
+    "texts": {
+      "title": "Order confirmed",
+      "description": "We'll let you know when it ships."
+    }
+  },
+  "apiLink": "See the full Toast API",
+  "api": {
+    "header": {
+      "title": "Toast API",
+      "description": "API reference for the React Toast: the toast function, its options, the Toaster, props, CSS classes, variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Toast"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. `Snackbar` is an alias of `Toast` and `ToastProvider` renders its `children` along with a `Toaster`."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "<code>Toast</code> accepts <code>&lt;div&gt;</code> attributes except <code>title</code>, and they go to the root along with <code>ref</code>, <code>id</code> and <code>className</code>. <code>classNames</code> adds classes to each part. The <code>toast()</code> options are a subset of the <code>Toast</code> props: no HTML attributes, <code>className</code>, <code>role</code> or events. <code>Toaster</code> renders the region in a portal on <code>container</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "role": "<code>info</code> and <code>success</code> use <code>role=\"status\"</code>; <code>warning</code> and <code>error</code> use <code>role=\"alert\"</code>, announced immediately. You can change it with <code>role</code>.",
+      "viewport": "The <code>Toaster</code> is a region with <code>role=\"region\"</code>, <code>aria-live=\"polite\"</code> and the <code>viewportLabel</code> name.",
+      "labels": "Default names are in English: <code>\"Notifications\"</code> for the region and <code>\"Dismiss\"</code> for the close button. Pass <code>viewportLabel</code> to the <code>Toaster</code> and <code>closeAriaLabel</code> on each toast when using another language.",
+      "close": "The close button is a real <code>&lt;button&gt;</code> and works with the keyboard.",
+      "pause": "With <code>pauseOnHover</code>, the timer pauses on hover or focus, giving time to read it or use the action.",
+      "timing": "For important messages or those with actions, use <code>autoClose: 0</code> or <code>Infinity</code> so they don't disappear on their own.",
+      "action": "The action is your own button: give it clear text. If it's critical, offer another way to do it outside the toast.",
+      "motion": "With <code>prefers-reduced-motion</code> the enter and exit animations are removed."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "Toast root. Defines the variables. Receives `className` and `classNames.root`.",
+        "status": "Status: `--info`, `--success`, `--warning` or `--error`.",
+        "variant": "Variant: `--soft`, `--solid` or `--outline`.",
+        "size": "Size: `--sm`, `--md` or `--lg`.",
+        "radius": "Radius: `--radius-sm`, `--radius-md` or `--radius-lg`.",
+        "withProgress": "Applied when the progress bar is shown.",
+        "custom": "Applied when `custom` is used.",
+        "row": "Row with icon, texts, action and close button.",
+        "icon": "Status icon. Receives `classNames.icon`.",
+        "content": "Title and description wrapper. Receives `classNames.content`.",
+        "title": "Title. Receives `classNames.title`.",
+        "description": "Description or `children`. Receives `classNames.description`.",
+        "action": "`action` wrapper. Receives `classNames.action`.",
+        "customSlot": "`custom` wrapper. Receives `classNames.custom`.",
+        "close": "Close button. Receives `classNames.close`.",
+        "progress": "Progress bar. Receives `classNames.progress`.",
+        "viewport": "`Toaster` region. Receives `className` and `classNames.viewport`.",
+        "viewportEdge": "Vertical edge: `--top` or `--bottom`.",
+        "viewportAlign": "Alignment: `--start`, `--center` or `--end`.",
+        "viewportAbsolute": "Applied with `position=\"absolute\"`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Toast's own variables. Status and variant ones are overridden by a class with the same specificity, so use `.gem-toast.your-class` plus a `[data-theme=\"dark\"]` variant.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-toast-bg": "Background. Set by status and variant.",
+        "--gem-toast-fg": "Text color.",
+        "--gem-toast-border": "Border color.",
+        "--gem-toast-accent": "Accent color: progress bar and details.",
+        "--gem-toast-icon": "Icon color.",
+        "--gem-toast-pad-y": "Vertical padding. Set by size.",
+        "--gem-toast-pad-x": "Horizontal padding. Set by size.",
+        "--gem-toast-gap": "Space between icon, texts and action.",
+        "--gem-toast-icon-size": "Icon size.",
+        "--gem-toast-title": "Title font size.",
+        "--gem-toast-body": "Description font size.",
+        "--gem-toast-auto-close": "Progress bar duration. Computed from `autoClose`.",
+        "--gem-toast-offset": "Region distance to the edge. Set by the `Toaster` `offset`.",
+        "--gem-toast-from-y": "Vertical offset of the enter animation."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Toast.",
+      "columns": {
+        "name": "Token",
+        "description": "Use in Toast"
+      },
+      "items": {
+        "--gem-color-{status}-soft": "Background on `soft`.",
+        "--gem-color-{status}-text": "Text and icon on `soft` and `outline`.",
+        "--gem-color-{status}-border": "Border on `soft` and `outline`.",
+        "--gem-color-{status}-solid": "Background on `solid` and accent color.",
+        "--gem-color-bg": "Background on `outline`.",
+        "--gem-palette-neutral-0": "Text on `solid`.",
+        "--gem-palette-neutral-950": "Text on `solid` for `warning`.",
+        "--gem-radius-{sm|md|lg}": "Radius per `radius`.",
+        "--gem-shadow-lg": "Toast shadow.",
+        "--gem-space-2": "Space between toasts in the region.",
+        "--gem-space-3": "Default padding.",
+        "--gem-z-toast": "Layer of the `Toaster` region.",
+        "--gem-font-sans": "Text font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "The API is split into the `toast` function, its options, the `Toaster` and the `Toast` component.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "api": {
+        "title": "toast function",
+        "description": "Import it and call it from anywhere. Needs a mounted `Toaster` with the same `scope`.",
+        "items": {
+          "message": "Shows a toast with that title and returns its id.",
+          "options": "Same, but the title and the other options go in an object.",
+          "status": "Shortcuts that set `status`. They take the same arguments.",
+          "update": "Changes the options of an open toast. If it was already closed, it does nothing.",
+          "dismiss": "Closes the toast with that id. Without an id, closes all of them, in every scope.",
+          "useToast": "Hook that returns `toasts` (the open ones) and the `toast`, `update` and `dismiss` functions."
+        }
+      },
+      "options": {
+        "title": "toast() options",
+        "description": "Second argument of `toast()`.",
+        "items": {
+          "id": "Toast id. If one with that id already exists, it's replaced.",
+          "scope": "`Toaster` where it's shown.",
+          "autoClose": "Milliseconds until it closes. If omitted, uses the `Toaster` value. `0` or `Infinity` keep it open.",
+          "rest": "These `Toast` props: `title`, `description`, `status`, `variant`, `size`, `radius`, `icon`, `hideIcon`, `action`, `custom`, `isClosable`, `closeAriaLabel`, `duration`, `showProgress` and `pauseOnHover`."
+        }
+      },
+      "toaster": {
+        "title": "Toaster",
+        "description": "Region where toasts appear. Mount one per `scope`. Its values are the defaults of each toast.",
+        "items": {
+          "placement": "Region position: `top-start`, `top`, `top-end`, `bottom-start`, `bottom` or `bottom-end`.",
+          "autoClose": "Default time until closing, in milliseconds.",
+          "duration": "Alias of `autoClose`.",
+          "showProgress": "Shows the progress bar by default.",
+          "max": "Maximum visible count. When exceeded, the oldest is dropped.",
+          "offset": "Distance to the edge. A number is taken as pixels.",
+          "variant": "Default variant.",
+          "size": "Default size.",
+          "radius": "Default radius.",
+          "isClosable": "Shows the close button by default.",
+          "pauseOnHover": "Pauses the timer on hover or focus, by default.",
+          "viewportLabel": "Accessible name of the region.",
+          "scope": "Only shows toasts of this scope.",
+          "container": "Element where the portal renders.",
+          "position": "`fixed` over the window or `absolute` inside `container`.",
+          "className": "Extra classes for the region.",
+          "classNames": "Classes for `viewport` and for each toast."
+        }
+      },
+      "toast": {
+        "title": "Toast",
+        "description": "Visual component. Also usable on its own, inside the page.",
+        "items": {
+          "title": "Bold title.",
+          "children": "Content. Without `title`, it's shown as the main text.",
+          "description": "Secondary text. Used instead of `children`.",
+          "status": "Status: sets the color, icon and `role`.",
+          "variant": "Style: tinted, filled or outlined.",
+          "size": "Padding and text size.",
+          "radius": "Corner rounding.",
+          "icon": "Replaces the status icon.",
+          "hideIcon": "Hides the icon.",
+          "action": "Content on the side, for example a button.",
+          "custom": "Replaces icon, texts and action with your own content.",
+          "isClosable": "Shows the close button.",
+          "closeAriaLabel": "Accessible name of the close button.",
+          "autoClose": "Milliseconds until it closes. Standalone, the default is `0` (never closes).",
+          "duration": "Alias of `autoClose`.",
+          "showProgress": "Shows the progress bar when there is `autoClose`. With `Infinity`, the bar is indeterminate.",
+          "pauseOnHover": "Pauses the timer on hover or focus.",
+          "open": "Controlled visibility.",
+          "defaultOpen": "Uncontrolled initial visibility.",
+          "role": "Root role. By default it depends on `status`.",
+          "className": "Extra classes for the root.",
+          "classNames": "Classes per part: `root`, `icon`, `content`, `title`, `description`, `action`, `custom`, `close` and `progress`.",
+          "ref": "Root ref.",
+          "onClose": "Called when it closes, by the button or on timer.",
+          "onOpenChange": "Called when visibility changes."
+        }
+      }
+    }
+  }
+}

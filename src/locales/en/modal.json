@@ -1,0 +1,346 @@
+{
+  "header": {
+    "title": "Modal",
+    "description": "Dialog window that appears over the page with a dimmed backdrop. While open, the rest of the page cannot be used: focus stays inside the modal until it closes. By default it closes with Escape, a backdrop click or the × button. Use it to confirm actions, fill short forms or show information that needs attention. For long or non-blocking content, a `Drawer` or a separate page works better."
+  },
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "done": "Done",
+    "closeLabel": "Close"
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Adjust the props and open the modal to see the result. If you turn off `closeOnBackdrop`, `closeOnEscape` and `showClose` together, it only closes from the footer button.",
+    "texts": {
+      "open": "Open modal",
+      "title": "Order details",
+      "subtitle": "Order #1042",
+      "body": "The order is being prepared and will ship within the next 24 hours."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Basic usage",
+      "description": "Control the modal with `open` and `onOpenChange`. `title` and `subtitle` build the header, `children` the body and `footer` the footer with the actions. Pass a translated `closeLabel` in other languages: the × button is announced as \"Close\" by default.",
+      "texts": {
+        "open": "Discard draft",
+        "title": "Discard draft",
+        "subtitle": "This action cannot be undone",
+        "body": "The current draft will be deleted. You can start a new one anytime.",
+        "keep": "Keep editing",
+        "discard": "Discard"
+      }
+    },
+    "sizes": {
+      "title": "Sizes",
+      "description": "`size` sets the width and padding: `sm` (22rem), `md` (28rem, default), `lg` (36rem), `xl` (44rem) and `full`, which fills the viewport minus a margin. On small screens it never exceeds the available width.",
+      "texts": {
+        "title": "Size",
+        "body": "The width comes from the --gem-modal-width variable, which each size redefines."
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "`radius` uses the radius tokens (`sm`, `md`, `lg`). `rounded` rounds more: `true` uses `--gem-radius-2xl`, a number is a percentage and a string is any CSS value. `bordered` and `shadow` control the border and shadow.",
+      "texts": {
+        "title": "Appearance",
+        "body": "Each button opens the modal with a different combination of visual props."
+      }
+    },
+    "compound": {
+      "title": "Compound sections",
+      "description": "When every child is `Modal.Header`, `Modal.Body` or `Modal.Footer`, the modal uses them as-is instead of building the sections from props. Useful when the body needs its own classes or more structure. The × button is still added to the header. In this mode the modal does not take its name from the title on its own: connect them with `headingId` and `aria-labelledby`.",
+      "texts": {
+        "open": "Workspace settings",
+        "title": "Workspace settings",
+        "subtitle": "Personal plan",
+        "badge": "Beta",
+        "body": "Compound sections keep the markup explicit when the body is more than a paragraph.",
+        "hint": "Modal.Body accepts className and any div attribute."
+      }
+    },
+    "form": {
+      "title": "Form",
+      "description": "On open, focus goes to the first focusable element that is not the ×, here the email field. The submit button lives in the footer, outside the `<form>`, and connects through the `form` attribute.",
+      "texts": {
+        "open": "Invite member",
+        "title": "Invite member",
+        "subtitle": "They will receive an email with access",
+        "email": "Email",
+        "emailPlaceholder": "name@company.com",
+        "role": "Role",
+        "rolePlaceholder": "Editor",
+        "submit": "Send invite",
+        "sent": "Invite sent"
+      }
+    },
+    "scrollable": {
+      "title": "Long content",
+      "description": "The modal has a max height (90% of the viewport, up to 44rem). When content does not fit, only the body scrolls: the header and footer stay put.",
+      "texts": {
+        "open": "See release notes",
+        "title": "Release notes",
+        "subtitle": "Header and footer stay put",
+        "paragraph": "The body scrolls while the header and footer stay visible, so the actions are always at hand."
+      }
+    },
+    "persistent": {
+      "title": "No automatic dismiss",
+      "description": "With `closeOnBackdrop={false}`, `closeOnEscape={false}` and `showClose={false}` the modal only closes from a footer action. Use it carefully, for decisions that cannot be left halfway.",
+      "texts": {
+        "open": "Transfer ownership",
+        "title": "Transfer ownership",
+        "subtitle": "This action cannot be undone",
+        "body": "The new owner receives billing, members and workspace settings immediately.",
+        "confirm": "Transfer"
+      }
+    },
+    "initialFocus": {
+      "title": "Initial focus",
+      "description": "`initialFocusRef` picks which element gets focus on open. In destructive confirmations, focus the safe option (Cancel) instead of the first control, so a hasty Enter deletes nothing.",
+      "texts": {
+        "open": "Delete file",
+        "title": "Delete file",
+        "subtitle": "annual-report.pdf",
+        "body": "The file moves to the trash and is permanently deleted in 30 days.",
+        "dontAsk": "Don't ask again",
+        "confirm": "Delete"
+      }
+    },
+    "draggable": {
+      "title": "Draggable",
+      "description": "With `draggable` the modal moves by dragging its header. Buttons, links and fields in the header keep working. The modal stays inside the viewport and returns to the center each time it opens.",
+      "texts": {
+        "open": "Open notes",
+        "title": "Notes",
+        "subtitle": "Drag the header to move it",
+        "body": "Useful when the modal covers page information you need to check."
+      }
+    },
+    "nestedContent": {
+      "title": "Components inside",
+      "description": "Components with floating menus, like `Select` and `DatePicker`, work inside the modal and their menus show on top. `Tabs` helps organize long forms without growing the modal.",
+      "texts": {
+        "open": "Set up project",
+        "title": "Project setup",
+        "subtitle": "Nested components",
+        "tabsLabel": "Project sections",
+        "tabs": {
+          "details": "Details",
+          "schedule": "Dates"
+        },
+        "intro": "Open the select or the calendar: the menu appears above the modal.",
+        "region": "Region",
+        "regionPlaceholder": "Choose a region",
+        "regions": {
+          "north": "North",
+          "south": "South",
+          "east": "East",
+          "west": "West"
+        },
+        "startDate": "Start date",
+        "datePlaceholder": "Pick a date",
+        "notify": "Notify watchers"
+      }
+    },
+    "nested": {
+      "title": "Modal over modal",
+      "description": "A modal can open another. The second stacks on top and Escape or a backdrop click close the top one first. If you close the bottom one, close the top one too.",
+      "texts": {
+        "open": "Edit project",
+        "outerTitle": "Edit project",
+        "outerSubtitle": "Main modal",
+        "outerBody": "Destructive actions can open a second confirmation modal. The first one stays mounted until the second closes.",
+        "deleteProject": "Delete project",
+        "innerTitle": "Delete project",
+        "innerSubtitle": "This action cannot be undone",
+        "innerBody": "Members lose access immediately.",
+        "keep": "Keep project",
+        "confirm": "Delete"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "open": "Open Tailwind modal",
+      "title": "Welcome",
+      "subtitle": "Borderless with a blurred backdrop",
+      "body": "classNames adds classes to each part. With Tailwind's backdrop: variant you can also style the backdrop."
+    },
+    "cva": {
+      "title": "Modal with variants",
+      "body": "The wrapper applies the cva variants to className and passes the rest of the props through."
+    },
+    "css": {
+      "open": "Open custom modal",
+      "title": "Branded modal",
+      "subtitle": "Tokens redefined in a class",
+      "body": "The class changes the width with --gem-modal-width and redefines the color and radius tokens only inside this modal."
+    }
+  },
+  "apiLink": "See the full Modal API",
+  "api": {
+    "header": {
+      "title": "Modal API",
+      "description": "API reference for the Modal React component: props, sections, CSS classes, CSS variables, tokens and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "For examples and usage details, visit the component demos page.",
+      "link": "Modal"
+    },
+    "import": {
+      "title": "Import",
+      "description": "You can import it from the main entry or from its subpath. The sections are available as `Modal.Header`, `Modal.Body` and `Modal.Footer`, and as standalone exports."
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the HTML attributes of a <code>&lt;dialog&gt;</code> (<code>DialogHTMLAttributes&lt;HTMLDialogElement&gt;</code>, except <code>title</code> and <code>open</code>) and passes them to the element, like <code>ref</code>. <code>classNames</code> adds classes to each part: <code>root</code>, <code>header</code>, <code>title</code>, <code>subtitle</code>, <code>extra</code>, <code>body</code>, <code>footer</code> and <code>close</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "dialog": "It is a native <code>&lt;dialog&gt;</code> opened with <code>showModal()</code>: the browser puts it in the top layer and makes the rest of the page inert. It has <code>aria-modal=\"true\"</code>.",
+      "name": "With <code>title</code>, the modal takes its name from the title (<code>aria-labelledby</code>). With compound sections, connect the <code>Modal.Header</code> <code>headingId</code> to <code>aria-labelledby</code>. Without a title, pass <code>aria-label</code>.",
+      "focus": "On open, focus goes to <code>initialFocusRef</code> or, if missing, to the first focusable element that is not the × button.",
+      "trap": "Tab and Shift+Tab cycle only through the modal elements.",
+      "restore": "On close, focus returns to the element that had it before opening, usually the button that opened the modal.",
+      "dismiss": "Escape closes the modal (unless <code>closeOnEscape={false}</code>). With nested modals, it closes only the top one.",
+      "scroll": "While open, it locks page scroll with <code>overflow: hidden</code> on <code>&lt;body&gt;</code>.",
+      "labels": "The × button is named <code>\"Close\"</code> by default. Pass a translated <code>closeLabel</code> in other languages."
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "description": "Classes you can use to override styles.",
+      "columns": {
+        "name": "Class",
+        "rule": "Rule",
+        "description": "Description"
+      },
+      "rules": {
+        "root": "`<dialog>` element. Receives `className` and `classNames.root`.",
+        "size": "Width (`--gem-modal-width`) and section padding.",
+        "shadow": "Shadow based on `shadow`.",
+        "bordered": "1.5px border with `--gem-color-border`.",
+        "borderless": "Transparent border with `bordered={false}`.",
+        "radius": "Radius based on `radius` when there is no `rounded`.",
+        "rounded": "`--gem-radius-2xl` radius with `rounded={true}`.",
+        "roundedCustom": "Custom radius from `--gem-modal-radius` when `rounded` is a number or a string.",
+        "draggable": "Applied with `draggable`. Changes the header cursor.",
+        "dragging": "Applied while dragging.",
+        "backdrop": "Dimmed backdrop behind the modal.",
+        "header": "Header. Receives `classNames.header`.",
+        "headerSolo": "Header without subtitle. It has no styles of its own; it is a hook.",
+        "heading": "Wrapper for the title and subtitle.",
+        "title": "Title (`<h2>`). Receives `classNames.title`.",
+        "subtitle": "Subtitle. Receives `classNames.subtitle`.",
+        "extra": "Wrapper for `extra` and the × button.",
+        "close": "× button. Receives `classNames.close`.",
+        "body": "Body with its own scroll. Receives `classNames.body`.",
+        "footer": "Footer with the actions, aligned to the end. Receives `classNames.footer`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Modal has few variables of its own; the other colors and radii come from gem-system tokens, which you can redefine in a class (see Style changes). `--gem-modal-width` is set by the size classes, so use a selector like `.gem-modal.my-class` to change it.",
+      "columns": {
+        "name": "Variable",
+        "description": "Description"
+      },
+      "items": {
+        "--gem-modal-width": "Max modal width. It never exceeds the viewport width minus 2rem. Does not apply with `size=\"full\"`.",
+        "--gem-modal-radius": "Radius when `rounded` is a number or a string. Written inline from that prop."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "gem-system tokens used by Modal.",
+      "columns": {
+        "name": "Token",
+        "description": "Usage in Modal"
+      },
+      "items": {
+        "--gem-color-bg": "Modal background.",
+        "--gem-color-bg-subtle": "× button background on hover.",
+        "--gem-color-border": "Modal border and header and footer separators.",
+        "--gem-color-fg": "Title and body color.",
+        "--gem-color-fg-muted": "Subtitle and × button color.",
+        "--gem-palette-neutral-*": "Dark theme colors.",
+        "--gem-radius-sm": "Radius with `radius=\"sm\"` and of the × button.",
+        "--gem-radius-md": "Default radius.",
+        "--gem-radius-lg": "Radius with `radius=\"lg\"`.",
+        "--gem-radius-2xl": "Radius with `rounded`.",
+        "--gem-shadow-*": "Shadow based on `shadow` (`none` to `xl`).",
+        "--gem-shadow-focus": "Focus ring of the modal and the × button.",
+        "--gem-space-2": "Gap between footer and header actions.",
+        "--gem-space-3": "Gap between the title and `extra`.",
+        "--gem-font-sans": "Font."
+      }
+    },
+    "types": {
+      "title": "Exported types",
+      "description": "Available from @gem-org/gem-system to type your own wrappers."
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Props of the Modal and its sections.",
+    "columns": {
+      "name": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description"
+    },
+    "groups": {
+      "modal": {
+        "title": "Modal",
+        "description": "It also accepts the HTML attributes of a `<dialog>`.",
+        "items": {
+          "open": "Controlled open state.",
+          "defaultOpen": "Initial open state when uncontrolled.",
+          "title": "Header title. Also the accessible name.",
+          "subtitle": "Secondary text under the title.",
+          "extra": "Content at the end of the header, before the × button.",
+          "header": "Free content inside the header. Combines with `title`, `subtitle` and `extra`.",
+          "footer": "Footer content, usually buttons.",
+          "children": "Modal body, or `Modal.Header`, `Modal.Body` and `Modal.Footer` sections.",
+          "size": "Width and padding.",
+          "bordered": "Draws a 1.5px border.",
+          "shadow": "Shadow.",
+          "radius": "Radius from gem-system tokens, when there is no `rounded`.",
+          "rounded": "Extra radius: `true` uses `--gem-radius-2xl`, a number is a percentage and a string is a CSS value.",
+          "closeOnBackdrop": "Closes on backdrop click.",
+          "closeOnEscape": "Closes with Escape.",
+          "showClose": "Shows the × button in the header.",
+          "closeLabel": "Accessible name of the × button.",
+          "draggable": "Lets the modal move by dragging the header.",
+          "initialFocusRef": "Element that gets focus on open.",
+          "container": "Element where the modal mounts (portal).",
+          "className": "Extra classes for the `<dialog>`.",
+          "classNames": "Classes per part: `root`, `header`, `title`, `subtitle`, `extra`, `body`, `footer` and `close`.",
+          "ref": "Ref to the `<dialog>`.",
+          "onOpenChange": "Runs when the modal asks to open or close (Escape, backdrop, × button)."
+        }
+      },
+      "header": {
+        "title": "Modal.Header",
+        "description": "Header for compound sections. It also accepts the HTML attributes of a `<header>`.",
+        "items": {
+          "title": "Title (`<h2>`).",
+          "subtitle": "Secondary text under the title.",
+          "extra": "Content at the end of the header.",
+          "close": "Custom close control. The modal adds its × button after it.",
+          "headingId": "Title `id`, for `aria-labelledby`.",
+          "titleClassName": "Extra classes for the title.",
+          "subtitleClassName": "Extra classes for the subtitle.",
+          "children": "Free content between the title and `extra`."
+        }
+      },
+      "sections": {
+        "title": "Modal.Body and Modal.Footer",
+        "description": "They have no props of their own: they accept the HTML attributes of a `<div>` and a `<footer>`, including `className` and `children`."
+      }
+    }
+  }
+}

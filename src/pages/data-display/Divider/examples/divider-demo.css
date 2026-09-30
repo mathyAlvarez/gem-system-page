@@ -1,0 +1,49 @@
+.divider-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-5);
+  width: min(28rem, 100%);
+  min-width: 0;
+}
+
+.divider-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  min-width: 0;
+}
+
+.divider-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--gem-space-3);
+  min-width: 0;
+  min-height: 2.5rem;
+}
+
+.divider-caption {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.divider-copy {
+  margin: 0;
+  color: var(--gem-color-fg);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.divider-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  min-width: 0;
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+}
