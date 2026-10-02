@@ -7,7 +7,8 @@ import { LanguageSelect, ThemeToggle, VersionSelect } from "../components/Navbar
 import { ScrollToTopFab } from "../components/ScrollToTopFab.tsx";
 import { TableOfContents } from "../components/TableOfContents.tsx";
 import { MiddleDot } from "../components/ThemeIcons.tsx";
-import { docsRouteGroups, navigation, type NavEntry, type NavLeaf } from "../data/navigation.ts";
+import { API_NAV_ID, docsRouteGroups, navigation, type NavEntry, type NavLeaf } from "../data/navigation.ts";
+import { implementedRoutes } from "../data/routes.ts";
 import "./AppNavbar.scss";
 import "./DocsLayout.scss";
 
@@ -59,6 +60,7 @@ export function DocsLayout() {
   const isOverlay = useSidebarOverlay();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
   const hasToc = docsRouteGroups.some(({ base }) => location.pathname.startsWith(`/${base}/`));
 
   useEffect(() => {
@@ -74,6 +76,28 @@ export function DocsLayout() {
     return () => cancelAnimationFrame(frame);
   }, [location.pathname, location.hash]);
 
+  // Sidebar groups are uncontrolled, so a collapsed group is opened through its own disclosure button.
+  useEffect(() => {
+    if (isOverlay && !sidebarOpen) return;
+    let cancelled = false;
+    let frame = requestAnimationFrame(() => {
+      const current = bodyRef.current?.querySelector<HTMLElement>('.gem-sidebar__item[aria-current="page"]');
+      if (!current) return;
+      const panel = current.closest<HTMLElement>(".gem-sidebar__panel");
+      const control = panel?.parentElement?.querySelector<HTMLButtonElement>(":scope > .gem-sidebar__control");
+      if (control?.getAttribute("aria-expanded") === "false") control.click();
+      // The nested list animates its height, so the target position is only final once that settles.
+      frame = requestAnimationFrame(async () => {
+        await Promise.allSettled((panel?.getAnimations({ subtree: true }) ?? []).map((a) => a.finished));
+        if (!cancelled) current.scrollIntoView({ block: "center" });
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+    };
+  }, [location.pathname, isOverlay, sidebarOpen]);
+
   const sidebarItems = useMemo<SidebarItem[]>(() => {
     const labelOf = (entry: NavEntry) =>
       entry.labelKey ? t(`nav.${entry.labelKey}`) : entry.label;
@@ -84,22 +108,24 @@ export function DocsLayout() {
         id: item.id,
         label: labelOf(item),
         icon: <Icon size="sm" />,
-        current: location.pathname === item.to || location.pathname === `${item.to}/api`,
+        current: location.pathname === item.to,
         onClick: () => navigate(item.to),
       };
     };
 
-    return navigation.map((entry) =>
-      "items" in entry
-        ? {
-            id: entry.id,
-            label: labelOf(entry),
-            icon: <ChevronRight size="sm" />,
-            defaultOpen: true,
-            items: entry.items.map((item) => toLeaf(item, true)),
-          }
-        : toLeaf(entry, false),
-    );
+    return navigation.map((entry) => {
+      if (!("items" in entry)) return toLeaf(entry, false);
+      const items = entry.items
+        .filter((item) => entry.id !== API_NAV_ID || implementedRoutes.has(item.to.slice(1).replace(/\/api$/, "")))
+        .map((item) => toLeaf(item, true));
+      return {
+        id: entry.id,
+        label: labelOf(entry),
+        icon: <ChevronRight size="sm" />,
+        defaultOpen: items.some((item) => item.current),
+        items,
+      };
+    });
   }, [location.pathname, navigate, t]);
 
   return (
@@ -138,7 +164,7 @@ export function DocsLayout() {
           </div>
         }
       />
-      <div className="docs-body">
+      <div ref={bodyRef} className="docs-body">
         <Sidebar
           items={sidebarItems}
           position="static"

@@ -35,7 +35,8 @@
     "layout": "Layout",
     "navigation": "Navigation and structure",
     "feedback": "Feedback",
-    "dataDisplay": "Data display"
+    "dataDisplay": "Data display",
+    "componentsApi": "Components API"
   },
   "version": {
     "label": "Version"

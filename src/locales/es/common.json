@@ -35,7 +35,8 @@
     "layout": "Layout",
     "navigation": "Navegación y estructura",
     "feedback": "Feedback",
-    "dataDisplay": "Visualización de datos"
+    "dataDisplay": "Visualización de datos",
+    "componentsApi": "API de componentes"
   },
   "version": {
     "label": "Versión"

@@ -128,6 +128,18 @@ const toNavItems = (base: string, routes: ComponentRoute[]): NavLeaf[] =>
     to: `/${base}/${route.path}`,
   }));
 
+export const API_NAV_ID = "components-api";
+
+const apiNavItems: NavLeaf[] = docsRouteGroups
+  .flatMap(({ base, routes }) =>
+    routes.map((route) => ({
+      id: `api-${base}-${route.path}`,
+      label: route.component ?? route.label,
+      to: `/${base}/${route.path}/api`,
+    })),
+  )
+  .sort((a, b) => a.label.localeCompare(b.label, "en"));
+
 export const navigation: NavEntry[] = [
   { id: "getting-started", labelKey: "gettingStarted", to: "/getting-started", icon: Home },
   {
@@ -180,5 +192,10 @@ export const navigation: NavEntry[] = [
     id: "data-display",
     labelKey: "dataDisplay",
     items: toNavItems("data-display", dataDisplayRoutes),
+  },
+  {
+    id: API_NAV_ID,
+    labelKey: "componentsApi",
+    items: apiNavItems,
   },
 ];

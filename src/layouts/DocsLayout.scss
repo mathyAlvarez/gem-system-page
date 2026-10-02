@@ -50,9 +50,18 @@ $docs-toc-hidden: 1199.98px;
     transition: transform var(--gemst-duration-normal) var(--gemst-easing-emphasized);
   }
 
+  .gem-sidebar__list--nested .gem-sidebar__icon svg {
+    transition: transform var(--gemst-duration-normal) var(--gemst-easing-emphasized);
+  }
+
+  .gem-sidebar__list--nested .gem-sidebar__item[aria-current="page"] .gem-sidebar__icon svg {
+    transform: scale(2);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .gem-sidebar__list--nested,
-    .gem-sidebar__chevron {
+    .gem-sidebar__chevron,
+    .gem-sidebar__list--nested .gem-sidebar__icon svg {
       transition: none;
     }
   }

@@ -26,3 +26,12 @@ code,
 pre {
   font-family: var(--gem-font-mono);
 }
+
+/*
+ * gemffects declares the BorderBeam ring mask as `mask` + `mask-composite` + `-webkit-mask` longhands.
+ * The production CSS minifier reorders them so the shorthands reset the composite and the whole
+ * gradient shows. Keeping `exclude` inside the shorthand survives minification.
+ */
+.gemfx-border-beam .gemfx-border-beam__ring {
+  mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0);
+}
