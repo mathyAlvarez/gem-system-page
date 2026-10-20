@@ -16,13 +16,13 @@ const packages = [
     id: "effects",
     name: "@gem-org/gemffects",
     title: "Gemffects",
-    detailTo: "https://www.npmjs.com/package/@gem-org/gemffects",
+    detailTo: import.meta.env.VITE_GEMFFECTS_PAGE,
   },
   {
     id: "motions",
     name: "@gem-org/gemsitions",
     title: "Gemsitions",
-    detailTo: "https://www.npmjs.com/package/@gem-org/gemsitions",
+    detailTo: import.meta.env.VITE_GEMSITIONS_PAGE,
   },
 ] as const;
 
@@ -33,7 +33,9 @@ function DetailLink({ to, children }: { to: string; children: ReactNode }) {
     </Button>
   );
 
-  return to.startsWith("http") ? (
+  if (!to) return button;
+
+  return /^https?:\/\//.test(to) ? (
     <a href={to} target="_blank" rel="noreferrer">
       {button}
     </a>

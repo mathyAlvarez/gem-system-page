@@ -1,0 +1,610 @@
+---
+description: Blueprint completo del sitio de documentación (arquitectura, layout, navegación, primitivas, páginas de demos y API, i18n, estilos, tema y adaptación a gemffects). Base para replicar el sitio con otra librería.
+alwaysApply: true
+---
+
+# Sitio de documentación — visión general
+
+Sitio de docs para una librería React (hoy `@gem-org/gem-system`). Desde `/getting-started` todo vive
+en `DocsLayout`; la home (`MarketingLayout`) queda fuera de este blueprint.
+
+## Stack
+
+- React 19 + TypeScript + Vite 8 (`npm run dev`, puerto 5174 en este repo).
+- `react-router-dom` 7 con `BrowserRouter`.
+- `react-i18next` + `i18next-browser-languagedetector`, claves tipadas (ver sección i18n).
+- Estilos: SCSS + BEM (ver sección Estilos: SCSS + BEM) y Tailwind v4 solo para utilidades en ejemplos.
+- `class-variance-authority`, `clsx` y `tailwind-merge` (helper `cn` en `src/lib/cn.ts`) para los ejemplos de estilos.
+- `@monaco-editor/react` para mostrar código (solo lectura).
+- La UI del sitio se arma con los componentes del propio design system (`Navbar`, `Sidebar`, `Tabs`,
+  `Select`, `Typography`, `CopyToClipboard`, `Indicator`…). En un sitio de gemffects, usar
+  gem-system para la UI y gemffects solo para lo que se documenta.
+
+## Carpetas
+
+```
+src/
+  main.tsx                 # orden de CSS + i18n + tema
+  App.tsx                  # rutas a partir de data/
+  theme.ts                 # persistencia del tema
+  data/navigation.ts       # menú lateral y grupos de rutas
+  data/routes.ts           # página (y API) por ruta
+  data/versions.ts         # selector de versión
+  layouts/DocsLayout.tsx   # navbar + sidebar + contenido + TOC
+  components/              # primitivas de docs (DocsPrimitives, ApiTable, CodeViewer…)
+  lib/                     # cn, codeFiles, sortProps
+  hooks/useGemTheme.ts
+  locales/{es,en}/*.json   # un JSON por página o componente
+  locales/index.ts         # resources + init de i18n
+  styles/docs.scss         # estilos compartidos de docs
+  styles/tailwind.css
+  pages/
+    GettingStartedPage.tsx
+    override-styles/…      # guías estáticas
+    foundations/<tema>/…   # tokens, tipografía, íconos…
+    <categoria>/<Componente>/
+      <Componente>Page.tsx
+      <Componente>ApiPage.tsx
+      <Componente>Playground.tsx
+      <Componente>Page.scss
+      <componente>Docs.ts
+      examples/*.tsx|*.css
+```
+
+## Bootstrap (`main.tsx`)
+
+El orden importa: CSS de la librería, luego estilos propios, luego Tailwind.
+
+```tsx
+import "@gem-org/gem-system/styles.css";
+import "@gem-org/gemffects/styles.css";
+import "./index.css";
+import "./styles/docs.scss";
+import "./styles/tailwind.css";
+import "./locales/index.ts";
+import "./theme.ts";
+```
+
+## Agregar una página de componente (checklist)
+
+1. Ruta en `data/navigation.ts` (grupo de la categoría). Sin página, se ve un placeholder.
+2. Carpeta `pages/<categoria>/<Componente>/` con demo, API, playground, docs, SCSS y `examples/`.
+3. `locales/es/<componente>.json` y `locales/en/<componente>.json`, registrados en `locales/index.ts`.
+4. Entrada en `componentPages` de `data/routes.ts` (crea `/<ruta>` y `/<ruta>/api`).
+5. `npx tsc -p tsconfig.app.json --noEmit` y revisar en el navegador (claro y oscuro, es y en).
+
+Antes de documentar, leer el código fuente del componente (props, CSS, a11y). La documentación
+describe el comportamiento real, incluidas sus limitaciones.
+
+Secciones de este documento: Shell · Navegación y rutas · Primitivas · Página de demos ·
+Página de API · i18n · Estilos SCSS + BEM · Estilos y tema · Páginas estáticas · Adaptar a gemffects.
+
+---
+
+# Shell de documentación (`DocsLayout`)
+
+```
+.docs-shell (100dvh, overflow hidden)
+├─ Navbar.docs-navbar      brand (logo + nombre) · VersionSelect · LanguageSelect · ThemeToggle
+└─ .docs-body (flex)
+   ├─ Sidebar              items generados de data/navigation.ts
+   └─ main.docs-content    (único scroll de la página; position: relative)
+      ├─ .docs-content__grid  [página 56rem | TOC 13rem]   solo en rutas de componentes
+      └─ ScrollToTopFab
+```
+
+## Navbar
+
+- `<Navbar position="static" bordered shadow="sm" collapseBreakpoint="md" isOpen>`; `brand` con
+  `<Link to="/">` y, en mobile, un botón que abre el Sidebar (`aria-expanded`).
+- Controles en `NavbarControls.tsx`: `Select` de versión (`data/versions.ts`, cambia de origen
+  conservando el path), `Select` de idioma (`i18n.changeLanguage`) y `Button` de tema (`toggleTheme`).
+- `AppNavbar.scss` fuerza una sola fila en mobile: el menú real es el Sidebar.
+
+## Sidebar
+
+- Items desde `navigation`: grupos con `ChevronRight`, hojas anidadas con el ícono `MiddleDot`
+  (`createIcon`), hojas de primer nivel con su ícono.
+- `current: location.pathname === item.to` (exacto, así la página de API marca solo su entrada).
+- Grupo abierto al cargar solo si contiene la página actual (`defaultOpen: items.some(i => i.current)`).
+- Al navegar: si el grupo del ítem actual está cerrado, se hace clic en su `.gem-sidebar__control`
+  (el Sidebar no tiene apertura controlada), se espera a que terminen las animaciones del panel
+  (`panel.getAnimations({ subtree: true })`) y se llama a `scrollIntoView({ block: "center" })`.
+- Grupo "API de componentes": todas las rutas ordenadas con `localeCompare`, filtradas por
+  `implementedRoutes`.
+- Ajustes en `DocsLayout.scss`: se oculta `.gem-sidebar__menu`, se anima la apertura con
+  `interpolate-size` + `@starting-style`, el punto del ítem actual escala a 2x y todo respeta
+  `prefers-reduced-motion`.
+- En mobile (`max-width: 767.98px`) el Sidebar es overlay; se cierra al cambiar de ruta.
+
+## Contenido
+
+- El scroll vive en `<main>`: al cambiar de ruta se resetea a mano (o se va al `#hash`), y se repite
+  un frame después porque `Tabs` hace scroll al montar.
+- `.docs-content` lleva `position: relative`: si no, los captions ocultos con `position: absolute`
+  de algunos componentes estiran el shell y queda un espacio gigante al final.
+- `TableOfContents` lee los `section.docs-section[id]` de primer nivel y los `--sub` directos, marca
+  el activo según el scroll del contenedor y usa `aria-current="location"`. Se oculta debajo de 1200px.
+- `ScrollToTopFab` usa un rail sticky de altura 0 junto a la columna de contenido.
+
+---
+
+# Navegación y rutas
+
+Una sola fuente de verdad: `data/navigation.ts` define qué existe; `data/routes.ts` define qué
+página renderiza cada ruta.
+
+## `navigation.ts`
+
+```ts
+export type ComponentRoute = { path: string; label: string; component?: string };
+
+export const dataDisplayRoutes: ComponentRoute[] = [
+  { path: "timeline", label: "Timeline" },
+  { path: "tree-view", label: "Tree View", component: "TreeView" }, // component = nombre exportado
+];
+
+export const docsRouteGroups = [
+  { base: "components", routes: componentRoutes },
+  { base: "data-display", routes: dataDisplayRoutes },
+] as const;
+
+export const navigation: NavEntry[] = [
+  { id: "getting-started", labelKey: "gettingStarted", to: "/getting-started", icon: Home },
+  { id: "foundations-docs", labelKey: "foundations", items: [/* hojas con labelKey */] },
+  { id: "data-display", labelKey: "dataDisplay", items: toNavItems("data-display", dataDisplayRoutes) },
+  { id: API_NAV_ID, labelKey: "componentsApi", items: apiNavItems }, // ordenado alfabéticamente
+];
+```
+
+- `labelKey` se traduce desde `common.nav` (tipado con `keyof (typeof commonEs)["nav"]`); `label`
+  se muestra tal cual (nombres de componentes, sin traducir).
+- Las rutas usan kebab-case: `/<base>/<path>` y `/<base>/<path>/api`.
+
+## `routes.ts`
+
+```ts
+export const docsPages: PageRoute[] = [
+  { path: "getting-started", Page: GettingStartedPage },
+  { path: "foundations/tokens", Page: TokensPage },
+];
+
+export const componentPages: ComponentPageRoute[] = [
+  { path: "data-display/tree-view", Page: TreeViewPage, ApiPage: TreeViewApiPage },
+];
+
+export const implementedRoutes = new Set(componentPages.map(({ path }) => path));
+```
+
+## `App.tsx`
+
+- `docsPages` → `<Route path element>`.
+- `componentPages` → dos rutas por entrada (`path` y `path/api`).
+- Rutas de `docsRouteGroups` que no están en `implementedRoutes` → `PlaceholderPage` con el import
+  sugerido. Así el menú puede listar componentes antes de documentarlos.
+- `*` redirige a `/`. `<Toaster />` montado una vez fuera de las rutas.
+
+---
+
+# Primitivas de docs (`src/components/`)
+
+Toda página es `<div className="docs-page">` (columna de 56rem con gap 8) armada con estas piezas.
+No crear headers, secciones ni bloques de código a mano.
+
+## Header
+
+```tsx
+<DocsPageHeader
+  title={t("header.title")}
+  description={t("header.description")}          // string (se pasa por propText) o ReactNode
+  importPath='import { TreeView } from "@gem-org/gem-system"'  // opcional → CodeBlock "Import"
+/>
+```
+
+Renderiza `Typography h1` + descripción en `.docs-page__meta` + import, con borde inferior.
+Para un link en la descripción, pasar un `<Trans>` como ReactNode.
+
+## Secciones
+
+```tsx
+<DocsSection title={t("props.title")} description={t("props.description")}>
+  <DocsSection sub title="…">…</DocsSection>   // h4, entra en el TOC con sangría
+</DocsSection>
+```
+
+- `id` = `slugify(title)` (sin acentos, kebab-case) salvo que pases `id`. El TOC usa esos ids.
+- `h3` en primer nivel y `h4` con `sub`. La descripción pasa por `propText`.
+
+## Código
+
+- `CodeBlock code label language` → bloque con header (label + `CopyToClipboard`) y `CodeViewer`.
+- `DemoBlock code label stack overflow` → preview sobre una grilla + código debajo.
+  `stack` apila en columna; `overflow` deja escapar popovers del preview.
+- `CodeViewer`: Monaco en solo lectura, tema generado de los tokens (`--gem-color-bg-subtle`),
+  sin diagnósticos (los fragmentos no compilan solos), altura según el contenido y un `Indicator`
+  con el lenguaje. Lenguajes: `typescript | javascript | html | css | shell | json`.
+- Pestañas multiarchivo (`lib/codeFiles.ts`): si `code` es el `?raw` de un archivo dentro de
+  `src/pages/**/examples/`, se siguen sus imports relativos (`./demo.tsx`, `./x-demo.css`) y cada
+  archivo aparece como pestaña. Por eso los ejemplos importan sus helpers con ruta relativa y extensión.
+
+## Tablas y textos
+
+- `ApiTable columns rows` → tabla con `th scope="col"` y la primera celda como `th scope="row"`.
+  Clases de celda: `docs-api-table__name` (acento), `__code`, `__muted`.
+- `propText(text)` convierte los segmentos entre backticks en `<strong className="docs-prop">`.
+  Las traducciones marcan props y valores así: "`size` acepta `sm`, `md` o `lg`".
+- `sortProps.eventsLast(props)` manda los `onX` al final de una tabla.
+
+## Secciones fijas de las páginas de componente
+
+```tsx
+<StyleChangesSection tailwind={…} cva={…} cssVariables={…} />   // + link a /override-styles
+<ApiLinkSection component="TreeView" to="/data-display/tree-view/api" linkLabel={t("apiLink")} />
+```
+
+---
+
+# Página de demos
+
+Orden fijo: `DocsPageHeader` → Playground → ejemplos (uno por `DocsSection`) →
+`StyleChangesSection` → `ApiLinkSection`.
+
+## Ejemplos (`examples/`)
+
+Cada ejemplo es un componente real en su archivo; la página lo renderiza y muestra su `?raw`.
+Lo que ve el usuario es exactamente lo que corre.
+
+```tsx
+import { BaseTreeView } from "./examples/BaseTreeView.tsx";
+import baseCode from "./examples/BaseTreeView.tsx?raw";
+
+type StoryId = "base" | "lines" | "multiple";             // = claves de stories.* en el JSON
+type Story = { id: StoryId; file: string; code: string; preview: ReactNode };
+
+const story = { returnObjects: true } as const;
+const stories: Story[] = [
+  { id: "base", file: "BaseTreeView.tsx", code: baseCode,
+    preview: <BaseTreeView listLabel={listLabel} {...t("stories.base.texts", story)} /> },
+];
+
+{stories.map((item) => (
+  <DocsSection key={item.id} title={t(`stories.${item.id}.title`)} description={t(`stories.${item.id}.description`)}>
+    <DemoBlock code={item.code} label={item.file}>{item.preview}</DemoBlock>
+  </DocsSection>
+))}
+```
+
+- Nombres: `<Variante><Componente>.tsx` (`BaseTimeline`, `CollapseTransition`).
+- Los textos visibles llegan por props (traducidos en la página); el ejemplo no usa i18n, así el
+  código copiado queda autocontenido.
+- Datos y tipos compartidos en `examples/demo.ts(x)`; estilos de los ejemplos en
+  `examples/<componente>-demo.css` (CSS plano, no SCSS: el usuario lo copia). Clases `<componente>-demo__*`.
+- Cada ejemplo muestra una idea, con un caso realista (archivos, pedidos, equipos), y es accesible:
+  nombres accesibles, `aria-live` para estados que cambian, sin elementos interactivos anidados.
+- Ejemplos de estilos: `Tailwind<C>.tsx` (utilidades y variables vía `[--var:valor]`),
+  `Variant<C>.tsx` (wrapper con `cva` + `cn`, que exporta el componente envuelto),
+  `Styled<C>.tsx` + `<componente>-overrides.css` (variables y clases con `.gem-x.custom-class`).
+
+## Playground (`<C>Playground.tsx` + `<C>Page.scss`)
+
+```tsx
+const booleanOptions = ["true", "false"] as const;
+const pick = (setter: (v: string) => void) => (value: SelectValue) => {
+  if (typeof value === "string") setter(value);
+};
+
+const attrs = [
+  size !== "md" && `size="${size}"`,     // solo lo que difiere del default
+  showLines === "true" && "showLines",
+].filter(Boolean);
+const code = `import { TreeView } from "@gem-org/gem-system";\n\n<TreeView\n  ${attrs.join("\n  ")}\n/>`;
+```
+
+- Grilla `.x-playground` (1 columna, 4 desde 48rem) con un `Typography variant="label"` + `Select`
+  (`searchable={false}`, `aria-label` = nombre de la prop) por prop.
+- Debajo, un `DemoBlock` con el componente y el código generado.
+- Si una prop solo se lee al montar (`default*`), forzar el remontaje con `key`.
+- Las opciones salen de constantes `as const` en `examples/demo.ts` (`TREE_SIZES`…).
+
+---
+
+# Página de API
+
+Orden fijo: header → Demos (link) → Import → Props (subsecciones por grupo) → Herencia →
+Accesibilidad → Clases CSS → Variables CSS → Tokens (si hay) → Tipos exportados.
+
+## Datos (`<componente>Docs.ts`)
+
+Lo técnico va en TS; las descripciones van en el JSON de i18n con la misma clave.
+
+```ts
+export const treeViewSelectionProps = [
+  { name: "selectionMode", type: '"none" | "single" | "multiple"', defaultValue: '"single"' },
+  { name: "onSelect", type: "(ids: string[], node: TreeNode | null) => void", defaultValue: "—" },
+] as const;
+export const treeViewCssClasses = [{ name: ".gem-tree", rule: "root" }] as const;   // rule = clave i18n
+export const treeViewCssVariables = ["--gem-tree-fg", "--gem-tree-indent"] as const;
+export const treeViewTokens = ["--gem-color-primary-{500|600|700}"] as const;
+```
+
+Los tipos y defaults salen del `.types.d.ts` y del código fuente, nunca de memoria.
+
+## Página
+
+```tsx
+import typesSource from "../../../../node_modules/@gem-org/gem-system/dist/components/TreeView/TreeView.types.d.ts?raw";
+
+const importCode = `import { TreeView, type TreeViewProps } from "@gem-org/gem-system";
+// or
+import { TreeView } from "@gem-org/gem-system/tree-view";`;
+const rich = { code: <code /> };
+
+const groups: { id: GroupId; rows: PropRow[] }[] = [
+  { id: "selection",
+    rows: treeViewSelectionProps.map((p) => ({ ...p, id: p.name, description: t(`props.items.${p.name}`) })) },
+];
+```
+
+- Un `.map` explícito por grupo (no un loop genérico con casts): así cada clave `props.items.*`
+  queda tipada como literal y falta de traducción = error de TS.
+- `PropsTable` local con 4 columnas (Prop, Tipo, Default, Descripción) sobre `ApiTable`.
+- Demos: `Button variant="link"` con `ArrowRight` que navega a la página de demos.
+- Herencia: `<Trans i18nKey="api.inheritance.body" components={rich} shouldUnescape />`
+  (qué atributos nativos acepta y a qué elemento van).
+- Accesibilidad: lista `ul.button-api-list` con ícono `Check` por ítem, claves en un
+  `const a11yIds = [...] as const`. Hoy esas clases viven en `components/Button/ButtonPage.scss` y
+  cada API page la importa; en un proyecto nuevo, moverlas a `docs.scss` como `docs-api-list`. Contar roles/ARIA, teclado, nombres accesibles, defaults en
+  inglés, reduced motion y limitaciones reales (verificadas en el navegador).
+- Clases CSS: columnas Clase · Regla · Descripción. Variables y tokens: Nombre · Descripción.
+
+---
+
+# i18n
+
+## Estructura
+
+- Un JSON por página o componente y por idioma: `locales/es/tree-view.json`, `locales/en/tree-view.json`.
+  Mismas claves en ambos; `es` es el idioma por defecto y el que tipa.
+- `locales/index.ts` importa cada JSON y lo registra en `resources.es` / `resources.en` con el
+  namespace en camelCase (`treeView`). `common` es el namespace por defecto.
+- `locales/i18next.d.ts` declara `CustomTypeOptions` con `resources: (typeof resources)["es"]`:
+  toda clave es un literal y una clave inexistente es un error de TypeScript.
+- Detección: `localStorage` (`gem-docs-language`) → navegador → `<html lang>`. Al cambiar de idioma
+  se actualiza `document.documentElement.lang`.
+
+## Forma del JSON de un componente
+
+```json
+{
+  "header": { "title": "TreeView", "description": "…" },
+  "common": { "listLabel": "Archivos del proyecto" },
+  "playground": { "title": "Playground", "description": "…" },
+  "stories": { "base": { "title": "…", "description": "…", "texts": { "selected": "Seleccionado:" } } },
+  "styles": { "variant": { "compact": "Compacto" } },
+  "apiLink": "Ver la API completa de TreeView",
+  "api": { "header", "demos", "import", "inheritance", "a11y", "cssClasses", "cssVariables", "tokens", "types" },
+  "props": { "title", "description", "columns", "groups", "items", "node", "helpers" }
+}
+```
+
+## Reglas de uso
+
+- Claves dinámicas solo sobre uniones literales (`type StoryId = "base" | …`, arrays `as const`).
+  Nada de `as never` ni casts para silenciar el tipado.
+- `t("stories.x.texts", { returnObjects: true })` y spread en las props del ejemplo.
+- Placeholders propios con llaves simples (`"{count} seleccionados"`) reemplazados con `.replace`
+  en el ejemplo, para no acoplarlo a i18next. Las interpolaciones de i18next (`{{component}}`)
+  quedan solo en `common`.
+- Backticks para props y valores (los resalta `propText`). HTML liviano con `<code>`/`<strong>`
+  vía `<Trans components={{ code: <code /> }} shouldUnescape />`.
+
+## Tono
+
+- Español rioplatense con voseo ("Pasá", "Usá"), frases cortas, sin relleno de marketing.
+- Inglés neutro y directo. Los nombres de componentes y props no se traducen.
+- Explicar qué hace y cuándo usarlo; mencionar defaults en inglés del componente ("Tree", "Item")
+  y limitaciones reales.
+
+---
+
+# Estilos: SCSS + BEM
+
+## Archivos
+
+- Siempre `.scss` (no `.css` nuevos). Colocado junto al componente/vista: `src/pages/home/HomePage.scss`, `src/layouts/MarketingLayout.scss`.
+- Se importa desde el componente dueño: `import "./HomePage.scss";`.
+- Solo lo que se reutiliza en varias vistas va en `src/styles/*.scss` (ej. `docs.scss`), importado una vez en `main.tsx`.
+- Para ajustar componentes de Gem, anidar su clase dentro de tu bloque (`.docs-navbar { .gem-navbar__nav { ... } }`); nunca estilos globales sobre `.gem-*`.
+- Encabezado obligatorio:
+
+```scss
+/**
+ * Gem System Page — <Nombre>
+ * <Una línea describiendo el bloque>.
+ */
+```
+
+## BEM anidado
+
+- Un bloque raíz por componente, en kebab-case y con prefijo de la vista (`home-hero`, `docs-code`). El prefijo `gem-` es exclusivo del design system: no lo uses para clases propias.
+- Elementos con `&__elemento`, modificadores con `&--modificador`, estados con `&:hover`, `&:focus-visible`, `&:disabled`.
+- Modificador que afecta a un elemento: `&--sm &__trigger { ... }` / `&__item--open &__panel { ... }`.
+- Máximo un nivel de elemento: `&__panel-inner`, nunca `&__panel__inner`.
+
+## Variables y tokens
+
+- Declarar custom properties locales del bloque en la raíz (`--<bloque>-<prop>`) derivadas de tokens `--gem-*`, y consumirlas en elementos.
+- Usar solo tokens `--gem-*` (color, space, radius, font, shadow). Sin hex/rgb sueltos ni Tailwind; un fallback dentro de `var()` es aceptable.
+- Variables Sass (`$`) solo para breakpoints u otros valores de compilación.
+
+## Tema, responsive y motion (dentro del bloque)
+
+```scss
+.docs-card {
+  --docs-card-bg: var(--gem-color-bg);
+  --docs-card-border: var(--gem-color-border);
+  background: var(--docs-card-bg);
+  border: 1px solid var(--docs-card-border);
+
+  &__title { font-weight: 650; }
+  &--compact &__title { font-size: var(--gem-font-size-sm); }
+
+  [data-theme='dark'] & {
+    --docs-card-border: var(--gem-palette-neutral-500);
+  }
+
+  @media (max-width: $mobile) { padding: var(--gem-space-4); }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__title { transition: none; }
+  }
+}
+```
+
+- Dark mode: solo reasignando las custom properties con `[data-theme='dark'] &`.
+- Media queries anidadas en el bloque, no agrupadas al final del archivo.
+
+---
+
+# Estilos y tema
+
+La convención base (SCSS + BEM anidado + tokens `--gem-*`) está en la sección anterior. Excepción:
+los estilos de `examples/` van en CSS plano porque se muestran y se copian.
+
+## Dónde va cada estilo
+
+| Archivo | Contenido |
+|---|---|
+| `src/index.css` | reset mínimo (body, links, fuentes mono) y workarounds globales documentados |
+| `src/styles/docs.scss` | bloques compartidos: `docs-page`, `docs-section`, `docs-demo`, `docs-code`, `docs-api-table`, `docs-toc`, `docs-prop` |
+| `layouts/*.scss` | shell, navbar, sidebar |
+| `pages/**/<C>Page.scss` | solo el playground (`.x-playground`, `&__field`) |
+| `pages/**/examples/*.css` | estilos de los ejemplos, en CSS plano (se muestran y se copian) |
+
+## Tailwind (`styles/tailwind.css`)
+
+```css
+@layer theme, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) important;
+```
+
+Sin preflight (no resetea la librería) y con utilidades `!important`, porque el CSS de la librería no
+está en capas. Se usa solo en ejemplos y siempre combinado con `cn()` (`clsx` + `tailwind-merge`).
+Para pisar variables desde Tailwind: `[--gem-tree-indent:1.5rem]`.
+
+## Tema
+
+- La librería expone `setTheme`, `toggleTheme`, `getTheme` y `THEME_ATTRIBUTE` (`data-theme` en `<html>`).
+- `theme.ts` restaura el tema de `localStorage` (`gem-docs-theme`) y lo guarda con un
+  `MutationObserver` sobre el atributo.
+- `useGemTheme()` usa `useSyncExternalStore` sobre ese atributo; lo consumen `ThemeToggle` y Monaco.
+- Dark mode en SCSS: reasignar variables con `[data-theme="dark"] &`.
+
+## Cosas aprendidas
+
+- Las demos se miran en claro y oscuro: colores solo desde tokens (`--gem-color-*`, `--gem-palette-*`).
+- El minificador de producción (lightningcss) reordena `mask` / `mask-composite` / `-webkit-mask`.
+  Si un efecto usa máscaras compuestas, declarar la composición dentro del shorthand:
+  `mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0);`
+  (ver el override de `BorderBeam` en `index.css`). Validar efectos en `vite build` + `vite preview`,
+  no solo en dev.
+- Las clases ocultas con `position: absolute` necesitan un ancestro posicionado (`.docs-content`).
+
+---
+
+# Páginas estáticas
+
+Se registran en `docsPages` (`data/routes.ts`) y en `navigation` con `labelKey`. No tienen TOC (la
+grilla con TOC es solo para las rutas de `docsRouteGroups`) ni página de API.
+
+## Getting started (`/getting-started`)
+
+1. `DocsPageHeader` sin `importPath`.
+2. `Alert status="info"` con peer dependencies.
+3. Instalación: `CodeBlock label="npm" language="shell"`.
+4. Bootstrap: import completo (`styles.css` + componentes) y una variante parcial por componente
+   (CSS por subpath + import por subpath), con notas en una lista de `<Trans>`.
+5. Fuentes: `CodeBlock language="html"` con el `<link>` de Google Fonts.
+6. Tema: demo en vivo (`.docs-theme-demo` con botones + `Badge` del tema actual) y tres fragmentos:
+   atributo inicial en HTML, `ThemeSwitcher.tsx` y tema por contenedor.
+
+Los fragmentos que llevan texto traducido se arman como template strings dentro del componente:
+
+```tsx
+const themeHtmlCode = `<!-- ${t("code.initialTheme")} -->
+<html lang="es" data-theme="light">`;
+```
+
+## Personalizar estilos (`/override-styles`)
+
+- Resumen con recomendación (`Alert`), tres tarjetas de guía (Tailwind + `cn()`, variantes con `cva`,
+  variables CSS) y una tabla "qué necesito → qué herramienta".
+- Cada guía es su propia página con ejemplos en `DemoBlock`. La sección "Cambio estilos" de cada
+  componente enlaza acá.
+
+## Fundamentos (`/foundations/*`)
+
+- Una carpeta por tema con sus datos en TS (`radiusTokens.ts`, `shadowTokens.ts`, `iconGroups.ts`) y
+  un playground o grilla visual (`docs-swatch-grid`, `docs-icon-grid`).
+- Siempre: valor del token, ejemplo visual y snippet para copiarlo.
+
+---
+
+# Adaptar el sitio a gemffects
+
+Se replica todo (shell, primitivas, i18n, estilos, demo + API por efecto). La UI del sitio sigue
+siendo gem-system; gemffects es lo que se documenta. Cambia el contenido, no la arquitectura.
+
+## Bootstrap
+
+```tsx
+import "@gem-org/gem-system/styles.css";   // UI del sitio
+import "@gem-org/gemffects/styles.css";    // o por efecto: "@gem-org/gemffects/border-beam.css"
+```
+
+Getting started: peer deps (`react`, `react-dom`, y `@gem-org/gem-system` opcional para los tokens
+de color), import completo vs por subpath (`@gem-org/gemffects/border-beam` + su `.css`), tokens
+(`@gem-org/gemffects/tokens.css`), intensidad y reduced motion.
+
+## Navegación sugerida
+
+Agrupar los efectos de `package.json#exports` en `docsRouteGroups`, por ejemplo:
+
+- **Bordes y brillo**: border-beam, glow, gradient-border, spotlight, holo-foil.
+- **Superficie**: glassmorphism, gradient-glossy, gradient-mesh, noise.
+- **Movimiento**: float, tilt-3d, magnetic, pulse-scale, zoom, marquee, vortex.
+- **Texto**: gradient-text, scramble-text, glitch, flicker, blur-unveil.
+- **Partículas**: particles, particle-burst, particle-rain, meteors.
+- **Interacción**: ripple, flash, rip, rip-zone, unlock.
+
+Rutas `/<grupo>/<efecto>` y `/<grupo>/<efecto>/api`, más el grupo "API de efectos" alfabético.
+
+## Página de demos de un efecto
+
+- Playground con las props comunes: `trigger` (`always | hover | click`), `variant`, `intensity`
+  (`sm | md | lg` o `0`–`1`), `duration`, `delay`, `color`/`colorAlt`, `isPaused`, `isDisabled`.
+  Con efectos de un solo disparo, agregar un botón "Repetir" que remonta con `key`.
+- Ejemplos: uno por `variant`, uno por `trigger`, `asChild` sobre un componente de gem-system (Card,
+  Button), colores con tokens del host (`var(--gem-palette-primary-400)`), y callbacks
+  `on<Efecto>` / `out<Efecto>` con un registro visible.
+- Envolver superficies reales (cards, botones) y no cajas vacías; el preview de `DemoBlock` ya
+  tiene grilla de fondo.
+
+## Página de API de un efecto
+
+Mismas secciones, con grupos de props: Contenido (`children`, `asChild`), Apariencia, Tiempo,
+Disparo y estado (`trigger`, `isActive`, `isPaused`, `isDisabled`), Eventos (`on*`/`out*`,
+`EffectPhaseEvent.reason`) y Estilos (`classNames`, `style`, `ref`). Tablas de clases
+`.gemfx-<efecto>__*`, variables `--gemfx-<efecto>-*` y tokens `--gemfx-intensity-*`. Tipos desde
+`dist/effects/<Efecto>/<Efecto>.types.d.ts?raw`.
+
+Accesibilidad obligatoria por efecto: `prefers-reduced-motion` (y la clase
+`gemfx-ignore-reduced-motion` para forzarlo), contenido decorativo oculto a lectores, que el efecto
+no transmita información por sí solo, y que no tape el foco ni la interacción del hijo.
+
+## Verificación
+
+- Revisar cada efecto con `vite build` + `vite preview`: el minificador puede romper máscaras y
+  composiciones (ver sección Estilos y tema).
+- Probar en claro y oscuro, con reduced motion activado, y en mobile (`hover` no existe en touch).
