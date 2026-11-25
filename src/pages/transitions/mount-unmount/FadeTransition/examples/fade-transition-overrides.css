@@ -1,0 +1,10 @@
+.gemst-fade-transition.toast-shell {
+  --gemst-fade-duration: 380ms;
+  --gemst-fade-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+}
+
+.gemst-fade-transition.toast-shell .fade-demo__panel {
+  border-color: var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}

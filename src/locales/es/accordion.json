@@ -46,10 +46,26 @@
       "description": "`icon` agrega un ícono antes del título. Es decorativo: se oculta a lectores de pantalla.",
       "texts": {
         "sections": [
-          { "id": "home", "title": "Espacio de trabajo", "content": "Resumen, accesos directos y actividad reciente de este espacio." },
-          { "id": "files", "title": "Archivos", "content": "Documentos del proyecto agrupados por carpeta." },
-          { "id": "calendar", "title": "Calendario", "content": "Próximas fechas, recordatorios y eventos compartidos." },
-          { "id": "settings", "title": "Configuración", "content": "Visibilidad, notificaciones y opciones de archivo." }
+          {
+            "id": "home",
+            "title": "Espacio de trabajo",
+            "content": "Resumen, accesos directos y actividad reciente de este espacio."
+          },
+          {
+            "id": "files",
+            "title": "Archivos",
+            "content": "Documentos del proyecto agrupados por carpeta."
+          },
+          {
+            "id": "calendar",
+            "title": "Calendario",
+            "content": "Próximas fechas, recordatorios y eventos compartidos."
+          },
+          {
+            "id": "settings",
+            "title": "Configuración",
+            "content": "Visibilidad, notificaciones y opciones de archivo."
+          }
         ]
       }
     },

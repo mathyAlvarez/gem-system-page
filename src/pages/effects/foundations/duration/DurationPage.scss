@@ -1,0 +1,43 @@
+/**
+ * Gemffects Page — Duration
+ * Looping bars that compare the speed of each duration token.
+ */
+
+.duration-scale {
+  --duration-scale-track: var(--gem-color-bg-subtle);
+  --duration-scale-fill: var(--gem-color-accent);
+
+  &__track {
+    display: block;
+    width: 100%;
+    min-width: 8rem;
+    height: 0.5rem;
+    overflow: hidden;
+    border-radius: var(--gem-radius-full);
+    background: var(--duration-scale-track);
+  }
+
+  &__bar {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--duration-scale-fill);
+    transform-origin: left center;
+    animation: duration-scale-grow 300ms var(--gemfx-easing-standard) infinite alternate;
+
+    @media (prefers-reduced-motion: reduce) {
+      width: 40%;
+      animation: none;
+    }
+  }
+}
+
+@keyframes duration-scale-grow {
+  from {
+    transform: scaleX(0.15);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}

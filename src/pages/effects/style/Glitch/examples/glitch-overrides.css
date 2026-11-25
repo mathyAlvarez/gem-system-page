@@ -1,0 +1,12 @@
+.gemfx-glitch.glitch-crt {
+  border-radius: var(--gem-radius-xl);
+}
+
+.gemfx-glitch.glitch-crt .gemfx-glitch__scan {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 45%) 0 2px,
+    transparent 2px 4px
+  );
+  mix-blend-mode: multiply;
+}

@@ -1,0 +1,66 @@
+.text-morph-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.text-morph-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.text-morph-demo__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--gem-space-3);
+}
+
+.text-morph-demo__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-width: 0;
+  padding: var(--gem-space-4) var(--gem-space-5);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+  color: var(--gem-color-fg);
+}
+
+.text-morph-demo__label {
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.text-morph-demo__figure {
+  font-size: var(--gem-font-size-2xl);
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.text-morph-demo__heading {
+  margin: 0;
+  font-size: var(--gem-font-size-3xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-morph-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

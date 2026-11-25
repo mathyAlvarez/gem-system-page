@@ -1,0 +1,285 @@
+{
+  "header": {
+    "title": "SharedLayout",
+    "description": "Morph compartido entre el rectángulo colapsado y el expandido (FLIP: translate + scale). Alterná `isExpanded` para un morph local, o usá el mismo `layoutId` en hosts distintos para morphar entre ubicaciones del árbol. Con `crossfade` (default `true`) el contenido de la surface hace fade mientras ajusta el box."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props, expandí la card y mirá el código que genera. Expandir usa los tiempos de `enter` y colapsar los de `exit`.",
+    "expand": "Expandir",
+    "collapse": "Colapsar",
+    "tile": "Card compartida",
+    "detailTitle": "Card compartida",
+    "detailBody": "Mismo elemento, layout expandido. Posición y tamaño morphan con transform mientras el contenido se actualiza."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Con `collapsed` y `expanded`, al toglear `isExpanded` el host morpha con FLIP entre el tile y el panel de detalle.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "tile": "Card compartida",
+        "detailTitle": "Card compartida",
+        "detailBody": "Mismo elemento, layout expandido. Posición y tamaño morphan con transform mientras el contenido se actualiza."
+      }
+    },
+    "renderProp": {
+      "title": "Render prop",
+      "description": "En vez de slots `collapsed` / `expanded`, pasá un `children` función que recibe `{ isExpanded }` y ramifica el contenido.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "summary": "Resumen",
+        "detailTitle": "Detalle",
+        "detailBody": "Expandido vía render prop."
+      }
+    },
+    "timing": {
+      "title": "Tiempos de expandir y colapsar",
+      "description": "`duration`, `delay` y `easing` aceptan `{ enter, exit }`: `enter` es expandir y `exit` colapsar. Acá expandir dura `420` ms con `emphasized`; colapsar dura `240` ms con `exit`.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "tile": "Card compartida",
+        "detailTitle": "Card compartida",
+        "detailBody": "Mismo elemento, layout expandido. Posición y tamaño morphan con transform mientras el contenido se actualiza."
+      }
+    },
+    "crossfade": {
+      "title": "crossfade",
+      "description": "Compará lado a lado: a la izquierda el fade default; a la derecha `crossfade={false}` para que el contenido cambie de golpe mientras solo morpha el transform.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "withFade": "crossfade true",
+        "withoutFade": "crossfade false",
+        "withFadeTitle": "Con fade",
+        "withFadeBody": "La opacidad de la surface entra mientras el box morpha.",
+        "withoutFadeTitle": "Sin fade",
+        "withoutFadeBody": "El contenido cambia al toque; solo morpha el transform."
+      }
+    },
+    "grid": {
+      "title": "En una grilla",
+      "description": "Cada celda tiene su propio `SharedLayout`. Expandir una morpha solo esa card en su lugar.",
+      "texts": {
+        "groupLabel": "Ítems de la grilla",
+        "itemLabel": "Ítem {n}",
+        "detailBody": "Detalle expandido de esta celda. Tocá de nuevo para colapsar."
+      }
+    },
+    "layoutId": {
+      "title": "layoutId",
+      "description": "El mismo `layoutId` en dos hosts de distintos lugares del árbol. Al cambiar de modo se desmonta uno y se monta el otro: FLIP morpha desde el rectángulo anterior.",
+      "texts": {
+        "groupLabel": "Ubicación",
+        "rail": "Rail",
+        "stage": "Stage",
+        "tile": "Card compartida",
+        "detailTitle": "Card compartida",
+        "detailBody": "Morphó al stage vía layoutId: misma identidad visual, nodo nuevo en el árbol.",
+        "railEmpty": "Slot del rail vacío",
+        "stageEmpty": "Slot del stage vacío"
+      }
+    },
+    "gallery": {
+      "title": "Galería → lightbox",
+      "description": "Patrón galería: cada thumb usa `layoutId={\"photo-{id}\"}`. Al abrir se desmonta el host del thumb y se monta el del lightbox con el mismo id — FLIP global entre el árbol.",
+      "texts": {
+        "groupLabel": "Galería",
+        "inLightbox": "En lightbox…",
+        "close": "Cerrar",
+        "blurbs": {
+          "alpha": "Tile fría que se expande al panel del lightbox.",
+          "beta": "Tile cálida — misma familia de layoutId, única por ítem.",
+          "gamma": "Tile neutra: handoff de la grilla al overlay."
+        }
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onStart` dispara cuando arranca el morph (invert → play) y `onComplete` cuando asienta. `onSharedLayout` / `outSharedLayout` siguen el ciclo de `isExpanded` (`enter`, `disabled`, `unmount`).",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "tile": "Card compartida",
+        "detailTitle": "Card compartida",
+        "detailBody": "Mirá la lista de eventos mientras corre el morph.",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled` (o `prefers-reduced-motion: reduce`) el host salta al layout destino sin morph.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "tile": "Card compartida",
+        "detailTitle": "Card compartida",
+        "detailBody": "Mismo elemento, layout expandido. Sin interpolación porque está desactivado."
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild` las clases y el morph van al único hijo. No hay `__surface`: el fade de `crossfade` no aplica sobre un wrapper interno.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Pedido #4821",
+        "short": "Resumen del pedido.",
+        "long": "Detalle expandido: el Card es el host del morph. El tamaño cambia con el contenido y FLIP interpola el rectángulo."
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` se pasan por `classNames` para ajustar layout u overflow sin depender del CSS de un design system. Acá `gemst-relative` y `gemst-overflow-hidden` van en `root`, `gemst-block` en `surface` / `expanded`, y `gemst-inline-flex` en `collapsed`.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "tile": "Card compartida",
+        "detailTitle": "Card compartida",
+        "detailBody": "Mismo elemento, layout expandido. Posición y tamaño morphan con transform mientras el contenido se actualiza."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "expand": "Expandir",
+      "collapse": "Colapsar",
+      "tile": "Card compartida",
+      "detailTitle": "Card compartida",
+      "detailBody": "Variables y utilidades de Tailwind sobre el host y el contenido."
+    },
+    "variant": {
+      "expand": "Expandir",
+      "collapse": "Colapsar",
+      "tile": "Card compartida",
+      "detailTitle": "Card compartida",
+      "detailBody": "Wrapper con `cva` + `cn` que exporta el SharedLayout envuelto."
+    },
+    "styled": {
+      "expand": "Expandir",
+      "collapse": "Colapsar",
+      "tile": "Alerta",
+      "detailTitle": "Alerta",
+      "detailBody": "Las variables `--gemst-shared-layout-*` se pisan desde la clase `card-shell`."
+    }
+  },
+  "apiLink": "Ver la API completa de SharedLayout",
+  "api": {
+    "header": {
+      "title": "SharedLayout API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `SharedLayout`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de morph local, layoutId y crossfade.",
+      "link": "Ver demos de SharedLayout"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/shared-layout` con su `shared-layout.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (menos <code>children</code>) y los pasa al <code>div</code> raíz, o al hijo con <code>asChild</code>. En ese caso las clases y estilos se combinan con los del hijo y, si los dos definen el mismo handler, se llama primero el del hijo. El componente maneja <code>onTransitionEnd</code> internamente (para detectar el fin del <code>transform</code>) y después llama al tuyo."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "motionOnly": "El morph es decorativo: no transmitas estado solo con el movimiento. El contenido expandido / colapsado tiene que ser legible por sí solo (texto, <code>aria-expanded</code> en el control, etc.).",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el host salta al rectángulo destino. La preferencia se consulta en cada render, no se escucha en vivo.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene el morph y agrega la clase <code>gemst-ignore-reduced-motion</code> a la raíz. Usalo solo si el movimiento es esencial.",
+        "crossfade": "El fade de <code>crossfade</code> actúa sobre <code>__surface</code>. Con <code>asChild</code> no hay surface: el contenido no hace fade.",
+        "layoutId": "Con <code>layoutId</code>, un solo host activo por id. Al desmontar uno y montar otro, el nuevo morpha desde el rectángulo del anterior. No anides dos hosts con el mismo id a la vez.",
+        "asChild": "Con <code>asChild</code>, elegí un hijo con la semántica correcta (<code>Card</code>, <code>article</code>, <code>section</code>): ese elemento es el host del FLIP."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`div` o el hijo con `asChild`). `inline-flex`, `transform-origin: top left`.",
+        "collapsed": "Estado colapsado (`isExpanded={false}`).",
+        "expanded": "Estado expandido (`isExpanded`).",
+        "morphing": "Hay un invert activo (transform distinto de identidad). Sube el `z-index`.",
+        "playing": "Durante el play del morph. Activa la transición de `transform`.",
+        "crossfade": "Habilita el fade de la surface mientras morpha.",
+        "shared": "Se agrega cuando hay `layoutId`.",
+        "disabled": "Se agrega con `isDisabled`. Sin transición.",
+        "surface": "`div` interno que envuelve el contenido (sin `asChild`).",
+        "surfaceCollapsed": "Surface en estado colapsado (cuando usás slots `collapsed` / `expanded`).",
+        "surfaceExpanded": "Surface en estado expandido."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render (en `0ms` con `isDisabled` o movimiento reducido). Las usa la transición de `transform` (y la de opacidad si `crossfade`).",
+      "items": {
+        "duration": "Duración de la fase actual (expandir = `enter`, colapsar = `exit`). Default `300ms`.",
+        "delay": "Retraso de la fase actual. Default `0ms`.",
+        "easing": "Curva de la fase actual. Default `emphasized`.",
+        "z": "Z-index mientras morpha / está expandido. Default `1`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingEmphasized": "Valor por defecto de `--gemst-shared-layout-easing`. El componente escribe inline la curva ya resuelta, así que redefinir el token no cambia la animación: usá `easing`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "Slots, render prop y host." },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Estado expandido, identidad compartida y fade."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "En milisegundos. `enter` aplica al expandir y `exit` al colapsar."
+      },
+      "state": { "title": "Estado", "description": "Cómo se apaga el morph." },
+      "events": { "title": "Eventos", "description": "Ciclo del morph y ciclo de `isExpanded`." },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido cuando no usás `collapsed` / `expanded`. Pasá una función para ramificar con `{ isExpanded }`.",
+      "collapsed": "Contenido del estado reducido / resumen. Preferilo junto con `expanded`.",
+      "expanded": "Contenido del estado expandido / detalle. Preferilo junto con `collapsed`.",
+      "asChild": "Aplica clases, estilos y ref al único hijo. No hay `__surface`; el fade de `crossfade` no corre sobre un wrapper interno.",
+      "isExpanded": "`true` morpha al rectángulo expandido; `false` vuelve al colapsado. Default `false`.",
+      "layoutId": "Id compartido para FLIP entre ubicaciones del árbol. Si un host se desmonta y otro con el mismo id se monta, el nuevo morpha desde el rectángulo anterior.",
+      "crossfade": "Fade del contenido de la surface mientras morpha el box. Default `true`. Sin efecto útil con `asChild`.",
+      "duration": "Duración. Con `{ enter, exit }`, `enter` es expandir y `exit` colapsar.",
+      "delay": "Espera antes de empezar. Acepta `{ enter, exit }` igual que `duration`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), una timing function de CSS o `{ enter, exit }`. Default `emphasized`.",
+      "isDisabled": "Salta al layout destino sin morph.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onStart": "Se dispara cuando arranca el morph (invert → play).",
+      "onComplete": "Se dispara cuando el morph asienta (fin de transition, snap o skip por identidad).",
+      "onSharedLayout": "Se dispara cuando el layout se expande (`isExpanded` pasa a `true`).",
+      "outSharedLayout": "Se dispara cuando colapsa (`isExpanded` a `false`), se desactiva o se desmonta.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `collapsed`, `expanded`.",
+      "style": "Estilos inline de la raíz. Se combinan con el transform del morph y las variables `--gemst-shared-layout-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

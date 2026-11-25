@@ -1,0 +1,242 @@
+{
+  "header": {
+    "title": "GradientBorder",
+    "description": "Full gradient stroke around the child. By default it's a masked ring on a `::before`, so the host keeps its own background. With `pad` or on a gem-system button it uses a transparent border and two background layers with `background-clip` (`padding-box` for the fill and `border-box` for the stroke). `variant` sets the motion: `flow` spins, `static` stays still and `pulse` breathes."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With `static`, `trigger` changes nothing: the border stays visible and still.",
+    "label": "Border"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic border",
+      "description": "With the defaults (`variant=\"flow\"`, `thickness={2}`, `duration={4000}`) a three-color conic gradient spins around the child. The radius goes on the root; the child can use `calc(radius - var(--gemfx-gradient-border-thickness))` to stay concentric, since the variable inherits.",
+      "texts": {
+        "label": "Border"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`flow` spins the gradient one full turn per cycle, at constant speed. `static` keeps it fixed at `angle`. `pulse` keeps it fixed too and breathes the stroke strength: it drops to about 30% and back."
+    },
+    "pad": {
+      "title": "Fill (pad)",
+      "description": "Without `pad`, the effect paints only the ring and the inside shows whatever is behind it (here, the stage background). `pad` paints a color inside the stroke and replaces the host's background: use it when you want a fill without touching the child.",
+      "texts": {
+        "label": "Text only"
+      }
+    },
+    "card": {
+      "title": "On a card",
+      "description": "A `1px` stroke with a slow spin (`duration={8000}`) to highlight a card without distracting. The card keeps its own background: the ring is drawn around it.",
+      "texts": {
+        "kicker": "Pro plan",
+        "title": "Everything unlocked",
+        "body": "Unlimited effects, custom tokens and priority support."
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the ring is hidden and appears spinning on pointer hover or when something inside gets keyboard focus. With `click`, each click shows or hides it. In both cases the transparent border reserves the stroke's room, so the layout doesn't jump.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "thickness": {
+      "title": "Thickness",
+      "description": "`thickness` is the stroke width: a number is pixels and any CSS length works too. It's written inline as `--gemfx-gradient-border-thickness`, which the CSS uses as the width of the transparent border that reserves the stroke's room."
+    },
+    "angle": {
+      "title": "Angle",
+      "description": "`angle` is the starting point of the conic gradient (a number is degrees). It's most visible with `static` and `pulse`, which keep it fixed; with `flow` it's where the spin starts."
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`from`, `via` and `to` are the three gradient stops (it goes back to `from` to close the circle). Defaults: gem-system's `primary-400`, `secondary-400` and `tertiary-400`. Tokens are better."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the stroke opacity: `sm` ≈ 65%, `md` ≈ 85% and `lg` 100%. It takes a token or a number between `0` and `1`, and tokens read `--gemfx-intensity-*` from the host. With `pulse` it's the peak of the breath."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is one full `flow` or `pulse` cycle, in milliseconds. `delay` postpones the start of the animation."
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, the border is applied directly to the child, without adding a `div`. On gem-system's `Button` it uses the filled mode: it takes `--gem-btn-bg` (and `--gem-btn-bg-hover` on hover), so the button keeps its color, whatever the load order of gem-system's and gemffects' CSS. On any other child it uses the ring and the child keeps its own border: the effect doesn't write `border` inline and the transparent border that reserves the stroke lives in `:where()`. The ring is drawn just outside the `padding-box`, over that border: on the card (`thickness={1}`, `trigger=\"hover\"`) you see its gray border until you hover it.",
+      "texts": {
+        "label": "Save",
+        "cardLabel": "Own border"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the spin (or the breath) in place. `isDisabled` hides the stroke (without changing the size) and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGradientBorder` fires when the border turns on (on pointer enter or keyboard focus with `hover`, on click with `click` or on mount with `always`) and `outGradientBorder` when it turns off, with the reason in `event.reason`. The button still receives clicks.",
+      "texts": {
+        "body": "Hover the card (or Tab to the button) to turn the border on and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Pill"
+    },
+    "styled": {
+      "label": "Aurora"
+    }
+  },
+  "apiLink": "See the full GradientBorder API",
+  "api": {
+    "header": {
+      "title": "GradientBorder API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `GradientBorder`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger and option.",
+      "link": "See GradientBorder demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/gradient-border` with its `gradient-border.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes (except <code>color</code>) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic. The effect doesn't write <code>border</code> inline. In ring mode, the transparent border as wide as the stroke lives in <code>:where()</code> along with the rest of the base layout (<code>display</code>, <code>position</code>, <code>color</code>), so any host class (or the child's own border, with <code>asChild</code>) overrides it. In filled mode (<code>pad</code> or a <code>.gem-button</code>) the CSS forces the transparent border, because the stroke is painted on it. With <code>pad</code>, <code>background-color: transparent</code> is also written inline after <code>style</code>; without <code>pad</code>, the host's background is left alone."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the <code>flow</code> spin and the <code>pulse</code> breath stop; the border stays fixed at <code>angle</code>, at full strength.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the animation. Only use it when essential.",
+        "decorative": "The stroke is a <code>::before</code> with <code>pointer-events: none</code> (or a background of the element itself, with <code>pad</code> or on a button): it adds no nodes, isn't announced and doesn't block clicks.",
+        "focus": "With <code>trigger=\"hover\"</code> the border also shows when the host or something inside gets keyboard focus (<code>:focus-visible</code>), and the events fire just like with the pointer. With <code>click</code> the root isn't focusable: the keyboard only turns it on when the click comes from a control inside (Enter or Space on a button).",
+        "contrast": "A decorative border doesn't replace the focus indicator. If you use it on a button, keep its <code>:focus-visible</code>; gem-system buttons use <code>box-shadow</code>, which stays visible."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `isolation: isolate` and the animation. `inline-flex`, `position: relative`, `color: inherit` and the transparent border as wide as the stroke live in `:where()` (zero specificity), so a host class overrides them.",
+        "variant": "Active variant. `static` removes the animation and `pulse` swaps it for the breath.",
+        "padded": "Added with `pad`. Swaps the ring for two background layers: the fill on `padding-box` and the stroke on `border-box`, and forces the transparent border as wide as the stroke. On a `.gem-button` the same mode is used without this class.",
+        "trigger": "Active trigger, only with `flow` and `pulse`. Sets `cursor: pointer`.",
+        "on": "Added while the border is on with `click`.",
+        "paused": "Added with `isPaused`. Pauses the animation with `animation-play-state`.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the ring (`opacity: 0`) and removes the animation; in filled mode it paints the stroke with the `pad` color.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "Wraps the child (`z-index: 1`). With `asChild`, the class goes on the child itself."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Thickness, angle and timing are written inline on every render. `from`, `via`, `to`, `pad` and `intensity` are only written when you pass the prop, and `--gemfx-gradient-border-stroke` never is: you can override those from a class.",
+      "items": {
+        "colors": "The three gradient stops. Set by `from`, `via` and `to`.",
+        "pad": "`padding-box` fill in filled mode. Set by `pad`; on a `.gem-button`, `--gem-btn-bg` (and `--gem-btn-bg-hover` on `:hover`). Unused in ring mode.",
+        "stroke": "The whole stroke gradient (a `conic-gradient`), in the ring and in filled mode. Override it from a class to use more colors; keep `--gemfx-gradient-border-angle` and `--gemfx-gradient-border-turn` so it keeps spinning, and `--gemfx-gradient-border-strength` if you want `intensity` and `pulse` to apply.",
+        "thickness": "Stroke width and width of the transparent border that reserves it. Set by `thickness`; default `2px`.",
+        "angle": "Starting gradient angle. Set by `angle`; default `120deg`.",
+        "turn": "Animated rotation (registered with `@property` as `<angle>`). The `flow` animation moves it.",
+        "intensity": "Base stroke intensity. Set by `intensity`; default `var(--gemfx-intensity-md, 55%)`.",
+        "strength": "Opacity of each stop (via `color-mix`): `min(100%, intensity + 30%)` times `--gemfx-gradient-border-breath`.",
+        "breath": "`pulse` breath (registered with `@property` as `<number>`): goes from `1` to `0.3` and back. It's `1` in the other variants.",
+        "duration": "`flow` or `pulse` cycle. Set by `duration`; default `4000ms`.",
+        "delay": "Animation delay. Set by `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables GradientBorder reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "palette": "Default `from`, `via` and `to` colors (with neon, magenta and amber fallbacks).",
+        "btnBg": "Default and `:hover` fill on a gem-system `Button`. Each variant sets them.",
+        "intensity": "Values for `sm`, `md` and `lg` (`35%`, `55%` and `80%`). The default uses `md` and the prop writes `var(--gemfx-intensity-*)` for tokens, so redefining them changes the stroke strength.",
+        "easingLinear": "`flow` timing function (constant speed).",
+        "easingStandard": "`pulse` timing function."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content gets the border and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Motion, colors, fill, thickness, angle and intensity."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Animation cycle and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows and animates, how it pauses and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`. With `static` they behave as with `always`: `onGradientBorder` fires on mount."
+      },
+      "styling": {
+        "title": "Styling",
+        "description": "Classes, inline styles and ref."
+      }
+    },
+    "items": {
+      "children": "Content inside the border. It keeps its background: the ring is drawn around it.",
+      "asChild": "Applies the border to the single child, without a wrapping `div`. Designed for gem-system's `Button`; in ring mode, the child keeps its own border.",
+      "variant": "`flow` spins, `static` stays fixed at `angle` and `pulse` breathes the stroke strength with a fixed angle.",
+      "from": "First gradient stop. A token is better; default `primary-400`.",
+      "via": "Middle stop. Default `secondary-400`.",
+      "to": "Last stop. Default `tertiary-400`.",
+      "pad": "Fill inside the stroke. When set, it replaces the host's background. Without `pad` only the ring is painted and the host keeps its background; on a gem-system button `--gem-btn-bg` is used.",
+      "thickness": "Stroke width. A number is pixels.",
+      "angle": "Starting gradient angle. A number is degrees.",
+      "intensity": "Stroke opacity (`sm` ≈ 65%, `md` ≈ 85%, `lg` 100%). Token or number between `0` and `1`. With `pulse`, it's the peak.",
+      "duration": "One full `flow` or `pulse` cycle. Negative values are treated as `0`.",
+      "delay": "Delay before the animation starts.",
+      "trigger": "`always` always animates, `hover` shows the border on pointer hover or keyboard focus inside and `click` shows and hides it with each click. `static` ignores it.",
+      "isActive": "Shows the border. When `false` it hides it (without changing the size) and `outGradientBorder` receives `inactive`.",
+      "isPaused": "Freezes the `flow` spin or the `pulse` breath.",
+      "isDisabled": "Hides the border; the child stays interactive. `outGradientBorder` receives `disabled`.",
+      "ignoreReducedMotion": "Keeps the animation even when the user prefers reduced motion. Only when essential.",
+      "onGradientBorder": "Fires when the border turns on: on mount with `always` (or `static`), on pointer enter or keyboard focus with `hover` or on click with `click`.",
+      "outGradientBorder": "Fires when it turns off: on pointer or focus leave, on a second click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface`.",
+      "style": "Inline styles for the root. The effect's variables (and the background, if you pass `pad`) are written after it. A `border` here is kept; in filled mode better leave it alone, because the stroke is painted on that border.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

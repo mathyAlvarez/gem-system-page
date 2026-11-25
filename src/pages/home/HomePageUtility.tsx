@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { Button, Typography } from "@gem-org/gem-system";
 import { AnimatedNumber } from "@gem-org/gemsitions";
 import { useTranslation } from "react-i18next";
@@ -33,7 +33,7 @@ export function HomePageUtility() {
         ))}
       </div>
       <div className="docs-hero-actions">
-        <Link to="/getting-started">
+        <Link to="/system/getting-started">
           <Button variant="primary" size="lg">
             {t("explore.openDocs")}
           </Button>

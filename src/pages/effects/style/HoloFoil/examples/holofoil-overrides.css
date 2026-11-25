@@ -1,0 +1,12 @@
+.gemfx-holofoil.foil-chrome {
+  --gemfx-holofoil-c1: #e5e7eb;
+  --gemfx-holofoil-c2: #9ca3af;
+  --gemfx-holofoil-c3: #f9fafb;
+  --gemfx-holofoil-c4: #6b7280;
+  --gemfx-holofoil-c5: #d1d5db;
+  border-radius: var(--gem-radius-xl);
+}
+
+.gemfx-holofoil.foil-chrome .gemfx-holofoil__foil {
+  background-size: 160% 160%;
+}

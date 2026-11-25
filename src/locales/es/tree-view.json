@@ -239,8 +239,14 @@
       "description": "Descripción"
     },
     "groups": {
-      "content": { "title": "Contenido y apariencia", "description": "Datos, nombre accesible y aspecto." },
-      "selection": { "title": "Selección", "description": "Qué nodos quedan seleccionados al activarlos." },
+      "content": {
+        "title": "Contenido y apariencia",
+        "description": "Datos, nombre accesible y aspecto."
+      },
+      "selection": {
+        "title": "Selección",
+        "description": "Qué nodos quedan seleccionados al activarlos."
+      },
       "expansion": { "title": "Expansión", "description": "Qué ramas están abiertas." },
       "check": { "title": "Checkboxes", "description": "Marcado de nodos, con o sin cascada." },
       "styling": { "title": "Estilos", "description": "Clases y referencias." },

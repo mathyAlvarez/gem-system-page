@@ -18,7 +18,12 @@ const extensions = ["", ".tsx", ".ts", ".css", ".scss"];
 
 const fileName = (path: string) => path.slice(path.lastIndexOf("/") + 1);
 
-const languageOf = (path: string): CodeLanguage => (/\.s?css$/.test(path) ? "css" : "typescript");
+const languageOf = (path: string): CodeLanguage => {
+  if (/\.s?css$/.test(path)) return "css";
+  if (/\.tsx$/.test(path)) return "tsx";
+  if (/\.ts$/.test(path)) return "typescript";
+  return "tsx";
+};
 
 function resolve(from: string, specifier: string) {
   const segments = from.split("/").slice(0, -1);
@@ -39,7 +44,11 @@ function collect(path: string, seen: Set<string>) {
   }
 }
 
-export function getCodeFiles(code: string, label: string | undefined, language: CodeLanguage): CodeFile[] {
+export function getCodeFiles(
+  code: string,
+  label: string | undefined,
+  language: CodeLanguage,
+): CodeFile[] {
   const main: CodeFile = { name: label ?? "", code, language };
   const path = pathByCode.get(code);
   if (!path) return [main];
@@ -48,6 +57,8 @@ export function getCodeFiles(code: string, label: string | undefined, language: 
   collect(path, seen);
   return [
     main,
-    ...[...seen].slice(1).map((file) => ({ name: fileName(file), code: sources[file], language: languageOf(file) })),
+    ...[...seen]
+      .slice(1)
+      .map((file) => ({ name: fileName(file), code: sources[file], language: languageOf(file) })),
   ];
 }

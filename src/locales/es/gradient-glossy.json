@@ -1,0 +1,237 @@
+{
+  "header": {
+    "title": "GradientGlossy",
+    "description": "Iluminación cenital brillante sobre cualquier color base: un degradé de tres paradas (claro, base y base mezclado con negro) más un brillo blanco `inset` en el borde iluminado. Se pinta como fondo del propio elemento, así que funciona sobre un `div` o, con `asChild`, sobre un botón de gem-system. `variant` define la fuerza (`soft`, `lit`, `deep`) y `direction` hacia dónde cae la luz."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera.",
+    "label": "Glossy"
+  },
+  "stories": {
+    "base": {
+      "title": "Brillo básico",
+      "description": "Con los valores por defecto (`variant=\"lit\"`, `direction=\"to-bottom\"`, `intensity=\"md\"`) el color `primary-500` recibe luz desde arriba: `28%` de blanco arriba, el color puro en `48%` y `32%` de negro abajo. El radio va en la raíz, porque el brillo es su propio fondo.",
+      "texts": {
+        "label": "Glossy"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`soft` mezcla menos blanco y negro, `lit` es el brillo clásico de tres paradas y `deep` oscurece mucho más la parte de abajo."
+    },
+    "direction": {
+      "title": "Dirección",
+      "description": "`direction` orienta el eje claro → base → oscuro. El brillo `inset` de `1px` se mueve con él y queda siempre del lado iluminado."
+    },
+    "card": {
+      "title": "En una tarjeta",
+      "description": "El brillo cubre cualquier superficie. Acá con `variant=\"soft\"` y `color` en `secondary-500`, para que la tarjeta tenga volumen sin tapar el texto.",
+      "texts": {
+        "kicker": "Nuevo",
+        "title": "Superficies con volumen",
+        "body": "Un degradé de tres paradas y un brillo en el borde, sobre cualquier color."
+      }
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`color` acepta cualquier color CSS: tokens, hex o nombres. Las paradas clara y oscura se calculan con `color-mix`, así que el mismo brillo funciona sobre cualquier base. Mejor usar tokens."
+    },
+    "tuning": {
+      "title": "Lift, depth, sheen y mid",
+      "description": "`lift` es cuánto blanco se mezcla arriba, `depth` cuánto negro abajo y `sheen` la opacidad del brillo del borde, todos en porcentaje (de `0` a `90`). Si no los pasás, el CSS los calcula a partir de `variant` e `intensity`. `mid` mueve la parada del color base a lo largo del eje."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` el brillo está apagado (fondo transparente) y se enciende con un fundido al pasar el puntero o al enfocar con el teclado algo dentro. Con `click`, cada clic lo enciende o apaga.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` sube o baja el contraste de las tres paradas y del brillo. Acepta `sm`, `md`, `lg` o un número de `0` a `1`. Se resuelve en CSS desde `--gemfx-gradient-glossy-intensity`: cada variante parte de sus valores en `md` y los ajusta en proporción, así que también podés cambiarla (o los tokens `--gemfx-intensity-*`) desde una clase."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es el fundido al encender y apagar, en milisegundos. Lo que transiciona es `--gemfx-gradient-glossy-amount` (un número registrado con `@property`), así que el color de fondo, las tres paradas y el brillo se funden juntos. `delay` lo retrasa. Pasá el mouse por cada caja."
+    },
+    "asChild": {
+      "title": "Sobre un botón (asChild)",
+      "description": "Con `asChild`, el brillo se aplica directo sobre el `Button` de gem-system, sin sumar un `div`. El botón conserva su color de texto y sus transiciones, y el degradé se ve en cualquier orden de carga del CSS. Tapa el color de la variante, así que conviene pasar `color` con el tono que quieras.",
+      "texts": {
+        "label": "Comprar"
+      }
+    },
+    "state": {
+      "title": "Activo, pausa y desactivado",
+      "description": "`isActive={false}` e `isDisabled` apagan el brillo (con el mismo fundido) y dejan el contenido interactivo; `isDisabled` además quita el `cursor: pointer`. `isPaused` congela el fundido en el valor que tenga: si lo activás a mitad de camino, el brillo queda a medias y los cambios de estado no se ven hasta que lo desactivás; ahí el fundido sigue desde ese valor hacia el estado nuevo. Acá el fundido dura `1200ms` para que se note.",
+      "texts": {
+        "activeLabel": "isActive",
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGradientGlossy` se dispara cuando el brillo se enciende (al entrar el puntero o el foco de teclado con `hover`, al hacer clic con `click` o al montar con `always`) y `outGradientGlossy` cuando se apaga, con el motivo en `event.reason`. El botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta (o llegá al botón con Tab) para encender el brillo y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Pill"
+    },
+    "styled": {
+      "label": "Candy"
+    }
+  },
+  "apiLink": "Ver la API completa de GradientGlossy",
+  "api": {
+    "header": {
+      "title": "GradientGlossy API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `GradientGlossy`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, dirección, disparador y opción.",
+      "link": "Ver demos de GradientGlossy"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/gradient-glossy` con su `gradient-glossy.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. Las variables <code>--gemfx-gradient-glossy-*</code> de las props que pasás se escriben después de <code>style</code>; las que no pasás no se escriben. Mientras <code>isPaused</code> está activo, el efecto escribe inline <code>--gemfx-gradient-glossy-amount</code> (con su valor actual) y <code>transition: none</code>, y al despausar restaura lo que hubiera antes. El layout base (<code>display</code>, <code>position</code>, <code>color</code>) y la transición van en <code>:where()</code>, así que cualquier clase del host los pisa."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> se quita el fundido: el brillo se enciende y apaga sin transición.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el fundido. Usalo solo si es esencial.",
+        "decorative": "El brillo es un fondo y una sombra del propio elemento: no agrega nodos, no se anuncia y no bloquea clics.",
+        "focus": "Con <code>trigger=\"hover\"</code> el brillo también aparece al enfocar con el teclado el host o algo dentro (<code>:focus-visible</code>), y los eventos se disparan igual que con el puntero. Con <code>click</code> la raíz no es enfocable: solo se enciende con teclado si el clic llega desde un control de adentro (Enter o Espacio sobre un botón).",
+        "contrast": "Sin <code>asChild</code> el texto hereda el color; con <code>asChild</code> el host conserva el suyo. Revisá el contraste contra las tres paradas, sobre todo con colores claros como <code>tertiary-400</code> o <code>warning-500</code>, y con <code>variant=\"deep\"</code>, donde la parte de abajo se oscurece mucho."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `isolation: isolate`, el degradé como `background-image` y el brillo como `box-shadow` inset (con clase doble, para ganarle a `.gem-button`). `inline-flex`, `position`, `color` y la transición van en `:where()`.",
+        "variant": "Variante activa. Define los valores en `md` y la pendiente de `lift`, `depth` y `sheen`.",
+        "direction": "Dirección activa. Define `--gemfx-gradient-glossy-angle` y el desplazamiento del brillo.",
+        "trigger": "Disparador activo. Pone `cursor: pointer`, la transición del fundido y apaga el brillo (`amount: 0`) mientras no esté encendido.",
+        "on": "Se agrega mientras el brillo está encendido con `click`.",
+        "paused": "Se agrega con `isPaused`. El congelado lo hace el efecto inline, así que ninguna regla la usa: queda como hook para tus estilos.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Pone `--gemfx-gradient-glossy-amount: 0`: fondo transparente y sin brillo.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "Envuelve al hijo (`z-index: 1`). Con `asChild`, la clase va en el propio hijo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Solo se escriben inline las variables de las props que pasás (`color`, `lift`, `depth`, `sheen`, `mid`, `intensity`, `duration`, `delay`), más `--gemfx-gradient-glossy-amount` mientras `isPaused` está activo. Todas las demás, y esas mismas si no pasás la prop, se pueden pisar desde una clase.",
+      "items": {
+        "color": "Color base. Lo define `color`; default `primary-500` (respaldo `#0d9f82`).",
+        "lift": "Porcentaje de blanco en la parada clara. Lo define `lift`; si no, se calcula desde `variant` e `intensity`.",
+        "depth": "Porcentaje de negro en la parada oscura. Lo define `depth`; si no, se calcula desde `variant` e `intensity`.",
+        "sheen": "Opacidad del brillo blanco del borde. Lo define `sheen`; si no, se calcula desde `variant` e `intensity`.",
+        "mid": "Posición de la parada del color base. Lo define `mid`; default `48%`.",
+        "light": "Parada clara: `color-mix` del color base con blanco según `lift`. Pisala para teñir la luz.",
+        "dark": "Parada oscura: `color-mix` del color base con negro según `depth`. Pisala para teñir la sombra.",
+        "angle": "Eje del degradé (`to bottom`, `to top`…). Lo define `direction`.",
+        "sheenOffset": "Desplazamiento del brillo `inset` (`1px` hacia el lado iluminado). Lo define `direction`.",
+        "intensity": "Contraste general. La define `intensity`; default `var(--gemfx-intensity-md, 55%)`.",
+        "curve": "Curva de cada variante: el valor en `md` y cuánto cambia por cada punto de intensidad. `lift`, `depth` y `sheen` son `md + (intensidad - 55%) × k`, entre `0%` y `90%`.",
+        "amount": "Cuánto se ve el brillo, de `0` a `1` (registrada con `@property`). Los estados apagados la ponen en `0` y es lo único que transiciona. Con `isPaused` se fija inline en su valor actual.",
+        "duration": "Fundido al encender y apagar. Lo define `duration`; default `220ms`.",
+        "delay": "Retraso del fundido. Lo define `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que GradientGlossy lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "palette": "Color base por defecto (respaldo `#0d9f82`).",
+        "white": "Blanco que se mezcla en la parada clara y en el brillo (respaldo `#ffffff`).",
+        "intensity": "Valores de `sm`, `md` y `lg` (`35%`, `55%` y `80%`). El default usa `md` y la prop con un token escribe `var(--gemfx-intensity-*)`, así que redefinirlos cambia el contraste.",
+        "easingStandard": "Curva del fundido."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido lleva el brillo y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Fuerza, dirección, color y paradas del degradé."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Fundido al encender y apagar, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve, cómo se congela el fundido y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": {
+        "title": "Estilos",
+        "description": "Clases, estilos inline y ref."
+      }
+    },
+    "items": {
+      "children": "Contenido sobre la superficie brillante.",
+      "asChild": "Aplica el brillo sobre el único hijo, sin `div` envolvente. Pensado para el `Button` de gem-system.",
+      "variant": "`soft` es más suave, `lit` el brillo clásico y `deep` oscurece más la parte de abajo.",
+      "direction": "Eje claro → base → oscuro. `to-bottom` pone la luz arriba.",
+      "color": "Color base. Mejor un token; acepta cualquier color CSS. Default `primary-500`.",
+      "lift": "Porcentaje de blanco en la parada clara (`0`–`90`). Si no lo pasás sale de `variant` + `intensity` (`28` con `lit` y `md`).",
+      "depth": "Porcentaje de negro en la parada oscura (`0`–`90`). Default según `variant` + `intensity` (`32` con `lit` y `md`).",
+      "sheen": "Opacidad del brillo del borde (`0`–`90`). Default según `variant` + `intensity` (`50` con `lit` y `md`).",
+      "mid": "Posición de la parada del color base, en porcentaje.",
+      "intensity": "Contraste general: `sm`, `md`, `lg` o un número de `0` a `1`. Se resuelve en CSS y solo actúa sobre `lift`, `depth` y `sheen` que no pases.",
+      "duration": "Fundido al encender y apagar. Los negativos se toman como `0`.",
+      "delay": "Retraso antes del fundido.",
+      "trigger": "`always` lo muestra siempre, `hover` al pasar el puntero o enfocar con el teclado algo dentro y `click` lo enciende y apaga con cada clic.",
+      "isActive": "Muestra el brillo. En `false` lo apaga y `outGradientGlossy` recibe `inactive`.",
+      "isPaused": "Congela el fundido del brillo en su valor actual, aunque cambie el estado. Al despausar, el fundido sigue desde ahí hacia el estado actual.",
+      "isDisabled": "Apaga el brillo; el hijo queda interactivo. `outGradientGlossy` recibe `disabled`.",
+      "ignoreReducedMotion": "Mantiene el fundido aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onGradientGlossy": "Se dispara cuando el brillo se enciende: al montar con `always`, al entrar el puntero o el foco de teclado con `hover` o al hacer clic con `click`.",
+      "outGradientGlossy": "Se dispara cuando se apaga: al salir el puntero o el foco, al volver a hacer clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface`.",
+      "style": "Estilos inline de la raíz. Las variables de las props que pasás se escriben después.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "header": {
+    "title": "ScrambleText",
+    "description": "Decodificado estilo Matrix para títulos, etiquetas y métricas: los caracteres arrancan mezclados y se van resolviendo de izquierda a derecha. Pasá el texto con `text` o como hijos. `decode` corre una vez; `loop` se repite después de `hold`. Por defecto arranca al montar."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Arranca con `loop` para que se vea el efecto sin recargar; con `decode` y `always` corre una sola vez al cambiar una prop.",
+    "text": "ACCESO CONCEDIDO"
+  },
+  "stories": {
+    "base": {
+      "title": "Decodificado básico",
+      "description": "Con los valores por defecto (`variant=\"decode\"`, `trigger=\"always\"`, `duration={900}`) el texto se mezcla al montar y se resuelve una vez. La raíz es un `span` con la fuente mono de gem-system y números tabulares para que el ancho no salte. Solo se respetan espacios, tabs y saltos de línea: la puntuación también se mezcla.",
+      "texts": {
+        "replay": "Repetir"
+      }
+    },
+    "heading": {
+      "title": "En un título",
+      "description": "Como la raíz es un `span`, podés ponerlo directo dentro de un `h2`, un `p` o un enlace sin romper el HTML. Los lectores de pantalla leen el texto real desde una copia oculta visualmente, no los glifos.",
+      "texts": {
+        "title": "BIENVENIDO",
+        "caption": "El efecto va dentro del h2.",
+        "replay": "Repetir"
+      }
+    },
+    "loop": {
+      "title": "En bucle",
+      "description": "`variant=\"loop\"` vuelve a mezclar después de una pausa. `hold` es lo que queda el texto resuelto entre vueltas, en milisegundos."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover`, cada vez que entra el puntero se decodifica de nuevo, y al salir muestra el texto final. Con `click`, un clic arranca el efecto y el siguiente lo corta y muestra el texto final; con `decode` hacen falta dos clics para repetirlo.",
+      "texts": {
+        "hoverText": "PASÁ EL MOUSE",
+        "clickText": "HACÉ CLIC"
+      }
+    },
+    "charset": {
+      "title": "Juego de caracteres",
+      "description": "`charset` define de dónde salen los glifos de reemplazo. Por defecto son letras ASCII y dígitos; un string vacío vuelve al default."
+    },
+    "metrics": {
+      "title": "Métricas",
+      "description": "Con `charset` de dígitos y números tabulares, sirve para tableros. Los hijos de tipo `number` también funcionan como texto.",
+      "texts": {
+        "users": "Usuarios activos",
+        "uptime": "Disponibilidad",
+        "latency": "Latencia p95"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` no cambia cuántos caracteres se mezclan sino qué tan seguido cambian: unas `18`, `28` o `42` veces por segundo. Con un número entre `0` y `1` el mínimo es `8`."
+    },
+    "duration": {
+      "title": "Duración y retraso",
+      "description": "`duration` es lo que tarda en resolverse todo el texto, en milisegundos. `delay` espera antes del primer decodificado mostrando los glifos ya mezclados, así que el texto final nunca se ve antes de tiempo. Con `loop`, el `delay` solo aplica a la primera vuelta: las siguientes esperan `hold`."
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild`, el efecto se aplica sobre el único hijo sin sumar un `span`, y los glifos reemplazan su contenido. Si no pasás `text`, el texto fuente sale del contenido del propio hijo, y el botón conserva su nombre accesible. Acá con `trigger=\"hover\"` sobre un botón.",
+      "texts": {
+        "label": "GUARDAR"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela los glifos tal como están y, al despausar, sigue desde el mismo punto: el tiempo en pausa no cuenta. `isDisabled` muestra el texto sin mezclar.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onScrambleText` se dispara cuando el efecto se enciende (al montar con `always`, al entrar el puntero con `hover` o al hacer clic con `click`) y `outScrambleText` cuando se apaga, con el motivo en `event.reason`. Hacé clic en el texto para encenderlo y apagarlo.",
+      "texts": {
+        "text": "HACÉ CLIC",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "text": "NEON"
+    },
+    "styled": {
+      "text": "SISTEMA LISTO"
+    }
+  },
+  "apiLink": "Ver la API completa de ScrambleText",
+  "api": {
+    "header": {
+      "title": "ScrambleText API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `ScrambleText`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de ScrambleText"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/scramble-text` con su `scramble-text.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>span</code> raíz (o al hijo, con <code>asChild</code>), incluido <code>aria-label</code>. <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> se muestra el texto final directamente, sin mezclar. La preferencia se escucha en vivo: si cambia mientras el efecto corre, se aplica al instante.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el mezclado. Usalo solo si es esencial.",
+        "name": "Los glifos llevan <code>aria-hidden</code> y el texto real va en un <code>span</code> oculto visualmente (<code>.gemfx-scramble-text__sr</code>), así que los lectores de pantalla lo leen como contenido normal, también dentro de un encabezado o un botón con <code>asChild</code>.",
+        "width": "La fuente mono y los números tabulares evitan que el texto cambie de ancho mientras se mezcla. Si cambiás la fuente por una proporcional, el layout puede saltar.",
+        "keyboard": "Con <code>trigger=\"hover\"</code> o <code>\"click\"</code> el efecto solo responde al puntero: el foco del teclado no lo enciende. No lo uses para transmitir información."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`span`). `position: relative`, `inline-flex`, `max-width: 100%`, `font-family: var(--gem-font-mono)`, `font-variant-numeric: tabular-nums` y `color: inherit`.",
+        "variant": "Variante activa. No tiene estilos propios.",
+        "trigger": "Disparador activo, mientras el efecto está habilitado. Pone `cursor: pointer`.",
+        "on": "Se agrega mientras el efecto está encendido con `click`.",
+        "paused": "Se agrega con `isPaused`. No tiene estilos propios.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "`span` que envuelve los glifos (`z-index: 1`). Con `asChild`, la clase va en el propio hijo.",
+        "glyphs": "El `span` con los caracteres visibles (`aria-hidden`, `white-space: pre-wrap`).",
+        "sr": "Copia del texto real, oculta visualmente, que leen los lectores de pantalla."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render, pero ninguna regla del CSS las usa: la animación corre en JavaScript.",
+      "items": {
+        "duration": "Refleja `duration`; default `900ms`.",
+        "delay": "Refleja `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que ScrambleText lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "fontMono": "Fuente de la raíz (con `ui-monospace` y otras de respaldo)."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué texto se mezcla y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Patrón, glifos de reemplazo y velocidad de cambio."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración, retraso y pausa entre vueltas, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo corre, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "text": "Texto a mezclar. Tiene prioridad sobre el texto de los hijos. Respeta espacios y saltos de línea.",
+      "children": "Texto fuente si no pasás `text`: se toma el texto plano de los hijos (strings, números y el contenido de elementos anidados).",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `span` envolvente, y reemplaza su contenido por los glifos. Sin `text`, usa el texto del propio hijo.",
+      "variant": "`decode` corre una vez y deja el texto; `loop` se repite después de `hold`.",
+      "charset": "Caracteres de reemplazo. Un string vacío (o solo espacios) vuelve al default: letras ASCII y dígitos.",
+      "intensity": "Frecuencia de cambio de los glifos (`18`, `28` o `42` por segundo). Token o número entre `0` y `1`.",
+      "duration": "Tiempo hasta que todo el texto queda resuelto. Los negativos se toman como `0` (sin mezclado).",
+      "delay": "Espera antes del primer decodificado, mostrando los glifos mezclados. Con `loop`, solo aplica a la primera vuelta.",
+      "hold": "Pausa con el texto resuelto antes de la siguiente vuelta. Solo con `variant=\"loop\"`.",
+      "trigger": "`always` arranca al montar, `hover` se decodifica cada vez que entra el puntero y `click` se enciende y apaga con cada clic.",
+      "isActive": "Permite que el efecto corra. En `false` muestra el texto final y `outScrambleText` recibe `inactive`.",
+      "isPaused": "Congela los glifos actuales. Al despausar sigue desde el mismo punto; el tiempo en pausa no cuenta.",
+      "isDisabled": "Muestra el texto sin mezclar. `outScrambleText` recibe `disabled`.",
+      "ignoreReducedMotion": "Mezcla aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onScrambleText": "Se dispara cuando el efecto se enciende: al montar con `always`, al entrar el puntero con `hover` o al hacer clic con `click`.",
+      "outScrambleText": "Se dispara cuando se apaga: al salir el puntero, al volver a hacer clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `glyphs` y `sr`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-scramble-text-*`.",
+      "ref": "Ref a la raíz (el `span`, o el hijo con `asChild`)."
+    }
+  }
+}

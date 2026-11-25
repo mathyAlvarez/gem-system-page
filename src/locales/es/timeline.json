@@ -131,9 +131,18 @@
       "texts": {
         "listLabel": "Historial del release",
         "events": {
-          "created": { "title": "Release creado", "description": "Rama de release creada desde main." },
-          "approved": { "title": "Revisión aprobada", "description": "Dos aprobaciones del equipo de plataforma." },
-          "deployed": { "title": "Deploy en producción", "description": "El 100% del tráfico usa la nueva versión." }
+          "created": {
+            "title": "Release creado",
+            "description": "Rama de release creada desde main."
+          },
+          "approved": {
+            "title": "Revisión aprobada",
+            "description": "Dos aprobaciones del equipo de plataforma."
+          },
+          "deployed": {
+            "title": "Deploy en producción",
+            "description": "El 100% del tráfico usa la nueva versión."
+          }
         }
       }
     },

@@ -1,0 +1,280 @@
+{
+  "header": {
+    "title": "SlideTransition",
+    "description": "Enter/exit deslizando desde un borde (`from`, o `axis`: `x` → left / `y` → bottom). `fade` (default true) combina opacidad con el transform; con `fade={false}` solo traduce. Alterná `isIn`; el nodo queda montado hasta que termina el transform de exit."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props, tocá slide in/out y mirá el código que genera. Enter usa los tiempos de `enter` y exit los de `exit`.",
+    "slideIn": "Slide in",
+    "slideOut": "Slide out",
+    "label": "Panel slide"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Con los defaults (`from=\"bottom\"`, `fade`, `offset=\"1rem\"`, `duration={300}`) el panel desliza y hace fade. Tras el exit se desmonta, salvo `keepMounted`.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Panel slide"
+      }
+    },
+    "fromTop": {
+      "title": "Desde arriba",
+      "description": "Entra desde el borde superior. Arranca oculto; tocá Slide in para verlo.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Desde arriba"
+      }
+    },
+    "fromBottom": {
+      "title": "Desde abajo",
+      "description": "Entra desde el borde inferior — típico de un sheet o toast.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Desde abajo"
+      }
+    },
+    "fromLeft": {
+      "title": "Desde la izquierda",
+      "description": "Entra desde la izquierda con `offset=\"2rem\"` — típico de un drawer.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Desde la izquierda"
+      }
+    },
+    "fromRight": {
+      "title": "Desde la derecha",
+      "description": "Entra desde la derecha con `offset=\"2rem\"`.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Desde la derecha"
+      }
+    },
+    "timing": {
+      "title": "Tiempos de enter y exit",
+      "description": "`duration`, `delay` y `easing` aceptan `{ enter, exit }`. Enter es más lento con delay; exit es corto.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Split timing"
+      }
+    },
+    "noFade": {
+      "title": "fade false",
+      "description": "`fade={false}` deja la opacidad en 1: solo corre `transform`. Usá un `offset` grande (acá `110%`) para que el panel salga del stage clippeado antes del unmount; con un offset chico parece un empujón y un pop.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Solo translate"
+      }
+    },
+    "axis": {
+      "title": "axis x",
+      "description": "`axis=\"x\"` es atajo de `from=\"left\"`. `axis=\"y\"` mapea a `bottom`. Si pasás `from` explícito, gana sobre `axis`.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "axis → left"
+      }
+    },
+    "keepMounted": {
+      "title": "keepMounted",
+      "description": "Con `keepMounted`, al salir el host se oculta con `display: none` en vez de desmontarse. Al reentrar se reusa el mismo nodo del DOM.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Panel slide"
+      }
+    },
+    "initial": {
+      "title": "initial false",
+      "description": "`initial={false}` saltea el motion en el primer mount (entra de un golpe). Los toggles después siguen deslizando. Usá Remontar para ver el skip otra vez.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "remount": "Remontar",
+        "label": "Panel slide"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onSlide` / `outSlide` siguen el ciclo de presencia. `onPhaseChange` reporta `entering` → `entered` → `exiting` → `exited`.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Panel slide",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled` (o `prefers-reduced-motion: reduce`) el host salta al estado destino sin interpolar.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Panel slide"
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild` las clases del slide van al único hijo (sin wrapper extra).",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "title": "Drawer",
+        "body": "Host slotteado: el slide corre sobre el Card."
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` se pasan por `classNames.root`. Acá `gemst-relative` y `gemst-overflow-hidden`.",
+      "texts": {
+        "slideIn": "Slide in",
+        "slideOut": "Slide out",
+        "label": "Panel slide"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "slideIn": "Slide in",
+      "slideOut": "Slide out",
+      "label": "Panel slide"
+    },
+    "variant": {
+      "slideIn": "Slide in",
+      "slideOut": "Slide out",
+      "label": "Panel slide"
+    },
+    "styled": {
+      "slideIn": "Slide in",
+      "slideOut": "Slide out",
+      "label": "Drawer info"
+    }
+  },
+  "apiLink": "Ver la API completa de SlideTransition",
+  "api": {
+    "header": {
+      "title": "SlideTransition API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `SlideTransition`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de bordes, fade, axis y keepMounted.",
+      "link": "Ver demos de SlideTransition"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/slide-transition` con su `slide-transition.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz, o al hijo con <code>asChild</code>. En ese caso las clases y estilos se combinan con los del hijo y, si los dos definen el mismo handler, se llama primero el del hijo. El componente maneja <code>onTransitionEnd</code> internamente (para detectar el fin de <code>transform</code>) y después llama al tuyo."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "presence": "Es una transición de presencia: el control que cambia <code>isIn</code> debería reflejar el estado. No transmitas información solo con el slide.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el host salta al estado final. La preferencia se consulta en cada render, no se escucha en vivo.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega <code>gemst-ignore-reduced-motion</code> a la raíz. Usalo solo si el movimiento es esencial.",
+        "fade": "Con <code>fade={false}</code> solo traduce: usá un <code>offset</code> grande o clippeá el host para que el exit limpie el área visible antes del unmount.",
+        "keepMounted": "Con <code>keepMounted</code> el nodo queda en el DOM con <code>display: none</code> tras el exit. No debería recibir foco ni anunciarse mientras está oculto.",
+        "asChild": "Con <code>asChild</code>, elegí un hijo con la semántica correcta (<code>Card</code>, <code>dialog</code>, <code>div</code>): ese elemento es el host del slide."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`div` o el hijo con `asChild`). `inline-flex`; transiciona `opacity` (si fade) y `transform`.",
+        "fromTop": "Borde de origen `top` (translate Y negativo).",
+        "fromBottom": "Borde de origen `bottom` (translate Y positivo).",
+        "fromLeft": "Borde de origen `left` (translate X negativo).",
+        "fromRight": "Borde de origen `right` (translate X positivo).",
+        "fade": "Opacidad animada junto al transform. Default.",
+        "noFade": "Solo transform; opacidad fija en 1.",
+        "in": "Estado presente (`translate3d(0,0,0)`, y `opacity: 1` con fade).",
+        "out": "Estado ausente (offset del borde + `pointer-events: none`).",
+        "prep": "Priming de enter: sin transición para no flashear el estado de reposo.",
+        "keepMountedHidden": "Host oculto tras exit con `keepMounted` (`display: none`).",
+        "disabled": "Se agrega con `isDisabled`. Sin transición."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render (en `0ms` con `isDisabled`, movimiento reducido o keep-mounted oculto).",
+      "items": {
+        "duration": "Duración de la fase actual. Default `300ms`.",
+        "delay": "Retraso de la fase actual. Default `0ms`.",
+        "easing": "Curva de la fase actual. Default `standard`.",
+        "offset": "Distancia del slide. Default `1rem`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingStandard": "Valor por defecto de `--gemst-slide-easing`. El componente escribe inline la curva ya resuelta: usá `easing` para cambiarla."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "Qué desliza y dónde se monta." },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Borde, fade, distancia y cómo se queda montado."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "En milisegundos. `enter` aplica al slide in y `exit` al slide out."
+      },
+      "state": { "title": "Estado", "description": "Cómo se apaga la animación." },
+      "events": { "title": "Eventos", "description": "Ciclo de presencia y fases." },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que desliza in/out.",
+      "asChild": "Aplica clases, estilos y ref al único hijo (sin wrapper extra).",
+      "isIn": "`true` desliza in y mantiene montado; `false` desliza out y desmonta al terminar (salvo `keepMounted`).",
+      "from": "Borde desde el que entra (y hacia el que sale). Gana sobre `axis`. Default `bottom` (o el de `axis`).",
+      "axis": "Atajo de `from`: `x` → `left`, `y` → `bottom`. Se ignora si hay `from`.",
+      "fade": "`false` solo traduce (sin fade de opacidad). Default `true`. Sin fade, usá un `offset` grande o clippeá el host.",
+      "offset": "Distancia del slide. Número → px; string → CSS. Default `1rem`.",
+      "keepMounted": "Tras el exit oculta el host con `display: none` en vez de desmontar. Se ignora si `unmountOnExit`.",
+      "unmountOnExit": "Desmonta al toque al salir (salta el slide de exit).",
+      "initial": "`false` saltea el motion en el primer mount. Los toggles después sí animan. Default `true`.",
+      "duration": "Duración. Con `{ enter, exit }`, `enter` es slide in y `exit` slide out.",
+      "delay": "Espera antes de empezar. Acepta `{ enter, exit }`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), timing function o `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Salta al estado destino sin interpolar.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onSlide": "Se dispara cuando el slide está activo (`isIn` true).",
+      "outSlide": "Se dispara al salir (`isIn` false), desactivar o desmontar.",
+      "onPhaseChange": "Fases: `idle`, `entering`, `entered`, `exiting`, `exited`.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: solo `root` (no hay surface).",
+      "style": "Estilos inline de la raíz. Se combinan con `--gemst-slide-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

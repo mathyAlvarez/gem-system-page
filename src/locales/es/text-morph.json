@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "TextMorph",
+    "description": "Cambia títulos y etiquetas con un morph: el texto saliente y el entrante corren juntos. Por defecto (`effect=\"up\"`) la copia nueva entra desde abajo; `down` viene de arriba y `fade` hace un fundido. Partí el texto con `splitBy` (`words` por defecto, `characters` o `lines`) y cascadelo con `staggerDelay`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props, cambiá el título con los botones y mirá el código que genera. El texto entrante usa los tiempos de `enter` y el saliente los de `exit`.",
+    "label": "Título"
+  },
+  "stories": {
+    "base": {
+      "title": "Morph básico",
+      "description": "Con los valores por defecto (`effect=\"up\"`, `splitBy=\"words\"`, `duration={300}`) el título saliente se va hacia arriba y el nuevo entra desde abajo, sobre la misma línea base. Pasá el texto con `value` (o un string / number como `children`).",
+      "texts": {
+        "label": "Carpeta"
+      }
+    },
+    "effects": {
+      "title": "Efectos",
+      "description": "`up` (default) desliza la copia nueva desde abajo; `down` desde arriba; `fade` hace un fundido simultáneo sin desplazamiento. La dirección la fija el efecto, no el contenido.",
+      "texts": {
+        "groupLabel": "Elegí un título"
+      }
+    },
+    "splitWords": {
+      "title": "Por palabras (splitBy)",
+      "description": "`splitBy=\"words\"` (default) parte el texto en palabras y conserva los espacios. Con `staggerDelay={40}` cada palabra entra un poco después que la anterior.",
+      "texts": {
+        "label": "Frase"
+      }
+    },
+    "splitCharacters": {
+      "title": "Por caracteres",
+      "description": "`splitBy=\"characters\"` morphéa un code point a la vez (`Array.from`), así que respeta emojis y caracteres fuera del BMP. Acá con `staggerDelay={28}`.",
+      "texts": {
+        "label": "Título"
+      }
+    },
+    "splitLines": {
+      "title": "Por líneas",
+      "description": "`splitBy=\"lines\"` parte en `\\n` y pone cada línea en bloque. Con `staggerDelay={60}` las líneas caen en cascada.",
+      "texts": {
+        "label": "Bloque"
+      }
+    },
+    "stagger": {
+      "title": "Retraso en cascada (staggerDelay)",
+      "description": "`staggerDelay` (default `0`) suma milisegundos entre tokens encima del `delay` de enter / exit. En `0` todo entra junto; en `55` se ve la cascada.",
+      "texts": {
+        "groupLabel": "Elegí una frase"
+      }
+    },
+    "timing": {
+      "title": "Tiempos de entrada y salida",
+      "description": "`duration` y `easing` aceptan `{ enter, exit }`: el texto entrante usa enter y el saliente exit. Acá la entrada dura `420` ms con `emphasized` y la salida `240` ms con `exit`.",
+      "texts": {
+        "label": "Título"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onTextMorph` avisa que arrancó el morph (`reason: \"enter\"`) y `outTextMorph` que terminó (`exit`), se desactivó (`disabled`) o se desmontó (`unmount`). Si el texto cambia a mitad de camino, no se vuelve a disparar `onTextMorph` mientras sigue `playing`.",
+      "texts": {
+        "label": "Carpeta",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado y unmountOnExit",
+      "description": "Con `isDisabled` (o `prefers-reduced-motion: reduce`) el título salta sin morph. Con `unmountOnExit` no se muestra el slot saliente: el cambio es instantáneo, sin animación de salida.",
+      "texts": {
+        "groupLabel": "Elegí un título"
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild` las clases, estilos y la ref van al único hijo (acá un `h2`) y su contenido se reemplaza por el morph. El texto tiene que ir en `value`: los hijos ya no se leen como copia. El hijo tiene que ser exactamente un elemento.",
+      "texts": {
+        "groupLabel": "Elegí un título"
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` (`gemst-relative`, `gemst-overflow-hidden`, `gemst-block`…) se pasan por `classNames` para ajustar layout u overflow sin depender del CSS de un design system. Ya vienen incluidas en `styles.css`.",
+      "texts": {
+        "label": "Título"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "groupLabel": "Elegí un título"
+    },
+    "variant": {
+      "groupLabel": "Elegí un título"
+    },
+    "styled": {
+      "label": "Ticker"
+    }
+  },
+  "apiLink": "Ver la API completa de TextMorph",
+  "api": {
+    "header": {
+      "title": "TextMorph API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `TextMorph`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada efecto, partición y opción.",
+      "link": "Ver demos de TextMorph"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/text-morph` con su `text-morph.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>children</code>) y los pasa al <code>span</code> raíz, o al hijo con <code>asChild</code>. En ese caso las clases y estilos se combinan con los del hijo y, si los dos definen el mismo handler (<code>onClick</code>…), se llama primero el del hijo. El componente agrega <code>aria-busy</code> mientras anima y <code>aria-live=\"polite\"</code> en la raíz."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "live": "La raíz tiene <code>aria-live=\"polite\"</code>, así que los lectores de pantalla anuncian el texto nuevo cuando cambia. El slot entrante es el que se lee.",
+        "busy": "Mientras el morph corre, la raíz tiene <code>aria-busy</code>.",
+        "outgoing": "El slot saliente lleva <code>aria-hidden</code> para que no se lea el texto viejo encima del nuevo.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el texto salta al valor final. La preferencia se consulta en cada render, no se escucha en vivo: si cambia, se aplica en el próximo cambio de texto.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega la clase <code>gemst-ignore-reduced-motion</code> a la raíz. Usalo solo si el movimiento es esencial.",
+        "asChild": "Con <code>asChild</code>, elegí un hijo con la semántica correcta (<code>h2</code>, <code>strong</code>, <code>label</code>): su contenido se reemplaza por el morph y la región en vivo queda en ese elemento."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`span`). `inline-grid` con `overflow: hidden`, alineado a la línea base, `max-width: 100%` y `color: inherit`.",
+        "effect": "Efecto activo. Con `up` y `down` mueve los tokens con `--gemst-text-morph-shift`; `fade` solo anima la opacidad.",
+        "split": "Modo de partición. Con `lines`, los slots usan `white-space: normal` y cada token es `display: block`.",
+        "playing": "Mientras corre el morph.",
+        "idle": "Sin morph en curso.",
+        "disabled": "Se agrega con `isDisabled`. Los tokens no tienen transición.",
+        "ready": "Después del montaje: habilita las transiciones para no animar el primer render.",
+        "from": "El cuadro en el que el texto nuevo se pinta en su posición inicial, con las transiciones apagadas.",
+        "slot": "Cada capa del morph (entrante / saliente). Las dos ocupan la misma celda del grid (`grid-area: 1 / 1`) y usan `white-space: pre-wrap`.",
+        "slotRole": "`incoming` usa las variables `enter-*` y queda arriba (`z-index: 1`); `outgoing` usa `exit-*` y no recibe eventos de puntero.",
+        "slotState": "`in` deja los tokens visibles; `out` los oculta y, con `up` o `down`, los desplaza `--gemst-text-morph-shift`.",
+        "token": "Cada fragmento (`words`, `characters` o `lines`). Transiciona `opacity` y `transform`; el `transition-delay` suma el stagger encima del delay de la fase."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render (en `0ms` con `isDisabled` o movimiento reducido), salvo `shift`. Las usan los tokens del morph.",
+      "items": {
+        "enterDuration": "Duración de la transición entrante. Default `300ms`.",
+        "exitDuration": "Duración de la transición saliente. Default `300ms`.",
+        "enterDelay": "Retraso base de la copia entrante. Default `0ms`. Cada token suma `index * staggerDelay`.",
+        "exitDelay": "Retraso base de la copia saliente. Default `0ms`.",
+        "enterEasing": "Curva de la copia entrante. Default `standard`.",
+        "exitEasing": "Curva de la copia saliente. Default `exit`.",
+        "staggerDelay": "Retraso entre tokens. Default `0ms`. Se escribe inline; el delay real de cada token usa `calc(enter/exit-delay + n * stagger)`.",
+        "shift": "Distancia del desplazamiento con `up` y `down`. Default `0.4em`. No se escribe inline: pisala con una clase o con `style`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingStandard": "Valor por defecto de `--gemst-text-morph-enter-easing`. El componente escribe inline la curva ya resuelta, así que redefinir el token no cambia la animación: usá `easing`.",
+        "easingExit": "Valor por defecto de `--gemst-text-morph-exit-easing`, con la misma salvedad."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales, salvo `value` cuando usás `asChild`.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "El texto a mostrar y dónde se monta." },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Tipo de morph y cómo se parte el texto."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "En milisegundos. `enter` aplica a la copia entrante y `exit` a la saliente."
+      },
+      "state": { "title": "Estado", "description": "Cómo se apaga o se acorta el morph." },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `enter`, `exit`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "value": "Texto actual. Obligatorio con `asChild`. Sin `asChild`, si no lo pasás se toma un `children` string o number.",
+      "children": "Sin `asChild`, un string o number hace de texto si no hay `value`. Con `asChild`, es el elemento que hace de raíz y su contenido se reemplaza por el morph.",
+      "asChild": "Aplica clases, estilos y ref al único hijo en lugar de un `span`. El texto tiene que ir en `value`. Sin un único elemento hijo, no se muestra el morph.",
+      "effect": "`up` (default) desliza desde abajo; `down` desde arriba; `fade` hace un fundido sin desplazamiento.",
+      "splitBy": "`words` (default) parte en palabras y conserva espacios; `characters` un code point a la vez; `lines` parte en `\\n`.",
+      "duration": "Duración. `enter` es para la copia entrante y `exit` para la saliente.",
+      "delay": "Espera antes de empezar cada slot. Acepta `{ enter, exit }` igual que `duration`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), una timing function de CSS o `{ enter, exit }`.",
+      "staggerDelay": "Milisegundos extras entre tokens, encima del `delay` de la fase. Los negativos o no finitos se toman como `0`.",
+      "isDisabled": "Salta directo al texto nuevo, sin morph. Si la apagás a mitad de camino, `outTextMorph` recibe `disabled`.",
+      "unmountOnExit": "Omite el slot saliente: el cambio es instantáneo, sin animación de salida.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onTextMorph": "Se dispara cuando empieza el morph (`reason: \"enter\"`). No se dispara si el morph está desactivado.",
+      "outTextMorph": "Se dispara cuando termina (`exit`), se desactiva a mitad de camino (`disabled`) o se desmonta mientras anima (`unmount`).",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `slot`, `incoming`, `outgoing` y `token`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemst-text-morph-*`, que tienen prioridad.",
+      "ref": "Ref a la raíz (el `span`, o el hijo con `asChild`)."
+    }
+  }
+}

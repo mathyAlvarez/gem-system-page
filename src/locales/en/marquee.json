@@ -1,0 +1,207 @@
+{
+  "header": {
+    "title": "Marquee",
+    "description": "Infinite looping scroll, like a news ticker or a logo wall. It repeats the content as many times as needed to fill the window (the copies are `aria-hidden` and `inert`) and only animates `transform`. `variant` sets the direction (`left`, `right`, `up` or `down`). By default it always runs and pauses on hover or keyboard focus."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With `up` or `down` the example switches to images and adds `size`."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic strip",
+      "description": "With the defaults (`variant=\"left\"`, `trigger=\"always\"`, `fade`, `pauseOnHover`) the content loops from right to left, fades at the edges and pauses on hover. Items go as direct children; the effect sets the `gap` between them. A `ResizeObserver` measures one copy and the window, and renders as many copies as needed (2 to 24) so there's no gap at the end of each loop, even when the content is shorter than the window."
+    },
+    "directions": {
+      "title": "Horizontal direction",
+      "description": "`left` scrolls to the left and `right` reverses the animation. It's the same loop with `animation-direction: reverse`."
+    },
+    "vertical": {
+      "title": "Vertical direction",
+      "description": "`up` and `down` stack the items in a column. When vertical, `size` is the window height (`12rem` by default); `220` px here."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` it only runs while the pointer is over it and stays where it was when the pointer leaves. With `click`, each click starts it or pauses it in place (it doesn't restart). With `click` and `pauseOnHover`, the hover pause waits until the pointer leaves once, so the loop starts even though the pointer is still over it; touch never pauses on hover.",
+      "texts": {
+        "hoverLabel": "trigger=\"hover\"",
+        "clickLabel": "trigger=\"click\""
+      }
+    },
+    "pauseOnHover": {
+      "title": "Pause on hover",
+      "description": "`pauseOnHover` freezes the loop while the pointer is over it or keyboard focus is on the root or inside, so you can read or click. While it runs, the root is focusable (`tabIndex=0`), so Tab can pause it even with no links or buttons (WCAG 2.2.2). It applies with `always` and with `click` while on; with `hover` it has no effect."
+    },
+    "gapSize": {
+      "title": "Gap and size",
+      "description": "`gap` is the space between items and between the loop copies: a number is pixels and any CSS length works too. `size` caps the window width when horizontal (`100%` by default)."
+    },
+    "fade": {
+      "title": "Edge fade",
+      "description": "`fade` applies a `mask-image` that fades 8% of each edge. With `fade={false}` the content is cut off sharply."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` multiplies the speed (`0.65`, `1` or `1.55`) and, if you don't pass `gap`, also sets the spacing (`12`, `24` or `40` px). With the default `duration`, one loop takes about 27.7 s, 18 s or 11.6 s. Takes a token or a number between `0` and `1`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long one full loop takes with `intensity=\"md\"`, in milliseconds. Higher is slower. `delay` postpones the start of the loop."
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, the effect is applied to the single child without adding a `div` (`--flat` mode). That child's element children are the items: they're repeated right inside it, with no track or copy `div`s, so a list stays `ul > li`. Each item gets `.gemfx-marquee__item` (and `classNames.item`) and its own animation. Loose text nodes are dropped.",
+      "texts": {
+        "label": "Featured effects"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the scroll at its current position. `isDisabled` stops the loop, resets the content to the start and hides the copies; the items stay visible and interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Events and interaction",
+      "description": "`onMarquee` fires when the loop turns on (on mount with `always`, on pointer enter with `hover` or on click with `click`) and `outMarquee` when it turns off, with the reason in `event.reason`. Turn `isActive` off to see both. Hover to pause and click the button: the copies are `inert`, so Tab focuses the button only once.",
+      "texts": {
+        "activeLabel": "isActive",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "apiLink": "See the full Marquee API",
+  "api": {
+    "header": {
+      "title": "Marquee API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Marquee`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every direction, trigger and option.",
+      "link": "See Marquee demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/marquee` with its `marquee.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic. Your own <code>tabIndex</code> or <code>role</code> replace the ones the effect sets."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the loop stops, the copies are hidden and the fade is removed: you get a static, scrollable strip (<code>overflow: auto</code>). Events still fire.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the loop running. Only use it when essential.",
+        "clone": "The copies have <code>aria-hidden</code>, <code>inert</code> and <code>user-select: none</code>: screen readers announce the content once and its controls aren't focused twice. Copied top-level elements drop their <code>id</code>; deeper <code>id</code>s are still duplicated.",
+        "pause": "<code>pauseOnHover</code> pauses with the pointer and with keyboard focus (<code>:focus-visible</code>) on the root or inside, which covers the WCAG 2.2.2 pause mechanism. With <code>pauseOnHover={false}</code>, offer a visible control that toggles <code>isPaused</code>.",
+        "keyboard": "While it runs with <code>pauseOnHover</code>, the root gets <code>tabIndex=0</code> (your own <code>tabIndex</code> wins) and, without <code>asChild</code>, <code>role=\"marquee\"</code>; with <code>asChild</code>, name the child with <code>aria-label</code>. With <code>trigger=\"hover\"</code> or <code>\"click\"</code>, the keyboard doesn't start the loop.",
+        "content": "Don't put essential information only inside the marquee: a passing item can be outside the window or cut off by the fade."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `display: block`, `overflow: hidden` and `isolation: isolate`. Its width comes from `--gemfx-marquee-width`.",
+        "variant": "Active direction. `right` and `down` reverse the animation; `up` and `down` set the height with `--gemfx-marquee-height`.",
+        "fade": "Added with `fade`. Applies the edge `mask-image` (horizontal or vertical).",
+        "flat": "Added with `asChild`. The root becomes `flex` with `gap` and the items animate one by one, with no track or copies.",
+        "unmeasured": "Added until the first measurement. In `--flat` mode it holds the item animation; without `asChild`, the track uses the `-50%` fallback.",
+        "trigger": "Active trigger, while the effect is enabled. `hover` and `click` set `cursor: pointer`.",
+        "on": "Added while the loop runs with `hover` or `click`.",
+        "hoverPaused": "Added while `pauseOnHover` pauses the loop: pointer over it (not touch) or keyboard focus on the root or inside. Computed in JS, not with `:hover`.",
+        "paused": "Added with `isPaused`. Pauses the animation with `animation-play-state`.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Removes the animation and hides the copies.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "track": "The animated row (or column). Holds the copies and sizes to `max-content`. Doesn't exist with `asChild`.",
+        "copy": "Each copy of the content. Sets the `gap` between items and an equal space at the end.",
+        "surface": "The original copy, the one screen readers read.",
+        "clone": "Each extra loop copy (`aria-hidden`, `inert`, `user-select: none`).",
+        "item": "With `asChild`, every item (originals and copies) gets `__item` and its own animation; copies add `__item--clone` (`aria-hidden`, `inert`)."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Duration, delay and gap are written inline on every render, so they only change through the props; the shift is written after measuring. Width and height are only written when you pass `size`: otherwise you can override them from a class.",
+      "items": {
+        "duration": "Effective duration of one loop: `duration` divided by the `intensity` speed. Default `18000ms`.",
+        "delay": "Delay before the loop starts. Set by `delay`; default `0ms`.",
+        "gap": "Spacing between items and between copies. Set by `gap`, or else `intensity`; default `24px`.",
+        "shift": "Distance one loop travels: exactly one copy plus its `gap`, in negative pixels. Measured in JS; before measuring, the animation uses `-50%`. No prop.",
+        "width": "Max window width when horizontal. Set by `size`; default `100%`.",
+        "height": "Window height when vertical. Set by `size`; default `12rem`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Marquee reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "easingLinear": "Loop timing function. Changing it breaks the constant speed."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which items scroll and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Direction, spacing, window size, fade and speed."
+      },
+      "timing": { "title": "Timing", "description": "Loop duration and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it runs, when it pauses and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Items that loop: chips, logos, images or text. They're repeated as many times as needed to fill the window; the copies are `aria-hidden` and `inert` and drop the top-level `id`.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. That child's element children are the items and are repeated inside it (`ul > li` stays valid); loose text nodes are dropped.",
+      "variant": "Direction: `left` and `right` horizontal, `up` and `down` vertical.",
+      "gap": "Space between items and between copies. A number is pixels. Without a value, it comes from `intensity` (`12`, `24` or `40`).",
+      "size": "Window size: max width when horizontal, height when vertical. A number is pixels.",
+      "fade": "Fades the clipped edges with a `mask-image`.",
+      "intensity": "Loop speed (and spacing, if you don't pass `gap`). `sm` is slower and `lg` faster. Token or a number between `0` and `1`.",
+      "duration": "One full loop with `intensity=\"md\"`. Negative values are treated as `0`.",
+      "delay": "Delay before the loop starts.",
+      "trigger": "`always` runs continuously, `hover` while the pointer is over it and `click` starts and pauses with each click.",
+      "pauseOnHover": "Pauses the loop while the pointer is over it or keyboard focus is on the root or inside; while it runs, the root is focusable (`tabIndex=0`). Applies with `always` and with `click` while on. With `click`, the hover pause waits until the pointer leaves once; touch never pauses on hover.",
+      "isActive": "Lets the loop run. When `false` it stops, hides the copies and `outMarquee` receives `inactive`.",
+      "isPaused": "Freezes the scroll at its current position.",
+      "isDisabled": "Stops the loop; the items stay visible and interactive. `outMarquee` receives `disabled`.",
+      "ignoreReducedMotion": "Keeps the loop running even when the user prefers reduced motion. Only when essential.",
+      "onMarquee": "Fires when the loop turns on: on mount with `always`, on pointer enter with `hover` or on click with `click`.",
+      "outMarquee": "Fires when it turns off: on pointer leave, on a second click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `track`, `surface`, `clone` and `item` (`asChild` only, for every item, originals and copies).",
+      "style": "Inline styles for the root. Merged with the `--gemfx-marquee-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

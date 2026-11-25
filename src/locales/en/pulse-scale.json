@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "PulseScale",
+    "description": "A constant beat to draw attention to a CTA. `variant` picks the pattern, `trigger` when it runs and `scale` how much it grows at the peak (when omitted, `intensity` sets it). `ping` adds an expanding ring. With `prefers-reduced-motion: reduce` the content stays still."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. `scale` set to `auto` lets `intensity` define the peak; `ring` set to `auto` only shows it with `ping`.",
+    "target": "Get started"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variants",
+      "description": "`heartbeat` is a double beat (the default), `breathe` a smooth wave, `pop` a short bump with a long rest (for badges and chips) and `ping` grows and emits a ring."
+    },
+    "badge": {
+      "title": "Notification badge",
+      "description": "A slow `pop` with `ring` and the ring color in `--gemfx-pulse-scale-ring-color`. The ring takes the root's `border-radius`, so round it like the content.",
+      "texts": {
+        "label": "3 new notifications"
+      }
+    },
+    "triggers": {
+      "title": "Hover and click",
+      "description": "With `trigger=\"hover\"` it beats while the pointer (or focus) is over it. With `click`, each click toggles it on or off. At rest, the content stays at its normal size.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is one full cycle in milliseconds, including the rest between beats."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "When `scale` is omitted, `intensity` sets the peak (`sm` 1.04, `md` 1.08, `lg` 1.14). It also sets how far the ring expands (`1.28`, `1.42`, `1.62`), even if you pass `scale`. It takes a token or a number between `0` and `1`."
+    },
+    "scale": {
+      "title": "Scale",
+      "description": "`scale` sets the peak factor, between `1` and `2`. High values are very noticeable: keep them for small elements."
+    },
+    "ring": {
+      "title": "Ring",
+      "description": "`ring` shows the ring with any variant; `ring={false}` removes it from `ping`. It's an `aria-hidden` `span` below the content."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without a wrapping `div`. Here, a gem-system `Button` with `variant=\"breathe\"` and `trigger=\"hover\"`: it stays still until you hover it or tab to it.",
+      "texts": {
+        "label": "Hover me"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the current pose. `isDisabled` stops the beat and returns the content to its size, which stays interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onPulseScale` fires when the beat starts and `outPulseScale` when it stops, with the cause in `event.reason`. The motion doesn't block interaction: the button still gets clicks.",
+      "texts": {
+        "body": "Hover over the card.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Sale"
+    },
+    "styled": {
+      "label": "Sonar"
+    }
+  },
+  "apiLink": "See the full PulseScale API",
+  "api": {
+    "header": {
+      "title": "PulseScale API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `PulseScale`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant and trigger.",
+      "link": "See PulseScale demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/pulse-scale` with its `pulse-scale.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>scale</code>, and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The ring has <code>aria-hidden</code> and <code>pointer-events: none</code>. The beat is <code>transform</code> only: it doesn't shift layout and the child keeps receiving clicks and focus.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the content stays at its normal size and the ring doesn't show.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the animation. Only use it if the motion is essential.",
+        "autoplay": "With <code>trigger=\"always\"</code> the beat starts on its own and never ends. WCAG 2.2.2 requires a way to pause automatic motion that lasts more than five seconds: offer a control that sets <code>isPaused</code>, turn it off after a while with <code>isActive</code>, or use <code>hover</code>/<code>click</code>.",
+        "focus": "With <code>trigger=\"hover\"</code> it also beats on keyboard focus (<code>:focus-visible</code> on the root or inside), so it shows while tabbing. A mouse click that focuses a button doesn't keep it beating. <code>onPulseScale</code> only fires with the pointer.",
+        "click": "With <code>trigger=\"click\"</code>, the toggle listens to the root's <code>click</code>. If the child is a <code>button</code>, it also responds to Enter and Space.",
+        "meaning": "The beat draws attention but doesn't communicate anything: if it marks something new or pending, say it with text or an ARIA attribute too (like the <code>aria-label</code> on the example badge)."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and `isolation: isolate`.",
+        "variant": "Active variant. Picks the surface `@keyframes`.",
+        "trigger": "Active trigger (`always` adds no class). Keeps the surface still until hover/focus or click.",
+        "on": "Added with `trigger=\"click\"` while on.",
+        "ringOn": "Added when the ring is visible.",
+        "paused": "Added with `isPaused`; pauses the animation.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`; keeps the surface still.",
+        "disabled": "Added with `isDisabled`. Removes the pointer cursor.",
+        "surface": "Wraps the child and is what beats (`transform: scale`).",
+        "ring": "Expanding ring, below the surface. Takes the root's `border-radius`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`duration`, `delay`, `scale` and `ring` are always written inline on the root: use the props to change them. `--gemfx-pulse-scale-ring-color` isn't written inline, so a class can override it.",
+      "items": {
+        "duration": "One full cycle. Set by `duration`; default `1400ms`.",
+        "delay": "Delay before starting. Set by `delay`; default `0ms`.",
+        "scale": "Peak factor. Set by `scale` or, if missing, `intensity`; default `1.08`.",
+        "ring": "Final ring scale. Set by `intensity`; default `1.42`.",
+        "ringColor": "Ring color; default `var(--gem-palette-primary-400)`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables PulseScale reads as defaults.",
+      "items": {
+        "easingStandard": "Curve for `heartbeat` and `breathe`.",
+        "easingEmphasized": "Curve for `pop` and `ping`.",
+        "easingExit": "Curve of the ring as it expands.",
+        "palette": "Default ring color."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content beats and where the effect is mounted."
+      },
+      "appearance": { "title": "Appearance", "description": "Pattern, scale, intensity and ring." },
+      "timing": { "title": "Timing", "description": "Cycle duration and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it beats and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that beats.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. Every variant, trigger and state applies the same. With the ring visible and a void element (`img`, `input`) it falls back to the `div`, since the ring can't mount inside it.",
+      "variant": "Pattern: `heartbeat`, `breathe`, `pop` or `ping`.",
+      "scale": "Peak factor, clamped to `1`–`2`. When omitted, `intensity` sets it: `1.04`, `1.08` or `1.14`.",
+      "intensity": "Sets the peak (if `scale` is missing) and the ring expansion. A token or a number between `0` and `1`.",
+      "ring": "Shows the expanding ring. By default it's only on `ping`.",
+      "duration": "One full cycle. Negative values are treated as `0`.",
+      "delay": "Delay before the beat starts.",
+      "trigger": "`always` always beats, `hover` while the pointer or focus is over it, `click` toggles with each click.",
+      "isActive": "Allows the beat. With `false` it stops and `outPulseScale` gets `inactive`.",
+      "isPaused": "Freezes the current pose.",
+      "isDisabled": "Stops the beat; the child stays interactive. `outPulseScale` gets `disabled`.",
+      "ignoreReducedMotion": "Animates even if the user prefers reduced motion. Only if the motion is essential.",
+      "onPulseScale": "Fires when the beat starts: on mount with `always`, on pointer enter with `hover` or when toggled on with `click`.",
+      "outPulseScale": "Fires when it stops: on pointer leave, when toggled off with `click`, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface` and `ring`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-pulse-scale-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

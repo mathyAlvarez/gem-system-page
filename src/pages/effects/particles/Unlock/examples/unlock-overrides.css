@@ -1,0 +1,24 @@
+/* The `--gemfx-unlock-*` variables only go inline when their prop is
+   passed, so a class can set the color and the timing. */
+.gemfx-unlock.ul-vault {
+  --gemfx-unlock-color: var(--gem-palette-neutral-800);
+  --gemfx-unlock-duration: 800ms;
+}
+
+.gemfx-unlock.ul-vault .gemfx-unlock__panel {
+  background-image: radial-gradient(
+    circle at var(--ul-bolt-x, 100%) 50%,
+    var(--gem-palette-neutral-500) 0 0.6rem,
+    transparent 0.65rem
+  );
+  box-shadow: inset 0 0 0 2px var(--gem-palette-neutral-600);
+  transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.gemfx-unlock.ul-vault .gemfx-unlock__panel--b {
+  --ul-bolt-x: 0%;
+}
+
+.gemfx-unlock.ul-vault.gemfx-unlock--open .gemfx-unlock__panel {
+  box-shadow: inset 0 0 0 2px var(--gem-palette-tertiary-400);
+}

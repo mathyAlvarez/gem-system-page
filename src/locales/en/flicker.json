@@ -1,0 +1,221 @@
+{
+  "header": {
+    "title": "Flicker",
+    "description": "Neon tube flicker: a colored halo behind the content that switches on and off in steps. `variant` sets the pattern (`neon`, `buzz`, `strobe`, `fault` or `text`), `edge` limits it to one side and `trigger` decides when it runs. By default it flickers all the time."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With `hover` or `click` the halo only shows while active.",
+    "label": "Open"
+  },
+  "stories": {
+    "sign": {
+      "title": "Neon sign",
+      "description": "With the defaults (`variant=\"neon\"`, `trigger=\"always\"`) the halo stays on most of the time and drops three times per `2800ms` cycle. The content goes down to 42% opacity on each drop. The halo inherits the root `border-radius`, so set one there.",
+      "texts": {
+        "label": "Open 24/7"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`neon` drops now and then, `buzz` hums with short dips and barely goes out, `strobe` alternates on and off in equal halves (here with `900ms`), `fault` stays off most of the cycle with sparks (here with `4200ms`) and `text` flickers the text's `text-shadow` instead of the halo."
+    },
+    "edge": {
+      "title": "Edge",
+      "description": "With an `edge` other than `all`, the halo becomes a strip against that side, a `3px` tube shows up and the content stops dimming. `x` lights left and right; `y`, top and bottom. `spread` sets the strip thickness."
+    },
+    "text": {
+      "title": "Text",
+      "description": "`variant=\"text\"` draws no halo or tube: it tints the text with `color` and animates its `text-shadow`. Works best with large, bold text.",
+      "texts": {
+        "label": "Neon bar"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover`, the halo shows when the pointer is over it or when the keyboard reaches the root or something inside (`:focus-visible`). With `click`, each click turns it on or off. At rest there's no halo and the content stays at 100%.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "spread": {
+      "title": "Spread",
+      "description": "`spread` is how far the halo extends past the box (or the strip thickness with `edge`). A number is pixels; a string is used as is (`\"1rem\"`). Default `18`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is the length of one full pattern cycle, in milliseconds. `delay` postpones the start, handy to offset several signs."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` is the halo's maximum opacity; the tube uses 55% of it. Takes a token (`sm`, `md`, `lg`) or a number between `0` and `1`."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` takes any CSS color, variables included. Without `color`, it uses `--gem-palette-primary-400`."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild` the effect mounts on the child, with no wrapping `div`: useful inside text or a link, where a `div` isn't valid. The child is root and surface at once: with `text` it gets the color and the `text-shadow`, and with the other variants the halo sits behind its content (`z-index: -1`). The content doesn't dim with the flicker; only the halo flickers. If the child can't hold content (`img`, `input`), the effect wraps it in a `div` again.",
+      "texts": {
+        "label": "Bar open"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the flicker on the current step. `isDisabled` removes the halo and leaves the content at 100% and interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Signal"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onFlicker` fires when the effect turns on and `outFlicker` when it turns off, with the reason in `event.reason`. The halo stays behind and doesn't block clicks.",
+      "texts": {
+        "body": "Hover the card to light the tube and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Closed"
+    },
+    "styled": {
+      "label": "Neon bar"
+    }
+  },
+  "apiLink": "See the full Flicker API",
+  "api": {
+    "header": {
+      "title": "Flicker API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Flicker`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, edge, trigger and option.",
+      "link": "See Flicker demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/flicker` along with its `flicker.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes (except <code>color</code>, which is its own prop) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "photosensitivity": "This is a flashing effect. To meet WCAG 2.3.1, avoid more than three flashes per second: don't lower <code>duration</code> too much, especially with <code>strobe</code> and <code>fault</code>, and don't use it over large areas of the screen.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the animation stops: the halo and tube stay still at a lower opacity, the content at 100%, and <code>text</code> keeps a static shadow while it's on. When off (<code>isActive={false}</code>, <code>isDisabled</code> or a resting <code>hover</code> / <code>click</code>) it has no glow, same as without reduced motion. These rules don't use <code>!important</code>: no animation rule beats them, but a more specific class of yours does.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the flicker. Use it only when essential.",
+        "decorative": "The halo layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks.",
+        "keyboard": "With <code>trigger=\"hover\"</code> the halo also shows with keyboard focus on the root or inside (<code>:focus-visible</code>); a mouse click that focuses a button doesn't keep it on. <code>onFlicker</code> only fires with the pointer.",
+        "click": "With <code>trigger=\"click\"</code> the toggle listens to the root's <code>click</code>. If the child is a <code>button</code>, it also responds to Enter and Space."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and `isolation: isolate`. It animates `--gemfx-flicker-gate`.",
+        "variant": "Active variant. Changes the `animation-name`.",
+        "edge": "Added when `edge` isn't `all`. Turns the halo into a strip, shows the tube and keeps the content at 100%.",
+        "edgeSide": "Active edge.",
+        "trigger": "Added with `trigger=\"hover\"` or `\"click\"` (there's no class for `always`).",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "paused": "Added with `isPaused`. Pauses the animation.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Removes the animation, the halo and the tube; with `text`, the color and the `text-shadow` (also under reduced motion).",
+        "disabled": "Added with `isDisabled`.",
+        "layer": "Decorative layer behind the content (`aria-hidden`, `z-index: 0`; `-1` with `asChild`, to sit below the child's content).",
+        "halo": "Blurred glow. The `-alt` versions only exist with `edge=\"x\"` or `\"y\"`.",
+        "tube": "Tube tint over the whole box, or the `3px` line with `edge`. The `-alt` versions only exist with `edge=\"x\"` or `\"y\"`.",
+        "surface": "Wraps the child. Its opacity follows the flicker (except with `edge`) and with `text` it gets the color. With `asChild` it's the child itself: it gets the `text` color, but its opacity doesn't change."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`duration`, `delay`, `spread` and `intensity` are written inline on every render, so you can only change them through the props. `--gemfx-flicker-color` is inline only when you pass `color`; otherwise you can override it from a class, just like `--gemfx-flicker-blur`.",
+      "items": {
+        "color": "Color of the halo, tube and text. Set by `color`; default `var(--gem-palette-primary-400)`.",
+        "blur": "Halo blur. No prop: change it from a class. Default `1.1rem`.",
+        "duration": "Length of one cycle. Set by `duration`; default `2800ms`.",
+        "delay": "Delay. Set by `delay`; default `0ms`.",
+        "spread": "Halo extent (or strip thickness with `edge`). Set by `spread`; default `18px`.",
+        "intensity": "Halo maximum opacity, as a percentage. Set by `intensity`: `sm` 35%, `md` 55%, `lg` 80%, or the number × 100.",
+        "gate": "Instant brightness between `0` and `1`, animated with `steps(1, end)`. It's a registered property: don't override it, read it if you want to sync other parts with the flicker."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Flicker reads as defaults.",
+      "items": {
+        "intensityMd": "CSS fallback value. Unused in practice: `intensity` always writes the percentage inline, so redefining the token changes nothing.",
+        "palette": "gem-system default color. If it isn't loaded, falls back to `#2ee6c6`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content gets lit and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Pattern, edge, color, spread and intensity of the halo."
+      },
+      "timing": { "title": "Timing", "description": "Pattern cycle and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it runs and how it pauses or turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content the halo is drawn around.",
+      "asChild": "Applies the effect to the single child, with no wrapping `div`. The halo sits behind the child's content, `text` and `edge` work the same and the content doesn't dim. If the child can't hold content (`img`, `input`), it falls back to a `div`.",
+      "variant": "`neon` occasional drops, `buzz` hum with short dips, `strobe` on and off in halves, `fault` mostly off with sparks, `text` flickering `text-shadow`.",
+      "edge": "`all` lights the whole box. A side (`top`, `right`, `bottom`, `left`) or an axis (`x`, `y`) turns the halo into a strip and adds a `3px` tube.",
+      "color": "Neon color. Any CSS color; without a value it uses `--gem-palette-primary-400`.",
+      "spread": "Halo extent. A number is pixels (negatives become `0`); a string is used as is. An empty string falls back to `18px`.",
+      "intensity": "Halo maximum opacity. Token or number between `0` and `1`.",
+      "duration": "Length of one pattern cycle. Negatives become `0`.",
+      "delay": "Delay before the first cycle.",
+      "trigger": "`always` flickers all the time, `hover` while the pointer is over it or there's keyboard focus (`:focus-visible`) on the root or inside, `click` toggles on each click.",
+      "isActive": "Allows the effect. When `false` it removes the halo and `outFlicker` gets `inactive`.",
+      "isPaused": "Freezes the flicker on the current step.",
+      "isDisabled": "Stops the effect; the child stays at 100% and interactive. `outFlicker` gets `disabled`.",
+      "ignoreReducedMotion": "Flickers even if the user prefers reduced motion. Only when essential.",
+      "onFlicker": "Fires when the effect turns on: on mount with `always`, when the pointer enters or when toggled on by click.",
+      "outFlicker": "Fires when it turns off: when the pointer leaves, when toggled off by click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `halo`, `haloAlt`, `tube` and `tubeAlt`.",
+      "style": "Root inline styles. Merged with the `--gemfx-flicker-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

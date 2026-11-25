@@ -1,0 +1,107 @@
+.flash-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.flash-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+}
+
+.flash-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.flash-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+}
+
+.flash-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.flash-demo__target {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 6.5rem;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+  font: inherit;
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flash-demo__target:focus-visible {
+  outline: 2px solid var(--gem-palette-primary-400);
+  outline-offset: 3px;
+}
+
+.flash-demo__image {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--gem-radius-md);
+  user-select: none;
+}
+
+.flash-demo__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+}
+
+.flash-demo__card-body {
+  margin: 0;
+  color: var(--gem-palette-neutral-300);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.flash-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.flash-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

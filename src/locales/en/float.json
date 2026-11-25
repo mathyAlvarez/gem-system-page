@@ -1,0 +1,200 @@
+{
+  "header": {
+    "title": "Float",
+    "description": "Constant levitation. `variant` picks the path, `trigger` when it runs and `amplitude` how high it rises (when omitted, `intensity` sets it). A ground shadow shrinks as the content rises. With `prefers-reduced-motion: reduce` the content stays still."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. `amplitude` set to `auto` lets `intensity` define the travel.",
+    "target": "Float"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variants",
+      "description": "`bob` is a vertical sine (the default), `sway` adds a slight roll, `drift` traces a slow ellipse, `lift` grows as it rises, `idle` is a short rest bob for icons and avatars, `figure8` traces a figure eight, `pendulum` swings in an arc and `orbit` circles around rest. The slower ones use a longer `duration`."
+    },
+    "tile": {
+      "title": "On a block",
+      "description": "A block with `variant=\"drift\"` and `intensity=\"lg\"`. It only moves with `transform`, so it doesn't affect the surrounding layout."
+    },
+    "triggers": {
+      "title": "Hover and click",
+      "description": "With `trigger=\"hover\"` it floats while the pointer (or focus) is over it. With `click`, each click toggles it on or off. At rest, the content returns to its place.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is one full cycle in milliseconds. Higher values give a calmer motion."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "When `amplitude` is omitted, `intensity` sets the vertical travel (`sm` 6 px, `md` 10 px, `lg` 16 px). It also scales the roll of `sway` and the sideways drift of `drift`. It takes a token or a number between `0` and `1`."
+    },
+    "amplitude": {
+      "title": "Amplitude",
+      "description": "`amplitude` sets the peak travel. A number is pixels; a string is used as is (`\"1.25rem\"`). It overrides `intensity` for the vertical travel only."
+    },
+    "shadow": {
+      "title": "Shadow",
+      "description": "The ground shadow shrinks and fades as the content rises. `shadow={false}` removes it."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without a wrapping `div`. Here, a gem-system `Button` with `variant=\"sway\"` and `trigger=\"hover\"`. The shadow would mount inside the child and move with it, so this example turns it off with `shadow={false}`.",
+      "texts": {
+        "label": "Hover me"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the current pose. `isDisabled` stops the float and returns the content to its place, which stays interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onFloat` fires when the float starts and `outFloat` when it stops, with the cause in `event.reason`. The motion doesn't block interaction: the button still gets clicks.",
+      "texts": {
+        "body": "Hover over the card.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "New"
+    },
+    "styled": {
+      "label": "Hologram"
+    }
+  },
+  "apiLink": "See the full Float API",
+  "api": {
+    "header": {
+      "title": "Float API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Float`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant and trigger.",
+      "link": "See Float demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/float` with its `float.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The shadow has <code>aria-hidden</code> and <code>pointer-events: none</code>. The motion is <code>transform</code> only: the child keeps receiving clicks and focus.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the content stays still and the shadow stays fixed.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the animation. Only use it if the motion is essential.",
+        "autoplay": "With <code>trigger=\"always\"</code> the motion starts on its own and never ends. WCAG 2.2.2 requires a way to pause automatic motion that lasts more than five seconds: offer a control that sets <code>isPaused</code>, or use <code>hover</code>/<code>click</code>.",
+        "focus": "With <code>trigger=\"hover\"</code> it also floats on keyboard focus (<code>:focus-visible</code> on the root or inside), so it shows while tabbing. A mouse click that focuses a button doesn't keep it floating. <code>onFloat</code> only fires with the pointer.",
+        "click": "With <code>trigger=\"click\"</code>, the toggle listens to the root's <code>click</code>. If the child is a <code>button</code>, it also responds to Enter and Space.",
+        "meaning": "Levitation is decoration: don't use it as the only state signal (featured, new). Pair it with text or an ARIA attribute."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and `isolation: isolate`.",
+        "variant": "Active variant. Picks the `@keyframes` of the surface and the shadow.",
+        "trigger": "Active trigger (`always` adds no class). Keeps the surface still until hover/focus or click.",
+        "on": "Added with `trigger=\"click\"` while on.",
+        "paused": "Added with `isPaused`; pauses the animation.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`; keeps the surface still.",
+        "disabled": "Added with `isDisabled`. Removes the pointer cursor.",
+        "surface": "Wraps the child and is what moves (`transform`).",
+        "shadow": "Ground shadow, below the surface. Only with `shadow`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`duration`, `delay`, `amplitude`, `drift` and `tilt` are always written inline on the root: use the props to change them. `--gemfx-float-shadow` isn't written inline, so a class can override it.",
+      "items": {
+        "duration": "One full cycle. Set by `duration`; default `2800ms`.",
+        "delay": "Delay before starting. Set by `delay`; default `0ms`.",
+        "amplitude": "Peak vertical travel. Set by `amplitude` or, if missing, `intensity`; default `10px`.",
+        "drift": "Sideways drift of `drift`, `figure8` and `pendulum`. Set by `intensity`; default `7px`.",
+        "tilt": "Roll angle of `sway` and `pendulum`. Set by `intensity`; default `2.2deg`.",
+        "shadow": "Ground shadow color; default `var(--gem-palette-neutral-950)`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Float reads as defaults.",
+      "items": {
+        "easingStandard": "Curve for most variants.",
+        "easingLinear": "Curve for `figure8` and `orbit`, so the loop keeps an even speed.",
+        "palette": "Default shadow color."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content levitates and where the effect is mounted."
+      },
+      "appearance": { "title": "Appearance", "description": "Path, travel, intensity and shadow." },
+      "timing": { "title": "Timing", "description": "Cycle duration and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it levitates and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that levitates.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. Every variant, trigger and state applies the same. The shadow sits inside the child and moves with it, so `shadow={false}` usually fits better. With `shadow` and a void element (`img`, `input`) it falls back to the `div`.",
+      "variant": "Path: `bob`, `sway`, `drift`, `lift`, `idle`, `figure8`, `pendulum` or `orbit`.",
+      "amplitude": "Peak vertical travel. A number is pixels; a string is used as is. When omitted, `intensity` sets it: `6`, `10` or `16` px.",
+      "intensity": "Scales the travel (if `amplitude` is missing), the roll and the sideways drift. A token or a number between `0` and `1`.",
+      "shadow": "Ground shadow that shrinks as the content rises.",
+      "duration": "One full cycle. Negative values are treated as `0`.",
+      "delay": "Delay before the motion starts.",
+      "trigger": "`always` always floats, `hover` while the pointer or focus is over it, `click` toggles with each click.",
+      "isActive": "Allows the float. With `false` it stops and `outFloat` gets `inactive`.",
+      "isPaused": "Freezes the current pose.",
+      "isDisabled": "Stops the float; the child stays interactive. `outFloat` gets `disabled`.",
+      "ignoreReducedMotion": "Animates even if the user prefers reduced motion. Only if the motion is essential.",
+      "onFloat": "Fires when the float starts: on mount with `always`, on pointer enter with `hover` or when toggled on with `click`.",
+      "outFloat": "Fires when it stops: on pointer leave, when toggled off with `click`, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface` and `shadow`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-float-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

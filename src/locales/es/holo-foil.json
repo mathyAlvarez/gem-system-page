@@ -1,0 +1,226 @@
+{
+  "header": {
+    "title": "HoloFoil",
+    "description": "Lámina holográfica multicolor, como las cartas foil coleccionables: un degradé arcoíris con `mix-blend-mode` que sigue al puntero, más un grano de difracción y un brillo especular. `variant` define el aspecto (`rainbow`, `iridescent` o `sparkle`) y `trigger` cuándo se ve. Por defecto aparece al pasar el puntero."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `hover`, mové el puntero sobre la carta; con `always`, el foil barre solo y también sigue al puntero.",
+    "cardTitle": "Carta foil"
+  },
+  "stories": {
+    "card": {
+      "title": "Carta coleccionable",
+      "description": "Con los valores por defecto (`variant=\"rainbow\"`, `trigger=\"hover\"`) el foil aparece al entrar el puntero y el arcoíris y el brillo siguen su posición. Las capas van por encima del contenido con `pointer-events: none`. La raíz recorta (`overflow: hidden`), así que lleva el `border-radius`.",
+      "texts": {
+        "title": "Pasá el mouse"
+      }
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Envuelve un `img` nativo. Recorré la imagen con el puntero para mover el arcoíris.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`rainbow` es el foil clásico con `color-dodge`, `iridescent` un tornasolado más suave con `overlay` (la misma paleta `c1…c5`, aclarada con blanco) y `sparkle` le da protagonismo al grano de difracción (siempre lo muestra, aunque pases `sparkle={false}`). Acá con `trigger=\"always\"` para verlas sin pasar el mouse."
+    },
+    "blend": {
+      "title": "Mezcla",
+      "description": "`blend` cambia el `mix-blend-mode` de la capa arcoíris. Sin valor, `rainbow` usa `color-dodge` y las otras variantes `overlay`. `color-dodge` y `screen` aclaran; `overlay` y `soft-light` respetan más el contenido."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` el foil solo se ve mientras el puntero está encima. Con `always` barre lento en bucle y, al pasar el puntero, lo sigue.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "alwaysLabel": "Siempre"
+      }
+    },
+    "tilt": {
+      "title": "Con Tilt3D",
+      "description": "Combinalo con `Tilt3D` (con `glare={false}` para no sumar dos brillos): la carta se inclina en perspectiva mientras el foil sigue al puntero.",
+      "texts": {
+        "title": "Inclinala"
+      }
+    },
+    "layers": {
+      "title": "Brillo y grano",
+      "description": "`shine={false}` quita el punto de luz especular y `sparkle={false}` el grano de difracción; el arcoíris queda siempre."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la opacidad del arcoíris (`0.32`, `0.5` o `0.72`) y del brillo (`0.22`, `0.38` o `0.55`). Acepta un token o un número entre `0` y `1`. Con `always`, en reposo el brillo baja al 35 %."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es el ciclo del barrido con `trigger=\"always\"`; con `hover` no se usa. `delay` retrasa la aparición del foil y el inicio del barrido."
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild`, el efecto se aplica sobre el único hijo sin sumar un `div`. Las capas del foil se insertan dentro de ese hijo. Con elementos vacíos como `img` no hay dónde insertarlas, así que vuelve al `div` envolvente.",
+      "texts": {
+        "title": "Mi propio article"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el foil en su posición actual: con `always` pausa el barrido donde está y con `hover` deja de seguir el puntero. `isDisabled` oculta las capas y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "title": "Barrido"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onHoloFoil` se dispara cuando el foil empieza a seguir el puntero (o al montar con `always`) y `outHoloFoil` cuando se apaga, con el motivo en `event.reason`. El botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta para encender el foil y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Paleta gem"
+    },
+    "styled": {
+      "title": "Cromado"
+    }
+  },
+  "apiLink": "Ver la API completa de HoloFoil",
+  "api": {
+    "header": {
+      "title": "HoloFoil API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `HoloFoil`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, mezcla, disparador y opción.",
+      "link": "Ver demos de HoloFoil"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/holo-foil` con su `holo-foil.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onPointerEnter</code>, <code>onPointerMove</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el foil deja de seguir el puntero y se quita el brillo. Con <code>always</code> queda un foil fijo y más tenue, centrado y sin barrido ni grano animado; con <code>hover</code> no aparece.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el seguimiento y el barrido. Usalo solo si es esencial.",
+        "decorative": "La capa del foil lleva <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia ni bloquea clics.",
+        "keyboard": "Con <code>trigger=\"hover\"</code> el efecto solo responde al puntero: el foco del teclado no lo activa. No lo uses para transmitir información.",
+        "touch": "<code>disabledOnTouch</code> (por defecto <code>true</code>) ignora el puntero táctil, así arrastrar para hacer scroll no mueve el foil. Mouse y lápiz siguen funcionando.",
+        "contrast": "<code>color-dodge</code> y <code>screen</code> aclaran mucho: sobre texto claro pueden bajar el contraste. Probá con <code>overlay</code> o una <code>intensity</code> menor."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex`, `isolation: isolate` y `overflow: hidden`.",
+        "variant": "Variante activa. `iridescent` cambia el degradé y `sparkle` sube el grano a la opacidad completa.",
+        "trigger": "Disparador activo, mientras el efecto está habilitado.",
+        "tracking": "Se agrega mientras sigue al puntero. Acorta las transiciones a `80ms` y frena el barrido de `always`.",
+        "paused": "Se agrega con `isPaused`. Pausa el barrido y el grano (`animation-play-state: paused`); además deja de leer el puntero.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta las capas.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "Envuelve al hijo (`z-index: 1`).",
+        "layer": "Capa decorativa por encima del contenido (`aria-hidden`, `z-index: 2`, `pointer-events: none`).",
+        "foil": "Degradé arcoíris con `mix-blend-mode`. Su posición sigue a `--gemfx-holofoil-x/y`.",
+        "sparkle": "Grano de difracción con `overlay`. Existe con `sparkle` o con `variant=\"sparkle\"`.",
+        "shine": "Punto de luz especular que sigue al puntero. Solo existe con `shine`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "La posición, la fuerza, el brillo, la mezcla y los tiempos se escriben inline en cada render, así que solo se cambian con las props. La paleta `c1…c5` no va inline: se pisa desde una clase.",
+      "items": {
+        "palette": "Los cinco colores del arcoíris (rosa, celeste, violeta, verde agua y amarillo). `rainbow` los usa tal cual; `iridescent`, mezclados con 15–25 % de blanco y en orden frío → cálido.",
+        "x": "Posición del arcoíris y del brillo, en porcentaje. Sigue al puntero; en reposo, `50%`.",
+        "strength": "Opacidad del arcoíris (y del grano, × 0.75). `0` en reposo con `hover`.",
+        "shine": "Opacidad del brillo especular.",
+        "blend": "`mix-blend-mode` del arcoíris. Lo define `blend` o la variante.",
+        "duration": "Ciclo del barrido con `always`. Lo define `duration`; default `4200ms`. El grano usa el 55 %.",
+        "delay": "Retraso de la aparición y del barrido. Lo define `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que HoloFoil lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "easingStandard": "Curva de las transiciones de opacidad y del barrido."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido recibe el foil y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Aspecto, mezcla, intensidad y capas."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo del barrido y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve, cómo se pausa o se apaga y qué punteros sigue."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que recibe el foil: una carta, una imagen o un panel.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos (`img`, `input`) vuelve al `div` envolvente.",
+      "variant": "`rainbow` foil clásico, `iridescent` tornasolado suave, `sparkle` con el grano de difracción como protagonista.",
+      "blend": "`mix-blend-mode` del arcoíris. Sin valor: `color-dodge` en `rainbow`, `overlay` en las demás.",
+      "intensity": "Opacidad del arcoíris y del brillo. Token o número entre `0` y `1`.",
+      "shine": "Muestra el punto de luz especular que sigue al puntero.",
+      "sparkle": "Muestra el grano de difracción. `variant=\"sparkle\"` lo muestra siempre.",
+      "duration": "Ciclo del barrido con `trigger=\"always\"`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que aparezca el foil y empiece el barrido.",
+      "trigger": "`hover` se ve mientras el puntero está encima, `always` barre en bucle y también sigue al puntero.",
+      "isActive": "Muestra las capas. En `false` las oculta y `outHoloFoil` recibe `inactive`.",
+      "isPaused": "Congela la posición actual del foil: pausa el barrido de `always` y deja de seguir el puntero.",
+      "isDisabled": "Oculta las capas; el hijo queda interactivo. `outHoloFoil` recibe `disabled`.",
+      "ignoreReducedMotion": "Sigue al puntero y barre aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "onHoloFoil": "Se dispara cuando el foil se activa: al empezar a seguir el puntero o al montar con `always`.",
+      "outHoloFoil": "Se dispara cuando se apaga: al salir el puntero, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `foil`, `sparkle` y `shine`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-holofoil-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

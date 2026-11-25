@@ -1,0 +1,299 @@
+{
+  "header": {
+    "title": "CollapseTransition",
+    "description": "Colapsa y expande a lo largo de `height` o `width` (`collapsedSize` ↔ px medidos → `auto`) para acordeones y menús. Alterná `isIn`; con `collapsedSize` en `0` el nodo se desmonta al salir (salvo `preserveSpace` / `keepMounted`). Un `collapsedSize` distinto de cero deja un peek visible."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props, expandí el panel y mirá el código que genera. Expandir usa los tiempos de `enter` y colapsar los de `exit`.",
+    "expand": "Expandir",
+    "collapse": "Colapsar",
+    "titleLabel": "Título de la sección",
+    "panel": "Cuerpo del acordeón. La altura anima al tamaño medido del contenido y después queda en auto.",
+    "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Con los defaults (`dimension=\"height\"`, `collapsedSize={0}`, `duration={300}`) expandir mide el contenido, anima hasta ese px y asienta en `auto`. Al salir se colapsa a `0` y se desmonta.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. La altura anima al tamaño medido del contenido y después queda en auto.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    },
+    "startCollapsed": {
+      "title": "Empieza colapsado",
+      "description": "Arranca con `isIn={false}` (desmontado). Al expandir mide y anima la apertura.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. La altura anima al tamaño medido del contenido y después queda en auto.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    },
+    "timing": {
+      "title": "Tiempos de enter y exit",
+      "description": "`duration`, `delay` y `easing` aceptan `{ enter, exit }`. Acá enter dura `420` ms con delay `40` y easing `enter`; exit dura `200` ms con `exit`.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. La altura anima al tamaño medido del contenido y después queda en auto.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    },
+    "longContent": {
+      "title": "Contenido largo",
+      "description": "Cuerpo más largo para que el `scrollHeight` sea obvio. Útil en FAQs, menús anidados y disclosures con tamaño dinámico.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Pregunta frecuente",
+        "panelFirst": "Cuerpo más largo para que la altura medida se note. Collapse lee scrollHeight, anima a ese valor en px y después pasa a auto.",
+        "panelSecond": "Sirve para filas de FAQ, menús anidados y paneles donde el tamaño del contenido cambia.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    },
+    "collapsedSize": {
+      "title": "collapsedSize (peek)",
+      "description": "Un `collapsedSize` distinto de cero deja un peek visible y mantiene el nodo montado (sin fade de opacidad al salir).",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Vista previa",
+        "panelFirst": "Las primeras líneas quedan visibles al colapsar: útil como franja de preview o manija de un drawer.",
+        "panelSecond": "El resto del cuerpo solo se ve completo al expandir. El colapso frena en collapsedSize en vez de desmontar.",
+        "sibling": "Hermano abajo: se mueve hasta el peek, no hasta cero."
+      }
+    },
+    "width": {
+      "title": "dimension width",
+      "description": "`dimension=\"width\"` anima el tamaño horizontal (paneles laterales / disclosure en línea).",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "panel": "Contenido del rail: el ancho colapsa hasta collapsedSize.",
+        "sibling": "Hermano a la derecha: se desliza cuando cambia el ancho."
+      }
+    },
+    "preserveSpace": {
+      "title": "preserveSpace",
+      "description": "Con `preserveSpace` la altura del layout se reserva mientras el panel hace fade out. Poné bordes en el nodo que transiciona (`asChild`) para que el chrome desaparezca con la opacidad.",
+      "texts": {
+        "show": "Mostrar",
+        "hide": "Ocultar",
+        "panel": "Panel con borde: el borde se desvanece con el contenido; el hueco queda para que el hermano no salte.",
+        "sibling": "Hermano abajo: se queda quieto mientras el panel está oculto."
+      }
+    },
+    "keepMounted": {
+      "title": "keepMounted",
+      "description": "Con `keepMounted`, al salir el host queda montado y oculto (eje en `0`, sin desmontar). Al reentrar mide de nuevo y expande el mismo nodo del DOM.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. Al colapsar el nodo sigue en el DOM, oculto.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    },
+    "initial": {
+      "title": "initial false",
+      "description": "`initial={false}` saltea el motion en el primer mount (entra de un golpe). Los toggles después siguen animando. Usá Remontar para ver el skip otra vez.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "remount": "Remontar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. Al remontar con initial false entra sin animar.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onCollapse` / `outCollapse` siguen el ciclo de presencia. `onPhaseChange` reporta `entering` → `entered` → `exiting` → `exited`. `onDimensionChange` da el tamaño vivo del eje (`scrollHeight` / `scrollWidth`).",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. ResizeObserver mantiene la medida al día.",
+        "measured": "Medido:",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled` (o `prefers-reduced-motion: reduce`) el host salta al estado destino sin interpolar.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. Sin interpolación porque está desactivado.",
+        "sibling": "Hermano abajo: salta con el panel."
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild` las clases y el tamaño van al único hijo (sin wrapper `__surface`).",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Detalle del pedido",
+        "panel": "Panel slotteado en un Card: el morph de altura va al Card."
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` se pasan por `classNames`. Acá `gemst-relative` y `gemst-overflow-hidden` van en `root`, y `gemst-block` en `surface`.",
+      "texts": {
+        "expand": "Expandir",
+        "collapse": "Colapsar",
+        "title": "Título de la sección",
+        "panel": "Cuerpo del acordeón. La altura anima al tamaño medido del contenido y después queda en auto.",
+        "sibling": "Hermano abajo: se mueve con el panel que colapsa."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "expand": "Expandir",
+      "collapse": "Colapsar",
+      "title": "Título de la sección",
+      "panel": "Utilidades de Tailwind y variables CSS sobre el host."
+    },
+    "variant": {
+      "expand": "Expandir",
+      "collapse": "Colapsar",
+      "panel": "Wrapper con cva + cn alrededor del collapse."
+    },
+    "styled": {
+      "expand": "Expandir",
+      "collapse": "Colapsar",
+      "title": "FAQ",
+      "panel": "Las variables --gemst-collapse-* se pisan desde la clase faq-shell."
+    }
+  },
+  "apiLink": "Ver la API completa de CollapseTransition",
+  "api": {
+    "header": {
+      "title": "CollapseTransition API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `CollapseTransition`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de presencia, peek, width y preserveSpace.",
+      "link": "Ver demos de CollapseTransition"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/collapse-transition` con su `collapse-transition.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz, o al hijo con <code>asChild</code>. En ese caso las clases y estilos se combinan con los del hijo y, si los dos definen el mismo handler, se llama primero el del hijo. El componente maneja <code>onTransitionEnd</code> internamente (para detectar el fin de <code>height</code> / <code>width</code>) y después llama al tuyo."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "presence": "Es una transición de presencia: el control que cambia <code>isIn</code> debería exponer <code>aria-expanded</code> (o el patrón de disclosure que uses).",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el host salta al estado final. La preferencia se consulta en cada render, no se escucha en vivo.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega <code>gemst-ignore-reduced-motion</code> a la raíz. Usalo solo si el movimiento es esencial.",
+        "trigger": "El trigger del acordeón y el panel colapsable no deben anidar botones interactivos. El contenido oculto no debería recibir foco mientras <code>isIn</code> es <code>false</code> (con <code>collapsedSize</code> 0 el nodo se desmonta).",
+        "preserveSpace": "Con <code>preserveSpace</code> el espacio queda reservado y el contenido se oculta con opacidad. No pongas el borde en un padre compartido con UI siempre visible: ponelo en el nodo que transiciona.",
+        "asChild": "Con <code>asChild</code>, elegí un hijo con la semántica correcta (<code>Card</code>, <code>section</code>, <code>div</code>): ese elemento es el host del tamaño."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`div` o el hijo con `asChild`). `overflow: hidden` mientras anima.",
+        "dimension": "Eje activo (`height` o `width`). Define qué propiedad transiciona.",
+        "in": "Estado presente (`isIn`).",
+        "out": "Estado ausente. Sin peek, baja la opacidad a `0`.",
+        "expanded": "Asentado abierto con tamaño `auto`. Pone `overflow: visible`.",
+        "peek": "Hay un `collapsedSize` distinto de cero (peek visible).",
+        "preserveSpace": "Con `preserveSpace` al salir: reserva layout y limpia borde / fondo / sombra.",
+        "keepMountedHidden": "Host oculto tras exit con `keepMounted` (visibilidad + eje en `0`).",
+        "disabled": "Se agrega con `isDisabled`. Sin transición.",
+        "surface": "`div` interno que envuelve el contenido (sin `asChild`)."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render (en `0ms` con `isDisabled`, movimiento reducido o keep-mounted oculto).",
+      "items": {
+        "duration": "Duración de la fase actual. Default `300ms`.",
+        "delay": "Retraso de la fase actual. Default `0ms`.",
+        "easing": "Curva de la fase actual. Default `standard`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingStandard": "Valor por defecto de `--gemst-collapse-easing`. El componente escribe inline la curva ya resuelta: usá `easing` para cambiarla."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "Qué se colapsa y dónde se monta." },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Presencia, eje, peek y cómo se queda montado."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "En milisegundos. `enter` aplica al expandir y `exit` al colapsar."
+      },
+      "state": { "title": "Estado", "description": "Cómo se apaga la animación." },
+      "events": {
+        "title": "Eventos",
+        "description": "Ciclo de presencia, fases y medida del eje."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que colapsa y se expande. Sin `asChild` se envuelve en la surface.",
+      "asChild": "Aplica clases, estilos y ref al único hijo. No hay `__surface`.",
+      "isIn": "`true` expande al tamaño del contenido y después `auto`; `false` colapsa a `collapsedSize` y desmonta si es `0` (salvo preserve/keep/peek).",
+      "dimension": "Eje a animar. Default `height`.",
+      "collapsedSize": "Tamaño al colapsar. Número = px; string = cualquier largo CSS. Distinto de cero deja peek y mantiene montado. Default `0`.",
+      "preserveSpace": "Al salir reserva el tamaño de layout (oculta con opacidad; el eje no colapsa). Se ignora si `unmountOnExit`.",
+      "keepMounted": "Tras el exit el host queda montado y oculto (eje en `0`). Se ignora si `unmountOnExit`.",
+      "unmountOnExit": "Desmonta al toque al salir (salta el colapso).",
+      "initial": "`false` saltea el motion en el primer mount. Los toggles después sí animan. Default `true`.",
+      "duration": "Duración. Con `{ enter, exit }`, `enter` es expandir y `exit` colapsar.",
+      "delay": "Espera antes de empezar. Acepta `{ enter, exit }`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), timing function o `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Salta al estado destino sin interpolar.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onCollapse": "Se dispara cuando el collapse está activo (`isIn` true).",
+      "outCollapse": "Se dispara al salir (`isIn` false), desactivar o desmontar.",
+      "onPhaseChange": "Fases: `idle`, `entering`, `entered`, `exiting`, `exited`.",
+      "onDimensionChange": "Tamaño vivo del eje animado (`scrollHeight` / `scrollWidth`), en px.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface`.",
+      "style": "Estilos inline de la raíz. Se combinan con el tamaño animado y `--gemst-collapse-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

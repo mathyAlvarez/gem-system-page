@@ -1,0 +1,285 @@
+{
+  "header": {
+    "title": "AutoAnimateContainer",
+    "description": "Animates the host width and/or height when the inner content resizes. There is no presence flag (`isIn`): it measures the surface, interpolates from the previous size, then settles on `auto`. Use it for panels, tabs, detail alerts or chips whose label changes length."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props, expand the panel and check the generated code. Growing uses the `enter` timing and shrinking uses `exit`.",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+    "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+    "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+    "sibling": "Sibling below — moves with the resizing panel."
+  },
+  "stories": {
+    "base": {
+      "title": "Basic height",
+      "description": "With the defaults (`axis=\"height\"`, `overflow=\"hidden\"`, `duration={300}`) the host animates from the previous height to the new measured height, then returns to `auto`. The sibling below slides with the panel.",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "sibling": "Sibling below — moves with the resizing panel."
+      }
+    },
+    "panels": {
+      "title": "Changing panels",
+      "description": "Swap panels of different height. No `isIn` — size follows the content that is currently mounted.",
+      "texts": {
+        "groupLabel": "Panels",
+        "brief": "Brief",
+        "detail": "Detail",
+        "full": "Full",
+        "briefBody": "One-line summary.",
+        "detailBody": "Two paragraphs of context so the host has to grow. The sibling below should slide rather than jump.",
+        "fullBody": "Longer body with extra room for FAQs, stepper copy, or a disclosure that is not a collapse-to-zero. Height follows whatever is currently rendered.",
+        "sibling": "Sibling below — tracks the active panel height."
+      }
+    },
+    "timing": {
+      "title": "Grow / shrink timing",
+      "description": "`duration`, `delay` and `easing` accept `{ enter, exit }`: `enter` is grow and `exit` is shrink. Here grow takes `420` ms with a `40` ms delay and `enter` easing; shrink takes `200` ms with `exit`.",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "sibling": "Sibling below — moves with the resizing panel."
+      }
+    },
+    "width": {
+      "title": "Axis width",
+      "description": "`axis=\"width\"` sizes to content (chip / tag). Width interpolates when the label changes.",
+      "texts": {
+        "shortLabel": "Short label",
+        "longLabel": "Long label",
+        "short": "Draft",
+        "long": "In progress · waiting on review"
+      }
+    },
+    "both": {
+      "title": "Axis both",
+      "description": "`axis=\"both\"` tracks width and height together when the inner block changes size.",
+      "texts": {
+        "expand": "Expand",
+        "compact": "Compact",
+        "short": "Compact card",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag."
+      }
+    },
+    "overflow": {
+      "title": "overflow visible",
+      "description": "`overflow=\"visible\"` keeps host shadows / outline visible while height animates. In-flow content still clips to the interpolating box so the panel does not race ahead of the host. With the default `hidden`, the glow would clip mid-motion.",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "sibling": "Sibling below — the outer glow should stay visible during the resize."
+      }
+    },
+    "opacity": {
+      "title": "animateOpacity",
+      "description": "With `animateOpacity`, the surface fades while size interpolates — useful when swapping panels. Compare without a fade (left) and with a fade (right).",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "withoutFade": "animateOpacity false",
+        "withFade": "animateOpacity true"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onAutoAnimate` fires when the container is active (on mount or when enabled, `reason: \"enter\"`) and `outAutoAnimate` when it is disabled (`disabled`) or unmounted (`unmount`). It does not fire on every resize — it is the host lifecycle, not each animation.",
+      "texts": {
+        "enable": "Enable",
+        "disable": "Disable",
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` (or `prefers-reduced-motion: reduce`) the host snaps to the new size with no interpolation.",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "sibling": "Sibling below — moves with the resizing panel."
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, size styles merge onto the single child. ResizeObserver watches that host; nested padding (borders, Card body, etc.) is included in the natural height / width.",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "title": "Order details",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Classes from `utilities.css` go through `classNames` to adjust layout or overflow without a design system stylesheet. Here `gemst-relative` and `gemst-overflow-hidden` go on `root`, and `gemst-block` on `surface`.",
+      "texts": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+        "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+        "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag.",
+        "sibling": "Sibling below — moves with the resizing panel."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+      "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+      "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag."
+    },
+    "variant": {
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "short": "Short panel. Toggle extra copy to grow and shrink the host.",
+      "longFirst": "Expanded copy. The container measures this block and animates height to fit.",
+      "longSecond": "Useful for tabs, alerts with details, and forms that inject extra fields without a presence flag."
+    },
+    "styled": {
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "short": "Short alert with more detail available.",
+      "longFirst": "Expanded detail: the shell animates height and keeps the design-system info tone.",
+      "longSecond": "`--gemst-auto-animate-*` variables are overridden from the `alert-shell` class."
+    }
+  },
+  "apiLink": "Open the full AutoAnimateContainer API",
+  "api": {
+    "header": {
+      "title": "AutoAnimateContainer API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `AutoAnimateContainer`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every axis, overflow and option.",
+      "link": "Open AutoAnimateContainer demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemsitions/auto-animate-container` with its `auto-animate-container.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. In that case classes and styles merge with the child's and, when both define the same handler, the child's runs first. The component handles <code>onTransitionEnd</code> internally and then calls yours."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "noPresence": "There is no presence flag: whatever you mount is what gets measured. If size conveys information, also expose it in text or ARIA attributes.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the host snaps to the final size. The preference is read on every render, not listened to live.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds the <code>gemst-ignore-reduced-motion</code> class to the root. Use it only when motion is essential.",
+        "overflow": "While animating, host overflow clips in-flow content so it does not race ahead of the box. With <code>visible</code>, outer shadows stay visible; inner content still clips to the interpolating box.",
+        "asChild": "With <code>asChild</code>, pick a child with the right semantics (<code>Card</code>, <code>section</code>, <code>aside</code>): the observer measures that element, including nested padding."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div`). `box-sizing: border-box` and `color: inherit`. With `axis=\"height\"` it is a full-width `block`; with `width` / `both` it is `inline-block`.",
+        "axis": "Active axis. Controls how the host and surface are sized.",
+        "overflow": "Overflow while animating. When settled (`--settled`) it returns to `visible`.",
+        "animateOpacity": "Enables the surface fade during the resize.",
+        "animating": "While size is interpolating. Enables the `width` / `height` transition.",
+        "settled": "No animation running and size is `auto`. Sets `overflow: visible`.",
+        "disabled": "Added with `isDisabled`. No transition.",
+        "surface": "Inner `div` wrapping the content (without `asChild`). During the resize it locks to the host box so it does not race ahead."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline on every render (as `0ms` with `isDisabled` or reduced motion). Used by the size transition (and opacity when `animateOpacity` is on).",
+      "items": {
+        "duration": "Duration of the current phase (grow = `enter`, shrink = `exit`). Default `300ms`.",
+        "delay": "Delay of the current phase. Default `0ms`.",
+        "easing": "Curve of the current phase. Default `standard`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables the CSS uses as defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-auto-animate-easing`. The component writes the resolved curve inline, so redefining the token does not change the animation: use `easing`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Every prop is optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "What is measured and where it mounts." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Axes, overflow while resizing and optional fade."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "In milliseconds. `enter` applies to grow and `exit` to shrink."
+      },
+      "state": { "title": "State", "description": "How the animation is turned off." },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `enter`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content whose size animates the host. Without `asChild` it is wrapped in the surface.",
+      "asChild": "Applies classes, styles and ref to the single child. ResizeObserver watches that host; nested padding is included in the natural measure.",
+      "axis": "`height` (default) is a full-width block; `width` and `both` size to content (`inline-block`).",
+      "overflow": "Host overflow while animating. Default `hidden`. `visible` keeps outer shadows; `clip` clips without creating a scroll container. When settled it always returns to `visible`.",
+      "animateOpacity": "Fades the surface while size changes. Softens panel swaps.",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is grow and `exit` is shrink.",
+      "delay": "Wait before starting. Accepts `{ enter, exit }` like `duration`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), a CSS timing function or `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Snaps to the new size with no interpolation. Turning it on sends `disabled` to `outAutoAnimate`.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only when essential.",
+      "onAutoAnimate": "Fires when the container is active: on mount or when enabled (`reason: \"enter\"`).",
+      "outAutoAnimate": "Fires when disabled (`disabled`) or unmounted (`unmount`).",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface`.",
+      "style": "Inline styles for the root. Merged with the animated size and the `--gemst-auto-animate-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

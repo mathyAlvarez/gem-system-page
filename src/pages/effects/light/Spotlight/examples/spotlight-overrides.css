@@ -1,0 +1,14 @@
+.gemfx-spotlight.spotlight-lamp {
+  --gemfx-spotlight-color: var(--gem-palette-tertiary-400);
+  border-radius: var(--gem-radius-lg);
+}
+
+.gemfx-spotlight.spotlight-lamp .gemfx-spotlight__beam {
+  background-image: radial-gradient(
+    ellipse calc(var(--gemfx-spotlight-size) * 1.6) var(--gemfx-spotlight-size) at
+      var(--gemfx-spotlight-x) var(--gemfx-spotlight-y),
+    color-mix(in srgb, var(--gemfx-spotlight-color) 80%, transparent) 0%,
+    transparent 70%
+  );
+  mix-blend-mode: soft-light;
+}

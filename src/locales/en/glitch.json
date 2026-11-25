@@ -1,0 +1,214 @@
+{
+  "header": {
+    "title": "Glitch",
+    "description": "Cyberpunk digital interference: RGB channel split, horizontal tears, scanlines and static, in short bursts. `variant` sets the pattern (`cyber`, `rgb`, `slice` or `noise`) and `trigger` when it runs. By default it loops."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. Bursts land around 10%, 38% and 80% of each cycle, so wait a moment to see the strongest one.",
+    "alt": "gem-org logo"
+  },
+  "stories": {
+    "image": {
+      "title": "On an image",
+      "description": "With the defaults (`variant=\"cyber\"`, `trigger=\"always\"`) there are three bursts per `2200ms` cycle: it splits the red and blue channels, tears horizontal bands, shakes the content and adds scanlines and static. The root clips (`overflow: hidden`), so it carries the `border-radius`.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`cyber` combines everything. `rgb` only splits the channels with an SVG filter, `slice` only displaces bands (with the same filter) and adds color tears, and `noise` only draws scanlines and static, with no filter. All four shake the content in jumps (`steps()`), without sliding; `rgb` snaps even harder."
+    },
+    "text": {
+      "title": "On text",
+      "description": "Works the same on type. With large text and `intensity=\"lg\"` the channel split is more visible.",
+      "texts": {
+        "label": "Glitch"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`always` loops, `hover` runs while the pointer is over it or keyboard focus is inside, and `click` toggles on each click. When off, the content stays still with no layers."
+    },
+    "split": {
+      "title": "RGB split",
+      "description": "`split` is how many pixels the channels separate at the peak of each burst. Without a value, `intensity` sets it: `2`, `4` or `8`. Only affects `cyber` and `rgb`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is the length of a full cycle with its three bursts. `delay` postpones the start, handy to offset several elements."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the RGB split (`2`, `4` or `8` px), the band displacement (`5`, `11` or `18` px) and the opacity of tears, scanlines and static. Takes a token or a number between `0` and `1`."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` and `colorAlt` tint the tear gradients, so they only show with `cyber` and `slice`. The channel split always uses pure red and blue. Without a value, they use `primary-400` and `secondary-400`."
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the distortion as it is: the jitter, tears, static and SVG filter stay on their last frame, and unpausing picks up from that same frame. `isDisabled` turns the effect off and leaves the content still and interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild` the effect mounts on the child, with no wrapping `div`: the `h3` gets the root class, the RGB filter and the jitter, and the layers are inserted inside it. Void elements (`img`, `input`) have nowhere to hold them, so it falls back to the wrapping `div`.",
+      "texts": {
+        "label": "Signal"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGlitch` fires when the effect turns on and `outGlitch` when it turns off, with the reason in `event.reason`. The layers have `pointer-events: none`, so the button still gets clicks.",
+      "texts": {
+        "body": "Hover the card (or Tab to the button) to glitch it and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "No signal"
+    },
+    "styled": {
+      "alt": "gem-org logo on a CRT screen"
+    }
+  },
+  "apiLink": "See the full Glitch API",
+  "api": {
+    "header": {
+      "title": "Glitch API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Glitch`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger and option.",
+      "link": "See Glitch demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/glitch` along with its `glitch.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes (except <code>color</code>, which is its own prop) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "photosensitivity": "These are flashes and sudden jumps. To meet WCAG 2.3.1, avoid more than three flashes per second: don't lower <code>duration</code> too much and don't use it over large areas of the screen.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the content stays still, with no filter or tears, and only faint scanlines remain. The preference is tracked live: if it changes while the page is open, the glitch stops or comes back without reloading.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the glitch. Use it only when essential.",
+        "decorative": "The filter <code>svg</code> and the layers have <code>aria-hidden</code>, and the layers <code>pointer-events: none</code>: they aren't announced and don't block clicks. Text stays readable for screen readers.",
+        "keyboard": "With <code>trigger=\"hover\"</code>, keyboard focus (<code>:focus-visible</code>) on the root or a descendant activates the effect just like the pointer: the animated mode, the SVG filter, <code>onGlitch</code> and <code>outGlitch</code>. Mouse focus doesn't count. The root isn't focusable on its own: it needs a control inside or a <code>tabIndex</code>.",
+        "performance": "With <code>cyber</code>, <code>rgb</code> and <code>slice</code>, each active instance runs a <code>requestAnimationFrame</code> loop that updates an SVG filter. Avoid many instances at once or on large elements."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex`, `isolation: isolate` and `overflow: hidden`.",
+        "variant": "Active variant.",
+        "live": "Added while the effect runs (active and no reduced motion; with `hover`, from the pointer or keyboard focus). Enables every animation.",
+        "filter": "Added while it runs with `cyber`, `rgb` or `slice`. Applies the SVG filter to the surface.",
+        "trigger": "Added with `trigger=\"hover\"` or `\"click\"` (there's no class for `always`).",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "paused": "Added with `isPaused`. Pauses (`animation-play-state: paused`) the jitter and the layer animations; JS freezes the SVG filter.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Removes the filter, the jitter and the layers.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "defs": "Zero-size `svg` holding the filter. Only exists with `cyber`, `rgb` and `slice`.",
+        "surface": "Wraps the child (with `asChild`, it's the child itself). Gets the SVG filter and the jitter (`transform`).",
+        "layer": "Decorative layer above the content (`aria-hidden`, `z-index: 2`, `pointer-events: none`).",
+        "slice": "Color tears with `mix-blend-mode: screen`. Only exist with `cyber` and `slice`.",
+        "scan": "Scanlines. Only exist with `cyber` and `noise`.",
+        "noise": "Static. Only exists with `cyber` and `noise`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`duration`, `delay`, `split`, `intensity` and `filter` are written inline on every render, so you can only change them through the props. The colors are inline only when you pass `color` or `colorAlt`; otherwise you can override them from a class.",
+      "items": {
+        "red": "Warm tear color. Set by `color`; default `var(--gem-palette-primary-400)`.",
+        "cyan": "Cool tear color. Set by `colorAlt`; default `var(--gem-palette-secondary-400)`.",
+        "duration": "Cycle duration. Set by `duration`; default `2200ms`.",
+        "delay": "Delay. Set by `delay`; default `0ms`.",
+        "intensity": "Intensity as a percentage; drives the opacity of tears, scanlines and static.",
+        "split": "RGB split in pixels. Informational: the CSS doesn't use it, JS applies the offset on the SVG filter.",
+        "filter": "`url(#…)` of this instance's SVG filter (unique id from `useId`)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Glitch reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "primary": "Default `color`. If gem-system isn't loaded, falls back to `#ff2a6d`.",
+        "secondary": "Default `colorAlt`. If gem-system isn't loaded, falls back to `#05d9e8`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content gets the interference and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Pattern, channel split, colors and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Burst cycle and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it runs and how it pauses or turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that gets the glitch: an image, text or a card.",
+      "asChild": "Applies the effect to the single child, with no wrapping `div`. With void elements (`img`, `input`) it falls back to the wrapping `div`, since the filter and the layers are inserted as children.",
+      "variant": "`cyber` everything combined, `rgb` channel split only, `slice` displaced bands and tears only, `noise` scanlines and static only.",
+      "split": "Channel split in pixels (negatives become `0`). Without a value, `intensity` sets it: `2`, `4` or `8`.",
+      "color": "Warm tear color for `cyber` and `slice`. Any CSS color.",
+      "colorAlt": "Cool tear color for `cyber` and `slice`. Any CSS color.",
+      "intensity": "Distortion strength: split, displacement and layer opacity. Token or number between `0` and `1`.",
+      "duration": "Length of one cycle with its three bursts. Negatives become `0`.",
+      "delay": "Delay before the first cycle.",
+      "trigger": "`always` loops, `hover` while the pointer is over it or keyboard focus is inside, `click` toggles on each click.",
+      "isActive": "Allows the effect. When `false` it turns it off and `outGlitch` gets `inactive`.",
+      "isPaused": "Freezes the current distortion on its last frame. Unpausing resumes from that frame.",
+      "isDisabled": "Stops the effect; the child stays still and interactive. `outGlitch` gets `disabled`.",
+      "ignoreReducedMotion": "Runs even if the user prefers reduced motion. Without it, the effect follows the preference live. Only when essential.",
+      "onGlitch": "Fires when the effect turns on: on mount with `always`, when the pointer or keyboard focus enters, or when toggled on by click.",
+      "outGlitch": "Fires when it turns off: when the pointer or focus leaves, when toggled off by click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `slice`, `scan` and `noise`.",
+      "style": "Root inline styles. Merged with the `--gemfx-glitch-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

@@ -132,8 +132,14 @@
         "listLabel": "Release history",
         "events": {
           "created": { "title": "Release created", "description": "Release branch cut from main." },
-          "approved": { "title": "Review approved", "description": "Two approvals from the platform team." },
-          "deployed": { "title": "Deployed to production", "description": "100% of traffic is on the new version." }
+          "approved": {
+            "title": "Review approved",
+            "description": "Two approvals from the platform team."
+          },
+          "deployed": {
+            "title": "Deployed to production",
+            "description": "100% of traffic is on the new version."
+          }
         }
       }
     },

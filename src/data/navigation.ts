@@ -1,34 +1,18 @@
-import type { ComponentType } from "react";
-import type commonEs from "../locales/es/common.json";
-import { Home, type IconProps } from "@gem-org/gem-system/icons";
+import { Home } from "@gem-org/gem-system/icons";
+import { productPath, type ProductId } from "./products.ts";
+import { effectsNavigation, effectsRouteGroups } from "./navigation.effects.ts";
+import { transitionsNavigation, transitionsRouteGroups } from "./navigation.transitions.ts";
+import type { ComponentRoute, DocsRouteGroup, NavEntry, NavLeaf } from "./navigation.types.ts";
 
-export type NavIcon = ComponentType<IconProps>;
-
-export type NavLabelKey = keyof (typeof commonEs)["nav"];
-
-/** `labelKey` is translated from `common.nav`; `label` is shown as-is (component names). */
-type NavLabel = { label: string; labelKey?: never } | { labelKey: NavLabelKey; label?: never };
-
-export type NavLeaf = NavLabel & {
-  id: string;
-  to: string;
-  /** Only used by top-level links; nested items render a middle dot. */
-  icon?: NavIcon;
-};
-
-export type NavGroup = NavLabel & {
-  id: string;
-  items: NavLeaf[];
-};
-
-export type NavEntry = NavLeaf | NavGroup;
-
-export type ComponentRoute = {
-  path: string;
-  label: string;
-  /** Exported component name when it differs from the label. */
-  component?: string;
-};
+export type {
+  ComponentRoute,
+  DocsRouteGroup,
+  NavEntry,
+  NavGroup,
+  NavIcon,
+  NavLabelKey,
+  NavLeaf,
+} from "./navigation.types.ts";
 
 export const componentRoutes: ComponentRoute[] = [
   { path: "button", label: "Button" },
@@ -113,46 +97,68 @@ export const dataDisplayRoutes: ComponentRoute[] = [
   { path: "tree-view", label: "Tree View", component: "TreeView" },
 ];
 
-export const docsRouteGroups = [
+const SYSTEM = "system" as const;
+
+export const systemRouteGroups: DocsRouteGroup[] = [
   { base: "components", routes: componentRoutes },
   { base: "layout", routes: layoutRoutes },
   { base: "navigation", routes: navigationRoutes },
   { base: "feedback", routes: feedbackRoutes },
   { base: "data-display", routes: dataDisplayRoutes },
-] as const;
+];
+
+/** @deprecated Prefer `systemRouteGroups` or `routeGroupsFor(product)`. */
+export const docsRouteGroups = systemRouteGroups;
 
 const toNavItems = (base: string, routes: ComponentRoute[]): NavLeaf[] =>
   routes.map((route) => ({
     id: `${base}-${route.path}`,
     label: route.label,
-    to: `/${base}/${route.path}`,
+    to: productPath(SYSTEM, base, route.path),
   }));
 
 export const API_NAV_ID = "components-api";
 
-const apiNavItems: NavLeaf[] = docsRouteGroups
+const apiNavItems: NavLeaf[] = systemRouteGroups
   .flatMap(({ base, routes }) =>
     routes.map((route) => ({
       id: `api-${base}-${route.path}`,
       label: route.component ?? route.label,
-      to: `/${base}/${route.path}/api`,
+      to: productPath(SYSTEM, base, route.path, "api"),
     })),
   )
   .sort((a, b) => a.label.localeCompare(b.label, "en"));
 
-export const navigation: NavEntry[] = [
-  { id: "getting-started", labelKey: "gettingStarted", to: "/getting-started", icon: Home },
+export const systemNavigation: NavEntry[] = [
+  {
+    id: "getting-started",
+    labelKey: "gettingStarted",
+    to: productPath(SYSTEM, "getting-started"),
+    icon: Home,
+  },
   {
     id: "override-styles",
     labelKey: "overrideStyles",
     items: [
-      { id: "override-overview", labelKey: "overrideOverview", to: "/override-styles" },
-      { id: "override-tailwind", labelKey: "overrideTailwind", to: "/override-styles/tailwind" },
-      { id: "override-cva", labelKey: "overrideCva", to: "/override-styles/cva" },
+      {
+        id: "override-overview",
+        labelKey: "overrideOverview",
+        to: productPath(SYSTEM, "override-styles"),
+      },
+      {
+        id: "override-tailwind",
+        labelKey: "overrideTailwind",
+        to: productPath(SYSTEM, "override-styles", "tailwind"),
+      },
+      {
+        id: "override-cva",
+        labelKey: "overrideCva",
+        to: productPath(SYSTEM, "override-styles", "cva"),
+      },
       {
         id: "override-css-variables",
         labelKey: "overrideCssVariables",
-        to: "/override-styles/css-variables",
+        to: productPath(SYSTEM, "override-styles", "css-variables"),
       },
     ],
   },
@@ -160,12 +166,16 @@ export const navigation: NavEntry[] = [
     id: "foundations-docs",
     labelKey: "foundations",
     items: [
-      { id: "typography", labelKey: "typography", to: "/foundations/typography" },
-      { id: "tokens", labelKey: "tokens", to: "/foundations/tokens" },
-      { id: "icons", labelKey: "icons", to: "/foundations/icons" },
-      { id: "radii", labelKey: "radii", to: "/foundations/radii" },
-      { id: "shadows", labelKey: "shadows", to: "/foundations/shadows" },
-      { id: "spacing", labelKey: "spacing", to: "/foundations/spacing" },
+      {
+        id: "typography",
+        labelKey: "typography",
+        to: productPath(SYSTEM, "foundations", "typography"),
+      },
+      { id: "tokens", labelKey: "tokens", to: productPath(SYSTEM, "foundations", "tokens") },
+      { id: "icons", labelKey: "icons", to: productPath(SYSTEM, "foundations", "icons") },
+      { id: "radii", labelKey: "radii", to: productPath(SYSTEM, "foundations", "radii") },
+      { id: "shadows", labelKey: "shadows", to: productPath(SYSTEM, "foundations", "shadows") },
+      { id: "spacing", labelKey: "spacing", to: productPath(SYSTEM, "foundations", "spacing") },
     ],
   },
   {
@@ -199,3 +209,39 @@ export const navigation: NavEntry[] = [
     items: apiNavItems,
   },
 ];
+
+/** @deprecated Prefer `systemNavigation` or `navigationFor(product)`. */
+export const navigation = systemNavigation;
+
+export function navigationFor(product: ProductId): NavEntry[] {
+  switch (product) {
+    case "system":
+      return systemNavigation;
+    case "effects":
+      return effectsNavigation;
+    case "transitions":
+      return transitionsNavigation;
+  }
+}
+
+export function routeGroupsFor(product: ProductId): readonly DocsRouteGroup[] {
+  switch (product) {
+    case "system":
+      return systemRouteGroups;
+    case "effects":
+      return effectsRouteGroups;
+    case "transitions":
+      return transitionsRouteGroups;
+  }
+}
+
+export function apiNavIdFor(product: ProductId): string {
+  switch (product) {
+    case "system":
+      return API_NAV_ID;
+    case "effects":
+      return "effects-api";
+    case "transitions":
+      return "transitions-api";
+  }
+}

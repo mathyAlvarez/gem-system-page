@@ -1,0 +1,228 @@
+{
+  "header": {
+    "title": "RipZone",
+    "description": "A scratch-off cover, like a lottery card, over the child. The cover is painted on a `canvas` and each stroke erases a soft-edged circle. When the scratched area reaches `threshold`, the cover fades out and the content is free. `variant` sets the look (`matte`, `foil`, `grit`) and `trigger` how it's scratched (`drag`, `click` or `always`). It doesn't use Particles: `rip-zone.css` is enough."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and scratch the card. Use \"Refill\" to cover the content again (changes `resetKey`).",
+    "label": "Prize!",
+    "reset": "Refill"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic scratch",
+      "description": "With the defaults (`variant=\"foil\"`, `trigger=\"drag\"`, `intensity=\"md\"`) the cover hides the card and dragging erases a stroke with a `28` px radius. Once `62%` is scratched, the cover fades out in `480` ms and stops capturing the pointer. With the keyboard, Tab to the card and press Enter or Space to reveal it at once.",
+      "texts": {
+        "kicker": "Scratch and win",
+        "title": "-30%"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`matte` is a flat color. `foil` adds a diagonal metallic sheen. `grit` adds a grainy texture, like lottery tickets. All three use the same base color."
+    },
+    "image": {
+      "title": "Over an image",
+      "description": "The cover hides any content, like an image. The zone takes the child's size and the `canvas` matches it (with `devicePixelRatio` up to `2`). If the zone changes size after you start scratching (for example when the window shrinks), the scratched area is kept and scaled to the new size; only an untouched cover is repainted.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`drag` scratches while you drag. `click` erases one circle per click (here with `radius={36}`). `always` scratches by itself, in a zigzag, until it reaches `threshold`; here it starts after `delay={600}`. Its speed follows elapsed time, not frames, so it takes the same time on a 60 Hz and a 144 Hz screen."
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`color` is the cover color. It accepts any CSS color, including variables: it's resolved once when painting. Without `color`, it uses a dark mix of `neutral-950` and `primary-800`. Prefer tokens."
+    },
+    "radius": {
+      "title": "Brush radius",
+      "description": "`radius` is the brush radius in pixels (minimum `4`). It takes priority over `intensity`."
+    },
+    "threshold": {
+      "title": "Threshold",
+      "description": "`threshold` is the fraction of the cover to scratch before it finishes, from `0` to `1`. Each label shows the progress reported by `onProgress`, which updates in `1%` steps."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long the cover takes to fade once the threshold is reached. These use `threshold={0.3}` so it shows quickly. `delay` delays that fade and the start of `always`."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "Without `radius`, `intensity` sets the brush size: `18`, `28` or `42` px. It also accepts a number from `0` to `1`. Scratch each card."
+    },
+    "reset": {
+      "title": "Refill and progress",
+      "description": "Changing `resetKey` repaints the whole cover. `onProgress` reports the scratched fraction and `onComplete` fires once when the threshold is reached.",
+      "texts": {
+        "reset": "Refill",
+        "status": "Scratched: {progress}%",
+        "done": "Complete!",
+        "title": "Free shipping"
+      }
+    },
+    "asChild": {
+      "title": "On an element (asChild)",
+      "description": "With `asChild`, the cover mounts directly on the child (an `article` here), without adding a `div`. The child gets `position: relative` from the surface class. With a void element like `img` or `input`, which can't hold the cover, it falls back to the wrapping `div`. If the child isn't focusable (like this `article`), while covered it becomes the reveal control: it gets `tabIndex`, `role=\"button\"` and a default `aria-label`, so Tab and Enter or Space reveal it at once.",
+      "texts": {
+        "kicker": "Prize",
+        "title": "You won"
+      }
+    },
+    "state": {
+      "title": "Pause and disabled",
+      "description": "With `trigger=\"always\"`, `isPaused` stops the auto-scrape, and if the cover is already fading (`1600` ms here), it freezes it halfway until unpaused. `isDisabled` prevents scratching: the cover keeps hiding the content and still blocks the pointer.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "reset": "Refill",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onScratchStart` fires on the first stroke (with the position). `onRipZone` when scratching starts and `outRipZone` when it ends, with the reason in `event.reason` (`drag` is reported as `hold`). `onComplete` arrives when the threshold is passed. While covered, the content is `inert`: the button can't be activated by pointer or by Tab. With the keyboard, focus the zone and press Enter to reveal it.",
+      "texts": {
+        "body": "Scratch the card to free the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "$5"
+    },
+    "styled": {
+      "label": "Surprise"
+    }
+  },
+  "apiLink": "See the full RipZone API",
+  "api": {
+    "header": {
+      "title": "RipZone API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `RipZone`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant, trigger and option.",
+      "link": "See RipZone demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/rip-zone` with `rip-zone.css`, or from the package root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code> and <code>onProgress</code>) and passes them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onPointerDown</code>, <code>onPointerMove</code>, <code>onPointerUp</code> and <code>onPointerCancel</code> run before the effect's internal logic. <code>onClick</code> and <code>onKeyDown</code> also run before the keyboard logic. <code>tabIndex</code>, <code>role</code> and <code>aria-label</code> override the values the effect sets when the root is the reveal control. <code>ref</code> is merged with the internal ref that measures the root. <code>--gemfx-rip-zone-progress</code> is written after <code>style</code>; <code>-duration</code> and <code>-delay</code> only when you pass <code>duration</code> or <code>delay</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "control": "The effect is the control: the cover captures the pointer until it completes. With <code>drag</code> and <code>click</code>, the root sets <code>user-select: none</code> and <code>touch-action: none</code>.",
+        "hidden": "The cover is decorative (<code>aria-hidden</code>). In wrapper mode, while covered, the surface is <code>inert</code>: the content leaves the Tab order and the accessibility tree until revealed. With <code>asChild</code> there's no separate surface and the content stays accessible. With <code>isDisabled</code> or <code>isActive={false}</code> it stops being <code>inert</code>. The content is in the DOM: don't use it to hide sensitive information.",
+        "keyboard": "There's no keyboard scratch gesture: Enter or Space reveal everything at once and fire <code>onComplete</code>. In wrapper mode with <code>drag</code> or <code>click</code>, while covered, the root is the control: <code>tabIndex=0</code>, <code>role=\"button\"</code> and <code>aria-label=\"Reveal hidden content\"</code> unless you pass your own. With <code>asChild</code> the same happens if the child isn't focusable (<code>article</code>, <code>div</code>); a native control (<code>button</code>, <code>a</code>) or a child with its own <code>tabIndex</code> or <code>role</code> is left as is.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the fade is instant and <code>always</code> reveals the content at once. With <code>drag</code> and <code>click</code> you still scratch by hand.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the motion. Use it only when essential.",
+        "touch": "With <code>drag</code>, touch users can't scroll starting from the effect. <code>disabledOnTouch</code> ignores touches and restores <code>touch-action: auto</code>; mouse and pen still work."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative`, `isolation: isolate` and `overflow: hidden`. Sets the variable defaults.",
+        "variant": "Active variant. The look is painted on the `canvas`, so the class changes nothing by itself.",
+        "trigger": "Active trigger. Not added with `isDisabled` or `isActive={false}`. `drag` and `click` block selection and touch scrolling.",
+        "holding": "Added while you drag. Switches the cursor to `grabbing`.",
+        "complete": "Added when the threshold is reached. Fades the `canvas` (`opacity: 0`) and the layer stops capturing the pointer.",
+        "paused": "Added with `isPaused`. The CSS doesn't use it: the fade is frozen from JS, pinning the `canvas`'s current `opacity` inline until unpaused.",
+        "inactive": "Added with `isDisabled` or `isActive={false}`. Sets `cursor: default`.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "touchDisabled": "Added with `disabledOnTouch`. Restores `touch-action: auto`.",
+        "surface": "Wraps the child (`z-index: 0`, `flex: 1 1 auto`). With `asChild`, the class goes on the child itself.",
+        "layer": "Effect layer (`position: absolute`, `inset: 0`, `z-index: 1`, `border-radius: inherit`, `aria-hidden`). Captures the pointer until completion.",
+        "canvas": "The `canvas` where the cover is painted. Has `cursor: grab` and the fade's `opacity` transition. Its size is written inline in pixels."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`--gemfx-rip-zone-progress` is written inline on every render: it's live state, only for reading. `-duration` and `-delay` go inline only when you pass the prop; otherwise you can set them from a class. Color and brush are resolved in JS from `color` and `radius`, so they have no variable.",
+      "items": {
+        "progress": "Scratched fraction, from `0` to `1`, updated in `1%` steps. Stops changing at the threshold. Children inherit it and can use it in `calc()`.",
+        "timing": "Duration and delay of the `canvas` `opacity` transition. From CSS they only change the fade: the `always` start uses the `delay` prop."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables RipZone reads as defaults.",
+      "items": {
+        "cover": "Cover mix when you don't pass `color` (fallbacks `#111316` and `#085246`). Resolved in JS when painting.",
+        "easing": "Fade curve (fallback `cubic-bezier(0.4, 0, 1, 1)`).",
+        "durationBase": "Default of `--gemfx-rip-zone-duration` in the CSS (fallback `480ms`). Overridden by the inline value when you pass `duration`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What sits under the cover and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Cover look, brush and threshold." },
+      "timing": { "title": "Timing", "description": "Fade and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "How it's scratched, refilled, paused and turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `hold` (with `drag`), `click`, `always`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content under the cover.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` or `input`, it falls back to the wrapping `div`.",
+      "variant": "`matte` is a flat color, `foil` adds a metallic sheen and `grit` a grainy texture.",
+      "color": "Cover color. Defaults to a dark mix of `neutral-950` and `primary-800`. Prefer tokens.",
+      "radius": "Brush radius in pixels (minimum `4`). Takes priority over `intensity`.",
+      "threshold": "Scratched fraction (`0` to `1`) after which the cover fades out.",
+      "intensity": "Without `radius`: a `18` / `28` / `42` px brush.",
+      "duration": "How long the cover takes to fade on completion.",
+      "delay": "Delay of the fade and of the `always` start.",
+      "trigger": "`drag` scratches while dragging, `click` erases one circle per click and `always` scratches by itself.",
+      "resetKey": "Change this value to repaint the whole cover.",
+      "isActive": "Allows scratching. When `false` the cover stays as is and keeps hiding the content.",
+      "isPaused": "Stops the auto-scrape, blocks scratching and keyboard reveal, and freezes the fade where it is.",
+      "isDisabled": "Blocks scratching. The cover keeps hiding the content.",
+      "ignoreReducedMotion": "Keeps the auto-scrape and the fade even if the user prefers less motion. Only when essential.",
+      "disabledOnTouch": "Ignores the touch pointer; mouse and pen still work.",
+      "onScratchStart": "Fires on the first stroke of the current cover, with the position (`x`, `y`) and progress.",
+      "onProgress": "Fires when the scratched fraction changes (in `1%` steps).",
+      "onComplete": "Fires once when `threshold` is reached.",
+      "onRipZone": "Fires when scratching starts (first stroke, first click or `always` start).",
+      "outRipZone": "Fires when the cover completes, or on disable, refill or unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes per part: `root`, `surface`, `layer` and `canvas`.",
+      "style": "Inline styles for the root. `--gemfx-rip-zone-progress` is written after; `-duration` and `-delay` only when you pass the prop.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

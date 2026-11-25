@@ -1,0 +1,110 @@
+.marquee-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  min-width: 0;
+}
+
+.marquee-demo--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.marquee-demo__item {
+  display: flex;
+  flex: 1 1 12rem;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.marquee-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.marquee-demo__stage {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: 2rem 0;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-neutral-50);
+}
+
+.marquee-demo__stage--tall {
+  padding: 1.25rem 0;
+}
+
+.marquee-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.marquee-demo__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marquee-demo__chip {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--gem-palette-primary-400) 45%, transparent);
+  border-radius: 999px;
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.marquee-demo__image {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  border-radius: var(--gem-radius-md);
+  user-select: none;
+}
+
+.marquee-demo__word {
+  flex-shrink: 0;
+  font-size: var(--gem-font-size-lg);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marquee-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.marquee-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

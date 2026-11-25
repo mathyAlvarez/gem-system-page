@@ -1,0 +1,73 @@
+{
+  "header": {
+    "title": "Getting started",
+    "description": "Instalá Gemsitions, cargá los estilos y animá la entrada, salida y cambios de tu UI con transiciones de React."
+  },
+  "peers": {
+    "title": "Peers",
+    "body": "React 19. @gem-org/gem-system es opcional: si está instalado, las transiciones toman sus tokens (--gem-*); si no, usan valores neutros. Gemsitions no reimplementa componentes del design system."
+  },
+  "install": {
+    "title": "Instalación"
+  },
+  "usage": {
+    "title": "Uso básico",
+    "description": "Cada transición envuelve a su hijo y se controla con `isIn`. Con `isIn` en `false` anima la salida y desmonta el contenido al terminar.",
+    "show": "Mostrar resumen",
+    "hide": "Ocultar resumen",
+    "cardTitle": "Pedido #1042",
+    "cardSubtitle": "3 productos · Envío en 48 h",
+    "cardBody": "Total: $ 84.500"
+  },
+  "bootstrap": {
+    "title": "Bootstrap",
+    "description": "La forma más rápida: importá styles.css una sola vez en el entry y usá las transiciones desde el barrel.",
+    "fullLabel": "Import completo",
+    "partial": {
+      "title": "Importar solo lo necesario",
+      "description": "Cada transición se publica como un subpath propio (en kebab-case, por ejemplo <code>@gem-org/gemsitions/fade-transition</code>) con su hoja de estilos homónima (<code>fade-transition.css</code>). Así el bundle solo incluye el JS y el CSS de las transiciones que realmente usás.",
+      "label": "Import parcial",
+      "notesTitle": "Tené en cuenta:",
+      "notes": {
+        "tokens": "<code>tokens.css</code> se importa una sola vez: define las variables <code>--gemst-*</code> de duración, easing e intensidad.",
+        "utilities": "<code>utilities.css</code> es opcional: suma clases de layout, overflow y posición (<code>gemst-relative</code>, <code>gemst-overflow-hidden</code>…) para pasar por <code>className</code> o <code>classNames</code>.",
+        "utils": "Los helpers de movimiento (<code>usePresenceTransition</code>, <code>prefersReducedMotion</code>…) están en <code>@gem-org/gemsitions/utils</code> y los tokens en <code>@gem-org/gemsitions/tokens</code>.",
+        "single": "Elegí un solo camino: <code>styles.css</code> ya incluye tokens, utilidades y todas las transiciones, no lo mezcles con imports individuales."
+      }
+    }
+  },
+  "behavior": {
+    "title": "Comportamiento compartido",
+    "description": "Casi todas las transiciones comparten la misma API, así que lo que aprendés con una sirve para las demás.",
+    "items": {
+      "timing": "Tiempo: <code>duration</code>, <code>delay</code> y <code>easing</code>. Los tres aceptan un valor único o <code>{ enter, exit }</code>; <code>easing</code> acepta un token (<code>standard</code>, <code>enter</code>, <code>exit</code>, <code>emphasized</code>, <code>linear</code>) o cualquier timing function de CSS.",
+      "presence": "Presencia (Fade, Slide, Scale y Collapse): <code>keepMounted</code> deja el nodo en el DOM oculto, <code>initial={false}</code> evita animar el primer montaje y <code>onPhaseChange</code> avisa cada fase (<code>entering</code>, <code>entered</code>, <code>exiting</code>, <code>exited</code>).",
+      "phases": "Eventos: cada transición emite <code>on*</code> al entrar y <code>out*</code> al salir (<code>onFade</code> / <code>outFade</code>), con un <code>reason</code>: <code>enter</code>, <code>exit</code>, <code>inactive</code>, <code>disabled</code> o <code>unmount</code>.",
+      "classes": "Estilos: <code>className</code>, <code>style</code> y <code>classNames</code> por slot. Las clases públicas usan el prefijo <code>.gemst-*</code> (BEM) y las variables <code>--gemst-*</code>."
+    }
+  },
+  "asChild": {
+    "title": "asChild",
+    "description": "Con `asChild` la transición no agrega un `div`: mezcla sus clases, estilos y ref en el único hijo. Sirve dentro de Flex o Grid, o sobre un elemento semántico real. El hijo tiene que ser exactamente un elemento de React."
+  },
+  "tokens": {
+    "title": "Tokens de movimiento",
+    "description": "Gemsitions define su propia duración, easing e intensidad. Paleta, tipografía, espaciado y bordes los pone la app (--gem-*).",
+    "intensity": "Las duraciones van de `instant` (`0ms`) a `slower` (`1000ms`); la intensidad acepta un token (`sm`, `md` o `lg`, equivalentes a 35%, 55% y 80%) o un número entre `0` y `1`."
+  },
+  "a11y": {
+    "title": "Movimiento reducido",
+    "description": "Las transiciones acompañan cambios de la interfaz; el contenido tiene que entenderse igual sin movimiento.",
+    "items": {
+      "reducedMotion": "Todas respetan <code>prefers-reduced-motion: reduce</code>: el movimiento salta directo al estado final.",
+      "ignore": "Usá <code>ignoreReducedMotion</code> (agrega la clase <code>gemst-ignore-reduced-motion</code>) solo si el movimiento es esencial para la experiencia.",
+      "properties": "Las transiciones animan <code>transform</code> y <code>opacity</code> siempre que pueden, para no forzar reflows.",
+      "viewTransition": "<code>ViewTransition</code> usa <code>document.startViewTransition()</code> y aplica un <code>fallback</code> en CSS cuando el navegador no tiene la API."
+    }
+  },
+  "code": {
+    "optional": "opcional: layout, overflow y posición",
+    "anyTransition": "cualquier transición",
+    "cssVariables": "también como variables CSS"
+  }
+}

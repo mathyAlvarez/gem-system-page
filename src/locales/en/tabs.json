@@ -6,9 +6,18 @@
   "demo": {
     "listLabel": "Project sections",
     "tabs": {
-      "overview": { "label": "Overview", "content": "Project summary, owners, and the latest activity." },
-      "activity": { "label": "Activity", "content": "Recent comments, commits, and status changes." },
-      "settings": { "label": "Settings", "content": "Visibility, notifications, and archive options." },
+      "overview": {
+        "label": "Overview",
+        "content": "Project summary, owners, and the latest activity."
+      },
+      "activity": {
+        "label": "Activity",
+        "content": "Recent comments, commits, and status changes."
+      },
+      "settings": {
+        "label": "Settings",
+        "content": "Visibility, notifications, and archive options."
+      },
       "members": { "label": "Members", "content": "People with access to this workspace." },
       "billing": { "label": "Billing", "content": "Plan, invoices, and payment methods." }
     },

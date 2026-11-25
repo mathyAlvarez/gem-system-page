@@ -1,0 +1,213 @@
+{
+  "header": {
+    "title": "Vortex",
+    "description": "A spinning spiral over a card or image. `variant` sets the shape (`swirl`, `warp` or `ring`), `trigger` when it shows (on hover by default) and `intensity` how visible it is. With `prefers-reduced-motion: reduce` the spiral stops spinning."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With the default `trigger` (`hover`), hover over the card.",
+    "target": "Vortex"
+  },
+  "stories": {
+    "card": {
+      "title": "On a card",
+      "description": "With the default `trigger` (`hover`), the spiral shows and spins while the pointer is over it. On leave it turns off. The root clips the layer, so it needs the same `border-radius` as the card.",
+      "texts": {
+        "kicker": "Vortex",
+        "title": "Hover the card"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`swirl` is a spiral of rays that fades toward the center, `warp` also twists the surface and `ring` concentrates the rays in a ring. Here with `trigger=\"always\"` to see them side by side."
+    },
+    "warp": {
+      "title": "Warp",
+      "description": "`warp` twists the surface (the child) on top of showing the spiral: it rotates `4°`, `8°` or `14°` depending on `intensity` and grows to `scale(1.03)`. Hover over each card. With `trigger=\"always\"` the twist stays fixed. The twist transition uses the `--gemfx-duration-normal` token (`300ms`), and with `prefers-reduced-motion: reduce` the surface doesn't twist."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`hover` turns on with the pointer or when you reach it by keyboard (visible focus on the root or inside), `click` toggles on each click and `always` spins nonstop.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me",
+        "alwaysLabel": "Always"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the spiral opacity (`sm` 19%, `md` 30%, `lg` 44%) and, with `warp`, the twist angle. It takes a token or a number between `0` and `1`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long a full turn takes, in milliseconds. `delay` postpones the start of the spin."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` tints the rays. It takes any CSS color; `--gem-*` tokens are optional. Without the prop it uses `--gem-palette-primary-400`."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without adding a `div`. Here, on a gem-system `Button` with `variant=\"warp\"`: the layer is inserted inside the button and the button itself twists on hover.",
+      "texts": {
+        "label": "Enter the portal"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the spiral where it is. `isDisabled` hides it and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onVortex` fires when the spiral turns on and `outVortex` when it turns off, with the cause in `event.reason`. The inner button still gets clicks because the layer has `pointer-events: none`.",
+      "texts": {
+        "body": "Hover over the card and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Screen blend"
+    },
+    "styled": {
+      "kicker": "Nebula",
+      "title": "Galaxy"
+    }
+  },
+  "apiLink": "See the full Vortex API",
+  "api": {
+    "header": {
+      "title": "Vortex API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Vortex`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant, trigger and option.",
+      "link": "See Vortex demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/vortex` with its `vortex.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>color</code>, and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The spiral layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks on the content.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the spiral stops spinning, the <code>warp</code> surface doesn't twist and the layer stays at 35% while active.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the spin. Only use it if it's essential.",
+        "focus": "With <code>trigger=\"hover\"</code> the spiral also shows on keyboard focus (<code>:focus-visible</code> on the root or inside), so it's visible while tabbing. A mouse click that focuses a button doesn't keep it on. <code>onVortex</code> only fires with the pointer.",
+        "click": "With <code>trigger=\"click\"</code> the toggle listens to the root's <code>click</code>. If the child is a <code>button</code> (with <code>asChild</code>), it also responds to Enter and Space.",
+        "meaning": "It's decoration: don't communicate state or information through the spiral alone.",
+        "vestibular": "Spinning spirals can cause motion sickness. Prefer <code>hover</code> or <code>click</code> over <code>always</code> and avoid several continuous spirals in the same view."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex`, `isolation: isolate` and `overflow: hidden` to clip the layer.",
+        "variant": "Active variant.",
+        "trigger": "Active trigger. With `hover`, the layer is hidden while there's no `:hover` or `:focus-visible` (on the root or inside).",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "paused": "Added with `isPaused`. Pauses the spiral animation.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the layer and removes the twist.",
+        "disabled": "Added with `isDisabled`.",
+        "surface": "Wraps the child. It's what twists with `warp`. With `asChild` it's the child itself.",
+        "layer": "Absolute layer that overflows 20% on each side, clipped by the root.",
+        "swirl": "The rays: a `repeating-conic-gradient` with `mix-blend-mode: overlay` and a radial mask that empties the center."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline on the root on every render, except `--gemfx-vortex-color`, which is only written when you pass `color`: without the prop, a class can override it.",
+      "items": {
+        "color": "Ray color. Set by `color`; default `var(--gem-palette-primary-400)`.",
+        "duration": "Length of one turn. Set by `duration`; default `4200ms`.",
+        "delay": "Spin delay. Set by `delay`; default `0ms`.",
+        "intensity": "Intensity as a percentage. The spiral opacity is this value × `0.55`.",
+        "twist": "`warp` twist angle: `4deg`, `8deg` or `14deg` depending on `intensity`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Vortex reads as defaults.",
+      "items": {
+        "palette": "Default ray color.",
+        "intensity": "Default for `--gemfx-vortex-intensity` before it's written inline.",
+        "durationFast": "Base surface transition (`200ms`).",
+        "durationNormal": "Twist transition with `warp` (`300ms`), a bit slower than the base one.",
+        "easingStandard": "Curve for the surface transition."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content sits under the spiral and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Shape, intensity and color of the spiral."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Length of one turn and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Card or image that sits under the spiral.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. The layer is inserted inside the child and, with `variant=\"warp\"`, the child itself twists. With a void element (`img`, `input`) it falls back to the `div`, since the layer can't mount inside it.",
+      "variant": "`swirl` (spiral), `warp` (also twists the surface) or `ring` (ring).",
+      "intensity": "Spiral opacity and, with `warp`, twist angle. A token or a number between `0` and `1`.",
+      "color": "Ray color. Any CSS color; `--gem-*` tokens are optional. Without a value it uses `--gem-palette-primary-400`.",
+      "duration": "Length of a full turn. Negative values are treated as `0`.",
+      "delay": "Delay before the spin starts.",
+      "trigger": "`hover` with the pointer or keyboard focus, `click` toggles on each click, `always` spins nonstop.",
+      "isActive": "Allows the effect. With `false` it turns off and `outVortex` gets `inactive`.",
+      "isPaused": "Freezes the spiral where it is.",
+      "isDisabled": "Hides the layer and removes the twist; the child stays interactive. `outVortex` gets `disabled`.",
+      "ignoreReducedMotion": "Spins even if the user prefers reduced motion. Only if essential.",
+      "onVortex": "Fires when the spiral turns on: on pointer enter, when toggled on by click, or on mount with `always`.",
+      "outVortex": "Fires when it turns off: on pointer leave, when toggled off by click, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer` and `swirl`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-vortex-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

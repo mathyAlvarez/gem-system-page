@@ -1,0 +1,125 @@
+.gm-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.gm-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.gm-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.gm-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gem-space-5);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+}
+
+/* The mesh fills the root, so the root sets the size and the radius. */
+.gm-demo__host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  max-width: 100%;
+  min-height: 11rem;
+  border-radius: var(--gem-radius-lg);
+}
+
+.gm-demo__host--sm {
+  width: 12rem;
+  min-height: 7.5rem;
+}
+
+.gm-demo__copy {
+  margin: 0;
+  color: var(--gem-palette-neutral-50);
+  font-size: var(--gem-font-size-lg);
+  font-weight: 700;
+  text-shadow: 0 1px 12px color-mix(in srgb, var(--gem-palette-neutral-950) 55%, transparent);
+}
+
+.gm-demo__hero {
+  width: 32rem;
+  max-width: 100%;
+  border-radius: var(--gem-radius-xl);
+}
+
+.gm-demo__hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-6) var(--gem-space-5);
+  color: var(--gem-palette-neutral-50);
+}
+
+.gm-demo__kicker {
+  margin: 0;
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.gm-demo__title {
+  margin: 0;
+  font-size: var(--gem-font-size-2xl);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.gm-demo__body {
+  margin: 0;
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.gm-demo__button {
+  min-width: 10rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--gem-palette-neutral-50) 35%, transparent);
+  border-radius: var(--gem-radius-md);
+  color: var(--gem-palette-neutral-50);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gm-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.gm-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

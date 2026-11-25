@@ -1,0 +1,222 @@
+{
+  "header": {
+    "title": "Flash",
+    "description": "A short burst of light over the content, triggered by the pointer. `variant` sets the shape of the flash, `trigger` when it appears and `origin` where it starts. With `prefers-reduced-motion: reduce` no flashes are shown."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. Click (or hover, depending on `trigger`) the block to see the flash.",
+    "target": "Click me"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variants",
+      "description": "`burst` is a hot radial from the origin, `wash` an even veil over the whole surface and `bloom` a softer fill that still peaks in the center.",
+      "texts": {
+        "hint": "Click me"
+      }
+    },
+    "origin": {
+      "title": "Origin",
+      "description": "With `origin=\"center\"` the flash always starts in the middle; with `pointer`, at the exact point where the pointer went down.",
+      "texts": {
+        "hint": "Click different spots"
+      }
+    },
+    "image": {
+      "title": "Over an image",
+      "description": "A `burst` with `origin=\"pointer\"` and `intensity=\"lg\"` over an image. The root has `overflow: hidden`, so the flash respects the `border-radius`.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`click` flashes on pointer down, `hover` on enter, `press` repeats while held (following the pointer) and `always` loops from the center.",
+      "texts": {
+        "labels": {
+          "click": "Click",
+          "hover": "Hover",
+          "press": "Press and hold",
+          "always": "Looping"
+        }
+      }
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long each flash lasts, in milliseconds. With `press` it also sets the repeat rate: every `max(160, duration × 0.7)` ms."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` is the peak opacity of the flash. It takes a token (`sm`, `md`, `lg`) or a number between `0` and `1`."
+    },
+    "color": {
+      "title": "Colors",
+      "description": "`color` tints the flash. It defaults to white (`var(--gem-palette-neutral-0)`); prefer host tokens."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without adding a `div`. Here, on a gem-system `Button` with `origin=\"pointer\"`.",
+      "texts": {
+        "label": "Confirm"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "With `trigger=\"always\"` to see it in action: `isPaused` freezes the running flash and `isDisabled` stops spawning new ones without blocking the content.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onFlash` fires when the first flash starts and `outFlash` when the last one finishes, with the cause in `event.reason`. The layer doesn't block interaction: the button still gets clicks.",
+      "texts": {
+        "body": "Click anywhere on the card.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Save"
+    },
+    "styled": {
+      "label": "Shockwave"
+    }
+  },
+  "apiLink": "See the full Flash API",
+  "api": {
+    "header": {
+      "title": "Flash API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Flash`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant and trigger.",
+      "link": "See Flash demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/flash` with its `flash.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>color</code>, and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). Pointer handlers you pass run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The flash layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it's decorative and doesn't block interaction with the child.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> flashes are hidden (<code>animation: none</code>, <code>opacity: 0</code>) and no new ones spawn.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the animation. Only use it if the flash is essential.",
+        "photosensitive": "Mind photosensitivity: with <code>press</code> and the default duration the flash repeats about 4.5 times per second, above the WCAG 2.3.1 limit of three flashes per second. Lower <code>intensity</code>, raise <code>duration</code> or avoid <code>press</code> and <code>always</code> on large surfaces.",
+        "pointerOnly": "Flashes only respond to the pointer: the keyboard doesn't trigger them. Don't rely on them to communicate an action.",
+        "touch": "They fire on touch screens by default (<code>disabledOnTouch</code> is <code>false</code>). Turn it on if the flash gets in the way while scrolling.",
+        "meaning": "The flash is decoration: don't use it as the only confirmation of an action. Pair it with text or an ARIA attribute."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `overflow: hidden` and `contain: paint`, so the flash stays inside the edge.",
+        "variant": "Active variant.",
+        "trigger": "Active trigger.",
+        "paused": "Added with `isPaused`; pauses running flashes.",
+        "inactive": "Added with `isActive={false}`.",
+        "disabled": "Added with `isDisabled`.",
+        "touchDisabled": "Added with `disabledOnTouch`.",
+        "surface": "Wraps the child, below the layer.",
+        "layer": "Absolute layer over the child that holds the flashes.",
+        "burst": "Each flash. Uses `mix-blend-mode: plus-lighter` (`screen` in `wash`). Gets the `classNames.flash` class."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`duration`, `delay` and `intensity` are always written inline on the root: use the props to change them. `color` is only written inline when you pass the prop.",
+      "items": {
+        "color": "Flash color, on the root. Set by `color`; default `var(--gem-palette-neutral-0)`.",
+        "duration": "Duration of each flash, on the root. Set by `duration`; default `320ms`.",
+        "delay": "Delay before the flash, on the root. Set by `delay`; default `0ms`.",
+        "intensity": "Peak opacity, on the root. Set by `intensity`; default `var(--gemfx-intensity-md)`.",
+        "position": "Origin of each flash, on each `__burst`. Comes from the event with `origin=\"pointer\"`, or the center.",
+        "size": "Size of each flash, on each `__burst`. Computed from the surface size.",
+        "burstDelay": "Per-flash delay, on each `__burst`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Flash reads as defaults.",
+      "items": {
+        "intensity": "Default intensity.",
+        "easing": "Exit curve of the flash.",
+        "palette": "Default color (white)."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content gets the flash and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Shape, origin, color and intensity of the flash."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Duration and delay of each flash, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When the flash appears and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `click`, `hover`, `press`, `always`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that gets the flash.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`.",
+      "variant": "Flash shape: `burst`, `wash` or `bloom`.",
+      "origin": "Where it starts: `pointer` (the event point) or `center`. With `trigger=\"always\"` it's always the center.",
+      "color": "Flash color. Prefer host tokens (`var(--gem-palette-tertiary-300)`).",
+      "intensity": "Peak opacity: a token or a number between `0` and `1`.",
+      "duration": "Duration of each flash. With `press` it also sets the repeat rate.",
+      "delay": "Delay before the flash starts.",
+      "trigger": "`click` on pointer down, `hover` on enter, `press` repeats while held and `always` loops.",
+      "isActive": "Allows new flashes. With `false` none spawn and `outFlash` gets `inactive`.",
+      "isPaused": "Freezes running flashes.",
+      "isDisabled": "Skips new flashes; the child stays interactive. `outFlash` gets `disabled`.",
+      "disabledOnTouch": "Ignores taps on touch screens.",
+      "ignoreReducedMotion": "Shows flashes even if the user prefers reduced motion. Only if essential.",
+      "onFlash": "Fires when the first flash starts.",
+      "outFlash": "Fires when the last flash finishes, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer` and `flash` (each flash).",
+      "style": "Inline styles for the root. Merged with the `--gemfx-flash-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

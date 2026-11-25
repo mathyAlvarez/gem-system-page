@@ -1,0 +1,296 @@
+{
+  "header": {
+    "title": "CollapseTransition",
+    "description": "Collapse / expand along `height` or `width` (`collapsedSize` ↔ measured px → `auto`) for accordions and menus. Toggle `isIn`; with `collapsedSize` `0` the node unmounts after exit (unless `preserveSpace` / `keepMounted`). A non-zero `collapsedSize` keeps a visible peek."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props, expand the panel, and watch the generated code. Expand uses `enter` timing; collapse uses `exit`.",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "titleLabel": "Section title",
+    "panel": "Accordion body. Height animates to the measured content size, then settles on auto.",
+    "sibling": "Sibling below — moves with the collapsing panel."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "With defaults (`dimension=\"height\"`, `collapsedSize={0}`, `duration={300}`) expand measures content, animates to that px, then settles on `auto`. On exit it collapses to `0` and unmounts.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. Height animates to the measured content size, then settles on auto.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    },
+    "startCollapsed": {
+      "title": "Start collapsed",
+      "description": "Starts with `isIn={false}` (unmounted). Expand measures and animates open.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. Height animates to the measured content size, then settles on auto.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "`duration`, `delay`, and `easing` accept `{ enter, exit }`. Here enter lasts `420` ms with delay `40` and easing `enter`; exit lasts `200` ms with `exit`.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. Height animates to the measured content size, then settles on auto.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    },
+    "longContent": {
+      "title": "Long content",
+      "description": "Longer body so `scrollHeight` is obvious. Useful for FAQ rows, nested menus, and disclosures with dynamic size.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "FAQ item",
+        "panelFirst": "Longer body so the measured height is obvious. Collapse reads scrollHeight, animates to that pixel value, then switches to auto.",
+        "panelSecond": "Useful for FAQ rows, nested menus, and disclosure panels where content size is dynamic.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    },
+    "collapsedSize": {
+      "title": "collapsedSize (peek)",
+      "description": "Non-zero `collapsedSize` keeps a peek and leaves the node mounted (no opacity fade on out).",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Preview strip",
+        "panelFirst": "First lines stay visible when collapsed — useful for a preview strip or drawer handle.",
+        "panelSecond": "Extra body that only appears fully when expanded. Collapse stops at collapsedSize instead of unmounting.",
+        "sibling": "Sibling below — moves down to the peek, not to zero."
+      }
+    },
+    "width": {
+      "title": "dimension width",
+      "description": "`dimension=\"width\"` animates horizontal size (side panels / inline disclosure).",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "panel": "Side rail content — width collapses to collapsedSize.",
+        "sibling": "Sibling to the right — slides as width changes."
+      }
+    },
+    "preserveSpace": {
+      "title": "preserveSpace",
+      "description": "With `preserveSpace`, layout height stays reserved while the panel fades out. Put borders on the transitioning node (`asChild`) so chrome disappears with opacity.",
+      "texts": {
+        "show": "Show",
+        "hide": "Hide",
+        "panel": "Bordered panel — border fades with the content; the gap stays so the sibling does not jump.",
+        "sibling": "Sibling below — stays put while the panel is hidden."
+      }
+    },
+    "keepMounted": {
+      "title": "keepMounted",
+      "description": "With `keepMounted`, exit keeps the host mounted and visually hidden (axis size `0`, no unmount). Re-enter measures again and expands the same DOM node.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. On collapse the node stays in the DOM, hidden.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    },
+    "initial": {
+      "title": "initial false",
+      "description": "`initial={false}` skips motion on the first mount (snaps in). Later toggles still collapse. Use Remount to see the skip again.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "remount": "Remount",
+        "title": "Section title",
+        "panel": "Accordion body. Remounting with initial false snaps open with no motion.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onCollapse` / `outCollapse` track the presence cycle. `onPhaseChange` reports `entering` → `entered` → `exiting` → `exited`. `onDimensionChange` reports live axis size (`scrollHeight` / `scrollWidth`).",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. ResizeObserver keeps the readout in sync.",
+        "measured": "Measured:",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` (or `prefers-reduced-motion: reduce`) the host snaps to the target state with no interpolation.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. No interpolation because motion is disabled.",
+        "sibling": "Sibling below — jumps with the panel."
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, classes and size land on the single child (no `__surface` wrapper).",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Order detail",
+        "panel": "Slotted panel on a Card — height collapse runs on the Card."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Pass `utilities.css` helpers via `classNames`. This demo applies `gemst-relative` and `gemst-overflow-hidden` on `root`, and `gemst-block` on `surface`.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "title": "Section title",
+        "panel": "Accordion body. Height animates to the measured content size, then settles on auto.",
+        "sibling": "Sibling below — moves with the collapsing panel."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "title": "Section title",
+      "panel": "Tailwind utilities and CSS variables on the host."
+    },
+    "variant": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "panel": "Wrapper with cva + cn around the collapse."
+    },
+    "styled": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "title": "FAQ",
+      "panel": "--gemst-collapse-* variables are overridden from the faq-shell class."
+    }
+  },
+  "apiLink": "See the full CollapseTransition API",
+  "api": {
+    "header": {
+      "title": "CollapseTransition API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `CollapseTransition`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for presence, peek, width, and preserveSpace.",
+      "link": "See CollapseTransition demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/collapse-transition` with its `collapse-transition.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. In that case classes and styles merge with the child's, and if both define the same handler, the child's runs first. The component handles <code>onTransitionEnd</code> internally (to detect the end of <code>height</code> / <code>width</code>) and then calls yours."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is a presence transition: the control that toggles <code>isIn</code> should expose <code>aria-expanded</code> (or the disclosure pattern you use).",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the host snaps to the final state. The preference is read each render; it is not live-listened.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code> on the root. Use only when motion is essential.",
+        "trigger": "The accordion trigger and collapsing panel should not nest interactive buttons. Hidden content should not receive focus while <code>isIn</code> is <code>false</code> (with <code>collapsedSize</code> 0 the node unmounts).",
+        "preserveSpace": "With <code>preserveSpace</code> space stays reserved and content hides with opacity. Do not put the border on a parent shared with always-visible UI — put it on the transitioning node.",
+        "asChild": "With <code>asChild</code>, pick a child with the right semantics (<code>Card</code>, <code>section</code>, <code>div</code>): that element is the size host."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div`, or the child with `asChild`). `overflow: hidden` while animating.",
+        "dimension": "Active axis (`height` or `width`). Defines which property transitions.",
+        "in": "Present state (`isIn`).",
+        "out": "Absent state. Without peek, opacity goes to `0`.",
+        "expanded": "Settled open with size `auto`. Sets `overflow: visible`.",
+        "peek": "Non-zero `collapsedSize` (visible peek).",
+        "preserveSpace": "With `preserveSpace` on exit: keeps layout and clears border / background / shadow.",
+        "keepMountedHidden": "Host hidden after exit with `keepMounted` (visibility + axis at `0`).",
+        "disabled": "Added with `isDisabled`. No transition.",
+        "surface": "Inner `div` wrapping content (without `asChild`)."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline each render (`0ms` when `isDisabled`, reduced motion, or keep-mounted hidden).",
+      "items": {
+        "duration": "Duration of the current phase. Default `300ms`.",
+        "delay": "Delay of the current phase. Default `0ms`.",
+        "easing": "Easing of the current phase. Default `standard`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables used as CSS defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-collapse-easing`. The component writes the resolved curve inline — use `easing` to change it."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "What collapses and where it mounts." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Presence, axis, peek, and how it stays mounted."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "In milliseconds. `enter` applies on expand and `exit` on collapse."
+      },
+      "state": { "title": "State", "description": "How motion is turned off." },
+      "events": { "title": "Events", "description": "Presence cycle, phases, and axis measure." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content that collapses and expands. Without `asChild` it is wrapped in the surface.",
+      "asChild": "Applies classes, styles, and ref to the single child. No `__surface`.",
+      "isIn": "`true` expands to content size then `auto`; `false` collapses to `collapsedSize` and unmounts when `0` (unless preserve/keep/peek).",
+      "dimension": "Axis to animate. Default `height`.",
+      "collapsedSize": "Size when collapsed. Number = px; string = any CSS length. Non-zero keeps a peek and stays mounted. Default `0`.",
+      "preserveSpace": "On exit, keeps layout size (hides with opacity; axis does not collapse). Ignored when `unmountOnExit`.",
+      "keepMounted": "After exit the host stays mounted and hidden (axis at `0`). Ignored when `unmountOnExit`.",
+      "unmountOnExit": "Unmounts immediately on exit (skips collapse).",
+      "initial": "`false` skips motion on the first mount. Later toggles still animate. Default `true`.",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is expand and `exit` is collapse.",
+      "delay": "Wait before starting. Accepts `{ enter, exit }`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), timing function, or `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Snaps to the target state with no interpolation.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onCollapse": "Fires when the collapse is active (`isIn` true).",
+      "outCollapse": "Fires on exit (`isIn` false), disable, or unmount.",
+      "onPhaseChange": "Phases: `idle`, `entering`, `entered`, `exiting`, `exited`.",
+      "onDimensionChange": "Live size on the animated axis (`scrollHeight` / `scrollWidth`), in px.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes by part: `root` and `surface`.",
+      "style": "Inline styles for the root. Combined with the animated size and `--gemst-collapse-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

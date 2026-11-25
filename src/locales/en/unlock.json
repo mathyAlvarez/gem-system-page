@@ -1,0 +1,236 @@
+{
+  "header": {
+    "title": "Unlock",
+    "description": "Doors that cover the child and open to reveal it. `direction` sets the motion: `horizontal` and `vertical` split the cover into two leaves from the center, and `left`, `right`, `up` and `down` slide a single one. `variant=\"lock\"` flips the pattern (starts open and closes). The door face can be a color, an image (`coverSrc`) or any node (`cover`)."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and click (or hover, depending on `trigger`) the card.",
+    "label": "Open!"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic unlock",
+      "description": "With the defaults (`direction=\"horizontal\"`, `variant=\"unlock\"`, `trigger=\"click\"`) two leaves cover the image and each click opens or closes them in `560` ms, `40` ms apart. The root works as a button (`role=\"button\"`, `aria-expanded` and a default `aria-label`): Tab and Enter or Space toggle them too.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "directions": {
+      "title": "Directions",
+      "description": "`horizontal` and `vertical` open two leaves from the center. `left`, `right`, `up` and `down` slide a single leaf toward that side."
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`unlock` starts closed and opens when engaged. `lock` starts open and closes when engaged, useful to hide something after showing it."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`click` toggles on each click (or with Enter or Space on the focused root). `hover` opens while the pointer is over it or keyboard focus is inside. `always` opens by itself on mount: it paints the doors closed first and then slides them; use \"Replay always\" to see it again. On touch, `hover` opens on tap and closes when the finger lifts; with `disabledOnTouch` (the last card) it ignores touches and only responds to mouse or pen. `disabledOnTouch` only affects `hover`: with `click`, taps still toggle.",
+      "texts": {
+        "remount": "Replay always"
+      }
+    },
+    "gap": {
+      "title": "Gap",
+      "description": "`gap` leaves a seam between the two closed leaves, in pixels. Only applies to `horizontal` and `vertical`."
+    },
+    "coverSrc": {
+      "title": "Image as the door",
+      "description": "`coverSrc` uses an image as the door face. It's fitted with `background-size: cover` to the whole host, so it doesn't stretch. In split directions, each leaf shows its half of the same image, which stays continuous at the seam and splits when opening.",
+      "texts": {
+        "title": "Prize"
+      }
+    },
+    "coverNode": {
+      "title": "Node as the door",
+      "description": "`cover` accepts any React node. It mounts in each leaf at the size of the whole host, so in split directions each leaf shows its half and the face looks continuous. A function `(slot) => node` lets you vary each leaf's tree (`slot` is `a` or `b`); here both give the same result.",
+      "texts": {
+        "seal": "SEALED",
+        "title": "Mythic"
+      }
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`color` is the door fill when there's no `cover` or `coverSrc`. Without `color`, it uses a dark mix of `neutral-950` and `primary-800`. Prefer tokens."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long the doors take to travel, in milliseconds."
+    },
+    "stagger": {
+      "title": "Delay and stagger",
+      "description": "`delay` delays the start of the doors. `stagger` adds an extra delay to the second leaf in split directions; it's ignored with a single leaf."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the door depth: a light edge on each leaf's border and an inner shade. It accepts `sm`, `md`, `lg` (they read `--gemfx-intensity-*` from the host) or a number from `0` to `1`. Here with `gap={6}` so the edge shows at the seam."
+    },
+    "asChild": {
+      "title": "On an element (asChild)",
+      "description": "With `asChild`, the doors mount directly on the child (an `article` here), without adding a `div`. The child gets `position: relative` from the surface class. With a void element like `img` or `input`, it falls back to the wrapping `div`. With `click`, if the child isn't focusable (like this `article`), it gets `tabIndex`, `role=\"button\"` and `aria-expanded`, so it opens with Tab and Enter or Space. It gets no default `aria-label`: the name comes from the content, or pass one.",
+      "texts": {
+        "kicker": "Level 3",
+        "title": "Unlocked"
+      }
+    },
+    "state": {
+      "title": "Pause and disabled",
+      "description": "Here with `duration={1800}`: click and turn on `isPaused` while the doors move. They freeze halfway and clicks are ignored until unpaused. `isDisabled` removes the doors: the content is visible and usable, and when re-enabled they start closed again.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onUnlock` fires when it engages (opening with `click`, entering with `hover` or mounting with `always`) and `outUnlock` when it disengages, with the reason in `event.reason`. With the doors closed, the layer takes the click and opens without reaching the button; the content is also `inert`, so Tab can't reach it either. Once open, the button's click adds one and bubbles to the root, so it also closes them.",
+      "texts": {
+        "body": "Click the card to open it, or try the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Restricted area"
+    },
+    "styled": {
+      "label": "Vault"
+    }
+  },
+  "apiLink": "See the full Unlock API",
+  "api": {
+    "header": {
+      "title": "Unlock API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Unlock`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each direction, trigger and option.",
+      "link": "See Unlock demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/unlock` with `unlock.css`, or from the package root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and passes them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onClick</code>, <code>onKeyDown</code>, <code>onPointerDown</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic. <code>tabIndex</code>, <code>role</code> and <code>aria-label</code> override the ones the effect sets with <code>click</code> (<code>0</code>, <code>button</code> and <code>Toggle hidden content</code>). <code>ref</code> is merged with the internal ref. The <code>--gemfx-unlock-*</code> variables are written after <code>style</code>, but only for the props you passed."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The doors are decorative (<code>aria-hidden</code>). With <code>click</code> in wrapper mode, while closed, the surface is <code>inert</code>: the content leaves the Tab order and the accessibility tree. With <code>hover</code>, <code>always</code> or <code>asChild</code> the content stays accessible even while covered. Don't use them to hide sensitive information.",
+        "keyboard": "With <code>click</code> in wrapper mode, the root is the control: <code>tabIndex=0</code>, <code>role=\"button\"</code>, <code>aria-expanded</code> (doors open) and a default <code>aria-label=\"Toggle hidden content\"</code>; Enter or Space toggle the doors. The <code>tabIndex</code>, <code>role</code> and <code>aria-label</code> you pass win: translate the label if your site isn't in English. With <code>asChild</code> on a non-focusable child (<code>article</code>, <code>div</code>), the child gets <code>tabIndex</code>, <code>role</code> and <code>aria-expanded</code>, with no default label. A native control (<code>button</code>, <code>a</code>) or a child with its own <code>tabIndex</code> or <code>role</code> is left as is; on the native control, its own keyboard click toggles. With <code>hover</code>, keyboard focus inside opens the doors like the pointer; if there's nothing focusable, give the root <code>tabIndex={0}</code>.",
+        "clickThrough": "With the doors closed (<code>--blocking</code>), the layer takes the pointer: the click doesn't reach the hidden content and bubbles to the root (with <code>click</code>, it opens). Open, the layer goes back to <code>pointer-events: none</code>; with the effect off, the layer isn't shown.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the doors jump to their position without a transition.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the motion. Use it only when essential.",
+        "touch": "With <code>hover</code>, on touch the doors open on tap and close when the finger lifts. <code>disabledOnTouch</code> ignores the touch <code>pointerenter</code> so a tap doesn't leave them stuck open; mouse and pen still work. It only affects <code>hover</code>: with <code>click</code>, taps still toggle, so touch-only devices can still open it."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative`, `isolation: isolate` and `overflow: hidden`. Sets the variable defaults.",
+        "direction": "Active direction. Places the leaves (half each with `horizontal` / `vertical`, the whole host otherwise) and sets where they move.",
+        "variant": "Active variant. Has no styles of its own: `lock` only flips when `--open` is added.",
+        "trigger": "Active trigger. Not added with `isDisabled` or `isActive={false}`. Has no styles of its own.",
+        "open": "Added while the doors are open. Moves each leaf `100%` out of the host.",
+        "blocking": "Added while the doors are closed and the effect is on. The layer switches to `pointer-events: auto` and takes the clicks, which don't reach the content.",
+        "cover": "`--cover` is added with `cover` or `coverSrc` and makes the leaves transparent; `--cover-src`, only with `coverSrc`, gives them back the background color behind the image.",
+        "paused": "Added with `isPaused`. The CSS doesn't use it: the leaves are frozen from JS, pinning their current `transform` inline until unpaused.",
+        "inactive": "Added with `isDisabled` or `isActive={false}`. Hides the layer (`display: none`): the child is visible and usable.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "Wraps the child (`z-index: 0`, `flex: 1 1 auto`). With `asChild`, the class goes on the child itself.",
+        "layer": "Door layer (`position: absolute`, `inset: 0`, `z-index: 1`, `pointer-events: none`, `border-radius: inherit`, `aria-hidden`). Has `container-type: size` so each leaf's face matches the host size.",
+        "panel": "Each leaf (`--a` and, in split directions, `--b`). `--gemfx-unlock-color` background, a light edge and an inner shade driven by `--gemfx-unlock-intensity`, and a `transform` transition; `--b` adds `stagger` to the delay. `classNames.panel` goes on both.",
+        "media": "Each leaf's face with `cover` or `coverSrc`: it spans the whole host (`100cqw` × `100cqh`) and is pinned to the leaf's outer edge, so each half shows its part of one picture. With `coverSrc` it carries the image as background (`background-size: cover`). Its direct children fill the whole face."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They only go inline on the root when you pass the matching prop; otherwise you can set them from a class.",
+      "items": {
+        "color": "Door fill. Inline only when you pass `color`.",
+        "timing": "Duration, delay and stagger of the leaf transition. Inline only when you pass `duration`, `delay` or `stagger`.",
+        "gap": "Seam between split leaves, in pixels. Inline only when you pass `gap`.",
+        "intensity": "Door depth: drives the light edge and the inner shade of each leaf. Inline only when you pass `intensity`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Unlock reads as defaults.",
+      "items": {
+        "color": "Door mix when you don't pass `color` (fallbacks `#111316` and `#085246`).",
+        "easing": "Door curve (fallback `cubic-bezier(0.2, 0, 0, 1)`).",
+        "intensity": "Default of `--gemfx-unlock-intensity` (fallback `55%`). Overridden by the inline value when you pass `intensity`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What sits under the doors, what face they have and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Motion, pattern, color and gap." },
+      "timing": {
+        "title": "Timing",
+        "description": "Duration, delay and stagger, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When the doors move, how they pause and how they turn off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `click`, `hover`, `always`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content under the doors.",
+      "cover": "Custom door face, the size of the whole host. With split directions it mounts in both leaves and each shows its half. A function `(slot) => node` lets you vary each leaf's tree.",
+      "coverSrc": "Image URL for the door face when you don't pass `cover`. Fitted with `cover` to the whole host, without stretching; split leaves show its halves.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` or `input`, it falls back to the wrapping `div`.",
+      "direction": "`horizontal` / `vertical` open two leaves from the center; `left` / `right` / `up` / `down` slide one.",
+      "variant": "`unlock` opens when engaged and `lock` closes.",
+      "color": "Door fill without `cover` or `coverSrc`. Defaults to a dark mix of `neutral-950` and `primary-800`. Prefer tokens.",
+      "gap": "Seam between split leaves, in pixels.",
+      "intensity": "Door depth: a light edge on each leaf's border and an inner shade.",
+      "duration": "How long the doors take to move.",
+      "delay": "Delay before the doors start.",
+      "stagger": "Extra delay of the second leaf in split directions.",
+      "trigger": "`click` toggles on each click (or with Enter or Space) and turns the root into a button (`role`, `aria-expanded`), `hover` opens while the pointer or focus is inside and `always` opens with an animation on mount.",
+      "isActive": "Allows the doors to move. When `false` it removes the doors, shows the child and resets the state.",
+      "isPaused": "Freezes the doors where they are and ignores clicks until unpaused.",
+      "isDisabled": "Removes the doors and resets the state: the child is visible and interactive.",
+      "ignoreReducedMotion": "Keeps the motion even if the user prefers less. Only when essential.",
+      "disabledOnTouch": "With `hover`, ignores the touch `pointerenter` (a tap would leave the doors open); mouse and pen still work. With `click`, taps still toggle.",
+      "onUnlock": "Fires when it engages: opening with `click`, entering with `hover` or mounting with `always`.",
+      "outUnlock": "Fires when it disengages: closing with `click`, leaving with `hover`, disabling or unmounting.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes per part: `root`, `surface`, `layer`, `panel` and `media`.",
+      "style": "Inline styles for the root. The effect variables are written after, only for the props you passed.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

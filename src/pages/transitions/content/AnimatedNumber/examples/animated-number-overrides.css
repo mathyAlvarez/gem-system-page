@@ -1,0 +1,15 @@
+.gemst-animated-number.scoreboard {
+  --gemst-animated-number-shift: 0.9em;
+  padding: var(--gem-space-2) var(--gem-space-4);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-warning-300);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-4xl);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.gemst-animated-number.scoreboard .gemst-animated-number__slot--outgoing {
+  color: var(--gem-palette-neutral-500);
+}

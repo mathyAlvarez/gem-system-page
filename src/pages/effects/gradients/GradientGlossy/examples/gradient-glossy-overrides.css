@@ -1,0 +1,16 @@
+/* The effect only writes inline the props you pass, so a class can retune
+   any `--gemfx-gradient-glossy-*`. `--light` and `--dark` tint the two ends
+   instead of mixing with white and black; `lift` and `depth` stop applying
+   once they're replaced. */
+.gemfx-gradient-glossy.gg-candy {
+  --gemfx-gradient-glossy-color: var(--gem-palette-secondary-500);
+  --gemfx-gradient-glossy-light: color-mix(in srgb, var(--gem-palette-tertiary-300) 70%, white);
+  --gemfx-gradient-glossy-dark: color-mix(
+    in srgb,
+    var(--gem-palette-secondary-500) 55%,
+    var(--gem-palette-primary-900)
+  );
+  --gemfx-gradient-glossy-sheen: 80%;
+
+  border-radius: var(--gem-radius-xl);
+}

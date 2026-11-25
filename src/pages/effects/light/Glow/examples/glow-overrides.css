@@ -1,0 +1,13 @@
+.gemfx-glow.glow-sunset {
+  --gemfx-glow-color: var(--gem-palette-tertiary-400);
+  --gemfx-glow-blur: 1.75rem;
+  border-radius: var(--gem-radius-lg);
+}
+
+.gemfx-glow.glow-sunset .gemfx-glow__halo {
+  background-image: linear-gradient(
+    120deg,
+    var(--gem-palette-tertiary-400),
+    var(--gem-palette-secondary-400)
+  );
+}

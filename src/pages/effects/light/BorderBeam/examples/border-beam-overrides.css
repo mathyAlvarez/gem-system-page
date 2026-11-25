@@ -1,0 +1,14 @@
+.gemfx-border-beam.beam-rainbow {
+  border-radius: var(--gem-radius-lg);
+}
+
+.gemfx-border-beam.beam-rainbow .gemfx-border-beam__spin {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    var(--gem-palette-primary-400) 10%,
+    var(--gem-palette-secondary-400) 20%,
+    var(--gem-palette-tertiary-400) 30%,
+    transparent 34%
+  );
+}

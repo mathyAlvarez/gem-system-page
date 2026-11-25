@@ -46,10 +46,22 @@
       "description": "`icon` adds an icon before the title. It's decorative: hidden from screen readers.",
       "texts": {
         "sections": [
-          { "id": "home", "title": "Workspace", "content": "Overview, shortcuts and recent activity for this workspace." },
+          {
+            "id": "home",
+            "title": "Workspace",
+            "content": "Overview, shortcuts and recent activity for this workspace."
+          },
           { "id": "files", "title": "Files", "content": "Project documents grouped by folder." },
-          { "id": "calendar", "title": "Calendar", "content": "Upcoming dates, reminders and shared events." },
-          { "id": "settings", "title": "Settings", "content": "Visibility, notifications and archive options." }
+          {
+            "id": "calendar",
+            "title": "Calendar",
+            "content": "Upcoming dates, reminders and shared events."
+          },
+          {
+            "id": "settings",
+            "title": "Settings",
+            "content": "Visibility, notifications and archive options."
+          }
         ]
       }
     },

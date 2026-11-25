@@ -1,0 +1,11 @@
+.gemfx-float.float-hologram {
+  --gemfx-float-shadow: var(--gem-palette-secondary-400);
+  border-radius: var(--gem-radius-md);
+}
+
+.gemfx-float.float-hologram .gemfx-float__shadow {
+  width: 100%;
+  height: 0.35rem;
+  filter: blur(0.6rem);
+  mix-blend-mode: screen;
+}

@@ -1,0 +1,242 @@
+{
+  "header": {
+    "title": "Spotlight",
+    "description": "Luz circular que sigue al puntero. `variant` define el aspecto (`reveal`, `glow` o `ring`) y `trigger` cuándo se mueve: `hover` (default), `always` o `press`. La capa no recibe eventos, así que el contenido sigue siendo interactivo."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y pasá el puntero por la tarjeta. `size` en `auto` deja que `intensity` defina el radio (120, 180 o 280 px).",
+    "target": "Mové el cursor"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variantes",
+      "description": "`reveal` oscurece todo con un velo y deja un agujero de luz, como una linterna. `glow` suma un brillo bajo el cursor sin velo. `ring` dibuja un anillo de luz alrededor del puntero.",
+      "texts": {
+        "titles": {
+          "reveal": "Recorré con la luz",
+          "glow": "Seguí el brillo",
+          "ring": "Anillo de luz"
+        }
+      }
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "`Spotlight` envuelve un `img` nativo. Con `reveal`, mové el puntero para descubrir la imagen bajo el velo.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`hover` sigue al puntero mientras está encima. `always` deja una luz fija en el centro y la mueve con el puntero. `press` solo ilumina mientras mantenés apretado.",
+      "texts": {
+        "labels": {
+          "hover": "Pasá el mouse",
+          "always": "Siempre encendido",
+          "press": "Mantené apretado"
+        }
+      }
+    },
+    "size": {
+      "title": "Tamaño",
+      "description": "`size` es el radio de la luz. Un número son píxeles; también acepta cualquier longitud CSS. Sin `size`, el radio sale de `intensity`."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la fuerza de la luz y, en `reveal`, qué tan oscuro es el velo. Sin `size`, también cambia el radio. Acepta un token o un número entre `0` y `1`."
+    },
+    "color": {
+      "title": "Colores",
+      "description": "`color` tiñe la luz en `glow` y `ring`. `veilColor` cambia el velo de `reveal`. Preferí tokens de la paleta de tu app.",
+      "texts": {
+        "beam": "Luz cálida",
+        "veil": "Velo verde"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la luz donde está: mové el puntero y activá la pausa. `isDisabled` oculta la luz y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onSpotlight` se dispara cuando la luz empieza a seguir al puntero y `outSpotlight` cuando se apaga, con el motivo en `event.reason`. La capa tiene `pointer-events: none`: el botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta y mirá el registro.",
+        "action": "Guardar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "hook": {
+      "title": "useSpotlight",
+      "description": "Versión headless. El hook devuelve `ref`, `style` (con `--gemfx-spotlight-x` e `-y`), `pointerProps` y `pose`; vos armás el markup y la capa. Sirve para leer la posición o montar la luz sobre tu propio elemento.",
+      "texts": {
+        "title": "Tu propio markup",
+        "position": "x {x}% · y {y}%"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Velo propio"
+    },
+    "styled": {
+      "kicker": "Override",
+      "title": "Lámpara elíptica"
+    }
+  },
+  "apiLink": "Ver la API completa de Spotlight",
+  "api": {
+    "header": {
+      "title": "Spotlight API",
+      "description": "Referencia de props de `Spotlight`, el hook `useSpotlight`, herencia, accesibilidad, clases y variables CSS y tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante y disparador.",
+      "link": "Ver demos de Spotlight"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/spotlight` con su `spotlight.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "name": "Nombre",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "hook": {
+      "description": "Recibe las mismas opciones que `Spotlight` salvo `children`, `asChild`, `className`, `classNames` y `ref` (`UseSpotlightOptions`). Vos renderizás el host, `.gemfx-spotlight__surface` y la capa con `.gemfx-spotlight__beam`.",
+      "resultTitle": "Devuelve",
+      "result": {
+        "ref": "Ref para el host. Lo usa para medir la caja al calcular la posición.",
+        "style": "Estilos inline con las variables `--gemfx-spotlight-*`. Ya incluye el `style` que pasaste.",
+        "pointerProps": "Handlers de puntero para el host. Llaman primero a los que pasaste en las opciones.",
+        "motionClassName": "`gemfx-ignore-reduced-motion` si pasaste `ignoreReducedMotion`. Agregala al host.",
+        "pose": "Posición de la luz en porcentaje de la caja (`x`, `y`) y su opacidad (`strength`).",
+        "variant": "Variante resuelta, para armar `.gemfx-spotlight--{variant}`.",
+        "isTracking": "`true` mientras la luz sigue al puntero.",
+        "isHover": "`trigger` es `hover` y el efecto está activo.",
+        "isAlways": "`trigger` es `always` y el efecto está activo.",
+        "isPress": "`trigger` es `press` y el efecto está activo.",
+        "spotlightOff": "`true` con `isDisabled` o `isActive={false}`.",
+        "isPaused": "Valor de `isPaused`.",
+        "isDisabled": "Valor de `isDisabled`."
+      }
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>color</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). Los handlers <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onPointerMove</code>, <code>onPointerDown</code>, <code>onPointerUp</code> y <code>onPointerCancel</code> se llaman antes que la lógica del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La capa de luz tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: es decorativa y no tapa la interacción.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> la luz deja de seguir al puntero. Con <code>always</code> queda fija en el centro; con <code>hover</code> y <code>press</code> no se muestra.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el seguimiento. Usalo solo si el movimiento es esencial.",
+        "pointerOnly": "La luz sigue solo al puntero: no hay equivalente con teclado. No pongas información que solo se vea bajo la luz.",
+        "touch": "Por defecto (<code>disabledOnTouch</code>) se ignora el toque; mouse y lápiz siguen funcionando. Así no interfiere con el scroll en mobile.",
+        "press": "Con <code>press</code>, apretar sobre un control anidado (<code>button</code>, <code>a</code>, <code>input</code>…) no enciende la luz, así el control funciona normal.",
+        "contrast": "<code>reveal</code> oscurece el contenido fuera de la luz. Si hay texto que se tiene que leer, revisá el contraste con el velo o usá <code>glow</code>."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex`, `overflow: hidden` e `isolation: isolate`.",
+        "variant": "Variante activa.",
+        "trigger": "Disparador activo.",
+        "tracking": "Se agrega mientras la luz sigue al puntero. Acorta la transición a 80 ms.",
+        "paused": "Se agrega con `isPaused` y quita la transición.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled` y oculta la luz.",
+        "disabled": "Se agrega con `isDisabled`. Quita el cursor de puntero.",
+        "surface": "Envuelve al hijo, debajo de la capa.",
+        "layer": "Capa absoluta por encima del hijo que contiene la luz.",
+        "beam": "La luz: un `radial-gradient` centrado en `--gemfx-spotlight-x` / `-y`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`size`, `duration`, `delay`, la posición y `strength` se escriben inline en cada render, así que no se pueden pisar desde una clase. `color` y `veil` solo se escriben si pasás la prop.",
+      "items": {
+        "color": "Color de la luz en `glow` y `ring`. Lo define `color`; default `var(--gem-palette-primary-200)`.",
+        "veil": "Color del velo en `reveal`. Lo define `veilColor`; default `var(--gem-palette-neutral-950)`.",
+        "size": "Radio de la luz. Lo define `size` o, sin él, `intensity`.",
+        "duration": "Fundido al aparecer o volver al reposo. Lo define `duration`; default `220ms`.",
+        "delay": "Retraso antes de que aparezca la luz. Lo define `delay`; default `0ms`.",
+        "position": "Posición de la luz, en porcentaje de la caja.",
+        "strength": "Opacidad de la luz: `0` en reposo y el pico según `intensity` al seguir al puntero."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Spotlight lee como valor por defecto.",
+      "items": {
+        "easing": "Curva del fundido.",
+        "palette": "Color por defecto de la luz, con un respaldo si no cargás gem-system.",
+        "veil": "Color por defecto del velo de `reveal`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué se ilumina y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Forma, colores, radio e intensidad de la luz."
+      },
+      "timing": { "title": "Tiempo", "description": "Fundido de la luz, en milisegundos." },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo sigue al puntero y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `press`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido sobre el que se proyecta la luz.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente.",
+      "variant": "`reveal` (velo con un agujero de luz), `glow` (brillo sin velo) o `ring` (anillo).",
+      "color": "Color de la luz en `glow` y `ring`. Preferí tokens del host. Un string vacío usa el default.",
+      "veilColor": "Color del velo en `reveal`.",
+      "size": "Radio de la luz. Un número son píxeles. Sin valor, `intensity` lo define: `120`, `180` o `280`.",
+      "intensity": "Fuerza de la luz y, en `reveal`, oscuridad del velo. Token o número entre `0` y `1`.",
+      "duration": "Fundido al aparecer o volver al reposo. Mientras sigue al puntero, la transición baja a 80 ms.",
+      "delay": "Retraso antes de que aparezca la luz.",
+      "trigger": "`hover` sigue al puntero mientras está encima, `always` deja una luz en el centro y la mueve con el puntero, `press` solo con el puntero apretado.",
+      "isActive": "Permite que el efecto corra. En `false` oculta la luz y `outSpotlight` recibe `inactive`.",
+      "isPaused": "Congela la luz en su posición actual.",
+      "isDisabled": "Oculta la luz; el contenido sigue interactivo. `outSpotlight` recibe `disabled`.",
+      "disabledOnTouch": "Ignora el puntero táctil. Mouse y lápiz siguen funcionando.",
+      "ignoreReducedMotion": "Sigue al puntero aunque el usuario prefiera menos movimiento. Solo si el movimiento es esencial.",
+      "onSpotlight": "Se dispara cuando la luz se enciende: al seguir al puntero con `hover` o `press`, o al montar con `always`.",
+      "outSpotlight": "Se dispara cuando la luz se apaga: al salir el puntero, al soltar con `press`, al desactivarla o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `beam`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-spotlight-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

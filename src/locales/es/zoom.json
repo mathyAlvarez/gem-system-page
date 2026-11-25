@@ -1,0 +1,221 @@
+{
+  "header": {
+    "title": "Zoom",
+    "description": "Escala el contenido. `variant` define el patrón (`in`, `out`, `pulse` o `lens`), `trigger` cuándo corre (por defecto, al pasar el mouse), `origin` desde dónde crece y `clip` lo mantiene dentro de su caja. Con `prefers-reduced-motion: reduce` el contenido queda en reposo en todas las variantes."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `scale` en `auto` deja que `intensity` defina el tamaño. Con `pulse`, subí `duration` (es la duración de cada ciclo).",
+    "alt": "Logo de gem-org"
+  },
+  "stories": {
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Con el `trigger` por defecto (`hover`), la imagen crece mientras el puntero está encima. `clip` está activo por defecto, así que el zoom queda dentro del marco y no mueve el layout. La raíz recorta, así que lleva el `border-radius`.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`in` agranda, `out` achica la misma distancia (`2 - scale`), `pulse` late en bucle mientras está activo y `lens` agranda hacia el puntero. Pasá el mouse por cada una."
+    },
+    "lens": {
+      "title": "Lupa",
+      "description": "`lens` sigue al puntero siempre, sin importar `origin`, y siempre recorta. Con un `scale` alto funciona como lupa sobre imágenes con detalle. En pantallas táctiles, con `disabledOnTouch` (default), un toque no hace zoom: el dedo no puede apuntar la lupa.",
+      "texts": {
+        "alt": "Logo de gem-org con lupa"
+      }
+    },
+    "origin": {
+      "title": "Origen",
+      "description": "`origin` fija el punto desde el que crece: centro, bordes o esquinas. `pointer` sigue al cursor mientras está encima y vuelve al centro al salir."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`hover` escala al pasar el mouse o al llegar con el teclado (foco visible en la raíz o adentro), `click` alterna con cada clic y `always` mantiene la escala máxima (o late, con `pulse`)."
+    },
+    "scale": {
+      "title": "Escala",
+      "description": "`scale` fija el factor máximo y reemplaza a `intensity`. Con `out`, el mismo valor achica: `scale={1.4}` lleva a `0.6`."
+    },
+    "clip": {
+      "title": "Recorte",
+      "description": "Con `clip` (default) la raíz recorta la superficie escalada. Con `clip={false}` el contenido crece por encima de lo que lo rodea; la escala nunca afecta el layout."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es la transición de la escala en milisegundos (o el ciclo completo, con `pulse`). `delay` retrasa el inicio."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Si no pasás `scale`, `intensity` define el factor: `sm` 1.06, `md` 1.12, `lg` 1.22. Acepta un token o un número entre `0` y `1`."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div` envolvente. Acá, sobre un `Button` de gem-system. Escala el propio hijo, así que `clip` no recorta nada: para recortar una imagen dentro de su marco, usá el `div` por defecto.",
+      "texts": {
+        "label": "Pasá el mouse"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el latido de `pulse` donde está. En `in`, `out` y `lens` congela la escala actual, aunque esté a mitad de la transición, y sigue desde ahí al despausar. `isDisabled` vuelve a la escala normal y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onZoom` se dispara cuando el zoom se activa y `outZoom` cuando se apaga, con el motivo en `event.reason`. El botón interno sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "alt": "Logo de gem-org que se satura al hacer zoom"
+    },
+    "styled": {
+      "alt": "Logo de gem-org en blanco y negro"
+    }
+  },
+  "apiLink": "Ver la API completa de Zoom",
+  "api": {
+    "header": {
+      "title": "Zoom API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Zoom`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, origen y opción.",
+      "link": "Ver demos de Zoom"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/zoom` con su `zoom.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>scale</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerMove</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el contenido queda en <code>scale(1)</code> en todas las variantes: se quitan la animación de <code>pulse</code>, las transiciones y la escala de <code>in</code>, <code>out</code> y <code>lens</code>, y el origen deja de seguir al puntero.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el movimiento. Usalo solo si es esencial.",
+        "focus": "Con <code>trigger=\"hover\"</code> el zoom también se activa con el foco de teclado (<code>:focus-visible</code> en la raíz o adentro), así que se ve al navegar con Tab. Un clic de mouse que enfoca un botón no lo deja activo. <code>onZoom</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code> el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code>, también responde a Enter y Espacio.",
+        "touch": "<code>disabledOnTouch</code> (default <code>true</code>) solo aplica cuando el zoom sigue al puntero (<code>origin=\"pointer\"</code> o <code>lens</code>): un toque no mueve el origen y el zoom de <code>hover</code> queda en reposo hasta que vuelva un mouse o lápiz, así el <code>:hover</code> pegado del toque no hace zoom. Con un origen fijo (<code>center</code>, <code>top</code>…) un toque hace zoom como el hover.",
+        "layout": "La escala es un <code>transform</code>: no mueve el layout ni cambia el tamaño de la caja. Con <code>clip</code>, el contenido no tapa lo que lo rodea.",
+        "meaning": "No escondas información solo detrás del zoom: con <code>lens</code>, el detalle tiene que poder verse también de otra forma (por ejemplo, abriendo la imagen)."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` e `isolation: isolate`.",
+        "variant": "Variante activa.",
+        "trigger": "Disparador activo. Con `hover`, la escala aplica con `:hover` o `:focus-visible` (en la raíz o adentro).",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "clip": "Se agrega con `clip` o `variant=\"lens\"`. Pone `overflow: hidden` en la raíz.",
+        "pointer": "Se agrega cuando el origen sigue al puntero (`origin=\"pointer\"` o `lens`).",
+        "touchBlocked": "Se agrega cuando un toque llega a un zoom que sigue al puntero (`origin=\"pointer\"` o `lens`) con `disabledOnTouch`. Con `hover`, deja la escala en reposo; se quita cuando vuelve un mouse o lápiz.",
+        "paused": "Se agrega con `isPaused`. Pausa la animación de `pulse`. En `in`, `out` y `lens`, el componente fija inline la escala y el origen actuales mientras dure la pausa.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Vuelve a `scale(1)`.",
+        "disabled": "Se agrega con `isDisabled`.",
+        "surface": "Envuelve al hijo. Es la que escala, con `transform-origin` en `--gemfx-zoom-ox` y `--gemfx-zoom-oy`. Con `asChild` es el propio hijo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas se escriben inline en la raíz en cada render, así que no se pueden pisar desde una clase: ajustalas con las props. La curva sí se cambia desde los tokens.",
+      "items": {
+        "duration": "Transición de la escala (o ciclo de `pulse`). La define `duration`; default `280ms`.",
+        "delay": "Retraso. Lo define `delay`; default `0ms`.",
+        "scale": "Escala máxima. Sale de `scale` o de `intensity` (`1.12` por defecto).",
+        "out": "Escala de `out`: `2 - scale`, con mínimo `0`.",
+        "originX": "Origen horizontal en %. Fijo según `origin`, o la posición del cursor con `pointer` y `lens`.",
+        "originY": "Origen vertical en %."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Zoom lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "easingEmphasized": "Curva de la transición de `in`, `out` y `lens`.",
+        "easingStandard": "Curva del latido de `pulse`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido escala y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Patrón, tamaño, origen y recorte."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Transición (o ciclo de `pulse`) y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo corre y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": {
+        "title": "Estilos",
+        "description": "Clases, estilos inline y ref."
+      }
+    },
+    "items": {
+      "children": "Contenido que escala.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Escala el propio hijo, así que `clip` no recorta: usá el `div` por defecto si necesitás recortar. No inyecta capas, así que también funciona con elementos vacíos (`img`): el propio elemento pasa a ser la raíz.",
+      "variant": "`in` agranda, `out` achica, `pulse` late en bucle y `lens` agranda hacia el puntero.",
+      "scale": "Factor máximo. Sin valor, `intensity` lo define: `1.06`, `1.12` o `1.22`. Con `out` se usa `2 - scale`. Los negativos se toman como `0`.",
+      "intensity": "Define el factor cuando falta `scale`. Token o número entre `0` y `1`.",
+      "origin": "`center`, `pointer`, `top`, `right`, `bottom`, `left`, `top-left`, `top-right`, `bottom-left` o `bottom-right`. Se ignora con `lens` (siempre sigue al puntero).",
+      "clip": "Recorta la superficie escalada para que no salga de la caja. `lens` siempre recorta.",
+      "duration": "Transición de la escala, o ciclo completo con `pulse`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece el zoom.",
+      "trigger": "`hover` al pasar el mouse o con el foco de teclado, `click` alterna con cada clic, `always` mantiene la escala (o late, con `pulse`).",
+      "isActive": "Permite el zoom. En `false` vuelve a la escala normal y `outZoom` recibe `inactive`.",
+      "isPaused": "Congela la escala actual (también a mitad de la transición), el latido de `pulse` y el origen que sigue al puntero. Mientras está pausado, los clics no alternan con `trigger=\"click\"`.",
+      "isDisabled": "Detiene el zoom; el hijo sigue interactivo. `outZoom` recibe `disabled`.",
+      "disabledOnTouch": "Solo aplica con `origin=\"pointer\"` o `variant=\"lens\"`: un toque no mueve el origen y el zoom de `hover` queda en reposo. Con un origen fijo, un toque hace zoom igual. Mouse y lápiz no cambian.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onZoom": "Se dispara cuando el zoom se activa: al entrar el puntero, al encender con clic o al montar con `always`.",
+      "outZoom": "Se dispara cuando se apaga: al salir el puntero, al apagar con clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-zoom-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.gemfx-blur-unveil.unveil-spoiler {
+  border-radius: var(--gem-radius-md);
+}
+
+.gemfx-blur-unveil.unveil-spoiler::after {
+  content: attr(data-hint);
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--gem-palette-neutral-950) 40%, transparent);
+  color: var(--gem-palette-neutral-0);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity var(--gemfx-blur-unveil-duration) var(--gemfx-easing-emphasized, ease);
+}
+
+.gemfx-blur-unveil.unveil-spoiler.gemfx-blur-unveil--on::after {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gemfx-blur-unveil.unveil-spoiler::after {
+    transition: none;
+  }
+}

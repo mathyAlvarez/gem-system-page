@@ -1,0 +1,302 @@
+{
+  "header": {
+    "title": "SwipeToDismiss",
+    "description": "Drag-to-dismiss para toasts, alerts y filas de lista. Arrastrá con pointer (mouse o touch); soltá pasado `threshold` o con un flick para que vuele. `direction` es el eje del gesto; `dismissDirection` fija qué signo comitea y la trayectoria de exit (`both` sigue el swipe). `rubberband` (default true) resiste el drag contra un borde bloqueado. `onSwipeStart` / `onSwipeMove` / `onSwipeCancel` trackean el gesto. Restore / `isIn={true}` desliza el ítem de vuelta desde el borde de dismiss. Con `direction=\"horizontal\"` (default) el scroll vertical sigue (`touch-action: pan-y`). Los clicks en botones internos siguen andando — el gesto arranca después de 8px. `onDismiss` dispara en un swipe committeado para que el parent haga `setIsIn(false)` o saque el ítem. No para `table` / `tr`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Arrastrá horizontalmente pasado ~1/3 del ancho (o flick). Restore / Dismiss también reproducen enter y exit.",
+    "restore": "Restore",
+    "dismiss": "Dismiss",
+    "panelTitle": "Saved",
+    "panelCopy": "Swipe el panel de costado para dismiss. El scroll vertical sigue andando.",
+    "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Arrastrá horizontalmente pasado ~1/3 del ancho (o flick). El host mantiene `touch-action: pan-y` para que la lista pueda scrollear. Restore desliza el panel de vuelta desde el borde de dismiss.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe el panel de costado para dismiss. El scroll vertical sigue andando.",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`direction=\"up\"` solo acepta drag hacia arriba. El host usa `touch-action: pan-x`.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe up para dismiss. El pan horizontal queda para la página.",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "leftOnly": {
+      "title": "Left only",
+      "description": "Un solo borde bloquea el signo. `direction=\"left\"` con `rubberband` default resiste el pull contrario en vez de clamplear a 0.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Solo un swipe left dismiss — drag right hace rubberband.",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "rubberbandOff": {
+      "title": "rubberband false",
+      "description": "`rubberband={false}` restaura el clamp duro contra un borde bloqueado (drag right no hace nada).",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "El drag contrario está hard-clamped — sin rubberband.",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "dismissDirection": {
+      "title": "dismissDirection left",
+      "description": "`direction=\"horizontal\"` permite ambos signos; `dismissDirection=\"left\"` solo committea swipes left y siempre sale left. Un release right se asienta y dispara `onSwipeCancel`.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Arrastrá para cualquier lado; solo un swipe left dismiss (vuela left).",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "gestureCallbacks": {
+      "title": "onSwipeStart / Move / Cancel",
+      "description": "`onSwipeStart` dispara cuando se lockea el eje; `onSwipeMove` streamea progress / translation; `onSwipeCancel` cuando el release se asienta debajo del threshold.",
+      "texts": {
+        "restore": "Restore",
+        "title": "Gesture log",
+        "copy": "Arrastrá pasado el threshold para dismiss, o soltá temprano para cancel.",
+        "lastEvent": "Último evento:",
+        "progressLabel": "progress:",
+        "empty": "—"
+      }
+    },
+    "markSelected": {
+      "title": "markSelected",
+      "description": "Con `markSelected`, el host muestra un anillo de selección en `:hover` (y mientras arrastrás). Hover una fila y swipe para dismiss.",
+      "texts": {
+        "copy": "Hover para marcar · swipe para dismiss"
+      }
+    },
+    "markOverride": {
+      "title": "markSelected class override",
+      "description": "Override del anillo hover con `classNames.root`. Este demo usa `mark-override` (outline dashed). También podés tematizar con `--gemst-swipe-selected-*`.",
+      "texts": {
+        "copy": "Anillo hover custom vía classNames"
+      }
+    },
+    "timing": {
+      "title": "Tiempos de enter y exit",
+      "description": "Separá `duration` y `easing`. Restore usa enter; dismiss usa exit.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe el panel de costado para dismiss.",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "listRows": {
+      "title": "List rows",
+      "description": "Un SwipeToDismiss por fila. Swipe una fila; Restore all vuelve a poner `isIn` para que cada fila entre desde el borde. No es un `table` HTML — cada fila es un block.",
+      "texts": {
+        "restoreAll": "Restore all",
+        "sibling": "Hermano abajo — sube cuando salen filas y vuelve cuando restauran."
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onSwipe` / `outSwipe` marcan el show y el dismiss / disable / unmount.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe o usá Dismiss.",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled`, el drag se ignora. Restore y Dismiss igual saltan (snap).",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Gesto off — usá el botón Dismiss (snap out).",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild`, los estilos de swipe van al `article` — sin wrapper extra.",
+      "texts": {
+        "restore": "Restore",
+        "title": "asChild host",
+        "copy": "Arrastrá este article de costado."
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` se pasan por `classNames`. Acá `gemst-relative` y `gemst-overflow-hidden` en `root`.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe el panel de costado para dismiss.",
+        "sibling": "Hermano abajo — sube cuando el panel se desmonta."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "restore": "Restore",
+      "dismiss": "Dismiss",
+      "title": "Saved",
+      "copy": "Variables vía Tailwind."
+    },
+    "variant": {
+      "restore": "Restore",
+      "dismiss": "Dismiss",
+      "title": "Saved",
+      "copy": "Wrapper con cva."
+    },
+    "styled": {
+      "restore": "Restore",
+      "dismiss": "Dismiss",
+      "title": "Saved",
+      "copy": "Override CSS en card-shell."
+    }
+  },
+  "apiLink": "Ver la API completa de SwipeToDismiss",
+  "api": {
+    "header": {
+      "title": "SwipeToDismiss API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `SwipeToDismiss`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de direction, rubberband, markSelected y list rows.",
+      "link": "Ver demos de SwipeToDismiss"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/swipe-to-dismiss` con su `swipe-to-dismiss.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz, o al hijo con <code>asChild</code>. El gesto es pointer en el host; los clicks en botones internos siguen andando (slop de 8px). No uses <code>table</code> / <code>tr</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "gesture": "El dismiss por swipe no debería ser la única forma de cerrar o sacar un ítem. Ofrecé un control (botón) equivalente.",
+        "scroll": "Con <code>direction=\"horizontal\"</code> el host usa <code>touch-action: pan-y</code> para no pelear el scroll vertical. Con ejes verticales usa <code>pan-x</code>.",
+        "dismiss": "<code>onDismiss</code> dispara en un swipe committeado. Actualizá presencia ahí (<code>isIn={false}</code> o sacar el ítem). Un <code>isIn={false}</code> programático no llama a <code>onDismiss</code>.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el host salta al estado final sin interpolar.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega <code>gemst-ignore-reduced-motion</code>. Solo si el movimiento es esencial.",
+        "host": "Elegí un host con semántica correcta (toast, alert, fila). El anillo de <code>markSelected</code> es decorativo — no reemplaza foco ni selección real.",
+        "asChild": "Con <code>asChild</code>, el hijo recibe pointer handlers y estilos. Usá un elemento que pueda ser interactivo."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`div` o el hijo con `asChild`).",
+        "horizontal": "Eje horizontal (`touch-action: pan-y`).",
+        "vertical": "Eje vertical (`touch-action: pan-x`).",
+        "dragging": "Drag activo.",
+        "entering": "Enter programático desde el borde.",
+        "settling": "Settle back debajo del threshold.",
+        "dismissing": "Exit de dismiss en curso.",
+        "out": "Estado out (desmontado o hidden).",
+        "markSelected": "Anillo de selección en hover / drag.",
+        "disabled": "Gesto off.",
+        "idle": "Sin motion activo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben en el host según fase y drag.",
+      "items": {
+        "duration": "Duración de settle / dismiss / enter. Default `300ms`.",
+        "delay": "Retraso de enter/exit programático. Default `0ms`.",
+        "easing": "Curva. Enter usa `standard`; dismiss usa `exit`.",
+        "x": "Offset X en drag / settle.",
+        "y": "Offset Y en drag / settle.",
+        "progress": "Progreso 0–1 del drag (también baja opacity).",
+        "selectedWidth": "Ancho del outline de `markSelected`.",
+        "selectedColor": "Color del outline.",
+        "selectedOffset": "Offset del outline.",
+        "selectedRadius": "Radius del outline."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingStandard": "Default de enter / settle.",
+        "easingExit": "Default de dismiss."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "Children y host." },
+      "appearance": { "title": "Apariencia", "description": "Eje, threshold, rubberband y mark." },
+      "timing": { "title": "Tiempo", "description": "Restore = enter; dismiss = exit." },
+      "state": { "title": "Estado", "description": "Cómo se apaga el gesto." },
+      "events": { "title": "Eventos", "description": "Gesto, dismiss y ciclo de presencia." },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido arrastrable (toast, alert, fila). No `table` / `tr`.",
+      "asChild": "Aplica clases, estilos y ref al único hijo. Ese hijo es el host del gesto.",
+      "isIn": "`true` (default) reproduce enter y mantiene montado; `false` reproduce exit y desmonta al terminar.",
+      "direction": "Eje del gesto. `horizontal` (default) dismiss left/right y deja scroll vertical; `vertical` al revés. Un borde (`left` / `right` / `up` / `down`) solo acepta ese signo.",
+      "dismissDirection": "Trayectoria de exit y qué signo committea. `both` (default) sigue el swipe; un borde solo committea ese signo y siempre sale por ahí.",
+      "rubberband": "`true` (default) resiste el drag contra un borde bloqueado. `false` hard-clampea a 0.",
+      "threshold": "Fracción del tamaño del host que cuenta como dismiss (0–1). Default `0.35`.",
+      "velocityThreshold": "Velocidad de flick en px/ms que dismiss aunque esté debajo del threshold. Default `0.5`.",
+      "markSelected": "Muestra anillo de selección en hover (y mientras arrastrás).",
+      "unmountOnExit": "Desmonta al toque al dismiss (salta el motion de exit).",
+      "duration": "Duración. Con `{ enter, exit }`, enter = restore; exit = dismiss.",
+      "delay": "Espera antes de enter/exit programático. El drag arranca al toque.",
+      "easing": "Token, timing function o `{ enter, exit }`. Settle usa enter; dismiss usa exit.",
+      "isDisabled": "Apaga el gesto y salta la presencia.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onDismiss": "Cuando un swipe cruza el threshold (o flick). Actualizá presencia acá. `isIn={false}` programático no lo llama.",
+      "onSwipeStart": "Cuando se lockea el eje (después del slop de 8px).",
+      "onSwipeMove": "En cada move mientras arrastrás (`progress` + `translation`).",
+      "onSwipeCancel": "Cuando el drag termina sin committear y el host se asienta.",
+      "onSwipe": "Cuando el host se muestra (`isIn` true).",
+      "outSwipe": "Cuando dismiss, disable o unmount.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: solo `root`.",
+      "style": "Estilos inline de la raíz. Se combinan con `--gemst-swipe-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

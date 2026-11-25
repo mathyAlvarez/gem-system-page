@@ -239,8 +239,14 @@
       "description": "Description"
     },
     "groups": {
-      "content": { "title": "Content and appearance", "description": "Data, accessible name, and look." },
-      "selection": { "title": "Selection", "description": "Which nodes are selected when activated." },
+      "content": {
+        "title": "Content and appearance",
+        "description": "Data, accessible name, and look."
+      },
+      "selection": {
+        "title": "Selection",
+        "description": "Which nodes are selected when activated."
+      },
       "expansion": { "title": "Expansion", "description": "Which branches are open." },
       "check": { "title": "Checkboxes", "description": "Node checking, with or without cascade." },
       "styling": { "title": "Styling", "description": "Classes and refs." },

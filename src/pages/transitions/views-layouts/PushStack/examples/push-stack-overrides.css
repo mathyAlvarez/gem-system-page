@@ -1,0 +1,12 @@
+.gemst-push-stack.wizard-shell {
+  --gemst-push-stack-enter-duration: 360ms;
+  --gemst-push-stack-exit-duration: 280ms;
+  --gemst-push-stack-enter-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+  --gemst-push-stack-pagination-active-color: var(--gem-color-info);
+}
+
+.gemst-push-stack.wizard-shell .push-stack-demo__panel {
+  border: 1px solid var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}

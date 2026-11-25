@@ -70,7 +70,10 @@
       "texts": {
         "steps": {
           "account": { "label": "Cuenta", "content": "Datos de acceso." },
-          "files": { "label": "Archivos", "content": "Subí los documentos del espacio de trabajo." },
+          "files": {
+            "label": "Archivos",
+            "content": "Subí los documentos del espacio de trabajo."
+          },
           "schedule": { "label": "Fecha", "content": "Elegí la fecha de lanzamiento." },
           "settings": { "label": "Ajustes", "content": "Notificaciones y visibilidad." }
         }

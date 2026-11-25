@@ -16,7 +16,11 @@
       "actions": "Actions"
     },
     "items": {
-      "home": { "label": "Home", "description": "Workspace overview", "keywords": ["dashboard", "start"] },
+      "home": {
+        "label": "Home",
+        "description": "Workspace overview",
+        "keywords": ["dashboard", "start"]
+      },
       "projects": { "label": "Projects", "description": "Open the project list" },
       "calendar": { "label": "Calendar", "description": "Upcoming events" },
       "profile": { "label": "Open profile", "keywords": ["account", "user"] },

@@ -1,0 +1,384 @@
+{
+  "header": {
+    "title": "PushStack",
+    "description": "Navegación por profundidad de stack para wizards, modales por pasos y page stacks. Subir `index` empuja el pane nuevo desde el borde de cover y el actual recede; bajar `index` hace pop. `mode`: `sync` / `wait` / `pop-layout`. `keepState` mantiene steps inactivos montados. `pagination` y `swipe` estilo Swiper."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Next sube `index` (push). Back lo baja (pop). Incoming usa `enter`; outgoing usa `exit`.",
+    "back": "Back",
+    "next": "Next",
+    "copies": {
+      "Account": "Paso 1. Next empuja este pane atrás y lo cubre desde el borde final.",
+      "Address": "Paso 2. Back hace pop del pane actual; Next vuelve a pushear.",
+      "Review": "Paso 3. Back hace pop a Address — el pane enterrado escala hacia adelante."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Next incrementa `index` (push). Back lo decrementa (pop). Los dots de `pagination` siguen el step — tocá un dot para saltar.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "sibling": "Hermano abajo — el overflow queda clippeado en el host del stack.",
+        "copies": {
+          "Account": "Paso 1. Next empuja este pane atrás y lo cubre desde el borde final.",
+          "Address": "Paso 2. Back hace pop del pane actual; Next vuelve a pushear.",
+          "Review": "Paso 3. Back hace pop a Address — el pane enterrado escala hacia adelante."
+        }
+      }
+    },
+    "axisY": {
+      "title": "axis y",
+      "description": "`axis=\"y\"` — el push cubre desde abajo; el pop destapa hacia abajo. Mismo contrato de `index`.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Paso 1 en eje Y.",
+          "Address": "Paso 2: cover desde abajo.",
+          "Review": "Paso 3: pop hacia abajo."
+        }
+      }
+    },
+    "timing": {
+      "title": "Tiempos de enter y exit",
+      "description": "Separá `duration` y `easing`. Incoming usa enter; outgoing usa exit.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Enter más marcado.",
+          "Address": "Exit más corto.",
+          "Review": "Split timing en acción."
+        }
+      }
+    },
+    "modeWait": {
+      "title": "mode wait",
+      "description": "`mode=\"wait\"` — el pane outgoing termina antes de montar el step incoming.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Sale completo antes del enter.",
+          "Address": "Entra recién cuando el exit terminó.",
+          "Review": "Sin overlap de motion."
+        }
+      }
+    },
+    "modePopLayout": {
+      "title": "mode pop-layout",
+      "description": "`mode=\"pop-layout\"` — el outgoing es absoluto; el host mide al step incoming.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "sibling": "Hermano abajo — sigue la altura del step activo.",
+        "copies": {
+          "Account": "Host mide a este pane.",
+          "Address": "Outgoing absoluto al cambiar.",
+          "Review": "El hermano sigue la altura activa."
+        }
+      }
+    },
+    "keepState": {
+      "title": "keepState",
+      "description": "`keepState` preserva steps montados. Escribí en el campo, navegá y volvé. `onViewChange` loguea el swap de identidad.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "fieldLabel": "Campo para {step}:",
+        "placeholder": "escribí acá",
+        "changeLabel": "onViewChange"
+      }
+    },
+    "direction": {
+      "title": "direction",
+      "description": "Panes con nombre vía `viewKey`. Sin `index`, pasá `direction` para que Back haga pop en vez de push.",
+      "texts": {
+        "copies": {
+          "Account": "Sin index: direction decide push/pop.",
+          "Address": "Back más temprano = pop.",
+          "Review": "Next más adelante = push."
+        }
+      }
+    },
+    "paginationOverlay": {
+      "title": "Pagination overlay",
+      "description": "`pagination.placement = \"inside-end\"` superpone los dots sobre la card, estilo Swiper.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Dots abajo, encima del panel.",
+          "Address": "Misma overlay en Address.",
+          "Review": "Misma overlay en Review."
+        }
+      }
+    },
+    "swipe": {
+      "title": "swipe",
+      "description": "`swipe` — arrastrá la card; el pane activo sigue el pointer y el vecino asoma de costado (pasá `views` para tener prev/next). Commit pasado ~28% o flick; si no, vuelve.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "sibling": "Hermano abajo — el overflow queda clippeado en el host del stack.",
+        "copies": {
+          "Account": "Arrastrá a la izquierda para ir a Address.",
+          "Address": "Arrastrá a la derecha o izquierda.",
+          "Review": "Arrastrá a la derecha para volver."
+        }
+      }
+    },
+    "paginationTop": {
+      "title": "Pagination top",
+      "description": "`inside-start` fija los dots al borde superior del pane.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Dots arriba.",
+          "Address": "Misma placement.",
+          "Review": "Misma placement."
+        }
+      }
+    },
+    "paginationColors": {
+      "title": "Colores de pagination",
+      "description": "Personalizá con `color`, `activeColor`, `size` y `gap`. También con CSS `--gemst-push-stack-pagination-*`.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Dots con color info activo.",
+          "Address": "Mismos tokens.",
+          "Review": "Mismos tokens."
+        }
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onViewChange` se dispara al cambiar la identidad. `onPushStack` / `outPushStack` marcan el inicio y el fin del motion del stack.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "empty": "Sin eventos todavía",
+        "copies": {
+          "Account": "Paso 1.",
+          "Address": "Paso 2.",
+          "Review": "Paso 3."
+        }
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled` el step activo entra de un golpe, sin motion de stack.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Snap sin stack motion.",
+          "Address": "Snap sin stack motion.",
+          "Review": "Snap sin stack motion."
+        }
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild`, los estilos del host van al `section`. Pasá `view` como pane — el hijo es solo el host.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Pane dentro del section slotteado.",
+          "Address": "Mismo host, otro pane.",
+          "Review": "Mismo host, otro pane."
+        }
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` se pasan por `classNames`. Acá `gemst-relative` / `gemst-overflow-hidden` en `root` y `gemst-block` en `pane`.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Root con overflow hidden.",
+          "Address": "Pane en block.",
+          "Review": "Mismas utilities."
+        }
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "back": "Back",
+      "next": "Next",
+      "copies": {
+        "Account": "Variables vía Tailwind.",
+        "Address": "Misma superficie.",
+        "Review": "Misma superficie."
+      }
+    },
+    "variant": {
+      "back": "Back",
+      "next": "Next",
+      "copies": {
+        "Account": "Wrapper con cva.",
+        "Address": "Misma variante.",
+        "Review": "Misma variante."
+      }
+    },
+    "styled": {
+      "back": "Back",
+      "next": "Next",
+      "copies": {
+        "Account": "Override CSS en wizard-shell.",
+        "Address": "Misma skin.",
+        "Review": "Misma skin."
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de PushStack",
+  "api": {
+    "header": {
+      "title": "PushStack API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `PushStack`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de axis, modes, direction, pagination y swipe.",
+      "link": "Ver demos de PushStack"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/push-stack` con su `push-stack.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz, o al hijo con <code>asChild</code>. Con <code>asChild</code>, el hijo es solo el host: pasá <code>view</code> / <code>views</code> como panes. El componente maneja el fin de <code>transform</code> / <code>opacity</code> en cada pane y después llama a tus handlers."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "presence": "Es navegación de stack: el control que cambia <code>index</code> / <code>viewKey</code> debería reflejar el estado. No transmitas información solo con el motion.",
+        "pagination": "Con <code>onPagination</code> los dots son botones. Sin él, son decorativos y el swipe se ignora.",
+        "swipe": "<code>swipe</code> necesita <code>onPagination</code> y un count ≥ 2. Pasá <code>views</code> para que el vecino pueda asomar. No uses el swipe como única forma de cambiar de step.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> los panes saltan al estado final. La preferencia se consulta en cada render.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega <code>gemst-ignore-reduced-motion</code>. Solo si el movimiento es esencial.",
+        "keepState": "Con <code>keepState</code> los steps inactivos quedan con <code>display: none</code>. No deberían recibir foco ni anunciarse mientras están ocultos.",
+        "asChild": "Con <code>asChild</code>, elegí un host con la semántica correcta (<code>section</code>, <code>div</code>): ese elemento es el contenedor del stack."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`div` o el hijo con `asChild`). `display: grid`, `overflow: hidden`.",
+        "pane": "Capa de step. Comparte `grid-area: 1 / 1` y transiciona `transform` + `opacity`.",
+        "incoming": "Pane que entra.",
+        "outgoing": "Pane que sale (`pointer-events: none`).",
+        "in": "Pane en reposo (`translate3d(0,0,0) scale(1)`).",
+        "out": "Pane en cover o recede según push/pop.",
+        "kept": "Step inactivo con `keepState` (`display: none`).",
+        "pagination": "Fila de dots.",
+        "dot": "Dot inactivo.",
+        "dotActive": "Dot activo.",
+        "axisY": "Eje vertical (`cover`/`recede` en Y).",
+        "push": "Dirección push (incoming cubre; outgoing recede).",
+        "pop": "Dirección pop (outgoing cubre; incoming avanza desde recede).",
+        "modePop": "Modo pop-layout: outgoing absoluto.",
+        "playing": "Motion en curso.",
+        "disabled": "Sin transición.",
+        "swiping": "Drag activo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render según la fase y el estado del swipe/pagination.",
+      "items": {
+        "enterDuration": "Duración del incoming. Default `300ms`.",
+        "exitDuration": "Duración del outgoing. Default `300ms`.",
+        "enterDelay": "Retraso del incoming. Default `0ms`.",
+        "exitDelay": "Retraso del outgoing. Default `0ms`.",
+        "enterEasing": "Curva del incoming. Default `standard`.",
+        "exitEasing": "Curva del outgoing. Default `exit`.",
+        "cover": "Distancia del pane que cubre. Default `100%`.",
+        "recede": "Distancia del pane enterrado. Default `25%`.",
+        "depthScale": "Scale del pane enterrado. Default `0.96`.",
+        "depthOpacity": "Opacidad del pane enterrado. Default `0.72`.",
+        "paginationColor": "Color de dots idle.",
+        "paginationActiveColor": "Color del dot activo."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingStandard": "Default de `--gemst-push-stack-enter-easing`.",
+        "easingExit": "Default de `--gemst-push-stack-exit-easing`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "Children, view, views y host." },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Index, axis, cover/recede, pagination y swipe."
+      },
+      "timing": { "title": "Tiempo", "description": "Incoming = enter; outgoing = exit." },
+      "state": { "title": "Estado", "description": "Cómo se apaga la animación." },
+      "events": {
+        "title": "Eventos",
+        "description": "Cambio de vista, pagination y ciclo del stack."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Step actual cuando no hay `view` / `views`. La identidad es `viewKey`, `index` o el `key` del hijo. Con `asChild`, es solo el host.",
+      "view": "Pane actual con `asChild` (el hijo es solo el host). También sirve en vez de `children`.",
+      "views": "Stack completo de panes. Con `index`, el activo es `views[index]` y los vecinos pueden asomar en swipe.",
+      "asChild": "Aplica clases, estilos y ref al único hijo. Pasá `view` / `views` como panes.",
+      "index": "Profundidad del stack. Sube = push; baja = pop. Sirve para inferir `direction`.",
+      "viewKey": "Identidad estable del pane. Default = `index` si está seteado.",
+      "direction": "Forzá push o pop. Sin esto, se infiere de `index`. Sin `index`, default `push`.",
+      "axis": "`x` (default) en el eje inline; `y` en el eje block.",
+      "mode": "`sync` solapa; `wait` termina exit antes de enter; `pop-layout` pone outgoing absoluto.",
+      "keepState": "Mantiene steps inactivos montados (`display: none`) para que el estado local sobreviva.",
+      "cover": "Cuánto viaja el pane que cubre. Número → px; string → CSS. Default `100%`.",
+      "recede": "Cuánto recede el pane enterrado. Default `25%`.",
+      "unmountOnExit": "Saltea el motion y tira el pane outgoing.",
+      "pagination": "Dots estilo Swiper. Número = count, u objeto con `placement`, colores, `size`, `gap`.",
+      "paginationIndex": "Dot activo (0-based). Default: `index`, o `0`.",
+      "swipe": "`true` usa `axis` y el count de pagination. Requiere `onPagination` y count ≥ 2. Swipe hacia start = next.",
+      "duration": "Duración. Con `{ enter, exit }`, `enter` es incoming y `exit` outgoing.",
+      "delay": "Espera antes de cada motion. Acepta `{ enter, exit }`.",
+      "easing": "Token, timing function o `{ enter, exit }`. Default enter `standard`, exit `exit`.",
+      "isDisabled": "Salta al pane activo sin interpolar.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onPagination": "Dot o swipe que comete página. Actualizá `index` / `viewKey` acá.",
+      "onViewChange": "Después de cambiar la identidad activa (salta el primer mount).",
+      "onPushStack": "Cuando un push o pop empieza a reproducirse.",
+      "outPushStack": "Cuando el motion termina, se desactiva o se desmonta el host.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `pane`, `incoming`, `outgoing`, `pagination`, `dot`.",
+      "style": "Estilos inline de la raíz. Se combinan con `--gemst-push-stack-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

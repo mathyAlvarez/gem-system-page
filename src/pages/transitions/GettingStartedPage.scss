@@ -1,0 +1,18 @@
+/**
+ * Gemsitions Page — Getting started
+ * Live demo of the basic usage section.
+ */
+
+.getting-started-demo {
+  --getting-started-demo-stage: 9rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  max-width: 24rem;
+
+  // Reserves the card height so the button does not jump while the card enters and exits.
+  &__stage {
+    min-height: var(--getting-started-demo-stage);
+  }
+}

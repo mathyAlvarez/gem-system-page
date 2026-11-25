@@ -16,7 +16,11 @@
       "actions": "Acciones"
     },
     "items": {
-      "home": { "label": "Inicio", "description": "Resumen del espacio de trabajo", "keywords": ["panel", "comienzo"] },
+      "home": {
+        "label": "Inicio",
+        "description": "Resumen del espacio de trabajo",
+        "keywords": ["panel", "comienzo"]
+      },
       "projects": { "label": "Proyectos", "description": "Abrir la lista de proyectos" },
       "calendar": { "label": "Calendario", "description": "Próximos eventos" },
       "profile": { "label": "Abrir perfil", "keywords": ["cuenta", "usuario"] },

@@ -39,7 +39,12 @@
           { "key": "email", "label": "Email", "children": "ada@gem.org" },
           { "key": "role", "label": "Role", "children": "Admin" },
           { "key": "team", "label": "Team", "children": "Platform" },
-          { "key": "address", "label": "Address", "children": "12 Analytical Engine Rd, London", "span": 2 }
+          {
+            "key": "address",
+            "label": "Address",
+            "children": "12 Analytical Engine Rd, London",
+            "span": 2
+          }
         ]
       }
     },

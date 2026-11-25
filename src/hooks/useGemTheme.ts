@@ -11,5 +11,9 @@ function subscribe(onChange: () => void) {
 }
 
 export function useGemTheme(): Theme {
-  return useSyncExternalStore(subscribe, () => getTheme(), () => "light");
+  return useSyncExternalStore(
+    subscribe,
+    () => getTheme(),
+    () => "light",
+  );
 }

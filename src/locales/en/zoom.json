@@ -1,0 +1,221 @@
+{
+  "header": {
+    "title": "Zoom",
+    "description": "Scales the content. `variant` sets the pattern (`in`, `out`, `pulse` or `lens`), `trigger` when it runs (on hover by default), `origin` where it grows from and `clip` keeps it inside its box. With `prefers-reduced-motion: reduce` the content stays at rest in every variant."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. `scale` set to `auto` lets `intensity` define the size. With `pulse`, raise `duration` (it's the length of each cycle).",
+    "alt": "gem-org logo"
+  },
+  "stories": {
+    "image": {
+      "title": "On an image",
+      "description": "With the default `trigger` (`hover`), the image grows while the pointer is over it. `clip` is on by default, so the zoom stays inside the frame and doesn't shift the layout. The root clips, so it carries the `border-radius`.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`in` enlarges, `out` shrinks by the same distance (`2 - scale`), `pulse` loops while active and `lens` enlarges toward the pointer. Hover over each one."
+    },
+    "lens": {
+      "title": "Lens",
+      "description": "`lens` always follows the pointer, regardless of `origin`, and always clips. With a high `scale` it works as a magnifier on detailed images. On touch screens, with `disabledOnTouch` (default), a tap doesn't zoom: a finger can't aim the lens.",
+      "texts": {
+        "alt": "gem-org logo under a lens"
+      }
+    },
+    "origin": {
+      "title": "Origin",
+      "description": "`origin` sets the point it grows from: center, edges or corners. `pointer` follows the cursor while it's over the box and returns to the center on leave."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`hover` scales with the pointer or when you reach it by keyboard (visible focus on the root or inside), `click` toggles on each click and `always` holds the peak scale (or loops, with `pulse`)."
+    },
+    "scale": {
+      "title": "Scale",
+      "description": "`scale` sets the peak factor and replaces `intensity`. With `out`, the same value shrinks: `scale={1.4}` goes to `0.6`."
+    },
+    "clip": {
+      "title": "Clip",
+      "description": "With `clip` (default) the root crops the scaled surface. With `clip={false}` the content grows over its surroundings; the scale never affects layout."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is the scale transition in milliseconds (or the full cycle, with `pulse`). `delay` postpones the start."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "When `scale` is omitted, `intensity` sets the factor: `sm` 1.06, `md` 1.12, `lg` 1.22. It takes a token or a number between `0` and `1`."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without a wrapping `div`. Here, on a gem-system `Button`. It scales the child itself, so `clip` crops nothing: to crop an image inside its frame, use the default `div`.",
+      "texts": {
+        "label": "Hover me"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the `pulse` beat where it is. On `in`, `out` and `lens` it freezes the current scale, even mid-transition, and resumes from there when unpaused. `isDisabled` returns to normal scale and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onZoom` fires when the zoom turns on and `outZoom` when it turns off, with the cause in `event.reason`. The inner button still gets clicks.",
+      "texts": {
+        "body": "Hover over the card and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "alt": "gem-org logo that saturates on zoom"
+    },
+    "styled": {
+      "alt": "gem-org logo in black and white"
+    }
+  },
+  "apiLink": "See the full Zoom API",
+  "api": {
+    "header": {
+      "title": "Zoom API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Zoom`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant, origin and option.",
+      "link": "See Zoom demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/zoom` with its `zoom.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>scale</code>, and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerMove</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the content stays at <code>scale(1)</code> in every variant: the <code>pulse</code> animation, the transitions and the <code>in</code>, <code>out</code> and <code>lens</code> scale are removed, and the origin stops following the pointer.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the motion. Only use it if it's essential.",
+        "focus": "With <code>trigger=\"hover\"</code> the zoom also turns on with keyboard focus (<code>:focus-visible</code> on the root or inside), so it's visible while tabbing. A mouse click that focuses a button doesn't keep it on. <code>onZoom</code> only fires with the pointer.",
+        "click": "With <code>trigger=\"click\"</code> the toggle listens to the root's <code>click</code>. If the child is a <code>button</code>, it also responds to Enter and Space.",
+        "touch": "<code>disabledOnTouch</code> (default <code>true</code>) only applies when the zoom follows the pointer (<code>origin=\"pointer\"</code> or <code>lens</code>): a tap doesn't move the origin and the <code>hover</code> zoom stays at rest until a mouse or pen comes back, so the sticky <code>:hover</code> left by the tap doesn't zoom. With a fixed origin (<code>center</code>, <code>top</code>…) a tap zooms like hover.",
+        "layout": "The scale is a <code>transform</code>: it doesn't shift the layout or resize the box. With <code>clip</code>, the content doesn't cover its surroundings.",
+        "meaning": "Don't hide information behind the zoom alone: with <code>lens</code>, the detail should be reachable some other way too (for example, by opening the image)."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and `isolation: isolate`.",
+        "variant": "Active variant.",
+        "trigger": "Active trigger. With `hover`, the scale applies on `:hover` or `:focus-visible` (on the root or inside).",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "clip": "Added with `clip` or `variant=\"lens\"`. Sets `overflow: hidden` on the root.",
+        "pointer": "Added when the origin follows the pointer (`origin=\"pointer\"` or `lens`).",
+        "touchBlocked": "Added when a tap reaches a pointer-tracking zoom (`origin=\"pointer\"` or `lens`) with `disabledOnTouch`. With `hover`, it keeps the scale at rest; it's removed when a mouse or pen comes back.",
+        "paused": "Added with `isPaused`. Pauses the `pulse` animation. On `in`, `out` and `lens`, the component pins the current scale and origin inline for as long as it's paused.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Returns to `scale(1)`.",
+        "disabled": "Added with `isDisabled`.",
+        "surface": "Wraps the child. It's what scales, with `transform-origin` at `--gemfx-zoom-ox` and `--gemfx-zoom-oy`. With `asChild` it's the child itself."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "All of them are written inline on the root on every render, so a class can't override them: tune them with the props. The curve can be changed through the tokens.",
+      "items": {
+        "duration": "Scale transition (or `pulse` cycle). Set by `duration`; default `280ms`.",
+        "delay": "Delay. Set by `delay`; default `0ms`.",
+        "scale": "Peak scale. Comes from `scale` or `intensity` (`1.12` by default).",
+        "out": "Scale for `out`: `2 - scale`, minimum `0`.",
+        "originX": "Horizontal origin in %. Fixed by `origin`, or the cursor position with `pointer` and `lens`.",
+        "originY": "Vertical origin in %."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Zoom reads as defaults. They can be redefined on the root with a class.",
+      "items": {
+        "easingEmphasized": "Curve for the `in`, `out` and `lens` transition.",
+        "easingStandard": "Curve for the `pulse` beat."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content scales and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Pattern, size, origin and clipping."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Transition (or `pulse` cycle) and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it runs and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": {
+        "title": "Styling",
+        "description": "Classes, inline styles and ref."
+      }
+    },
+    "items": {
+      "children": "Content that scales.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. It scales the child itself, so `clip` doesn't crop: use the default `div` if you need cropping. It injects no layers, so it also works with void elements (`img`): the element itself becomes the root.",
+      "variant": "`in` enlarges, `out` shrinks, `pulse` loops and `lens` enlarges toward the pointer.",
+      "scale": "Peak factor. When omitted, `intensity` sets it: `1.06`, `1.12` or `1.22`. `out` uses `2 - scale`. Negative values are treated as `0`.",
+      "intensity": "Sets the factor when `scale` is missing. A token or a number between `0` and `1`.",
+      "origin": "`center`, `pointer`, `top`, `right`, `bottom`, `left`, `top-left`, `top-right`, `bottom-left` or `bottom-right`. Ignored with `lens` (it always follows the pointer).",
+      "clip": "Crops the scaled surface so it doesn't spill out of the box. `lens` always clips.",
+      "duration": "Scale transition, or full cycle with `pulse`. Negative values are treated as `0`.",
+      "delay": "Delay before the zoom starts.",
+      "trigger": "`hover` with the pointer or keyboard focus, `click` toggles on each click, `always` holds the scale (or loops, with `pulse`).",
+      "isActive": "Allows the zoom. With `false` it returns to normal scale and `outZoom` gets `inactive`.",
+      "isPaused": "Freezes the current scale (also mid-transition), the `pulse` beat and the pointer-tracking origin. While paused, clicks don't toggle with `trigger=\"click\"`.",
+      "isDisabled": "Stops the zoom; the child stays interactive. `outZoom` gets `disabled`.",
+      "disabledOnTouch": "Only applies with `origin=\"pointer\"` or `variant=\"lens\"`: a tap doesn't move the origin and the `hover` zoom stays at rest. With a fixed origin, a tap zooms as usual. Mouse and pen are unaffected.",
+      "ignoreReducedMotion": "Animates even if the user prefers reduced motion. Only if essential.",
+      "onZoom": "Fires when the zoom turns on: on pointer enter, when toggled on by click, or on mount with `always`.",
+      "outZoom": "Fires when it turns off: on pointer leave, when toggled off by click, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-zoom-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

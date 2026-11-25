@@ -1,0 +1,269 @@
+{
+  "header": {
+    "title": "AnimatedNumber",
+    "description": "Anima los cambios de un número: contadores, saldos, precios y métricas. Por defecto (`effect=\"count\"`) interpola el valor cuadro a cuadro; con `fade`, `up` o `down` cambia la cifra ya formateada con un fundido o un desplazamiento. Pasá el valor en `value` y formatealo con `Intl.NumberFormat` (`locales`, `formatOptions`) o con tu propia función `format`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props, cambiá el valor con los botones y mirá el código que genera. Subir usa los tiempos de entrada (`enter`) y bajar los de salida (`exit`).",
+    "label": "Saldo",
+    "increase": "Sumar 240",
+    "decrease": "Restar 240",
+    "reset": "Reiniciar"
+  },
+  "stories": {
+    "base": {
+      "title": "Contador básico",
+      "description": "Con los valores por defecto el número se interpola en `500` ms: las subidas usan el easing `standard` y las bajadas `exit`. La raíz es un `span` con números tabulares, así que podés ponerlo dentro de un texto. Si `value` es entero, los pasos intermedios también lo son.",
+      "texts": {
+        "label": "Saldo disponible",
+        "increase": "Sumar 240",
+        "decrease": "Restar 240",
+        "reset": "Reiniciar"
+      }
+    },
+    "effects": {
+      "title": "Efectos",
+      "description": "`count` recorre los valores intermedios. `fade` hace un fundido simultáneo entre la cifra vieja y la nueva; `up` suma un desplazamiento hacia arriba (la nueva entra desde abajo) y `down` al revés. La dirección la fija el efecto, no si el valor sube o baja. Estos tres solo animan cuando cambia el texto formateado.",
+      "texts": {
+        "increase": "Sumar 240",
+        "decrease": "Restar 240"
+      }
+    },
+    "currency": {
+      "title": "Moneda",
+      "description": "`formatOptions` se pasa a `Intl.NumberFormat` junto con `locales`. `duration` y `easing` aceptan `{ enter, exit }`: acá las subidas duran `620` ms con `emphasized` y las bajadas `420` ms con `exit`.",
+      "texts": {
+        "label": "Ingresos del mes",
+        "increase": "Sumar $180",
+        "decrease": "Restar $180"
+      }
+    },
+    "percent": {
+      "title": "Porcentaje",
+      "description": "Con `style: \"percent\"`, `value` va de `0` a `1`: `0.42` se muestra como `42%`. `maximumFractionDigits` se aplica al porcentaje que se ve, no al valor crudo, y el conteo guarda los decimales necesarios para que los pasos intermedios no salten.",
+      "texts": {
+        "label": "Tasa de conversión",
+        "increase": "Sumar 8 pp",
+        "decrease": "Restar 8 pp"
+      }
+    },
+    "format": {
+      "title": "Formato propio, prefix y suffix",
+      "description": "`format` recibe el valor interpolado en cada cuadro (con `count`) o el valor final (con `fade`, `up` o `down`) y devuelve el texto; si lo pasás, se ignoran `locales` y `formatOptions`. `prefix` y `suffix` se renderizan antes y después de la cifra, fuera de la animación.",
+      "texts": {
+        "label": "Almacenamiento usado",
+        "upload": "Subir 1,5 GB",
+        "remove": "Liberar 1,5 GB",
+        "suffix": "/ {capacity} GB"
+      }
+    },
+    "round": {
+      "title": "Decimales del conteo (round)",
+      "description": "`round` fija cuántos decimales tienen los valores intermedios del conteo y pisa la precisión que se infiere de `value` y `formatOptions`. Se limita entre `0` y `20` y solo aplica a `effect=\"count\"`. Acá el mismo valor con `2` y `4` decimales.",
+      "texts": {
+        "increase": "Sumar 1,1111",
+        "decrease": "Restar 1,1111"
+      }
+    },
+    "trend": {
+      "title": "Color por tendencia (trendClassName)",
+      "description": "`trendClassName` agrega a la raíz la clase `up` cuando el valor sube y `down` cuando baja. La última tendencia se mantiene hasta el próximo cambio; al montar no hay ninguna.",
+      "texts": {
+        "label": "Precio de la acción",
+        "rise": "Sube $3,25",
+        "fall": "Baja $3,25"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onStart(from)` se dispara cuando empieza un cambio, con el valor que se estaba mostrando, y `onComplete(to)` cuando llega al final. `onAnimatedNumber` avisa que arrancó la animación (`reason: \"enter\"`) y `outAnimatedNumber` que terminó (`exit`), se desactivó (`disabled`) o se desmontó (`unmount`). Si el valor cambia a mitad de camino, vuelve a dispararse `onStart` pero no `onAnimatedNumber`.",
+      "texts": {
+        "label": "Visitas de hoy",
+        "increase": "Sumar 240",
+        "decrease": "Restar 240",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled` la cifra salta directo al valor nuevo, igual que con `prefers-reduced-motion: reduce`. `onStart` y `onComplete` se siguen disparando, uno detrás del otro.",
+      "texts": {
+        "increase": "Sumar 240",
+        "decrease": "Restar 240"
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild` las clases, estilos y la ref van al único hijo (acá un `strong`) y su contenido se reemplaza por la cifra. Sirve para mantener la semántica dentro de un párrafo, una celda o un `output`. El hijo tiene que ser exactamente un elemento: si no pasás ninguno, no se muestra el número.",
+      "texts": {
+        "before": "Tu carrito tiene",
+        "after": "productos.",
+        "add": "Agregar producto",
+        "remove": "Quitar producto"
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` (`gemst-inline-flex`, `gemst-relative`…) se pasan por `classNames` para ajustar layout, overflow o posición sin depender del CSS de un design system. Acá `gemst-inline-flex` va en `root` y `gemst-relative` en `value`. Ya vienen incluidas en `styles.css`.",
+      "texts": {
+        "label": "Miembros",
+        "increase": "Sumar 240",
+        "decrease": "Restar 240"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Puntaje",
+      "next": "Sumar 7 puntos"
+    },
+    "variant": {
+      "increase": "Sumar 240"
+    },
+    "styled": {
+      "home": "Local",
+      "away": "Visitante",
+      "goal": "Gol de {team}"
+    }
+  },
+  "apiLink": "Ver la API completa de AnimatedNumber",
+  "api": {
+    "header": {
+      "title": "AnimatedNumber API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `AnimatedNumber`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada efecto, formato y opción.",
+      "link": "Ver demos de AnimatedNumber"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/animated-number` con su `animated-number.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>children</code>) y los pasa al <code>span</code> raíz, o al hijo con <code>asChild</code>. En ese caso las clases y estilos se combinan con los del hijo y, si los dos definen el mismo handler (<code>onClick</code>…), se llama primero el del hijo. El componente agrega <code>aria-busy</code> mientras anima."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "live": "La cifra visible lleva <code>aria-hidden</code>. El valor final ya formateado va en un <code>span</code> oculto visualmente con <code>aria-live=\"polite\"</code> (<code>.gemst-animated-number__sr</code>), así que los lectores de pantalla anuncian el resultado una vez por cambio y no cada cuadro intermedio.",
+        "busy": "Mientras la animación corre, la raíz tiene <code>aria-busy</code>.",
+        "affixes": "<code>prefix</code> y <code>suffix</code> quedan fuera de la región en vivo: se leen al recorrer la página, pero no se anuncian cuando cambia el valor. Si la unidad importa, incluila en <code>format</code> o en <code>formatOptions</code> (por ejemplo <code>style: \"currency\"</code> o <code>\"unit\"</code>).",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> la cifra salta al valor final. La preferencia se consulta en cada render, no se escucha en vivo: si cambia, se aplica en el próximo cambio de valor.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega la clase <code>gemst-ignore-reduced-motion</code> a la raíz. Usalo solo si el movimiento es esencial.",
+        "tabular": "Los números tabulares (<code>tabular-nums</code>) evitan que el ancho salte mientras cuenta. Igual cambia cuando cambia la cantidad de dígitos (de <code>1,000</code> a <code>999</code>).",
+        "asChild": "Con <code>asChild</code>, elegí un hijo con la semántica correcta (<code>strong</code>, <code>output</code>, <code>td</code>): su contenido se reemplaza por la cifra y la región en vivo."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`span`). `position: relative`, `inline-flex` alineado a la línea base, `max-width: 100%`, `color: inherit` y números tabulares.",
+        "effect": "Efecto activo. Con `fade`, `up` y `down`, `__value` pasa a ser un `inline-grid` con `overflow: hidden` para apilar las dos cifras.",
+        "playing": "Mientras corre el conteo o el cambio de cifra.",
+        "idle": "Sin animación en curso.",
+        "disabled": "Se agrega con `isDisabled`. Las cifras no tienen transición.",
+        "ready": "Solo con `fade`, `up` y `down`, después del montaje: habilita las transiciones para no animar el primer render.",
+        "from": "Solo con `fade`, `up` y `down`: el cuadro en el que la cifra nueva se pinta en su posición inicial, con las transiciones apagadas.",
+        "value": "`span` con la cifra visible (`aria-hidden`, `white-space: nowrap`).",
+        "sr": "Copia oculta visualmente del valor final, con `aria-live=\"polite\"`.",
+        "slot": "Cada cifra durante un cambio con `fade`, `up` o `down`. Las dos ocupan la misma celda y transicionan `opacity` y `transform`.",
+        "slotRole": "`incoming` usa las variables `enter-*`; `outgoing` usa `exit-*` y no recibe eventos de puntero.",
+        "slotState": "`in` es la posición final (`opacity: 1`); `out` la oculta y, con `up` o `down`, la desplaza `--gemst-animated-number-shift`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en cada render (en `0ms` con `isDisabled` o movimiento reducido), salvo `shift`. El conteo corre en JavaScript: las variables de transición solo las usan las cifras de `fade`, `up` y `down`.",
+      "items": {
+        "duration": "Duración de la fase actual (subida = `enter`, bajada = `exit`). Ninguna regla del CSS la usa.",
+        "delay": "Retraso de la fase actual. Ninguna regla del CSS la usa.",
+        "easing": "Curva de la fase actual, ya resuelta. Ninguna regla del CSS la usa.",
+        "enterDuration": "Duración de la transición de la cifra entrante. Default `500ms`.",
+        "exitDuration": "Duración de la transición de la cifra saliente. Default `500ms`.",
+        "enterDelay": "Retraso de la cifra entrante. Default `0ms`.",
+        "exitDelay": "Retraso de la cifra saliente. Default `0ms`.",
+        "enterEasing": "Curva de la cifra entrante. Default `standard`.",
+        "exitEasing": "Curva de la cifra saliente. Default `exit`.",
+        "shift": "Distancia del desplazamiento con `up` y `down`. Default `0.4em`. No se escribe inline: pisala con una clase o con `style`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingStandard": "Valor por defecto de `--gemst-animated-number-easing` y `--gemst-animated-number-enter-easing`. El componente escribe inline la curva ya resuelta, así que redefinir el token no cambia la animación: usá `easing`.",
+        "easingExit": "Valor por defecto de `--gemst-animated-number-exit-easing`, con la misma salvedad."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "`value` es obligatoria; el resto es opcional.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "El valor a mostrar, lo que lo rodea y dónde se monta."
+      },
+      "format": {
+        "title": "Formato",
+        "description": "Cómo se convierte el número en texto y con cuántos decimales cuenta."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Tipo de animación y clases según la tendencia."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "En milisegundos. `enter` aplica a las subidas (o a la cifra entrante) y `exit` a las bajadas (o a la saliente)."
+      },
+      "state": { "title": "Estado", "description": "Cómo se apaga la animación." },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `enter`, `exit`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "value": "Valor al que anima. Los valores no finitos (`NaN`, `Infinity`) se toman como `0`.",
+      "prefix": "Contenido antes de la cifra. No se anima ni entra en la región en vivo.",
+      "suffix": "Contenido después de la cifra. No se anima ni entra en la región en vivo.",
+      "children": "Solo con `asChild`: el elemento que hace de raíz. Su contenido se reemplaza por la cifra. Sin `asChild` se ignora.",
+      "asChild": "Aplica clases, estilos y ref al único hijo en lugar de un `span`. Si no hay un único elemento hijo, no se muestra el número.",
+      "locales": "Locales de `Intl.NumberFormat`. Se ignora si pasás `format`. Tiene que ser estable entre renders.",
+      "formatOptions": "Opciones de `Intl.NumberFormat`. Se ignora si pasás `format`. Pasá un objeto estable: uno nuevo en cada render reinicia el conteo. Con `style: \"percent\"`, los decimales se aplican al porcentaje que se ve.",
+      "format": "Función que convierte el número en texto. Recibe el valor interpolado en cada cuadro (`count`) o el final (`fade`, `up`, `down`).",
+      "round": "Decimales de los valores intermedios del conteo. Pisa la precisión inferida. Se limita entre `0` y `20`; solo con `count`.",
+      "effect": "`count` interpola el número; `fade` hace un fundido entre cifras; `up` y `down` suman un desplazamiento vertical.",
+      "trendClassName": "Clases que se agregan a la raíz según el último cambio: `up` si subió, `down` si bajó.",
+      "duration": "Duración. Con `count`, `enter` es para las subidas y `exit` para las bajadas; con `fade`, `up` y `down`, para la cifra entrante y la saliente.",
+      "delay": "Espera antes de empezar. Acepta `{ enter, exit }` igual que `duration`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), un `cubic-bezier(...)` o `{ enter, exit }`. Con `count`, otra curva CSS que no sea `cubic-bezier` se toma como lineal.",
+      "isDisabled": "Salta directo al valor nuevo, sin animación. Si la apagás a mitad de camino, `outAnimatedNumber` recibe `disabled`.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onStart": "Se dispara cuando empieza un cambio, con el valor que se estaba mostrando.",
+      "onComplete": "Se dispara cuando la cifra llega al valor final. Con `isDisabled` o movimiento reducido, justo después de `onStart`.",
+      "onAnimatedNumber": "Se dispara cuando empieza a animar (`reason: \"enter\"`). No se dispara si la animación está desactivada.",
+      "outAnimatedNumber": "Se dispara cuando termina (`exit`), se desactiva a mitad de camino (`disabled`) o se desmonta mientras anima (`unmount`).",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `value`, `sr`, `slot`, `incoming` y `outgoing`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemst-animated-number-*`, que tienen prioridad.",
+      "ref": "Ref a la raíz (el `span`, o el hijo con `asChild`)."
+    }
+  }
+}

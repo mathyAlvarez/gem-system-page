@@ -1,0 +1,227 @@
+{
+  "header": {
+    "title": "Particle Rain",
+    "description": "Falling confetti, sparks, stars, or lights over the child. It emits waves of particles from the top edge, in a decorative layer (`pointer-events: none`) clipped to the root. `trigger` sets when it rains (`always`, `hover`, `click`, or `hold`), `variant` sets the look, and `span` how long emission lasts. It uses the Particles layer, so it needs `particles.css`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props and see the generated code. With `click` and `hold`, interact with the box. `span` set to `auto` emits without limit (or `1400` ms with `click`).",
+    "label": "Party"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic rain",
+      "description": "With the defaults (`trigger=\"always\"`, `variant=\"confetti\"`, `intensity=\"md\"`) a wave of `6` paper bits falls every `110` ms and each takes `1800` ms. The root clips with `overflow: hidden`, so size, radius, and background go on the root. Default palettes are light: on light backgrounds, pass `colors`.",
+      "texts": {
+        "label": "Party"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`confetti` is spinning paper bits, `spark` thin glowing streaks, `star` four-point sparkles, and `light` glowing orbs that grow and fade. `mixed` picks a random shape per particle, with the `confetti` palette."
+    },
+    "image": {
+      "title": "On an image",
+      "description": "The rain sits over any content. The layer has `aria-hidden` and `pointer-events: none`, so it doesn't interfere with alt text or clicks. The root's radius clips both the image and the particles.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` it rains while the pointer is over it or the root has keyboard focus. With `click`, each click (or Enter or Space) starts a `1400` ms shower (`span`) and another click restarts it. With `hold` it rains while the pointer or key is pressed; the pointer isn't captured, so children get their click, and the root sets `touch-action: none` so touch doesn't scroll. Each box here has `tabIndex={0}` so you can try them with Tab. When it stops, particles already falling finish their path.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me",
+        "holdLabel": "Hold"
+      }
+    },
+    "span": {
+      "title": "Emission span",
+      "description": "`span` is how long emission lasts once it starts, in milliseconds. With `click` it's `1400` when omitted; with `always`, `hover`, and `hold` it emits without limit until it turns off. Not to be confused with `duration`, which is each particle's fall time."
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`colors` takes a palette and particles take its colors in order. `color` is a single color, used when `colors` is omitted. Without either, each variant uses its default palette. Prefer tokens."
+    },
+    "count": {
+      "title": "Count",
+      "description": "`count` sets particles per wave (`1` to `24`) and wins over `intensity`. Since there's a wave every `interval` ms, density depends on both. The live-particle cap scales with `count`, so the rain keeps a steady flow."
+    },
+    "spread": {
+      "title": "Drift",
+      "description": "`spread` is how far each particle drifts sideways while falling, in pixels (randomly left or right). With `0` they fall straight down. Without `spread`, `intensity` sets it: `18`, `36`, or `56`."
+    },
+    "duration": {
+      "title": "Fall duration",
+      "description": "`duration` is how long each particle takes to cross the root, in milliseconds. Higher is a slower rain. Particles fade as they fall."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "Without `count` or `spread`, `intensity` sets both: `3`, `6`, or `10` particles per wave with `18`, `36`, or `56` px of drift. It also takes a number from `0` to `1`. The live-particle cap fits the steady stream (`ceil((duration + 210) / interval + 1) × count`: `60`, `120`, or `200` with the defaults), so each level looks denser. `maxParticles` sets it by hand, as in the last box; it never goes past `360`."
+    },
+    "asChild": {
+      "title": "On a button (asChild)",
+      "description": "With `asChild`, the rain goes straight onto the gem-system `Button`, without an extra `div`. This one uses `trigger=\"hover\"` and `variant=\"light\"`, so it also rains when you Tab to the button. The button needs enough size for the rain to show. With a void element like `<img>` or `<input>`, which can't have children, the effect falls back to the wrapping `div`.",
+      "texts": {
+        "label": "Hover me"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the particles on screen and stops emission; the timers that remove them and the `span` timer pause too, so they stay put until you resume. `isDisabled` stops emission (particles already falling finish) and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onParticleRain` fires when emission starts and `outParticleRain` when emission stops and the last particles finish, with the reason in `event.reason`. This one uses `trigger=\"click\"`: the inner button still gets its click and also starts the rain, because `pointerdown` bubbles up to the root. Activating it with Enter or Space starts the rain too.",
+      "texts": {
+        "body": "Click the button (or activate it with the keyboard): it bumps the counter and starts the rain.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Snow"
+    },
+    "styled": {
+      "label": "Rain"
+    }
+  },
+  "apiLink": "See the full ParticleRain API",
+  "api": {
+    "header": {
+      "title": "ParticleRain API",
+      "description": "Reference for props, inheritance, accessibility, CSS classes and variables, and exported types of `ParticleRain`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for each variant, trigger, and option.",
+      "link": "See ParticleRain demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/particle-rain` with `particles.css` (the particles) and `particle-rain.css` (the root), or from the package root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and forwards them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onPointerDown</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onClick</code>, <code>onKeyDown</code>, <code>onKeyUp</code>, <code>onFocus</code>, and <code>onBlur</code> run before the effect's internal logic. <code>ref</code> is merged with the internal ref that measures the root. <code>style</code> reaches the root unchanged: the effect writes no variables on it."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> no particles are created; the child stays the same. <code>onParticleRain</code> still fires when emission starts, even though nothing shows.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the rain. Use it only when motion is essential.",
+        "decorative": "The layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks.",
+        "keyboard": "Activating a focusable child with Enter or Space starts the rain with <code>click</code>. If the root is the focused element (with <code>asChild</code> on a button, or with <code>tabIndex</code>), Enter and Space start it with <code>click</code> and, with <code>hold</code>, it rains while you hold the key until you release it or focus leaves. With <code>hover</code>, keyboard focus (<code>:focus-visible</code>) on the root or inside turns the rain and its events on.",
+        "touch": "With <code>trigger=\"hold\"</code> the root sets <code>touch-action: none</code>, so touch can't scroll starting from the effect. <code>disabledOnTouch</code> ignores touches and restores <code>touch-action: auto</code>; mouse and pen keep working.",
+        "density": "With <code>always</code>, the rain never stops and sits above the content (<code>z-index: 1</code>). Over text, use <code>intensity=\"sm\"</code> or a <code>span</code> so it doesn't compete with reading."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative`, `isolation: isolate`, and `overflow: hidden`.",
+        "variant": "Active variant. It has no styles of its own: each particle's class sets the look.",
+        "hold": "Added with `trigger=\"hold\"`. Sets `user-select: none` and `touch-action: none`. The end of the gesture is heard on `window`, without capturing the pointer, so children get their `click`.",
+        "paused": "Added with `isPaused`. Pauses particles with `animation-play-state`; the timers pause in JS.",
+        "inactive": "Added with `isActive={false}`. Hides the particles on screen.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "touchDisabled": "Added with `disabledOnTouch`. Restores `touch-action: auto`.",
+        "surface": "Wraps the child (`z-index: 0`). With `asChild`, the class goes on the child itself.",
+        "layer": "Particles layer (`position: absolute`, `inset: 0`, `z-index: 1`, `overflow: hidden`, `aria-hidden`). `--rain` sets the linear easing and end scale.",
+        "particle": "Each particle. The variant class sets the shape: radius for `confetti`, glow for `spark` and `light`, and a four-point `clip-path` for `star`. `light` uses its own keyframes."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The duration is written inline on the layer and per-particle values go inline on each particle. The motion ones come from the layer class.",
+      "items": {
+        "particleDuration": "Duration of each particle. Set by `duration` and inline on the layer; to override it from CSS, declare it on `.gemfx-particle`. JS removes each particle after `duration + 210` ms, so a longer duration set from CSS gets cut off.",
+        "motion": "Easing (`--gemfx-easing-linear`), initial vertical offset (`0%`), and end scale (`0.55`). Set by `.gemfx-particle-layer--rain` and overridable with a class.",
+        "particle": "Origin, travel, rotation, size, color, and delay of each particle. Computed in JS on every wave."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables ParticleRain reads as defaults. Palettes are only used when you pass neither `colors` nor `color`.",
+      "items": {
+        "confetti": "Default palette for `confetti` and `mixed`.",
+        "spark": "Default `spark` palette.",
+        "star": "Default `star` palette.",
+        "light": "Default `light` palette.",
+        "easing": "Particle easing (fallback `linear`)."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What the rain falls over and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Shape, colors, count, and drift." },
+      "timing": {
+        "title": "Timing",
+        "description": "Fall, delay, emission, and interval, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it rains, how it pauses, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `hold`, `inactive`, `disabled`, or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content under the rain.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` it falls back to the `div`.",
+      "variant": "`confetti` is paper bits, `spark` glowing streaks, `star` sparkles, `light` glowing orbs, and `mixed` a random shape per particle.",
+      "colors": "Particle palette. Prefer tokens.",
+      "color": "A single color. Used when `colors` is omitted.",
+      "count": "Particles per wave (`1` to `24`). Wins over `intensity`.",
+      "spread": "Maximum sideways drift, in pixels. Wins over `intensity`.",
+      "intensity": "Without `count` or `spread`: `3` / `6` / `10` particles per wave and `18` / `36` / `56` px of drift.",
+      "maxParticles": "Most live particles at once; waves past it are trimmed. When omitted, it fits the steady stream (`count` × waves alive during one fall). Never below `count` or above `360`.",
+      "duration": "How long each particle takes to fall.",
+      "delay": "Delay before emission starts.",
+      "span": "How long emission lasts. With `click`, `1400` by default; otherwise, no limit.",
+      "interval": "Time between waves (minimum `40`).",
+      "trigger": "`always` rains constantly, `hover` while the pointer is over it or it has keyboard focus, `click` starts a `span` ms shower (also with Enter or Space), and `hold` rains while the pointer or key is pressed.",
+      "isActive": "Allows emission. When `false`, stops it and hides the particles on screen.",
+      "isPaused": "Freezes the particles on screen, their timers, and emission.",
+      "isDisabled": "Stops emission; the child stays interactive.",
+      "ignoreReducedMotion": "Shows the rain even when the user prefers less motion. Only when essential.",
+      "disabledOnTouch": "Ignores touch pointers; mouse and pen keep working.",
+      "onParticleRain": "Fires when emission starts: on mount with `always`, on pointer or focus enter, on click, or on hold (pointer or keyboard).",
+      "outParticleRain": "Fires when emission stops and the last particles finish, or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, and `particle` (on each particle).",
+      "style": "Inline styles for the root.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

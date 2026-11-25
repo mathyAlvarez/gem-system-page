@@ -1,0 +1,222 @@
+{
+  "header": {
+    "title": "Flash",
+    "description": "Destello de luz breve sobre el contenido, disparado por el puntero. `variant` define la forma del destello, `trigger` cuándo aparece y `origin` desde dónde sale. Con `prefers-reduced-motion: reduce` no se muestran destellos."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Hacé clic (o pasá el mouse, según `trigger`) sobre el bloque para ver el destello.",
+    "target": "Hacé clic"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variantes",
+      "description": "`burst` es un radial intenso desde el origen, `wash` un velo parejo sobre toda la superficie y `bloom` un relleno más suave que igual tiene su pico en el centro.",
+      "texts": {
+        "hint": "Hacé clic"
+      }
+    },
+    "origin": {
+      "title": "Origen",
+      "description": "Con `origin=\"center\"` el destello sale siempre del centro; con `pointer`, del punto exacto donde apoyaste el puntero.",
+      "texts": {
+        "hint": "Hacé clic en distintos puntos"
+      }
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Un `burst` con `origin=\"pointer\"` e `intensity=\"lg\"` sobre una imagen. La raíz tiene `overflow: hidden`, así que el destello respeta el `border-radius`.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`click` destella al apoyar el puntero, `hover` al entrar, `press` repite mientras mantenés apretado (siguiendo el puntero) y `always` repite en bucle desde el centro.",
+      "texts": {
+        "labels": {
+          "click": "Hacé clic",
+          "hover": "Pasá el mouse",
+          "press": "Mantené apretado",
+          "always": "En bucle"
+        }
+      }
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que dura cada destello, en milisegundos. Con `press`, también marca el ritmo de repetición: cada `max(160, duration × 0,7)` ms."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` es la opacidad del pico del destello. Acepta un token (`sm`, `md`, `lg`) o un número entre `0` y `1`."
+    },
+    "color": {
+      "title": "Colores",
+      "description": "`color` tiñe el destello. Por defecto es blanco (`var(--gem-palette-neutral-0)`); preferí tokens del host."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div`. Acá, sobre un `Button` de gem-system con `origin=\"pointer\"`.",
+      "texts": {
+        "label": "Confirmar"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "Con `trigger=\"always\"` para verlo en acción: `isPaused` congela el destello en curso e `isDisabled` deja de generar destellos nuevos sin bloquear el contenido.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onFlash` se dispara cuando empieza el primer destello y `outFlash` cuando termina el último, con el motivo en `event.reason`. La capa no tapa la interacción: el botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Hacé clic en cualquier parte de la tarjeta.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Guardar"
+    },
+    "styled": {
+      "label": "Onda expansiva"
+    }
+  },
+  "apiLink": "Ver la API completa de Flash",
+  "api": {
+    "header": {
+      "title": "Flash API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Flash`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante y disparador.",
+      "link": "Ver demos de Flash"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/flash` con su `flash.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>color</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). Los handlers de puntero que pases se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La capa de destellos tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: es decorativa y no tapa la interacción del hijo.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> los destellos quedan ocultos (<code>animation: none</code>, <code>opacity: 0</code>) y no se generan nuevos.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza la animación. Usalo solo si el destello es esencial.",
+        "photosensitive": "Cuidado con la fotosensibilidad: con <code>press</code> y la duración por defecto el destello se repite unas 4,5 veces por segundo, por encima del límite de tres destellos por segundo de WCAG 2.3.1. Bajá <code>intensity</code>, subí <code>duration</code> o evitá <code>press</code> y <code>always</code> en superficies grandes.",
+        "pointerOnly": "Los destellos responden solo al puntero: el teclado no los dispara. No dependas de ellos para comunicar una acción.",
+        "touch": "En pantallas táctiles se disparan por defecto (<code>disabledOnTouch</code> es <code>false</code>). Activalo si el destello molesta al hacer scroll.",
+        "meaning": "El destello es decoración: no lo uses como única confirmación de una acción. Acompañalo con texto o un atributo ARIA."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `overflow: hidden` y `contain: paint`, para que el destello no se salga del borde.",
+        "variant": "Variante activa.",
+        "trigger": "Disparador activo.",
+        "paused": "Se agrega con `isPaused` y pausa los destellos en curso.",
+        "inactive": "Se agrega con `isActive={false}`.",
+        "disabled": "Se agrega con `isDisabled`.",
+        "touchDisabled": "Se agrega con `disabledOnTouch`.",
+        "surface": "Envuelve al hijo, debajo de la capa.",
+        "layer": "Capa absoluta sobre el hijo que contiene los destellos.",
+        "burst": "Cada destello. Usa `mix-blend-mode: plus-lighter` (`screen` en `wash`). Recibe la clase de `classNames.flash`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`duration`, `delay` e `intensity` se escriben siempre inline en la raíz: para cambiarlas desde CSS usá las props. `color` solo se escribe inline si pasás la prop.",
+      "items": {
+        "color": "Color del destello, en la raíz. Lo define `color`; default `var(--gem-palette-neutral-0)`.",
+        "duration": "Duración de cada destello, en la raíz. Lo define `duration`; default `320ms`.",
+        "delay": "Retraso antes del destello, en la raíz. Lo define `delay`; default `0ms`.",
+        "intensity": "Opacidad del pico, en la raíz. La define `intensity`; default `var(--gemfx-intensity-md)`.",
+        "position": "Origen de cada destello, en cada `__burst`. Sale del evento con `origin=\"pointer\"` o del centro.",
+        "size": "Tamaño de cada destello, en cada `__burst`. Se calcula según el tamaño de la superficie.",
+        "burstDelay": "Retraso propio de cada destello, en cada `__burst`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Flash lee como valor por defecto.",
+      "items": {
+        "intensity": "Intensidad por defecto.",
+        "easing": "Curva de salida del destello.",
+        "palette": "Color por defecto (blanco)."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Sobre qué contenido aparece el destello y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Forma, origen, color e intensidad del destello."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración y retraso de cada destello, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo aparece el destello y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `click`, `hover`, `press`, `always`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que recibe el destello.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente.",
+      "variant": "Forma del destello: `burst`, `wash` o `bloom`.",
+      "origin": "Desde dónde sale: `pointer` (el punto del evento) o `center`. Con `trigger=\"always\"` siempre es el centro.",
+      "color": "Color del destello. Preferí tokens del host (`var(--gem-palette-tertiary-300)`).",
+      "intensity": "Opacidad del pico: token o número entre `0` y `1`.",
+      "duration": "Duración de cada destello. Con `press` también define el ritmo de repetición.",
+      "delay": "Retraso antes de que empiece el destello.",
+      "trigger": "`click` al apoyar el puntero, `hover` al entrar, `press` repite mientras está apretado y `always` repite en bucle.",
+      "isActive": "Permite destellos nuevos. En `false` no se generan y `outFlash` recibe `inactive`.",
+      "isPaused": "Congela los destellos en curso.",
+      "isDisabled": "No genera destellos nuevos; el hijo sigue interactivo. `outFlash` recibe `disabled`.",
+      "disabledOnTouch": "Ignora los toques en pantallas táctiles.",
+      "ignoreReducedMotion": "Muestra los destellos aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onFlash": "Se dispara cuando empieza el primer destello.",
+      "outFlash": "Se dispara cuando termina el último destello, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `flash` (cada destello).",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-flash-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

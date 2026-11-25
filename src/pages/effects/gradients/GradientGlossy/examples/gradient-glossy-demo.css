@@ -1,0 +1,108 @@
+.gg-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.gg-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.gg-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.gg-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-neutral-50);
+}
+
+/* The gloss is the root's own background, so the radius goes on the root. */
+.gg-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.gg-demo__target {
+  display: block;
+  min-width: 7rem;
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gg-demo__swatch {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.gg-demo__card-host {
+  border-radius: var(--gem-radius-lg);
+}
+
+.gg-demo__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gem-space-3);
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--gem-space-5);
+}
+
+.gg-demo__kicker {
+  margin: 0;
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.gg-demo__title {
+  margin: 0;
+  font-size: var(--gem-font-size-lg);
+  font-weight: 700;
+}
+
+.gg-demo__body {
+  margin: 0;
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.gg-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.gg-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

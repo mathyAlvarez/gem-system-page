@@ -1,0 +1,84 @@
+/**
+ * Gemffects Page — Intensity
+ * Swatches that show each intensity as an accent mix, plus the custom value tester.
+ */
+
+.intensity-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--gem-space-3);
+}
+
+.intensity-swatch {
+  --intensity-swatch-mix: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+
+  &__chip {
+    height: 4.5rem;
+    border-radius: var(--gem-radius-md);
+    background: color-mix(
+      in srgb,
+      var(--gem-color-accent) var(--intensity-swatch-mix),
+      transparent
+    );
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-1);
+  }
+
+  &__value {
+    color: var(--gem-color-fg-muted);
+    font-family: var(--gem-font-mono);
+    font-size: var(--gem-font-size-xs);
+  }
+}
+
+.intensity-tester {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 9rem;
+  gap: var(--gem-space-6);
+  align-items: center;
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg);
+
+  @media (max-width: 47.99rem) {
+    grid-template-columns: 1fr;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-4);
+  }
+
+  &__readout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--gem-space-2) var(--gem-space-4);
+    margin: 0;
+
+    dt {
+      color: var(--gem-color-fg-muted);
+      font-family: var(--gem-font-mono);
+      font-size: var(--gem-font-size-xs);
+    }
+
+    dd {
+      margin: 0;
+      font-family: var(--gem-font-mono);
+      font-size: var(--gem-font-size-sm);
+      font-weight: var(--gem-font-weight-semibold);
+    }
+  }
+}

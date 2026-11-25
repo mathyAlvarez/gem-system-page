@@ -1,0 +1,248 @@
+{
+  "header": {
+    "title": "Tilt3D",
+    "description": "Inclinación en perspectiva que sigue al puntero, con un brillo especular encima. `trigger` define cuándo sigue al puntero, `maxTilt` cuánto gira (si no lo pasás, lo define `intensity`) y `glare` agrega el brillo. Con `prefers-reduced-motion: reduce` el contenido queda plano."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `maxTilt` en `auto` deja que `intensity` defina el ángulo.",
+    "target": "Mové el cursor"
+  },
+  "stories": {
+    "card": {
+      "title": "Sobre una tarjeta",
+      "description": "Con el `trigger` por defecto (`hover`), la superficie gira hacia el puntero, crece un poco (`scale`) y el brillo sigue al cursor. Al salir vuelve a quedar plana.",
+      "texts": {
+        "kicker": "Tilt3D",
+        "title": "Pasá el mouse"
+      }
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Funciona con cualquier hijo, también con un `img` nativo. Acá con `intensity=\"sm\"` para un giro más contenido en un elemento grande.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "triggers": {
+      "title": "Hover y press",
+      "description": "Con `hover` sigue al puntero mientras está encima. Con `press` solo mientras mantenés apretado (captura el puntero, así que podés arrastrar fuera de la caja).",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "pressLabel": "Mantené apretado"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Si no pasás `maxTilt`, `intensity` define el ángulo máximo (`sm` 8°, `md` 14°, `lg` 20°). También define la opacidad del brillo (`0.28`, `0.42`, `0.58`), aunque pases `maxTilt`. Acepta un token o un número entre `0` y `1`."
+    },
+    "maxTilt": {
+      "title": "Ángulo máximo",
+      "description": "`maxTilt` fija la rotación máxima en grados, en cada eje, cuando el puntero llega al borde."
+    },
+    "depth": {
+      "title": "Perspectiva y escala",
+      "description": "`perspective` es la distancia de la cámara: valores bajos exageran la profundidad, valores altos la aplanan. `scale` es cuánto crece mientras sigue al puntero (mínimo `1`)."
+    },
+    "reverse": {
+      "title": "Invertido",
+      "description": "Por defecto el borde más cercano al cursor se hunde. `reverse` invierte los ejes y ese borde se levanta hacia el cursor."
+    },
+    "glare": {
+      "title": "Brillo",
+      "description": "El brillo es un degradado radial con `mix-blend-mode: overlay` que sigue al cursor. `glareColor` lo tiñe y `glare={false}` lo quita."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div` envolvente. Acá, sobre un `Button` de gem-system. Como un elemento no puede ser su propio contenedor 3D, la `perspective` pasa al `transform` (`perspective()`), y el brillo se monta adentro del hijo y gira con él.",
+      "texts": {
+        "label": "Inclinar"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la pose actual: inclinala, activá la pausa y queda como estaba. `isDisabled` la vuelve plana y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onTilt3D` se dispara cuando empieza a seguir al puntero y `outTilt3D` cuando vuelve a quedar plana, con el motivo en `event.reason`. Al apretar un botón interno la pose se congela para que el clic llegue.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "hook": {
+      "title": "useTilt3D",
+      "description": "Versión headless. El hook devuelve `ref`, `style` (con las variables `--gemfx-tilt3d-*`), `pointerProps` y `pose`; vos armás el markup y el brillo. Sirve para leer los ángulos o aplicarlos a tu propio elemento.",
+      "texts": {
+        "pose": "rx {rx}° · ry {ry}°"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Sombra al inclinar"
+    },
+    "styled": {
+      "kicker": "Edición limitada",
+      "title": "Holográfica"
+    }
+  },
+  "apiLink": "Ver la API completa de Tilt3D",
+  "api": {
+    "header": {
+      "title": "Tilt3D API",
+      "description": "Referencia de props, el hook `useTilt3D`, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Tilt3D`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada disparador y opción.",
+      "link": "Ver demos de Tilt3D"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/tilt-3d` con su `tilt-3d.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "name": "Nombre",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "hook": {
+      "description": "Recibe las mismas opciones que `Tilt3D` salvo `children`, `asChild`, `className`, `classNames` y `ref` (`UseTilt3DOptions`). Vos renderizás el host con `.gemfx-tilt3d`, la superficie con `.gemfx-tilt3d__surface` y, si `glare` es `true`, el `span` `.gemfx-tilt3d__glare`.",
+      "resultTitle": "Devuelve",
+      "result": {
+        "ref": "Ref para el host. Lo usa para medir la caja al calcular los ángulos.",
+        "style": "Estilos inline con las variables `--gemfx-tilt3d-*`. Ya incluye el `style` que pasaste.",
+        "pointerProps": "Handlers de puntero para el host. Llaman primero a los que pasaste en las opciones.",
+        "motionClassName": "`gemfx-ignore-reduced-motion` si pasaste `ignoreReducedMotion`. Agregala al host.",
+        "transform": "`rotateX(…) rotateY(…) scale(…)` listo para usar si no usás `.gemfx-tilt3d__surface`.",
+        "pose": "Pose actual: `rx` y `ry` en grados, `scale`, posición del brillo (`gx`, `gy` en %) y su opacidad (`glare`).",
+        "glare": "Si hay que renderizar la capa de brillo.",
+        "isTracking": "`true` mientras sigue al puntero.",
+        "isHover": "`trigger` es `hover` y el efecto está activo.",
+        "isPress": "`trigger` es `press` y el efecto está activo.",
+        "tiltOff": "`true` con `isDisabled` o `isActive={false}`.",
+        "isPaused": "El valor de `isPaused`.",
+        "isDisabled": "El valor de `isDisabled`."
+      }
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). Los handlers de puntero que pases (<code>onPointerEnter</code>, <code>onPointerMove</code>, <code>onPointerDown</code>, etc.) se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "El brillo tiene <code>aria-hidden</code> y <code>pointer-events: none</code>. Con el <code>div</code> por defecto, la caja que recibe el puntero no gira, así que el hijo sigue recibiendo clics y foco. Con <code>asChild</code> gira el propio hijo.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> la superficie queda plana y el brillo oculto.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el movimiento. Usalo solo si es esencial.",
+        "nested": "Al apretar un elemento interactivo interno (<code>button</code>, <code>a</code>, <code>input</code>…) la pose se congela hasta soltar, para que el clic caiga sobre el objetivo.",
+        "pointerOnly": "Solo responde al puntero: el teclado no lo dispara. Es decoración, no comuniques nada solo con la inclinación.",
+        "touch": "En pantallas táctiles está apagado por defecto (<code>disabledOnTouch</code> es <code>true</code>), así no interfiere con el scroll. Mouse y lápiz siguen funcionando.",
+        "vestibular": "Los giros grandes y la perspectiva corta pueden marear. Mantené <code>maxTilt</code> moderado en superficies grandes y evitá llenar una vista de tarjetas que giran."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` y la `perspective` de `--gemfx-tilt3d-perspective`.",
+        "trigger": "Disparador activo.",
+        "tracking": "Se agrega mientras sigue al puntero. Acorta las transiciones a `80ms` para que responda al instante.",
+        "paused": "Se agrega con `isPaused`. Quita las transiciones.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`.",
+        "disabled": "Se agrega con `isDisabled`.",
+        "surface": "Envuelve al hijo y es la que gira (`transform`). Tiene `overflow: hidden`. Con `asChild` es el propio hijo, y la perspectiva va dentro del `transform` (`perspective()`).",
+        "glare": "Capa de brillo sobre la superficie. Toma el `border-radius` de la raíz. Con el `div` por defecto no gira con la superficie; con `asChild` vive adentro del hijo y gira con él."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas se escriben inline en la raíz en cada render, salvo `--gemfx-tilt3d-glare-color`, que solo se escribe si pasás `glareColor`: sin la prop, se puede pisar desde una clase.",
+      "items": {
+        "rotation": "Rotación actual en X e Y, en grados.",
+        "scale": "Escala actual. Vale `scale` mientras sigue al puntero y `1` en reposo.",
+        "perspective": "Distancia de la perspectiva. La define `perspective`; default `900px`.",
+        "duration": "Transición de vuelta al reposo. La define `duration`; default `200ms`.",
+        "delay": "Retraso de la transición. Lo define `delay`; default `0ms`.",
+        "glarePosition": "Posición del brillo en porcentaje de la caja.",
+        "glareOpacity": "Opacidad del brillo. Sale de `intensity` mientras sigue al puntero; `0` en reposo.",
+        "glareColor": "Color del brillo. Lo define `glareColor`; default `#ffffff`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Tilt3D lee como valor por defecto.",
+      "items": {
+        "easingStandard": "Curva de las transiciones del giro y del brillo."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido gira y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Ángulo, intensidad, perspectiva, escala y brillo."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Vuelta al reposo y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo sigue al puntero y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `hover`, `press`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que gira en 3D.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. La `perspective` pasa al `transform` del hijo. Con `glare` y un elemento vacío (`img`, `input`) cae al `div`, porque la capa del brillo no se puede montar adentro.",
+      "maxTilt": "Rotación máxima en grados. Sin valor, `intensity` la define: `8`, `14` o `20`.",
+      "intensity": "Define `maxTilt` cuando falta y la opacidad del brillo. Token o número entre `0` y `1`.",
+      "perspective": "Distancia de la perspectiva. Un número son píxeles; un string se usa tal cual.",
+      "scale": "Escala mientras sigue al puntero. Los valores menores a `1` se toman como `1`.",
+      "reverse": "Invierte los ejes: el borde cercano al cursor se levanta en vez de hundirse.",
+      "glare": "Muestra el brillo que sigue al cursor.",
+      "glareColor": "Color del brillo. Cualquier color CSS; los tokens `--gem-*` son opcionales.",
+      "duration": "Transición de vuelta al reposo al salir o soltar. Los valores negativos se toman como `0`.",
+      "delay": "Retraso de la transición.",
+      "trigger": "`hover` mientras el puntero está encima, `press` mientras está apretado.",
+      "isActive": "Permite la inclinación. En `false` vuelve a plano y `outTilt3D` recibe `inactive`.",
+      "isPaused": "Congela la pose actual.",
+      "isDisabled": "Vuelve a plano y desactiva el efecto; el hijo sigue interactivo. `outTilt3D` recibe `disabled`.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "ignoreReducedMotion": "Gira aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onTilt3D": "Se dispara cuando empieza a seguir al puntero.",
+      "outTilt3D": "Se dispara cuando vuelve a plano: al salir el puntero, al soltar con `press`, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface` y `glare`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-tilt3d-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "header": {
+    "title": "Tilt3D",
+    "description": "A perspective tilt that follows the pointer, with a specular glare on top. `trigger` sets when it follows the pointer, `maxTilt` how far it rotates (when omitted, `intensity` sets it) and `glare` adds the highlight. With `prefers-reduced-motion: reduce` the content stays flat."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. `maxTilt` set to `auto` lets `intensity` define the angle.",
+    "target": "Move the cursor"
+  },
+  "stories": {
+    "card": {
+      "title": "On a card",
+      "description": "With the default `trigger` (`hover`), the surface rotates toward the pointer, grows a little (`scale`) and the glare follows the cursor. On leave it goes flat again.",
+      "texts": {
+        "kicker": "Tilt3D",
+        "title": "Hover the card"
+      }
+    },
+    "image": {
+      "title": "On an image",
+      "description": "It works with any child, including a native `img`. Here with `intensity=\"sm\"` for a more contained rotation on a large element.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "triggers": {
+      "title": "Hover and press",
+      "description": "With `hover` it follows the pointer while it's over the box. With `press` only while held (it captures the pointer, so you can drag outside the box).",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "pressLabel": "Press and hold"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "When `maxTilt` is omitted, `intensity` sets the peak angle (`sm` 8°, `md` 14°, `lg` 20°). It also sets the glare opacity (`0.28`, `0.42`, `0.58`), even if you pass `maxTilt`. It takes a token or a number between `0` and `1`."
+    },
+    "maxTilt": {
+      "title": "Max angle",
+      "description": "`maxTilt` sets the peak rotation in degrees, on each axis, when the pointer reaches the edge."
+    },
+    "depth": {
+      "title": "Perspective and scale",
+      "description": "`perspective` is the camera distance: low values exaggerate depth, high values flatten it. `scale` is how much it grows while following the pointer (minimum `1`)."
+    },
+    "reverse": {
+      "title": "Reversed",
+      "description": "By default the edge closest to the cursor sinks. `reverse` inverts the axes and that edge lifts toward the cursor."
+    },
+    "glare": {
+      "title": "Glare",
+      "description": "The glare is a radial gradient with `mix-blend-mode: overlay` that follows the cursor. `glareColor` tints it and `glare={false}` removes it."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without a wrapping `div`. Here, on a gem-system `Button`. Since an element can't be its own 3D parent, the `perspective` moves into the `transform` (`perspective()`), and the glare mounts inside the child and rotates with it.",
+      "texts": {
+        "label": "Tilt"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the current pose: tilt it, turn on pause and it stays as it was. `isDisabled` flattens it and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onTilt3D` fires when it starts following the pointer and `outTilt3D` when it goes flat again, with the cause in `event.reason`. Pressing an inner button freezes the pose so the click lands.",
+      "texts": {
+        "body": "Hover over the card and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    },
+    "hook": {
+      "title": "useTilt3D",
+      "description": "Headless version. The hook returns `ref`, `style` (with the `--gemfx-tilt3d-*` variables), `pointerProps` and `pose`; you build the markup and the glare. Useful to read the angles or apply them to your own element.",
+      "texts": {
+        "pose": "rx {rx}° · ry {ry}°"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Shadow on tilt"
+    },
+    "styled": {
+      "kicker": "Limited edition",
+      "title": "Holographic"
+    }
+  },
+  "apiLink": "See the full Tilt3D API",
+  "api": {
+    "header": {
+      "title": "Tilt3D API",
+      "description": "Reference for the props, the `useTilt3D` hook, inheritance, accessibility, CSS classes and variables, and exported types of `Tilt3D`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each trigger and option.",
+      "link": "See Tilt3D demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/tilt-3d` with its `tilt-3d.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "name": "Name",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "hook": {
+      "description": "Takes the same options as `Tilt3D` except `children`, `asChild`, `className`, `classNames` and `ref` (`UseTilt3DOptions`). You render the host with `.gemfx-tilt3d`, the surface with `.gemfx-tilt3d__surface` and, when `glare` is `true`, the `.gemfx-tilt3d__glare` `span`.",
+      "resultTitle": "Returns",
+      "result": {
+        "ref": "Ref for the host. Used to measure the box when computing the angles.",
+        "style": "Inline styles with the `--gemfx-tilt3d-*` variables. Already includes the `style` you passed.",
+        "pointerProps": "Pointer handlers for the host. They call the ones you passed in the options first.",
+        "motionClassName": "`gemfx-ignore-reduced-motion` if you passed `ignoreReducedMotion`. Add it to the host.",
+        "transform": "Ready-to-use `rotateX(…) rotateY(…) scale(…)` if you don't use `.gemfx-tilt3d__surface`.",
+        "pose": "Current pose: `rx` and `ry` in degrees, `scale`, glare position (`gx`, `gy` in %) and its opacity (`glare`).",
+        "glare": "Whether to render the glare layer.",
+        "isTracking": "`true` while following the pointer.",
+        "isHover": "`trigger` is `hover` and the effect is active.",
+        "isPress": "`trigger` is `press` and the effect is active.",
+        "tiltOff": "`true` with `isDisabled` or `isActive={false}`.",
+        "isPaused": "The value of `isPaused`.",
+        "isDisabled": "The value of `isDisabled`."
+      }
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). Pointer handlers you pass (<code>onPointerEnter</code>, <code>onPointerMove</code>, <code>onPointerDown</code>, etc.) run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The glare has <code>aria-hidden</code> and <code>pointer-events: none</code>. With the default <code>div</code>, the box that receives the pointer doesn't rotate, so the child keeps receiving clicks and focus. With <code>asChild</code> the child itself rotates.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the surface stays flat and the glare hidden.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the motion. Only use it if it's essential.",
+        "nested": "Pressing an inner interactive element (<code>button</code>, <code>a</code>, <code>input</code>…) freezes the pose until release, so the click lands on the target.",
+        "pointerOnly": "It only responds to the pointer: the keyboard doesn't trigger it. It's decoration; don't communicate anything through the tilt alone.",
+        "touch": "It's off on touch screens by default (<code>disabledOnTouch</code> is <code>true</code>), so it doesn't interfere with scrolling. Mouse and pen keep working.",
+        "vestibular": "Large rotations and short perspective can cause motion sickness. Keep <code>maxTilt</code> moderate on large surfaces and avoid filling a view with tilting cards."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and the `perspective` from `--gemfx-tilt3d-perspective`.",
+        "trigger": "Active trigger.",
+        "tracking": "Added while following the pointer. Shortens the transitions to `80ms` so it responds instantly.",
+        "paused": "Added with `isPaused`. Removes the transitions.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`.",
+        "disabled": "Added with `isDisabled`.",
+        "surface": "Wraps the child and is what rotates (`transform`). Has `overflow: hidden`. With `asChild` it's the child itself, and the perspective goes inside the `transform` (`perspective()`).",
+        "glare": "Glare layer over the surface. Takes the root's `border-radius`. With the default `div` it doesn't rotate with the surface; with `asChild` it lives inside the child and rotates with it."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "All of them are written inline on the root on every render, except `--gemfx-tilt3d-glare-color`, which is only written when you pass `glareColor`: without the prop, a class can override it.",
+      "items": {
+        "rotation": "Current rotation on X and Y, in degrees.",
+        "scale": "Current scale. Equals `scale` while following the pointer and `1` at rest.",
+        "perspective": "Perspective distance. Set by `perspective`; default `900px`.",
+        "duration": "Transition back to rest. Set by `duration`; default `200ms`.",
+        "delay": "Transition delay. Set by `delay`; default `0ms`.",
+        "glarePosition": "Glare position as a percentage of the box.",
+        "glareOpacity": "Glare opacity. Comes from `intensity` while following the pointer; `0` at rest.",
+        "glareColor": "Glare color. Set by `glareColor`; default `#ffffff`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Tilt3D reads as defaults.",
+      "items": {
+        "easingStandard": "Curve for the rotation and glare transitions."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content tilts and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Angle, intensity, perspective, scale and glare."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Settle-back transition and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it follows the pointer and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `hover`, `press`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that tilts in 3D.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. The `perspective` moves into the child's `transform`. With `glare` and a void element (`img`, `input`) it falls back to the `div`, since the glare layer can't mount inside it.",
+      "maxTilt": "Peak rotation in degrees. When omitted, `intensity` sets it: `8`, `14` or `20`.",
+      "intensity": "Sets `maxTilt` when missing and the glare opacity. A token or a number between `0` and `1`.",
+      "perspective": "Perspective distance. A number is pixels; a string is used as is.",
+      "scale": "Scale while following the pointer. Values below `1` are treated as `1`.",
+      "reverse": "Inverts the axes: the edge near the cursor lifts instead of sinking.",
+      "glare": "Shows the glare that follows the cursor.",
+      "glareColor": "Glare color. Any CSS color; `--gem-*` tokens are optional.",
+      "duration": "Transition back to rest on leave or release. Negative values are treated as `0`.",
+      "delay": "Transition delay.",
+      "trigger": "`hover` while the pointer is over it, `press` while held.",
+      "isActive": "Allows the tilt. With `false` it goes flat and `outTilt3D` gets `inactive`.",
+      "isPaused": "Freezes the current pose.",
+      "isDisabled": "Flattens and disables the effect; the child stays interactive. `outTilt3D` gets `disabled`.",
+      "disabledOnTouch": "Ignores touch pointers; mouse and pen keep working.",
+      "ignoreReducedMotion": "Tilts even if the user prefers reduced motion. Only if essential.",
+      "onTilt3D": "Fires when it starts following the pointer.",
+      "outTilt3D": "Fires when it goes flat: on pointer leave, on release with `press`, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface` and `glare`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-tilt3d-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

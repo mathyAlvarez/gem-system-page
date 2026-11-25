@@ -1,0 +1,14 @@
+.gemst-auto-animate-container.alert-shell {
+  --gemst-auto-animate-duration: 380ms;
+  --gemst-auto-animate-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+  border: 1px solid var(--gem-color-info-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}
+
+.gemst-auto-animate-container.alert-shell .gemst-auto-animate-container__surface {
+  padding: var(--gem-space-4);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.45;
+}

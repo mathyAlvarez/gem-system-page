@@ -1,0 +1,13 @@
+.gemfx-zoom.zoom-spring {
+  --gemfx-easing-emphasized: cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: var(--gem-radius-md);
+}
+
+.gemfx-zoom.zoom-spring .gemfx-zoom__surface {
+  filter: grayscale(1);
+}
+
+.gemfx-zoom.zoom-spring:hover .gemfx-zoom__surface,
+.gemfx-zoom.zoom-spring:focus-within .gemfx-zoom__surface {
+  filter: none;
+}

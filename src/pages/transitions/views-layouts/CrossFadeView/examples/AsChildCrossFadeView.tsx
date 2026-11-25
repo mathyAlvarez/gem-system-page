@@ -1,0 +1,67 @@
+import { useState } from "react";
+import { Button } from "@gem-org/gem-system";
+import { CrossFadeView } from "@gem-org/gemsitions/cross-fade-view";
+import "./cross-fade-view-demo.css";
+
+type AsChildCrossFadeViewProps = {
+  firstLabel: string;
+  secondLabel: string;
+  firstCopy: string;
+  secondCopy: string;
+  first: string;
+  second: string;
+};
+
+export function AsChildCrossFadeView({
+  firstLabel,
+  secondLabel,
+  firstCopy,
+  secondCopy,
+  first,
+  second,
+}: AsChildCrossFadeViewProps) {
+  const [isSecond, setIsSecond] = useState(false);
+
+  return (
+    <div className="cross-fade-demo">
+      <div className="cross-fade-demo__controls">
+        <Button
+          size="sm"
+          variant="secondary"
+          aria-pressed={!isSecond}
+          onClick={() => setIsSecond(false)}
+        >
+          {first}
+        </Button>
+        <Button
+          size="sm"
+          variant="secondary"
+          aria-pressed={isSecond}
+          onClick={() => setIsSecond(true)}
+        >
+          {second}
+        </Button>
+      </div>
+      <CrossFadeView
+        asChild
+        isSecond={isSecond}
+        pagination={2}
+        onPagination={(page) => setIsSecond(page >= 1)}
+        first={
+          <div className="cross-fade-demo__panel">
+            {firstLabel}
+            <span className="cross-fade-demo__copy">{firstCopy}</span>
+          </div>
+        }
+        second={
+          <div className="cross-fade-demo__panel">
+            {secondLabel}
+            <span className="cross-fade-demo__copy">{secondCopy}</span>
+          </div>
+        }
+      >
+        <section className="cross-fade-demo__stage" />
+      </CrossFadeView>
+    </div>
+  );
+}

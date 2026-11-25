@@ -1,0 +1,12 @@
+.gemst-scale-transition.popover-shell {
+  --gemst-scale-duration: 280ms;
+  --gemst-scale-from: 0.9;
+  --gemst-scale-origin: top;
+  --gemst-scale-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+}
+
+.gemst-scale-transition.popover-shell .scale-demo__panel {
+  border-color: var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}

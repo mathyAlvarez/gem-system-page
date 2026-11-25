@@ -1,0 +1,10 @@
+.gemfx-pulse-scale.pulse-sonar {
+  --gemfx-pulse-scale-ring-color: var(--gem-palette-secondary-400);
+  border-radius: 999px;
+}
+
+.gemfx-pulse-scale.pulse-sonar .gemfx-pulse-scale__ring {
+  border: none;
+  background: radial-gradient(closest-side, transparent 55%, var(--gemfx-pulse-scale-ring-color));
+  filter: blur(2px);
+}

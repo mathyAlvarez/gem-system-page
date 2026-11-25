@@ -1,0 +1,238 @@
+{
+  "header": {
+    "title": "FadeTransition",
+    "description": "Opacity enter/exit for mount and unmount. Toggle `isIn` to fade in or out; the node stays mounted until the exit transition ends. Pass `{ enter, exit }` on `duration`, `delay`, or `easing` for split timing."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props, toggle fade in/out, and watch the generated code. Enter uses `enter` timing; exit uses `exit`.",
+    "fadeIn": "Fade in",
+    "fadeOut": "Fade out",
+    "label": "Fade panel"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "With defaults (`duration={300}`, `easing=\"standard\"`) the panel fades in/out. After exit it unmounts unless you use `keepMounted` or `unmountOnExit`.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Fade panel"
+      }
+    },
+    "enter": {
+      "title": "Enter",
+      "description": "Starts hidden (`isIn={false}`). Enter uses `duration={450}` and the `enter` easing token.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Enter fade"
+      }
+    },
+    "exit": {
+      "title": "Exit",
+      "description": "Starts visible. Exit uses `duration={280}` and the `exit` easing token. The node stays mounted until opacity finishes.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Exit fade"
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "`duration`, `delay`, and `easing` accept `{ enter, exit }`. Enter is slower with delay; exit is snappy.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Split timing"
+      }
+    },
+    "slow": {
+      "title": "Slow",
+      "description": "`duration={800}` for a longer fade when you want the change to read clearly.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Fade panel"
+      }
+    },
+    "keepMounted": {
+      "title": "keepMounted",
+      "description": "With `keepMounted`, exit hides the host with `display: none` instead of unmounting. Re-enter restores the same DOM node.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Fade panel"
+      }
+    },
+    "initial": {
+      "title": "initial false",
+      "description": "`initial={false}` skips motion on the first mount (snaps in). Later toggles still fade. Use Remount to see the skip again.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "remount": "Remount",
+        "label": "Fade panel"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onFade` / `outFade` track the presence cycle. `onPhaseChange` reports `entering` → `entered` → `exiting` → `exited`.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Fade panel",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` (or `prefers-reduced-motion: reduce`) the host snaps to the target state with no interpolation.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Fade panel"
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, fade classes merge onto the single child (no extra wrapper).",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "title": "Notice",
+        "body": "Slotted host — the fade runs on the Card."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Pass `utilities.css` helpers via `classNames.root`. This demo applies `gemst-relative` and `gemst-overflow-hidden`.",
+      "texts": {
+        "fadeIn": "Fade in",
+        "fadeOut": "Fade out",
+        "label": "Fade panel"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "fadeIn": "Fade in",
+      "fadeOut": "Fade out",
+      "label": "Fade panel"
+    },
+    "variant": {
+      "fadeIn": "Fade in",
+      "fadeOut": "Fade out",
+      "label": "Fade panel"
+    },
+    "styled": {
+      "fadeIn": "Fade in",
+      "fadeOut": "Fade out",
+      "label": "Info toast"
+    }
+  },
+  "apiLink": "See the full FadeTransition API",
+  "api": {
+    "header": {
+      "title": "FadeTransition API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `FadeTransition`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for enter, exit, timing, and keepMounted.",
+      "link": "See FadeTransition demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/fade-transition` with its `fade-transition.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. In that case classes and styles merge with the child's, and if both define the same handler, the child's runs first. The component handles <code>onTransitionEnd</code> internally (to detect the end of <code>opacity</code>) and then calls yours."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is a presence transition: the control that toggles <code>isIn</code> should reflect state (label, <code>aria-pressed</code>, or your pattern). Do not convey information with the fade alone.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the host snaps to the final state. The preference is read each render; it is not live-listened.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code> on the root. Use only when motion is essential.",
+        "keepMounted": "With <code>keepMounted</code> the node stays in the DOM with <code>display: none</code> after exit. It should not receive focus or be announced while hidden.",
+        "asChild": "With <code>asChild</code>, pick a child with the right semantics (<code>Card</code>, <code>section</code>, <code>div</code>): that element is the fade host."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div`, or the child with `asChild`). `inline-flex`; transitions `opacity`.",
+        "in": "Present state (`opacity: 1`).",
+        "out": "Absent state (`opacity: 0`, `pointer-events: none`).",
+        "prep": "Enter priming: no transition so the resting state cannot flash.",
+        "keepMountedHidden": "Host hidden after exit with `keepMounted` (`display: none`).",
+        "disabled": "Added with `isDisabled`. No transition."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline each render (`0ms` when `isDisabled`, reduced motion, or keep-mounted hidden).",
+      "items": {
+        "duration": "Duration of the current phase. Default `300ms`.",
+        "delay": "Delay of the current phase. Default `0ms`.",
+        "easing": "Easing of the current phase. Default `standard`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables used as CSS defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-fade-easing`. The component writes the resolved curve inline — use `easing` to change it."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "What fades and where it mounts." },
+      "appearance": { "title": "Appearance", "description": "Presence and how it stays mounted." },
+      "timing": {
+        "title": "Timing",
+        "description": "In milliseconds. `enter` applies on fade in and `exit` on fade out."
+      },
+      "state": { "title": "State", "description": "How motion is turned off." },
+      "events": { "title": "Events", "description": "Presence cycle and phases." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content that fades in and out.",
+      "asChild": "Applies classes, styles, and ref to the single child (no extra wrapper).",
+      "isIn": "`true` fades in and stays mounted; `false` fades out and unmounts after the transition (unless `keepMounted`).",
+      "keepMounted": "After exit, hides the host with `display: none` instead of unmounting. Ignored when `unmountOnExit`.",
+      "unmountOnExit": "Unmounts immediately on exit (skips the exit fade).",
+      "initial": "`false` skips motion on the first mount. Later toggles still animate. Default `true`.",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is fade in and `exit` is fade out.",
+      "delay": "Wait before starting. Accepts `{ enter, exit }`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), timing function, or `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Snaps to the target state with no interpolation.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onFade": "Fires when the fade is active (`isIn` true).",
+      "outFade": "Fires on exit (`isIn` false), disable, or unmount.",
+      "onPhaseChange": "Phases: `idle`, `entering`, `entered`, `exiting`, `exited`.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes by part: `root` only (no surface).",
+      "style": "Inline styles for the root. Combined with `--gemst-fade-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

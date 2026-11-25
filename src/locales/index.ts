@@ -141,6 +141,8 @@ import esShadows from "./es/shadows.json";
 import esSpacing from "./es/spacing.json";
 import esTokens from "./es/tokens.json";
 import esTypography from "./es/typography.json";
+import { effectsResourcesEn, effectsResourcesEs } from "./effects.resources.ts";
+import { transitionsResourcesEn, transitionsResourcesEs } from "./transitions.resources.ts";
 
 export const supportedLanguages = ["es", "en"] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
@@ -219,6 +221,8 @@ export const resources = {
     transition: esTransition,
     treeView: esTreeView,
     overrideStyles: esOverrideStyles,
+    ...effectsResourcesEs,
+    ...transitionsResourcesEs,
   },
   en: {
     common: enCommon,
@@ -291,6 +295,8 @@ export const resources = {
     transition: enTransition,
     treeView: enTreeView,
     overrideStyles: enOverrideStyles,
+    ...effectsResourcesEn,
+    ...transitionsResourcesEn,
   },
 } as const;
 

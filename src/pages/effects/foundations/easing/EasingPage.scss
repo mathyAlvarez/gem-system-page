@@ -1,0 +1,44 @@
+/**
+ * Gemffects Page — Easing
+ * Looping dots that compare the curve of each easing token.
+ */
+
+.easing-scale {
+  --easing-scale-dot: 0.75rem;
+
+  &__track {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-width: 8rem;
+    height: var(--easing-scale-dot);
+    border-radius: var(--gem-radius-full);
+    background: var(--gem-color-bg-subtle);
+  }
+
+  &__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--easing-scale-dot);
+    height: var(--easing-scale-dot);
+    border-radius: 50%;
+    background: var(--gem-color-accent);
+    animation: easing-scale-slide 1400ms linear infinite alternate;
+
+    @media (prefers-reduced-motion: reduce) {
+      left: 40%;
+      animation: none;
+    }
+  }
+}
+
+@keyframes easing-scale-slide {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - var(--easing-scale-dot));
+  }
+}

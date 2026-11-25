@@ -1,0 +1,31 @@
+{
+  "header": {
+    "title": "Easing",
+    "description": "Motion acceleration curves: the `easing` object and the `--gemfx-easing-*` variables."
+  },
+  "scale": {
+    "title": "Scale",
+    "description": "Five curves. Every dot travels the same distance in 1400 ms; only how it speeds up and slows down changes.",
+    "reducedMotion": "With reduced motion turned on, the dots stay still.",
+    "columns": {
+      "token": "Token",
+      "value": "Value",
+      "usage": "When to use",
+      "preview": "Preview"
+    },
+    "usage": {
+      "standard": "General movement that starts and ends on screen.",
+      "enter": "Elements that appear: they start fast and settle gently.",
+      "exit": "Elements that leave: they start gently and speed up on the way out.",
+      "emphasized": "Changes that need to stand out, such as panels or large transforms.",
+      "linear": "Continuous loops (marquees, rotations) and properties that should not accelerate."
+    }
+  },
+  "usage": {
+    "title": "Usage",
+    "description": "In CSS, use the variables (they ship in `tokens.css`, already included in `styles.css`). In TypeScript, `easing` returns strings that work in CSS and in the Web Animations API."
+  },
+  "code": {
+    "waapi": "with the Web Animations API"
+  }
+}

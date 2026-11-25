@@ -1,0 +1,216 @@
+{
+  "header": {
+    "title": "Meteors",
+    "description": "Shooting-star field over the child. It adds a decorative layer (`pointer-events: none`) with streaks crossing diagonally, each with its own position, delay, duration, and length. `variant` sets the streak (`trail`, `ember`, `shard`), `reverse` flips the direction, and `count` or `intensity` the amount."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the code they generate.",
+    "label": "Night"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic meteors",
+      "description": "With the defaults (`variant=\"trail\"`, `intensity=\"md\"`, `duration={3200}`), `14` streaks of `1px` in `primary-200` cross at `32deg`. The travel is measured against the layer's width (container units), so every streak crosses the whole field whatever its size. The field fills the whole root, so size, radius, and background go on the root. Since the layer sits above the content, keep the text short or high-contrast.",
+      "texts": {
+        "label": "Night"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`trail` is a thin line that fades out. `ember` is thicker, with a `tertiary-400` head and a glow. `shard` is shorter (`55%` of the length) and steeper (`48deg`)."
+    },
+    "reverse": {
+      "title": "Direction",
+      "description": "By default streaks enter from the left and travel right. With `reverse` they enter from the right and travel left."
+    },
+    "image": {
+      "title": "On an image",
+      "description": "Meteors overlay any content, such as an image. The layer has `aria-hidden` and `pointer-events: none`, so it doesn't interfere with the alt text or with clicks.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`color` is the streak color (it fades to transparent). Default `primary-200`. Prefer tokens. With `ember`, the head stays `tertiary-400`."
+    },
+    "count": {
+      "title": "Count",
+      "description": "`count` sets the number of streaks and takes priority over `intensity`. The maximum is `48`. Positions and timing are pseudo-random but stable: every instance with the same count draws the same pattern."
+    },
+    "speed": {
+      "title": "Speed",
+      "description": "`speed` multiplies the speed: `2` is twice as fast and `0.5` half (clamped to `0.2`–`4`). `duration` is the base cycle at `speed={1}`; each streak takes between `70%` and `140%` of that cycle."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the layer is hidden and appears when the pointer enters or something inside gets keyboard focus. With `click`, each click shows or hides it. The streaks restart every time.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` changes the streak opacity (`65%`, `85%`, or `100%` with `sm`, `md`, or `lg`) and, without `count`, how many there are: `8`, `14`, or `22`. It also takes a number from `0` to `1`. Tokens read `--gemfx-intensity-*`, so you can redefine them on an ancestor."
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the streaks where they are. `isDisabled` hides the layer and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onMeteors` fires when the field turns on (pointer enter or keyboard focus on the button with `hover`, click with `click`, or mount with `always`) and `outMeteors` when it turns off, with the reason in `event.reason`. The button still gets clicks.",
+      "texts": {
+        "body": "Hover or Tab to the button to turn the meteors on, and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Starfall"
+    },
+    "styled": {
+      "label": "Comet"
+    }
+  },
+  "apiLink": "See the full Meteors API",
+  "api": {
+    "header": {
+      "title": "Meteors API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Meteors`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger, and option.",
+      "link": "See Meteors demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/meteors` with its `meteors.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code>, and <code>onBlur</code> run before the effect's internal logic. <code>--gemfx-meteors-color</code> and <code>--gemfx-meteors-intensity</code> are only written inline when you pass <code>color</code> or <code>intensity</code>, and then they go after <code>style</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the streaks are hidden entirely.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps them. Use it only when the motion is essential.",
+        "decorative": "The layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks.",
+        "focus": "With <code>trigger=\"hover\"</code> the meteors also appear when something inside gets keyboard focus (<code>:focus-visible</code>), and <code>onMeteors</code>/<code>outMeteors</code> fire just like with the pointer. With <code>click</code> the root isn't focusable: the keyboard can't turn them on.",
+        "density": "The layer sits above the content (<code>z-index: 2</code>). With a lot of text, lower <code>count</code> or use a low <code>speed</code> so the streaks don't compete with reading."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative`, `isolation: isolate`, and `overflow: hidden`.",
+        "variant": "Active variant. `ember` thickens the streak and adds a head and glow; `shard` shortens it and makes it steeper.",
+        "reverse": "Added with `reverse`. Streaks enter from the right.",
+        "trigger": "Active trigger. Sets `cursor: pointer` and hides the layer while it isn't on.",
+        "on": "Added while the field is on with `click`.",
+        "paused": "Added with `isPaused`. Pauses the streaks with `animation-play-state`.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the layer and removes the animation.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "layer": "Decorative layer (`position: absolute`, `inset: 0`, `z-index: 2`, `aria-hidden`, `container-type: size`). Inherits the root's radius and takes its opacity from the intensity.",
+        "meteor": "Each streak: `1px` tall, a gradient to transparent, and its own animation, which crosses the layer along its tilted axis. `top` and timing are inline.",
+        "surface": "Wraps the child (`z-index: 1`). With `asChild`, the class goes on the child itself."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`color` and `intensity` are only written inline if you pass the prop; otherwise you can redefine them with a class. Per-streak timing is inline on each streak.",
+      "items": {
+        "color": "Streak color. Set by `color`; default `primary-200` (fallback `#d7fff6`).",
+        "intensity": "Layer intensity: its opacity is `min(100%, intensity + 30%)`. Set by `intensity`; default `var(--gemfx-intensity-md)`.",
+        "meteor": "Delay, duration, and length of each streak. Computed in JS (from `duration`, `speed`, and `delay`) and written inline on each one.",
+        "trajectory": "Streak geometry, defined on `.gemfx-meteors__meteor`: angle (`32deg`), slope (`tan(angle)`, `0.625`), direction (`1` or `-1`), travel (`100cqw` plus two lengths), and gradient direction. `shard` and `reverse` adjust them. If you change the angle, change the slope too so the streak follows its axis."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Meteors reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "color": "Default streak color (fallback `#d7fff6`).",
+        "ember": "`ember` head and glow (fallback `#ffa61f`). There's no prop to change it.",
+        "intensity": "Default intensity (fallback `55%`). With `intensity=\"sm\"` or `\"lg\"` it reads `--gemfx-intensity-sm` and `--gemfx-intensity-lg`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What sits under the meteors and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Streak, color, count, and direction."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Cycle, speed, and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows, how it pauses, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled`, or `unmount`."
+      },
+      "styling": {
+        "title": "Styling",
+        "description": "Classes, inline styles, and ref."
+      }
+    },
+    "items": {
+      "children": "Content under the meteors.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` it falls back to the `div`.",
+      "variant": "`trail` is a thin line, `ember` a warm head with a glow, and `shard` a shorter streak.",
+      "color": "Streak color. Prefer a token; default `primary-200`.",
+      "count": "Number of streaks (max `48`). Takes priority over `intensity`.",
+      "intensity": "Streak opacity (`65%`, `85%`, or `100%`) and, without `count`, the number of streaks: `8`, `14`, or `22`.",
+      "reverse": "Streaks enter from the right and travel left.",
+      "duration": "Base cycle at `speed={1}`. Each streak takes between `70%` and `140%`.",
+      "speed": "Speed multiplier, between `0.2` and `4`. `2` is twice as fast.",
+      "delay": "Delay before the field starts.",
+      "trigger": "`always` shows them all the time, `hover` when the pointer enters or something inside gets focus, and `click` toggles them on each click.",
+      "isActive": "Lets the field run. With `false` it hides and `outMeteors` gets `inactive`.",
+      "isPaused": "Freezes the streaks.",
+      "isDisabled": "Hides the field; the child stays interactive. `outMeteors` gets `disabled`.",
+      "ignoreReducedMotion": "Shows the meteors even if the user prefers less motion. Only when essential.",
+      "onMeteors": "Fires when the field turns on: on mount with `always`, on pointer enter or keyboard focus with `hover`, or on click with `click`.",
+      "outMeteors": "Fires when it turns off: on pointer or focus leave, on the next click, when disabled, or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, and `meteor` (applied to each streak).",
+      "style": "Inline styles for the root. If you pass `color` or `intensity`, their variables are written after it.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

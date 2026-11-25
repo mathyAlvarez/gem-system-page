@@ -1,0 +1,228 @@
+{
+  "header": {
+    "title": "GradientText",
+    "description": "Relleno con degradé sobre texto usando `background-clip: text`. La raíz es un `span`, así que entra en cualquier línea de texto. El degradé se pinta en un `span` interno (la superficie) y el relleno de las letras queda transparente para dejarlo ver. `variant` define el movimiento: `flow` desliza el degradé por las letras, `static` lo deja fijo y `pulse` hace respirar el brillo."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `static`, `trigger` no cambia nada: el degradé queda siempre visible.",
+    "label": "Gradient"
+  },
+  "stories": {
+    "base": {
+      "title": "Texto básico",
+      "description": "Con los valores por defecto (`variant=\"flow\"`, `angle={110}`, `duration={3200}`) un degradé de `primary-400`, `secondary-400` y `tertiary-400` va y vuelve por las letras.",
+      "texts": {
+        "label": "Gradient"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`flow` desliza el degradé de un extremo al otro y vuelve. `static` lo deja fijo, ajustado al ancho del texto. `pulse` lo deja fijo y hace respirar el brillo, la saturación y la opacidad."
+    },
+    "heading": {
+      "title": "En un título",
+      "description": "El uso típico: un título destacado. Como la raíz es un `span`, sobre un título de bloque usá `asChild`: el `h2` queda como raíz y su contenido se envuelve en la superficie. El degradé se recorta a todo el texto, incluidos los hijos aunque definan su propio `color`.",
+      "texts": {
+        "title": "Hecho con gemffects"
+      }
+    },
+    "inline": {
+      "title": "Dentro de un párrafo",
+      "description": "La raíz es un `span`, así que podés resaltar unas palabras dentro de un `<p>` sin generar HTML inválido. Su layout base tiene especificidad 0: acá una clase la vuelve a alinear con la línea de texto (`vertical-align: baseline`).",
+      "texts": {
+        "before": "Los efectos de gemffects son",
+        "highlight": "accesibles por defecto",
+        "after": "y respetan los tokens de tu sistema de diseño."
+      }
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`from`, `via` y `to` son las tres paradas del degradé. Por defecto: `primary-400`, `secondary-400` y `tertiary-400` de gem-system. Mejor usar tokens."
+    },
+    "angle": {
+      "title": "Ángulo",
+      "description": "`angle` es la dirección del degradé: un número son grados y también acepta cualquier valor de `linear-gradient`, como `\"to top right\"`. Se nota sobre todo con `static`."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` el texto usa el color heredado y el degradé aparece al pasar el puntero (o al enfocar con el teclado algo dentro). Con `click`, cada clic lo muestra u oculta. La animación arranca de cero cada vez.",
+      "texts": {
+        "hoverLabel": "Hover",
+        "clickLabel": "Clic"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Con `flow`, `intensity` define cuánto recorre el degradé: el fondo mide `160%`, `220%` o `300%` del texto con `sm`, `md` o `lg`, así que con más intensidad se ve una porción más chica y el movimiento es más amplio. Con `pulse`, define qué tan fuerte respira: el brillo, la saturación y la opacidad se calculan desde `--gemfx-gradient-text-intensity`. Acepta también un número de `0` a `1`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es un ciclo completo de `flow` (ida o vuelta) o de `pulse`, en milisegundos. `delay` retrasa el inicio."
+    },
+    "asChild": {
+      "title": "Sobre otro elemento (asChild)",
+      "description": "Con `asChild`, el degradé se aplica sobre el hijo sin sumar un `span` envolvente: el hijo es la raíz y su contenido se envuelve en un `span` interno (la superficie). Así el botón conserva su fondo, solo la etiqueta lleva el degradé, y `variant`, `isPaused`, los disparadores y los estados funcionan igual que sin `asChild`.",
+      "texts": {
+        "label": "Título",
+        "buttonLabel": "Comprar"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el degradé donde está. `isDisabled` lo quita y el texto vuelve al color heredado.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGradientText` se dispara cuando el degradé se enciende (al entrar el puntero o el foco de teclado con `hover`, al hacer clic con `click` o al montar con `always`) y `outGradientText` cuando se apaga, con el motivo en `event.reason`. Con `static` se comportan como con `always`. El botón va dentro del degradé y mantiene su etiqueta sólida.",
+      "texts": {
+        "title": "Pasá el mouse",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Fresh"
+    },
+    "styled": {
+      "label": "Chrome"
+    }
+  },
+  "apiLink": "Ver la API completa de GradientText",
+  "api": {
+    "header": {
+      "title": "GradientText API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `GradientText`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de GradientText"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/gradient-text` con su `gradient-text.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>span</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. Las variables <code>--gemfx-gradient-text-*</code> de las props que pasás se escriben después de <code>style</code>; las que no pasás no se escriben. El layout base (<code>display</code>, <code>position</code>, <code>vertical-align</code>, <code>color</code>) va en <code>:where()</code>, así que cualquier clase del host lo pisa."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el degradé queda quieto, centrado y ajustado al texto; <code>pulse</code> deja de respirar.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el movimiento. Usalo solo si es esencial.",
+        "readable": "El texto sigue siendo texto: se lee, se selecciona y lo anuncian los lectores de pantalla. El degradé es solo un fondo recortado. Los hijos con fondo propio (<code>code</code>, <code>kbd</code>, <code>samp</code>, <code>mark</code>, controles de formulario o <code>.gemfx-gradient-text__solid</code>) vuelven al color sólido, así su texto no queda invisible.",
+        "selection": "El relleno de las letras es transparente (<code>-webkit-text-fill-color</code>), así que al seleccionarlo puede verse solo el fondo de la selección. Si es importante, definí un <code>::selection</code> con <code>-webkit-text-fill-color</code> propio.",
+        "focus": "Con <code>trigger=\"hover\"</code> el degradé también aparece al enfocar con el teclado el host o algo dentro (<code>:focus-visible</code>), y los eventos se disparan igual que con el puntero. Con <code>click</code> la raíz no es enfocable: solo se enciende con teclado si el clic llega desde un control de adentro.",
+        "contrast": "Revisá el contraste de cada parada contra el fondo, no solo el color promedio: con <code>flow</code> cada letra pasa por todos los colores."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`span`, o el hijo con `asChild`). `inline-flex`, `position: relative` y `color: inherit` van en `:where()` (especificidad 0), así una clase del host los pisa.",
+        "variant": "Variante activa. `static` quita la animación y ajusta el fondo al texto; `pulse` cambia a la animación de brillo.",
+        "trigger": "Disparador activo, solo con `flow` y `pulse`. Pone `cursor: pointer` y quita el degradé mientras no esté encendido.",
+        "on": "Se agrega mientras el degradé está encendido con `click`.",
+        "paused": "Se agrega con `isPaused`. Pausa la animación con `animation-play-state`.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Quita el degradé y devuelve el color heredado.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "`span` interno que lleva el degradé (`background-clip: text`) y el relleno transparente. Con `asChild` envuelve el contenido del hijo, así el hijo conserva su fondo.",
+        "solid": "Ponela en cualquier descendiente para que vuelva al color sólido (`-webkit-text-fill-color: currentcolor`). `code`, `kbd`, `samp`, `mark` y los controles de formulario ya lo hacen solos."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Solo se escriben inline las variables de las props que pasás (`from`, `via`, `to`, `angle`, `intensity`, `duration`, `delay`). Todas, si no pasás la prop, se pueden pisar desde una clase.",
+      "items": {
+        "colors": "Las tres paradas del degradé. Las definen `from`, `via` y `to`.",
+        "angle": "Dirección del degradé. La define `angle`; default `110deg`.",
+        "span": "Ancho del fondo con `flow` (cuánto recorre). Lo define `intensity`: `160%`, `220%` o `300%`; default `220%`.",
+        "intensity": "Fuerza de la respiración de `pulse` (brillo, saturación y opacidad). La define `intensity`; default `var(--gemfx-intensity-md, 55%)`.",
+        "duration": "Ciclo de `flow` o `pulse`. Lo define `duration`; default `3200ms`.",
+        "delay": "Retraso del inicio. Lo define `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que GradientText lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "palette": "Colores por defecto de `from`, `via` y `to` (con respaldos neón, magenta y ámbar).",
+        "intensity": "Valores de `sm`, `md` y `lg` (`35%`, `55%` y `80%`). El default de `pulse` usa `md` y la prop con un token escribe `var(--gemfx-intensity-*)`, así que redefinirlos cambia la respiración.",
+        "easingLinear": "Curva de `flow` (velocidad constante).",
+        "easingStandard": "Curva de `pulse`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué texto recibe el degradé y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Movimiento, colores, ángulo e intensidad."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo de la animación y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve y se mueve, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`. Con `static` se comportan como con `always`: `onGradientText` se dispara al montar."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Texto que recibe el degradé. Los hijos con fondo propio (`code`, `kbd`, `samp`, `mark`, controles de formulario o `.gemfx-gradient-text__solid`) mantienen el texto sólido.",
+      "asChild": "Aplica el degradé sobre el único hijo, sin `span` envolvente. El contenido del hijo se envuelve en la superficie, así el hijo conserva su fondo. Útil para títulos y botones.",
+      "variant": "`flow` desliza el degradé, `static` lo deja fijo y `pulse` hace respirar el brillo.",
+      "from": "Primera parada. Mejor un token; default `primary-400`.",
+      "via": "Parada del medio. Default `secondary-400`.",
+      "to": "Última parada. Default `tertiary-400`.",
+      "angle": "Dirección del degradé. Un número son grados; acepta cualquier valor de `linear-gradient`.",
+      "intensity": "Cuánto recorre el degradé con `flow` y qué tan fuerte respira con `pulse`. Token o número de `0` a `1`.",
+      "duration": "Ciclo completo de `flow` o `pulse`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece la animación.",
+      "trigger": "`always` lo muestra siempre, `hover` al pasar el puntero o enfocar con el teclado algo dentro y `click` lo muestra y oculta con cada clic. `static` lo ignora.",
+      "isActive": "Muestra el degradé. En `false` lo quita y `outGradientText` recibe `inactive`.",
+      "isPaused": "Congela `flow` o `pulse`.",
+      "isDisabled": "Quita el degradé; el texto usa el color heredado. `outGradientText` recibe `disabled`.",
+      "ignoreReducedMotion": "Mantiene el movimiento aunque el usuario prefiera menos. Solo si es esencial.",
+      "onGradientText": "Se dispara cuando el degradé se enciende: al montar con `always` (o con `static`), al entrar el puntero o el foco de teclado con `hover` o al hacer clic con `click`.",
+      "outGradientText": "Se dispara cuando se apaga: al salir el puntero o el foco, al volver a hacer clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface` (el `span` interno, también con `asChild`).",
+      "style": "Estilos inline de la raíz. Las variables de las props que pasás se escriben después.",
+      "ref": "Ref a la raíz (el `span`, o el hijo con `asChild`)."
+    }
+  }
+}

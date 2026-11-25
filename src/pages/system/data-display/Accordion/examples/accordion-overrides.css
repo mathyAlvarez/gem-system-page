@@ -1,0 +1,23 @@
+.gem-accordion.accordion-branded {
+  --gem-accordion-border: var(--gem-palette-secondary-400);
+  --gem-accordion-subtle: color-mix(in srgb, var(--gem-palette-secondary-500) 10%, transparent);
+  --gem-accordion-muted: var(--gem-palette-secondary-600);
+  --gem-accordion-radius: var(--gem-radius-lg);
+}
+
+.gem-accordion.accordion-branded .gem-accordion__item--open .gem-accordion__title {
+  color: var(--gem-palette-secondary-700);
+}
+
+[data-theme="dark"] .gem-accordion.accordion-branded {
+  --gem-accordion-border: var(--gem-palette-secondary-500);
+  --gem-accordion-subtle: color-mix(in srgb, var(--gem-palette-secondary-500) 18%, transparent);
+  --gem-accordion-muted: var(--gem-palette-secondary-300);
+}
+
+[data-theme="dark"]
+  .gem-accordion.accordion-branded
+  .gem-accordion__item--open
+  .gem-accordion__title {
+  color: var(--gem-palette-secondary-200);
+}

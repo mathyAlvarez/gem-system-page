@@ -1,0 +1,211 @@
+{
+  "header": {
+    "title": "Ripple",
+    "description": "A wave that expands from the pointer, like Material's ink effect. Each wave grows until it covers the whole host and fades out. `variant` sets the look (`ink`, `ring`, `pulse`), `trigger` when it appears (`click`, `hover` or `press`) and `origin` where it starts (`pointer` or `center`). The layer has `pointer-events: none`, so the child keeps receiving clicks."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and click, hover or hold on the card.",
+    "label": "Tap me"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic ripple",
+      "description": "With the defaults (`variant=\"ink\"`, `trigger=\"click\"`, `origin=\"pointer\"`) each click spawns a disc that grows from the pointer for `600` ms. Waves stack: you can click several times in a row. With the keyboard, focus the button and press Enter or Space: the wave starts from the center.",
+      "texts": {
+        "label": "Click me"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`ink` is a filled disc. `ring` is just the edge (`2px`). `pulse` spawns three rings from the same point, `18%` of `duration` apart; here with `duration={900}`."
+    },
+    "origin": {
+      "title": "Origin",
+      "description": "`pointer` starts where you clicked. `center` always starts in the middle of the host, wherever you tap."
+    },
+    "image": {
+      "title": "Over an image",
+      "description": "The wave works over any content. Here with `variant=\"pulse\"`, white and `intensity=\"lg\"` so it shows over the photo.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`click` spawns a wave on press. `hover` spawns it when the pointer enters (from the edge you came in through). `press` repeats waves while you hold, every `45%` of `duration` (at least `180` ms), and they follow the pointer if you move it. While held, each new wave reads the current props: if `variant`, `duration` or `isPaused` change, the next waves follow. The cards have `tabIndex={0}` to try it with the keyboard: Enter or Space spawn a wave from the center with `click` and `press`, and with `hover` the wave starts from the center when focus enters with Tab."
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`color` is the wave color; it accepts any CSS color. `intensity` mixes it with transparent. Without `color`, it uses `currentColor`: the host's text color, so the wave matches the content on a light or dark button. Prefer tokens."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long each wave takes to grow and fade, in milliseconds."
+    },
+    "delay": {
+      "title": "Delay",
+      "description": "`delay` delays the start of each wave after the click. Useful to sync the wave with another animation."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` is the wave opacity: `sm` (`35%`), `md` (`55%`) or `lg` (`80%`). It also accepts a number from `0` to `1`."
+    },
+    "asChild": {
+      "title": "On an element (asChild)",
+      "description": "With `asChild`, the effect mounts directly on the child (a `button` here), without adding a `div`. Useful in flex rows or grids where an extra node breaks the layout. Next to it, the same button without the effect: Tab through them and the focus ring shows in full on both, because the layer clips the waves, not the root. With a void element like `img` or `input`, it falls back to the wrapping `div`.",
+      "texts": {
+        "save": "Save",
+        "plain": "No effect"
+      }
+    },
+    "state": {
+      "title": "Pause and disabled",
+      "description": "Here with `trigger=\"hover\"`, `pulse` and `duration={2400}`: hover and turn on `isPaused` while the waves grow: they stay frozen on screen and finish on unpause. No new waves are created while paused. `isDisabled` stops creating waves and hides the current ones; the child stays interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Hover me"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onRipple` fires when the first wave appears and `outRipple` when the last one ends, with the reason in `event.reason`. Rapid clicks count as a single phase. The button still works: the click reaches the child and the wave fires anyway. If you activate it with Enter or Space, the wave starts from the center.",
+      "texts": {
+        "body": "Click the card or the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Send"
+    },
+    "styled": {
+      "label": "Splash"
+    }
+  },
+  "apiLink": "See the full Ripple API",
+  "api": {
+    "header": {
+      "title": "Ripple API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Ripple`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant, trigger and option.",
+      "link": "See Ripple demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/ripple` with `ripple.css`, or from the package root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and passes them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onPointerDown</code>, <code>onPointerUp</code>, <code>onPointerCancel</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code> and <code>onPointerMove</code> run before the effect's internal logic, as do <code>onClick</code>, <code>onKeyDown</code> and <code>onFocus</code> before the keyboard logic. <code>--gemfx-ripple-duration</code>, <code>-intensity</code> and <code>-color</code> are written after <code>style</code>, but only when you pass <code>duration</code>, <code>intensity</code> or <code>color</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "decorative": "The wave layer is decorative (<code>aria-hidden</code>, <code>pointer-events: none</code>): it doesn't change the child's semantics or interaction.",
+        "keyboard": "With <code>click</code> and <code>press</code>, Enter or Space spawn a wave from the center: on the focused root (with <code>asChild</code> on a control, or with <code>tabIndex</code>) or when a nested control is activated by keyboard. Holding the key doesn't repeat it. With <code>hover</code>, when keyboard focus enters the host from outside, a wave starts from the center; it doesn't happen when focus moves between elements inside or with the focus a mouse click leaves.",
+        "focus": "The root doesn't clip anything: the layer clips the waves (<code>overflow: hidden</code>, <code>clip-path</code>). The child's focus ring, or the element's own with <code>asChild</code>, shows in full even when it's drawn outside.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> no waves are created, and <code>onRipple</code> doesn't fire.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the waves. Use it only when essential.",
+        "touch": "It doesn't block touch scrolling. <code>disabledOnTouch</code> ignores touches; mouse and pen still work."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative` and `isolation: isolate`. It doesn't clip its content, so it doesn't cut the focus ring. Sets the variable defaults.",
+        "variant": "Active variant. `ring` and `pulse` swap the fill for a `2px` inner edge (`box-shadow`).",
+        "trigger": "Active trigger. Not added with `isDisabled` or `isActive={false}`. Has no styles of its own.",
+        "paused": "Added with `isPaused`. Pauses the wave animation; the timer that removes them pauses too, so they stay on screen until unpaused.",
+        "inactive": "Added with `isDisabled` or `isActive={false}`. Hides the waves (`display: none`).",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "touchDisabled": "Added with `disabledOnTouch`. Has no styles of its own.",
+        "surface": "Wraps the child (`z-index: 0`, `flex: 1 1 auto`). With `asChild`, the class goes on the child itself.",
+        "layer": "Wave layer (`position: absolute`, `inset: 0`, `z-index: 1`, `pointer-events: none`, `aria-hidden`). Clips the waves to the host radius with `overflow: hidden`, `contain: paint`, `clip-path: inset(0)` and `border-radius: inherit`.",
+        "wave": "Each wave. A circle centered on `--gemfx-ripple-x` / `-y` with the `gemfx-ripple-wave` animation (from `scale(0)` and opacity `1` to `scale(1)` and opacity `0`). `classNames.wave` goes on each one."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Root variables only go inline when you pass the matching prop; otherwise you can set them from a class. Wave variables are written inline on each wave and are for reading.",
+      "items": {
+        "color": "Wave color. Only inline when you pass `color`; otherwise it's `currentColor`.",
+        "timing": "Animation duration and color-mix opacity. Inline only when you pass `duration` or `intensity`. `-duration` from CSS only changes the animation: each wave's removal and the `pulse` stagger use the `duration` prop, so pass it as a prop to change the timing.",
+        "wave": "Position, diameter (what it takes to cover the host from the origin) and delay of each wave (`delay` plus the `pulse` stagger)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Ripple reads as defaults.",
+      "items": {
+        "intensity": "Default of `--gemfx-ripple-intensity` in the CSS (fallback `55%`). Overridden by the inline value when you pass `intensity`.",
+        "easing": "Wave curve (fallback `ease-out`)."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What receives the wave and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Wave look, origin, color and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Duration and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When waves appear, how they pause and how they turn off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `click`, `hover`, `press`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that receives the waves.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` or `input`, it falls back to the wrapping `div`.",
+      "variant": "`ink` is a filled disc, `ring` an edge and `pulse` three staggered rings.",
+      "origin": "`pointer` starts at the event point and `center` in the middle of the host.",
+      "color": "Wave color. Defaults to `currentColor` (the host's text color). Prefer tokens.",
+      "intensity": "Wave opacity: `35%` / `55%` / `80%`, or a number from `0` to `1`.",
+      "duration": "How long each wave lasts.",
+      "delay": "Delay before each wave starts.",
+      "trigger": "`click` spawns a wave on press, `hover` on pointer enter and `press` repeats them while held. With `click` and `press`, Enter or Space spawn a wave from the center; with `hover`, keyboard focus entering the host does.",
+      "isActive": "Allows new waves. When `false` it hides the current ones.",
+      "isPaused": "Freezes the waves on screen (their timer too) and blocks new ones. They finish on unpause.",
+      "isDisabled": "Creates no waves and hides the current ones; the child stays interactive.",
+      "ignoreReducedMotion": "Keeps the waves even if the user prefers less motion. Only when essential.",
+      "disabledOnTouch": "Ignores the touch pointer; mouse and pen still work.",
+      "onRipple": "Fires when the first wave appears.",
+      "outRipple": "Fires when the last wave ends, or on disable or unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes per part: `root`, `surface`, `layer` and `wave`.",
+      "style": "Inline styles for the root. The effect variables are written after, only for the props you passed.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

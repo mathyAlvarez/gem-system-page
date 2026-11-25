@@ -1,0 +1,257 @@
+{
+  "header": {
+    "title": "ScaleTransition",
+    "description": "Pop-in / pop-out scale (+ opacity) for modals, tooltips, and popovers. Toggle `isIn`; the node stays mounted until the exit transform ends. Set `preserveSpace` to keep the layout box when out. Use `origin` to anchor the scale."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props, toggle scale in/out, and watch the generated code. Enter uses `enter` timing; exit uses `exit`.",
+    "scaleIn": "Scale in",
+    "scaleOut": "Scale out",
+    "label": "Scale panel"
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "With defaults (`scale={0.92}`, `origin=\"center\"`, `duration={300}`) the panel scales and fades. After exit it unmounts unless `preserveSpace` / `keepMounted`.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Scale panel"
+      }
+    },
+    "fromTop": {
+      "title": "Origin top",
+      "description": "Scales from the top edge — typical for a dropdown under a trigger. Starts hidden; press Scale in to replay.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Popover"
+      }
+    },
+    "modalPop": {
+      "title": "Modal pop",
+      "description": "Stronger pop (`scale: 0.88`) with `emphasized` enter easing — suited to dialogs.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Modal surface"
+      }
+    },
+    "tooltip": {
+      "title": "Tooltip anchor",
+      "description": "Subtle scale from the bottom (`origin=\"bottom\"`, `scale: 0.96`) — typical when a tooltip sits above its anchor.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Tooltip"
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "`duration`, `delay`, and `easing` accept `{ enter, exit }`. Enter is slower with delay; exit is snappy.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Split timing"
+      }
+    },
+    "preserveSpace": {
+      "title": "preserveSpace",
+      "description": "With `preserveSpace`, the node stays mounted when out — the layout box is reserved and siblings below do not jump.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Reserved panel",
+        "sibling": "Sibling content — stays put while the panel scales out."
+      }
+    },
+    "keepMounted": {
+      "title": "keepMounted",
+      "description": "With `keepMounted`, exit hides the host with `display: none` instead of unmounting. Re-enter restores the same DOM node.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Scale panel"
+      }
+    },
+    "initial": {
+      "title": "initial false",
+      "description": "`initial={false}` skips motion on the first mount (snaps in). Later toggles still scale. Use Remount to see the skip again.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "remount": "Remount",
+        "label": "Scale panel"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onScale` / `outScale` track the presence cycle. `onPhaseChange` reports `entering` → `entered` → `exiting` → `exited`.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Scale panel",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` (or `prefers-reduced-motion: reduce`) the host snaps to the target state with no interpolation.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Scale panel"
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, scale classes merge onto the single child (no extra wrapper).",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "title": "Dialog",
+        "body": "Slotted host — the scale runs on the Card."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Pass `utilities.css` helpers via `classNames.root`. This demo applies `gemst-relative` and `gemst-overflow-hidden`.",
+      "texts": {
+        "scaleIn": "Scale in",
+        "scaleOut": "Scale out",
+        "label": "Scale panel"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "scaleIn": "Scale in",
+      "scaleOut": "Scale out",
+      "label": "Scale panel"
+    },
+    "variant": {
+      "scaleIn": "Scale in",
+      "scaleOut": "Scale out",
+      "label": "Scale panel"
+    },
+    "styled": {
+      "scaleIn": "Scale in",
+      "scaleOut": "Scale out",
+      "label": "Info popover"
+    }
+  },
+  "apiLink": "See the full ScaleTransition API",
+  "api": {
+    "header": {
+      "title": "ScaleTransition API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `ScaleTransition`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for origin, modal pop, tooltip, and preserveSpace.",
+      "link": "See ScaleTransition demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/scale-transition` with its `scale-transition.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. In that case classes and styles merge with the child's, and if both define the same handler, the child's runs first. The component handles <code>onTransitionEnd</code> internally (to detect the end of <code>transform</code>) and then calls yours."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is a presence transition: the control that toggles <code>isIn</code> should reflect state. Do not convey information with the scale alone.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the host snaps to the final state. The preference is read each render; it is not live-listened.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code> on the root. Use only when motion is essential.",
+        "preserveSpace": "With <code>preserveSpace</code> the box stays reserved; content hides with opacity and scale. Siblings should not jump.",
+        "keepMounted": "With <code>keepMounted</code> the node stays in the DOM with <code>display: none</code> after exit. It should not receive focus or be announced while hidden.",
+        "asChild": "With <code>asChild</code>, pick a child with the right semantics (<code>Card</code>, <code>dialog</code>, <code>div</code>): that element is the scale host."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div`, or the child with `asChild`). `inline-flex`; transitions `opacity` and `transform`.",
+        "in": "Present state (`opacity: 1`, `scale(1)`).",
+        "out": "Absent state (`opacity: 0`, scale from `--gemst-scale-from`, `pointer-events: none`).",
+        "prep": "Enter priming: no transition so the resting state cannot flash.",
+        "keepMountedHidden": "Host hidden after exit with `keepMounted` (`display: none`).",
+        "disabled": "Added with `isDisabled`. No transition."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline each render (`0ms` when `isDisabled`, reduced motion, or keep-mounted hidden).",
+      "items": {
+        "duration": "Duration of the current phase. Default `300ms`.",
+        "delay": "Delay of the current phase. Default `0ms`.",
+        "easing": "Easing of the current phase. Default `standard`.",
+        "from": "Scale factor when out / at enter start. Default `0.92`.",
+        "origin": "`transform-origin` value. Default `center`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables used as CSS defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-scale-easing`. The component writes the resolved curve inline — use `easing` to change it."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "What scales and where it mounts." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Presence, factor, anchor, and how it stays mounted."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "In milliseconds. `enter` applies on scale in and `exit` on scale out."
+      },
+      "state": { "title": "State", "description": "How motion is turned off." },
+      "events": { "title": "Events", "description": "Presence cycle and phases." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content that scales in and out.",
+      "asChild": "Applies classes, styles, and ref to the single child (no extra wrapper).",
+      "isIn": "`true` scales in and stays mounted; `false` scales out and unmounts after the transition (unless `preserveSpace` / `keepMounted`).",
+      "scale": "Factor when out / at enter start (`1` = full size). Default `0.92`.",
+      "origin": "CSS `transform-origin` (e.g. `center`, `top`, `50% 0`). Default `center`.",
+      "preserveSpace": "On exit, keeps the node mounted and reserves the layout box. Ignored when `unmountOnExit`.",
+      "keepMounted": "After exit, hides the host with `display: none` instead of unmounting. Ignored when `unmountOnExit`.",
+      "unmountOnExit": "Unmounts immediately on exit (skips the exit scale).",
+      "initial": "`false` skips motion on the first mount. Later toggles still animate. Default `true`.",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is scale in and `exit` is scale out.",
+      "delay": "Wait before starting. Accepts `{ enter, exit }`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), timing function, or `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Snaps to the target state with no interpolation.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onScale": "Fires when the scale is active (`isIn` true).",
+      "outScale": "Fires on exit (`isIn` false), disable, or unmount.",
+      "onPhaseChange": "Phases: `idle`, `entering`, `entered`, `exiting`, `exited`.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes by part: `root` only (no surface).",
+      "style": "Inline styles for the root. Combined with `--gemst-scale-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

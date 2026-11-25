@@ -1,0 +1,32 @@
+.gem-radio-group.radio-group-branded .gem-radio {
+  --gem-radio-tone: var(--gem-palette-secondary-600);
+  --gem-radio-tone-hover: var(--gem-palette-secondary-500);
+  --gem-radio-tone-active: var(--gem-palette-secondary-700);
+}
+
+.gem-radio-group.radio-group-branded .gem-field-header__label-text {
+  color: var(--gem-palette-secondary-800);
+  font-weight: var(--gem-font-weight-bold);
+}
+
+.gem-radio.radio-option-card {
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.gem-radio.radio-option-card:has(.gem-radio__input:checked) {
+  border-color: var(--gem-radio-tone);
+  background: color-mix(in srgb, var(--gem-radio-tone) 8%, transparent);
+}
+
+.gem-radio.radio-option-card .gem-radio__label-text {
+  font-weight: var(--gem-font-weight-bold);
+}
+
+[data-theme="dark"] .gem-radio-group.radio-group-branded .gem-field-header__label-text {
+  color: var(--gem-palette-secondary-200);
+}

@@ -1,0 +1,102 @@
+.glitch-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.glitch-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.glitch-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.glitch-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-neutral-50);
+}
+
+/* The root clips the jitter and the tears, so it carries the radius. */
+.glitch-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.glitch-demo__image {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+}
+
+.glitch-demo__image--compact {
+  width: 9rem;
+}
+
+.glitch-demo__copy {
+  margin: 0;
+  padding: var(--gem-space-2) var(--gem-space-4);
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.glitch-demo__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-900);
+}
+
+.glitch-demo__card-body {
+  margin: 0;
+  color: var(--gem-palette-neutral-300);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.glitch-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.glitch-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

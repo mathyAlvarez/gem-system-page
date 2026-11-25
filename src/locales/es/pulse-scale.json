@@ -1,0 +1,210 @@
+{
+  "header": {
+    "title": "PulseScale",
+    "description": "Latido constante para llamar la atención sobre un CTA. `variant` elige el patrón, `trigger` cuándo corre y `scale` cuánto crece en el pico (si no lo pasás, lo define `intensity`). `ping` suma un anillo que se expande. Con `prefers-reduced-motion: reduce` el contenido queda quieto."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `scale` en `auto` deja que `intensity` defina el pico; `ring` en `auto` lo muestra solo con `ping`.",
+    "target": "Empezar"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variantes",
+      "description": "`heartbeat` es un doble latido (el default), `breathe` una onda suave, `pop` un golpe corto con un descanso largo (para badges y chips) y `ping` crece y emite un anillo."
+    },
+    "badge": {
+      "title": "Badge de notificación",
+      "description": "Un `pop` lento con `ring` y el color del anillo en `--gemfx-pulse-scale-ring-color`. El anillo toma el `border-radius` de la raíz, así que redondeala igual que el contenido.",
+      "texts": {
+        "label": "3 notificaciones nuevas"
+      }
+    },
+    "triggers": {
+      "title": "Hover y click",
+      "description": "Con `trigger=\"hover\"` late mientras el puntero (o el foco) está encima. Con `click`, cada clic lo prende o lo apaga. En reposo, el contenido queda en su tamaño normal.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es un ciclo completo en milisegundos, incluido el descanso entre latidos."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Si no pasás `scale`, `intensity` define el pico (`sm` 1,04, `md` 1,08, `lg` 1,14). También define cuánto se expande el anillo (`1.28`, `1.42`, `1.62`), aunque pases `scale`. Acepta un token o un número entre `0` y `1`."
+    },
+    "scale": {
+      "title": "Escala",
+      "description": "`scale` fija el factor del pico, entre `1` y `2`. Valores altos se notan mucho: guardalos para elementos chicos."
+    },
+    "ring": {
+      "title": "Anillo",
+      "description": "`ring` muestra el anillo con cualquier variante; `ring={false}` lo saca de `ping`. Es un `span` con `aria-hidden` debajo del contenido."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div` envolvente. Acá, un `Button` de gem-system con `variant=\"breathe\"` y `trigger=\"hover\"`: queda quieto hasta que le pasás el mouse o llegás con Tab.",
+      "texts": {
+        "label": "Pasá el mouse"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la pose actual. `isDisabled` detiene el latido y devuelve el contenido a su tamaño, que sigue siendo interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onPulseScale` se dispara cuando el latido arranca y `outPulseScale` cuando se detiene, con el motivo en `event.reason`. El movimiento no bloquea la interacción: el botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Oferta"
+    },
+    "styled": {
+      "label": "Sonar"
+    }
+  },
+  "apiLink": "Ver la API completa de PulseScale",
+  "api": {
+    "header": {
+      "title": "PulseScale API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `PulseScale`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante y disparador.",
+      "link": "Ver demos de PulseScale"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/pulse-scale` con su `pulse-scale.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>scale</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "El anillo tiene <code>aria-hidden</code> y <code>pointer-events: none</code>. El latido es solo <code>transform</code>: no mueve el layout y el hijo sigue recibiendo clics y foco.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el contenido queda en su tamaño normal y el anillo no aparece.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza la animación. Usalo solo si el movimiento es esencial.",
+        "autoplay": "Con <code>trigger=\"always\"</code> el latido arranca solo y no termina. WCAG 2.2.2 pide poder pausar el movimiento automático que dura más de cinco segundos: ofrecé un control que active <code>isPaused</code>, apagalo después de un tiempo con <code>isActive</code> o usá <code>hover</code>/<code>click</code>.",
+        "focus": "Con <code>trigger=\"hover\"</code> también late con el foco de teclado (<code>:focus-visible</code> en la raíz o adentro), así que se ve al navegar con Tab. Un clic de mouse que enfoca un botón no lo deja latiendo. <code>onPulseScale</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code>, el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code>, también responde a Enter y Espacio.",
+        "meaning": "El latido llama la atención pero no comunica nada: si marca algo nuevo o pendiente, decilo también con texto o un atributo ARIA (como el <code>aria-label</code> del badge de ejemplo)."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` e `isolation: isolate`.",
+        "variant": "Variante activa. Elige el `@keyframes` de la superficie.",
+        "trigger": "Disparador activo (`always` no agrega clase). Deja la superficie quieta hasta el hover/foco o el clic.",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "ringOn": "Se agrega cuando el anillo está visible.",
+        "paused": "Se agrega con `isPaused` y pausa la animación.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled` y deja la superficie quieta.",
+        "disabled": "Se agrega con `isDisabled`. Quita el cursor de puntero.",
+        "surface": "Envuelve al hijo y es la que late (`transform: scale`).",
+        "ring": "Anillo que se expande, debajo de la superficie. Toma el `border-radius` de la raíz."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`duration`, `delay`, `scale` y `ring` se escriben siempre inline en la raíz: para cambiarlas usá las props. `--gemfx-pulse-scale-ring-color` no se escribe inline, así que se puede pisar desde una clase.",
+      "items": {
+        "duration": "Un ciclo completo. Lo define `duration`; default `1400ms`.",
+        "delay": "Retraso antes de empezar. Lo define `delay`; default `0ms`.",
+        "scale": "Factor del pico. Lo define `scale` o, si falta, `intensity`; default `1.08`.",
+        "ring": "Escala final del anillo. La define `intensity`; default `1.42`.",
+        "ringColor": "Color del anillo; default `var(--gem-palette-primary-400)`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que PulseScale lee como valor por defecto.",
+      "items": {
+        "easingStandard": "Curva de `heartbeat` y `breathe`.",
+        "easingEmphasized": "Curva de `pop` y `ping`.",
+        "easingExit": "Curva del anillo al expandirse.",
+        "palette": "Color por defecto del anillo."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido late y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Patrón, escala, intensidad y anillo."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración del ciclo y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo late y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que late.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Todas las variantes, disparadores y estados aplican igual. Con el anillo visible y un elemento vacío (`img`, `input`) cae al `div`, porque el anillo no se puede montar adentro.",
+      "variant": "Patrón: `heartbeat`, `breathe`, `pop` o `ping`.",
+      "scale": "Factor del pico, limitado a `1`–`2`. Sin valor, `intensity` lo define: `1.04`, `1.08` o `1.14`.",
+      "intensity": "Define el pico (si falta `scale`) y la expansión del anillo. Token o número entre `0` y `1`.",
+      "ring": "Muestra el anillo que se expande. Por defecto solo está en `ping`.",
+      "duration": "Un ciclo completo. Los valores negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece el latido.",
+      "trigger": "`always` siempre late, `hover` mientras el puntero o el foco está encima, `click` alterna con cada clic.",
+      "isActive": "Permite el latido. En `false` lo detiene y `outPulseScale` recibe `inactive`.",
+      "isPaused": "Congela la pose actual.",
+      "isDisabled": "Detiene el latido; el hijo sigue interactivo. `outPulseScale` recibe `disabled`.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si el movimiento es esencial.",
+      "onPulseScale": "Se dispara cuando el latido arranca: al montar con `always`, al entrar el puntero con `hover` o al prender con `click`.",
+      "outPulseScale": "Se dispara cuando se detiene: al salir el puntero, al apagar con `click`, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface` y `ring`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-pulse-scale-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

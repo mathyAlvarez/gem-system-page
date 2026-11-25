@@ -1,7 +1,9 @@
 import { Button, Select, type SelectValue } from "@gem-org/gem-system";
 import { toggleTheme } from "@gem-org/gem-system/tokens";
 import { useTranslation } from "react-i18next";
-import { currentVersionId, docsVersions } from "../data/versions.ts";
+import { useLocation } from "react-router-dom";
+import { resolveProduct } from "../data/products.ts";
+import { versionsFor } from "../data/versions.ts";
 import { useGemTheme } from "../hooks/useGemTheme.ts";
 import { supportedLanguages } from "../locales/index.ts";
 import { Moon, Sun } from "./ThemeIcons.tsx";
@@ -30,23 +32,30 @@ export function LanguageSelect() {
   );
 }
 
+/** Version select for the active product zone. Hidden on the ecosystem home. */
 export function VersionSelect() {
   const { t } = useTranslation();
-  const options = docsVersions.map((version) => ({ value: version.id, label: version.label }));
+  const { pathname } = useLocation();
+  const product = resolveProduct(pathname);
+  if (!product) return null;
+
+  const { currentId, versions } = versionsFor(product);
+  const options = versions.map((version) => ({ value: version.id, label: version.label }));
 
   const handleChange = (value: SelectValue) => {
-    const target = docsVersions.find((version) => version.id === value);
-    if (!target || target.id === currentVersionId || !target.url) return;
-    const { pathname, search, hash } = window.location;
-    window.location.href = `${target.url}${pathname}${search}${hash}`;
+    const target = versions.find((version) => version.id === value);
+    if (!target || target.id === currentId || !target.url) return;
+    const { pathname: path, search, hash } = window.location;
+    window.location.href = `${target.url}${path}${search}${hash}`;
   };
 
   return (
     <Select
+      key={product}
       aria-label={t("version.label")}
       size="sm"
       options={options}
-      value={currentVersionId}
+      value={currentId}
       onChange={handleChange}
       searchable={false}
       wrapperClassName="docs-navbar__version"

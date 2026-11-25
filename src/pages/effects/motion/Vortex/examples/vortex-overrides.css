@@ -1,0 +1,16 @@
+.gemfx-vortex.vortex-galaxy {
+  --gemfx-vortex-color: var(--gem-palette-secondary-300);
+  border-radius: var(--gem-radius-md);
+}
+
+.gemfx-vortex.vortex-galaxy .gemfx-vortex__swirl {
+  mix-blend-mode: screen;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 20deg,
+    color-mix(in srgb, var(--gemfx-vortex-color) 70%, transparent) 20deg 24deg,
+    transparent 24deg 40deg,
+    color-mix(in srgb, var(--gem-palette-primary-300) 60%, transparent) 40deg 42deg
+  );
+  mask-image: radial-gradient(circle at center, #000 0%, transparent 18%, #000 60%);
+}

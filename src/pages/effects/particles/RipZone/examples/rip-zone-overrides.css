@@ -1,0 +1,30 @@
+/* `--gemfx-rip-zone-progress` is inline on the root, so children can read
+   it: the prize sharpens as the cover clears. Progress stops at the
+   threshold, so the final state comes from `--complete`. The canvas is
+   painted in JS; only its CSS properties can change (fade, shadow).
+   `-duration` only goes inline when `duration` is passed, so a class can set it. */
+.gemfx-rip-zone.rz-reveal {
+  --gemfx-rip-zone-duration: 900ms;
+}
+
+.gemfx-rip-zone.rz-reveal .rz-reveal__prize {
+  filter: blur(calc((1 - var(--gemfx-rip-zone-progress)) * 8px));
+  transform: scale(calc(0.85 + var(--gemfx-rip-zone-progress) * 0.15));
+  transition:
+    filter 200ms ease,
+    transform 200ms ease;
+}
+
+.gemfx-rip-zone.rz-reveal.gemfx-rip-zone--complete .rz-reveal__prize {
+  filter: none;
+  transform: none;
+}
+
+.gemfx-rip-zone.rz-reveal .gemfx-rip-zone__canvas {
+  transition-timing-function: var(--gemfx-easing-emphasized, ease-out);
+}
+
+.gemfx-rip-zone.rz-reveal.gemfx-rip-zone--complete .gemfx-rip-zone__canvas {
+  transform: scale(1.08);
+  transition-property: opacity, transform;
+}

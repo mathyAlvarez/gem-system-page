@@ -1,0 +1,220 @@
+{
+  "header": {
+    "title": "HoloFoil",
+    "description": "Multicolor holographic foil, like collectible foil cards: a rainbow gradient with `mix-blend-mode` that follows the pointer, plus a diffraction grain and a specular shine. `variant` sets the look (`rainbow`, `iridescent` or `sparkle`) and `trigger` when it shows. By default it appears on hover."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With `hover`, move the pointer over the card; with `always`, the foil sweeps on its own and also follows the pointer.",
+    "cardTitle": "Foil card"
+  },
+  "stories": {
+    "card": {
+      "title": "Collectible card",
+      "description": "With the defaults (`variant=\"rainbow\"`, `trigger=\"hover\"`) the foil shows when the pointer enters and the rainbow and shine follow its position. The layers sit above the content with `pointer-events: none`. The root clips (`overflow: hidden`), so it carries the `border-radius`.",
+      "texts": {
+        "title": "Hover me"
+      }
+    },
+    "image": {
+      "title": "On an image",
+      "description": "Wraps a native `img`. Move the pointer across the image to shift the rainbow.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`rainbow` is the classic foil with `color-dodge`, `iridescent` a softer oil-slick with `overlay` (the same `c1…c5` palette, lightened with white), and `sparkle` puts the diffraction grain front and center (it always shows it, even with `sparkle={false}`). Here with `trigger=\"always\"` so you can see them without hovering."
+    },
+    "blend": {
+      "title": "Blend",
+      "description": "`blend` changes the `mix-blend-mode` of the rainbow layer. Without a value, `rainbow` uses `color-dodge` and the other variants `overlay`. `color-dodge` and `screen` brighten; `overlay` and `soft-light` respect the content more."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the foil only shows while the pointer is over it. With `always` it sweeps slowly in a loop and follows the pointer when hovered.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "alwaysLabel": "Always on"
+      }
+    },
+    "tilt": {
+      "title": "With Tilt3D",
+      "description": "Combine it with `Tilt3D` (with `glare={false}` to avoid stacking two shines): the card tilts in perspective while the foil follows the pointer.",
+      "texts": {
+        "title": "Tilt it"
+      }
+    },
+    "layers": {
+      "title": "Shine and grain",
+      "description": "`shine={false}` removes the specular highlight and `sparkle={false}` the diffraction grain; the rainbow always stays."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the opacity of the rainbow (`0.32`, `0.5` or `0.72`) and the shine (`0.22`, `0.38` or `0.55`). Takes a token or a number between `0` and `1`. With `always`, the idle shine drops to 35%."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is the sweep cycle with `trigger=\"always\"`; with `hover` it isn't used. `delay` postpones the foil fade-in and the start of the sweep."
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, the effect applies to the single child without adding a `div`. The foil layers are inserted inside that child. Void elements like `img` have nowhere to hold them, so it falls back to the wrapping `div`.",
+      "texts": {
+        "title": "My own article"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the foil at its current position: with `always` it pauses the sweep where it is, and with `hover` it stops following the pointer. `isDisabled` hides the layers and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "title": "Sweep"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onHoloFoil` fires when the foil starts following the pointer (or on mount with `always`) and `outHoloFoil` when it turns off, with the reason in `event.reason`. The button still gets clicks.",
+      "texts": {
+        "body": "Hover the card to light the foil and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "gem palette"
+    },
+    "styled": {
+      "title": "Chrome"
+    }
+  },
+  "apiLink": "See the full HoloFoil API",
+  "api": {
+    "header": {
+      "title": "HoloFoil API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `HoloFoil`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, blend, trigger and option.",
+      "link": "See HoloFoil demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/holo-foil` along with its `holo-foil.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onPointerEnter</code>, <code>onPointerMove</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the foil stops following the pointer and the shine is removed. With <code>always</code> a dimmer static foil remains, centered, with no sweep or animated grain; with <code>hover</code> it doesn't show.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the tracking and the sweep. Use it only when essential.",
+        "decorative": "The foil layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks.",
+        "keyboard": "With <code>trigger=\"hover\"</code> the effect only responds to the pointer: keyboard focus doesn't activate it. Don't use it to convey information.",
+        "touch": "<code>disabledOnTouch</code> (<code>true</code> by default) ignores touch pointers, so dragging to scroll doesn't move the foil. Mouse and pen keep working.",
+        "contrast": "<code>color-dodge</code> and <code>screen</code> brighten a lot: over light text they can lower contrast. Try <code>overlay</code> or a lower <code>intensity</code>."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex`, `isolation: isolate` and `overflow: hidden`.",
+        "variant": "Active variant. `iridescent` swaps the gradient and `sparkle` raises the grain to full opacity.",
+        "trigger": "Active trigger, while the effect is enabled.",
+        "tracking": "Added while following the pointer. Shortens the transitions to `80ms` and stops the `always` sweep.",
+        "paused": "Added with `isPaused`. Pauses the sweep and the grain (`animation-play-state: paused`); it also stops reading the pointer.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the layers.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "Wraps the child (`z-index: 1`).",
+        "layer": "Decorative layer above the content (`aria-hidden`, `z-index: 2`, `pointer-events: none`).",
+        "foil": "Rainbow gradient with `mix-blend-mode`. Its position follows `--gemfx-holofoil-x/y`.",
+        "sparkle": "Diffraction grain with `overlay`. Exists with `sparkle` or with `variant=\"sparkle\"`.",
+        "shine": "Specular highlight that follows the pointer. Only exists with `shine`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Position, strength, shine, blend and timing are written inline on every render, so you can only change them through the props. The `c1…c5` palette isn't inline: override it from a class.",
+      "items": {
+        "palette": "The five rainbow colors (pink, sky blue, violet, aqua and yellow). `rainbow` uses them as is; `iridescent` mixes them with 15–25% white, ordered cool → warm.",
+        "x": "Position of the rainbow and the shine, as a percentage. Follows the pointer; `50%` at rest.",
+        "strength": "Rainbow opacity (and grain, × 0.75). `0` at rest with `hover`.",
+        "shine": "Specular highlight opacity.",
+        "blend": "Rainbow `mix-blend-mode`. Set by `blend` or the variant.",
+        "duration": "Sweep cycle with `always`. Set by `duration`; default `4200ms`. The grain uses 55% of it.",
+        "delay": "Delay of the fade-in and the sweep. Set by `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables HoloFoil reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "easingStandard": "Curve of the opacity transitions and the sweep."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content gets the foil and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Look, blend, intensity and layers." },
+      "timing": { "title": "Timing", "description": "Sweep cycle and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows, how it pauses or turns off, and which pointers it follows."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that gets the foil: a card, an image or a panel.",
+      "asChild": "Applies the effect to the single child, with no wrapping `div`. With void elements (`img`, `input`) it falls back to the wrapping `div`.",
+      "variant": "`rainbow` classic foil, `iridescent` soft oil-slick, `sparkle` with the diffraction grain front and center.",
+      "blend": "Rainbow `mix-blend-mode`. Without a value: `color-dodge` on `rainbow`, `overlay` on the others.",
+      "intensity": "Opacity of the rainbow and the shine. Token or number between `0` and `1`.",
+      "shine": "Shows the specular highlight that follows the pointer.",
+      "sparkle": "Shows the diffraction grain. `variant=\"sparkle\"` always shows it.",
+      "duration": "Sweep cycle with `trigger=\"always\"`. Negatives become `0`.",
+      "delay": "Delay before the foil shows and the sweep starts.",
+      "trigger": "`hover` shows while the pointer is over it, `always` sweeps in a loop and also follows the pointer.",
+      "isActive": "Shows the layers. When `false` it hides them and `outHoloFoil` gets `inactive`.",
+      "isPaused": "Freezes the current foil position: pauses the `always` sweep and stops following the pointer.",
+      "isDisabled": "Hides the layers; the child stays interactive. `outHoloFoil` gets `disabled`.",
+      "ignoreReducedMotion": "Follows the pointer and sweeps even if the user prefers reduced motion. Only when essential.",
+      "disabledOnTouch": "Ignores touch pointers; mouse and pen keep working.",
+      "onHoloFoil": "Fires when the foil turns on: when it starts following the pointer or on mount with `always`.",
+      "outHoloFoil": "Fires when it turns off: when the pointer leaves, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `foil`, `sparkle` and `shine`.",
+      "style": "Root inline styles. Merged with the `--gemfx-holofoil-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

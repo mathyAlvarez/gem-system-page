@@ -1,0 +1,223 @@
+{
+  "header": {
+    "title": "GradientMesh",
+    "description": "Malla líquida de manchas de color difuminadas detrás del hijo. Agrega una capa decorativa (`pointer-events: none`) con tres manchas que se desplazan sobre un fondo base oscuro, y recorta todo al radio de la raíz. `variant` define el movimiento: `liquid` deriva suave, `aurora` hace barridos anchos y `static` la deja quieta."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `static`, `trigger` no cambia nada: la malla queda siempre visible.",
+    "label": "Mesh"
+  },
+  "stories": {
+    "base": {
+      "title": "Malla básica",
+      "description": "Con los valores por defecto (`variant=\"liquid\"`, `blur={40}`, `duration={9000}`) tres manchas en `primary-400`, `secondary-400` y `tertiary-400` derivan sobre `neutral-950`. La malla ocupa toda la raíz: el tamaño y el radio van en la raíz.",
+      "texts": {
+        "label": "Mesh"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`liquid` mueve y escala manchas redondas. `aurora` usa manchas más anchas y bajas, con barridos horizontales. `static` congela las manchas en su posición inicial."
+    },
+    "hero": {
+      "title": "Fondo de un hero",
+      "description": "El uso típico: un fondo vivo para un bloque destacado. Acá con `aurora`, un ciclo lento (`duration={14000}`), `intensity=\"sm\"` y más `blur`, para que el texto siga siendo legible. El contenido va en una superficie con `z-index: 1`, así que el botón sigue recibiendo clics.",
+      "texts": {
+        "kicker": "Gemffects",
+        "title": "Efectos que se sienten vivos",
+        "body": "Tokens, accesibilidad y reduced motion incluidos.",
+        "action": "Empezar"
+      }
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`from`, `via` y `to` son los colores de las tres manchas. Por defecto: `primary-400`, `secondary-400` y `tertiary-400` de gem-system. Mejor usar tokens."
+    },
+    "blur": {
+      "title": "Desenfoque",
+      "description": "`blur` es cuánto se difuminan las manchas: un número son píxeles y también acepta cualquier longitud CSS. Con poco blur se ven los bordes de cada mancha."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` la malla está oculta y aparece al pasar el puntero o al enfocar con el teclado algo dentro. Con `click`, cada clic la muestra u oculta. La animación arranca de cero cada vez que se muestra.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` es la opacidad de las manchas: `intensidad × 0.9 + 15%`, o sea `sm` ≈ 47%, `md` ≈ 65% y `lg` ≈ 87%; recién `1` llega al `100%`. Acepta un token o un número de `0` a `1`, y los tokens leen `--gemfx-intensity-*` del host. Acá con `static`, para comparar sin movimiento."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es un ciclo completo de deriva, en milisegundos. Las tres manchas comparten el ciclo pero arrancan desfasadas. `delay` retrasa el inicio."
+    },
+    "asChild": {
+      "title": "Sobre otro elemento (asChild)",
+      "description": "Con `asChild`, la malla se aplica directo sobre el hijo, sin sumar un `div`: la raíz pasa a ser el propio botón y la capa se inyecta adentro con `z-index: -1`, debajo de todo su contenido (incluido el texto suelto). El fondo del hijo se pone transparente para que se vea la malla. Con el `Button` de gem-system la capa ocupa todo el botón, aunque envuelva sus hijos en `.gem-button__label`, y el texto pasa a blanco (`--gemfx-gradient-mesh-ink`) en los dos temas.",
+      "texts": {
+        "label": "Guardar"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela las manchas donde están. `isDisabled` oculta la malla (queda solo el contenido) y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGradientMesh` se dispara cuando la malla se enciende (al entrar el puntero o el foco de teclado con `hover`, al hacer clic con `click` o al montar con `always`) y `outGradientMesh` cuando se apaga, con el motivo en `event.reason`. Con `static` se comportan como con `always`. El botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por el bloque (o llegá al botón con Tab) para encender la malla y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Pastel"
+    },
+    "styled": {
+      "label": "Sunset"
+    }
+  },
+  "apiLink": "Ver la API completa de GradientMesh",
+  "api": {
+    "header": {
+      "title": "GradientMesh API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `GradientMesh`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de GradientMesh"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/gradient-mesh` con su `gradient-mesh.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. Solo se escriben inline (después de <code>style</code>) las variables de las props que pasás. El fondo de la raíz se pone transparente desde la clase, no inline: la capa pinta el fondo base. El layout base (<code>display</code>, <code>position</code>, <code>overflow</code>, <code>color</code>) va en <code>:where()</code>, así que cualquier clase del host lo pisa."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> las manchas se quedan quietas en su posición inicial; la malla se sigue viendo.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el movimiento. Usalo solo si es esencial.",
+        "decorative": "La capa tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia y no bloquea clics.",
+        "focus": "Con <code>trigger=\"hover\"</code> la malla también aparece al enfocar con el teclado el host o algo dentro (<code>:focus-visible</code>), y los eventos se disparan igual que con el puntero. Con <code>click</code> la raíz no es enfocable: solo se enciende con teclado si el clic llega desde un control de adentro (Enter o Espacio sobre un botón).",
+        "contrast": "El fondo base es <code>neutral-950</code> en los dos temas y las manchas cambian de lugar todo el tiempo. Usá texto claro, revisá el contraste contra el color más claro de la malla y bajá <code>intensity</code> si el texto es largo. Sobre un <code>Button</code> de gem-system el texto pasa a <code>--gemfx-gradient-mesh-ink</code> (blanco)."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `isolation: isolate` y fondo transparente, para que se vea la capa. `inline-flex`, `position: relative`, `overflow: hidden` y `color: inherit` van en `:where()` (especificidad 0), así una clase del host los pisa. Sobre `.gem-button`, cambia el color del texto por `--gemfx-gradient-mesh-ink`.",
+        "variant": "Variante activa. `aurora` cambia la forma y la animación de las manchas; `static` quita la animación.",
+        "trigger": "Disparador activo, solo con `liquid` y `aurora`. Pone `cursor: pointer` y oculta la capa mientras no esté encendida.",
+        "on": "Se agrega mientras la malla está encendida con `click`.",
+        "paused": "Se agrega con `isPaused`. Pausa las manchas con `animation-play-state`.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta la capa y quita la animación.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "layer": "Capa decorativa (`position: absolute`, `inset: 0`, `aria-hidden`) con el fondo base. Hereda el radio de la raíz. Con `asChild` baja a `z-index: -1`.",
+        "blob": "Cada mancha: `90%` del tamaño de la raíz, redonda, con `filter: blur()` y su propia animación.",
+        "surface": "Envuelve al hijo (`z-index: 1`). Con `asChild`, la clase va en el propio hijo: limpia su fondo y baja la capa debajo de todo el contenido."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Solo se escriben inline las variables de las props que pasás (`from`, `via`, `to`, `blur`, `intensity`, `duration`, `delay`). `--gemfx-gradient-mesh-base` y `-ink` nunca. Todas las demás, y esas mismas si no pasás la prop, se pueden pisar desde una clase.",
+      "items": {
+        "colors": "Colores de las tres manchas. Los definen `from`, `via` y `to`.",
+        "base": "Fondo de la capa, detrás de las manchas. Default `neutral-950` en los dos temas.",
+        "ink": "Color del texto sobre un `.gem-button`: reemplaza `--gem-btn-fg` y `--gem-btn-fg-hover`, que estaban pensados para el fondo que la malla tapa. Default `neutral-0` (respaldo `#ffffff`).",
+        "blur": "Desenfoque de las manchas. Lo define `blur`; default `40px`.",
+        "intensity": "Intensidad base. La define `intensity`; default `var(--gemfx-intensity-md, 55%)`. La opacidad de cada mancha es `intensidad × 0.9 + 15%`.",
+        "duration": "Ciclo de deriva. Lo define `duration`; default `9000ms`.",
+        "delay": "Retraso del inicio. Lo define `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que GradientMesh lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "palette": "Colores por defecto de las manchas (con respaldos neón, magenta y ámbar).",
+        "base": "Fondo base de la capa (respaldo `#111316`).",
+        "ink": "Color por defecto de `--gemfx-gradient-mesh-ink` (respaldo `#ffffff`).",
+        "intensity": "Valores de `sm`, `md` y `lg` (`35%`, `55%` y `80%`). El default usa `md` y la prop con un token escribe `var(--gemfx-intensity-*)`, así que redefinirlos cambia la opacidad de las manchas.",
+        "easingStandard": "Curva de la deriva."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido va delante de la malla y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Movimiento, colores, desenfoque y opacidad."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo de la deriva y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve y se mueve, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`. Con `static` se comportan como con `always`: `onGradientMesh` se dispara al montar."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido delante de la malla.",
+      "asChild": "Aplica la malla sobre el único hijo, sin `div` envolvente. Todo el contenido del hijo, incluido el texto suelto, queda delante de la malla. Funciona con el `Button` de gem-system.",
+      "variant": "`liquid` deriva suave, `aurora` hace barridos anchos y `static` la deja quieta.",
+      "from": "Color de la primera mancha. Mejor un token; default `primary-400`.",
+      "via": "Color de la segunda mancha. Default `secondary-400`.",
+      "to": "Color de la tercera mancha. Default `tertiary-400`.",
+      "blur": "Desenfoque de las manchas. Un número son píxeles.",
+      "intensity": "Opacidad de las manchas: `sm` ≈ 47%, `md` ≈ 65%, `lg` ≈ 87%, o un número de `0` a `1` (`1` es `100%`).",
+      "duration": "Ciclo completo de la deriva. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece el movimiento.",
+      "trigger": "`always` la muestra siempre, `hover` al pasar el puntero o enfocar con el teclado algo dentro y `click` la muestra y oculta con cada clic. `static` lo ignora.",
+      "isActive": "Muestra la malla. En `false` la oculta y `outGradientMesh` recibe `inactive`.",
+      "isPaused": "Congela la deriva.",
+      "isDisabled": "Oculta la malla; el hijo queda interactivo. `outGradientMesh` recibe `disabled`.",
+      "ignoreReducedMotion": "Mantiene el movimiento aunque el usuario prefiera menos. Solo si es esencial.",
+      "onGradientMesh": "Se dispara cuando la malla se enciende: al montar con `always` (o con `static`), al entrar el puntero o el foco de teclado con `hover` o al hacer clic con `click`.",
+      "outGradientMesh": "Se dispara cuando se apaga: al salir el puntero o el foco, al volver a hacer clic, al desactivarla o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `blob` (va en las tres manchas).",
+      "style": "Estilos inline de la raíz. Las variables de las props que pasás se escriben después.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

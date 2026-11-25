@@ -1,0 +1,130 @@
+.foil-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.foil-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.foil-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.foil-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-neutral-50);
+}
+
+/* The root clips the foil layers, so it carries the radius. */
+.foil-demo__host {
+  border-radius: var(--gem-radius-lg);
+}
+
+.foil-demo__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--gem-space-1);
+  width: 11rem;
+  aspect-ratio: 5 / 7;
+  padding: var(--gem-space-4);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-lg);
+  background: linear-gradient(
+    160deg,
+    var(--gem-palette-neutral-800),
+    var(--gem-palette-neutral-950)
+  );
+  color: var(--gem-palette-neutral-50);
+  user-select: none;
+}
+
+.foil-demo__card--compact {
+  width: 8.5rem;
+}
+
+.foil-demo__kicker {
+  margin: 0;
+  color: var(--gem-palette-neutral-400);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.foil-demo__title {
+  margin: 0;
+  font-size: var(--gem-font-size-lg);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.foil-demo__image {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+}
+
+.foil-demo__image--compact {
+  width: 9rem;
+}
+
+.foil-demo__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--gem-space-5);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-900);
+}
+
+.foil-demo__body {
+  margin: 0;
+  color: var(--gem-palette-neutral-300);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.foil-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.foil-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

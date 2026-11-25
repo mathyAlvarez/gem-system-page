@@ -285,12 +285,27 @@
       "description": "Descripción"
     },
     "groups": {
-      "data": { "title": "Datos y contenido", "description": "Filas, columnas y contenido alrededor de la tabla." },
+      "data": {
+        "title": "Datos y contenido",
+        "description": "Filas, columnas y contenido alrededor de la tabla."
+      },
       "sorting": { "title": "Orden", "description": "Orden por columnas." },
-      "selection": { "title": "Selección", "description": "Columna de checkboxes y selección de filas." },
-      "expand": { "title": "Filas expandibles", "description": "Panel de detalle debajo de cada fila." },
-      "layout": { "title": "Apariencia y scroll", "description": "Densidad, bordes, encabezado fijo y virtualización." },
-      "meta": { "title": "Meta de columna", "description": "Opciones dentro de `meta` en cada definición de columna." },
+      "selection": {
+        "title": "Selección",
+        "description": "Columna de checkboxes y selección de filas."
+      },
+      "expand": {
+        "title": "Filas expandibles",
+        "description": "Panel de detalle debajo de cada fila."
+      },
+      "layout": {
+        "title": "Apariencia y scroll",
+        "description": "Densidad, bordes, encabezado fijo y virtualización."
+      },
+      "meta": {
+        "title": "Meta de columna",
+        "description": "Opciones dentro de `meta` en cada definición de columna."
+      },
       "helpers": { "title": "Helpers", "description": "Funciones y constantes exportadas." }
     },
     "items": {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { Button, Typography } from "@gem-org/gem-system";
 import { useTranslation } from "react-i18next";
 import { HomePageHero } from "./HomePageHero.tsx";
@@ -26,7 +26,7 @@ export function HomePage() {
         <Typography variant="bodySm" className="docs-page__meta">
           {t("footer.brands")}
         </Typography>
-        <Link to="/getting-started">
+        <Link to="/system/getting-started">
           <Button variant="link" size="sm">
             {t("footer.cta")}
           </Button>

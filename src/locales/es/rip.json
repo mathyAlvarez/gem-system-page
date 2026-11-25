@@ -1,0 +1,240 @@
+{
+  "header": {
+    "title": "Rip",
+    "description": "Rasgar o rayar un velo que tapa al hijo. El velo cubre todo el contenido y cada corte abre un hueco con una línea de luz, con restos (`particle`) que saltan del corte. `variant` define el corte (`gouge`, `tear`, `slash`, `claw`) y `trigger` cómo se hace (`drag`, `click` o `always`). Acá el efecto es el control: la raíz recibe el gesto. Usa la capa de Particles para los restos, así que necesita `particles.css`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y rayá o hacé clic en la tarjeta. `lines` en `auto` usa `1` (o `3` con `claw`).",
+    "label": "Rayame"
+  },
+  "stories": {
+    "base": {
+      "title": "Rayado básico",
+      "description": "Con los valores por defecto (`variant=\"gouge\"`, `trigger=\"drag\"`, `particle=\"spark\"`) el velo tapa la tarjeta y al arrastrar se abre un surco de `16` px con una línea de luz y chispas. Cada gesto nuevo reemplaza al anterior, y en trazos muy largos se pierden los primeros puntos (máximo `240`). La raíz tiene `overflow: visible` para que los restos salgan del borde, y su radio redondea el velo y las solapas. Acá la raíz tiene `tabIndex={0}`: enfocala con Tab y apretá Enter o Espacio para lanzar un corte completo por el centro.",
+      "texts": {
+        "kicker": "Sorpresa",
+        "title": "-30%"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`gouge` es un surco con brillo. `tear` rasga el velo: al terminar un corte largo (más del `28%` del lado corto) el velo se parte en dos solapas que se separan. `slash` es un corte recto y fino. `claw` son tres surcos paralelos. Acá usan `trigger=\"click\"`: cada clic cruza la tarjeta pasando por el punto que tocaste, y el hueco del velo se abre al mismo ritmo que se dibuja la línea."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "El velo tapa cualquier contenido, como una imagen. Arrastrá un corte largo y soltá: con `tear` el velo se abre y deja ver la imagen.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`drag` corta mientras arrastrás. `click` lanza un corte que cruza toda la tarjeta desde el punto del clic. `always` repite un corte solo, cada `delay + duration × 2 + 280` ms. Con `drag` y `click`, Enter o Espacio sobre la raíz enfocada (o sobre un botón de adentro) lanzan un corte completo por el centro: el teclado no tiene arrastre."
+    },
+    "lines": {
+      "title": "Líneas",
+      "description": "`lines` suma cortes paralelos (de `1` a `8`). Por defecto es `1`, salvo con `claw`, que usa `3`. Las chispas se reparten entre las líneas."
+    },
+    "gap": {
+      "title": "Separación",
+      "description": "`gap` es la distancia entre cortes paralelos, en píxeles. Por defecto `10`. Se ignora con una sola línea."
+    },
+    "particles": {
+      "title": "Restos",
+      "description": "`particle` define qué salta del corte: `spark` son trazos de luz, `star` destellos, `confetti` papelitos con más giro y caída, y `none` solo el corte. Los eventos no dependen de los restos: con `none`, `onRip` y `outRip` se disparan igual con cada corte."
+    },
+    "customParticle": {
+      "title": "Restos personalizados",
+      "description": "`renderParticle` dibuja cada resto: devolvé solo el visual y la librería sigue posicionando y animando el contenedor. Recibe la partícula, con su `color`, tamaño e `id`."
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`color` es la luz del corte (por defecto blanco) y, si no pasás `colors`, también tiñe los restos. `veilColor` es el color del velo. `colors` es la paleta de los restos. Mejor usar tokens."
+    },
+    "width": {
+      "title": "Ancho del corte",
+      "description": "`width` es el ancho del hueco en el velo, en píxeles (mínimo `2`). La línea de luz mide el `28%` de ese ancho (`20%` con `claw`). Sin `width`, `intensity` lo define: `10`, `16` o `24`."
+    },
+    "duration": {
+      "title": "Duración y retraso",
+      "description": "`duration` es lo que tarda en dibujarse el corte con `click` y `always`, y lo que vuelan los restos. `delay` retrasa el corte automático; no afecta a `drag`."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Sin `width` ni `count`, `intensity` define el ancho del corte (`10`, `16` o `24` px), las chispas por punto (`3`, `5` u `8`) y cuánto vuelan (`22`, `34` o `48` px). También acepta un número de `0` a `1`. Arrastrá en cada tarjeta."
+    },
+    "asChild": {
+      "title": "Sobre un elemento (asChild)",
+      "description": "Con `asChild`, el velo se monta directo sobre el hijo (acá un `article`), sin sumar un `div`. El hijo recibe `position: relative` desde la clase de superficie, y el velo y las solapas toman su radio. Con un elemento vacío como `<img>` o `<input>`, que no puede tener hijos, el efecto vuelve al `div` envolvente.",
+      "texts": {
+        "kicker": "Premio",
+        "title": "Ganaste"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "Con `trigger=\"always\"`, `isPaused` congela todo donde está: el dibujo del corte, el hueco del velo, las solapas, los restos y los temporizadores pendientes. Al reanudar sigue desde ese punto. `isDisabled` corta el efecto y oculta el velo, así que el hijo queda visible e interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onRip` se dispara cuando empieza un corte (al presionar con `drag`, con cada corte de `click` o del teclado, o al arrancar con `always`) y `outRip` cuando termina el gesto o el corte y caen los últimos restos, con el motivo en `event.reason` (`drag` se informa como `hold`). Acá el velo es semitransparente para que se vea el botón. El arrastre no captura el puntero, así que el botón recibe su clic; si lo activás con el teclado, también lanza un corte por el centro.",
+      "texts": {
+        "body": "Arrastrá sobre la tarjeta para rasgar el velo, o probá el botón con el mouse o el teclado.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Zarpazo"
+    },
+    "styled": {
+      "label": "Escarcha"
+    }
+  },
+  "apiLink": "Ver la API completa de Rip",
+  "api": {
+    "header": {
+      "title": "Rip API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Rip`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Rip"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/rip` con `particles.css` (los restos) y `rip.css` (el velo y el corte), o desde la raíz del paquete si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onPointerDown</code>, <code>onClick</code> y <code>onKeyDown</code> se llaman antes que la lógica interna del efecto. <code>ref</code> se combina con la ref interna que mide la raíz. Las variables <code>--gemfx-rip-*</code> solo se escriben inline si pasás la prop que las define, y en ese caso van después de <code>style</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "control": "El efecto es el control: la raíz recibe el gesto y pone <code>cursor: crosshair</code>, <code>user-select: none</code> y <code>touch-action: none</code> con <code>drag</code>. El arrastre se sigue con listeners en <code>window</code>, sin capturar el puntero, así que los botones de adentro reciben su <code>click</code>.",
+        "hidden": "El velo es decorativo (<code>aria-hidden</code>): tapa el contenido a la vista, pero un lector de pantalla lo lee igual. No lo uses para ocultar información sensible.",
+        "keyboard": "Con <code>drag</code> y <code>click</code>, Enter o Espacio lanzan un corte completo por el centro: sobre la raíz si es enfocable (con <code>tabIndex</code> o <code>asChild</code> sobre un control) o al activar un botón de adentro. Sin un elemento enfocable, el teclado no llega al efecto.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> no hay restos ni transiciones: el corte y el hueco aparecen directo. Con <code>always</code> se muestra un único corte fijo. Los eventos se disparan igual.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el movimiento. Usalo solo si es esencial.",
+        "touch": "Con <code>drag</code>, en táctil no se puede hacer scroll arrancando desde el efecto. <code>disabledOnTouch</code> ignora los toques y devuelve <code>touch-action: auto</code>; mouse y lápiz siguen funcionando."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `inline-flex`, `position: relative`, `isolation: isolate` y `overflow: visible`. Define los valores por defecto de las variables.",
+        "variant": "Variante activa. `claw` afina la línea de luz (`20%` del ancho).",
+        "trigger": "Disparador activo. No se agrega con `isDisabled` ni `isActive={false}`. `drag` pone `cursor: crosshair` y bloquea selección y scroll táctil.",
+        "holding": "Se agrega mientras arrastrás un corte.",
+        "open": "Se agrega cuando `tear` abrió las solapas.",
+        "paused": "Se agrega con `isPaused`. Pausa los restos; la línea, el hueco y las solapas se congelan desde JS en su valor actual.",
+        "inactive": "Se agrega con `isDisabled` o `isActive={false}`. Oculta la capa entera (velo, línea y restos) con `display: none`.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "touchDisabled": "Se agrega con `disabledOnTouch`. Devuelve `touch-action: auto`.",
+        "surface": "Envuelve al hijo (`z-index: 0`). Con `asChild`, la clase va en el propio hijo.",
+        "layer": "Capa del efecto (`position: absolute`, `inset: 0`, `z-index: 1`, `pointer-events: none`, `aria-hidden`). Hereda el radio de la raíz.",
+        "svg": "SVG con el velo y las líneas. `overflow: hidden` y `border-radius: inherit` (de la capa).",
+        "veil": "Rectángulo del velo (`fill: var(--gemfx-rip-veil)`), recortado por una máscara con los cortes. Se quita cuando `tear` abre.",
+        "trail": "Línea de luz de cada corte, con brillo (`feGaussianBlur`) y transición de `stroke-dashoffset`.",
+        "cut": "Trazo de cada corte dentro de la máscara del velo. Tiene la misma transición que la línea, así que el hueco se abre a la par del dibujo.",
+        "flap": "Las dos solapas de `tear` (`background: var(--gemfx-rip-veil)`, `border-radius: inherit`). Se desplazan `18px` y giran `5deg` en sentidos opuestos, con sombra del color del corte.",
+        "spark": "Cada resto, dentro de la capa de Particles (`--rip`, curva de salida). `classNames.spark` va en cada uno."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Los valores por defecto están en `.gemfx-rip`. Cada una se escribe inline en la raíz solo si pasás su prop; si no, se pueden redefinir con una clase. Las de las solapas van inline en cada solapa.",
+      "items": {
+        "color": "Luz del corte. La define `color`; default blanco.",
+        "veil": "Color del velo y de las solapas. La define `veilColor`; default una mezcla de `neutral-950` (78%) y `primary-800`.",
+        "stroke": "Ancho del corte en píxeles; default `16px`. Se escribe inline si pasás `width` o `intensity`. La línea de luz usa el `28%` (o `20%`).",
+        "timing": "Duración y retraso de la transición de la línea y del hueco; la duración también la usan las solapas. Se escriben inline si pasás `duration` o `delay`.",
+        "flap": "Desplazamiento y giro de cada solapa al abrir."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Rip lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "color": "Luz del corte (respaldo `#ffffff`).",
+        "veil": "Mezcla del velo (respaldos `#111316` y `#085246`).",
+        "spark": "Paleta por defecto de `spark` cuando no pasás `color` ni `colors`. `star` y `confetti` usan las de Particles.",
+        "easing": "Curvas de la línea y las solapas (respaldos `cubic-bezier(0.2, 0, 0, 1)` y `cubic-bezier(0.4, 0, 1, 1)`).",
+        "durationSlow": "Valor por defecto de `--gemfx-rip-duration` (respaldo `700ms`). Si pasás `duration`, lo pisa el valor inline."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido queda bajo el velo y dónde se monta el efecto."
+      },
+      "appearance": { "title": "Apariencia", "description": "Corte, restos, colores y tamaño." },
+      "timing": { "title": "Tiempo", "description": "Duración y retraso, en milisegundos." },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cómo se corta, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `hold` (con `drag`), `click`, `always`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido bajo el velo.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos como `img` vuelve al `div`.",
+      "variant": "`gouge` es un surco con brillo, `tear` rasga y abre el velo en dos solapas, `slash` un corte recto y `claw` surcos paralelos.",
+      "particle": "Restos del corte: `spark`, `star`, `confetti` o `none`.",
+      "renderParticle": "Dibuja cada resto. La librería sigue posicionando y animando el contenedor.",
+      "color": "Luz del corte; default blanco. Sin `colors`, también tiñe los restos.",
+      "colors": "Paleta de los restos. Mejor tokens.",
+      "veilColor": "Color del velo antes de cortarlo.",
+      "width": "Ancho del corte en píxeles (mínimo `2`). Tiene prioridad sobre `intensity`.",
+      "count": "Chispas por punto del corte (de `1` a `12`), repartidas entre las líneas. Tiene prioridad sobre `intensity`.",
+      "lines": "Cortes paralelos, de `1` a `8`. `claw` usa `3` si no lo pasás.",
+      "gap": "Distancia entre cortes paralelos, en píxeles.",
+      "intensity": "Sin `width` ni `count`: `10` / `16` / `24` px de ancho y `3` / `5` / `8` chispas.",
+      "duration": "Lo que tarda el corte automático en dibujarse y lo que vuelan los restos.",
+      "delay": "Retraso antes del corte con `click`, teclado y `always`.",
+      "trigger": "`drag` corta mientras arrastrás, `click` lanza un corte desde el clic y `always` lo repite solo. Con `drag` y `click`, Enter o Espacio lanzan un corte por el centro.",
+      "isActive": "Permite cortar. En `false` borra el corte y oculta el velo.",
+      "isPaused": "Congela el corte, el hueco, las solapas, los restos y los temporizadores; ignora gestos nuevos.",
+      "isDisabled": "No deja cortar, borra el corte y oculta el velo; el hijo queda visible e interactivo.",
+      "ignoreReducedMotion": "Mantiene restos y transiciones aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "onRip": "Se dispara cuando empieza un corte: al presionar con `drag`, con cada corte de `click` o del teclado, o al arrancar con `always`. No depende de los restos.",
+      "outRip": "Se dispara cuando termina el gesto o el corte (`delay + duration`) y caen los últimos restos, o al desactivarlo o desmontarlo.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `veil`, `trail`, `flap` y `spark`.",
+      "style": "Estilos inline de la raíz. Las variables de las props que pases se escriben después.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

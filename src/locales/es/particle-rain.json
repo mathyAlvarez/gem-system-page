@@ -1,0 +1,227 @@
+{
+  "header": {
+    "title": "Particle Rain",
+    "description": "Lluvia de confeti, chispas, estrellas o luces sobre el hijo. Emite olas de partículas desde el borde superior, en una capa decorativa (`pointer-events: none`) recortada al tamaño de la raíz. `trigger` define cuándo llueve (`always`, `hover`, `click` o `hold`), `variant` el aspecto y `span` cuánto dura la emisión. Usa la capa de Particles, así que necesita `particles.css`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `click` y `hold`, interactuá con el recuadro. `span` en `auto` emite sin límite (o `1400` ms con `click`).",
+    "label": "Fiesta"
+  },
+  "stories": {
+    "base": {
+      "title": "Lluvia básica",
+      "description": "Con los valores por defecto (`trigger=\"always\"`, `variant=\"confetti\"`, `intensity=\"md\"`) cae una ola de `6` papelitos cada `110` ms y cada uno tarda `1800` ms. La raíz recorta con `overflow: hidden`, así que el tamaño, el radio y el fondo van en la raíz. Las paletas por defecto son claras: sobre fondos claros conviene pasar `colors`.",
+      "texts": {
+        "label": "Fiesta"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`confetti` son papelitos que giran, `spark` trazos finos con brillo, `star` destellos de cuatro puntas y `light` esferas que brillan, crecen y se apagan. `mixed` elige una forma al azar para cada partícula, con la paleta de `confetti`."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "La lluvia se superpone a cualquier contenido. La capa tiene `aria-hidden` y `pointer-events: none`, así que no interfiere con el texto alternativo ni con los clics. El radio de la raíz recorta la imagen y las partículas.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` llueve mientras el puntero está encima o la raíz tiene el foco de teclado. Con `click`, cada clic (o Enter o Espacio) lanza una lluvia de `1400` ms (`span`) y otro clic la reinicia. Con `hold` llueve mientras mantenés presionado el puntero o la tecla; el puntero no se captura, así que los hijos reciben su clic, y la raíz pone `touch-action: none` para que en táctil no haga scroll. Acá cada recuadro tiene `tabIndex={0}` para que puedas probarlos con Tab. Al cortar, las partículas que ya cayeron terminan su recorrido.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic",
+        "holdLabel": "Mantené"
+      }
+    },
+    "span": {
+      "title": "Duración de la emisión",
+      "description": "`span` es cuánto dura la emisión desde que arranca, en milisegundos. Con `click` vale `1400` si no lo pasás; con `always`, `hover` y `hold` emite sin límite hasta que se apaga. No confundir con `duration`, que es lo que tarda en caer cada partícula."
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`colors` recibe una paleta y las partículas toman sus colores en orden. `color` es un solo color y se usa si no pasás `colors`. Sin ninguno, cada variante usa su paleta por defecto. Mejor usar tokens."
+    },
+    "count": {
+      "title": "Cantidad",
+      "description": "`count` fija las partículas por ola (de `1` a `24`) y tiene prioridad sobre `intensity`. Como hay una ola cada `interval` ms, la densidad depende de los dos. El tope de partículas vivas escala con `count`, así que la lluvia mantiene un flujo parejo."
+    },
+    "spread": {
+      "title": "Deriva",
+      "description": "`spread` es cuánto se desvía cada partícula hacia los costados mientras cae, en píxeles (al azar, hacia la izquierda o la derecha). Con `0` caen en línea recta. Sin `spread`, `intensity` la define: `18`, `36` o `56`."
+    },
+    "duration": {
+      "title": "Duración de la caída",
+      "description": "`duration` es lo que tarda cada partícula en cruzar la raíz, en milisegundos. Más alto es una lluvia más lenta. Las partículas se van desvaneciendo mientras caen."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Sin `count` ni `spread`, `intensity` define los dos: `3`, `6` o `10` partículas por ola con una deriva de `18`, `36` o `56` px. También acepta un número de `0` a `1`. El tope de partículas vivas se calcula para el flujo estable (`ceil((duration + 210) / interval + 1) × count`: `60`, `120` o `200` con los valores por defecto), así que cada nivel se ve más denso. `maxParticles` lo fija a mano, como en el último recuadro; nunca pasa de `360`."
+    },
+    "asChild": {
+      "title": "Sobre un botón (asChild)",
+      "description": "Con `asChild`, la lluvia se aplica directo sobre el `Button` de gem-system, sin sumar un `div`. Acá usa `trigger=\"hover\"` y `variant=\"light\"`, así que también llueve al enfocar el botón con Tab. El botón necesita tamaño suficiente para que se vea. Con un elemento vacío como `<img>` o `<input>`, que no puede tener hijos, el efecto vuelve al `div` envolvente.",
+      "texts": {
+        "label": "Pasá el mouse"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela las partículas en pantalla y frena la emisión; los temporizadores que las borran y el de `span` también se pausan, así que siguen donde están hasta que reanudás. `isDisabled` corta la emisión (las que ya cayeron terminan) y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onParticleRain` se dispara cuando arranca la emisión y `outParticleRain` cuando la emisión se corta y terminan las últimas partículas, con el motivo en `event.reason`. Acá usa `trigger=\"click\"`: el botón de adentro sigue recibiendo su clic y además lanza la lluvia, porque el `pointerdown` sube hasta la raíz. Activarlo con Enter o Espacio también la lanza.",
+      "texts": {
+        "body": "Hacé clic en el botón (o activalo con el teclado): suma al contador y lanza la lluvia.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Nieve"
+    },
+    "styled": {
+      "label": "Lluvia"
+    }
+  },
+  "apiLink": "Ver la API completa de ParticleRain",
+  "api": {
+    "header": {
+      "title": "ParticleRain API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `ParticleRain`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de ParticleRain"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/particle-rain` con `particles.css` (las partículas) y `particle-rain.css` (la raíz), o desde la raíz del paquete si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onPointerDown</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onClick</code>, <code>onKeyDown</code>, <code>onKeyUp</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. <code>ref</code> se combina con la ref interna que mide la raíz. <code>style</code> llega a la raíz sin cambios: el efecto no escribe variables en ella."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> no se crean partículas; el hijo queda igual. <code>onParticleRain</code> igual se dispara cuando la emisión arranca, aunque no se vea nada.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene la lluvia. Usalo solo si el movimiento es esencial.",
+        "decorative": "La capa tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia y no bloquea clics.",
+        "keyboard": "Activar un hijo enfocable con Enter o Espacio lanza la lluvia con <code>click</code>. Si la raíz es el elemento enfocado (con <code>asChild</code> sobre un botón, o con <code>tabIndex</code>), Enter y Espacio la lanzan con <code>click</code> y, con <code>hold</code>, llueve mientras mantenés la tecla hasta soltarla o perder el foco. Con <code>hover</code>, el foco de teclado (<code>:focus-visible</code>) en la raíz o dentro enciende la lluvia y sus eventos.",
+        "touch": "Con <code>trigger=\"hold\"</code> la raíz pone <code>touch-action: none</code>, así que en táctil no se puede hacer scroll arrancando desde el efecto. <code>disabledOnTouch</code> ignora los toques y devuelve <code>touch-action: auto</code>; mouse y lápiz siguen funcionando.",
+        "density": "Con <code>always</code>, la lluvia no para nunca y va por encima del contenido (<code>z-index: 1</code>). Sobre texto, usá <code>intensity=\"sm\"</code> o un <code>span</code> para que no compita con la lectura."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `inline-flex`, `position: relative`, `isolation: isolate` y `overflow: hidden`.",
+        "variant": "Variante activa. No tiene estilos propios: el aspecto lo da la clase de cada partícula.",
+        "hold": "Se agrega con `trigger=\"hold\"`. Pone `user-select: none` y `touch-action: none`. El fin del gesto se escucha en `window`, sin capturar el puntero, así que los hijos reciben su `click`.",
+        "paused": "Se agrega con `isPaused`. Pausa las partículas con `animation-play-state`; los temporizadores se pausan en JS.",
+        "inactive": "Se agrega con `isActive={false}`. Oculta las partículas en pantalla.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "touchDisabled": "Se agrega con `disabledOnTouch`. Devuelve `touch-action: auto`.",
+        "surface": "Envuelve al hijo (`z-index: 0`). Con `asChild`, la clase va en el propio hijo.",
+        "layer": "Capa de Particles (`position: absolute`, `inset: 0`, `z-index: 1`, `overflow: hidden`, `aria-hidden`). `--rain` define la curva lineal y la escala final.",
+        "particle": "Cada partícula. La clase de variante define la forma: radio en `confetti`, resplandor en `spark` y `light`, y `clip-path` de cuatro puntas en `star`. `light` usa sus propias keyframes."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "La duración se escribe inline en la capa y los valores de cada partícula van inline en la propia partícula. Las de movimiento las define la clase de la capa.",
+      "items": {
+        "particleDuration": "Duración de cada partícula. La define `duration` y va inline en la capa; para pisarla desde CSS, declarala en `.gemfx-particle`. JS borra cada partícula a los `duration + 210` ms, así que una duración más larga desde CSS se corta.",
+        "motion": "Curva (`--gemfx-easing-linear`), desplazamiento vertical inicial (`0%`) y escala final (`0.55`). Las define `.gemfx-particle-layer--rain` y se pueden pisar con una clase.",
+        "particle": "Origen, recorrido, giro, tamaño, color y retraso de cada partícula. Se calculan en JS en cada ola."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que ParticleRain lee como valor por defecto. Las paletas solo se usan si no pasás `colors` ni `color`.",
+      "items": {
+        "confetti": "Paleta por defecto de `confetti` y `mixed`.",
+        "spark": "Paleta por defecto de `spark`.",
+        "star": "Paleta por defecto de `star`.",
+        "light": "Paleta por defecto de `light`.",
+        "easing": "Curva de las partículas (respaldo `linear`)."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Sobre qué contenido llueve y dónde se monta el efecto."
+      },
+      "appearance": { "title": "Apariencia", "description": "Forma, colores, cantidad y deriva." },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Caída, retraso, emisión e intervalo, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo llueve, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `hold`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido debajo de la lluvia.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos como `img` vuelve al `div`.",
+      "variant": "`confetti` son papelitos, `spark` trazos con brillo, `star` destellos, `light` esferas que brillan y `mixed` una forma al azar por partícula.",
+      "colors": "Paleta de las partículas. Mejor tokens.",
+      "color": "Un solo color. Se usa si no pasás `colors`.",
+      "count": "Partículas por ola (de `1` a `24`). Tiene prioridad sobre `intensity`.",
+      "spread": "Deriva lateral máxima, en píxeles. Tiene prioridad sobre `intensity`.",
+      "intensity": "Sin `count` ni `spread`: `3` / `6` / `10` partículas por ola y `18` / `36` / `56` px de deriva.",
+      "maxParticles": "Máximo de partículas vivas a la vez; las olas que lo superan se recortan. Sin la prop se calcula para el flujo estable (`count` × olas vivas durante una caída). Nunca baja de `count` ni pasa de `360`.",
+      "duration": "Lo que tarda cada partícula en caer.",
+      "delay": "Retraso antes de que arranque la emisión.",
+      "span": "Cuánto dura la emisión. Con `click`, `1400` por defecto; con el resto, sin límite.",
+      "interval": "Tiempo entre olas (mínimo `40`).",
+      "trigger": "`always` llueve siempre, `hover` con el puntero encima o el foco de teclado, `click` lanza una lluvia de `span` ms (también con Enter o Espacio) y `hold` llueve mientras mantenés presionado el puntero o la tecla.",
+      "isActive": "Permite la emisión. En `false` la corta y oculta las partículas en pantalla.",
+      "isPaused": "Congela las partículas en pantalla, sus temporizadores y la emisión.",
+      "isDisabled": "Corta la emisión; el hijo queda interactivo.",
+      "ignoreReducedMotion": "Muestra la lluvia aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "onParticleRain": "Se dispara cuando arranca la emisión: al montar con `always`, al entrar el puntero o el foco, al hacer clic o al mantener presionado (con puntero o teclado).",
+      "outParticleRain": "Se dispara cuando la emisión se corta y terminan las últimas partículas, o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `particle` (va en cada partícula).",
+      "style": "Estilos inline de la raíz.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

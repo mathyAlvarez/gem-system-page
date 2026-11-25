@@ -1,0 +1,73 @@
+{
+  "header": {
+    "title": "Getting started",
+    "description": "Install Gemsitions, load the styles and animate how your UI enters, exits and changes with React transitions."
+  },
+  "peers": {
+    "title": "Peers",
+    "body": "React 19. @gem-org/gem-system is optional: when it is installed, transitions read its tokens (--gem-*); otherwise they use neutral values. Gemsitions does not reimplement design-system components."
+  },
+  "install": {
+    "title": "Installation"
+  },
+  "usage": {
+    "title": "Basic usage",
+    "description": "Each transition wraps its child and is driven by `isIn`. With `isIn` set to `false` it animates the exit and unmounts the content when it ends.",
+    "show": "Show summary",
+    "hide": "Hide summary",
+    "cardTitle": "Order #1042",
+    "cardSubtitle": "3 items · Ships in 48 h",
+    "cardBody": "Total: $84.50"
+  },
+  "bootstrap": {
+    "title": "Bootstrap",
+    "description": "The fastest path: import styles.css once in your entry point and use the transitions from the barrel.",
+    "fullLabel": "Full import",
+    "partial": {
+      "title": "Import only what you need",
+      "description": "Each transition ships as its own subpath (kebab-case, for example <code>@gem-org/gemsitions/fade-transition</code>) with a matching stylesheet (<code>fade-transition.css</code>). That way the bundle only includes the JS and CSS of the transitions you actually use.",
+      "label": "Partial import",
+      "notesTitle": "Keep in mind:",
+      "notes": {
+        "tokens": "Import <code>tokens.css</code> once: it defines the <code>--gemst-*</code> duration, easing and intensity variables.",
+        "utilities": "<code>utilities.css</code> is optional: it adds layout, overflow and position classes (<code>gemst-relative</code>, <code>gemst-overflow-hidden</code>…) to pass through <code>className</code> or <code>classNames</code>.",
+        "utils": "Motion helpers (<code>usePresenceTransition</code>, <code>prefersReducedMotion</code>…) live in <code>@gem-org/gemsitions/utils</code> and tokens in <code>@gem-org/gemsitions/tokens</code>.",
+        "single": "Pick one path: <code>styles.css</code> already includes tokens, utilities and every transition, so do not mix it with individual imports."
+      }
+    }
+  },
+  "behavior": {
+    "title": "Shared behavior",
+    "description": "Most transitions share the same API, so what you learn with one applies to the rest.",
+    "items": {
+      "timing": "Timing: <code>duration</code>, <code>delay</code> and <code>easing</code>. All three accept a single value or <code>{ enter, exit }</code>; <code>easing</code> accepts a token (<code>standard</code>, <code>enter</code>, <code>exit</code>, <code>emphasized</code>, <code>linear</code>) or any CSS timing function.",
+      "presence": "Presence (Fade, Slide, Scale and Collapse): <code>keepMounted</code> keeps the node hidden in the DOM, <code>initial={false}</code> skips the first-mount animation and <code>onPhaseChange</code> reports every phase (<code>entering</code>, <code>entered</code>, <code>exiting</code>, <code>exited</code>).",
+      "phases": "Events: every transition emits <code>on*</code> when it enters and <code>out*</code> when it exits (<code>onFade</code> / <code>outFade</code>), with a <code>reason</code>: <code>enter</code>, <code>exit</code>, <code>inactive</code>, <code>disabled</code> or <code>unmount</code>.",
+      "classes": "Styling: <code>className</code>, <code>style</code> and per-slot <code>classNames</code>. Public classes use the <code>.gemst-*</code> prefix (BEM) and variables use <code>--gemst-*</code>."
+    }
+  },
+  "asChild": {
+    "title": "asChild",
+    "description": "With `asChild` the transition does not add a `div`: it merges its classes, styles and ref into the single child. Use it inside Flex or Grid, or on a real semantic element. The child must be exactly one React element."
+  },
+  "tokens": {
+    "title": "Motion tokens",
+    "description": "Gemsitions owns duration, easing and intensity. Palette, type, spacing and radius come from the host app (--gem-*).",
+    "intensity": "Durations go from `instant` (`0ms`) to `slower` (`1000ms`); intensity accepts a token (`sm`, `md` or `lg`, equal to 35%, 55% and 80%) or a number between `0` and `1`."
+  },
+  "a11y": {
+    "title": "Reduced motion",
+    "description": "Transitions support interface changes; content must make sense without motion too.",
+    "items": {
+      "reducedMotion": "Every transition honors <code>prefers-reduced-motion: reduce</code>: motion snaps straight to the final state.",
+      "ignore": "Use <code>ignoreReducedMotion</code> (it adds the <code>gemst-ignore-reduced-motion</code> class) only when motion is essential to the experience.",
+      "properties": "Transitions animate <code>transform</code> and <code>opacity</code> whenever possible, to avoid forcing reflows.",
+      "viewTransition": "<code>ViewTransition</code> uses <code>document.startViewTransition()</code> and applies a CSS <code>fallback</code> when the browser lacks the API."
+    }
+  },
+  "code": {
+    "optional": "optional: layout, overflow and position",
+    "anyTransition": "any transition",
+    "cssVariables": "also as CSS variables"
+  }
+}

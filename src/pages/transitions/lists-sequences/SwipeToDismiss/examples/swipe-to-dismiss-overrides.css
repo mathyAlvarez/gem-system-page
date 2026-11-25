@@ -1,0 +1,17 @@
+.gemst-swipe-to-dismiss.card-shell {
+  border-radius: var(--gem-radius-xl);
+  background: color-mix(in srgb, var(--gem-palette-primary-500) 8%, var(--gem-color-bg));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gem-palette-primary-500) 28%, transparent);
+}
+
+.gemst-swipe-to-dismiss.card-shell .swipe-to-dismiss-demo__panel {
+  background: transparent;
+  box-shadow: none;
+}
+
+.gemst-swipe-to-dismiss.mark-override.gemst-swipe-to-dismiss--mark-selected:hover,
+.gemst-swipe-to-dismiss.mark-override.gemst-swipe-to-dismiss--mark-selected.gemst-swipe-to-dismiss--dragging {
+  outline: 3px dashed var(--gem-palette-warning-500);
+  outline-offset: 4px;
+  border-radius: var(--gem-radius-sm);
+}

@@ -1,0 +1,206 @@
+{
+  "header": {
+    "title": "Float",
+    "description": "Levitación constante. `variant` elige la trayectoria, `trigger` cuándo corre y `amplitude` cuánto sube (si no la pasás, la define `intensity`). Una sombra en el suelo se achica a medida que el contenido sube. Con `prefers-reduced-motion: reduce` el contenido queda quieto."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `amplitude` en `auto` deja que `intensity` defina el recorrido.",
+    "target": "Float"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variantes",
+      "description": "`bob` es una onda vertical (el default), `sway` suma un leve balanceo, `drift` dibuja una elipse lenta, `lift` crece al subir, `idle` es un vaivén corto para íconos y avatares, `figure8` traza un ocho, `pendulum` oscila como un péndulo y `orbit` gira en círculo alrededor del reposo. Las más lentas usan una `duration` mayor."
+    },
+    "tile": {
+      "title": "Sobre un bloque",
+      "description": "Un bloque con `variant=\"drift\"` e `intensity=\"lg\"`. Solo se mueve con `transform`, así que no afecta el layout que lo rodea."
+    },
+    "triggers": {
+      "title": "Hover y click",
+      "description": "Con `trigger=\"hover\"` flota mientras el puntero (o el foco) está encima. Con `click`, cada clic lo prende o lo apaga. En reposo, el contenido vuelve a su lugar.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es un ciclo completo en milisegundos. Valores altos dan un movimiento más calmo."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Si no pasás `amplitude`, `intensity` define el recorrido vertical (`sm` 6 px, `md` 10 px, `lg` 16 px). También escala el balanceo de `sway` y el desvío lateral de `drift`. Acepta un token o un número entre `0` y `1`."
+    },
+    "amplitude": {
+      "title": "Amplitud",
+      "description": "`amplitude` fija el recorrido máximo. Un número son píxeles; un string se usa tal cual (`\"1.25rem\"`). Pisa a `intensity` solo para el recorrido vertical."
+    },
+    "shadow": {
+      "title": "Sombra",
+      "description": "La sombra del suelo se achica y se aclara cuando el contenido sube. `shadow={false}` la quita."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div` envolvente. Acá, un `Button` de gem-system con `variant=\"sway\"` y `trigger=\"hover\"`. La sombra se montaría adentro del hijo y se movería con él, así que este ejemplo la apaga con `shadow={false}`.",
+      "texts": {
+        "label": "Pasá el mouse"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la pose actual. `isDisabled` detiene la levitación y devuelve el contenido a su lugar, que sigue siendo interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onFloat` se dispara cuando la levitación arranca y `outFloat` cuando se detiene, con el motivo en `event.reason`. El movimiento no bloquea la interacción: el botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Nuevo"
+    },
+    "styled": {
+      "label": "Holograma"
+    }
+  },
+  "apiLink": "Ver la API completa de Float",
+  "api": {
+    "header": {
+      "title": "Float API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Float`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante y disparador.",
+      "link": "Ver demos de Float"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/float` con su `float.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La sombra tiene <code>aria-hidden</code> y <code>pointer-events: none</code>. El movimiento es solo <code>transform</code>: el hijo sigue recibiendo clics y foco.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el contenido queda quieto y la sombra fija.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza la animación. Usalo solo si el movimiento es esencial.",
+        "autoplay": "Con <code>trigger=\"always\"</code> el movimiento arranca solo y no termina. WCAG 2.2.2 pide poder pausar el movimiento automático que dura más de cinco segundos: ofrecé un control que active <code>isPaused</code> o usá <code>hover</code>/<code>click</code>.",
+        "focus": "Con <code>trigger=\"hover\"</code> también flota con el foco de teclado (<code>:focus-visible</code> en la raíz o adentro), así que se ve al navegar con Tab. Un clic de mouse que enfoca un botón no lo deja flotando. <code>onFloat</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code>, el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code>, también responde a Enter y Espacio.",
+        "meaning": "La levitación es decoración: no la uses como única señal de estado (destacado, nuevo). Acompañala con texto o un atributo ARIA."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` e `isolation: isolate`.",
+        "variant": "Variante activa. Elige el `@keyframes` de la superficie y de la sombra.",
+        "trigger": "Disparador activo (`always` no agrega clase). Deja la superficie quieta hasta el hover/foco o el clic.",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused` y pausa la animación.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled` y deja la superficie quieta.",
+        "disabled": "Se agrega con `isDisabled`. Quita el cursor de puntero.",
+        "surface": "Envuelve al hijo y es la que se mueve (`transform`).",
+        "shadow": "Sombra del suelo, debajo de la superficie. Solo con `shadow`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`duration`, `delay`, `amplitude`, `drift` y `tilt` se escriben siempre inline en la raíz: para cambiarlas usá las props. `--gemfx-float-shadow` no se escribe inline, así que se puede pisar desde una clase.",
+      "items": {
+        "duration": "Un ciclo completo. Lo define `duration`; default `2800ms`.",
+        "delay": "Retraso antes de empezar. Lo define `delay`; default `0ms`.",
+        "amplitude": "Recorrido vertical máximo. Lo define `amplitude` o, si falta, `intensity`; default `10px`.",
+        "drift": "Desvío lateral de `drift`, `figure8` y `pendulum`. Lo define `intensity`; default `7px`.",
+        "tilt": "Ángulo de balanceo de `sway` y `pendulum`. Lo define `intensity`; default `2.2deg`.",
+        "shadow": "Color de la sombra del suelo; default `var(--gem-palette-neutral-950)`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Float lee como valor por defecto.",
+      "items": {
+        "easingStandard": "Curva de la mayoría de las variantes.",
+        "easingLinear": "Curva de `figure8` y `orbit`, para que la vuelta tenga velocidad pareja.",
+        "palette": "Color por defecto de la sombra."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido levita y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Trayectoria, recorrido, intensidad y sombra."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración del ciclo y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo levita y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que levita.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Todas las variantes, disparadores y estados aplican igual. La sombra queda adentro del hijo y se mueve con él: en general conviene `shadow={false}`. Con `shadow` y un elemento vacío (`img`, `input`) cae al `div`.",
+      "variant": "Trayectoria: `bob`, `sway`, `drift`, `lift`, `idle`, `figure8`, `pendulum` u `orbit`.",
+      "amplitude": "Recorrido vertical máximo. Un número son píxeles; un string se usa tal cual. Sin valor, `intensity` lo define: `6`, `10` o `16` px.",
+      "intensity": "Escala el recorrido (si falta `amplitude`), el balanceo y el desvío lateral. Token o número entre `0` y `1`.",
+      "shadow": "Sombra en el suelo que se achica a medida que el contenido sube.",
+      "duration": "Un ciclo completo. Los valores negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece el movimiento.",
+      "trigger": "`always` siempre levita, `hover` mientras el puntero o el foco está encima, `click` alterna con cada clic.",
+      "isActive": "Permite la levitación. En `false` la detiene y `outFloat` recibe `inactive`.",
+      "isPaused": "Congela la pose actual.",
+      "isDisabled": "Detiene la levitación; el hijo sigue interactivo. `outFloat` recibe `disabled`.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si el movimiento es esencial.",
+      "onFloat": "Se dispara cuando la levitación arranca: al montar con `always`, al entrar el puntero con `hover` o al prender con `click`.",
+      "outFloat": "Se dispara cuando se detiene: al salir el puntero, al apagar con `click`, al desactivarla o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface` y `shadow`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-float-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

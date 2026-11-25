@@ -1,0 +1,249 @@
+{
+  "header": {
+    "title": "Magnetic",
+    "description": "A subtle pull that moves the content toward the pointer. `trigger` sets when it follows the pointer, `strength` and `maxOffset` how far it moves (when omitted, `intensity` sets them) and `radius` widens the pull area. With `prefers-reduced-motion: reduce` the content stays still."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. `strength` and `maxOffset` set to `auto` let `intensity` define them.",
+    "target": "Move the cursor"
+  },
+  "stories": {
+    "tile": {
+      "title": "On a block",
+      "description": "With the default `trigger` (`hover`), the surface moves toward the pointer and settles back on leave. The box that receives the pointer stays put, so the content keeps responding.",
+      "texts": {
+        "kicker": "Magnetic",
+        "title": "Hover the card"
+      }
+    },
+    "image": {
+      "title": "On an image",
+      "description": "It works with any child, including a native `img`. Here with `intensity=\"sm\"` for a more contained motion on a large element.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "triggers": {
+      "title": "Hover and press",
+      "description": "With `hover` it follows the pointer while it's over the box. With `press` only while held (it captures the pointer, so you can drag outside the box).",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "pressLabel": "Press and hold"
+      }
+    },
+    "proximity": {
+      "title": "Proximity",
+      "description": "With `trigger=\"proximity\"` the pull starts when the pointer is within `radius` pixels of the box, without touching it. It uses a `window` listener.",
+      "texts": {
+        "label": "Get close"
+      }
+    },
+    "radius": {
+      "title": "Pull area",
+      "description": "With `hover` or `press`, `radius` widens the area that detects the pointer without shifting layout: the pull starts before reaching the visible edge."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "When `strength` and `maxOffset` are omitted, `intensity` sets them: `sm` 0.2 and 10 px, `md` 0.35 and 16 px, `lg` 0.5 and 28 px. It takes a token or a number between `0` and `1`."
+    },
+    "pull": {
+      "title": "Strength and cap",
+      "description": "`strength` is the fraction of the distance to the center the surface follows (between `0` and `1`) and `maxOffset` the peak offset in pixels. High strength with a small cap feels firm but contained."
+    },
+    "axis": {
+      "title": "Axes",
+      "description": "`axis` limits the motion: `both` (default), horizontal only (`x`) or vertical only (`y`)."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without adding a `div`. Here, on a gem-system `Button` with `radius={24}`. It follows the pointer with the same quick transition as the default `div`.",
+      "texts": {
+        "label": "Get started"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the current offset: move it, turn on pause and the surface stays where it was. `isDisabled` returns it to rest and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onMagnetic` fires when it starts following the pointer and `outMagnetic` when it settles back, with the cause in `event.reason`. Pressing an inner button freezes the offset so the click lands.",
+      "texts": {
+        "body": "Hover over the card and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    },
+    "hook": {
+      "title": "useMagnetic",
+      "description": "Headless version. The hook returns `ref`, `style` (with `--gemfx-magnetic-x` and `-y`), `pointerProps` and `pose`; you build the markup. Useful to read the offset or apply it to your own element.",
+      "texts": {
+        "position": "x {x} px · y {y} px"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Glow"
+    },
+    "styled": {
+      "label": "Elastic"
+    }
+  },
+  "apiLink": "See the full Magnetic API",
+  "api": {
+    "header": {
+      "title": "Magnetic API",
+      "description": "Reference for the props, the `useMagnetic` hook, inheritance, accessibility, CSS classes and variables, and exported types of `Magnetic`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each trigger and option.",
+      "link": "See Magnetic demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/magnetic` with its `magnetic.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "name": "Name",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "hook": {
+      "description": "Takes the same options as `Magnetic` except `children`, `asChild`, `className`, `classNames` and `ref` (`UseMagneticOptions`). You render the host with `.gemfx-magnetic` and the surface with `.gemfx-magnetic__surface`, or apply `transform` directly.",
+      "resultTitle": "Returns",
+      "result": {
+        "ref": "Ref for the host. Used to measure the box when computing the offset.",
+        "style": "Inline styles with the `--gemfx-magnetic-*` variables. Already includes the `style` you passed.",
+        "pointerProps": "Pointer handlers for the host. They call the ones you passed in the options first.",
+        "motionClassName": "`gemfx-ignore-reduced-motion` if you passed `ignoreReducedMotion`. Add it to the host.",
+        "transform": "Ready-to-use `translate3d(x, y, 0)` if you don't use `.gemfx-magnetic__surface`.",
+        "pose": "Current offset in pixels (`x`, `y`).",
+        "isTracking": "`true` while following the pointer.",
+        "isHover": "`trigger` is `hover` and the effect is active.",
+        "isPress": "`trigger` is `press` and the effect is active.",
+        "isProximity": "`trigger` is `proximity` and the effect is active.",
+        "magneticOff": "`true` with `isDisabled` or `isActive={false}`.",
+        "isPaused": "The value of `isPaused`.",
+        "isDisabled": "The value of `isDisabled`."
+      }
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). Pointer handlers you pass (<code>onPointerEnter</code>, <code>onPointerMove</code>, <code>onPointerDown</code>, etc.) run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "transformOnly": "The motion is <code>transform</code> only, on the surface; with the default <code>div</code>, the box that receives the pointer doesn't move, so the child keeps receiving clicks and focus in the same place. With <code>asChild</code> the child itself moves.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the surface stays at rest and doesn't follow the pointer.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the motion. Only use it if it's essential.",
+        "nested": "Pressing an inner interactive element (<code>button</code>, <code>a</code>, <code>input</code>…) freezes the offset until release, so the click lands on the target.",
+        "pointerOnly": "It only responds to the pointer: the keyboard doesn't trigger it. It's decoration; don't communicate anything through the motion alone.",
+        "touch": "It's off on touch screens by default (<code>disabledOnTouch</code> is <code>true</code>), so the offset doesn't get in the way of taps or scrolling. Mouse and pen keep working.",
+        "proximity": "With <code>proximity</code>, <code>radius</code> is the activation distance and doesn't widen the clickable area. It listens to <code>pointermove</code> on <code>window</code>: avoid many instances on the same page."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative` and `inline-flex`.",
+        "trigger": "Active trigger.",
+        "tracking": "Added while following the pointer. Shortens the transition to `80ms` so it responds instantly.",
+        "paused": "Added with `isPaused`. Removes the transition.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`.",
+        "disabled": "Added with `isDisabled`.",
+        "field": "Pseudo-element that widens the pointer area by `--gemfx-magnetic-radius`. With `proximity` it has `pointer-events: none`.",
+        "surface": "Wraps the child and is what moves (`transform`)."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "All of them are written inline on the root on every render: use the props to change them. For different behavior, override the `.gemfx-magnetic__surface` transition from a class.",
+      "items": {
+        "x": "Current horizontal offset, in pixels.",
+        "y": "Current vertical offset, in pixels.",
+        "duration": "Transition back to rest. Set by `duration`; default `280ms`.",
+        "delay": "Transition delay. Set by `delay`; default `0ms`.",
+        "radius": "Extra margin of the pointer area. Set by `radius` (`0px` with `proximity`)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Magnetic reads as defaults.",
+      "items": {
+        "easingEmphasized": "Curve for settling back to rest.",
+        "easingStandard": "Curve while following the pointer."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content is pulled and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Strength, cap, intensity, axes and pull area."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Settle-back transition and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it follows the pointer and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `hover`, `press`, `inactive`, `disabled` or `unmount`. With `proximity` it's reported as `hover`."
+      },
+      "styling": {
+        "title": "Styling",
+        "description": "Classes, inline styles and ref."
+      }
+    },
+    "items": {
+      "children": "Content that is pulled toward the pointer.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. The child is both root and surface, and the `--tracking` and `--paused` transitions apply the same. It injects no layers, so it also works with void elements (`img`): the element itself becomes the root.",
+      "strength": "Fraction of the distance to the center the surface follows, between `0` and `1`. When omitted, `intensity` sets it: `0.2`, `0.35` or `0.5`.",
+      "maxOffset": "Peak offset in pixels. When omitted, `intensity` sets it: `10`, `16` or `28`.",
+      "intensity": "Sets `strength` and `maxOffset` when they're missing. A token or a number between `0` and `1`.",
+      "axis": "Axes that move: `both`, `x` or `y`.",
+      "radius": "Extra margin in pixels. With `hover`/`press` it widens the pointer area without shifting layout; with `proximity` it's the distance at which the pull starts.",
+      "duration": "Transition back to rest on release or leave. Negative values are treated as `0`.",
+      "delay": "Transition delay.",
+      "trigger": "`hover` while the pointer is over it, `press` while held and `proximity` while within `radius` of the box.",
+      "isActive": "Allows the pull. With `false` it returns to rest and `outMagnetic` gets `inactive`.",
+      "isPaused": "Freezes the current offset.",
+      "isDisabled": "Returns to rest and disables the pull; the child stays interactive. `outMagnetic` gets `disabled`.",
+      "disabledOnTouch": "Ignores touch pointers; mouse and pen keep working.",
+      "ignoreReducedMotion": "Moves even if the user prefers reduced motion. Only if essential.",
+      "onMagnetic": "Fires when it starts following the pointer.",
+      "outMagnetic": "Fires when it settles back: on pointer leave, on release with `press`, on leaving the field with `proximity`, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-magnetic-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

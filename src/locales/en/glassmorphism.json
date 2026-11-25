@@ -1,0 +1,231 @@
+{
+  "header": {
+    "title": "Glassmorphism",
+    "description": "Frosted glass pane behind the content: it blurs and saturates whatever sits behind (`backdrop-filter`) and adds a translucent fill, a border and a highlight. `variant` sets the look (`frost`, `clear`, `tinted`, `heavy` or `sheen`) and `trigger` when it applies. It's always on by default."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With `hover` or `click` the pane only shows while active; `duration` is how long it takes to fade in and out.",
+    "cardTitle": "Frosted glass",
+    "copy": "Blur over the gem-org logo."
+  },
+  "stories": {
+    "card": {
+      "title": "Glass card",
+      "description": "With the defaults (`variant=\"frost\"`, `intensity=\"md\"`) the pane blurs `16px`, saturates to `160%` and has a white fill at `26%`. Glass needs something behind it to show: here, an image. The pane inherits the root `border-radius` and casts a soft drop shadow.",
+      "texts": {
+        "title": "Frosted glass",
+        "copy": "Blur over the gem-org logo."
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`frost` is classic frosted glass, `clear` blurs less and barely fills, `tinted` fills a bit more to show off `color` (here `primary-400`), `heavy` blurs and fills more, like smoked glass, and `sheen` adds a highlight that sweeps across the pane in a loop."
+    },
+    "image": {
+      "title": "On an image",
+      "description": "Positioned over an image, it works as a readable caption. The root is `inline-flex` and `position: relative`; to place it with `position: absolute` you need a class with higher specificity (`.gemfx-glassmorphism.my-class`).",
+      "texts": {
+        "alt": "gem-org logo",
+        "title": "gem-org",
+        "copy": "Caption on glass"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover`, the pane shows when the pointer is over it or keyboard focus is on the root or something inside (`:focus-visible`). With `click`, each click turns it on or off. At rest the content sits right on the background.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "blur": {
+      "title": "Blur",
+      "description": "`blur` sets the blur and overrides the one from `intensity`. A number is pixels; a string is used as is (`\"1.5rem\"`)."
+    },
+    "saturate": {
+      "title": "Saturation",
+      "description": "`saturate` is the background saturation as a percentage (`100` keeps it as is, lower mutes it, higher boosts it). Without a value, `intensity` sets it."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the fill and, when `blur` and `saturate` are missing, those two as well: `sm` 8px / 120% / 16%, `md` 16px / 160% / 26%, `lg` 28px / 190% / 40%. Takes a token or a number between `0` and `1`."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` tints the fill, the border and the highlight. Takes any CSS color, variables included. Shows best with `variant=\"tinted\"`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long the pane takes to appear and disappear with `hover` or `click`; `delay` postpones it. It doesn't change the `sheen` sweep speed (fixed at `3200ms`)."
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the `sheen` sweep. `isDisabled` hides the pane and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "title": "Sheen",
+        "copy": "Light travels across the glass."
+      }
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild` the effect mounts on the child, with no wrapping `div`. The child keeps its own box (`display`, width, no `overflow: hidden`); it only gets `position: relative` and `isolation` so the pane sits behind its content and frosts the backdrop, not the text. The child shouldn't paint an opaque background: the glass would frost that background instead of the image.",
+      "texts": {
+        "title": "Your own card",
+        "copy": "No wrapper: the article itself is the glass."
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGlassmorphism` fires when the pane turns on and `outGlassmorphism` when it turns off, with the reason in `event.reason`. The pane doesn't block clicks on the content.",
+      "texts": {
+        "body": "Hover the card (or Tab to the button) to frost it and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "No highlight",
+      "copy": "Large radius, pink tint and the diagonal highlight hidden."
+    },
+    "styled": {
+      "title": "Aurora",
+      "copy": "Brand gradient over the pane."
+    }
+  },
+  "apiLink": "See the full Glassmorphism API",
+  "api": {
+    "header": {
+      "title": "Glassmorphism API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Glassmorphism`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger and option.",
+      "link": "See Glassmorphism demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/glassmorphism` along with its `glassmorphism.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes (except <code>color</code>, which is its own prop) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "contrast": "Contrast depends on what's behind. Check it over the lightest and darkest parts of the background, and raise <code>intensity</code> or use <code>heavy</code> if the text is hard to read.",
+        "reducedTransparency": "With <code>prefers-reduced-transparency: reduce</code> the blur is removed and the pane becomes a solid fill: <code>color</code> at the variant's fill (36% at most) mixed with <code>--gemfx-glassmorphism-solid-base</code> (dark by default), so light text keeps its contrast.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the pane transition is removed and the <code>sheen</code> highlight stays still and dimmer.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the sheen moving. Use it only when essential.",
+        "decorative": "The pane layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks.",
+        "keyboard": "With <code>trigger=\"hover\"</code>, keyboard focus (<code>:focus-visible</code> on the root or inside) does the same as the pointer: it shows the pane and fires <code>onGlassmorphism</code> and <code>outGlassmorphism</code>. Mouse focus doesn't count. The root isn't focusable on its own: it needs a control inside or a <code>tabIndex</code>.",
+        "performance": "<code>backdrop-filter</code> is expensive, especially with large blurs. Avoid many large panes at once or over animated backgrounds."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative` and `isolation: isolate`; with the default `div`, also `inline-flex` and `max-width: 100%`. With `asChild` the child keeps its `display`.",
+        "variant": "Active variant. Adjusts the border and the inner highlight.",
+        "trigger": "Added with `trigger=\"hover\"` or `\"click\"` (there's no class for `always`). Sets `cursor: pointer`.",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "paused": "Added with `isPaused`. Pauses the `sheen` sweep.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the pane and removes the blur.",
+        "disabled": "Added with `isDisabled`. Restores `cursor: default`.",
+        "layer": "Decorative layer behind the content (`aria-hidden`, `z-index: 0`; `-1` with `asChild`).",
+        "pane": "The glass: fill, border, shadow, `backdrop-filter` and the fade in/out transition. It clips the highlights without clipping its own shadow.",
+        "highlight": "Static diagonal highlight. Its opacity follows `intensity`.",
+        "sheen": "Light strip that sweeps the pane every `3200ms`. Only exists with `variant=\"sheen\"`.",
+        "surface": "Wraps the child, above the pane (`z-index: 1`)."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "All of them except `--gemfx-glassmorphism-color` and `--gemfx-glassmorphism-solid-base` are written inline on every render, so you can only change them through the props. The color is inline only when you pass `color`; otherwise you can override it from a class, like the solid base.",
+      "items": {
+        "color": "Color of the fill, border and highlights. Set by `color`; default `var(--gem-palette-neutral-0)` (white).",
+        "blur": "Background blur. Comes from `blur` or from `intensity` and the variant (`clear` × 0.75, `heavy` × 1.45).",
+        "saturate": "Background saturation. Comes from `saturate` or from `intensity`.",
+        "fill": "Fill opacity, between `6%` and `72%`. Comes from `intensity` and the variant (`clear` × 0.55, `tinted` × 1.15, `heavy` × 1.35, `sheen` × 0.9). No prop.",
+        "intensity": "Intensity as a percentage; drives the diagonal highlight opacity.",
+        "duration": "Pane transition duration. Set by `duration`; default `280ms`.",
+        "delay": "Delay of the transition and the sheen. Set by `delay`; default `0ms`.",
+        "solidBase": "Base of the solid fill under `prefers-reduced-transparency`. No prop; default `var(--gem-palette-neutral-950)`. Change it from a class if the text on the glass is dark."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Glassmorphism reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "easingStandard": "Curve of the pane transition and the `sheen` sweep.",
+        "neutral0": "Default glass color. If gem-system isn't loaded, falls back to `#ffffff`.",
+        "neutral950": "Color of the pane shadow and default of `--gemfx-glassmorphism-solid-base`. If gem-system isn't loaded, falls back to `#111316`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content sits on the glass and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Look, color, blur, saturation and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Pane fade in and out, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it applies and how it pauses or turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that sits on the glass.",
+      "asChild": "Applies the effect to the single child, with no wrapping `div`. The child keeps its box and the pane sits behind its content. With void elements (`img`, `input`) it falls back to the wrapping `div`.",
+      "variant": "`frost` classic frosted, `clear` lighter, `tinted` more fill to show off `color`, `heavy` denser, `sheen` with an animated highlight.",
+      "color": "Glass tint. Any CSS color; without a value, white (`--gem-palette-neutral-0`).",
+      "blur": "Background blur. A number is pixels (negatives become `0`); a string is used as is. Without a value, `intensity` sets it: `8`, `16` or `28` px, adjusted by the variant.",
+      "saturate": "Background saturation as a percentage (`140` → `140%`). Without a value, `intensity` sets it: `120`, `160` or `190`.",
+      "intensity": "Sets the fill and, when missing, `blur` and `saturate`. Token or number between `0` and `1`.",
+      "duration": "Duration of the pane fade in and out with `hover` or `click`. Negatives become `0`.",
+      "delay": "Delay before the pane shows. Also delays the first `sheen` sweep.",
+      "trigger": "`always` always on, `hover` while the pointer is over it or it has keyboard focus, `click` toggles on each click.",
+      "isActive": "Shows the pane. When `false` it hides it and `outGlassmorphism` gets `inactive`.",
+      "isPaused": "Freezes the `sheen` sweep.",
+      "isDisabled": "Hides the pane; the child stays interactive. `outGlassmorphism` gets `disabled`.",
+      "ignoreReducedMotion": "Keeps the `sheen` sweep even if the user prefers reduced motion. Only when essential.",
+      "onGlassmorphism": "Fires when the pane turns on: on mount with `always`, when the pointer or keyboard focus enters, or when toggled on by click.",
+      "outGlassmorphism": "Fires when it turns off: when the pointer or focus leaves, when toggled off by click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `pane`, `highlight` and `sheen`.",
+      "style": "Root inline styles. Merged with the `--gemfx-glassmorphism-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

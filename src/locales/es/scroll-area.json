@@ -69,7 +69,10 @@
           { "author": "Ana", "text": "¿Subiste la nueva versión de los tokens?" },
           { "author": "Leo", "text": "Sí, ya está publicada. Cambiaron los colores del borde." },
           { "author": "Ana", "text": "Perfecto, actualizo la documentación hoy." },
-          { "author": "Leo", "text": "Revisá también la página de ScrollArea, tiene ejemplos nuevos." }
+          {
+            "author": "Leo",
+            "text": "Revisá también la página de ScrollArea, tiene ejemplos nuevos."
+          }
         ]
       }
     },

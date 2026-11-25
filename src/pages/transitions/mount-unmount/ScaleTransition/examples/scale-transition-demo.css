@@ -1,0 +1,132 @@
+.scale-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.scale-demo--wide {
+  max-width: 48rem;
+}
+
+.scale-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.scale-demo__stage {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 10rem;
+  padding: var(--gem-space-5);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+}
+
+.scale-demo__stage--roomy {
+  min-height: 18rem;
+  padding: var(--gem-space-6);
+}
+
+.scale-demo__stage[data-origin="top"] {
+  align-items: flex-start;
+}
+
+.scale-demo__stage[data-origin="bottom"] {
+  align-items: flex-end;
+}
+
+.scale-demo__stage[data-origin="left"] {
+  justify-content: flex-start;
+}
+
+.scale-demo__stage[data-origin="right"] {
+  justify-content: flex-end;
+}
+
+.scale-demo__stage[data-origin="top left"] {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.scale-demo__stage[data-origin="top right"] {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.scale-demo__panel {
+  box-sizing: border-box;
+  min-width: 12rem;
+  padding: var(--gem-space-5) var(--gem-space-6);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  line-height: 1.4;
+  box-shadow: var(--gem-shadow-sm);
+}
+
+.scale-demo__panel--large {
+  min-width: 16rem;
+  min-height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gem-space-6) var(--gem-space-8);
+  font-size: var(--gem-font-size-md);
+}
+
+.scale-demo__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  width: 100%;
+}
+
+.scale-demo__sibling {
+  margin: 0;
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  color: var(--gem-color-fg-muted);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.4;
+}
+
+.scale-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 4.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}
+
+.scale-demo__compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.scale-demo__compare-label {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  font-weight: 650;
+}

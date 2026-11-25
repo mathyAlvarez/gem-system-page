@@ -1,0 +1,242 @@
+{
+  "header": {
+    "title": "GradientBorder",
+    "description": "Borde completo con degradé alrededor del hijo. Por defecto es un anillo en un `::before` con máscara, así que el host conserva su fondo. Con `pad` o sobre un botón de gem-system usa un borde transparente y dos capas de fondo con `background-clip` (`padding-box` para el relleno y `border-box` para el trazo). `variant` define el movimiento: `flow` gira, `static` queda fijo y `pulse` respira."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `static`, `trigger` no cambia nada: el borde queda siempre visible y quieto.",
+    "label": "Borde"
+  },
+  "stories": {
+    "base": {
+      "title": "Borde básico",
+      "description": "Con los valores por defecto (`variant=\"flow\"`, `thickness={2}`, `duration={4000}`) un degradé cónico de tres colores gira alrededor del hijo. El radio va en la raíz; el hijo puede usar `calc(radio - var(--gemfx-gradient-border-thickness))` para quedar concéntrico, porque la variable se hereda.",
+      "texts": {
+        "label": "Borde"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`flow` gira el degradé una vuelta completa por ciclo, a velocidad constante. `static` lo deja fijo en `angle`. `pulse` también lo deja fijo y hace respirar la fuerza del trazo: baja a un 30% y vuelve."
+    },
+    "pad": {
+      "title": "Relleno (pad)",
+      "description": "Sin `pad`, el efecto pinta solo el anillo y adentro se ve lo que haya detrás (acá, el fondo del escenario). `pad` pinta un color dentro del trazo y reemplaza el fondo del host: usalo cuando quieras un relleno sin tocar el hijo.",
+      "texts": {
+        "label": "Solo texto"
+      }
+    },
+    "card": {
+      "title": "En una tarjeta",
+      "description": "Un trazo de `1px` con un giro lento (`duration={8000}`) para destacar una tarjeta sin distraer. La tarjeta conserva su propio fondo: el anillo se dibuja alrededor.",
+      "texts": {
+        "kicker": "Plan Pro",
+        "title": "Todo desbloqueado",
+        "body": "Efectos ilimitados, tokens propios y soporte prioritario."
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` el anillo está oculto y aparece girando al pasar el puntero o al enfocar con el teclado algo dentro. Con `click`, cada clic lo muestra u oculta. En ambos casos el borde transparente reserva el espacio del trazo, así que el layout no salta.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "thickness": {
+      "title": "Grosor",
+      "description": "`thickness` es el ancho del trazo: un número son píxeles y también acepta cualquier longitud CSS. Se escribe inline como `--gemfx-gradient-border-thickness`, que el CSS usa como ancho del borde transparente que reserva el espacio del trazo."
+    },
+    "angle": {
+      "title": "Ángulo",
+      "description": "`angle` es el punto de partida del degradé cónico (un número son grados). Se nota sobre todo con `static` y `pulse`, que lo dejan fijo; con `flow` es desde dónde arranca el giro."
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`from`, `via` y `to` son las tres paradas del degradé (vuelve a `from` para cerrar el círculo). Por defecto: `primary-400`, `secondary-400` y `tertiary-400` de gem-system. Mejor usar tokens."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la opacidad del trazo: `sm` ≈ 65%, `md` ≈ 85% y `lg` 100%. Acepta un token o un número entre `0` y `1`, y los tokens leen `--gemfx-intensity-*` del host. Con `pulse` es el pico de la respiración."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es un ciclo completo de `flow` o `pulse`, en milisegundos. `delay` retrasa el inicio de la animación."
+    },
+    "asChild": {
+      "title": "Sin envoltorio (asChild)",
+      "description": "Con `asChild`, el borde se aplica directo sobre el hijo, sin sumar un `div`. Sobre el `Button` de gem-system usa el modo con relleno: toma `--gem-btn-bg` (y `--gem-btn-bg-hover` al pasar el puntero), así que el botón conserva su color, en cualquier orden de carga del CSS de gem-system y gemffects. Sobre otro hijo usa el anillo y el hijo conserva su propio borde: el efecto no escribe `border` inline y el borde transparente que reserva el trazo va en `:where()`. El anillo se dibuja justo afuera del `padding-box`, encima de ese borde: en la tarjeta (`thickness={1}`, `trigger=\"hover\"`) se ve su borde gris hasta que pasás el mouse.",
+      "texts": {
+        "label": "Guardar",
+        "cardLabel": "Borde propio"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el giro (o la respiración) donde está. `isDisabled` oculta el trazo (sin cambiar el tamaño) y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGradientBorder` se dispara cuando el borde se enciende (al entrar el puntero o el foco de teclado con `hover`, al hacer clic con `click` o al montar con `always`) y `outGradientBorder` cuando se apaga, con el motivo en `event.reason`. El botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta (o llegá al botón con Tab) para encender el borde y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Pill"
+    },
+    "styled": {
+      "label": "Aurora"
+    }
+  },
+  "apiLink": "Ver la API completa de GradientBorder",
+  "api": {
+    "header": {
+      "title": "GradientBorder API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `GradientBorder`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de GradientBorder"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/gradient-border` con su `gradient-border.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. El efecto no escribe <code>border</code> inline. En modo anillo, el borde transparente del grosor del trazo va en <code>:where()</code> junto con el resto del layout base (<code>display</code>, <code>position</code>, <code>color</code>), así que cualquier clase del host (o el borde propio del hijo, con <code>asChild</code>) lo pisa. En modo con relleno (<code>pad</code> o un <code>.gem-button</code>) el CSS fuerza el borde transparente, porque el trazo se pinta en él. Con <code>pad</code> también se escribe inline <code>background-color: transparent</code> después de <code>style</code>; sin <code>pad</code>, el fondo del host queda intacto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> se detienen el giro de <code>flow</code> y la respiración de <code>pulse</code>; el borde queda fijo en <code>angle</code>, con la fuerza completa.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene la animación. Usalo solo si es esencial.",
+        "decorative": "El trazo es un <code>::before</code> con <code>pointer-events: none</code> (o un fondo del propio elemento, con <code>pad</code> o sobre un botón): no agrega nodos, no se anuncia y no bloquea clics.",
+        "focus": "Con <code>trigger=\"hover\"</code> el borde también aparece al enfocar con el teclado el host o algo dentro (<code>:focus-visible</code>), y los eventos se disparan igual que con el puntero. Con <code>click</code> la raíz no es enfocable: solo se enciende con teclado si el clic llega desde un control de adentro (Enter o Espacio sobre un botón).",
+        "contrast": "Un borde decorativo no reemplaza al indicador de foco. Si lo usás sobre un botón, mantené su <code>:focus-visible</code>; los botones de gem-system usan <code>box-shadow</code>, que se sigue viendo."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `isolation: isolate` y la animación. `inline-flex`, `position: relative`, `color: inherit` y el borde transparente del grosor del trazo van en `:where()` (especificidad 0), así una clase del host los pisa.",
+        "variant": "Variante activa. `static` quita la animación y `pulse` la reemplaza por la respiración.",
+        "padded": "Se agrega con `pad`. Cambia el anillo por dos capas de fondo: el relleno en `padding-box` y el trazo en `border-box`, y fuerza el borde transparente del grosor del trazo. Sobre un `.gem-button` se usa el mismo modo sin esta clase.",
+        "trigger": "Disparador activo, solo con `flow` y `pulse`. Pone `cursor: pointer`.",
+        "on": "Se agrega mientras el borde está encendido con `click`.",
+        "paused": "Se agrega con `isPaused`. Pausa la animación con `animation-play-state`.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta el anillo (`opacity: 0`) y quita la animación; en modo con relleno pinta el trazo con el color de `pad`.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "Envuelve al hijo (`z-index: 1`). Con `asChild`, la clase va en el propio hijo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Grosor, ángulo y tiempos se escriben inline en cada render. `from`, `via`, `to`, `pad` e `intensity` solo se escriben si pasás la prop, y `--gemfx-gradient-border-stroke` nunca: esas se pueden pisar desde una clase.",
+      "items": {
+        "colors": "Las tres paradas del degradé. Las definen `from`, `via` y `to`.",
+        "pad": "Relleno del `padding-box` en modo con relleno. Lo define `pad`; en un `.gem-button`, `--gem-btn-bg` (y `--gem-btn-bg-hover` en `:hover`). En modo anillo no se usa.",
+        "stroke": "El degradé completo del trazo (un `conic-gradient`), en el anillo y en modo con relleno. Pisalo desde una clase para usar más colores; conservá `--gemfx-gradient-border-angle` y `--gemfx-gradient-border-turn` para que siga girando, y `--gemfx-gradient-border-strength` si querés que respeten `intensity` y `pulse`.",
+        "thickness": "Grosor del trazo y ancho del borde transparente que lo reserva. Lo define `thickness`; default `2px`.",
+        "angle": "Ángulo inicial del degradé. Lo define `angle`; default `120deg`.",
+        "turn": "Giro animado (registrado con `@property` como `<angle>`). Lo mueve la animación de `flow`.",
+        "intensity": "Intensidad base del trazo. La define `intensity`; default `var(--gemfx-intensity-md, 55%)`.",
+        "strength": "Opacidad de cada parada (con `color-mix`): `min(100%, intensidad + 30%)` multiplicado por `--gemfx-gradient-border-breath`.",
+        "breath": "Respiración de `pulse` (registrada con `@property` como `<number>`): va de `1` a `0.3` y vuelve. En las otras variantes vale `1`.",
+        "duration": "Ciclo de `flow` o `pulse`. Lo define `duration`; default `4000ms`.",
+        "delay": "Retraso de la animación. Lo define `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que GradientBorder lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "palette": "Colores por defecto de `from`, `via` y `to` (con respaldos neón, magenta y ámbar).",
+        "btnBg": "Relleno por defecto y en `:hover` sobre un `Button` de gem-system. Los define cada variante.",
+        "intensity": "Valores de `sm`, `md` y `lg` (`35%`, `55%` y `80%`). El default usa `md` y la prop con un token escribe `var(--gemfx-intensity-*)`, así que redefinirlos cambia la fuerza del trazo.",
+        "easingLinear": "Curva de `flow` (velocidad constante).",
+        "easingStandard": "Curva de `pulse`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido lleva el borde y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Movimiento, colores, relleno, grosor, ángulo e intensidad."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo de la animación y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve y se anima, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`. Con `static` se comportan como con `always`: `onGradientBorder` se dispara al montar."
+      },
+      "styling": {
+        "title": "Estilos",
+        "description": "Clases, estilos inline y ref."
+      }
+    },
+    "items": {
+      "children": "Contenido dentro del borde. Conserva su fondo: el anillo se dibuja alrededor.",
+      "asChild": "Aplica el borde sobre el único hijo, sin `div` envolvente. Pensado para el `Button` de gem-system; en modo anillo, el hijo conserva su propio borde.",
+      "variant": "`flow` gira, `static` queda fijo en `angle` y `pulse` respira la fuerza del trazo con el ángulo fijo.",
+      "from": "Primera parada del degradé. Mejor un token; default `primary-400`.",
+      "via": "Parada del medio. Default `secondary-400`.",
+      "to": "Última parada. Default `tertiary-400`.",
+      "pad": "Relleno dentro del trazo. Si lo pasás, reemplaza el fondo del host. Sin `pad` solo se pinta el anillo y el host conserva su fondo; sobre un botón de gem-system se usa `--gem-btn-bg`.",
+      "thickness": "Grosor del trazo. Un número son píxeles.",
+      "angle": "Ángulo inicial del degradé. Un número son grados.",
+      "intensity": "Opacidad del trazo (`sm` ≈ 65%, `md` ≈ 85%, `lg` 100%). Token o número entre `0` y `1`. Con `pulse`, es el pico.",
+      "duration": "Ciclo completo de `flow` o `pulse`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece la animación.",
+      "trigger": "`always` anima siempre, `hover` muestra el borde al pasar el puntero o al enfocar con el teclado algo dentro y `click` lo muestra y oculta con cada clic. `static` lo ignora.",
+      "isActive": "Muestra el borde. En `false` lo oculta (sin cambiar el tamaño) y `outGradientBorder` recibe `inactive`.",
+      "isPaused": "Congela el giro de `flow` o la respiración de `pulse`.",
+      "isDisabled": "Oculta el borde; el hijo queda interactivo. `outGradientBorder` recibe `disabled`.",
+      "ignoreReducedMotion": "Mantiene la animación aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onGradientBorder": "Se dispara cuando el borde se enciende: al montar con `always` (o con `static`), al entrar el puntero o el foco de teclado con `hover` o al hacer clic con `click`.",
+      "outGradientBorder": "Se dispara cuando se apaga: al salir el puntero o el foco, al volver a hacer clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface`.",
+      "style": "Estilos inline de la raíz. Las variables del efecto (y el fondo, si pasás `pad`) se escriben después. Un `border` acá se respeta; en modo con relleno conviene no tocarlo, porque el trazo se pinta en ese borde.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

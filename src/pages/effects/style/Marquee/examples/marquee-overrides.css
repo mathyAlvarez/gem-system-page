@@ -1,0 +1,17 @@
+.gemfx-marquee.marquee-ribbon {
+  padding-block: var(--gem-space-3);
+  border-block: 1px solid var(--gem-palette-primary-400);
+}
+
+.gemfx-marquee.marquee-ribbon .gemfx-marquee__copy > *::after {
+  content: "✦";
+  margin-inline-start: var(--gemfx-marquee-gap);
+  color: var(--gem-palette-primary-400);
+}
+
+/* Reduced motion removes the mask; a plain override would bring it back. */
+@media (prefers-reduced-motion: no-preference) {
+  .gemfx-marquee--fade.marquee-ribbon {
+    mask-image: linear-gradient(90deg, transparent, black 25%, black 75%, transparent);
+  }
+}

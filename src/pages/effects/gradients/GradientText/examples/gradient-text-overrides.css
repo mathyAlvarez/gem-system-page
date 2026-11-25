@@ -1,0 +1,20 @@
+/* The effect only writes inline the props you pass, so a class can set
+   the angle. The fill lives on the surface; replace its `background-image`
+   to use more stops. Keep the angle and the size so `flow` still slides. */
+.gemfx-gradient-text.gt-chrome {
+  --gemfx-gradient-text-angle: 100deg;
+}
+
+.gemfx-gradient-text.gt-chrome .gemfx-gradient-text__surface {
+  background-image: linear-gradient(
+    var(--gemfx-gradient-text-angle),
+    var(--gem-palette-neutral-400),
+    var(--gem-palette-neutral-50) 25%,
+    var(--gem-palette-neutral-500) 45%,
+    var(--gem-palette-neutral-50) 65%,
+    var(--gem-palette-neutral-400)
+  );
+  filter: drop-shadow(
+    0 2px 6px color-mix(in srgb, var(--gem-palette-neutral-950) 45%, transparent)
+  );
+}

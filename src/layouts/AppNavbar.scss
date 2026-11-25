@@ -77,7 +77,8 @@ $navbar-mobile: 767.98px;
 
   &__actions .gem-button,
   &__language .gem-select__trigger,
-  &__version .gem-select__trigger {
+  &__version .gem-select__trigger,
+  &__product .gem-select__trigger {
     box-sizing: border-box;
     height: var(--docs-navbar-control-height);
     min-height: var(--docs-navbar-control-height);
@@ -88,7 +89,8 @@ $navbar-mobile: 767.98px;
   }
 
   &__language,
-  &__version {
+  &__version,
+  &__product {
     gap: 0;
 
     .gem-select__trigger {
@@ -102,5 +104,9 @@ $navbar-mobile: 767.98px;
 
   &__version {
     width: 5rem;
+  }
+
+  &__product {
+    width: 8.5rem;
   }
 }

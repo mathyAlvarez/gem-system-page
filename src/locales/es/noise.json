@@ -1,0 +1,212 @@
+{
+  "header": {
+    "title": "Noise",
+    "description": "Grano fotográfico sobre el contenido, generado con un filtro SVG (`feTurbulence`). `variant` define el aspecto: `grain` es un grano fino, `film` lo hace derivar como película y `static` es una nieve de TV más gruesa. Por defecto se ve siempre; la capa es decorativa y no bloquea clics."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `duration` solo afecta a `film`. Cambiá la superficie para ver cómo se lee el grano sobre fondos oscuros y claros.",
+    "cardTitle": "Grano",
+    "surface": "superficie (demo)"
+  },
+  "stories": {
+    "base": {
+      "title": "Grano básico",
+      "description": "Con los valores por defecto (`variant=\"grain\"`, `trigger=\"always\"`, `intensity=\"md\"`) el grano cubre al hijo por completo. La raíz recorta (`overflow: hidden`) y la capa hereda su `border-radius`, así que el radio va en la raíz.",
+      "texts": {
+        "title": "Textura de película"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`grain` es un grano fino y quieto. `film` usa el mismo grano un poco más grande y lo desplaza en bucle. `static` es más grueso y más opaco, pero también está quieto: no titila como una TV."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Envuelve un `img` nativo con el `div` por defecto. `film` con `intensity=\"lg\"` le da un aspecto de fotograma analógico.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "surfaces": {
+      "title": "Sobre distintos fondos",
+      "description": "El mismo grano sobre una superficie oscura, una media y una clara. El grano es gris alrededor del tono medio y la capa se mezcla con el contenido (`--gemfx-noise-blend`, `overlay` por defecto), así que oscurece y aclara a la vez y se ve sobre los tres fondos. Solo mezcla con lo que está dentro de la raíz, no con lo que hay detrás."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` tiñe el grano: multiplica el gris del grano por ese color (`.gemfx-noise__tint` en el filtro). Acepta cualquier color CSS; mejor un token. Sin valor, el color por defecto es casi blanco y el grano queda neutro."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` el grano aparece al pasar el puntero o con el foco de teclado en la raíz o adentro (`:focus-visible`). Con `click`, cada clic lo enciende o lo apaga. Entra con un fundido corto (`--gemfx-duration-fast`) y se apaga sin transición.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la opacidad del grano: el 70 % del valor (`35%`, `55%` u `80%`) en `grain` y `film`, y el 95 % en `static`. Acepta un token o un número entre `0` y `1`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es el ciclo de la deriva de `film`, en milisegundos; con `grain` y `static` no se usa. Más bajo, más nervioso. `delay` retrasa la aparición del grano en todas las variantes (y también la deriva de `film`); con `hover` y `click` se repite en cada activación."
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild`, el efecto se aplica sobre el único hijo sin sumar un `div`. La capa del grano se inserta dentro de ese hijo. Con elementos vacíos como `img` no hay dónde insertarla, así que vuelve al `div` envolvente.",
+      "texts": {
+        "label": "Grano"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la deriva de `film` donde está. `isDisabled` oculta el grano y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onNoise` se dispara cuando el grano se enciende (al entrar el puntero o el foco de teclado con `hover`, al hacer clic con `click` o al montar con `always`) y `outNoise` cuando se apaga, con el motivo en `event.reason`. Probá llegar al botón con Tab. El botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta para encender el grano y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Opacidad fija"
+    },
+    "styled": {
+      "title": "CRT"
+    }
+  },
+  "apiLink": "Ver la API completa de Noise",
+  "api": {
+    "header": {
+      "title": "Noise API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Noise`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Noise"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/noise` con su `noise.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>, que es una prop propia) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> se detiene la deriva de <code>film</code>; el grano queda quieto y visible.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene la deriva. Usalo solo si es esencial.",
+        "decorative": "La capa y el <code>svg</code> llevan <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncian ni bloquean clics.",
+        "focus": "Con <code>trigger=\"hover\"</code> el grano también aparece con el foco de teclado en la raíz o adentro (<code>:focus-visible</code>), y <code>onNoise</code> y <code>outNoise</code> se disparan igual que con el puntero. Con <code>click</code> la raíz no es enfocable: el teclado no lo enciende.",
+        "contrast": "El grano se mezcla con el contenido (oscurece y aclara) y baja un poco el contraste del texto. Con <code>intensity=\"lg\"</code> o <code>static</code>, revisá que el texto siga siendo legible."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex`, `isolation: isolate` y `overflow: hidden`.",
+        "variant": "Variante activa. `film` anima el grano; `static` sube la opacidad y cambia `--gemfx-noise-blend` a `soft-light`.",
+        "trigger": "Disparador activo, mientras el efecto está habilitado. Pone `cursor: pointer`.",
+        "on": "Se agrega mientras el grano está encendido con `click`.",
+        "paused": "Se agrega con `isPaused`. Pausa la deriva con `animation-play-state`.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta la capa y quita la animación.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "Envuelve al hijo (`z-index: 1`). Con `asChild`, la clase va en el propio hijo.",
+        "layer": "Capa decorativa por encima del contenido (`aria-hidden`, `z-index: 2`, `pointer-events: none`). Hereda el `border-radius`, se mezcla con `--gemfx-noise-blend` y entra con un fundido que respeta `--gemfx-noise-delay`.",
+        "grain": "El `svg` con el filtro de ruido. Mide un 136 % del host para que la deriva no deje bordes vacíos.",
+        "tint": "El `feFlood` del filtro que tiñe el grano. Lee `--gemfx-noise-color` con `flood-color`. No tiene entrada en `classNames`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Intensidad, duración y retraso se escriben inline en cada render, así que solo se cambian con las props. El color va inline solo si pasás `color`; si no, se puede pisar desde una clase, igual que la mezcla.",
+      "items": {
+        "intensity": "Opacidad base del grano. La define `intensity`; default `55%`.",
+        "color": "Tono del grano: multiplica el gris del filtro. La define `color`; default `--gem-palette-neutral-0` (casi blanco, grano neutro).",
+        "duration": "Ciclo de la deriva de `film`. Lo define `duration`; default `2400ms`.",
+        "delay": "Retraso del fundido de entrada de la capa y de la deriva de `film`. Lo define `delay`; default `0ms`.",
+        "blend": "`mix-blend-mode` de la capa contra el contenido. No tiene prop; default `overlay`, y `soft-light` con `static`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Noise lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "intensity": "Solo aparecen como default en el CSS: la prop `intensity` siempre escribe un porcentaje literal inline, así que redefinir estos tokens no cambia nada.",
+        "durationFast": "Duración del fundido de entrada del grano. Sin tokens, cae a `200ms`.",
+        "easingStandard": "Curva del fundido de entrada y de la deriva de `film`.",
+        "neutral0": "Color por defecto de `--gemfx-noise-color` (de gem-system, con un gris claro de respaldo)."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido recibe el grano y dónde se monta el efecto."
+      },
+      "appearance": { "title": "Apariencia", "description": "Aspecto, opacidad y tono del grano." },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo de la deriva y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido bajo el grano: una tarjeta, una imagen o un panel.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos (`img`, `input`) vuelve al `div` envolvente.",
+      "variant": "`grain` grano fino, `film` grano que deriva en bucle, `static` nieve más gruesa y opaca.",
+      "intensity": "Opacidad del grano. Token o número entre `0` y `1`.",
+      "color": "Tono del grano (multiplica el grano gris); mejor un token. Sin valor, casi blanco: grano neutro.",
+      "duration": "Ciclo de la deriva de `film`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que aparezca el grano. Con `hover` y `click` se repite en cada activación. También retrasa la deriva de `film`.",
+      "trigger": "`always` se ve siempre, `hover` al pasar el puntero o con foco de teclado y `click` se enciende y apaga con cada clic.",
+      "isActive": "Permite que el grano se vea. En `false` lo oculta y `outNoise` recibe `inactive`.",
+      "isPaused": "Congela la deriva de `film`.",
+      "isDisabled": "Oculta el grano; el hijo queda interactivo. `outNoise` recibe `disabled`.",
+      "ignoreReducedMotion": "Mantiene la deriva aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onNoise": "Se dispara cuando el grano se enciende: al montar con `always`, al entrar el puntero o el foco de teclado con `hover` o al hacer clic con `click`.",
+      "outNoise": "Se dispara cuando se apaga: al salir el puntero o el foco, al volver a hacer clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `grain`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-noise-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title": "Intensity",
+    "description": "Effect strength. The `intensity` prop takes a token (`sm`, `md` or `lg`) or a number between `0` and `1`. Tokens are also available as `--gemfx-intensity-*` variables."
+  },
+  "scale": {
+    "title": "Tokens",
+    "description": "Each swatch mixes the accent color with transparent at the token percentage."
+  },
+  "custom": {
+    "title": "Custom values",
+    "description": "A number between `0` and `1` becomes a mix percentage. For values that are not percentages (blur, scale, distance), effects interpolate between the value of each token with `mixIntensity`."
+  },
+  "tester": {
+    "title": "Try a value",
+    "description": "Move the slider to see what the helpers return. `mixIntensity` uses an example blur of 8, 16 and 28 px for `sm`, `md` and `lg`.",
+    "label": "intensity",
+    "preview": "Preview"
+  },
+  "helpers": {
+    "title": "Helpers",
+    "description": "Imported from `@gem-org/gemffects/tokens`.",
+    "columns": {
+      "name": "Name",
+      "signature": "Signature",
+      "description": "Description"
+    },
+    "items": {
+      "intensity": "Value of each token as a unit between `0` and `1`.",
+      "intensityCss": "Value of each token as a CSS percentage.",
+      "isIntensityToken": "Tells whether a value is `sm`, `md` or `lg`.",
+      "clampIntensityUnit": "Clamps a number to `0`–`1`. Non-finite values return the `md` value.",
+      "intensityUnit": "Turns a token or a number into a unit between `0` and `1`.",
+      "intensityCssValue": "Turns a token or a number into a percentage (`0.62` → `62%`).",
+      "mixIntensity": "Linear interpolation across a per-token map. `0` returns `at0` (default `0`), tokens return their value and `1` extrapolates past `lg`.",
+      "intensitySamples": "Sample values for demos."
+    }
+  },
+  "usage": {
+    "title": "Usage",
+    "description": "In CSS, use the variables as a mix percentage. On effects, pass a token or a number to `intensity`."
+  },
+  "code": {
+    "token": "with a token",
+    "unit": "with a number between 0 and 1",
+    "mix": "your own value that scales with intensity"
+  }
+}

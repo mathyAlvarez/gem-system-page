@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "BorderBeam",
+    "description": "Neon ray that travels around the container border. `variant` sets the ray shape, `trigger` when it runs and `length` how long it is. With `prefers-reduced-motion: reduce` the ray stays still at `offset`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props and see the generated code. `length` set to `auto` uses each `variant`'s default length.",
+    "target": "BorderBeam"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variants",
+      "description": "`orbit` is a single traveling ray, `dual` two opposite rays, `spark` a short hot head, `trace` a long comet tail and `track` adds a dim border along the ray's path."
+    },
+    "card": {
+      "title": "On a Card",
+      "description": "`BorderBeam` wraps a gem-system `Card`. Give the root the same `border-radius` as the card so the ray follows its corners.",
+      "texts": {
+        "title": "Team plan",
+        "subtitle": "Recommended",
+        "body": "Up to 20 people, roles and centralized billing.",
+        "action": "Choose plan"
+      }
+    },
+    "triggers": {
+      "title": "Hover and click",
+      "description": "With `trigger` set to `hover`, the ray runs while the pointer (or focus) is on the element. With `click`, each click turns it on or off.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "geometry": {
+      "title": "Thickness and length",
+      "description": "`thickness` is the stroke width (a number is pixels). `length` is the ray length as a percentage of the loop, between `8` and `70`."
+    },
+    "motion": {
+      "title": "Speed and direction",
+      "description": "`duration` is one full loop in milliseconds. `reverse` makes it travel counter-clockwise."
+    },
+    "offset": {
+      "title": "Starting angle",
+      "description": "`offset` is the starting angle in degrees. Shown here with `isPaused` to see where each one starts. It's also the fixed position under reduced motion."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the ray opacity and, for `track`, the dim border's. Takes a token or a number between `0` and `1`."
+    },
+    "color": {
+      "title": "Colors",
+      "description": "`color` is the ray body and `colorAlt` its head. With `dual`, `colorAlt` is also the second ray's color."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without adding a `div`. Here, on a native `button` with `trigger=\"hover\"`: the ray also shows on keyboard focus.",
+      "texts": {
+        "title": "New project",
+        "body": "Start from a template."
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the ray where it is. `isDisabled` hides it and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onBorderBeam` fires when the ray turns on and `outBorderBeam` when it turns off, with the cause in `event.reason`. The layer doesn't block interaction: the button still gets clicks.",
+      "texts": {
+        "title": "Hover the card",
+        "action": "Add one",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Beta"
+    },
+    "styled": {
+      "title": "Rainbow",
+      "body": "The ray gradient, redefined in your own class."
+    }
+  },
+  "apiLink": "See the full BorderBeam API",
+  "api": {
+    "header": {
+      "title": "BorderBeam API",
+      "description": "Reference for `BorderBeam` props, inheritance, accessibility, CSS classes and variables, and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for each variant and trigger.",
+      "link": "See BorderBeam demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/border-beam` with its `border-beam.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>color</code>, and passes them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's own logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The ray layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it's decorative and doesn't block the child.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the ray stops spinning and stays at the <code>offset</code> angle.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the animation. Use it only when motion is essential.",
+        "focus": "With <code>trigger=\"hover\"</code>, the ray also shows on <code>:focus-within</code>, so keyboard users see it. <code>onBorderBeam</code> only fires for the pointer.",
+        "click": "With <code>trigger=\"click\"</code>, the toggle listens to <code>click</code> on the root. If the child is a <code>button</code>, Enter and Space work too.",
+        "meaning": "The ray is decoration: don't use it as the only state cue (featured, loading). Pair it with text or an ARIA attribute.",
+        "minify": "The ring uses a composite mask. Some minifiers reorder it and show the whole gradient: check it with the production build (this site declares the composition inside the <code>mask</code> shorthand)."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and `isolation: isolate`.",
+        "variant": "Active variant.",
+        "reverse": "Added with `reverse`; reverses the animation.",
+        "trigger": "Active trigger. Hides the layer until hover/focus or click.",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "paused": "Added with `isPaused`; pauses the animation.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`; hides the layer.",
+        "disabled": "Added with `isDisabled`. Removes the pointer cursor.",
+        "layer": "Absolute layer over the child holding the dim border and the ring.",
+        "track": "Dim border, only with `variant=\"track\"`.",
+        "ring": "Masked ring as thick as `thickness`, with the glow (`drop-shadow`).",
+        "spin": "Rotating conic gradient that draws the ray.",
+        "spinAlt": "Second ray, offset by half a loop. Only with `variant=\"dual\"`.",
+        "surface": "Wraps the child, below the layer."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "items": {
+        "color": "Ray color. Set by `color`; default `var(--gem-palette-primary-400)`.",
+        "colorAlt": "Head and second-ray color. Set by `colorAlt`; default `var(--gem-palette-secondary-400)`.",
+        "duration": "One full loop. Set by `duration`; default `3600ms`.",
+        "delay": "Delay before starting. Set by `delay`; default `0ms`.",
+        "thickness": "Stroke width. Set by `thickness`; default `2px`.",
+        "span": "Ray length as a percentage of the loop. Set by `length`.",
+        "offset": "Starting angle. Set by `offset`; default `0deg`.",
+        "intensity": "Ray opacity. Set by `intensity`; default `var(--gemfx-intensity-md)`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables BorderBeam reads as defaults.",
+      "items": {
+        "intensity": "Default intensity (`55%`).",
+        "palette": "Default `color` and `colorAlt`, with a neon fallback when gem-system isn't loaded.",
+        "spark": "Extra white glow of the `spark` variant."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Every prop is optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which container the ray travels and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Ray shape, colors, thickness, length and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Loop speed and direction, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When the ray runs and how it pauses or turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Container whose border the ray travels.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. The child needs its own `border-radius`.",
+      "variant": "Ray shape: `orbit`, `dual`, `spark`, `trace` or `track`.",
+      "color": "Ray color. Prefer host tokens (`var(--gem-palette-primary-400)`). An empty string uses the default.",
+      "colorAlt": "Head color and, with `dual`, the second ray's color.",
+      "thickness": "Stroke width. A number is pixels; a string is used as is.",
+      "length": "Ray length as a percentage of the loop, clamped to `8`–`70`. Without a value, it depends on `variant`: `orbit` 18, `dual` 14, `spark` 8, `trace` 38, `track` 16.",
+      "offset": "Starting angle in degrees.",
+      "intensity": "Ray strength: token or number between `0` and `1`.",
+      "duration": "One full loop. Negative values become `0`.",
+      "delay": "Delay before the loop starts.",
+      "reverse": "Travels counter-clockwise.",
+      "trigger": "`always` keeps running, `hover` while the pointer or focus is on it, `click` toggles on each click.",
+      "isActive": "Shows the ray. `false` hides it and `outBorderBeam` gets `inactive`.",
+      "isPaused": "Freezes the ray at its current position.",
+      "isDisabled": "Hides the ray; the child stays interactive. `outBorderBeam` gets `disabled`.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only when motion is essential.",
+      "onBorderBeam": "Fires when the ray turns on: on mount with `always`, on pointer enter with `hover` or when toggled on with `click`.",
+      "outBorderBeam": "Fires when the ray turns off: on pointer leave, when toggled off with `click`, when disabled or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `track`, `ring`, `spin` and `spinAlt`.",
+      "style": "Root inline styles. Merged with the `--gemfx-border-beam-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

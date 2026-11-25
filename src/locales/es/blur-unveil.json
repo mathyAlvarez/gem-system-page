@@ -1,0 +1,212 @@
+{
+  "header": {
+    "title": "BlurUnveil",
+    "description": "Pasa de desenfocado a nítido (o al revés), con un leve zoom. `variant` define el patrón (`in`, `out` o `pulse`) y `trigger` cuándo corre: por defecto (`always`) se reproduce una vez al montar. Pensado para imágenes que cargan o contenido que se revela."
+  },
+  "replay": "Repetir",
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `trigger=\"always\"` la animación corre una sola vez: usá Repetir para volver a verla. Con `pulse`, subí `duration` (es la duración de cada ciclo).",
+    "alt": "Logo de gem-org"
+  },
+  "stories": {
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Con los valores por defecto (`variant=\"in\"`, `trigger=\"always\"`) la imagen arranca desenfocada y un poco agrandada, y en `700ms` queda nítida. Solo corre al montar. La raíz recorta (`overflow: hidden`), así que lleva el `border-radius`.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`in` va de desenfocado a nítido, `out` de nítido a desenfocado y `pulse` alterna entre los dos en bucle."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` y `click`, `in` queda desenfocado en reposo y se aclara al pasar el mouse o al hacer clic. Con `hover`, el foco de teclado (en la raíz o en un control de adentro) también lo aclara. `always` se reproduce una vez al montar."
+    },
+    "spoiler": {
+      "title": "Spoiler",
+      "description": "`trigger=\"click\"` con `scale={1}` sirve para ocultar contenido hasta que la persona decide verlo. Hacé clic en la tarjeta para revelarla y otra vez para ocultarla. Con `tabIndex={0}` la raíz es enfocable: llegá con Tab y alterná con Enter o Espacio.",
+      "texts": {
+        "title": "Final de temporada",
+        "body": "El protagonista era el villano desde el primer capítulo."
+      }
+    },
+    "blur": {
+      "title": "Desenfoque",
+      "description": "`blur` fija el desenfoque máximo y reemplaza al de `intensity`. Un número son píxeles; un string se usa tal cual (`\"1.5rem\"`). Pasá el mouse para aclarar cada una."
+    },
+    "scale": {
+      "title": "Escala",
+      "description": "`scale` es el zoom mientras está desenfocado; al aclararse vuelve a `1`. Con `scale={1}` el tamaño no cambia. Los valores menores a `1` se toman como `1`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que tarda en aclararse (o el ciclo completo, con `pulse`). `delay` retrasa el inicio."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Si no pasás `blur` ni `scale`, `intensity` los define: `sm` 8px y 1.02, `md` 18px y 1.06, `lg` 32px y 1.1. Acepta un token o un número entre `0` y `1`. Acá con `hover` para ver el desenfoque en reposo."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div` envolvente. Acá, directo sobre un `img` con `trigger=\"hover\"` y `scale={1}`. No hay raíz que recorte, así que el desenfoque se ve un poco más allá de los bordes: si querés recortarlo, usá el `div` por defecto.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el desenfoque y la escala donde están, en cualquier variante y disparador: el latido de `pulse`, la entrada de `always` o la transición de `hover` y `click` a mitad de camino. Al despausar sigue desde ahí. `isDisabled` deja el contenido nítido e interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onBlurUnveil` se dispara cuando el efecto se activa y `outBlurUnveil` cuando se apaga, con el motivo en `event.reason`. El botón sigue recibiendo clics aunque esté desenfocado.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta para verla nítida y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "alt": "Logo de gem-org con borde al revelar"
+    },
+    "styled": {
+      "alt": "Logo de gem-org oculto como spoiler",
+      "hint": "Clic para ver"
+    }
+  },
+  "apiLink": "Ver la API completa de BlurUnveil",
+  "api": {
+    "header": {
+      "title": "BlurUnveil API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `BlurUnveil`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de BlurUnveil"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/blur-unveil` con su `blur-unveil.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onKeyDown</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el contenido queda nítido y en escala <code>1</code> en todas las variantes y disparadores: se quitan las animaciones, las transiciones y el desenfoque de reposo.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el movimiento. Usalo solo si es esencial.",
+        "hidden": "El desenfoque es solo visual: el contenido sigue en el DOM y los lectores de pantalla lo leen. No lo uses como única forma de ocultar información sensible.",
+        "keyboard": "Con <code>trigger=\"hover\"</code>, el foco de teclado (<code>:focus-visible</code> en la raíz o adentro) cuenta como hover: el contenido se aclara y se disparan <code>onBlurUnveil</code> y <code>outBlurUnveil</code>. Un clic de mouse que enfoca un botón no lo deja aclarado.",
+        "click": "Con <code>trigger=\"click\"</code> el toggle escucha el <code>click</code> de la raíz, así que un <code>button</code> de adentro alterna con Enter y Espacio. Si la raíz es enfocable (<code>tabIndex={0}</code>, como en el spoiler), Enter y Espacio sobre ella también alternan.",
+        "performance": "<code>filter: blur()</code> es costoso en elementos grandes. Evitá muchas instancias de <code>pulse</code> a la vez."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex`, `isolation: isolate` y `overflow: hidden` para recortar el zoom y el desenfoque.",
+        "variant": "Variante activa.",
+        "trigger": "Disparador activo. Con `hover` y `click`, `in` queda desenfocado hasta que aparece `--on`.",
+        "on": "Se agrega mientras está activo: con el puntero o el foco de teclado encima (`hover`) o encendido (`click`).",
+        "paused": "Se agrega con `isPaused`. Pausa las animaciones de `always` y `pulse`. Con `hover` y `click`, el componente fija inline el desenfoque y la escala actuales mientras dure la pausa.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Deja la superficie nítida y en escala `1`.",
+        "disabled": "Se agrega con `isDisabled`.",
+        "surface": "Envuelve al hijo. Es la que recibe el `filter: blur()` y el `transform: scale()`. Con `asChild` es el propio hijo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas se escriben inline en la raíz en cada render, así que no se pueden pisar desde una clase: ajustalas con las props. Las curvas sí se cambian desde los tokens.",
+      "items": {
+        "duration": "Duración de la transición (o del ciclo de `pulse`). La define `duration`; default `700ms`.",
+        "delay": "Retraso. Lo define `delay`; default `0ms`.",
+        "blur": "Desenfoque máximo. Sale de `blur` o de `intensity` (`18px` por defecto).",
+        "scale": "Escala mientras está desenfocado. Sale de `scale` o de `intensity` (`1.06` por defecto)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que BlurUnveil lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "easingEmphasized": "Curva de `in`, `out` y de las transiciones con `hover` y `click`.",
+        "easingStandard": "Curva del ciclo de `pulse`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido se desenfoca y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Patrón, desenfoque y escala."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración (o ciclo de `pulse`) y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo corre y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": {
+        "title": "Estilos",
+        "description": "Clases, estilos inline y ref."
+      }
+    },
+    "items": {
+      "children": "Contenido que se revela, normalmente una imagen.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Desenfoca el propio hijo, así que el desenfoque y el zoom no se recortan. No inyecta capas, así que funciona con elementos vacíos (`img`): el propio elemento pasa a ser la raíz.",
+      "variant": "`in` de desenfocado a nítido, `out` de nítido a desenfocado, `pulse` alterna en bucle.",
+      "blur": "Desenfoque máximo. Un número son píxeles (los negativos se toman como `0`); un string se usa tal cual. Sin valor, `intensity` lo define: `8`, `18` o `32` px.",
+      "scale": "Escala mientras está desenfocado. Sin valor, `intensity` la define: `1.02`, `1.06` o `1.1`. Mínimo `1`.",
+      "intensity": "Define `blur` y `scale` cuando faltan. Token o número entre `0` y `1`.",
+      "duration": "Duración de la transición, o ciclo completo con `pulse`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece.",
+      "trigger": "`always` se reproduce una vez al montar (`pulse` en bucle), `hover` mientras el puntero o el foco de teclado está encima, `click` alterna con cada clic (o con Enter y Espacio si la raíz tiene foco).",
+      "isActive": "Permite el efecto. En `false` deja el contenido nítido y `outBlurUnveil` recibe `inactive`.",
+      "isPaused": "Congela el desenfoque y la escala actuales en cualquier variante, también a mitad de la transición. Mientras está pausado, los clics no alternan con `trigger=\"click\"`.",
+      "isDisabled": "Detiene el efecto; el hijo queda nítido e interactivo. `outBlurUnveil` recibe `disabled`.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onBlurUnveil": "Se dispara cuando el efecto se activa: al entrar el puntero o el foco de teclado, al encender con clic o teclado o al montar con `always`.",
+      "outBlurUnveil": "Se dispara cuando se apaga: al salir el puntero o el foco, al apagar con clic o teclado, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-blur-unveil-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

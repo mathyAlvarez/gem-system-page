@@ -1,0 +1,214 @@
+{
+  "header": {
+    "title": "ScrambleText",
+    "description": "Matrix-style decode for titles, labels and metrics: the characters start scrambled and resolve from left to right. Pass the copy with `text` or as children. `decode` runs once; `loop` repeats after `hold`. It starts on mount by default."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. It starts with `loop` so you can see the effect without reloading; with `decode` and `always` it runs once every time a prop changes.",
+    "text": "ACCESS GRANTED"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic decode",
+      "description": "With the defaults (`variant=\"decode\"`, `trigger=\"always\"`, `duration={900}`) the copy scrambles on mount and resolves once. The root is a `span` with gem-system's mono font and tabular numbers so the width doesn't jump. Only spaces, tabs and line breaks are kept: punctuation gets scrambled too.",
+      "texts": {
+        "replay": "Replay"
+      }
+    },
+    "heading": {
+      "title": "In a heading",
+      "description": "Since the root is a `span`, you can drop it straight into an `h2`, a `p` or a link without breaking the HTML. Screen readers read the real copy from a visually hidden copy, not the glyphs.",
+      "texts": {
+        "title": "WELCOME",
+        "caption": "The effect sits inside the h2.",
+        "replay": "Replay"
+      }
+    },
+    "loop": {
+      "title": "Looping",
+      "description": "`variant=\"loop\"` scrambles again after a pause. `hold` is how long the copy stays resolved between rounds, in milliseconds."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover`, it decodes again every time the pointer enters, and shows the final copy when it leaves. With `click`, one click starts the effect and the next one stops it and shows the final copy; with `decode` it takes two clicks to replay.",
+      "texts": {
+        "hoverText": "HOVER ME",
+        "clickText": "CLICK ME"
+      }
+    },
+    "charset": {
+      "title": "Charset",
+      "description": "`charset` sets where the replacement glyphs come from. By default it's ASCII letters and digits; an empty string falls back to the default."
+    },
+    "metrics": {
+      "title": "Metrics",
+      "description": "With a digits `charset` and tabular numbers, it works well for dashboards. `number` children also work as copy.",
+      "texts": {
+        "users": "Active users",
+        "uptime": "Uptime",
+        "latency": "p95 latency"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` doesn't change how many characters are scrambled but how often they change: about `18`, `28` or `42` times per second. With a number between `0` and `1` the minimum is `8`."
+    },
+    "duration": {
+      "title": "Duration and delay",
+      "description": "`duration` is how long it takes for the whole copy to resolve, in milliseconds. `delay` waits before the first decode while showing already scrambled glyphs, so the final copy is never revealed early. With `loop`, `delay` only applies to the first round: the next ones wait for `hold`."
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, the effect is applied to the single child without adding a `span`, and the glyphs replace its content. If you omit `text`, the source copy comes from the child's own content, and the button keeps its accessible name. Here with `trigger=\"hover\"` on a button.",
+      "texts": {
+        "label": "SAVE"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the glyphs as they are and, when unpaused, resumes from the same point: paused time doesn't count. `isDisabled` shows the copy without scrambling.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onScrambleText` fires when the effect turns on (on mount with `always`, on pointer enter with `hover` or on click with `click`) and `outScrambleText` when it turns off, with the reason in `event.reason`. Click the copy to turn it on and off.",
+      "texts": {
+        "text": "CLICK ME",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "text": "NEON"
+    },
+    "styled": {
+      "text": "SYSTEM READY"
+    }
+  },
+  "apiLink": "See the full ScrambleText API",
+  "api": {
+    "header": {
+      "title": "ScrambleText API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `ScrambleText`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger and option.",
+      "link": "See ScrambleText demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/scramble-text` with its `scramble-text.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes and passes them to the root <code>span</code> (or to the child, with <code>asChild</code>), <code>aria-label</code> included. <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the final copy is shown right away, without scrambling. The preference is listened to live: if it changes while the effect runs, it applies immediately.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the scramble. Only use it when essential.",
+        "name": "The glyphs are <code>aria-hidden</code> and the real copy goes in a visually hidden <code>span</code> (<code>.gemfx-scramble-text__sr</code>), so screen readers read it as regular content, also inside a heading or a button with <code>asChild</code>.",
+        "width": "The mono font and tabular numbers keep the copy from changing width while scrambling. If you switch to a proportional font, the layout may jump.",
+        "keyboard": "With <code>trigger=\"hover\"</code> or <code>\"click\"</code> the effect only responds to the pointer: keyboard focus doesn't start it. Don't use it to convey information."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`span`). `position: relative`, `inline-flex`, `max-width: 100%`, `font-family: var(--gem-font-mono)`, `font-variant-numeric: tabular-nums` and `color: inherit`.",
+        "variant": "Active variant. It has no styles of its own.",
+        "trigger": "Active trigger, while the effect is enabled. Sets `cursor: pointer`.",
+        "on": "Added while the effect is on with `click`.",
+        "paused": "Added with `isPaused`. It has no styles of its own.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "`span` that wraps the glyphs (`z-index: 1`). With `asChild`, the class goes on the child itself.",
+        "glyphs": "The `span` with the visible characters (`aria-hidden`, `white-space: pre-wrap`).",
+        "sr": "Visually hidden copy of the real text, read by screen readers."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "They're written inline on every render, but no CSS rule uses them: the animation runs in JavaScript.",
+      "items": {
+        "duration": "Mirrors `duration`; default `900ms`.",
+        "delay": "Mirrors `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables ScrambleText reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "fontMono": "Root font (with `ui-monospace` and other fallbacks)."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which copy gets scrambled and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Pattern, replacement glyphs and change rate."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Duration, delay and pause between rounds, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it runs, how it pauses and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "text": "Copy to scramble. Wins over the children's text. Keeps spaces and line breaks.",
+      "children": "Source copy when `text` is omitted: the plain text of the children is used (strings, numbers and the content of nested elements).",
+      "asChild": "Applies the effect to the single child, without a wrapping `span`, and replaces its content with the glyphs. Without `text`, it uses the child's own text.",
+      "variant": "`decode` runs once and keeps the copy; `loop` repeats after `hold`.",
+      "charset": "Replacement characters. An empty (or whitespace-only) string falls back to the default: ASCII letters and digits.",
+      "intensity": "Glyph change rate (`18`, `28` or `42` per second). Token or a number between `0` and `1`.",
+      "duration": "Time until the whole copy is resolved. Negative values are treated as `0` (no scramble).",
+      "delay": "Wait before the first decode, showing scrambled glyphs. With `loop`, it only applies to the first round.",
+      "hold": "Pause with the copy resolved before the next round. Only with `variant=\"loop\"`.",
+      "trigger": "`always` starts on mount, `hover` decodes every time the pointer enters and `click` turns on and off with each click.",
+      "isActive": "Lets the effect run. When `false` it shows the final copy and `outScrambleText` receives `inactive`.",
+      "isPaused": "Freezes the current glyphs. When unpaused it resumes from the same point; paused time doesn't count.",
+      "isDisabled": "Shows the copy without scrambling. `outScrambleText` receives `disabled`.",
+      "ignoreReducedMotion": "Scrambles even when the user prefers reduced motion. Only when essential.",
+      "onScrambleText": "Fires when the effect turns on: on mount with `always`, on pointer enter with `hover` or on click with `click`.",
+      "outScrambleText": "Fires when it turns off: on pointer leave, on a second click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `glyphs` and `sr`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-scramble-text-*` variables.",
+      "ref": "Ref to the root (the `span`, or the child with `asChild`)."
+    }
+  }
+}

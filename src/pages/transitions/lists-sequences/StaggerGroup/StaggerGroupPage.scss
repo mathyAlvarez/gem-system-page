@@ -1,0 +1,23 @@
+/**
+ * Gem System Page — StaggerGroup playground
+ * Controls grid for the StaggerGroup docs playground.
+ */
+
+.stagger-group-playground {
+  --stagger-group-playground-gap: var(--gem-space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--stagger-group-playground-gap);
+  margin-bottom: var(--gem-space-6);
+
+  @media (min-width: 48rem) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-2);
+    min-width: 0;
+  }
+}

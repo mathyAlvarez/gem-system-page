@@ -1,0 +1,217 @@
+{
+  "header": {
+    "title": "Glitch",
+    "description": "Interferencia digital estilo cyberpunk: separación de canales RGB, cortes horizontales, líneas de escaneo y estática, en ráfagas cortas. `variant` define el patrón (`cyber`, `rgb`, `slice` o `noise`) y `trigger` cuándo corre. Por defecto se repite en bucle."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Las ráfagas llegan cerca del 10 %, del 38 % y del 80 % de cada ciclo, así que esperá un momento para ver la más fuerte.",
+    "alt": "Logo de gem-org"
+  },
+  "stories": {
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Con los valores por defecto (`variant=\"cyber\"`, `trigger=\"always\"`) hay tres ráfagas por ciclo de `2200ms`: separa los canales rojo y azul, corta franjas horizontales, hace temblar el contenido y suma líneas de escaneo y estática. La raíz recorta (`overflow: hidden`), así que lleva el `border-radius`.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`cyber` combina todo. `rgb` solo separa los canales con un filtro SVG, `slice` solo desplaza franjas (con el mismo filtro) y suma cortes de color, y `noise` solo dibuja líneas de escaneo y estática, sin filtro. Las cuatro hacen temblar el contenido a saltos (`steps()`), sin deslizarse; `rgb` salta todavía más seco."
+    },
+    "text": {
+      "title": "Sobre texto",
+      "description": "Funciona igual sobre tipografía. Con texto grande y `intensity=\"lg\"` la separación de canales se nota más.",
+      "texts": {
+        "label": "Glitch"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`always` corre en bucle, `hover` mientras el puntero está encima o el foco de teclado está adentro, y `click` alterna con cada clic. Apagado, el contenido queda quieto y sin capas."
+    },
+    "split": {
+      "title": "Separación RGB",
+      "description": "`split` es cuántos píxeles se separan los canales en el pico de cada ráfaga. Sin valor, `intensity` lo define: `2`, `4` u `8`. Solo afecta a `cyber` y `rgb`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que dura un ciclo completo, con sus tres ráfagas. `delay` retrasa el inicio, útil para desfasar varios elementos."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la separación RGB (`2`, `4` u `8` px), el desplazamiento de las franjas (`5`, `11` o `18` px) y la opacidad de cortes, escaneo y estática. Acepta un token o un número entre `0` y `1`."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` y `colorAlt` tiñen los degradés de los cortes, así que solo se ven con `cyber` y `slice`. La separación de canales usa siempre rojo y azul puros. Sin valor, usan `primary-400` y `secondary-400`."
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la distorsión tal como está: el temblor, los cortes, la estática y el filtro SVG quedan en su último cuadro, y al despausar sigue desde ese mismo cuadro. `isDisabled` apaga el efecto y deja el contenido quieto e interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild` el efecto se monta sobre el hijo, sin `div` envolvente: el `h3` recibe la clase raíz, el filtro RGB y el temblor, y las capas se insertan dentro de él. Con elementos vacíos (`img`, `input`) no hay dónde insertarlas, así que vuelve al `div` envolvente.",
+      "texts": {
+        "label": "Señal"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGlitch` se dispara cuando el efecto se activa y `outGlitch` cuando se apaga, con el motivo en `event.reason`. Las capas tienen `pointer-events: none`, así que el botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta (o llegá al botón con Tab) para interferirla y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Sin señal"
+    },
+    "styled": {
+      "alt": "Logo de gem-org en una pantalla CRT"
+    }
+  },
+  "apiLink": "Ver la API completa de Glitch",
+  "api": {
+    "header": {
+      "title": "Glitch API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Glitch`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Glitch"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/glitch` con su `glitch.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>, que es una prop propia) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "photosensitivity": "Son destellos y saltos bruscos. Para cumplir WCAG 2.3.1, evitá más de tres destellos por segundo: no bajes mucho <code>duration</code> y no lo uses en áreas grandes de la pantalla.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el contenido queda quieto, sin filtro ni cortes, y solo quedan unas líneas de escaneo tenues. La preferencia se sigue en vivo: si cambia con la página abierta, el glitch se apaga o vuelve sin recargar.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el glitch. Usalo solo si es esencial.",
+        "decorative": "El <code>svg</code> del filtro y las capas llevan <code>aria-hidden</code>, y las capas <code>pointer-events: none</code>: no se anuncian ni bloquean clics. El texto sigue siendo legible para lectores de pantalla.",
+        "keyboard": "Con <code>trigger=\"hover\"</code> el foco de teclado (<code>:focus-visible</code>) en la raíz o en un descendiente activa el efecto igual que el puntero: el modo animado, el filtro SVG, <code>onGlitch</code> y <code>outGlitch</code>. El foco con mouse no cuenta. La raíz no es enfocable por sí sola: hace falta un control adentro o un <code>tabIndex</code>.",
+        "performance": "Con <code>cyber</code>, <code>rgb</code> y <code>slice</code>, cada instancia activa corre un <code>requestAnimationFrame</code> que actualiza un filtro SVG. Evitá muchas instancias a la vez o sobre elementos grandes."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex`, `isolation: isolate` y `overflow: hidden`.",
+        "variant": "Variante activa.",
+        "live": "Se agrega mientras el efecto corre (activo y sin reduced motion; con `hover`, por puntero o por foco de teclado). Activa todas las animaciones.",
+        "filter": "Se agrega mientras corre con `cyber`, `rgb` o `slice`. Aplica el filtro SVG a la superficie.",
+        "trigger": "Se agrega con `trigger=\"hover\"` o `\"click\"` (no hay clase para `always`).",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused`. Pausa (`animation-play-state: paused`) el temblor y las animaciones de las capas; el filtro SVG lo congela JS.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Quita el filtro, el temblor y las capas.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "defs": "`svg` de tamaño cero con el filtro. Solo existe con `cyber`, `rgb` y `slice`.",
+        "surface": "Envuelve al hijo (con `asChild`, es el propio hijo). Recibe el filtro SVG y el temblor (`transform`).",
+        "layer": "Capa decorativa por encima del contenido (`aria-hidden`, `z-index: 2`, `pointer-events: none`).",
+        "slice": "Cortes de color con `mix-blend-mode: screen`. Solo existen con `cyber` y `slice`.",
+        "scan": "Líneas de escaneo. Solo existen con `cyber` y `noise`.",
+        "noise": "Estática. Solo existe con `cyber` y `noise`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`duration`, `delay`, `split`, `intensity` y `filter` se escriben inline en cada render, así que solo se cambian con las props. Los colores van inline solo si pasás `color` o `colorAlt`; si no, se pueden pisar desde una clase.",
+      "items": {
+        "red": "Color cálido de los cortes. Lo define `color`; default `var(--gem-palette-primary-400)`.",
+        "cyan": "Color frío de los cortes. Lo define `colorAlt`; default `var(--gem-palette-secondary-400)`.",
+        "duration": "Duración del ciclo. La define `duration`; default `2200ms`.",
+        "delay": "Retraso. Lo define `delay`; default `0ms`.",
+        "intensity": "Intensidad como porcentaje; regula la opacidad de cortes, escaneo y estática.",
+        "split": "Separación RGB en píxeles. Es informativa: el CSS no la usa, el desplazamiento lo aplica JS sobre el filtro SVG.",
+        "filter": "`url(#…)` del filtro SVG de esta instancia (id único con `useId`)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Glitch lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "primary": "Color por defecto de `color`. Si gem-system no está cargado, cae a `#ff2a6d`.",
+        "secondary": "Color por defecto de `colorAlt`. Si gem-system no está cargado, cae a `#05d9e8`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido recibe la interferencia y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Patrón, separación de canales, colores e intensidad."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo de ráfagas y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo corre y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que recibe el glitch: una imagen, texto o una tarjeta.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos (`img`, `input`) vuelve al `div` envolvente, porque el filtro y las capas se insertan como hijos.",
+      "variant": "`cyber` todo junto, `rgb` solo separación de canales, `slice` solo franjas desplazadas y cortes, `noise` solo escaneo y estática.",
+      "split": "Separación de canales en píxeles (los negativos se toman como `0`). Sin valor, `intensity` la define: `2`, `4` u `8`.",
+      "color": "Color cálido de los cortes de `cyber` y `slice`. Cualquier color CSS.",
+      "colorAlt": "Color frío de los cortes de `cyber` y `slice`. Cualquier color CSS.",
+      "intensity": "Fuerza de la distorsión: separación, desplazamiento y opacidad de las capas. Token o número entre `0` y `1`.",
+      "duration": "Duración de un ciclo con sus tres ráfagas. Los negativos se toman como `0`.",
+      "delay": "Retraso antes del primer ciclo.",
+      "trigger": "`always` en bucle, `hover` mientras el puntero está encima o hay foco de teclado adentro, `click` alterna con cada clic.",
+      "isActive": "Permite el efecto. En `false` lo apaga y `outGlitch` recibe `inactive`.",
+      "isPaused": "Congela la distorsión actual en su último cuadro. Al despausar, retoma desde ese cuadro.",
+      "isDisabled": "Detiene el efecto; el hijo queda quieto e interactivo. `outGlitch` recibe `disabled`.",
+      "ignoreReducedMotion": "Corre aunque el usuario prefiera menos movimiento. Sin esta prop, el efecto sigue la preferencia en vivo. Solo si es esencial.",
+      "onGlitch": "Se dispara cuando el efecto se activa: al montar con `always`, al entrar el puntero o el foco de teclado, o al encender con clic.",
+      "outGlitch": "Se dispara cuando se apaga: al salir el puntero o el foco, al apagar con clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `slice`, `scan` y `noise`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-glitch-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

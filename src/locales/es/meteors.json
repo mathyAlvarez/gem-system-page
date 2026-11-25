@@ -1,0 +1,216 @@
+{
+  "header": {
+    "title": "Meteors",
+    "description": "Lluvia de estrellas fugaces sobre el hijo. Agrega una capa decorativa (`pointer-events: none`) con trazos que cruzan en diagonal, cada uno con su propia posición, retraso, duración y largo. `variant` define el trazo (`trail`, `ember`, `shard`), `reverse` invierte la dirección y `count` o `intensity` la cantidad."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera.",
+    "label": "Night"
+  },
+  "stories": {
+    "base": {
+      "title": "Meteoros básicos",
+      "description": "Con los valores por defecto (`variant=\"trail\"`, `intensity=\"md\"`, `duration={3200}`) cruzan `14` trazos de `1px` en `primary-200`, inclinados `32deg`. El recorrido se mide contra el ancho de la capa (unidades de contenedor), así que cada trazo atraviesa el campo entero sea cual sea su tamaño. El campo ocupa toda la raíz, así que el tamaño, el radio y el fondo van en la raíz. Como la capa va por encima del contenido, conviene un texto corto o con buen contraste.",
+      "texts": {
+        "label": "Night"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`trail` es una línea fina que se desvanece. `ember` es más gruesa, con la cabeza en `tertiary-400` y un resplandor. `shard` es más corta (un `55%` del largo) y más inclinada (`48deg`)."
+    },
+    "reverse": {
+      "title": "Dirección",
+      "description": "Por defecto los trazos entran por la izquierda y avanzan a la derecha. Con `reverse` entran por la derecha y van hacia la izquierda."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Los meteoros se superponen a cualquier contenido, como una imagen. La capa tiene `aria-hidden` y `pointer-events: none`, así que no interfiere con el texto alternativo ni con los clics.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`color` es el color de los trazos (se desvanece a transparente). Por defecto `primary-200`. Mejor usar tokens. Con `ember`, la cabeza sigue en `tertiary-400`."
+    },
+    "count": {
+      "title": "Cantidad",
+      "description": "`count` fija la cantidad de trazos y tiene prioridad sobre `intensity`. El máximo es `48`. Las posiciones y los tiempos son pseudoaleatorios pero estables: cada instancia con la misma cantidad dibuja el mismo patrón."
+    },
+    "speed": {
+      "title": "Velocidad",
+      "description": "`speed` multiplica la velocidad: `2` es el doble de rápido y `0.5` la mitad (se limita entre `0.2` y `4`). `duration` es el ciclo base con `speed={1}`; cada trazo tarda entre el `70%` y el `140%` de ese ciclo."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover` la capa está oculta y aparece al pasar el puntero o al enfocar algo dentro con el teclado. Con `click`, cada clic la muestra u oculta. Los trazos arrancan de cero cada vez.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` cambia la opacidad de los trazos (`65%`, `85%` o `100%` con `sm`, `md` o `lg`) y, sin `count`, cuántos hay: `8`, `14` o `22`. También acepta un número de `0` a `1`. Los tokens se leen de `--gemfx-intensity-*`, así que podés redefinirlos en un ancestro."
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela los trazos donde están. `isDisabled` oculta la capa y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onMeteors` se dispara cuando el campo se enciende (al entrar el puntero o enfocar el botón con el teclado con `hover`, al hacer clic con `click` o al montar con `always`) y `outMeteors` cuando se apaga, con el motivo en `event.reason`. El botón sigue recibiendo clics.",
+      "texts": {
+        "body": "Pasá el mouse o llegá al botón con Tab para encender los meteoros, y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Starfall"
+    },
+    "styled": {
+      "label": "Comet"
+    }
+  },
+  "apiLink": "Ver la API completa de Meteors",
+  "api": {
+    "header": {
+      "title": "Meteors API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Meteors`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Meteors"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/meteors` con su `meteors.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. <code>--gemfx-meteors-color</code> y <code>--gemfx-meteors-intensity</code> solo se escriben inline si pasás <code>color</code> o <code>intensity</code>, y en ese caso van después de <code>style</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> los trazos se ocultan por completo.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) los mantiene. Usalo solo si el movimiento es esencial.",
+        "decorative": "La capa tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia y no bloquea clics.",
+        "focus": "Con <code>trigger=\"hover\"</code> los meteoros también aparecen al enfocar algo dentro con el teclado (<code>:focus-visible</code>), y <code>onMeteors</code>/<code>outMeteors</code> se disparan igual que con el puntero. Con <code>click</code> la raíz no es enfocable: el teclado no los enciende.",
+        "density": "La capa va por encima del contenido (<code>z-index: 2</code>). Con mucho texto, bajá <code>count</code> o usá <code>speed</code> bajo para que los trazos no compitan con la lectura."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `inline-flex`, `position: relative`, `isolation: isolate` y `overflow: hidden`.",
+        "variant": "Variante activa. `ember` engrosa el trazo y le suma cabeza y resplandor; `shard` lo acorta e inclina más.",
+        "reverse": "Se agrega con `reverse`. Los trazos entran por la derecha.",
+        "trigger": "Disparador activo. Pone `cursor: pointer` y oculta la capa mientras no esté encendida.",
+        "on": "Se agrega mientras el campo está encendido con `click`.",
+        "paused": "Se agrega con `isPaused`. Pausa los trazos con `animation-play-state`.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta la capa y quita la animación.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "layer": "Capa decorativa (`position: absolute`, `inset: 0`, `z-index: 2`, `aria-hidden`, `container-type: size`). Hereda el radio de la raíz y su opacidad sale de la intensidad.",
+        "meteor": "Cada trazo: `1px` de alto, degradé a transparente y su propia animación, que cruza la capa sobre su eje inclinado. `top` y los tiempos van inline.",
+        "surface": "Envuelve al hijo (`z-index: 1`). Con `asChild`, la clase va en el propio hijo."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`color` e `intensity` solo se escriben inline si pasás la prop; si no, se pueden redefinir con una clase. Los tiempos de cada trazo van inline en el propio trazo.",
+      "items": {
+        "color": "Color de los trazos. Lo define `color`; default `primary-200` (respaldo `#d7fff6`).",
+        "intensity": "Intensidad de la capa: su opacidad es `min(100%, intensidad + 30%)`. La define `intensity`; default `var(--gemfx-intensity-md)`.",
+        "meteor": "Retraso, duración y largo de cada trazo. Se calculan en JS (con `duration`, `speed` y `delay`) y se escriben inline en cada uno.",
+        "trajectory": "Geometría del trazo, definida en `.gemfx-meteors__meteor`: ángulo (`32deg`), pendiente (`tan(ángulo)`, `0.625`), dirección (`1` o `-1`), recorrido (`100cqw` más dos largos) y orientación del degradé. `shard` y `reverse` las ajustan. Si cambiás el ángulo, cambiá también la pendiente para que el trazo siga su eje."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Meteors lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "color": "Color por defecto de los trazos (respaldo `#d7fff6`).",
+        "ember": "Cabeza y resplandor de `ember` (respaldo `#ffa61f`). No se puede cambiar con una prop.",
+        "intensity": "Intensidad por defecto (respaldo `55%`). Con `intensity=\"sm\"` o `\"lg\"` se leen `--gemfx-intensity-sm` y `--gemfx-intensity-lg`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido va debajo de los meteoros y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Trazo, color, cantidad y dirección."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo, velocidad y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se ve, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": {
+        "title": "Estilos",
+        "description": "Clases, estilos inline y ref."
+      }
+    },
+    "items": {
+      "children": "Contenido debajo de los meteoros.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos como `img` vuelve al `div`.",
+      "variant": "`trail` es una línea fina, `ember` una cabeza cálida con resplandor y `shard` un trazo más corto.",
+      "color": "Color de los trazos. Mejor un token; default `primary-200`.",
+      "count": "Cantidad de trazos (máximo `48`). Tiene prioridad sobre `intensity`.",
+      "intensity": "Opacidad de los trazos (`65%`, `85%` o `100%`) y, sin `count`, la cantidad: `8`, `14` o `22`.",
+      "reverse": "Los trazos entran por la derecha y van hacia la izquierda.",
+      "duration": "Ciclo base con `speed={1}`. Cada trazo tarda entre el `70%` y el `140%`.",
+      "speed": "Multiplicador de velocidad, entre `0.2` y `4`. `2` es el doble de rápido.",
+      "delay": "Retraso antes de que empiece el campo.",
+      "trigger": "`always` los muestra siempre, `hover` al pasar el puntero o enfocar algo dentro y `click` los muestra y oculta con cada clic.",
+      "isActive": "Permite que el campo corra. En `false` lo oculta y `outMeteors` recibe `inactive`.",
+      "isPaused": "Congela los trazos.",
+      "isDisabled": "Oculta el campo; el hijo queda interactivo. `outMeteors` recibe `disabled`.",
+      "ignoreReducedMotion": "Muestra los meteoros aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onMeteors": "Se dispara cuando el campo se enciende: al montar con `always`, al entrar el puntero o el foco de teclado con `hover` o al hacer clic con `click`.",
+      "outMeteors": "Se dispara cuando se apaga: al salir el puntero o el foco, al volver a hacer clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `meteor` (va en cada trazo).",
+      "style": "Estilos inline de la raíz. Si pasás `color` o `intensity`, sus variables se escriben después.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

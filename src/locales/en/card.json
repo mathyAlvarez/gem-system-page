@@ -145,8 +145,16 @@
         "choose": "Choose",
         "plans": [
           { "name": "Basic", "price": "€0", "text": "To get started on your own." },
-          { "name": "Team", "price": "€12 / month", "text": "Up to 10 people and shared workspaces." },
-          { "name": "Business", "price": "€30 / month", "text": "Advanced permissions and dedicated support." }
+          {
+            "name": "Team",
+            "price": "€12 / month",
+            "text": "Up to 10 people and shared workspaces."
+          },
+          {
+            "name": "Business",
+            "price": "€30 / month",
+            "text": "Advanced permissions and dedicated support."
+          }
         ]
       }
     }

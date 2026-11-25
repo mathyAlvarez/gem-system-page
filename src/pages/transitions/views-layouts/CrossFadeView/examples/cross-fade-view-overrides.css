@@ -1,0 +1,12 @@
+.gemst-cross-fade-view.card-shell {
+  --gemst-cross-fade-enter-duration: 360ms;
+  --gemst-cross-fade-exit-duration: 240ms;
+  --gemst-cross-fade-enter-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+  --gemst-cross-fade-pagination-active-color: var(--gem-color-info);
+}
+
+.gemst-cross-fade-view.card-shell .cross-fade-demo__panel {
+  border: 1px solid var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}

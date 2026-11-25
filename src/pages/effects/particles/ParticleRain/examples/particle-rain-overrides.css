@@ -1,0 +1,30 @@
+/* Each particle gets an inline `--gemfx-particle-heading`, so the drops
+   use their own keyframes without rotation. Duration and easing are
+   redeclared on the particle because the layer writes them. */
+@keyframes pr-drop-fall {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, 0)
+      translate(var(--gemfx-particle-dx, 0px), var(--gemfx-particle-dy, 120px));
+  }
+}
+
+.gemfx-particle-rain.pr-drops .gemfx-particle {
+  --gemfx-particle-duration: 900ms;
+  --gemfx-particle-easing: cubic-bezier(0.4, 0, 1, 1);
+  width: 2px;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(transparent, var(--gemfx-particle-color));
+  box-shadow: none;
+  animation-name: pr-drop-fall;
+}

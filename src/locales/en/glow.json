@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "Glow",
+    "description": "Neon halo that breathes behind the content. `variant` sets the look, `trigger` when it turns on and `spread` how far the light reaches. With `prefers-reduced-motion: reduce` the halo stays still."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props and see the generated code. `edge` only applies when `variant` is `edge`; `color` uses host palette tokens.",
+    "target": "Glow"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variants",
+      "description": "`halo` is a soft bloom behind the child, `outline` lights only the edge, `inner` glows from inside and `pulse` is a flash that expands, fades and repeats."
+    },
+    "edge": {
+      "title": "Light from one side",
+      "description": "With `variant` set to `edge`, light comes from a single side. Pick it with `edge`: `top`, `right`, `bottom` (default) or `left`."
+    },
+    "dual": {
+      "title": "Two colors",
+      "description": "`variant` set to `dual` adds a second halo with `colorAlt`, offset from the first so the colors alternate.",
+      "texts": {
+        "title": "Pro plan",
+        "body": "Unlimited deploys, custom domains and priority support."
+      }
+    },
+    "text": {
+      "title": "Neon text",
+      "description": "`variant` set to `text` draws no halo: it animates a `text-shadow` that follows the glyphs. With `asChild` it goes straight onto the heading, without a wrapping `div`.",
+      "texts": {
+        "text": "Open 24 h"
+      }
+    },
+    "triggers": {
+      "title": "Hover and click",
+      "description": "With `trigger` set to `hover`, the halo lights while the pointer (or focus) is on the element. With `click`, each click turns it on or off.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "spread": {
+      "title": "Spread",
+      "description": "`spread` is how far the halo extends beyond the child. A number is pixels; any CSS length (`1.5rem`) also works."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` takes a token (`sm`, `md`, `lg`) or a number between `0` and `1`, and sets the halo's peak opacity."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is one full breathe cycle, in milliseconds. `delay` postpones the start."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` takes any CSS color. Prefer your app's palette tokens (`var(--gem-palette-*)`) so the halo follows the theme."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without a wrapping `div`. Here, on a gem-system `Button`.",
+      "texts": {
+        "label": "Save changes"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the breathe cycle on the current frame. `isDisabled` hides the halo and keeps the child interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGlow` fires when the halo turns on and `outGlow` when it turns off, with the cause in `event.reason`. The halo doesn't block interaction: the inner button still gets clicks.",
+      "texts": {
+        "title": "Concert tickets",
+        "body": "Hover the card and watch the log.",
+        "action": "Buy",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "New"
+    },
+    "styled": {
+      "title": "Sunset",
+      "body": "Gradient halo, defined in your own class."
+    }
+  },
+  "apiLink": "See the full Glow API",
+  "api": {
+    "header": {
+      "title": "Glow API",
+      "description": "Reference for `Glow` props, inheritance, accessibility, CSS classes and variables, and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for each variant and trigger.",
+      "link": "See Glow demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/glow` with its `glow.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>color</code>, and passes them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> and <code>onPointerLeave</code> run before the effect's own logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The halo layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it's decorative and doesn't block the child.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the animation stops and the halo stays still (a static <code>text-shadow</code> for <code>text</code>).",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the animation. Use it only when motion is essential.",
+        "focus": "With <code>trigger=\"hover\"</code>, the halo also lights on keyboard focus (<code>:focus-visible</code> on the root or inside), so it shows while tabbing. A mouse click that focuses a button doesn't keep it on. <code>onGlow</code> only fires for the pointer.",
+        "click": "With <code>trigger=\"click\"</code>, the toggle listens to <code>click</code> on the root. If the child is a <code>button</code> (as in the <code>asChild</code> example), Enter and Space work too.",
+        "touch": "Touch screens have no hover: prefer <code>always</code> or <code>click</code>.",
+        "meaning": "The halo is decoration: don't use it as the only state cue (selected, error). Pair it with text or an ARIA attribute."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex` and `isolation: isolate`.",
+        "variant": "Active variant.",
+        "edge": "Side that emits light with `variant=\"edge\"`.",
+        "trigger": "Active trigger. Hides the halo until hover/focus or click.",
+        "on": "Added with `trigger=\"click\"` while it's on.",
+        "paused": "Added with `isPaused`; pauses the animations.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`; hides the halo.",
+        "disabled": "Added with `isDisabled`. Removes the pointer cursor.",
+        "layer": "Absolute layer behind the child that holds the halos.",
+        "halo": "Main halo. `outline` and `inner` use `box-shadow` instead of blur.",
+        "haloAlt": "Second halo, only with `variant=\"dual\"`.",
+        "surface": "Wraps the child, above the layer. Carries the `text-shadow` for `text`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "items": {
+        "color": "Halo color. Set by `color`; default `var(--gem-palette-primary-400)`.",
+        "colorAlt": "Second halo color for `dual`. Set by `colorAlt`; default `var(--gem-palette-secondary-400)`.",
+        "duration": "Breathe cycle. Set by `duration`; default `2400ms`.",
+        "delay": "Delay before starting. Set by `delay`; default `0ms`.",
+        "intensity": "Halo peak opacity. Set by `intensity`; default `var(--gemfx-intensity-md)`.",
+        "spread": "Halo reach. Set by `spread`; default `24px`.",
+        "blur": "Halo blur. No prop: change it from CSS; default `1.35rem`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Glow reads as defaults.",
+      "items": {
+        "intensity": "Default intensity (`55%`).",
+        "easing": "Breathe curve.",
+        "palette": "Default `color` and `colorAlt`, with a neon fallback when gem-system isn't loaded."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Every prop is optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What lights up and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Halo shape, color, reach and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Breathe rhythm, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When the halo turns on and how it pauses or turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content that sits in front of the halo.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. Works with every variant, `text` included. With a void element (`img`, `input`) it falls back to the `div`, since the halo layer can't mount inside it.",
+      "variant": "Halo look: `halo`, `outline`, `inner`, `edge`, `dual`, `pulse` or `text`.",
+      "edge": "Side that emits light when `variant` is `edge`.",
+      "color": "Halo color. Prefer host tokens (`var(--gem-palette-primary-400)`). An empty string uses the default.",
+      "colorAlt": "Second color, for `variant=\"dual\"`.",
+      "spread": "How far the halo extends beyond the child. A number is pixels; a string is used as is.",
+      "intensity": "Halo strength: token or number between `0` and `1`.",
+      "duration": "One full breathe cycle. Negative values become `0`.",
+      "delay": "Delay before the animation starts.",
+      "trigger": "`always` stays on, `hover` while the pointer or focus is on it, `click` toggles on each click.",
+      "isActive": "Shows the halo. `false` hides it and `outGlow` gets `inactive`.",
+      "isPaused": "Freezes the animation on the current frame.",
+      "isDisabled": "Hides the halo; the child stays interactive. `outGlow` gets `disabled`.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only when motion is essential.",
+      "onGlow": "Fires when the halo turns on: on mount with `always`, on pointer enter with `hover` or when toggled on with `click`.",
+      "outGlow": "Fires when the halo turns off: on pointer leave, when toggled off with `click`, when disabled or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `halo` and `haloAlt`.",
+      "style": "Root inline styles. Merged with the `--gemfx-glow-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

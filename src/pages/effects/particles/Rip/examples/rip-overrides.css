@@ -1,0 +1,22 @@
+/* `--gemfx-rip-veil` also paints the `tear` flaps. */
+.gemfx-rip.rp-frost {
+  --gemfx-rip-veil: color-mix(
+    in srgb,
+    var(--gem-palette-info-500) 35%,
+    var(--gem-palette-neutral-0) 40%
+  );
+  --gemfx-rip-color: var(--gem-palette-neutral-0);
+  border-radius: var(--gem-radius-xl);
+}
+
+.gemfx-rip.rp-frost .gemfx-rip__trail {
+  stroke-width: 3px;
+}
+
+.gemfx-rip.rp-frost .gemfx-rip__flap {
+  box-shadow: none;
+}
+
+.rp-frost .rp-demo__target {
+  border-radius: var(--gem-radius-xl);
+}

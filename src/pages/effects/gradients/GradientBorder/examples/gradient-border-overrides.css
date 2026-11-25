@@ -1,0 +1,15 @@
+/* `--gemfx-gradient-border-stroke` isn't written inline, so a class can
+   replace the whole gradient while keeping the angle and the rotation. */
+.gemfx-gradient-border.gb-aurora {
+  --gemfx-gradient-border-stroke: conic-gradient(
+    from calc(var(--gemfx-gradient-border-angle) + var(--gemfx-gradient-border-turn)),
+    var(--gem-palette-primary-300),
+    var(--gem-palette-secondary-400),
+    var(--gem-palette-tertiary-300),
+    var(--gem-palette-error-400),
+    var(--gem-palette-warning-300),
+    var(--gem-palette-primary-300)
+  );
+
+  border-radius: var(--gem-radius-xl);
+}

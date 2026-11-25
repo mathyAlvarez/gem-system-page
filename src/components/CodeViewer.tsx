@@ -1,10 +1,18 @@
 import { useEffect, useId, useState } from "react";
 import Editor, { type BeforeMount, type OnMount, useMonaco } from "@monaco-editor/react";
-import { Indicator, Spinner } from "@gem-org/gem-system";
+import { Indicator } from "@gem-org/gem-system";
 import type { Theme } from "@gem-org/gem-system/tokens";
 import { useGemTheme } from "../hooks/useGemTheme.ts";
+import { preloadMonaco } from "../lib/preloadMonaco.ts";
 
-export type CodeLanguage = "typescript" | "javascript" | "html" | "css" | "shell" | "json";
+export type CodeLanguage =
+  | "tsx"
+  | "typescript"
+  | "javascript"
+  | "html"
+  | "css"
+  | "shell"
+  | "json";
 
 type CodeViewerProps = {
   code: string;
@@ -14,12 +22,23 @@ type CodeViewerProps = {
 type Monaco = Parameters<BeforeMount>[0];
 
 const languageLabels: Record<CodeLanguage, string> = {
+  tsx: "TSX",
   typescript: "TypeScript",
   javascript: "JavaScript",
   html: "HTML",
   css: "CSS",
   shell: "Shell",
   json: "JSON",
+};
+
+/** Monaco language id (no separate `tsx` mode). */
+const monacoLanguage = (language: CodeLanguage) =>
+  language === "tsx" ? "typescript" : language;
+
+const modelExtension = (language: CodeLanguage) => {
+  if (language === "tsx") return "tsx";
+  if (language === "typescript") return "ts";
+  return language;
 };
 
 const LINE_HEIGHT = 20;
@@ -45,8 +64,9 @@ function defineGemTheme(monaco: Monaco, theme: Theme) {
 
 const beforeMount: BeforeMount = (monaco) => {
   // Snippets are fragments: type errors would only add noise.
-  const ts = (monaco as unknown as { typescript?: Monaco["languages"]["typescript"] }).typescript
-    ?? monaco.languages.typescript;
+  const ts =
+    (monaco as unknown as { typescript?: Monaco["languages"]["typescript"] }).typescript ??
+    monaco.languages.typescript;
   for (const defaults of [ts.typescriptDefaults, ts.javascriptDefaults]) {
     defaults.setDiagnosticsOptions({
       noSemanticValidation: true,
@@ -57,11 +77,24 @@ const beforeMount: BeforeMount = (monaco) => {
   }
 };
 
-export function CodeViewer({ code, language = "typescript" }: CodeViewerProps) {
+function CodeFallback({ code, height }: { code: string; height: number }) {
+  return (
+    <pre className="docs-code-viewer__fallback" style={{ height }} aria-hidden>
+      <code>{code}</code>
+    </pre>
+  );
+}
+
+export function CodeViewer({ code, language = "tsx" }: CodeViewerProps) {
   const theme = useGemTheme();
   const modelId = useId().replace(/\W/g, "");
   const monaco = useMonaco();
+  const [ready, setReady] = useState(false);
   const [height, setHeight] = useState(code.split("\n").length * LINE_HEIGHT + PADDING * 2);
+
+  useEffect(() => {
+    void preloadMonaco();
+  }, []);
 
   useEffect(() => {
     if (!monaco) return;
@@ -75,6 +108,7 @@ export function CodeViewer({ code, language = "typescript" }: CodeViewerProps) {
     const updateHeight = () => setHeight(editor.getContentHeight());
     editor.onDidContentSizeChange(updateHeight);
     updateHeight();
+    setReady(true);
   };
 
   return (
@@ -91,38 +125,41 @@ export function CodeViewer({ code, language = "typescript" }: CodeViewerProps) {
       classNames={{ mark: "docs-code-viewer__badge" }}
     >
       <div className="docs-code-viewer" style={{ height }}>
-        <Editor
-          value={code}
-          language={language}
-          path={`snippet-${modelId}.${language === "typescript" ? "tsx" : language}`}
-          theme={themeName(theme)}
-          beforeMount={beforeMount}
-          onMount={handleMount}
-          loading={<Spinner size="sm" />}
-          options={{
-            readOnly: true,
-            showUnused: false,
-            showDeprecated: false,
-            domReadOnly: true,
-            minimap: { enabled: false },
-            scrollBeyondLastLine: false,
-            lineNumbers: "off",
-            folding: false,
-            glyphMargin: false,
-            lineDecorationsWidth: 0,
-            renderLineHighlight: "none",
-            overviewRulerLanes: 0,
-            hideCursorInOverviewRuler: true,
-            contextmenu: false,
-            wordWrap: "on",
-            fontSize: 13,
-            lineHeight: LINE_HEIGHT,
-            fontFamily: "'JetBrains Mono', monospace",
-            padding: { top: PADDING, bottom: PADDING },
-            scrollbar: { vertical: "hidden", alwaysConsumeMouseWheel: false },
-            automaticLayout: true,
-          }}
-        />
+        {!ready ? <CodeFallback code={code} height={height} /> : null}
+        <div className="docs-code-viewer__editor" data-ready={ready || undefined}>
+          <Editor
+            value={code}
+            language={monacoLanguage(language)}
+            path={`snippet-${modelId}.${modelExtension(language)}`}
+            theme={themeName(theme)}
+            beforeMount={beforeMount}
+            onMount={handleMount}
+            loading=""
+            options={{
+              readOnly: true,
+              showUnused: false,
+              showDeprecated: false,
+              domReadOnly: true,
+              minimap: { enabled: false },
+              scrollBeyondLastLine: false,
+              lineNumbers: "off",
+              folding: false,
+              glyphMargin: false,
+              lineDecorationsWidth: 0,
+              renderLineHighlight: "none",
+              overviewRulerLanes: 0,
+              hideCursorInOverviewRuler: true,
+              contextmenu: false,
+              wordWrap: "on",
+              fontSize: 13,
+              lineHeight: LINE_HEIGHT,
+              fontFamily: "'JetBrains Mono', monospace",
+              padding: { top: PADDING, bottom: PADDING },
+              scrollbar: { vertical: "hidden", alwaysConsumeMouseWheel: false },
+              automaticLayout: true,
+            }}
+          />
+        </div>
       </div>
     </Indicator>
   );

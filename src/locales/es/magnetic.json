@@ -1,0 +1,249 @@
+{
+  "header": {
+    "title": "Magnetic",
+    "description": "Atracción sutil que desplaza el contenido hacia el puntero. `trigger` define cuándo sigue al puntero, `strength` y `maxOffset` cuánto se mueve (si no los pasás, los define `intensity`) y `radius` agranda el área de atracción. Con `prefers-reduced-motion: reduce` el contenido queda quieto."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `strength` y `maxOffset` en `auto` dejan que `intensity` los defina.",
+    "target": "Acercá el cursor"
+  },
+  "stories": {
+    "tile": {
+      "title": "Sobre un bloque",
+      "description": "Con el `trigger` por defecto (`hover`), la superficie se desplaza hacia el puntero y vuelve a su lugar al salir. La caja que recibe el puntero no se mueve, así que el contenido sigue respondiendo.",
+      "texts": {
+        "kicker": "Magnetic",
+        "title": "Pasá el mouse"
+      }
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Funciona con cualquier hijo, también con un `img` nativo. Acá con `intensity=\"sm\"` para un movimiento más contenido en un elemento grande.",
+      "texts": {
+        "alt": "Logo de gem-org"
+      }
+    },
+    "triggers": {
+      "title": "Hover y press",
+      "description": "Con `hover` sigue al puntero mientras está encima. Con `press` solo mientras mantenés apretado (captura el puntero, así que podés arrastrar fuera de la caja).",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "pressLabel": "Mantené apretado"
+      }
+    },
+    "proximity": {
+      "title": "Proximidad",
+      "description": "Con `trigger=\"proximity\"` la atracción empieza cuando el puntero está a menos de `radius` píxeles de la caja, sin necesidad de tocarla. Usa un listener en `window`.",
+      "texts": {
+        "label": "Acercate"
+      }
+    },
+    "radius": {
+      "title": "Área de atracción",
+      "description": "Con `hover` o `press`, `radius` agranda el área que detecta el puntero sin cambiar el layout: la atracción empieza antes de llegar al borde visible."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Si no pasás `strength` ni `maxOffset`, `intensity` los define: `sm` 0,2 y 10 px, `md` 0,35 y 16 px, `lg` 0,5 y 28 px. Acepta un token o un número entre `0` y `1`."
+    },
+    "pull": {
+      "title": "Fuerza y tope",
+      "description": "`strength` es la fracción de la distancia al centro que sigue la superficie (entre `0` y `1`) y `maxOffset` el desplazamiento máximo en píxeles. Una fuerza alta con un tope chico se siente firme pero contenida."
+    },
+    "axis": {
+      "title": "Ejes",
+      "description": "`axis` limita el movimiento: `both` (default), solo horizontal (`x`) o solo vertical (`y`)."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div`. Acá, sobre un `Button` de gem-system con `radius={24}`. Sigue al puntero con la misma transición rápida que el `div` por defecto.",
+      "texts": {
+        "label": "Empezar"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el desplazamiento actual: movelo, activá la pausa y la superficie queda donde estaba. `isDisabled` lo devuelve al reposo y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onMagnetic` se dispara cuando empieza a seguir al puntero y `outMagnetic` cuando vuelve al reposo, con el motivo en `event.reason`. Al apretar un botón interno el desplazamiento se congela para que el clic llegue.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "hook": {
+      "title": "useMagnetic",
+      "description": "Versión headless. El hook devuelve `ref`, `style` (con `--gemfx-magnetic-x` e `-y`), `pointerProps` y `pose`; vos armás el markup. Sirve para leer el desplazamiento o aplicarlo a tu propio elemento.",
+      "texts": {
+        "position": "x {x} px · y {y} px"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Brillo"
+    },
+    "styled": {
+      "label": "Elástico"
+    }
+  },
+  "apiLink": "Ver la API completa de Magnetic",
+  "api": {
+    "header": {
+      "title": "Magnetic API",
+      "description": "Referencia de props, el hook `useMagnetic`, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Magnetic`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada disparador y opción.",
+      "link": "Ver demos de Magnetic"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/magnetic` con su `magnetic.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "name": "Nombre",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "hook": {
+      "description": "Recibe las mismas opciones que `Magnetic` salvo `children`, `asChild`, `className`, `classNames` y `ref` (`UseMagneticOptions`). Vos renderizás el host con `.gemfx-magnetic` y la superficie con `.gemfx-magnetic__surface`, o aplicás `transform` directamente.",
+      "resultTitle": "Devuelve",
+      "result": {
+        "ref": "Ref para el host. Lo usa para medir la caja al calcular el desplazamiento.",
+        "style": "Estilos inline con las variables `--gemfx-magnetic-*`. Ya incluye el `style` que pasaste.",
+        "pointerProps": "Handlers de puntero para el host. Llaman primero a los que pasaste en las opciones.",
+        "motionClassName": "`gemfx-ignore-reduced-motion` si pasaste `ignoreReducedMotion`. Agregala al host.",
+        "transform": "`translate3d(x, y, 0)` listo para usar si no usás `.gemfx-magnetic__surface`.",
+        "pose": "Desplazamiento actual en píxeles (`x`, `y`).",
+        "isTracking": "`true` mientras sigue al puntero.",
+        "isHover": "`trigger` es `hover` y el efecto está activo.",
+        "isPress": "`trigger` es `press` y el efecto está activo.",
+        "isProximity": "`trigger` es `proximity` y el efecto está activo.",
+        "magneticOff": "`true` con `isDisabled` o `isActive={false}`.",
+        "isPaused": "El valor de `isPaused`.",
+        "isDisabled": "El valor de `isDisabled`."
+      }
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). Los handlers de puntero que pases (<code>onPointerEnter</code>, <code>onPointerMove</code>, <code>onPointerDown</code>, etc.) se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "transformOnly": "El movimiento es solo <code>transform</code> sobre la superficie; con el <code>div</code> por defecto, la caja que recibe el puntero no se mueve, así que el hijo sigue recibiendo clics y foco en el mismo lugar. Con <code>asChild</code> se desplaza el propio hijo.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> la superficie queda en reposo y no sigue al puntero.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el movimiento. Usalo solo si es esencial.",
+        "nested": "Al apretar un elemento interactivo interno (<code>button</code>, <code>a</code>, <code>input</code>…) el desplazamiento se congela hasta soltar, para que el clic caiga sobre el objetivo.",
+        "pointerOnly": "Solo responde al puntero: el teclado no lo dispara. Es decoración, no comuniques nada solo con el movimiento.",
+        "touch": "En pantallas táctiles está apagado por defecto (<code>disabledOnTouch</code> es <code>true</code>), así el desplazamiento no molesta al tocar ni al hacer scroll. Mouse y lápiz siguen funcionando.",
+        "proximity": "Con <code>proximity</code>, <code>radius</code> es la distancia de activación y no agranda el área clickeable. Escucha <code>pointermove</code> en <code>window</code>: evitá muchas instancias en la misma página."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative` e `inline-flex`.",
+        "trigger": "Disparador activo.",
+        "tracking": "Se agrega mientras sigue al puntero. Acorta la transición a `80ms` para que responda al instante.",
+        "paused": "Se agrega con `isPaused`. Quita la transición.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`.",
+        "disabled": "Se agrega con `isDisabled`.",
+        "field": "Pseudo-elemento que agranda el área de puntero según `--gemfx-magnetic-radius`. Con `proximity` tiene `pointer-events: none`.",
+        "surface": "Envuelve al hijo y es la que se desplaza (`transform`)."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas se escriben inline en la raíz en cada render: para cambiarlas usá las props. Para otro comportamiento, pisá la transición de `.gemfx-magnetic__surface` desde una clase.",
+      "items": {
+        "x": "Desplazamiento horizontal actual, en píxeles.",
+        "y": "Desplazamiento vertical actual, en píxeles.",
+        "duration": "Transición de vuelta al reposo. La define `duration`; default `280ms`.",
+        "delay": "Retraso de la transición. Lo define `delay`; default `0ms`.",
+        "radius": "Margen extra del área de puntero. Lo define `radius` (`0px` con `proximity`)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Magnetic lee como valor por defecto.",
+      "items": {
+        "easingEmphasized": "Curva de la vuelta al reposo.",
+        "easingStandard": "Curva mientras sigue al puntero."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido se atrae y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Fuerza, tope, intensidad, ejes y área de atracción."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Vuelta al reposo y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo sigue al puntero y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `hover`, `press`, `inactive`, `disabled` o `unmount`. Con `proximity` se informa como `hover`."
+      },
+      "styling": {
+        "title": "Estilos",
+        "description": "Clases, estilos inline y ref."
+      }
+    },
+    "items": {
+      "children": "Contenido que se atrae hacia el puntero.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. El hijo es raíz y superficie a la vez, y las transiciones de `--tracking` y `--paused` aplican igual. No inyecta capas, así que también funciona con elementos vacíos (`img`): el propio elemento pasa a ser la raíz.",
+      "strength": "Fracción de la distancia al centro que sigue la superficie, entre `0` y `1`. Sin valor, `intensity` la define: `0.2`, `0.35` o `0.5`.",
+      "maxOffset": "Desplazamiento máximo en píxeles. Sin valor, `intensity` lo define: `10`, `16` o `28`.",
+      "intensity": "Define `strength` y `maxOffset` cuando faltan. Token o número entre `0` y `1`.",
+      "axis": "Ejes que se mueven: `both`, `x` o `y`.",
+      "radius": "Margen extra en píxeles. Con `hover`/`press` agranda el área de puntero sin mover el layout; con `proximity` es la distancia a la que empieza la atracción.",
+      "duration": "Transición de vuelta al reposo al soltar o salir. Los valores negativos se toman como `0`.",
+      "delay": "Retraso de la transición.",
+      "trigger": "`hover` mientras el puntero está encima, `press` mientras está apretado y `proximity` mientras está a menos de `radius` de la caja.",
+      "isActive": "Permite la atracción. En `false` vuelve al reposo y `outMagnetic` recibe `inactive`.",
+      "isPaused": "Congela el desplazamiento actual.",
+      "isDisabled": "Vuelve al reposo y desactiva la atracción; el hijo sigue interactivo. `outMagnetic` recibe `disabled`.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "ignoreReducedMotion": "Mueve aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onMagnetic": "Se dispara cuando empieza a seguir al puntero.",
+      "outMagnetic": "Se dispara cuando vuelve al reposo: al salir el puntero, al soltar con `press`, al salir del campo con `proximity`, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root` y `surface`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-magnetic-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

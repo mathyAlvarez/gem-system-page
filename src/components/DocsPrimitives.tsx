@@ -11,11 +11,7 @@ type DocsPageHeaderProps = {
   importPath?: string;
 };
 
-export function DocsPageHeader({
-  title,
-  description,
-  importPath,
-}: DocsPageHeaderProps) {
+export function DocsPageHeader({ title, description, importPath }: DocsPageHeaderProps) {
   return (
     <header className="docs-page__header">
       <Typography variant="h1">{title}</Typography>
@@ -68,7 +64,7 @@ type CodeBlockProps = {
   language?: CodeLanguage;
 };
 
-function CodePanel({ code, label, language = "typescript" }: CodeBlockProps) {
+function CodePanel({ code, label, language = "tsx" }: CodeBlockProps) {
   const { t } = useTranslation();
   const files = useMemo(() => getCodeFiles(code, label, language), [code, label, language]);
   const [activeName, setActiveName] = useState(files[0].name);
@@ -93,7 +89,11 @@ function CodePanel({ code, label, language = "typescript" }: CodeBlockProps) {
           value={active.name}
           onChange={setActiveName}
           listLabel={t("code.files")}
-          classNames={{ root: "docs-code__tabs-root", list: "docs-code__tab-list", panel: "docs-code__panel" }}
+          classNames={{
+            root: "docs-code__tabs-root",
+            list: "docs-code__tab-list",
+            panel: "docs-code__panel",
+          }}
           items={files.map((file) => ({
             id: file.name,
             label: file.name,
@@ -136,13 +136,18 @@ type DemoBlockProps = {
   overflow?: boolean;
 };
 
-export function DemoBlock({ children, code, label, language, stack = false, overflow = false }: DemoBlockProps) {
+export function DemoBlock({
+  children,
+  code,
+  label,
+  language,
+  stack = false,
+  overflow = false,
+}: DemoBlockProps) {
   return (
     <div className={overflow ? "docs-demo docs-demo--overflow" : "docs-demo"}>
       <div
-        className={
-          stack ? "docs-demo__preview docs-demo__preview--stack" : "docs-demo__preview"
-        }
+        className={stack ? "docs-demo__preview docs-demo__preview--stack" : "docs-demo__preview"}
       >
         {children}
       </div>

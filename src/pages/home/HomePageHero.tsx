@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { Button, Typography } from "@gem-org/gem-system";
 import { ArrowDown } from "@gem-org/gem-system/icons";
 import { BlurUnveil } from "@gem-org/gemffects";
@@ -26,7 +26,7 @@ export function HomePageHero({ scrollTargetId }: HomePageHeroProps) {
               {t("hero.lead")}
             </Typography>
             <div className="home-hero__actions">
-              <Link to="/getting-started">
+              <Link to="/system/getting-started">
                 <Button variant="primary" size="lg">
                   {t("hero.cta")}
                 </Button>

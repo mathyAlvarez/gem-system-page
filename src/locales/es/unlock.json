@@ -1,0 +1,239 @@
+{
+  "header": {
+    "title": "Unlock",
+    "description": "Puertas que tapan al hijo y se abren para mostrarlo. `direction` define el movimiento: `horizontal` y `vertical` parten la tapa en dos hojas desde el centro, y `left`, `right`, `up` y `down` deslizan una sola. `variant=\"lock\"` invierte el patrón (arranca abierto y se cierra). La cara de las puertas puede ser un color, una imagen (`coverSrc`) o cualquier nodo (`cover`)."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y hacé clic (o pasá el puntero, según `trigger`) sobre la tarjeta.",
+    "label": "¡Abierto!"
+  },
+  "stories": {
+    "base": {
+      "title": "Apertura básica",
+      "description": "Con los valores por defecto (`direction=\"horizontal\"`, `variant=\"unlock\"`, `trigger=\"click\"`) dos hojas tapan la imagen y cada clic las abre o las cierra en `560` ms, con `40` ms de diferencia entre una y otra. La raíz funciona como botón (`role=\"button\"`, `aria-expanded` y un `aria-label` por defecto): con Tab y Enter o Espacio también se alternan.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "directions": {
+      "title": "Direcciones",
+      "description": "`horizontal` y `vertical` abren dos hojas desde el centro. `left`, `right`, `up` y `down` deslizan una sola hoja hacia ese lado."
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`unlock` arranca cerrado y se abre al activarse. `lock` arranca abierto y se cierra al activarse, útil para ocultar algo después de mostrarlo."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`click` alterna con cada clic (o con Enter o Espacio sobre la raíz enfocada). `hover` abre mientras el puntero está encima o el foco de teclado está adentro. `always` se abre solo al montarse: primero pinta las puertas cerradas y después las desliza; usá \"Repetir always\" para volver a verlo. En táctil, `hover` abre al tocar y cierra al levantar el dedo; con `disabledOnTouch` (la última tarjeta) ignora los toques y solo responde al mouse o al lápiz. `disabledOnTouch` solo afecta a `hover`: con `click` los toques siguen alternando.",
+      "texts": {
+        "remount": "Repetir always"
+      }
+    },
+    "gap": {
+      "title": "Separación",
+      "description": "`gap` deja una ranura entre las dos hojas cerradas, en píxeles. Solo aplica a `horizontal` y `vertical`."
+    },
+    "coverSrc": {
+      "title": "Imagen como puerta",
+      "description": "`coverSrc` usa una imagen como cara de las puertas. Se ajusta con `background-size: cover` al tamaño de todo el host, así que no se deforma. En las direcciones partidas, cada hoja muestra su mitad de la misma imagen, que queda continua en la unión y se separa al abrir.",
+      "texts": {
+        "title": "Premio"
+      }
+    },
+    "coverNode": {
+      "title": "Nodo como puerta",
+      "description": "`cover` acepta cualquier nodo de React. Se monta en cada hoja con el tamaño de todo el host, así que en las direcciones partidas cada hoja muestra su mitad y la cara se ve continua. Con una función `(slot) => nodo` podés variar el árbol de cada hoja (`slot` es `a` o `b`); acá las dos dan el mismo resultado.",
+      "texts": {
+        "seal": "SELLADO",
+        "title": "Mítico"
+      }
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`color` es el relleno de las puertas cuando no hay `cover` ni `coverSrc`. Sin `color`, usa una mezcla oscura de `neutral-950` y `primary-800`. Mejor usar tokens."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que tardan las puertas en recorrer su camino, en milisegundos."
+    },
+    "stagger": {
+      "title": "Retraso y escalonado",
+      "description": "`delay` retrasa el arranque de las puertas. `stagger` suma un retraso extra a la segunda hoja en las direcciones partidas; se ignora con una sola hoja."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la profundidad de las puertas: un filo claro en el borde de cada hoja y una sombra interior. Acepta `sm`, `md`, `lg` (leen `--gemfx-intensity-*` del host) o un número de `0` a `1`. Acá con `gap={6}` para que se vea el filo en la unión."
+    },
+    "asChild": {
+      "title": "Sobre un elemento (asChild)",
+      "description": "Con `asChild`, las puertas se montan directo sobre el hijo (acá un `article`), sin sumar un `div`. El hijo recibe `position: relative` desde la clase de superficie. Con un elemento vacío como `img` o `input`, cae solo al `div` envolvente. Con `click`, si el hijo no es enfocable (como este `article`), recibe `tabIndex`, `role=\"button\"` y `aria-expanded`, así que se abre con Tab y Enter o Espacio. No lleva `aria-label` por defecto: el nombre sale del contenido, o pasale uno.",
+      "texts": {
+        "kicker": "Nivel 3",
+        "title": "Desbloqueado"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "Acá con `duration={1800}`: hacé clic y activá `isPaused` mientras las puertas se mueven. Quedan congeladas a mitad de camino y los clics se ignoran hasta despausar. `isDisabled` quita las puertas: el contenido queda visible y usable, y al reactivarlo vuelven a arrancar cerradas.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onUnlock` se dispara al activarse (abrir con `click`, entrar con `hover` o montar con `always`) y `outUnlock` al desactivarse, con el motivo en `event.reason`. Con las puertas cerradas, la capa toma el clic y abre sin llegar al botón; además el contenido es `inert`, así que Tab tampoco lo alcanza. Ya abiertas, el clic del botón suma y burbujea a la raíz, así que también las cierra.",
+      "texts": {
+        "body": "Hacé clic en la tarjeta para abrirla, o probá el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Zona restringida"
+    },
+    "styled": {
+      "label": "Bóveda"
+    }
+  },
+  "apiLink": "Ver la API completa de Unlock",
+  "api": {
+    "header": {
+      "title": "Unlock API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Unlock`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada dirección, disparador y opción.",
+      "link": "Ver demos de Unlock"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/unlock` con `unlock.css`, o desde la raíz del paquete si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onKeyDown</code>, <code>onPointerDown</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto. <code>tabIndex</code>, <code>role</code> y <code>aria-label</code> pisan los que pone el efecto con <code>click</code> (<code>0</code>, <code>button</code> y <code>Toggle hidden content</code>). <code>ref</code> se combina con la ref interna. Las variables <code>--gemfx-unlock-*</code> se escriben después de <code>style</code>, pero solo las de las props que pasaste."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "Las puertas son decorativas (<code>aria-hidden</code>). Con <code>click</code> en modo wrapper, mientras están cerradas, la superficie es <code>inert</code>: el contenido sale del orden de Tab y del árbol de accesibilidad. Con <code>hover</code>, <code>always</code> o <code>asChild</code> el contenido sigue accesible aunque esté tapado. No las uses para ocultar información sensible.",
+        "keyboard": "Con <code>click</code> en modo wrapper, la raíz es el control: <code>tabIndex=0</code>, <code>role=\"button\"</code>, <code>aria-expanded</code> (puertas abiertas) y <code>aria-label=\"Toggle hidden content\"</code> por defecto; Enter o Espacio alternan las puertas. Los <code>tabIndex</code>, <code>role</code> y <code>aria-label</code> que pases ganan: traducí el label si tu sitio no está en inglés. Con <code>asChild</code> sobre un hijo no enfocable (<code>article</code>, <code>div</code>), el hijo recibe <code>tabIndex</code>, <code>role</code> y <code>aria-expanded</code>, sin label por defecto. Un control nativo (<code>button</code>, <code>a</code>) o un hijo con su propio <code>tabIndex</code> o <code>role</code> queda como está; en el control nativo, su propio clic de teclado alterna. Con <code>hover</code>, el foco de teclado adentro abre las puertas como el puntero; si no hay nada enfocable, pasale <code>tabIndex={0}</code> a la raíz.",
+        "clickThrough": "Con las puertas cerradas (<code>--blocking</code>), la capa toma el puntero: el clic no llega al contenido escondido y burbujea a la raíz (con <code>click</code>, abre). Abiertas, la capa vuelve a <code>pointer-events: none</code>; apagado el efecto, la capa no se muestra.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> las puertas saltan a su posición sin transición.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el movimiento. Usalo solo si es esencial.",
+        "touch": "Con <code>hover</code>, en táctil las puertas se abren al tocar y se cierran al levantar el dedo. <code>disabledOnTouch</code> ignora el <code>pointerenter</code> táctil para que un toque no las deje abiertas; mouse y lápiz siguen funcionando. Solo afecta a <code>hover</code>: con <code>click</code> los toques siguen alternando, así que en un dispositivo solo táctil se puede abrir igual."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `inline-flex`, `position: relative`, `isolation: isolate` y `overflow: hidden`. Define los valores por defecto de las variables.",
+        "direction": "Dirección activa. Ubica las hojas (mitad cada una con `horizontal` / `vertical`, todo el host con las demás) y define hacia dónde se mueven.",
+        "variant": "Variante activa. No tiene estilos propios: `lock` solo invierte cuándo se agrega `--open`.",
+        "trigger": "Disparador activo. No se agrega con `isDisabled` ni `isActive={false}`. No tiene estilos propios.",
+        "open": "Se agrega con las puertas abiertas. Desplaza cada hoja un `100%` fuera del host.",
+        "blocking": "Se agrega con las puertas cerradas y el efecto encendido. La capa pasa a `pointer-events: auto` y toma los clics, que no llegan al contenido.",
+        "cover": "`--cover` se agrega con `cover` o `coverSrc` y deja las hojas transparentes; `--cover-src`, solo con `coverSrc`, les devuelve el color de fondo detrás de la imagen.",
+        "paused": "Se agrega con `isPaused`. El CSS no la usa: las hojas se congelan desde JS, fijando inline su `transform` actual hasta despausar.",
+        "inactive": "Se agrega con `isDisabled` o `isActive={false}`. Oculta la capa (`display: none`): el hijo queda visible y usable.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "surface": "Envuelve al hijo (`z-index: 0`, `flex: 1 1 auto`). Con `asChild`, la clase va en el propio hijo.",
+        "layer": "Capa de las puertas (`position: absolute`, `inset: 0`, `z-index: 1`, `pointer-events: none`, `border-radius: inherit`, `aria-hidden`). Tiene `container-type: size` para que la cara de cada hoja mida lo mismo que el host.",
+        "panel": "Cada hoja (`--a` y, en las direcciones partidas, `--b`). Fondo `--gemfx-unlock-color`, un filo claro y una sombra interior según `--gemfx-unlock-intensity`, y transición de `transform`; `--b` suma `stagger` al retraso. `classNames.panel` va en las dos.",
+        "media": "Cara de cada hoja con `cover` o `coverSrc`: mide todo el host (`100cqw` × `100cqh`) y se pega al borde exterior de la hoja, así cada mitad muestra su parte de una sola imagen. Con `coverSrc` lleva la imagen como fondo (`background-size: cover`). Sus hijos directos ocupan toda la cara."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Solo van inline en la raíz cuando pasás la prop correspondiente; si no, las podés definir desde una clase.",
+      "items": {
+        "color": "Relleno de las puertas. Inline solo si pasás `color`.",
+        "timing": "Duración, retraso y escalonado de la transición de las hojas. Inline solo si pasás `duration`, `delay` o `stagger`.",
+        "gap": "Ranura entre las hojas partidas, en píxeles. Inline solo si pasás `gap`.",
+        "intensity": "Profundidad de las puertas: regula el filo claro del borde y la sombra interior de cada hoja. Inline solo si pasás `intensity`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Unlock lee como valor por defecto.",
+      "items": {
+        "color": "Mezcla de las puertas cuando no pasás `color` (respaldos `#111316` y `#085246`).",
+        "easing": "Curva de las puertas (respaldo `cubic-bezier(0.2, 0, 0, 1)`).",
+        "intensity": "Valor por defecto de `--gemfx-unlock-intensity` (respaldo `55%`). Lo pisa el valor inline cuando pasás `intensity`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué queda bajo las puertas, qué cara tienen y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Movimiento, patrón, color y separación."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración, retraso y escalonado, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se mueven las puertas, cómo se pausan y cómo se apagan."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `click`, `hover`, `always`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido bajo las puertas.",
+      "cover": "Cara personalizada de las puertas, del tamaño de todo el host. Con direcciones partidas se monta en las dos hojas y cada una muestra su mitad. Una función `(slot) => nodo` permite variar el árbol de cada hoja.",
+      "coverSrc": "URL de una imagen para la cara de las puertas, si no pasás `cover`. Se ajusta con `cover` a todo el host, sin deformarse; las hojas partidas muestran sus mitades.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos como `img` o `input`, cae al `div` envolvente.",
+      "direction": "`horizontal` / `vertical` abren dos hojas desde el centro; `left` / `right` / `up` / `down` deslizan una.",
+      "variant": "`unlock` se abre al activarse y `lock` se cierra.",
+      "color": "Relleno de las puertas sin `cover` ni `coverSrc`. Por defecto, una mezcla oscura de `neutral-950` y `primary-800`. Mejor tokens.",
+      "gap": "Ranura entre las hojas partidas, en píxeles.",
+      "intensity": "Profundidad de las puertas: filo claro en el borde de cada hoja y sombra interior.",
+      "duration": "Lo que tardan las puertas en moverse.",
+      "delay": "Retraso antes de que arranquen las puertas.",
+      "stagger": "Retraso extra de la segunda hoja en las direcciones partidas.",
+      "trigger": "`click` alterna con cada clic (o con Enter o Espacio) y vuelve a la raíz un botón (`role`, `aria-expanded`), `hover` abre mientras el puntero o el foco están adentro y `always` se abre con animación al montarse.",
+      "isActive": "Permite mover las puertas. En `false` quita las puertas, muestra el hijo y reinicia el estado.",
+      "isPaused": "Congela las puertas donde están e ignora los clics hasta despausar.",
+      "isDisabled": "Quita las puertas y reinicia el estado: el hijo queda visible e interactivo.",
+      "ignoreReducedMotion": "Mantiene el movimiento aunque el usuario prefiera menos. Solo si es esencial.",
+      "disabledOnTouch": "Con `hover`, ignora el `pointerenter` táctil (un toque dejaría las puertas abiertas); mouse y lápiz siguen funcionando. Con `click` los toques siguen alternando.",
+      "onUnlock": "Se dispara al activarse: abrir con `click`, entrar con `hover` o montar con `always`.",
+      "outUnlock": "Se dispara al desactivarse: cerrar con `click`, salir con `hover`, desactivarlo o desmontarlo.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `panel` y `media`.",
+      "style": "Estilos inline de la raíz. Las variables del efecto se escriben después, solo las de las props que pasaste.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.gemfx-meteors.mt-comet {
+  --gemfx-meteors-color: var(--gem-palette-secondary-200);
+}
+
+/* The slope must stay `tan(angle)` so the streak travels along its own axis. */
+.gemfx-meteors.mt-comet .gemfx-meteors__meteor {
+  --gemfx-meteors-angle: 24deg;
+  --gemfx-meteors-slope: 0.445;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    var(--gemfx-meteors-head),
+    transparent,
+    var(--gemfx-meteors-color) 75%,
+    var(--gem-palette-neutral-0)
+  );
+}

@@ -1,0 +1,34 @@
+/* `--gemfx-ripple-intensity` only goes inline when `intensity` is passed,
+   so a class can set it. Keep `duration` as a prop: each wave is removed
+   after the prop's duration, so a longer CSS duration would cut it off.
+   Custom keyframes must keep `translate(-50%, -50%)`, the wave is
+   positioned by its top-left corner. */
+@keyframes rl-splash {
+  from {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.15);
+    filter: blur(6px);
+  }
+}
+
+.gemfx-ripple.rl-splash {
+  --gemfx-ripple-intensity: 70%;
+}
+
+.gemfx-ripple.rl-splash .gemfx-ripple__wave {
+  background: radial-gradient(
+    circle,
+    transparent 30%,
+    color-mix(in srgb, var(--gem-palette-secondary-400) var(--gemfx-ripple-intensity), transparent)
+      62%,
+    transparent 72%
+  );
+  animation-name: rl-splash;
+  animation-timing-function: var(--gemfx-easing-emphasized, ease-out);
+}

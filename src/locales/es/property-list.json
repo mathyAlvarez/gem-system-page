@@ -39,7 +39,12 @@
           { "key": "email", "label": "Email", "children": "ada@gem.org" },
           { "key": "role", "label": "Rol", "children": "Administradora" },
           { "key": "team", "label": "Equipo", "children": "Plataforma" },
-          { "key": "address", "label": "Dirección", "children": "Av. Motor Analítico 12, Londres", "span": 2 }
+          {
+            "key": "address",
+            "label": "Dirección",
+            "children": "Av. Motor Analítico 12, Londres",
+            "span": 2
+          }
         ]
       }
     },

@@ -285,12 +285,21 @@
       "description": "Description"
     },
     "groups": {
-      "data": { "title": "Data and content", "description": "Rows, columns and content around the table." },
+      "data": {
+        "title": "Data and content",
+        "description": "Rows, columns and content around the table."
+      },
       "sorting": { "title": "Sorting", "description": "Column sorting." },
       "selection": { "title": "Selection", "description": "Checkbox column and row selection." },
       "expand": { "title": "Expandable rows", "description": "Detail panel below each row." },
-      "layout": { "title": "Appearance and scroll", "description": "Density, borders, sticky header and virtualization." },
-      "meta": { "title": "Column meta", "description": "Options inside `meta` on each column definition." },
+      "layout": {
+        "title": "Appearance and scroll",
+        "description": "Density, borders, sticky header and virtualization."
+      },
+      "meta": {
+        "title": "Column meta",
+        "description": "Options inside `meta` on each column definition."
+      },
       "helpers": { "title": "Helpers", "description": "Exported functions and constants." }
     },
     "items": {

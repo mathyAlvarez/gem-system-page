@@ -15,13 +15,7 @@ export function HomePageUsage() {
           {t("reasons.description")}
         </Typography>
       </header>
-      <StaggerGroup
-        isIn
-        from="bottom"
-        staggerDelay={70}
-        distance={12}
-        className="home-reason-grid"
-      >
+      <StaggerGroup isIn from="bottom" staggerDelay={70} distance={12} className="home-reason-grid">
         {reasons.map((reason) => (
           <article key={reason} className="home-reason">
             <Typography variant="h4">{t(`reasons.${reason}.title`)}</Typography>

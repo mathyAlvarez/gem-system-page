@@ -1,0 +1,211 @@
+{
+  "header": {
+    "title": "Ripple",
+    "description": "Una onda que se expande desde el puntero, como el efecto de tinta de Material. Cada onda crece hasta cubrir todo el host y se desvanece. `variant` define el aspecto (`ink`, `ring`, `pulse`), `trigger` cuándo aparece (`click`, `hover` o `press`) y `origin` desde dónde (`pointer` o `center`). La capa tiene `pointer-events: none`, así que el hijo sigue recibiendo los clics."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y hacé clic, pasá el puntero o mantené presionado sobre la tarjeta.",
+    "label": "Tocame"
+  },
+  "stories": {
+    "base": {
+      "title": "Onda básica",
+      "description": "Con los valores por defecto (`variant=\"ink\"`, `trigger=\"click\"`, `origin=\"pointer\"`) cada clic lanza un disco que crece desde el puntero durante `600` ms. Las ondas se acumulan: podés hacer varios clics seguidos. Con teclado, enfocá el botón y apretá Enter o Espacio: la onda sale desde el centro.",
+      "texts": {
+        "label": "Hacé clic"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`ink` es un disco relleno. `ring` es solo el borde (`2px`). `pulse` lanza tres anillos desde el mismo punto, separados un `18%` de `duration`; acá con `duration={900}`."
+    },
+    "origin": {
+      "title": "Origen",
+      "description": "`pointer` arranca donde hiciste clic. `center` arranca siempre en el medio del host, sin importar dónde toques."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "La onda funciona sobre cualquier contenido. Acá con `variant=\"pulse\"`, blanco e `intensity=\"lg\"` para que se vea sobre la foto.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`click` lanza una onda al presionar. `hover` la lanza al entrar con el puntero (desde el borde por donde entraste). `press` repite ondas mientras mantenés presionado, cada `45%` de `duration` (mínimo `180` ms), y siguen al puntero si lo movés. Mientras mantenés presionado, cada onda nueva lee las props del momento: si cambian `variant`, `duration` o `isPaused`, las siguientes ondas lo respetan. Las tarjetas tienen `tabIndex={0}` para probarlo con teclado: Enter o Espacio lanzan una onda desde el centro en `click` y `press`, y con `hover` la onda sale desde el centro cuando el foco entra con Tab."
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`color` es el color de la onda; acepta cualquier color CSS. `intensity` lo mezcla con transparente. Sin `color`, usa `currentColor`: el color de texto del host, así la onda acompaña al contenido en un botón claro u oscuro. Mejor usar tokens."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que tarda cada onda en crecer y desvanecerse, en milisegundos."
+    },
+    "delay": {
+      "title": "Retraso",
+      "description": "`delay` retrasa el arranque de cada onda desde el clic. Útil para que la onda acompañe otra animación."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` es la opacidad de la onda: `sm` (`35%`), `md` (`55%`) o `lg` (`80%`). También acepta un número de `0` a `1`."
+    },
+    "asChild": {
+      "title": "Sobre un elemento (asChild)",
+      "description": "Con `asChild`, el efecto se monta directo sobre el hijo (acá un `button`), sin sumar un `div`. Útil en filas flex o grids donde un nodo extra rompe el layout. Al lado, el mismo botón sin efecto: probá con Tab y vas a ver el anillo de foco completo en los dos, porque las ondas las recorta la capa y no la raíz. Con un elemento vacío como `img` o `input`, cae solo al `div` envolvente.",
+      "texts": {
+        "save": "Guardar",
+        "plain": "Sin efecto"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "Acá con `trigger=\"hover\"`, `pulse` y `duration={2400}`: pasá el puntero y activá `isPaused` mientras las ondas crecen: quedan congeladas en pantalla y terminan al despausar. Mientras está pausado no se crean ondas nuevas. `isDisabled` deja de crear ondas y oculta las que estaban; el hijo sigue interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Pasá el puntero"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onRipple` se dispara cuando aparece la primera onda y `outRipple` cuando termina la última, con el motivo en `event.reason`. Si hacés clics seguidos, cuentan como una sola fase. El botón sigue funcionando: el clic llega al hijo y la onda sale igual. Si lo activás con Enter o Espacio, la onda sale desde el centro.",
+      "texts": {
+        "body": "Hacé clic en la tarjeta o en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Enviar"
+    },
+    "styled": {
+      "label": "Salpicar"
+    }
+  },
+  "apiLink": "Ver la API completa de Ripple",
+  "api": {
+    "header": {
+      "title": "Ripple API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Ripple`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Ripple"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/ripple` con `ripple.css`, o desde la raíz del paquete si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onPointerDown</code>, <code>onPointerUp</code>, <code>onPointerCancel</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code> y <code>onPointerMove</code> se llaman antes que la lógica interna del efecto, igual que <code>onClick</code>, <code>onKeyDown</code> y <code>onFocus</code> antes de la lógica de teclado. <code>--gemfx-ripple-duration</code>, <code>-intensity</code> y <code>-color</code> se escriben después de <code>style</code>, pero solo cuando pasás <code>duration</code>, <code>intensity</code> o <code>color</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "decorative": "La capa de ondas es decorativa (<code>aria-hidden</code>, <code>pointer-events: none</code>): no cambia la semántica ni la interacción del hijo.",
+        "keyboard": "Con <code>click</code> y <code>press</code>, Enter o Espacio lanzan una onda desde el centro: sobre la raíz enfocada (con <code>asChild</code> en un control, o con <code>tabIndex</code>) o al activar con teclado un control anidado. Mantener la tecla no la repite. Con <code>hover</code>, cuando el foco de teclado entra al host desde afuera sale una onda desde el centro; no pasa al mover el foco entre elementos de adentro ni con el foco que deja un clic del mouse.",
+        "focus": "La raíz no recorta nada: las ondas las recorta la capa (<code>overflow: hidden</code>, <code>clip-path</code>). El anillo de foco del hijo, o del propio elemento con <code>asChild</code>, se ve completo aunque vaya por fuera.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> no se crean ondas, y <code>onRipple</code> no se dispara.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene las ondas. Usalo solo si es esencial.",
+        "touch": "No bloquea el scroll táctil. <code>disabledOnTouch</code> ignora los toques; mouse y lápiz siguen funcionando."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `inline-flex`, `position: relative` e `isolation: isolate`. No recorta su contenido, así que no corta el anillo de foco. Define los valores por defecto de las variables.",
+        "variant": "Variante activa. `ring` y `pulse` cambian el relleno por un borde interior de `2px` (`box-shadow`).",
+        "trigger": "Disparador activo. No se agrega con `isDisabled` ni `isActive={false}`. No tiene estilos propios.",
+        "paused": "Se agrega con `isPaused`. Pausa la animación de las ondas; el temporizador que las borra también se pausa, así que quedan en pantalla hasta despausar.",
+        "inactive": "Se agrega con `isDisabled` o `isActive={false}`. Oculta las ondas (`display: none`).",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "touchDisabled": "Se agrega con `disabledOnTouch`. No tiene estilos propios.",
+        "surface": "Envuelve al hijo (`z-index: 0`, `flex: 1 1 auto`). Con `asChild`, la clase va en el propio hijo.",
+        "layer": "Capa de las ondas (`position: absolute`, `inset: 0`, `z-index: 1`, `pointer-events: none`, `aria-hidden`). Recorta las ondas al radio del host con `overflow: hidden`, `contain: paint`, `clip-path: inset(0)` y `border-radius: inherit`.",
+        "wave": "Cada onda. Círculo centrado en `--gemfx-ripple-x` / `-y` con la animación `gemfx-ripple-wave` (de `scale(0)` y opacidad `1` a `scale(1)` y opacidad `0`). `classNames.wave` va en cada una."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Las de la raíz solo van inline cuando pasás la prop correspondiente; si no, las podés definir desde una clase. Las de cada onda se escriben inline en la onda y sirven para leerlas.",
+      "items": {
+        "color": "Color de la onda. Solo va inline si pasás `color`; si no, vale `currentColor`.",
+        "timing": "Duración de la animación y opacidad de la mezcla de color. Inline solo si pasás `duration` o `intensity`. `-duration` desde CSS solo cambia la animación: el borrado de cada onda y el escalonado de `pulse` usan la prop `duration`, así que para cambiar el tiempo pasala como prop.",
+        "wave": "Posición, diámetro (lo necesario para cubrir el host desde el origen) y retraso de cada onda (`delay` más el escalonado de `pulse`)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Ripple lee como valor por defecto.",
+      "items": {
+        "intensity": "Valor por defecto de `--gemfx-ripple-intensity` en el CSS (respaldo `55%`). Lo pisa el valor inline cuando pasás `intensity`.",
+        "easing": "Curva de la onda (respaldo `ease-out`)."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué recibe la onda y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Aspecto, origen, color e intensidad de la onda."
+      },
+      "timing": { "title": "Tiempo", "description": "Duración y retraso, en milisegundos." },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo aparecen las ondas, cómo se pausan y cómo se apagan."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `click`, `hover`, `press`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que recibe las ondas.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos como `img` o `input`, cae al `div` envolvente.",
+      "variant": "`ink` es un disco relleno, `ring` un borde y `pulse` tres anillos escalonados.",
+      "origin": "`pointer` arranca en el punto del evento y `center` en el medio del host.",
+      "color": "Color de la onda. Por defecto `currentColor` (el color de texto del host). Mejor tokens.",
+      "intensity": "Opacidad de la onda: `35%` / `55%` / `80%`, o un número de `0` a `1`.",
+      "duration": "Lo que dura cada onda.",
+      "delay": "Retraso antes de que arranque cada onda.",
+      "trigger": "`click` lanza una onda al presionar, `hover` al entrar con el puntero y `press` las repite mientras mantenés presionado. En `click` y `press`, Enter o Espacio lanzan una onda desde el centro; en `hover`, el foco de teclado que entra al host.",
+      "isActive": "Permite ondas nuevas. En `false` oculta las que estaban.",
+      "isPaused": "Congela las ondas en pantalla (también su temporizador) y no deja crear nuevas. Al despausar terminan.",
+      "isDisabled": "No crea ondas y oculta las que estaban; el hijo sigue interactivo.",
+      "ignoreReducedMotion": "Mantiene las ondas aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "onRipple": "Se dispara cuando aparece la primera onda.",
+      "outRipple": "Se dispara cuando termina la última onda, o al desactivarlo o desmontarlo.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `wave`.",
+      "style": "Estilos inline de la raíz. Las variables del efecto se escriben después, solo las de las props que pasaste.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

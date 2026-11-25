@@ -1,0 +1,16 @@
+.gemst-collapse-transition.faq-shell {
+  --gemst-collapse-duration: 380ms;
+  --gemst-collapse-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+}
+
+.gemst-collapse-transition.faq-shell .gemst-collapse-transition__surface {
+  border-top: 1px solid var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}
+
+.gemst-collapse-transition.faq-shell .collapse-demo__panel {
+  padding: var(--gem-space-4);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.45;
+}

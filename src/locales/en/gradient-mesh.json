@@ -1,0 +1,217 @@
+{
+  "header": {
+    "title": "GradientMesh",
+    "description": "Liquid mesh of soft color blobs behind the child. It adds a decorative layer (`pointer-events: none`) with three blobs drifting over a dark base, and clips everything to the root's radius. `variant` sets the motion: `liquid` drifts softly, `aurora` makes wide sweeps, and `static` keeps it still."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the code they generate. With `static`, `trigger` changes nothing: the mesh always shows.",
+    "label": "Mesh"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic mesh",
+      "description": "With the defaults (`variant=\"liquid\"`, `blur={40}`, `duration={9000}`), three blobs in `primary-400`, `secondary-400`, and `tertiary-400` drift over `neutral-950`. The mesh fills the whole root: size and radius go on the root.",
+      "texts": {
+        "label": "Mesh"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`liquid` moves and scales round blobs. `aurora` uses wider, flatter blobs with horizontal sweeps. `static` freezes the blobs in their starting position."
+    },
+    "hero": {
+      "title": "Hero background",
+      "description": "The typical use: a living background for a featured block. Here with `aurora`, a slow cycle (`duration={14000}`), `intensity=\"sm\"`, and more `blur`, so the text stays readable. The content sits on a surface with `z-index: 1`, so the button still gets clicks.",
+      "texts": {
+        "kicker": "Gemffects",
+        "title": "Effects that feel alive",
+        "body": "Tokens, accessibility, and reduced motion included.",
+        "action": "Get started"
+      }
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`from`, `via`, and `to` are the colors of the three blobs. Defaults: gem-system's `primary-400`, `secondary-400`, and `tertiary-400`. Prefer tokens."
+    },
+    "blur": {
+      "title": "Blur",
+      "description": "`blur` is how soft the blobs are: a number is pixels, and any CSS length works too. With little blur you can see each blob's edges."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the mesh is hidden and appears when the pointer enters or something inside gets keyboard focus. With `click`, each click shows or hides it. The animation restarts every time it shows.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` is the blobs' opacity: `intensity × 0.9 + 15%`, so `sm` ≈ 47%, `md` ≈ 65%, and `lg` ≈ 87%; only `1` reaches `100%`. It takes a token or a number from `0` to `1`, and tokens read `--gemfx-intensity-*` from the host. Here with `static`, to compare without motion."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is a full drift cycle, in milliseconds. The three blobs share the cycle but start offset. `delay` postpones the start."
+    },
+    "asChild": {
+      "title": "On another element (asChild)",
+      "description": "With `asChild`, the mesh is applied straight onto the child, without an extra `div`: the button itself becomes the root and the layer is injected inside at `z-index: -1`, under all its content (loose text included). The child's background is set to transparent so the mesh shows. With gem-system's `Button` the layer fills the whole button, even though it wraps its children in `.gem-button__label`, and the text turns white (`--gemfx-gradient-mesh-ink`) in both themes.",
+      "texts": {
+        "label": "Save"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the blobs where they are. `isDisabled` hides the mesh (only the content remains) and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGradientMesh` fires when the mesh turns on (pointer enter or keyboard focus with `hover`, click with `click`, or mount with `always`) and `outGradientMesh` when it turns off, with the reason in `event.reason`. With `static` they behave as with `always`. The button still gets clicks.",
+      "texts": {
+        "body": "Hover the block (or Tab to the button) to turn the mesh on and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Pastel"
+    },
+    "styled": {
+      "label": "Sunset"
+    }
+  },
+  "apiLink": "See the full GradientMesh API",
+  "api": {
+    "header": {
+      "title": "GradientMesh API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `GradientMesh`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger, and option.",
+      "link": "See GradientMesh demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/gradient-mesh` with its `gradient-mesh.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code>, and <code>onBlur</code> run before the effect's internal logic. Only the variables of the props you pass are written inline (after <code>style</code>). The root's background is cleared from the class, not inline: the layer paints the base. The base layout (<code>display</code>, <code>position</code>, <code>overflow</code>, <code>color</code>) lives in <code>:where()</code>, so any host class overrides it."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the blobs stay still in their starting position; the mesh still shows.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the motion. Only use it when essential.",
+        "decorative": "The layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks.",
+        "focus": "With <code>trigger=\"hover\"</code> the mesh also appears when the host or something inside gets keyboard focus (<code>:focus-visible</code>), and the events fire just like with the pointer. With <code>click</code> the root isn't focusable: the keyboard only turns it on when the click comes from a control inside (Enter or Space on a button).",
+        "contrast": "The base is <code>neutral-950</code> in both themes and the blobs keep moving. Use light text, check contrast against the mesh's lightest color, and lower <code>intensity</code> for long text. On a gem-system <code>Button</code> the text switches to <code>--gemfx-gradient-mesh-ink</code> (white)."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `isolation: isolate` and a transparent background, so the layer shows. `inline-flex`, `position: relative`, `overflow: hidden`, and `color: inherit` live in `:where()` (zero specificity), so a host class overrides them. On `.gem-button`, it swaps the text color for `--gemfx-gradient-mesh-ink`.",
+        "variant": "Active variant. `aurora` changes the blobs' shape and animation; `static` removes the animation.",
+        "trigger": "Active trigger, only with `liquid` and `aurora`. Sets `cursor: pointer` and hides the layer while it isn't on.",
+        "on": "Added while the mesh is on with `click`.",
+        "paused": "Added with `isPaused`. Pauses the blobs with `animation-play-state`.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the layer and removes the animation.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "layer": "Decorative layer (`position: absolute`, `inset: 0`, `aria-hidden`) with the base fill. Inherits the root's radius. With `asChild` it drops to `z-index: -1`.",
+        "blob": "Each blob: `90%` of the root's size, round, with `filter: blur()` and its own animation.",
+        "surface": "Wraps the child (`z-index: 1`). With `asChild`, the class goes on the child itself: it clears its background and puts the layer under all the content."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Only the variables of the props you pass are written inline (`from`, `via`, `to`, `blur`, `intensity`, `duration`, `delay`). `--gemfx-gradient-mesh-base` and `-ink` never are. Everything else, and those same ones when you don't pass the prop, can be overridden from a class.",
+      "items": {
+        "colors": "Colors of the three blobs. Set by `from`, `via`, and `to`.",
+        "base": "Layer fill, behind the blobs. Default `neutral-950` in both themes.",
+        "ink": "Text color on a `.gem-button`: it replaces `--gem-btn-fg` and `--gem-btn-fg-hover`, which were picked for the fill the mesh covers. Default `neutral-0` (fallback `#ffffff`).",
+        "blur": "Blob blur. Set by `blur`; default `40px`.",
+        "intensity": "Base intensity. Set by `intensity`; default `var(--gemfx-intensity-md, 55%)`. Each blob's opacity is `intensity × 0.9 + 15%`.",
+        "duration": "Drift cycle. Set by `duration`; default `9000ms`.",
+        "delay": "Start delay. Set by `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables GradientMesh reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "palette": "Default blob colors (with neon, magenta, and amber fallbacks).",
+        "base": "Layer base fill (fallback `#111316`).",
+        "ink": "Default `--gemfx-gradient-mesh-ink` color (fallback `#ffffff`).",
+        "intensity": "Values for `sm`, `md`, and `lg` (`35%`, `55%`, and `80%`). The default uses `md` and the prop writes `var(--gemfx-intensity-*)` for tokens, so redefining them changes the blobs' opacity.",
+        "easingStandard": "Drift curve."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What goes in front of the mesh and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Motion, colors, blur, and opacity." },
+      "timing": { "title": "Timing", "description": "Drift cycle and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows and moves, how it pauses, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled`, or `unmount`. With `static` they behave as with `always`: `onGradientMesh` fires on mount."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content in front of the mesh.",
+      "asChild": "Applies the mesh to the single child, without a wrapping `div`. All the child's content, loose text included, stays in front of the mesh. Works with gem-system's `Button`.",
+      "variant": "`liquid` drifts softly, `aurora` makes wide sweeps, and `static` keeps it still.",
+      "from": "First blob color. Prefer a token; default `primary-400`.",
+      "via": "Second blob color. Default `secondary-400`.",
+      "to": "Third blob color. Default `tertiary-400`.",
+      "blur": "Blob blur. A number is pixels.",
+      "intensity": "Blob opacity: `sm` ≈ 47%, `md` ≈ 65%, `lg` ≈ 87%, or a number from `0` to `1` (`1` is `100%`).",
+      "duration": "Full drift cycle. Negative values become `0`.",
+      "delay": "Delay before the motion starts.",
+      "trigger": "`always` shows it all the time, `hover` when the pointer enters or something inside gets keyboard focus, and `click` toggles it on each click. `static` ignores it.",
+      "isActive": "Shows the mesh. With `false` it hides and `outGradientMesh` gets `inactive`.",
+      "isPaused": "Freezes the drift.",
+      "isDisabled": "Hides the mesh; the child stays interactive. `outGradientMesh` gets `disabled`.",
+      "ignoreReducedMotion": "Keeps the motion even if the user prefers less. Only when essential.",
+      "onGradientMesh": "Fires when the mesh turns on: on mount with `always` (or `static`), on pointer enter or keyboard focus with `hover`, or on click with `click`.",
+      "outGradientMesh": "Fires when it turns off: on pointer or focus leave, on the next click, when disabled, or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, and `blob` (applied to all three blobs).",
+      "style": "Inline styles for the root. The variables of the props you pass are written after it.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

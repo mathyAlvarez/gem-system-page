@@ -1,0 +1,242 @@
+{
+  "header": {
+    "title": "Spotlight",
+    "description": "Circular light that follows the pointer. `variant` sets the look (`reveal`, `glow` or `ring`) and `trigger` when it moves: `hover` (default), `always` or `press`. The layer ignores pointer events, so the content stays interactive."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props and move the pointer over the card. `size` set to `auto` lets `intensity` pick the radius (120, 180 or 280 px).",
+    "target": "Move the cursor"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variants",
+      "description": "`reveal` darkens everything with a veil and leaves a hole of light, like a flashlight. `glow` adds a bloom under the cursor with no veil. `ring` draws a ring of light around the pointer.",
+      "texts": {
+        "titles": {
+          "reveal": "Sweep the light",
+          "glow": "Follow the glow",
+          "ring": "Ring of light"
+        }
+      }
+    },
+    "image": {
+      "title": "Over an image",
+      "description": "`Spotlight` wraps a native `img`. With `reveal`, move the pointer to uncover the image under the veil.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`hover` follows the pointer while it's over the target. `always` keeps a light at the center and moves it with the pointer. `press` only lights while you hold the pointer down.",
+      "texts": {
+        "labels": {
+          "hover": "Hover me",
+          "always": "Always on",
+          "press": "Press and hold"
+        }
+      }
+    },
+    "size": {
+      "title": "Size",
+      "description": "`size` is the light radius. A number is pixels; any CSS length also works. Without `size`, the radius comes from `intensity`."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the light strength and, for `reveal`, how dark the veil is. Without `size`, it also changes the radius. Takes a token or a number between `0` and `1`."
+    },
+    "color": {
+      "title": "Colors",
+      "description": "`color` tints the light for `glow` and `ring`. `veilColor` changes the `reveal` veil. Prefer your app's palette tokens.",
+      "texts": {
+        "beam": "Warm light",
+        "veil": "Green veil"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the light where it is: move the pointer and turn on pause. `isDisabled` hides the light and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onSpotlight` fires when the light starts following the pointer and `outSpotlight` when it turns off, with the cause in `event.reason`. The layer has `pointer-events: none`: the button still gets clicks.",
+      "texts": {
+        "body": "Hover the card and watch the log.",
+        "action": "Save",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    },
+    "hook": {
+      "title": "useSpotlight",
+      "description": "Headless version. The hook returns `ref`, `style` (with `--gemfx-spotlight-x` and `-y`), `pointerProps` and `pose`; you render the markup and the layer. Use it to read the position or mount the light on your own element.",
+      "texts": {
+        "title": "Your own markup",
+        "position": "x {x}% · y {y}%"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Custom veil"
+    },
+    "styled": {
+      "kicker": "Override",
+      "title": "Elliptic lamp"
+    }
+  },
+  "apiLink": "See the full Spotlight API",
+  "api": {
+    "header": {
+      "title": "Spotlight API",
+      "description": "Reference for `Spotlight` props, the `useSpotlight` hook, inheritance, accessibility, CSS classes and variables, and exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for each variant and trigger.",
+      "link": "See Spotlight demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/spotlight` with its `spotlight.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "name": "Name",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "hook": {
+      "description": "Takes the same options as `Spotlight` except `children`, `asChild`, `className`, `classNames` and `ref` (`UseSpotlightOptions`). You render the host, `.gemfx-spotlight__surface` and the layer with `.gemfx-spotlight__beam`.",
+      "resultTitle": "Returns",
+      "result": {
+        "ref": "Ref for the host. Used to measure the box when computing the position.",
+        "style": "Inline styles with the `--gemfx-spotlight-*` variables. Already includes the `style` you passed.",
+        "pointerProps": "Pointer handlers for the host. They call the ones you passed in the options first.",
+        "motionClassName": "`gemfx-ignore-reduced-motion` when you pass `ignoreReducedMotion`. Add it to the host.",
+        "pose": "Light position as a percentage of the box (`x`, `y`) and its opacity (`strength`).",
+        "variant": "Resolved variant, to build `.gemfx-spotlight--{variant}`.",
+        "isTracking": "`true` while the light follows the pointer.",
+        "isHover": "`trigger` is `hover` and the effect is active.",
+        "isAlways": "`trigger` is `always` and the effect is active.",
+        "isPress": "`trigger` is `press` and the effect is active.",
+        "spotlightOff": "`true` with `isDisabled` or `isActive={false}`.",
+        "isPaused": "Value of `isPaused`.",
+        "isDisabled": "Value of `isDisabled`."
+      }
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> except <code>color</code>, and passes them to the root <code>div</code> (or the child, with <code>asChild</code>). The <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onPointerMove</code>, <code>onPointerDown</code>, <code>onPointerUp</code> and <code>onPointerCancel</code> handlers run before the effect's own logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The light layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it's decorative and doesn't block interaction.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the light stops following the pointer. With <code>always</code> it stays at the center; with <code>hover</code> and <code>press</code> it isn't shown.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces tracking. Use it only when motion is essential.",
+        "pointerOnly": "The light only follows the pointer: there's no keyboard equivalent. Don't put information that is only visible under the light.",
+        "touch": "By default (<code>disabledOnTouch</code>) touch is ignored; mouse and pen keep working. That way it doesn't fight scrolling on mobile.",
+        "press": "With <code>press</code>, pressing on a nested control (<code>button</code>, <code>a</code>, <code>input</code>…) doesn't light the beam, so the control works as usual.",
+        "contrast": "<code>reveal</code> darkens content outside the light. If there's text that must be read, check its contrast against the veil or use <code>glow</code>."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex`, `overflow: hidden` and `isolation: isolate`.",
+        "variant": "Active variant.",
+        "trigger": "Active trigger.",
+        "tracking": "Added while the light follows the pointer. Shortens the transition to 80 ms.",
+        "paused": "Added with `isPaused`; removes the transition.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`; hides the light.",
+        "disabled": "Added with `isDisabled`. Removes the pointer cursor.",
+        "surface": "Wraps the child, below the layer.",
+        "layer": "Absolute layer above the child that holds the light.",
+        "beam": "The light: a `radial-gradient` centered on `--gemfx-spotlight-x` / `-y`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "`size`, `duration`, `delay`, the position and `strength` are written inline on every render, so a class can't override them. `color` and `veil` are only written when you pass the prop.",
+      "items": {
+        "color": "Light color for `glow` and `ring`. Set by `color`; default `var(--gem-palette-primary-200)`.",
+        "veil": "Veil color for `reveal`. Set by `veilColor`; default `var(--gem-palette-neutral-950)`.",
+        "size": "Light radius. Set by `size` or, without it, by `intensity`.",
+        "duration": "Fade when appearing or returning to rest. Set by `duration`; default `220ms`.",
+        "delay": "Delay before the light appears. Set by `delay`; default `0ms`.",
+        "position": "Light position, as a percentage of the box.",
+        "strength": "Light opacity: `0` at rest and the `intensity` peak while tracking."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Spotlight reads as defaults.",
+      "items": {
+        "easing": "Fade curve.",
+        "palette": "Default light color, with a fallback when gem-system isn't loaded.",
+        "veil": "Default color of the `reveal` veil."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Every prop is optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What gets lit and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Light shape, colors, radius and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Light fade, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it follows the pointer and how it pauses or turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `press`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content the light is cast over.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`.",
+      "variant": "`reveal` (veil with a hole of light), `glow` (bloom with no veil) or `ring` (annulus).",
+      "color": "Light color for `glow` and `ring`. Prefer host tokens. An empty string uses the default.",
+      "veilColor": "Veil color for `reveal`.",
+      "size": "Light radius. A number is pixels. Without a value, `intensity` sets it: `120`, `180` or `280`.",
+      "intensity": "Light strength and, for `reveal`, veil darkness. Token or number between `0` and `1`.",
+      "duration": "Fade when appearing or returning to rest. While tracking, the transition drops to 80 ms.",
+      "delay": "Delay before the light appears.",
+      "trigger": "`hover` follows the pointer while it's over the target, `always` keeps a light at the center and moves it with the pointer, `press` only while the pointer is down.",
+      "isActive": "Lets the effect run. `false` hides the light and `outSpotlight` gets `inactive`.",
+      "isPaused": "Freezes the light at its current position.",
+      "isDisabled": "Hides the light; the content stays interactive. `outSpotlight` gets `disabled`.",
+      "disabledOnTouch": "Ignores touch pointers. Mouse and pen keep working.",
+      "ignoreReducedMotion": "Follows the pointer even when the user prefers reduced motion. Only when motion is essential.",
+      "onSpotlight": "Fires when the light turns on: when tracking starts with `hover` or `press`, or on mount with `always`.",
+      "outSpotlight": "Fires when the light turns off: on pointer leave, on release with `press`, when disabled or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer` and `beam`.",
+      "style": "Root inline styles. Merged with the `--gemfx-spotlight-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

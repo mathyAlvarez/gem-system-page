@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 
 type TocItem = { id: string; label: string; sub: boolean };
 
-const SECTION_SELECTOR = ".docs-page > .docs-section[id], .docs-page > .docs-section > .docs-section--sub[id]";
+const SECTION_SELECTOR =
+  ".docs-page > .docs-section[id], .docs-page > .docs-section > .docs-section--sub[id]";
 const ACTIVE_OFFSET_PX = 96;
 
 function readSections(container: HTMLElement): TocItem[] {
@@ -54,7 +55,9 @@ export function TableOfContents({ targetRef }: { targetRef: RefObject<HTMLElemen
   const goTo = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     event.preventDefault();
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    document.getElementById(id)?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
     history.replaceState(null, "", `#${id}`);
   };
 

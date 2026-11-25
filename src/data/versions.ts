@@ -1,3 +1,5 @@
+import type { ProductId } from "./products.ts";
+
 export type DocsVersion = {
   id: string;
   label: string;
@@ -5,8 +7,32 @@ export type DocsVersion = {
   url: string;
 };
 
-/** Version documented by this build/branch. Must match an `id` in `docsVersions`. */
-export const currentVersionId = "v2";
+export type ProductVersions = {
+  /** Version documented by this build for this product. Must match an `id` in `versions`. */
+  currentId: string;
+  /** Newest first. Add an entry per published major version of this product. */
+  versions: DocsVersion[];
+};
 
-/** Newest first. Add an entry per published major version. */
-export const docsVersions: DocsVersion[] = [{ id: "v2", label: "v2", url: "" }];
+/**
+ * Version catalogs per product. System, Effects and Transitions ship on
+ * independent majors, so the navbar select always reads from the active zone.
+ */
+export const productVersions: Record<ProductId, ProductVersions> = {
+  system: {
+    currentId: "v2",
+    versions: [{ id: "v2", label: "v2", url: "" }],
+  },
+  effects: {
+    currentId: "v1",
+    versions: [{ id: "v1", label: "v1", url: "" }],
+  },
+  transitions: {
+    currentId: "v1",
+    versions: [{ id: "v1", label: "v1", url: "" }],
+  },
+};
+
+export function versionsFor(product: ProductId): ProductVersions {
+  return productVersions[product];
+}

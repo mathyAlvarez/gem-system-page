@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "GradientText",
+    "description": "Gradient fill on text using `background-clip: text`. The root is a `span`, so it fits in any line of text. The gradient is painted on an inner `span` (the surface) and the glyph fill turns transparent to let it through. `variant` sets the motion: `flow` slides the gradient across the glyphs, `static` keeps it fixed, and `pulse` makes the brightness breathe."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the code they generate. With `static`, `trigger` changes nothing: the gradient always shows.",
+    "label": "Gradient"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic text",
+      "description": "With the defaults (`variant=\"flow\"`, `angle={110}`, `duration={3200}`), a `primary-400`, `secondary-400`, and `tertiary-400` gradient slides back and forth across the glyphs.",
+      "texts": {
+        "label": "Gradient"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`flow` slides the gradient from one end to the other and back. `static` keeps it fixed, fitted to the text width. `pulse` keeps it fixed and makes brightness, saturation, and opacity breathe."
+    },
+    "heading": {
+      "title": "On a heading",
+      "description": "The typical use: a featured heading. Since the root is a `span`, use `asChild` on a block heading: the `h2` stays the root and its content is wrapped in the surface. The gradient is clipped to all the text, children included, even when they set their own `color`.",
+      "texts": {
+        "title": "Made with gemffects"
+      }
+    },
+    "inline": {
+      "title": "Inside a paragraph",
+      "description": "The root is a `span`, so you can highlight a few words inside a `<p>` without invalid HTML. Its base layout has zero specificity: here a class puts it back on the text line (`vertical-align: baseline`).",
+      "texts": {
+        "before": "gemffects effects are",
+        "highlight": "accessible by default",
+        "after": "and respect your design system's tokens."
+      }
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`from`, `via`, and `to` are the gradient's three stops. Defaults: gem-system's `primary-400`, `secondary-400`, and `tertiary-400`. Prefer tokens."
+    },
+    "angle": {
+      "title": "Angle",
+      "description": "`angle` is the gradient's direction: a number is degrees, and any `linear-gradient` value works too, such as `\"to top right\"`. It's most visible with `static`."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the text uses the inherited color and the gradient appears when the pointer enters (or something inside gets keyboard focus). With `click`, each click shows or hides it. The animation restarts every time.",
+      "texts": {
+        "hoverLabel": "Hover",
+        "clickLabel": "Click"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "With `flow`, `intensity` sets how far the gradient travels: the background is `160%`, `220%`, or `300%` of the text with `sm`, `md`, or `lg`, so higher intensity shows a smaller slice and a wider motion. With `pulse`, it sets how strongly it breathes: brightness, saturation, and opacity are computed from `--gemfx-gradient-text-intensity`. It also takes a number from `0` to `1`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is a full cycle of `flow` (one way) or `pulse`, in milliseconds. `delay` postpones the start."
+    },
+    "asChild": {
+      "title": "On another element (asChild)",
+      "description": "With `asChild`, the gradient is applied to the child without a wrapping `span`: the child is the root and its content is wrapped in an inner `span` (the surface). So the button keeps its background, only the label gets the gradient, and `variant`, `isPaused`, triggers, and states work just like without `asChild`.",
+      "texts": {
+        "label": "Heading",
+        "buttonLabel": "Buy"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the gradient where it is. `isDisabled` removes it and the text goes back to the inherited color.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGradientText` fires when the gradient turns on (pointer enter or keyboard focus with `hover`, click with `click`, or mount with `always`) and `outGradientText` when it turns off, with the reason in `event.reason`. With `static` they behave as with `always`. The button sits inside the gradient and keeps a solid label.",
+      "texts": {
+        "title": "Hover me",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Fresh"
+    },
+    "styled": {
+      "label": "Chrome"
+    }
+  },
+  "apiLink": "See the full GradientText API",
+  "api": {
+    "header": {
+      "title": "GradientText API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `GradientText`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger, and option.",
+      "link": "See GradientText demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/gradient-text` with its `gradient-text.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and passes them to the root <code>span</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code>, and <code>onBlur</code> run before the effect's internal logic. The <code>--gemfx-gradient-text-*</code> variables of the props you pass are written after <code>style</code>; the ones you don't pass aren't written. The base layout (<code>display</code>, <code>position</code>, <code>vertical-align</code>, <code>color</code>) lives in <code>:where()</code>, so any host class overrides it."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the gradient stays still, centered and fitted to the text; <code>pulse</code> stops breathing.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the motion. Only use it when essential.",
+        "readable": "The text is still text: it can be read, selected, and announced by screen readers. The gradient is only a clipped background. Children with their own background (<code>code</code>, <code>kbd</code>, <code>samp</code>, <code>mark</code>, form controls, or <code>.gemfx-gradient-text__solid</code>) go back to a solid color, so their text doesn't turn invisible.",
+        "selection": "The glyph fill is transparent (<code>-webkit-text-fill-color</code>), so when selected you may only see the selection background. If it matters, define a <code>::selection</code> with its own <code>-webkit-text-fill-color</code>.",
+        "focus": "With <code>trigger=\"hover\"</code> the gradient also appears when the host or something inside gets keyboard focus (<code>:focus-visible</code>), and the events fire just like with the pointer. With <code>click</code> the root isn't focusable: the keyboard only turns it on when the click comes from a control inside.",
+        "contrast": "Check the contrast of every stop against the background, not just the average color: with <code>flow</code> each letter goes through all the colors."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`span`, or the child with `asChild`). `inline-flex`, `position: relative`, and `color: inherit` live in `:where()` (zero specificity), so a host class overrides them.",
+        "variant": "Active variant. `static` removes the animation and fits the background to the text; `pulse` switches to the brightness animation.",
+        "trigger": "Active trigger, only with `flow` and `pulse`. Sets `cursor: pointer` and removes the gradient while it isn't on.",
+        "on": "Added while the gradient is on with `click`.",
+        "paused": "Added with `isPaused`. Pauses the animation with `animation-play-state`.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Removes the gradient and restores the inherited color.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "Inner `span` that holds the gradient (`background-clip: text`) and the transparent fill. With `asChild` it wraps the child's content, so the child keeps its background.",
+        "solid": "Put it on any descendant to bring back a solid color (`-webkit-text-fill-color: currentcolor`). `code`, `kbd`, `samp`, `mark`, and form controls already do it on their own."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Only the variables of the props you pass are written inline (`from`, `via`, `to`, `angle`, `intensity`, `duration`, `delay`). When you don't pass the prop, any of them can be overridden from a class.",
+      "items": {
+        "colors": "The gradient's three stops. Set by `from`, `via`, and `to`.",
+        "angle": "Gradient direction. Set by `angle`; default `110deg`.",
+        "span": "Background width with `flow` (how far it travels). Set by `intensity`: `160%`, `220%`, or `300%`; default `220%`.",
+        "intensity": "Strength of the `pulse` breath (brightness, saturation, and opacity). Set by `intensity`; default `var(--gemfx-intensity-md, 55%)`.",
+        "duration": "`flow` or `pulse` cycle. Set by `duration`; default `3200ms`.",
+        "delay": "Start delay. Set by `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables GradientText reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "palette": "Default colors for `from`, `via`, and `to` (with neon, magenta, and amber fallbacks).",
+        "intensity": "Values for `sm`, `md`, and `lg` (`35%`, `55%`, and `80%`). The `pulse` default uses `md` and the prop writes `var(--gemfx-intensity-*)` for tokens, so redefining them changes the breath.",
+        "easingLinear": "`flow` curve (constant speed).",
+        "easingStandard": "`pulse` curve."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which text gets the gradient and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Motion, colors, angle, and intensity."
+      },
+      "timing": { "title": "Timing", "description": "Animation cycle and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows and moves, how it pauses, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled`, or `unmount`. With `static` they behave as with `always`: `onGradientText` fires on mount."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Text that gets the gradient. Children with their own background (`code`, `kbd`, `samp`, `mark`, form controls, or `.gemfx-gradient-text__solid`) keep solid text.",
+      "asChild": "Applies the gradient to the single child, without a wrapping `span`. The child's content is wrapped in the surface, so the child keeps its background. Useful for headings and buttons.",
+      "variant": "`flow` slides the gradient, `static` keeps it fixed, and `pulse` makes the brightness breathe.",
+      "from": "First stop. Prefer a token; default `primary-400`.",
+      "via": "Middle stop. Default `secondary-400`.",
+      "to": "Last stop. Default `tertiary-400`.",
+      "angle": "Gradient direction. A number is degrees; any `linear-gradient` value works.",
+      "intensity": "How far the gradient travels with `flow` and how strongly it breathes with `pulse`. Token or number from `0` to `1`.",
+      "duration": "Full `flow` or `pulse` cycle. Negative values become `0`.",
+      "delay": "Delay before the animation starts.",
+      "trigger": "`always` shows it all the time, `hover` when the pointer enters or something inside gets keyboard focus, and `click` toggles it on each click. `static` ignores it.",
+      "isActive": "Shows the gradient. With `false` it's removed and `outGradientText` gets `inactive`.",
+      "isPaused": "Freezes `flow` or `pulse`.",
+      "isDisabled": "Removes the gradient; the text uses the inherited color. `outGradientText` gets `disabled`.",
+      "ignoreReducedMotion": "Keeps the motion even if the user prefers less. Only when essential.",
+      "onGradientText": "Fires when the gradient turns on: on mount with `always` (or `static`), on pointer enter or keyboard focus with `hover`, or on click with `click`.",
+      "outGradientText": "Fires when it turns off: on pointer or focus leave, on the next click, when disabled, or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface` (the inner `span`, also with `asChild`).",
+      "style": "Inline styles for the root. The variables of the props you pass are written after it.",
+      "ref": "Ref to the root (the `span`, or the child with `asChild`)."
+    }
+  }
+}

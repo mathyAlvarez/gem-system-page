@@ -1,0 +1,106 @@
+.border-beam-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.border-beam-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+}
+
+.border-beam-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.border-beam-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+}
+
+.border-beam-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.border-beam-demo__target {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 4.5rem;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  user-select: none;
+}
+
+.border-beam-demo__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--gem-space-4) var(--gem-space-5);
+  border: 1px solid var(--gem-palette-neutral-700);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.border-beam-demo__link:focus-visible {
+  outline: 2px solid var(--gem-palette-primary-400);
+  outline-offset: 3px;
+}
+
+.border-beam-demo__link-title {
+  font-weight: 700;
+}
+
+.border-beam-demo__link-body {
+  color: var(--gem-palette-neutral-300);
+  font-size: var(--gem-font-size-sm);
+}
+
+.border-beam-demo__card {
+  width: 20rem;
+  max-width: 100%;
+}
+
+.border-beam-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.border-beam-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

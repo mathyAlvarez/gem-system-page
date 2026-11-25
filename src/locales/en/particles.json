@@ -1,0 +1,156 @@
+{
+  "header": {
+    "title": "Particles",
+    "description": "Particle primitive shared by `ParticleBurst`, `ParticleRain` and `Rip`. `ParticleLayer` only draws and animates particles; the emitter owns the spawn physics (where they start, where they fly, how many). Use it to build your own effects."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "`kind` sets the look and `motion` the flight profile. With `emit` set to `click`, click the stage; with `always`, it emits every 160 ms.",
+    "hint": "Click me",
+    "hintAlways": "Always on",
+    "code": {
+      "click": "on pointerdown, at the pointer position",
+      "always": "every 160 ms, from a setInterval"
+    }
+  },
+  "stories": {
+    "kinds": {
+      "title": "Kinds",
+      "description": "The four built-in `kind` values: `confetti` (paper pieces), `spark` (thin glowing streaks), `star` (four-point sparkles) and `light` (soft orbs). All with `motion` set to `burst`. Click each one."
+    },
+    "motions": {
+      "title": "Flight profiles",
+      "description": "`burst` and `rip` start at the pointer; `rain` falls from the top edge and clips anything that leaves the stage. Each profile changes the easing, end scale and keyframes."
+    },
+    "rain": {
+      "title": "Continuous emission",
+      "description": "A `light` rain that emits every 160 ms. `useParticleField` with `maxLive` caps how many particles are on screen at once.",
+      "texts": {
+        "hint": "Always on"
+      }
+    },
+    "paused": {
+      "title": "Pause",
+      "description": "With `isPaused`, particles on screen freeze until their lifetime ends and the stage stops emitting. Click the stage and turn on pause while they fly.",
+      "texts": {
+        "hint": "Click me",
+        "pauseLabel": "Pause particles"
+      }
+    },
+    "custom": {
+      "title": "Custom particle",
+      "description": "`renderParticle` draws the content of each particle. The wrapper still flies with the same physics and gets its color in `particle.color`.",
+      "texts": {
+        "hint": "Custom"
+      }
+    }
+  },
+  "apiLink": "Open the full Particles API",
+  "api": {
+    "header": {
+      "title": "Particles API",
+      "description": "Reference for `ParticleLayer`, `useParticleField`, the spawn helpers, CSS classes and variables, and the exported types."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every `kind` and `motion`.",
+      "link": "Open Particles demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Everything is imported from `@gem-org/gemffects/particles` and needs `particles.css` (already included in `styles.css`)."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "name": "Name",
+      "signature": "Signature",
+      "class": "Class",
+      "variable": "Variable"
+    },
+    "layer": {
+      "description": "Absolute layer that covers its positioned container and draws one particle per item in `particles`.",
+      "items": {
+        "particles": "Particles to draw. Pass the array returned by `useParticleField`.",
+        "motion": "Flight profile: origin, easing, end scale and keyframes.",
+        "durationMs": "Flight duration in milliseconds. When omitted, the CSS default applies (700 ms).",
+        "isPaused": "Freezes particles on screen (`animation-play-state: paused`).",
+        "renderParticle": "Custom content for each particle. Removes the `kind` background, shadow and clip.",
+        "className": "Extra class for the layer.",
+        "particleClassName": "Extra class for each particle.",
+        "style": "Inline styles for the layer. Merged with `--gemfx-particle-duration`."
+      }
+    },
+    "field": {
+      "description": "State for live particles. Each batch removes itself once its `lifetimeMs` ends.",
+      "optionsTitle": "Options",
+      "resultTitle": "Returns",
+      "options": {
+        "maxLive": "Maximum particles on screen. When there is no room, the batch is trimmed or skipped. When omitted, there is no cap."
+      },
+      "result": {
+        "particles": "Live particles, ready for `ParticleLayer`.",
+        "spawn": "Adds a batch and removes it after `lifetimeMs`. Use the flight duration plus a small margin.",
+        "clear": "Removes every particle and cancels pending timers.",
+        "getLiveCount": "Number of live particles, without triggering a render."
+      }
+    },
+    "helpers": {
+      "title": "Helpers",
+      "description": "Functions to build particles with the same sizes, spins and palettes the effects use.",
+      "items": {
+        "createParticle": "Builds a `Particle`. When `width`/`height`, `heading` or `spin` are omitted, they are derived from the `kind`.",
+        "resolveParticlePalette": "Returns `colors` when set, otherwise `[color]`, otherwise the `kind` palette.",
+        "particleSize": "Random size within the range of each `kind`.",
+        "particleHeading": "Initial rotation. `spark` particles point toward their flight direction.",
+        "particleSpin": "Random spin during the flight, per `kind`.",
+        "pickColor": "Palette color for an index, cycling through the palette.",
+        "pickParticleKind": "A random `kind` from the list (all of them by default).",
+        "randomBetween": "Random number between `min` and `max`.",
+        "PARTICLE_KINDS": "The four built-in `kind` values, in order.",
+        "PALETTES": "Default palette for each `kind`. They use `--gem-palette-*` tokens with a fallback color."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "layer": "Root layer: absolute, covers the container and ignores pointer events.",
+        "layerMotion": "Active flight profile. `rain` also clips with `overflow: hidden`.",
+        "layerPaused": "Added with `isPaused`; pauses the animations.",
+        "particle": "Each particle. Positioned and animated with the variables below.",
+        "particleKind": "Particle look for its `kind`.",
+        "particleCustom": "Added with `renderParticle`; removes background, shadow and clip."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "items": {
+        "duration": "Flight duration. Set by `durationMs`; default `700ms`.",
+        "easing": "Flight curve. Each `motion` uses a `--gemfx-easing-*` token.",
+        "endScale": "Scale at the end of the flight (`burst` 0.35, `rain` 0.55, `rip` 0.25).",
+        "originY": "Vertical offset of the origin point, per `motion`.",
+        "position": "Particle origin point, in px.",
+        "offset": "Distance the particle travels, in px.",
+        "rotation": "Initial rotation and spin during the flight, in degrees.",
+        "size": "Particle width and height, in px.",
+        "color": "Particle color.",
+        "delay": "Delay before the flight starts, in ms."
+      }
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "hidden": "The layer is <code>aria-hidden</code> with <code>pointer-events: none</code>: it is decorative and never blocks interaction.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> particles are not animated and stay invisible, except inside <code>.gemfx-ignore-reduced-motion</code>.",
+        "emitter": "When you build your own emitter, check <code>prefersReducedMotion()</code> (from <code>@gem-org/gemffects/utils</code>) so you don't spawn particles nobody will see.",
+        "control": "Whatever triggers the emission must be a real control (a <code>button</code> with an accessible name) that also responds to the keyboard.",
+        "budget": "Use <code>maxLive</code> to cap how many particles exist at once, especially with continuous emission."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  }
+}

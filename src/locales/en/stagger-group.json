@@ -1,0 +1,292 @@
+{
+  "header": {
+    "title": "StaggerGroup",
+    "description": "Sequential enter / exit cascade for lists and grids. Each child starts after `staggerDelay` × order (plus optional `delay`). `from` (`top` / `bottom` / `left` / `right`) sets the slide edge; `distance` is the offset. `staggerDirection` (`1` | `-1`) sets enter order; `staggerShuffled` randomizes it per enter cycle. `reverseExit` (default true) flips that order on exit. `onItemEnter` fires per child when its enter delay elapses. Toggle `isIn`; the group stays mounted until the last item’s exit ends."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Toggle `isIn`. Items enter in order with `staggerDelay`; exit runs last-to-first when `reverseExit` is on.",
+    "toggleOut": "Stagger out",
+    "toggleIn": "Stagger in",
+    "enter": "Enter",
+    "exit": "Exit",
+    "sibling": "Sibling below — moves up when the list unmounts.",
+    "siblingPreserve": "Sibling below — stays put while the list is hidden."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Toggle `isIn`. Items enter in order with `staggerDelay`; exit runs last-to-first when `reverseExit` is on.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "grid": {
+      "title": "Grid",
+      "description": "Same cascade on a two-column grid. Delay follows DOM order (row-wise).",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "Split `duration`, `delay`, and `staggerDelay` with `{ enter, exit }`.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "forwardExit": {
+      "title": "Forward exit",
+      "description": "`reverseExit={false}` — exit uses the same order as enter (first item leaves first).",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "preserveSpace": {
+      "title": "Preserve space",
+      "description": "With `preserveSpace`, the group stays mounted when out and keeps its max layout size. The presence trigger stays start-aligned unless `center` is on.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — stays put while the list is hidden."
+      }
+    },
+    "direction": {
+      "title": "staggerDirection -1",
+      "description": "`staggerDirection={-1}` — enter starts from the last DOM child. With default `reverseExit`, exit flips that cascade again.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "fromSides": {
+      "title": "from left / right",
+      "description": "`from` picks the slide edge (`left` / `right` / `top` / `bottom`). Default is `bottom`. Use the playground to flip edges.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in"
+      }
+    },
+    "onItemEnter": {
+      "title": "onItemEnter",
+      "description": "`onItemEnter` fires with each child’s DOM index when that item’s enter delay elapses.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "logLabel": "Entered indices:",
+        "empty": "—"
+      }
+    },
+    "directionItemEnter": {
+      "title": "direction -1 + onItemEnter",
+      "description": "Reverse cascade: indices should arrive last→first (e.g. `4 → 3 → 2 → 1 → 0`).",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "logLabel": "Entered indices:",
+        "empty": "—"
+      }
+    },
+    "shuffled": {
+      "title": "staggerShuffled",
+      "description": "`staggerShuffled` picks a random cascade order each time the group enters (Fisher–Yates). Toggle a few times — the index sequence should change. Exit still respects `reverseExit`.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "logLabel": "Entered indices:",
+        "empty": "—"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onStagger` / `outStagger` mark the start and end of the cascade.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` the state snaps with no interpolation.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, group styles merge onto the `ul`. Each `li` receives the item delay.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Classes from `utilities.css` go through `classNames`. Here `gemst-flex` on `root` and `gemst-relative` on `item`.",
+      "texts": {
+        "toggleOut": "Stagger out",
+        "toggleIn": "Stagger in",
+        "enter": "Enter",
+        "exit": "Exit",
+        "sibling": "Sibling below — moves up when the list unmounts."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "toggleOut": "Stagger out",
+      "toggleIn": "Stagger in"
+    },
+    "variant": {
+      "toggleOut": "Stagger out",
+      "toggleIn": "Stagger in"
+    },
+    "styled": {
+      "toggleOut": "Stagger out",
+      "toggleIn": "Stagger in"
+    }
+  },
+  "apiLink": "See the full StaggerGroup API",
+  "api": {
+    "header": {
+      "title": "StaggerGroup API",
+      "description": "Reference for props, inheritance, accessibility, CSS classes and variables, and exported types for `StaggerGroup`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for cascade, from, direction, and onItemEnter.",
+      "link": "See StaggerGroup demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/stagger-group` with its `stagger-group.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. Each child is decorated as an item with delay. Motion is opacity + <code>translate3d</code> along <code>from</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is presence: the control that changes <code>isIn</code> should reflect state. Do not convey information with the cascade alone.",
+        "cascade": "Visual order depends on <code>staggerDirection</code> / <code>staggerShuffled</code>. Do not use motion order as the only cue.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the group snaps to the final state with no interpolation.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code>. Only if motion is essential.",
+        "preserveSpace": "With <code>preserveSpace</code> items stay in flow at opacity 0. They should not receive focus or announcements while out.",
+        "asChild": "With <code>asChild</code>, pick a semantic host (<code>ul</code>, <code>ol</code>, <code>div</code>): that element is the cascade container."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div` or the child with `asChild`).",
+        "item": "Each child decorated with delay / opacity / transform.",
+        "in": "Enter state (items visible).",
+        "out": "Exit state (items hidden).",
+        "fromTop": "Slide from the top.",
+        "fromBottom": "Slide from the bottom (default).",
+        "fromLeft": "Slide from the left.",
+        "fromRight": "Slide from the right.",
+        "center": "`align-items` / `justify-items: center`.",
+        "disabled": "No transition."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written on the host and per item from timing.",
+      "items": {
+        "duration": "Per-item duration. Default `300ms`.",
+        "easing": "Curve. Default `standard`.",
+        "distance": "Slide offset. Default `8px`.",
+        "itemDelay": "Item delay (stagger + base delay)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables the CSS uses as defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-stagger-easing`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "Children and host." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Presence, from, direction, and space."
+      },
+      "timing": { "title": "Timing", "description": "Duration, delay, and stagger per phase." },
+      "state": { "title": "State", "description": "How the animation is turned off." },
+      "events": { "title": "Events", "description": "Per item and cascade cycle." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "List or grid items. Each child is staggered in DOM order.",
+      "asChild": "Applies classes, styles, and ref to the single child. That child is the host.",
+      "isIn": "`true` (default) plays enter; `false` plays exit and unmounts when done (unless `preserveSpace`).",
+      "from": "Slide edge on enter (and toward on exit). Default `bottom`.",
+      "distance": "Offset in px along `from`. Default `8`.",
+      "staggerDirection": "`1` = DOM order; `-1` = reverse. Ignored with `staggerShuffled`. Default `1`.",
+      "staggerShuffled": "Assigns a random order per enter cycle (Fisher–Yates). `reverseExit` still flips on exit.",
+      "reverseExit": "`true` (default) reverses enter order on exit (last-in first-out).",
+      "preserveSpace": "Stays mounted when out and keeps max layout size (opacity 0 in flow).",
+      "center": "Centers children on the cross axis (`align-items: center`).",
+      "unmountOnExit": "Unmounts immediately on exit (skips stagger).",
+      "duration": "Per-item duration. Accepts `{ enter, exit }`.",
+      "delay": "Wait before the first item. Accepts `{ enter, exit }`.",
+      "staggerDelay": "Extra between consecutive items. Default `50`. Accepts `{ enter, exit }`.",
+      "easing": "Token, timing function, or `{ enter, exit }`. Default `standard`.",
+      "isDisabled": "Snaps to the target state with no interpolation.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onItemEnter": "Per item when its enter starts (after its delay). Receives the DOM index.",
+      "onStagger": "When the cascade enters (`isIn` true).",
+      "outStagger": "When the cascade exits (`isIn` false, disable, or unmount).",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `item`.",
+      "style": "Inline styles for the root. Combined with `--gemst-stagger-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

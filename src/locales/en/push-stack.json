@@ -1,0 +1,381 @@
+{
+  "header": {
+    "title": "PushStack",
+    "description": "Stack-depth navigation for wizards, stepped modals, and page stacks. Increasing `index` pushes the new pane in from the cover edge while the current pane recedes; decreasing `index` pops. `mode`: `sync` / `wait` / `pop-layout`. `keepState` keeps inactive steps mounted. `pagination` and `swipe` are Swiper-style."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Next increments `index` (push). Back decrements it (pop). Incoming uses `enter`; outgoing uses `exit`.",
+    "back": "Back",
+    "next": "Next",
+    "copies": {
+      "Account": "Step 1. Next pushes this pane back and covers it from the end edge.",
+      "Address": "Step 2. Back pops the current pane off; Next pushes again.",
+      "Review": "Step 3. Back pops to Address — the buried pane scales forward."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Next increments `index` (push). Back decrements it (pop). Dots from `pagination` track the step — click a dot to jump.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "sibling": "Sibling below — overflow stays clipped on the stack host.",
+        "copies": {
+          "Account": "Step 1. Next pushes this pane back and covers it from the end edge.",
+          "Address": "Step 2. Back pops the current pane off; Next pushes again.",
+          "Review": "Step 3. Back pops to Address — the buried pane scales forward."
+        }
+      }
+    },
+    "axisY": {
+      "title": "axis y",
+      "description": "`axis=\"y\"` — push covers from the bottom; pop uncovers downward. Same `index` contract.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Step 1 on the Y axis.",
+          "Address": "Step 2: cover from the bottom.",
+          "Review": "Step 3: pop downward."
+        }
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "Split `duration` and `easing`. Incoming uses enter; outgoing uses exit.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "More emphasized enter.",
+          "Address": "Shorter exit.",
+          "Review": "Split timing in action."
+        }
+      }
+    },
+    "modeWait": {
+      "title": "mode wait",
+      "description": "`mode=\"wait\"` — the outgoing pane finishes before the incoming step mounts.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Fully exits before enter.",
+          "Address": "Enters only after exit finished.",
+          "Review": "No motion overlap."
+        }
+      }
+    },
+    "modePopLayout": {
+      "title": "mode pop-layout",
+      "description": "`mode=\"pop-layout\"` — outgoing is absolute; the host sizes to the incoming step.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "sibling": "Sibling below — follows the active step height.",
+        "copies": {
+          "Account": "Host sizes to this pane.",
+          "Address": "Outgoing absolute on change.",
+          "Review": "Sibling follows the active height."
+        }
+      }
+    },
+    "keepState": {
+      "title": "keepState",
+      "description": "`keepState` preserves mounted steps. Type in the field, navigate away and back. `onViewChange` logs the identity swap.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "fieldLabel": "Field for {step}:",
+        "placeholder": "type here",
+        "changeLabel": "onViewChange"
+      }
+    },
+    "direction": {
+      "title": "direction",
+      "description": "Named panes via `viewKey`. Without `index`, pass `direction` so Back pops instead of pushing.",
+      "texts": {
+        "copies": {
+          "Account": "No index: direction decides push/pop.",
+          "Address": "Earlier Back = pop.",
+          "Review": "Later Next = push."
+        }
+      }
+    },
+    "paginationOverlay": {
+      "title": "Pagination overlay",
+      "description": "`pagination.placement = \"inside-end\"` overlays the dots on the card, like Swiper.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Dots at the bottom, on top of the panel.",
+          "Address": "Same overlay on Address.",
+          "Review": "Same overlay on Review."
+        }
+      }
+    },
+    "swipe": {
+      "title": "swipe",
+      "description": "`swipe` — drag the card; the active pane follows the pointer and the neighbor peeks from the side (pass `views` so prev/next content is available). Commit past ~28% or flick; otherwise it settles back.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "sibling": "Sibling below — overflow stays clipped on the stack host.",
+        "copies": {
+          "Account": "Drag left to go to Address.",
+          "Address": "Drag left or right.",
+          "Review": "Drag right to go back."
+        }
+      }
+    },
+    "paginationTop": {
+      "title": "Pagination top",
+      "description": "`inside-start` pins the dots to the top edge of the pane.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Dots on top.",
+          "Address": "Same placement.",
+          "Review": "Same placement."
+        }
+      }
+    },
+    "paginationColors": {
+      "title": "Pagination colors",
+      "description": "Customize with `color`, `activeColor`, `size`, and `gap`. Also overridable via CSS `--gemst-push-stack-pagination-*`.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Dots with an info active color.",
+          "Address": "Same tokens.",
+          "Review": "Same tokens."
+        }
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onViewChange` fires when the identity changes. `onPushStack` / `outPushStack` mark the start and end of stack motion.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "empty": "No events yet",
+        "copies": {
+          "Account": "Step 1.",
+          "Address": "Step 2.",
+          "Review": "Step 3."
+        }
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled`, the active step snaps in with no stack motion.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Snap with no stack motion.",
+          "Address": "Snap with no stack motion.",
+          "Review": "Snap with no stack motion."
+        }
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, host styles merge onto the `section`. Pass `view` as the pane — the child is only the host.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Pane inside the slotted section.",
+          "Address": "Same host, different pane.",
+          "Review": "Same host, different pane."
+        }
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Pass `utilities.css` helpers via `classNames`. This demo applies `gemst-relative` / `gemst-overflow-hidden` on `root` and `gemst-block` on `pane`.",
+      "texts": {
+        "back": "Back",
+        "next": "Next",
+        "copies": {
+          "Account": "Root with overflow hidden.",
+          "Address": "Pane as block.",
+          "Review": "Same utilities."
+        }
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "back": "Back",
+      "next": "Next",
+      "copies": {
+        "Account": "Variables via Tailwind.",
+        "Address": "Same surface.",
+        "Review": "Same surface."
+      }
+    },
+    "variant": {
+      "back": "Back",
+      "next": "Next",
+      "copies": {
+        "Account": "Wrapper with cva.",
+        "Address": "Same variant.",
+        "Review": "Same variant."
+      }
+    },
+    "styled": {
+      "back": "Back",
+      "next": "Next",
+      "copies": {
+        "Account": "CSS override on wizard-shell.",
+        "Address": "Same skin.",
+        "Review": "Same skin."
+      }
+    }
+  },
+  "apiLink": "See the full PushStack API",
+  "api": {
+    "header": {
+      "title": "PushStack API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `PushStack`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for axis, modes, direction, pagination, and swipe.",
+      "link": "See PushStack demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/push-stack` with its `push-stack.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. With <code>asChild</code>, the child is only the host — pass <code>view</code> / <code>views</code> as panes. The component handles the end of <code>transform</code> / <code>opacity</code> on each pane and then calls your handlers."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is stack navigation: the control that changes <code>index</code> / <code>viewKey</code> should reflect state. Do not convey information with the motion alone.",
+        "pagination": "With <code>onPagination</code>, dots are buttons. Without it, they are decorative and swipe is ignored.",
+        "swipe": "<code>swipe</code> needs <code>onPagination</code> and a count ≥ 2. Pass <code>views</code> so a neighbor can peek. Do not make swipe the only way to change steps.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> panes snap to the final state. The preference is read each render.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code>. Only when motion is essential.",
+        "keepState": "With <code>keepState</code>, inactive steps stay with <code>display: none</code>. They should not receive focus or be announced while hidden.",
+        "asChild": "With <code>asChild</code>, pick a host with the right semantics (<code>section</code>, <code>div</code>): that element is the stack container."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div`, or the child with `asChild`). `display: grid`, `overflow: hidden`.",
+        "pane": "Step layer. Shares `grid-area: 1 / 1` and transitions `transform` + `opacity`.",
+        "incoming": "Entering pane.",
+        "outgoing": "Leaving pane (`pointer-events: none`).",
+        "in": "Resting pane (`translate3d(0,0,0) scale(1)`).",
+        "out": "Pane in cover or recede depending on push/pop.",
+        "kept": "Inactive step with `keepState` (`display: none`).",
+        "pagination": "Dot row.",
+        "dot": "Idle dot.",
+        "dotActive": "Active dot.",
+        "axisY": "Vertical axis (`cover`/`recede` on Y).",
+        "push": "Push direction (incoming covers; outgoing recedes).",
+        "pop": "Pop direction (outgoing covers; incoming advances from recede).",
+        "modePop": "pop-layout mode: outgoing absolute.",
+        "playing": "Motion in progress.",
+        "disabled": "No transition.",
+        "swiping": "Active drag."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline each render from the current phase and swipe/pagination state.",
+      "items": {
+        "enterDuration": "Incoming duration. Default `300ms`.",
+        "exitDuration": "Outgoing duration. Default `300ms`.",
+        "enterDelay": "Incoming delay. Default `0ms`.",
+        "exitDelay": "Outgoing delay. Default `0ms`.",
+        "enterEasing": "Incoming easing. Default `standard`.",
+        "exitEasing": "Outgoing easing. Default `exit`.",
+        "cover": "Distance of the covering pane. Default `100%`.",
+        "recede": "Distance of the buried pane. Default `25%`.",
+        "depthScale": "Scale of the buried pane. Default `0.96`.",
+        "depthOpacity": "Opacity of the buried pane. Default `0.72`.",
+        "paginationColor": "Idle dot color.",
+        "paginationActiveColor": "Active dot color."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables used as CSS defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-push-stack-enter-easing`.",
+        "easingExit": "Default for `--gemst-push-stack-exit-easing`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "Children, view, views, and host." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Index, axis, cover/recede, pagination, and swipe."
+      },
+      "timing": { "title": "Timing", "description": "Incoming = enter; outgoing = exit." },
+      "state": { "title": "State", "description": "How motion is turned off." },
+      "events": { "title": "Events", "description": "View change, pagination, and stack cycle." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Current step when `view` / `views` are omitted. Identity is `viewKey`, `index`, or the child’s `key`. With `asChild`, this is the host only.",
+      "view": "Current pane when `asChild` is set (the child is only the host). Also used instead of `children`.",
+      "views": "Full stack of panes. With `index`, the active pane is `views[index]` and neighbors can peek during swipe.",
+      "asChild": "Applies classes, styles, and ref to the single child. Pass `view` / `views` as panes.",
+      "index": "Stack depth. Increasing pushes; decreasing pops. Used to infer `direction`.",
+      "viewKey": "Stable identity for the current pane. Defaults to `index` when set.",
+      "direction": "Force push or pop. When omitted, inferred from `index`. Without `index`, defaults to `push`.",
+      "axis": "`x` (default) on the inline axis; `y` on the block axis.",
+      "mode": "`sync` overlaps; `wait` finishes exit before enter; `pop-layout` makes outgoing absolute.",
+      "keepState": "Keeps inactive steps mounted (`display: none`) so local state survives.",
+      "cover": "How far the covering pane travels. Number → pixels; string → CSS. Default `100%`.",
+      "recede": "How far the buried pane recedes. Default `25%`.",
+      "unmountOnExit": "Skip stack motion and drop the outgoing pane.",
+      "pagination": "Swiper-style dots. Number = count, or an object with `placement`, colors, `size`, `gap`.",
+      "paginationIndex": "Active dot (0-based). Defaults to `index`, or `0`.",
+      "swipe": "`true` uses `axis` and the pagination count. Requires `onPagination` and count ≥ 2. Swipe toward start = next.",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is incoming and `exit` is outgoing.",
+      "delay": "Wait before each motion. Accepts `{ enter, exit }`.",
+      "easing": "Token, timing function, or `{ enter, exit }`. Default enter `standard`, exit `exit`.",
+      "isDisabled": "Snaps to the active pane with no interpolation.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onPagination": "Dot pressed or swipe that commits a page. Update `index` / `viewKey` here.",
+      "onViewChange": "After the active identity changes (skips the first mount).",
+      "onPushStack": "When a push or pop starts playing.",
+      "outPushStack": "When stack motion settles, motion is disabled, or the host unmounts.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes by part: `root`, `pane`, `incoming`, `outgoing`, `pagination`, `dot`.",
+      "style": "Inline styles for the root. Combined with `--gemst-push-stack-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.gemfx-flicker.flicker-bar {
+  --gemfx-flicker-color: var(--gem-palette-secondary-400);
+  --gemfx-flicker-blur: 0.75rem;
+  border-radius: var(--gem-radius-md);
+}
+
+.gemfx-flicker.flicker-bar .gemfx-flicker__tube {
+  left: 4%;
+  right: 4%;
+  height: 4px;
+  background-image: linear-gradient(
+    90deg,
+    var(--gem-palette-secondary-400),
+    var(--gem-palette-primary-400)
+  );
+}

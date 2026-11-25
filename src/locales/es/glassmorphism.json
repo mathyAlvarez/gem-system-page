@@ -1,0 +1,234 @@
+{
+  "header": {
+    "title": "Glassmorphism",
+    "description": "Panel de vidrio esmerilado detrás del contenido: desenfoca y satura lo que queda atrás (`backdrop-filter`) y le suma un relleno translúcido, un borde y un reflejo. `variant` define el aspecto (`frost`, `clear`, `tinted`, `heavy` o `sheen`) y `trigger` cuándo se aplica. Por defecto está siempre activo."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `hover` o `click` el panel solo aparece mientras está activo; `duration` es lo que tarda en entrar y salir.",
+    "cardTitle": "Vidrio esmerilado",
+    "copy": "Desenfoque sobre el logo de gem-org."
+  },
+  "stories": {
+    "card": {
+      "title": "Tarjeta de vidrio",
+      "description": "Con los valores por defecto (`variant=\"frost\"`, `intensity=\"md\"`) el panel desenfoca `16px`, satura al `160%` y lleva un relleno blanco al `26%`. El vidrio necesita algo detrás para notarse: acá, una imagen. El panel hereda el `border-radius` de la raíz y proyecta una sombra suave hacia abajo.",
+      "texts": {
+        "title": "Vidrio esmerilado",
+        "copy": "Desenfoque sobre el logo de gem-org."
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`frost` es el esmerilado clásico, `clear` desenfoca menos y casi no rellena, `tinted` rellena un poco más para lucir `color` (acá con `primary-400`), `heavy` desenfoca y rellena más, como vidrio ahumado, y `sheen` suma un reflejo que cruza el panel en bucle."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "Posicionado encima de una imagen, sirve como pie de foto legible. La raíz es `inline-flex` y `position: relative`; para ubicarla con `position: absolute` hace falta una clase con más especificidad (`.gemfx-glassmorphism.mi-clase`).",
+      "texts": {
+        "alt": "Logo de gem-org",
+        "title": "gem-org",
+        "copy": "Pie de foto sobre vidrio"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover`, el panel aparece al pasar el puntero o con el foco de teclado en la raíz o en algo de adentro (`:focus-visible`). Con `click`, cada clic lo prende o lo apaga. En reposo el contenido queda directo sobre el fondo.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "blur": {
+      "title": "Desenfoque",
+      "description": "`blur` fija el desenfoque y reemplaza al de `intensity`. Un número son píxeles; un string se usa tal cual (`\"1.5rem\"`)."
+    },
+    "saturate": {
+      "title": "Saturación",
+      "description": "`saturate` es la saturación del fondo en porcentaje (`100` lo deja igual, menos lo apaga, más lo aviva). Sin valor, la define `intensity`."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define el relleno y, si faltan `blur` y `saturate`, también esos dos: `sm` 8px / 120% / 16%, `md` 16px / 160% / 26%, `lg` 28px / 190% / 40%. Acepta un token o un número entre `0` y `1`."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` tiñe el relleno, el borde y el reflejo. Acepta cualquier color CSS, incluidas variables. Se luce más con `variant=\"tinted\"`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que tarda el panel en aparecer y desaparecer con `hover` o `click`; `delay` lo retrasa. No cambia la velocidad del reflejo de `sheen` (fija en `3200ms`)."
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el reflejo de `sheen`. `isDisabled` oculta el panel y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "title": "Reflejo",
+        "copy": "La luz cruza el vidrio."
+      }
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild` el efecto se monta sobre el hijo, sin `div` envolvente. El hijo conserva su propia caja (`display`, ancho, sin `overflow: hidden`); solo recibe `position: relative` e `isolation` para que el panel quede detrás de su contenido y desenfoque el fondo, no el texto. El hijo no debería pintar un fondo opaco: el vidrio desenfocaría ese fondo en lugar de la imagen.",
+      "texts": {
+        "title": "Tarjeta propia",
+        "copy": "Sin envoltorio: el propio article es el vidrio."
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGlassmorphism` se dispara cuando el panel se activa y `outGlassmorphism` cuando se apaga, con el motivo en `event.reason`. El panel no bloquea los clics del contenido.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta (o llegá al botón con Tab) para esmerilarla y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Sin reflejo",
+      "copy": "Radio grande, tinte rosado y el reflejo diagonal oculto."
+    },
+    "styled": {
+      "title": "Aurora",
+      "copy": "Degradé de marca sobre el panel."
+    }
+  },
+  "apiLink": "Ver la API completa de Glassmorphism",
+  "api": {
+    "header": {
+      "title": "Glassmorphism API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Glassmorphism`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Glassmorphism"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/glassmorphism` con su `glassmorphism.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>, que es una prop propia) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> y <code>onBlur</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "contrast": "El contraste depende de lo que haya detrás. Verificalo sobre la zona más clara y la más oscura del fondo, y subí <code>intensity</code> o usá <code>heavy</code> si el texto no se lee.",
+        "reducedTransparency": "Con <code>prefers-reduced-transparency: reduce</code> se quita el desenfoque y el panel pasa a un relleno sólido: <code>color</code> al relleno de la variante (como máximo 36 %) mezclado con <code>--gemfx-glassmorphism-solid-base</code> (oscuro por defecto), para que el texto claro mantenga el contraste.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> se quita la transición del panel y el reflejo de <code>sheen</code> queda quieto y más tenue.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el reflejo en movimiento. Usalo solo si es esencial.",
+        "decorative": "La capa del panel lleva <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia ni bloquea clics.",
+        "keyboard": "Con <code>trigger=\"hover\"</code> el foco de teclado (<code>:focus-visible</code> en la raíz o adentro) hace lo mismo que el puntero: muestra el panel y dispara <code>onGlassmorphism</code> y <code>outGlassmorphism</code>. El foco con mouse no cuenta. La raíz no es enfocable por sí sola: hace falta un control adentro o un <code>tabIndex</code>.",
+        "performance": "<code>backdrop-filter</code> es costoso, sobre todo con desenfoques grandes. Evitá muchos paneles grandes a la vez o sobre fondos animados."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative` e `isolation: isolate`; con el `div` por defecto, además `inline-flex` y `max-width: 100%`. Con `asChild` el hijo conserva su `display`.",
+        "variant": "Variante activa. Ajusta el borde y el brillo interno.",
+        "trigger": "Se agrega con `trigger=\"hover\"` o `\"click\"` (no hay clase para `always`). Pone `cursor: pointer`.",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused`. Pausa el reflejo de `sheen`.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta el panel y quita el desenfoque.",
+        "disabled": "Se agrega con `isDisabled`. Devuelve `cursor: default`.",
+        "layer": "Capa decorativa detrás del contenido (`aria-hidden`, `z-index: 0`; `-1` con `asChild`).",
+        "pane": "El vidrio: relleno, borde, sombra, `backdrop-filter` y la transición de entrada y salida. Recorta el reflejo sin recortar su sombra.",
+        "highlight": "Reflejo diagonal fijo. Su opacidad sigue a `intensity`.",
+        "sheen": "Franja de luz que cruza el panel cada `3200ms`. Solo existe con `variant=\"sheen\"`.",
+        "surface": "Envuelve al hijo, por encima del panel (`z-index: 1`)."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Todas, salvo `--gemfx-glassmorphism-color` y `--gemfx-glassmorphism-solid-base`, se escriben inline en cada render, así que solo se cambian con las props. El color va inline solo si pasás `color`; si no, se puede pisar desde una clase, igual que la base sólida.",
+      "items": {
+        "color": "Color del relleno, el borde y los reflejos. Lo define `color`; default `var(--gem-palette-neutral-0)` (blanco).",
+        "blur": "Desenfoque del fondo. Sale de `blur` o de `intensity` y la variante (`clear` × 0.75, `heavy` × 1.45).",
+        "saturate": "Saturación del fondo. Sale de `saturate` o de `intensity`.",
+        "fill": "Opacidad del relleno, entre `6%` y `72%`. Sale de `intensity` y la variante (`clear` × 0.55, `tinted` × 1.15, `heavy` × 1.35, `sheen` × 0.9). No tiene prop.",
+        "intensity": "Intensidad como porcentaje; regula la opacidad del reflejo diagonal.",
+        "duration": "Duración de la transición del panel. La define `duration`; default `280ms`.",
+        "delay": "Retraso de la transición y del reflejo. Lo define `delay`; default `0ms`.",
+        "solidBase": "Base del relleno sólido con `prefers-reduced-transparency`. No tiene prop; default `var(--gem-palette-neutral-950)`. Cambiala desde una clase si el texto sobre el vidrio es oscuro."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Glassmorphism lee como valor por defecto. Se pueden redefinir en la raíz con una clase.",
+      "items": {
+        "easingStandard": "Curva de la transición del panel y del reflejo de `sheen`.",
+        "neutral0": "Color por defecto del vidrio. Si gem-system no está cargado, cae a `#ffffff`.",
+        "neutral950": "Color de la sombra del panel y default de `--gemfx-glassmorphism-solid-base`. Si gem-system no está cargado, cae a `#111316`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido va sobre el vidrio y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Aspecto, color, desenfoque, saturación e intensidad."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Entrada y salida del panel, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se aplica y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que va sobre el vidrio.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. El hijo conserva su caja y el panel queda detrás de su contenido. Con elementos vacíos (`img`, `input`) vuelve al `div` envolvente.",
+      "variant": "`frost` esmerilado clásico, `clear` más liviano, `tinted` más relleno para lucir `color`, `heavy` más denso, `sheen` con reflejo animado.",
+      "color": "Tinte del vidrio. Cualquier color CSS; sin valor, blanco (`--gem-palette-neutral-0`).",
+      "blur": "Desenfoque del fondo. Un número son píxeles (los negativos se toman como `0`); un string se usa tal cual. Sin valor, `intensity` lo define: `8`, `16` o `28` px, ajustado por la variante.",
+      "saturate": "Saturación del fondo en porcentaje (`140` → `140%`). Sin valor, `intensity` la define: `120`, `160` o `190`.",
+      "intensity": "Define el relleno y, cuando faltan, `blur` y `saturate`. Token o número entre `0` y `1`.",
+      "duration": "Duración de la entrada y salida del panel con `hover` o `click`. Los negativos se toman como `0`.",
+      "delay": "Retraso antes de que el panel aparezca. También retrasa el primer reflejo de `sheen`.",
+      "trigger": "`always` siempre activo, `hover` mientras el puntero está encima o hay foco de teclado, `click` alterna con cada clic.",
+      "isActive": "Muestra el panel. En `false` lo oculta y `outGlassmorphism` recibe `inactive`.",
+      "isPaused": "Congela el reflejo de `sheen`.",
+      "isDisabled": "Oculta el panel; el hijo queda interactivo. `outGlassmorphism` recibe `disabled`.",
+      "ignoreReducedMotion": "Mantiene el reflejo de `sheen` aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onGlassmorphism": "Se dispara cuando el panel se activa: al montar con `always`, al entrar el puntero o el foco de teclado, o al encender con clic.",
+      "outGlassmorphism": "Se dispara cuando se apaga: al salir el puntero o el foco, al apagar con clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `pane`, `highlight` y `sheen`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-glassmorphism-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

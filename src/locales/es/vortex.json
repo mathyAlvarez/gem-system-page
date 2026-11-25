@@ -1,0 +1,213 @@
+{
+  "header": {
+    "title": "Vortex",
+    "description": "Espiral que gira sobre una tarjeta o imagen. `variant` define la forma (`swirl`, `warp` o `ring`), `trigger` cuándo aparece (por defecto, al pasar el mouse) e `intensity` cuánto se ve. Con `prefers-reduced-motion: reduce` la espiral deja de girar."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con el `trigger` por defecto (`hover`), pasá el mouse por la tarjeta.",
+    "target": "Vortex"
+  },
+  "stories": {
+    "card": {
+      "title": "Sobre una tarjeta",
+      "description": "Con el `trigger` por defecto (`hover`), la espiral aparece y gira mientras el puntero está encima. Al salir se apaga. La raíz recorta la capa, así que necesita el mismo `border-radius` que la tarjeta.",
+      "texts": {
+        "kicker": "Vortex",
+        "title": "Pasá el mouse"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`swirl` es una espiral de rayos que se desvanece hacia el centro, `warp` agrega un giro a la superficie y `ring` concentra los rayos en un anillo. Acá con `trigger=\"always\"` para verlas a la vez."
+    },
+    "warp": {
+      "title": "Warp",
+      "description": "`warp` gira la superficie (el hijo) además de mostrar la espiral: rota `4°`, `8°` o `14°` según `intensity` y crece a `scale(1.03)`. Pasá el mouse por cada tarjeta. Con `trigger=\"always\"` el giro queda fijo. La transición del giro usa el token `--gemfx-duration-normal` (`300ms`), y con `prefers-reduced-motion: reduce` la superficie no gira."
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`hover` se activa al pasar el mouse o al llegar con el teclado (foco visible en la raíz o adentro), `click` alterna con cada clic y `always` gira sin parar.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic",
+        "alwaysLabel": "Siempre"
+      }
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la opacidad de la espiral (`sm` 19%, `md` 30%, `lg` 44%) y, con `warp`, el ángulo del giro. Acepta un token o un número entre `0` y `1`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que tarda una vuelta completa, en milisegundos. `delay` retrasa el inicio del giro."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` tiñe los rayos. Acepta cualquier color CSS; los tokens `--gem-*` son opcionales. Sin la prop usa `--gem-palette-primary-400`."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div`. Acá, sobre un `Button` de gem-system con `variant=\"warp\"`: la capa se inserta dentro del botón y el propio botón gira al pasar el mouse.",
+      "texts": {
+        "label": "Entrar al portal"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la espiral donde está. `isDisabled` la oculta y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onVortex` se dispara cuando la espiral se activa y `outVortex` cuando se apaga, con el motivo en `event.reason`. El botón interno sigue recibiendo clics porque la capa tiene `pointer-events: none`.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Modo screen"
+    },
+    "styled": {
+      "kicker": "Nebulosa",
+      "title": "Galaxia"
+    }
+  },
+  "apiLink": "Ver la API completa de Vortex",
+  "api": {
+    "header": {
+      "title": "Vortex API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Vortex`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de Vortex"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/vortex` con su `vortex.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>color</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La capa de la espiral tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia y no bloquea clics sobre el contenido.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> la espiral deja de girar, la superficie de <code>warp</code> no rota y la capa queda al 35% mientras está activa.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el giro. Usalo solo si es esencial.",
+        "focus": "Con <code>trigger=\"hover\"</code> la espiral también aparece con el foco de teclado (<code>:focus-visible</code> en la raíz o adentro), así que se ve al navegar con Tab. Un clic de mouse que enfoca un botón no la deja prendida. <code>onVortex</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code> el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code> (con <code>asChild</code>), también responde a Enter y Espacio.",
+        "meaning": "Es decoración: no comuniques estado ni información solo con la espiral.",
+        "vestibular": "Las espirales que giran pueden marear. Preferí <code>hover</code> o <code>click</code> antes que <code>always</code> y evitá varias espirales continuas en la misma vista."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex`, `isolation: isolate` y `overflow: hidden` para recortar la capa.",
+        "variant": "Variante activa.",
+        "trigger": "Disparador activo. Con `hover`, la capa se oculta mientras no hay `:hover` ni `:focus-visible` (en la raíz o adentro).",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused`. Pausa la animación de la espiral.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Oculta la capa y quita el giro.",
+        "disabled": "Se agrega con `isDisabled`.",
+        "surface": "Envuelve al hijo. Es la que gira con `warp`. Con `asChild` es el propio hijo.",
+        "layer": "Capa absoluta que sobresale un 20% por lado, recortada por la raíz.",
+        "swirl": "Los rayos: un `repeating-conic-gradient` con `mix-blend-mode: overlay` y una máscara radial que vacía el centro."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben inline en la raíz en cada render, salvo `--gemfx-vortex-color`, que solo se escribe si pasás `color`: sin la prop, se puede pisar desde una clase.",
+      "items": {
+        "color": "Color de los rayos. Lo define `color`; default `var(--gem-palette-primary-400)`.",
+        "duration": "Duración de una vuelta. La define `duration`; default `4200ms`.",
+        "delay": "Retraso del giro. Lo define `delay`; default `0ms`.",
+        "intensity": "Intensidad como porcentaje. La opacidad de la espiral es este valor × `0.55`.",
+        "twist": "Ángulo del giro de `warp`: `4deg`, `8deg` o `14deg` según `intensity`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Vortex lee como valor por defecto.",
+      "items": {
+        "palette": "Color por defecto de los rayos.",
+        "intensity": "Valor por defecto de `--gemfx-vortex-intensity` antes de que se escriba inline.",
+        "durationFast": "Transición base de la superficie (`200ms`).",
+        "durationNormal": "Transición del giro con `warp` (`300ms`), un poco más lenta que la base.",
+        "easingStandard": "Curva de la transición de la superficie."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido lleva la espiral encima y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Forma, intensidad y color de la espiral."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Duración de una vuelta y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo aparece y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Tarjeta o imagen que queda debajo de la espiral.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. La capa se inserta dentro del hijo y, con `variant=\"warp\"`, gira el propio hijo. Con un elemento vacío (`img`, `input`) cae al `div`, porque la capa no se puede montar adentro.",
+      "variant": "`swirl` (espiral), `warp` (además gira la superficie) o `ring` (anillo).",
+      "intensity": "Opacidad de la espiral y, con `warp`, ángulo del giro. Token o número entre `0` y `1`.",
+      "color": "Color de los rayos. Cualquier color CSS; los tokens `--gem-*` son opcionales. Sin valor usa `--gem-palette-primary-400`.",
+      "duration": "Duración de una vuelta completa. Los valores negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece el giro.",
+      "trigger": "`hover` al pasar el mouse o con el foco de teclado, `click` alterna con cada clic, `always` gira sin parar.",
+      "isActive": "Permite el efecto. En `false` se apaga y `outVortex` recibe `inactive`.",
+      "isPaused": "Congela la espiral donde está.",
+      "isDisabled": "Oculta la capa y quita el giro; el hijo sigue interactivo. `outVortex` recibe `disabled`.",
+      "ignoreReducedMotion": "Gira aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onVortex": "Se dispara cuando la espiral se activa: al entrar el puntero, al encender con clic o al montar con `always`.",
+      "outVortex": "Se dispara cuando se apaga: al salir el puntero, al apagar con clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `swirl`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-vortex-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

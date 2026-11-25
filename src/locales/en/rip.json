@@ -1,0 +1,240 @@
+{
+  "header": {
+    "title": "Rip",
+    "description": "Scratch or tear a veil that covers the child. The veil hides all the content and each cut opens a gap with a line of light, with debris (`particle`) flying off it. `variant` sets the cut (`gouge`, `tear`, `slash`, `claw`) and `trigger` how it's made (`drag`, `click`, or `always`). Here the effect is the control: the root receives the gesture. It uses the Particles layer for debris, so it needs `particles.css`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props and scratch or click the card. `lines` set to `auto` uses `1` (or `3` with `claw`).",
+    "label": "Scratch me"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic scratch",
+      "description": "With the defaults (`variant=\"gouge\"`, `trigger=\"drag\"`, `particle=\"spark\"`) the veil covers the card and dragging opens a `16` px gouge with a line of light and sparks. Each new gesture replaces the previous one, and very long strokes drop their first points (`240` max). The root has `overflow: visible` so debris can leave its edges, and its radius rounds the veil and flaps. The root here has `tabIndex={0}`: Tab to it and press Enter or Space to throw a full cut through the center.",
+      "texts": {
+        "kicker": "Surprise",
+        "title": "-30%"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`gouge` is a glowing gouge. `tear` rips the veil: after a long cut (over `28%` of the short side) it splits into two flaps that pull apart. `slash` is a straight thin cut. `claw` is three parallel gouges. These use `trigger=\"click\"`: each click crosses the card through the point you pressed, and the hole in the veil opens at the same pace as the line draws."
+    },
+    "image": {
+      "title": "On an image",
+      "description": "The veil covers any content, like an image. Drag a long cut and release: with `tear` the veil opens and reveals the image.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "`drag` cuts while you drag. `click` throws a cut across the whole card from the click point. `always` repeats a cut on its own every `delay + duration × 2 + 280` ms. With `drag` and `click`, Enter or Space on the focused root (or on a button inside) throws a full cut through the center: the keyboard has no drag."
+    },
+    "lines": {
+      "title": "Lines",
+      "description": "`lines` adds parallel cuts (`1` to `8`). It defaults to `1`, except `claw`, which uses `3`. Sparks are split across the lines."
+    },
+    "gap": {
+      "title": "Gap",
+      "description": "`gap` is the distance between parallel cuts, in pixels. Default `10`. Ignored with a single line."
+    },
+    "particles": {
+      "title": "Debris",
+      "description": "`particle` sets what flies off the cut: `spark` is light streaks, `star` sparkles, `confetti` paper bits with more spin and drop, and `none` just the cut. Events don't depend on debris: with `none`, `onRip` and `outRip` still fire with every cut."
+    },
+    "customParticle": {
+      "title": "Custom debris",
+      "description": "`renderParticle` draws each piece: return only the visual and the library still positions and animates the wrapper. It receives the particle, with its `color`, size, and `id`."
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`color` is the cut's light (white by default) and, without `colors`, also tints the debris. `veilColor` is the veil's color. `colors` is the debris palette. Prefer tokens."
+    },
+    "width": {
+      "title": "Cut width",
+      "description": "`width` is the width of the hole in the veil, in pixels (minimum `2`). The line of light is `28%` of it (`20%` with `claw`). Without `width`, `intensity` sets it: `10`, `16`, or `24`."
+    },
+    "duration": {
+      "title": "Duration and delay",
+      "description": "`duration` is how long the cut takes to draw with `click` and `always`, and how long debris flies. `delay` postpones the automatic cut; it doesn't affect `drag`."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "Without `width` or `count`, `intensity` sets the cut width (`10`, `16`, or `24` px), sparks per point (`3`, `5`, or `8`), and how far they fly (`22`, `34`, or `48` px). It also takes a number from `0` to `1`. Drag on each card."
+    },
+    "asChild": {
+      "title": "On an element (asChild)",
+      "description": "With `asChild`, the veil mounts straight onto the child (an `article` here), without an extra `div`. The child gets `position: relative` from the surface class, and the veil and flaps take its radius. With a void element like `<img>` or `<input>`, which can't have children, the effect falls back to the wrapping `div`.",
+      "texts": {
+        "kicker": "Prize",
+        "title": "You won"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "With `trigger=\"always\"`, `isPaused` freezes everything in place: the cut drawing, the hole in the veil, the flaps, the debris, and pending timers. Resuming continues from that point. `isDisabled` turns the effect off and hides the veil, so the child stays visible and interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onRip` fires when a cut starts (on press with `drag`, with each `click` or keyboard cut, or on start with `always`) and `outRip` when the gesture or cut ends and the last debris lands, with the reason in `event.reason` (`drag` is reported as `hold`). Here the veil is semi-transparent so the button shows. Dragging doesn't capture the pointer, so the button gets its click; if you activate it with the keyboard, it also throws a cut through the center.",
+      "texts": {
+        "body": "Drag across the card to tear the veil, or try the button with the mouse or keyboard.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Claw"
+    },
+    "styled": {
+      "label": "Frost"
+    }
+  },
+  "apiLink": "See the full Rip API",
+  "api": {
+    "header": {
+      "title": "Rip API",
+      "description": "Reference for props, inheritance, accessibility, CSS classes and variables, and exported types of `Rip`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for each variant, trigger, and option.",
+      "link": "See Rip demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/rip` with `particles.css` (the debris) and `rip.css` (the veil and cut), or from the package root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and forwards them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onPointerDown</code>, <code>onClick</code>, and <code>onKeyDown</code> run before the effect's internal logic. <code>ref</code> is merged with the internal ref that measures the root. The <code>--gemfx-rip-*</code> variables are only written inline when you pass the prop that sets them, and then they go after <code>style</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "control": "The effect is the control: the root receives the gesture and sets <code>cursor: crosshair</code>, <code>user-select: none</code>, and <code>touch-action: none</code> with <code>drag</code>. Dragging is tracked with listeners on <code>window</code>, without capturing the pointer, so buttons inside get their <code>click</code>.",
+        "hidden": "The veil is decorative (<code>aria-hidden</code>): it hides the content visually, but screen readers still read it. Don't use it to hide sensitive information.",
+        "keyboard": "With <code>drag</code> and <code>click</code>, Enter or Space throw a full cut through the center: on the root if it's focusable (with <code>tabIndex</code> or <code>asChild</code> on a control) or when activating a button inside. Without a focusable element, the keyboard can't reach the effect.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> there's no debris and no transitions: the cut and the hole appear directly. With <code>always</code>, a single fixed cut shows. Events still fire.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the motion. Use it only when essential.",
+        "touch": "With <code>drag</code>, touch can't scroll starting from the effect. <code>disabledOnTouch</code> ignores touches and restores <code>touch-action: auto</code>; mouse and pen keep working."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative`, `isolation: isolate`, and `overflow: visible`. Defines the variables' defaults.",
+        "variant": "Active variant. `claw` thins the line of light (`20%` of the width).",
+        "trigger": "Active trigger. Not added with `isDisabled` or `isActive={false}`. `drag` sets `cursor: crosshair` and blocks selection and touch scrolling.",
+        "holding": "Added while you drag a cut.",
+        "open": "Added when `tear` has opened the flaps.",
+        "paused": "Added with `isPaused`. Pauses debris; the line, the hole, and the flaps are frozen from JS at their current value.",
+        "inactive": "Added with `isDisabled` or `isActive={false}`. Hides the whole layer (veil, line, and debris) with `display: none`.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "touchDisabled": "Added with `disabledOnTouch`. Restores `touch-action: auto`.",
+        "surface": "Wraps the child (`z-index: 0`). With `asChild`, the class goes on the child itself.",
+        "layer": "Effect layer (`position: absolute`, `inset: 0`, `z-index: 1`, `pointer-events: none`, `aria-hidden`). Inherits the root's radius.",
+        "svg": "SVG with the veil and lines. `overflow: hidden` and `border-radius: inherit` (from the layer).",
+        "veil": "Veil rectangle (`fill: var(--gemfx-rip-veil)`), clipped by a mask with the cuts. Removed when `tear` opens.",
+        "trail": "Line of light for each cut, with glow (`feGaussianBlur`) and a `stroke-dashoffset` transition.",
+        "cut": "Stroke of each cut inside the veil's mask. It has the same transition as the line, so the hole opens in step with the drawing.",
+        "flap": "The two `tear` flaps (`background: var(--gemfx-rip-veil)`, `border-radius: inherit`). They shift `18px` and rotate `5deg` in opposite directions, with a shadow in the cut color.",
+        "spark": "Each piece of debris, inside the Particles layer (`--rip`, exit easing). `classNames.spark` goes on each one."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Defaults live on `.gemfx-rip`. Each one is written inline on the root only when you pass its prop; otherwise you can redefine it with a class. The flap ones go inline on each flap.",
+      "items": {
+        "color": "The cut's light. Set by `color`; white by default.",
+        "veil": "Veil and flap color. Set by `veilColor`; defaults to a mix of `neutral-950` (78%) and `primary-800`.",
+        "stroke": "Cut width in pixels; default `16px`. Written inline when you pass `width` or `intensity`. The line of light uses `28%` (or `20%`).",
+        "timing": "Duration and delay of the line and hole transition; the flaps also use the duration. Written inline when you pass `duration` or `delay`.",
+        "flap": "Offset and rotation of each flap when opening."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Rip reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "color": "The cut's light (fallback `#ffffff`).",
+        "veil": "Veil mix (fallbacks `#111316` and `#085246`).",
+        "spark": "Default `spark` palette when you pass neither `color` nor `colors`. `star` and `confetti` use the Particles palettes.",
+        "easing": "Easing for the line and flaps (fallbacks `cubic-bezier(0.2, 0, 0, 1)` and `cubic-bezier(0.4, 0, 1, 1)`).",
+        "durationSlow": "Default for `--gemfx-rip-duration` (fallback `700ms`). If you pass `duration`, the inline value overrides it."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What content sits under the veil and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Cut, debris, colors, and size." },
+      "timing": { "title": "Timing", "description": "Duration and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "How it cuts, how it pauses, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `hold` (with `drag`), `click`, `always`, `inactive`, `disabled`, or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content under the veil.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` it falls back to the `div`.",
+      "variant": "`gouge` is a glowing gouge, `tear` rips the veil open into two flaps, `slash` a straight cut, and `claw` parallel gouges.",
+      "particle": "Debris from the cut: `spark`, `star`, `confetti`, or `none`.",
+      "renderParticle": "Draws each piece of debris. The library still positions and animates the wrapper.",
+      "color": "The cut's light; white by default. Without `colors`, also tints the debris.",
+      "colors": "Debris palette. Prefer tokens.",
+      "veilColor": "Veil color before it's cut.",
+      "width": "Cut width in pixels (minimum `2`). Wins over `intensity`.",
+      "count": "Sparks per cut point (`1` to `12`), split across lines. Wins over `intensity`.",
+      "lines": "Parallel cuts, `1` to `8`. `claw` uses `3` when omitted.",
+      "gap": "Distance between parallel cuts, in pixels.",
+      "intensity": "Without `width` or `count`: `10` / `16` / `24` px wide and `3` / `5` / `8` sparks.",
+      "duration": "How long the automatic cut takes to draw and how long debris flies.",
+      "delay": "Delay before the cut with `click`, keyboard, and `always`.",
+      "trigger": "`drag` cuts while you drag, `click` throws a cut from the click, and `always` repeats it on its own. With `drag` and `click`, Enter or Space throw a cut through the center.",
+      "isActive": "Allows cutting. When `false`, clears the cut and hides the veil.",
+      "isPaused": "Freezes the cut, the hole, the flaps, debris, and timers; ignores new gestures.",
+      "isDisabled": "Blocks cutting, clears the cut, and hides the veil; the child stays visible and interactive.",
+      "ignoreReducedMotion": "Keeps debris and transitions even when the user prefers less motion. Only when essential.",
+      "disabledOnTouch": "Ignores touch pointers; mouse and pen keep working.",
+      "onRip": "Fires when a cut starts: on press with `drag`, with each `click` or keyboard cut, or on start with `always`. It doesn't depend on debris.",
+      "outRip": "Fires when the gesture or cut (`delay + duration`) ends and the last debris lands, or on disable or unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, `veil`, `trail`, `flap`, and `spark`.",
+      "style": "Inline styles for the root. Variables for the props you pass are written after it.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

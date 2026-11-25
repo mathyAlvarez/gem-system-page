@@ -1,0 +1,28 @@
+.gemfx-noise.noise-crt {
+  border-radius: var(--gem-radius-xl);
+}
+
+.gemfx-noise.noise-crt .gemfx-noise__layer {
+  background: repeating-linear-gradient(0deg, rgb(0 0 0 / 0.28) 0 1px, transparent 1px 3px);
+}
+
+@keyframes noise-crt-jitter {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-3%, 2%, 0);
+  }
+
+  100% {
+    transform: translate3d(2%, -1%, 0);
+  }
+}
+
+/* `static` has no animation of its own; the guard keeps reduced motion still. */
+@media (prefers-reduced-motion: no-preference) {
+  .gemfx-noise--static.noise-crt .gemfx-noise__grain {
+    animation: noise-crt-jitter 240ms steps(3) infinite;
+  }
+}

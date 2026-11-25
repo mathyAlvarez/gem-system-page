@@ -44,7 +44,16 @@
     "wrap": {
       "title": "Wrapping",
       "description": "By default children stay on a single line and shrink or overflow. `wrap` moves them to the next line when they don't fit, and `wrap=\"wrap-reverse\"` stacks the lines from bottom to top. Resize the window to see the difference.",
-      "tags": ["Design", "Tokens", "Layout", "Forms", "Navigation", "Feedback", "Data", "Accessibility"]
+      "tags": [
+        "Design",
+        "Tokens",
+        "Layout",
+        "Forms",
+        "Navigation",
+        "Feedback",
+        "Data",
+        "Accessibility"
+      ]
     },
     "justify": {
       "title": "Justify",

@@ -1,0 +1,16 @@
+/* `--gemfx-particle-duration` is inline on the layer, so it is redeclared
+   on each particle. Size and color are inline variables, but `width`,
+   `height` and `background` can be replaced directly. */
+.gemfx-particle-burst.pb-bubbles .gemfx-particle {
+  --gemfx-particle-duration: 1400ms;
+  --gemfx-particle-end-scale: 1.4;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1.5px solid var(--gemfx-particle-color);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--gemfx-particle-color) 20%, transparent);
+}
+
+.pb-bubbles .pb-demo__target {
+  border-color: var(--gem-palette-info-500);
+}

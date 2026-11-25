@@ -1,0 +1,228 @@
+{
+  "header": {
+    "title": "BorderBeam",
+    "description": "Rayo de neón que recorre el borde del contenedor. `variant` define la forma del rayo, `trigger` cuándo corre y `length` qué tan largo es. Con `prefers-reduced-motion: reduce` el rayo queda quieto en `offset`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `length` en `auto` usa el largo por defecto de cada `variant`.",
+    "target": "BorderBeam"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variantes",
+      "description": "`orbit` es un rayo que da vueltas, `dual` son dos rayos opuestos, `spark` una punta corta y brillante, `trace` una cola larga de cometa y `track` suma un borde tenue por donde pasa el rayo."
+    },
+    "card": {
+      "title": "Sobre una Card",
+      "description": "`BorderBeam` envuelve una `Card` de gem-system. Dale a la raíz el mismo `border-radius` que la tarjeta para que el rayo siga sus esquinas.",
+      "texts": {
+        "title": "Plan Team",
+        "subtitle": "Recomendado",
+        "body": "Hasta 20 personas, roles y facturación centralizada.",
+        "action": "Elegir plan"
+      }
+    },
+    "triggers": {
+      "title": "Hover y click",
+      "description": "Con `trigger` en `hover`, el rayo corre mientras el puntero (o el foco) está encima. Con `click`, cada clic lo prende o lo apaga.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "geometry": {
+      "title": "Grosor y largo",
+      "description": "`thickness` es el grosor del trazo (un número son píxeles). `length` es el largo del rayo como porcentaje de la vuelta, entre `8` y `70`."
+    },
+    "motion": {
+      "title": "Velocidad y dirección",
+      "description": "`duration` es una vuelta completa en milisegundos. `reverse` lo hace girar en sentido antihorario."
+    },
+    "offset": {
+      "title": "Ángulo inicial",
+      "description": "`offset` es el ángulo de partida en grados. Acá con `isPaused` para ver dónde arranca cada uno. También es la posición fija con reduced motion."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` define la opacidad del rayo y, en `track`, la del borde tenue. Acepta un token o un número entre `0` y `1`."
+    },
+    "color": {
+      "title": "Colores",
+      "description": "`color` es el cuerpo del rayo y `colorAlt` la punta. En `dual`, `colorAlt` también es el color del segundo rayo."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div`. Acá, sobre un `button` nativo con `trigger=\"hover\"`: el rayo aparece también con el foco del teclado.",
+      "texts": {
+        "title": "Nuevo proyecto",
+        "body": "Empezá desde una plantilla."
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el rayo donde está. `isDisabled` lo oculta y deja el contenido interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onBorderBeam` se dispara cuando el rayo se enciende y `outBorderBeam` cuando se apaga, con el motivo en `event.reason`. La capa no tapa la interacción: el botón sigue recibiendo clics.",
+      "texts": {
+        "title": "Pasá el mouse por la tarjeta",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Beta"
+    },
+    "styled": {
+      "title": "Arcoíris",
+      "body": "El gradiente del rayo, redefinido en una clase propia."
+    }
+  },
+  "apiLink": "Ver la API completa de BorderBeam",
+  "api": {
+    "header": {
+      "title": "BorderBeam API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `BorderBeam`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante y disparador.",
+      "link": "Ver demos de BorderBeam"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/border-beam` con su `border-beam.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>color</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La capa del rayo tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: es decorativa y no tapa la interacción del hijo.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el rayo deja de girar y queda quieto en el ángulo de <code>offset</code>.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza la animación. Usalo solo si el movimiento es esencial.",
+        "focus": "Con <code>trigger=\"hover\"</code>, el rayo también aparece con <code>:focus-within</code>, así que se ve al navegar con teclado. <code>onBorderBeam</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code>, el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code>, también responde a Enter y Espacio.",
+        "meaning": "El rayo es decoración: no lo uses como única señal de estado (destacado, cargando). Acompañalo con texto o un atributo ARIA.",
+        "minify": "El anillo usa una máscara compuesta. Algunos minificadores la reordenan y muestran el gradiente entero: revisalo con el build de producción (este sitio declara la composición dentro del shorthand <code>mask</code>)."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` e `isolation: isolate`.",
+        "variant": "Variante activa.",
+        "reverse": "Se agrega con `reverse` e invierte la animación.",
+        "trigger": "Disparador activo. Oculta la capa hasta el hover/foco o el clic.",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused` y pausa la animación.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled` y oculta la capa.",
+        "disabled": "Se agrega con `isDisabled`. Quita el cursor de puntero.",
+        "layer": "Capa absoluta sobre el hijo que contiene el borde tenue y el anillo.",
+        "track": "Borde tenue, solo con `variant=\"track\"`.",
+        "ring": "Anillo enmascarado del grosor de `thickness`, con el brillo (`drop-shadow`).",
+        "spin": "Gradiente cónico que gira y dibuja el rayo.",
+        "spinAlt": "Segundo rayo, desfasado media vuelta. Solo con `variant=\"dual\"`.",
+        "surface": "Envuelve al hijo, debajo de la capa."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "items": {
+        "color": "Color del rayo. Lo define `color`; default `var(--gem-palette-primary-400)`.",
+        "colorAlt": "Color de la punta y del segundo rayo. Lo define `colorAlt`; default `var(--gem-palette-secondary-400)`.",
+        "duration": "Una vuelta completa. Lo define `duration`; default `3600ms`.",
+        "delay": "Retraso antes de empezar. Lo define `delay`; default `0ms`.",
+        "thickness": "Grosor del trazo. Lo define `thickness`; default `2px`.",
+        "span": "Largo del rayo como porcentaje de la vuelta. Lo define `length`.",
+        "offset": "Ángulo inicial. Lo define `offset`; default `0deg`.",
+        "intensity": "Opacidad del rayo. La define `intensity`; default `var(--gemfx-intensity-md)`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que BorderBeam lee como valor por defecto.",
+      "items": {
+        "intensity": "Intensidad por defecto (`55%`).",
+        "palette": "Colores por defecto de `color` y `colorAlt`, con un neón de respaldo si no cargás gem-system.",
+        "spark": "Brillo blanco extra de la variante `spark`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenedor recorre el rayo y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Forma, colores, grosor, largo e intensidad del rayo."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Velocidad y dirección de la vuelta, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo corre el rayo y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenedor cuyo borde recorre el rayo.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. El hijo tiene que tener su propio `border-radius`.",
+      "variant": "Forma del rayo: `orbit`, `dual`, `spark`, `trace` o `track`.",
+      "color": "Color del rayo. Preferí tokens del host (`var(--gem-palette-primary-400)`). Un string vacío usa el default.",
+      "colorAlt": "Color de la punta y, en `dual`, del segundo rayo.",
+      "thickness": "Grosor del trazo. Un número son píxeles; un string se usa tal cual.",
+      "length": "Largo del rayo como porcentaje de la vuelta, limitado a `8`–`70`. Sin valor, depende de `variant`: `orbit` 18, `dual` 14, `spark` 8, `trace` 38, `track` 16.",
+      "offset": "Ángulo inicial en grados.",
+      "intensity": "Fuerza del rayo: token o número entre `0` y `1`.",
+      "duration": "Una vuelta completa. Los valores negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece la vuelta.",
+      "reverse": "Gira en sentido antihorario.",
+      "trigger": "`always` siempre corre, `hover` mientras el puntero o el foco está encima, `click` alterna con cada clic.",
+      "isActive": "Muestra el rayo. En `false` lo oculta y `outBorderBeam` recibe `inactive`.",
+      "isPaused": "Congela el rayo en su posición actual.",
+      "isDisabled": "Oculta el rayo; el hijo sigue interactivo. `outBorderBeam` recibe `disabled`.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si el movimiento es esencial.",
+      "onBorderBeam": "Se dispara cuando el rayo se enciende: al montar con `always`, al entrar el puntero con `hover` o al prender con `click`.",
+      "outBorderBeam": "Se dispara cuando el rayo se apaga: al salir el puntero, al apagar con `click`, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `track`, `ring`, `spin` y `spinAlt`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-border-beam-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

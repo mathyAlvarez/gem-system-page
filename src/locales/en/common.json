@@ -15,7 +15,15 @@
   "navbar": {
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "docsNav": "Documentation"
+    "docsNav": "Documentation",
+    "product": "Product"
+  },
+  "products": {
+    "home": "Home",
+    "system": "System",
+    "effects": "Effects",
+    "transitions": "Transitions",
+    "ecosystem": "Gem Org"
   },
   "nav": {
     "gettingStarted": "Getting started",
@@ -36,7 +44,23 @@
     "navigation": "Navigation and structure",
     "feedback": "Feedback",
     "dataDisplay": "Data display",
-    "componentsApi": "Components API"
+    "componentsApi": "Components API",
+    "foundationParticles": "Particles",
+    "duration": "Duration",
+    "easing": "Easing",
+    "intensity": "Intensity",
+    "light": "Aura, light and neon",
+    "motion": "3D and motion",
+    "style": "Style, filters and retro",
+    "gradients": "Gradients and meshes",
+    "particles": "Particles and interactions",
+    "effectsApi": "Effects API",
+    "content": "Content",
+    "morphingLayout": "Morphing and layout",
+    "mountUnmount": "Mount and unmount",
+    "viewsLayouts": "Views and layouts",
+    "listsSequences": "Lists and sequences",
+    "transitionsApi": "Transitions API"
   },
   "version": {
     "label": "Version"

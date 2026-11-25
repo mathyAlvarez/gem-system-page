@@ -6,10 +6,22 @@
   "demo": {
     "listLabel": "Secciones del proyecto",
     "tabs": {
-      "overview": { "label": "Resumen", "content": "Resumen del proyecto, responsables y la actividad más reciente." },
-      "activity": { "label": "Actividad", "content": "Comentarios, commits y cambios de estado recientes." },
-      "settings": { "label": "Configuración", "content": "Visibilidad, notificaciones y opciones de archivo." },
-      "members": { "label": "Miembros", "content": "Personas con acceso a este espacio de trabajo." },
+      "overview": {
+        "label": "Resumen",
+        "content": "Resumen del proyecto, responsables y la actividad más reciente."
+      },
+      "activity": {
+        "label": "Actividad",
+        "content": "Comentarios, commits y cambios de estado recientes."
+      },
+      "settings": {
+        "label": "Configuración",
+        "content": "Visibilidad, notificaciones y opciones de archivo."
+      },
+      "members": {
+        "label": "Miembros",
+        "content": "Personas con acceso a este espacio de trabajo."
+      },
       "billing": { "label": "Facturación", "content": "Plan, facturas y métodos de pago." }
     },
     "icons": {

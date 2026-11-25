@@ -1,0 +1,237 @@
+{
+  "header": {
+    "title": "GradientGlossy",
+    "description": "Glossy zenith lighting on any base color: a three-stop gradient (light, base, and base mixed with black) plus a white `inset` sheen on the lit edge. It's painted as the element's own background, so it works on a `div` or, with `asChild`, on a gem-system button. `variant` sets the strength (`soft`, `lit`, `deep`) and `direction` where the light falls."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the code they generate.",
+    "label": "Glossy"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic gloss",
+      "description": "With the defaults (`variant=\"lit\"`, `direction=\"to-bottom\"`, `intensity=\"md\"`), `primary-500` is lit from above: `28%` white at the top, the pure color at `48%`, and `32%` black at the bottom. The radius goes on the root, because the gloss is its own background.",
+      "texts": {
+        "label": "Glossy"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`soft` mixes less white and black, `lit` is the classic three-stop gloss, and `deep` darkens the bottom much more."
+    },
+    "direction": {
+      "title": "Direction",
+      "description": "`direction` aims the light → base → dark axis. The `1px` inset sheen moves with it and always stays on the lit side."
+    },
+    "card": {
+      "title": "On a card",
+      "description": "The gloss covers any surface. Here with `variant=\"soft\"` and `color` set to `secondary-500`, so the card gets volume without hurting the text.",
+      "texts": {
+        "kicker": "New",
+        "title": "Surfaces with volume",
+        "body": "A three-stop gradient and an edge sheen, on any color."
+      }
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`color` takes any CSS color: tokens, hex, or names. The light and dark stops are computed with `color-mix`, so the same gloss works on any base. Prefer tokens."
+    },
+    "tuning": {
+      "title": "Lift, depth, sheen, and mid",
+      "description": "`lift` is how much white mixes in at the top, `depth` how much black at the bottom, and `sheen` the opacity of the edge sheen, all as percentages (`0` to `90`). When omitted, the CSS computes them from `variant` and `intensity`. `mid` moves the base color stop along the axis."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the gloss is off (transparent background) and fades in when the pointer enters or something inside gets keyboard focus. With `click`, each click turns it on or off.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` raises or lowers the contrast of the three stops and the sheen. It takes `sm`, `md`, `lg`, or a number from `0` to `1`. It's resolved in CSS from `--gemfx-gradient-glossy-intensity`: each variant starts from its `md` values and scales them proportionally, so you can also change it (or the `--gemfx-intensity-*` tokens) from a class."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is the fade when turning on and off, in milliseconds. What transitions is `--gemfx-gradient-glossy-amount` (a number registered with `@property`), so the background color, the three stops, and the sheen fade together. `delay` postpones it. Hover each box."
+    },
+    "asChild": {
+      "title": "On a button (asChild)",
+      "description": "With `asChild`, the gloss is applied straight onto gem-system's `Button`, without an extra `div`. The button keeps its text color and its transitions, and the gradient shows whatever the CSS load order. It covers the variant's color, so pass `color` with the tone you want.",
+      "texts": {
+        "label": "Buy"
+      }
+    },
+    "state": {
+      "title": "Active, paused, and disabled",
+      "description": "`isActive={false}` and `isDisabled` turn the gloss off (with the same fade) and keep the content interactive; `isDisabled` also removes `cursor: pointer`. `isPaused` freezes the fade at its current value: turn it on halfway and the gloss stays partial, and state changes don't show until you turn it off; then the fade continues from that value toward the new state. Here the fade takes `1200ms` so it's noticeable.",
+      "texts": {
+        "activeLabel": "isActive",
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "State"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onGradientGlossy` fires when the gloss turns on (pointer enter or keyboard focus with `hover`, click with `click`, or mount with `always`) and `outGradientGlossy` when it turns off, with the reason in `event.reason`. The button still gets clicks.",
+      "texts": {
+        "body": "Hover the card (or Tab to the button) to turn the gloss on and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Pill"
+    },
+    "styled": {
+      "label": "Candy"
+    }
+  },
+  "apiLink": "See the full GradientGlossy API",
+  "api": {
+    "header": {
+      "title": "GradientGlossy API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `GradientGlossy`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, direction, trigger, and option.",
+      "link": "See GradientGlossy demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/gradient-glossy` with its `gradient-glossy.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code>, and <code>onBlur</code> run before the effect's internal logic. The <code>--gemfx-gradient-glossy-*</code> variables of the props you pass are written after <code>style</code>; the ones you don't pass aren't written. While <code>isPaused</code> is on, the effect writes <code>--gemfx-gradient-glossy-amount</code> (at its current value) and <code>transition: none</code> inline, and restores whatever was there when unpaused. The base layout (<code>display</code>, <code>position</code>, <code>color</code>) and the transition live in <code>:where()</code>, so any host class overrides them."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the fade is removed: the gloss turns on and off without a transition.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the fade. Only use it when essential.",
+        "decorative": "The gloss is the element's own background and shadow: it adds no nodes, isn't announced, and doesn't block clicks.",
+        "focus": "With <code>trigger=\"hover\"</code> the gloss also appears when the host or something inside gets keyboard focus (<code>:focus-visible</code>), and the events fire just like with the pointer. With <code>click</code> the root isn't focusable: the keyboard only turns it on when the click comes from a control inside (Enter or Space on a button).",
+        "contrast": "Without <code>asChild</code> the text inherits the color; with <code>asChild</code> the host keeps its own. Check contrast against all three stops, especially with light colors like <code>tertiary-400</code> or <code>warning-500</code>, and with <code>variant=\"deep\"</code>, where the bottom gets much darker."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `isolation: isolate`, the gradient as `background-image`, and the sheen as an inset `box-shadow` (with a doubled class, to beat `.gem-button`). `inline-flex`, `position`, `color`, and the transition live in `:where()`.",
+        "variant": "Active variant. Sets the `md` values and the slope of `lift`, `depth`, and `sheen`.",
+        "direction": "Active direction. Sets `--gemfx-gradient-glossy-angle` and the sheen offset.",
+        "trigger": "Active trigger. Sets `cursor: pointer`, the fade transition, and turns the gloss off (`amount: 0`) while it isn't engaged.",
+        "on": "Added while the gloss is on with `click`.",
+        "paused": "Added with `isPaused`. The effect does the freezing inline, so no rule uses it: it's a hook for your own styles.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Sets `--gemfx-gradient-glossy-amount: 0`: transparent background and no sheen.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "Wraps the child (`z-index: 1`). With `asChild`, the class goes on the child itself."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Only the variables of the props you pass are written inline (`color`, `lift`, `depth`, `sheen`, `mid`, `intensity`, `duration`, `delay`), plus `--gemfx-gradient-glossy-amount` while `isPaused` is on. Everything else, and those same ones when you don't pass the prop, can be overridden from a class.",
+      "items": {
+        "color": "Base color. Set by `color`; default `primary-500` (fallback `#0d9f82`).",
+        "lift": "Percentage of white in the light stop. Set by `lift`; otherwise computed from `variant` and `intensity`.",
+        "depth": "Percentage of black in the dark stop. Set by `depth`; otherwise computed from `variant` and `intensity`.",
+        "sheen": "Opacity of the white edge sheen. Set by `sheen`; otherwise computed from `variant` and `intensity`.",
+        "mid": "Position of the base color stop. Set by `mid`; default `48%`.",
+        "light": "Light stop: `color-mix` of the base color with white by `lift`. Override it to tint the light.",
+        "dark": "Dark stop: `color-mix` of the base color with black by `depth`. Override it to tint the shade.",
+        "angle": "Gradient axis (`to bottom`, `to top`…). Set by `direction`.",
+        "sheenOffset": "Offset of the inset sheen (`1px` toward the lit side). Set by `direction`.",
+        "intensity": "Overall contrast. Set by `intensity`; default `var(--gemfx-intensity-md, 55%)`.",
+        "curve": "Each variant's curve: the value at `md` and how much it changes per point of intensity. `lift`, `depth`, and `sheen` are `md + (intensity - 55%) × k`, between `0%` and `90%`.",
+        "amount": "How much of the gloss shows, from `0` to `1` (registered with `@property`). The off states set it to `0` and it's the only thing that transitions. With `isPaused` it's pinned inline at its current value.",
+        "duration": "Fade when turning on and off. Set by `duration`; default `220ms`.",
+        "delay": "Fade delay. Set by `delay`; default `0ms`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables GradientGlossy reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "palette": "Default base color (fallback `#0d9f82`).",
+        "white": "White mixed into the light stop and the sheen (fallback `#ffffff`).",
+        "intensity": "Values for `sm`, `md`, and `lg` (`35%`, `55%`, and `80%`). The default uses `md` and the prop writes `var(--gemfx-intensity-*)` for tokens, so redefining them changes the contrast.",
+        "easingStandard": "Fade curve."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What the gloss holds and where the effect mounts."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Strength, direction, color, and gradient stops."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Fade when turning on and off, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows, how the fade freezes, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled`, or `unmount`."
+      },
+      "styling": {
+        "title": "Styling",
+        "description": "Classes, inline styles, and ref."
+      }
+    },
+    "items": {
+      "children": "Content on the glossy surface.",
+      "asChild": "Applies the gloss to the single child, without a wrapping `div`. Meant for gem-system's `Button`.",
+      "variant": "`soft` is milder, `lit` the classic gloss, and `deep` darkens the bottom more.",
+      "direction": "Light → base → dark axis. `to-bottom` puts the light on top.",
+      "color": "Base color. Prefer a token; any CSS color works. Default `primary-500`.",
+      "lift": "Percentage of white in the light stop (`0`–`90`). When omitted it comes from `variant` + `intensity` (`28` with `lit` and `md`).",
+      "depth": "Percentage of black in the dark stop (`0`–`90`). Default from `variant` + `intensity` (`32` with `lit` and `md`).",
+      "sheen": "Opacity of the edge sheen (`0`–`90`). Default from `variant` + `intensity` (`50` with `lit` and `md`).",
+      "mid": "Position of the base color stop, as a percentage.",
+      "intensity": "Overall contrast: `sm`, `md`, `lg`, or a number from `0` to `1`. Resolved in CSS; it only affects the `lift`, `depth`, and `sheen` you don't pass.",
+      "duration": "Fade when turning on and off. Negative values become `0`.",
+      "delay": "Delay before the fade.",
+      "trigger": "`always` shows it all the time, `hover` when the pointer enters or something inside gets keyboard focus, and `click` toggles it on each click.",
+      "isActive": "Shows the gloss. With `false` it turns off and `outGradientGlossy` gets `inactive`.",
+      "isPaused": "Freezes the gloss fade at its current value, even if the state changes. When unpaused, the fade continues from there toward the current state.",
+      "isDisabled": "Turns the gloss off; the child stays interactive. `outGradientGlossy` gets `disabled`.",
+      "ignoreReducedMotion": "Keeps the fade even if the user prefers less motion. Only when essential.",
+      "onGradientGlossy": "Fires when the gloss turns on: on mount with `always`, on pointer enter or keyboard focus with `hover`, or on click with `click`.",
+      "outGradientGlossy": "Fires when it turns off: on pointer or focus leave, on the next click, when disabled, or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface`.",
+      "style": "Inline styles for the root. The variables of the props you pass are written after it.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "header": {
+    "title": "Duration",
+    "description": "Motion duration tokens: the `duration` object (in milliseconds), `durationCss` (as strings) and the `--gemfx-duration-*` variables."
+  },
+  "scale": {
+    "title": "Scale",
+    "description": "From `instant` (0 ms) to `slower` (1000 ms). Each bar loops with its duration so you can compare speeds.",
+    "reducedMotion": "With reduced motion turned on, the bars stay still.",
+    "columns": {
+      "token": "Token",
+      "value": "Value",
+      "variable": "CSS variable",
+      "preview": "Preview"
+    }
+  },
+  "usage": {
+    "title": "Usage",
+    "description": "In CSS, use the variables (they ship in `tokens.css`, already included in `styles.css`). In TypeScript, `duration` fits the timing props of the effects, which take milliseconds."
+  },
+  "code": {
+    "props": "duration and delay props take milliseconds",
+    "css": "durationCss returns a CSS-ready value"
+  }
+}

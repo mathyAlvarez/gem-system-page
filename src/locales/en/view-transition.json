@@ -1,0 +1,296 @@
+{
+  "header": {
+    "title": "ViewTransition",
+    "description": "Reactive wrapper around `document.startViewTransition()`. When `viewKey` (or the child’s `key`) changes it captures the old host, commits the new view inside the native callback, and animates the snapshots with `effect` (`fade`, `slide-*`, `scale`). `name` is the CSS `view-transition-name` (default `gemst-view`). Without the API, `fallback` (`fade` by default) crossfades in CSS, or `none` snaps."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Switch tabs to update `viewKey`. The new snapshot uses `enter` timing; the old one uses `exit`.",
+    "noApi": "This browser has no View Transition API — CSS fallback is used.",
+    "copies": {
+      "Inbox": "Default view. Changing viewKey snapshots this pane, then swaps.",
+      "Starred": "Second view. The browser crossfades the old/new snapshots.",
+      "Sent": "Third view. Without the API, fallback=\"fade\" crossfades; fallback=\"none\" or reduced motion snaps."
+    }
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Switch tabs to update `viewKey`. Pass `effect` for fade, slide, or scale on the native snapshots.",
+      "texts": {
+        "sibling": "Sibling below — only the named host is snapshotted (document root stays out).",
+        "noApi": "This browser has no View Transition API — CSS fade fallback is used (or snap if none).",
+        "copies": {
+          "Inbox": "Default view. Changing viewKey snapshots this pane, then swaps.",
+          "Starred": "Second view. The browser crossfades the old/new snapshots.",
+          "Sent": "Third view. Without the API, fallback=\"fade\" crossfades; fallback=\"none\" or reduced motion snaps."
+        }
+      }
+    },
+    "effectSlide": {
+      "title": "effect slide",
+      "description": "`effect=\"slide-left\"` — the old snapshot exits toward the start edge; the new one covers from the end. Also `slide-right`, `slide-up`, `slide-down`.",
+      "texts": {
+        "copies": {
+          "Inbox": "Slide left from Inbox.",
+          "Starred": "Slide left from Starred.",
+          "Sent": "Slide left from Sent."
+        }
+      }
+    },
+    "effectScale": {
+      "title": "effect scale",
+      "description": "`effect=\"scale\"` — the old snapshot shrinks; the new one pops in.",
+      "texts": {
+        "copies": {
+          "Inbox": "Scale out / in.",
+          "Starred": "Scale out / in.",
+          "Sent": "Scale out / in."
+        }
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "Split `duration` and `easing`. The new snapshot uses enter; the old one uses exit.",
+      "texts": {
+        "copies": {
+          "Inbox": "Enter more pronounced.",
+          "Starred": "Exit shorter.",
+          "Sent": "Split timing in action."
+        }
+      }
+    },
+    "presence": {
+      "title": "isIn",
+      "description": "Toggle `isIn`. Exit captures the current pane and unmounts it inside the native callback.",
+      "texts": {
+        "hide": "Hide",
+        "show": "Show",
+        "label": "Inbox",
+        "copy": "Presence via the View Transition API."
+      }
+    },
+    "sharedName": {
+      "title": "Shared name",
+      "description": "Two hosts share `name`. Wrap the React update with `runViewTransition` so the thumb morphs into the detail pane.",
+      "texts": {
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "thumb": "Thumb",
+        "detail": "Detail",
+        "detailCopy": "Same view-transition-name as the thumbnail."
+      }
+    },
+    "fallbackNone": {
+      "title": "fallback none",
+      "description": "`fallback=\"none\"` — without the View Transition API, the next view snaps (no CSS crossfade). With native support this demo still uses the API; `fallback` only applies without it.",
+      "texts": {
+        "copies": {
+          "Inbox": "No API: snap.",
+          "Starred": "No API: snap.",
+          "Sent": "No API: snap."
+        }
+      }
+    },
+    "skipInitial": {
+      "title": "skipInitial false",
+      "description": "`skipInitial={false}` — the default `true` skips VT on the first layout (mount / Strict Mode). Set `false` if the first keyed update after mount should be able to animate. Use Remount to see it.",
+      "texts": {
+        "remount": "Remount",
+        "copies": {
+          "Inbox": "First keyed update can animate.",
+          "Starred": "Later updates always animate.",
+          "Sent": "Remount to reset the skip."
+        }
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onViewTransition` / `outViewTransition` mark the start and end of the native transition (or the fallback).",
+      "texts": {
+        "empty": "No events yet",
+        "copies": {
+          "Inbox": "View 1.",
+          "Starred": "View 2.",
+          "Sent": "View 3."
+        }
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` the next view snaps in with no native transition.",
+      "texts": {
+        "copies": {
+          "Inbox": "Snap without VT.",
+          "Starred": "Snap without VT.",
+          "Sent": "Snap without VT."
+        }
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, host styles land on the `section`. Pass `view` as the pane — the child is only the host.",
+      "texts": {
+        "copy": "Pane inside the slotted section."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Classes from `utilities.css` go through `classNames.root`. Here `gemst-relative` and `gemst-overflow-hidden`.",
+      "texts": {
+        "copies": {
+          "Inbox": "Root with overflow hidden.",
+          "Starred": "Same utilities.",
+          "Sent": "Same utilities."
+        }
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "copies": {
+        "Inbox": "Variables via Tailwind.",
+        "Starred": "Same surface.",
+        "Sent": "Same surface."
+      }
+    },
+    "variant": {
+      "copies": {
+        "Inbox": "Wrapper with cva.",
+        "Starred": "Same variant.",
+        "Sent": "Same variant."
+      }
+    },
+    "styled": {
+      "copies": {
+        "Inbox": "CSS override on card-shell.",
+        "Starred": "Same skin.",
+        "Sent": "Same skin."
+      }
+    }
+  },
+  "apiLink": "See the full ViewTransition API",
+  "api": {
+    "header": {
+      "title": "ViewTransition API",
+      "description": "Reference for props, helpers, inheritance, accessibility, CSS classes and variables, and exported types for `ViewTransition`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for effect, presence, shared name, and fallback.",
+      "link": "See ViewTransition demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/view-transition` with its `view-transition.css`, or from the root if you already load `styles.css`. Also exports `runViewTransition` and `supportsViewTransition`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token",
+      "helper": "Helper"
+    },
+    "helpers": {
+      "title": "Helpers",
+      "description": "Utilities exported alongside the component.",
+      "items": {
+        "runViewTransition": "Wrap a React update (`flushSync` inside) in `document.startViewTransition`. Useful to morph between two hosts that share the same `name`.",
+        "supportsViewTransition": "Returns `true` if the browser exposes `document.startViewTransition`."
+      }
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. With <code>asChild</code>, the child is only the host: pass <code>view</code> as the pane. Motion runs on the snapshots (<code>::view-transition-old/new</code>), not the live DOM."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is a view swap: the control that changes <code>viewKey</code> / <code>isIn</code> should reflect state. Do not convey information with the snapshot alone.",
+        "nativeApi": "The View Transition API is not in every browser. Use <code>supportsViewTransition()</code> and design a usable <code>fallback</code>.",
+        "fallback": "With <code>fallback=\"fade\"</code> there is a CSS crossfade without the API. With <code>none</code>, the view snaps — do not rely on motion as the only cue.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the view jumps to the final state (no native API and no animated fallback).",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code>. Only if motion is essential.",
+        "asChild": "With <code>asChild</code>, pick a host with the right semantics (<code>section</code>, <code>div</code>): that element receives the <code>view-transition-name</code>."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div` or the child with `asChild`). Sets `view-transition-name`.",
+        "fallbackFade": "CSS fallback mode when there is no native API (`display: grid`).",
+        "fallbackPane": "Fallback pane (incoming/outgoing with opacity).",
+        "playing": "Transition in progress.",
+        "disabled": "No name / no motion (`view-transition-name: none`).",
+        "activeDoc": "Added to <code>html</code> while a VT runs; style <code>::view-transition-old/new</code>."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written on the host and/or <code>documentElement</code> when the transition is set up.",
+      "items": {
+        "enterDuration": "Duration of the new snapshot. Default `300ms`.",
+        "exitDuration": "Duration of the old snapshot. Default `300ms`.",
+        "enterDelay": "Delay of the new snapshot. Default `0ms`.",
+        "exitDelay": "Delay of the old snapshot. Default `0ms`.",
+        "enterEasing": "Curve of the new snapshot. Default `standard`.",
+        "exitEasing": "Curve of the old snapshot. Default `exit`.",
+        "name": "`view-transition-name` value on the host. Default `gemst-view`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables the CSS uses as defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-view-transition-enter-easing`.",
+        "easingExit": "Default for `--gemst-view-transition-exit-easing`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "Children, view, and host." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Identity, effect, name, fallback, and includeRoot."
+      },
+      "timing": { "title": "Timing", "description": "New snapshot = enter; old = exit." },
+      "state": { "title": "State", "description": "How the animation is turned off." },
+      "events": { "title": "Events", "description": "View transition lifecycle." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Current view. Identity is `viewKey` or the child’s `key`. With `asChild` and `view`, it is only the host.",
+      "view": "Current view with `asChild` (the child is only the host). Also works instead of `children`.",
+      "asChild": "Applies classes, styles, and ref to the single child. Pass `view` as the pane.",
+      "viewKey": "Stable identity. Required to transition if the child has no `key`. Changing it starts the VT.",
+      "isIn": "`true` (default) keeps mounted; `false` plays the old snapshot out and unmounts when done.",
+      "effect": "Snapshot motion: `fade` (default), `slide-*`, or `scale`. Animates `::view-transition-old/new`, not the live DOM.",
+      "name": "CSS `view-transition-name` on the host. The same name on two hosts morphs if the update runs inside a VT. Default `gemst-view`.",
+      "fallback": "Without the API: `fade` (default) CSS crossfade; `none` snap. Unused with native API or with `isDisabled` / reduced motion.",
+      "skipInitial": "`true` (default) does not start VT on the first layout (mount / Strict Mode). `false` allows the first keyed update to animate.",
+      "includeRoot": "`true` also snapshots the document root. Default `false` — only this named host.",
+      "types": "Types passed to `startViewTransition({ types })` if the browser supports them. Style with `:active-view-transition-type()`.",
+      "unmountOnExit": "Unmounts immediately on exit (skips the old snapshot).",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is the new snapshot and `exit` the old one.",
+      "delay": "Wait before each snapshot. Accepts `{ enter, exit }`.",
+      "easing": "Token, timing function, or `{ enter, exit }`. Default enter `standard`, exit `exit`.",
+      "isDisabled": "Turns off the native API; snaps to the next view.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onViewTransition": "When the view transition starts playing.",
+      "outViewTransition": "When it finishes, motion is disabled, or the host unmounts.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: only `root`.",
+      "style": "Inline styles for the root. Combined with `--gemst-view-transition-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

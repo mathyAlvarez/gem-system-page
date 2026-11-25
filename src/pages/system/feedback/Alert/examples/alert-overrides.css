@@ -1,0 +1,21 @@
+.gem-alert.alert-branded {
+  --gem-alert-pad-y: 1rem;
+  --gem-alert-pad-x: 1.25rem;
+  --gem-alert-gap: 1rem;
+  --gem-alert-icon-size: 1.5rem;
+  --gem-alert-title: 1rem;
+  --gem-alert-accent: var(--gem-palette-tertiary-500);
+  --gem-alert-icon: var(--gem-palette-tertiary-500);
+  --gem-alert-border: var(--gem-palette-tertiary-300);
+  --gem-alert-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 8%, white);
+  --gem-alert-fg: var(--gem-color-fg);
+}
+
+[data-theme="dark"] .gem-alert.alert-branded {
+  --gem-alert-border: var(--gem-palette-tertiary-700);
+  --gem-alert-bg: color-mix(
+    in srgb,
+    var(--gem-palette-tertiary-500) 12%,
+    var(--gem-palette-neutral-900)
+  );
+}

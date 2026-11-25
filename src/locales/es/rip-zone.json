@@ -1,0 +1,231 @@
+{
+  "header": {
+    "title": "RipZone",
+    "description": "Una capa para raspar, como una tarjeta de lotería, que tapa al hijo. La capa se dibuja en un `canvas` y cada trazo borra un círculo con borde suave. Cuando la parte raspada llega a `threshold`, la capa se desvanece y el contenido queda libre. `variant` define el aspecto (`matte`, `foil`, `grit`) y `trigger` cómo se raspa (`drag`, `click` o `always`). No usa Particles: alcanza con `rip-zone.css`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y raspá la tarjeta. Usá \"Rellenar\" para volver a tapar el contenido (cambia `resetKey`).",
+    "label": "¡Premio!",
+    "reset": "Rellenar"
+  },
+  "stories": {
+    "base": {
+      "title": "Raspado básico",
+      "description": "Con los valores por defecto (`variant=\"foil\"`, `trigger=\"drag\"`, `intensity=\"md\"`) la capa tapa la tarjeta y al arrastrar se borra un trazo de `28` px de radio. Al llegar al `62%` raspado, la capa se desvanece en `480` ms y deja de capturar el puntero. Con teclado, enfocá la tarjeta con Tab y apretá Enter o Espacio para revelarla de una vez.",
+      "texts": {
+        "kicker": "Raspá y ganá",
+        "title": "-30%"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`matte` es un color plano. `foil` suma un brillo metálico en diagonal. `grit` agrega una textura granulada, como la de los billetes de lotería. Las tres usan el mismo color de base."
+    },
+    "image": {
+      "title": "Sobre una imagen",
+      "description": "La capa tapa cualquier contenido, como una imagen. La zona toma el tamaño del hijo y el `canvas` se ajusta a él (con `devicePixelRatio` hasta `2`). Si la zona cambia de tamaño después de empezar a raspar (por ejemplo al achicar la ventana), lo raspado se conserva y se escala al tamaño nuevo; solo una capa intacta se vuelve a pintar.",
+      "texts": {
+        "alt": "Logo de GEM Org"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "`drag` raspa mientras arrastrás. `click` borra un círculo por clic (acá con `radius={36}`). `always` raspa solo, en zigzag, hasta llegar a `threshold`; acá arranca después de `delay={600}`. Su velocidad depende del tiempo transcurrido, no de los cuadros, así que tarda lo mismo en una pantalla de 60 Hz que en una de 144 Hz."
+    },
+    "colors": {
+      "title": "Colores",
+      "description": "`color` es el color de la capa. Acepta cualquier color CSS, incluidas variables: se resuelve una sola vez al pintar. Sin `color`, usa una mezcla oscura de `neutral-950` y `primary-800`. Mejor usar tokens."
+    },
+    "radius": {
+      "title": "Radio del pincel",
+      "description": "`radius` es el radio del pincel en píxeles (mínimo `4`). Tiene prioridad sobre `intensity`."
+    },
+    "threshold": {
+      "title": "Umbral",
+      "description": "`threshold` es la fracción de la capa que hay que raspar para terminar, de `0` a `1`. Cada etiqueta muestra el progreso que informa `onProgress`, que se actualiza de a `1%`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que tarda en desvanecerse la capa al llegar al umbral. Acá usan `threshold={0.3}` para que se vea rápido. `delay` retrasa ese desvanecido y el arranque de `always`."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "Sin `radius`, `intensity` define el tamaño del pincel: `18`, `28` o `42` px. También acepta un número de `0` a `1`. Raspá en cada tarjeta."
+    },
+    "reset": {
+      "title": "Rellenar y progreso",
+      "description": "Cambiar `resetKey` vuelve a pintar la capa entera. `onProgress` informa la fracción raspada y `onComplete` se dispara una vez al llegar al umbral.",
+      "texts": {
+        "reset": "Rellenar",
+        "status": "Raspado: {progress}%",
+        "done": "¡Completo!",
+        "title": "Envío gratis"
+      }
+    },
+    "asChild": {
+      "title": "Sobre un elemento (asChild)",
+      "description": "Con `asChild`, la capa se monta directo sobre el hijo (acá un `article`), sin sumar un `div`. El hijo recibe `position: relative` desde la clase de superficie. Con un elemento vacío como `img` o `input`, que no puede tener la capa adentro, cae solo al `div` envolvente. Si el hijo no es enfocable (como este `article`), mientras está tapado se vuelve el control de revelado: recibe `tabIndex`, `role=\"button\"` y un `aria-label` por defecto, así que con Tab y Enter o Espacio se revela de una vez.",
+      "texts": {
+        "kicker": "Premio",
+        "title": "Ganaste"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "Con `trigger=\"always\"`, `isPaused` detiene el raspado automático, y si la capa ya se está desvaneciendo (acá en `1600` ms), la congela a mitad de camino hasta despausar. `isDisabled` no deja raspar: la capa queda tapando el contenido y sigue bloqueando el puntero.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "reset": "Rellenar",
+        "label": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onScratchStart` se dispara con el primer trazo (con la posición). `onRipZone` cuando empieza el raspado y `outRipZone` cuando termina, con el motivo en `event.reason` (`drag` se informa como `hold`). `onComplete` llega al pasar el umbral. Mientras la capa tapa, el contenido es `inert`: el botón no se puede activar ni con el puntero ni con Tab. Con teclado, enfocá la zona y apretá Enter para revelarlo.",
+      "texts": {
+        "body": "Raspá la tarjeta para liberar el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "$5"
+    },
+    "styled": {
+      "label": "Sorpresa"
+    }
+  },
+  "apiLink": "Ver la API completa de RipZone",
+  "api": {
+    "header": {
+      "title": "RipZone API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `RipZone`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, disparador y opción.",
+      "link": "Ver demos de RipZone"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/rip-zone` con `rip-zone.css`, o desde la raíz del paquete si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code> y <code>onProgress</code>) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onPointerDown</code>, <code>onPointerMove</code>, <code>onPointerUp</code> y <code>onPointerCancel</code> se llaman antes que la lógica interna del efecto. <code>onClick</code> y <code>onKeyDown</code> también se llaman antes que la lógica de teclado. <code>tabIndex</code>, <code>role</code> y <code>aria-label</code> pisan los valores que pone el efecto cuando la raíz es el control de revelado. <code>ref</code> se combina con la ref interna que mide la raíz. <code>--gemfx-rip-zone-progress</code> se escribe después de <code>style</code>; <code>-duration</code> y <code>-delay</code> solo cuando pasás <code>duration</code> o <code>delay</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "control": "El efecto es el control: la capa captura el puntero hasta completarse. Con <code>drag</code> y <code>click</code>, la raíz pone <code>user-select: none</code> y <code>touch-action: none</code>.",
+        "hidden": "La capa es decorativa (<code>aria-hidden</code>). En modo wrapper, mientras tapa, la superficie es <code>inert</code>: el contenido sale del orden de Tab y del árbol de accesibilidad hasta que se revela. Con <code>asChild</code> no hay superficie aparte y el contenido sigue accesible. Con <code>isDisabled</code> o <code>isActive={false}</code> deja de ser <code>inert</code>. El contenido está en el DOM: no la uses para ocultar información sensible.",
+        "keyboard": "No hay gesto de raspado con teclado: Enter o Espacio revelan todo de una vez y disparan <code>onComplete</code>. En modo wrapper con <code>drag</code> o <code>click</code>, mientras tapa, la raíz es el control: <code>tabIndex=0</code>, <code>role=\"button\"</code> y <code>aria-label=\"Reveal hidden content\"</code> si no pasás los tuyos. Con <code>asChild</code> pasa lo mismo si el hijo no es enfocable (<code>article</code>, <code>div</code>); un control nativo (<code>button</code>, <code>a</code>) o un hijo con su propio <code>tabIndex</code> o <code>role</code> queda como está.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el desvanecido es instantáneo y <code>always</code> revela el contenido de una vez. Con <code>drag</code> y <code>click</code> se sigue raspando a mano.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) mantiene el movimiento. Usalo solo si es esencial.",
+        "touch": "Con <code>drag</code>, en táctil no se puede hacer scroll arrancando desde el efecto. <code>disabledOnTouch</code> ignora los toques y devuelve <code>touch-action: auto</code>; mouse y lápiz siguen funcionando."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `inline-flex`, `position: relative`, `isolation: isolate` y `overflow: hidden`. Define los valores por defecto de las variables.",
+        "variant": "Variante activa. El aspecto se pinta en el `canvas`, así que la clase no cambia nada por sí sola.",
+        "trigger": "Disparador activo. No se agrega con `isDisabled` ni `isActive={false}`. `drag` y `click` bloquean selección y scroll táctil.",
+        "holding": "Se agrega mientras arrastrás. Cambia el cursor a `grabbing`.",
+        "complete": "Se agrega al llegar al umbral. Desvanece el `canvas` (`opacity: 0`) y la capa deja de capturar el puntero.",
+        "paused": "Se agrega con `isPaused`. El CSS no la usa: el desvanecido se congela desde JS, fijando inline la `opacity` actual del `canvas` hasta despausar.",
+        "inactive": "Se agrega con `isDisabled` o `isActive={false}`. Pone `cursor: default`.",
+        "disabled": "Se agrega con `isDisabled`. Pone `cursor: default`.",
+        "touchDisabled": "Se agrega con `disabledOnTouch`. Devuelve `touch-action: auto`.",
+        "surface": "Envuelve al hijo (`z-index: 0`, `flex: 1 1 auto`). Con `asChild`, la clase va en el propio hijo.",
+        "layer": "Capa del efecto (`position: absolute`, `inset: 0`, `z-index: 1`, `border-radius: inherit`, `aria-hidden`). Captura el puntero hasta completarse.",
+        "canvas": "El `canvas` donde se pinta la capa. Tiene `cursor: grab` y la transición de `opacity` del desvanecido. Su tamaño se escribe inline en píxeles."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`--gemfx-rip-zone-progress` se escribe inline en cada render: es estado vivo, solo para leer. `-duration` y `-delay` van inline solo si pasás la prop; si no, las podés definir desde una clase. El color y el pincel se resuelven en JS a partir de `color` y `radius`, así que no tienen variable.",
+      "items": {
+        "progress": "Fracción raspada, de `0` a `1`, actualizada de a `1%`. Deja de cambiar al llegar al umbral. Los hijos la heredan y la pueden usar en `calc()`.",
+        "timing": "Duración y retraso de la transición de `opacity` del `canvas`. Desde CSS solo cambian el desvanecido: el arranque de `always` usa la prop `delay`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que RipZone lee como valor por defecto.",
+      "items": {
+        "cover": "Mezcla de la capa cuando no pasás `color` (respaldos `#111316` y `#085246`). Se resuelve en JS al pintar.",
+        "easing": "Curva del desvanecido (respaldo `cubic-bezier(0.4, 0, 1, 1)`).",
+        "durationBase": "Valor por defecto de `--gemfx-rip-zone-duration` en el CSS (respaldo `480ms`). Lo pisa el valor inline cuando pasás `duration`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido queda bajo la capa y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Aspecto de la capa, pincel y umbral."
+      },
+      "timing": { "title": "Tiempo", "description": "Desvanecido y retraso, en milisegundos." },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cómo se raspa, cómo se rellena, cómo se pausa y cómo se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `hold` (con `drag`), `click`, `always`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido bajo la capa.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Con elementos vacíos como `img` o `input`, cae al `div` envolvente.",
+      "variant": "`matte` es un color plano, `foil` suma un brillo metálico y `grit` una textura granulada.",
+      "color": "Color de la capa. Por defecto, una mezcla oscura de `neutral-950` y `primary-800`. Mejor tokens.",
+      "radius": "Radio del pincel en píxeles (mínimo `4`). Tiene prioridad sobre `intensity`.",
+      "threshold": "Fracción raspada (de `0` a `1`) a partir de la cual la capa se desvanece.",
+      "intensity": "Sin `radius`: pincel de `18` / `28` / `42` px.",
+      "duration": "Lo que tarda en desvanecerse la capa al completar.",
+      "delay": "Retraso del desvanecido y del arranque de `always`.",
+      "trigger": "`drag` raspa mientras arrastrás, `click` borra un círculo por clic y `always` raspa solo.",
+      "resetKey": "Cambiá este valor para volver a pintar la capa entera.",
+      "isActive": "Permite raspar. En `false` la capa queda como está y sigue tapando.",
+      "isPaused": "Detiene el raspado automático, no deja raspar ni revelar con teclado y congela el desvanecido donde esté.",
+      "isDisabled": "No deja raspar. La capa sigue tapando el contenido.",
+      "ignoreReducedMotion": "Mantiene el raspado automático y el desvanecido aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "disabledOnTouch": "Ignora el puntero táctil; mouse y lápiz siguen funcionando.",
+      "onScratchStart": "Se dispara con el primer trazo de la capa actual, con la posición (`x`, `y`) y el progreso.",
+      "onProgress": "Se dispara cuando cambia la fracción raspada (de a `1%`).",
+      "onComplete": "Se dispara una vez al llegar a `threshold`.",
+      "onRipZone": "Se dispara cuando empieza el raspado (primer trazo, primer clic o arranque de `always`).",
+      "outRipZone": "Se dispara cuando la capa se completa, o al desactivarla, rellenarla o desmontarla.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer` y `canvas`.",
+      "style": "Estilos inline de la raíz. `--gemfx-rip-zone-progress` se escribe después; `-duration` y `-delay` solo si pasás la prop.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

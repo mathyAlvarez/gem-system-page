@@ -1,0 +1,217 @@
+{
+  "header": {
+    "title": "Particle Burst",
+    "description": "Confetti, spark, or star burst on click. Particles fly from the exact point you pressed, in a decorative layer (`pointer-events: none`) that doesn't block the child. `trigger` picks a single burst per click (`click`) or repeated bursts while pressed (`hold`), and `variant` picks the look (`confetti`, `spark`, `star`). It uses the Particles layer, so it needs `particles.css`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props, click the button, and see the generated code. `interval` only applies with `trigger=\"hold\"`.",
+    "label": "Celebrate"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic burst",
+      "description": "With the defaults (`variant=\"confetti\"`, `intensity=\"md\"`, `duration={900}`) each click throws `18` paper bits from the point you pressed. If you activate the button with Enter or Space, the burst comes from the center. The root is an `inline-flex` `div` with `overflow: visible`, so particles leave its edges: keep room around it and avoid containers with `overflow: hidden`.",
+      "texts": {
+        "label": "Celebrate"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`confetti` is paper rectangles that spin and drop a little with gravity. `spark` is thin glowing streaks aligned with their flight. `star` is four-point sparkles that pop and fade."
+    },
+    "image": {
+      "title": "On an image",
+      "description": "The burst works over any content. The layer has `aria-hidden` and `pointer-events: none`, so it doesn't interfere with alt text or clicks. Click different spots on the image.",
+      "texts": {
+        "alt": "GEM Org logo"
+      }
+    },
+    "hold": {
+      "title": "Press and hold",
+      "description": "With `trigger=\"hold\"` bursts repeat while you hold and follow the pointer as it moves. `interval` is the time between bursts (minimum `40` ms). The pointer isn't captured, so the button gets its click on release. With `asChild` on the button, holding Enter or Space also repeats bursts from the center until you release the key or focus leaves. The root sets `touch-action: none` and `user-select: none` so touch doesn't scroll or select text.",
+      "texts": {
+        "label": "Hold"
+      }
+    },
+    "colors": {
+      "title": "Colors",
+      "description": "`colors` takes a palette and each particle takes the next color, in order. `color` is a single color, used when `colors` is omitted. Without either, each variant uses its default palette. Prefer tokens."
+    },
+    "spread": {
+      "title": "Spread",
+      "description": "`spread` is how far particles travel, in pixels, and wins over `intensity`. Each particle travels between `45%` and `100%` of it; with `confetti`, gravity adds `35%` downward."
+    },
+    "count": {
+      "title": "Count",
+      "description": "`count` sets particles per burst (from `1` to `80`) and wins over `intensity`. They spread in a circle with a slightly random angle."
+    },
+    "duration": {
+      "title": "Duration and delay",
+      "description": "`duration` is how long each particle takes, in milliseconds. `delay` postpones the burst; each particle also adds up to `70` ms at random so they don't all leave together."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "Without `count` or `spread`, `intensity` sets both: `10`, `18`, or `28` particles traveling `56`, `88`, or `128` px for `sm`, `md`, or `lg`. It also takes a number from `0` to `1`."
+    },
+    "asChild": {
+      "title": "On a button (asChild)",
+      "description": "With `asChild`, the burst goes straight onto the gem-system `Button`, without an extra `div`. The position is measured against the button itself, and Enter or Space on the button throws the burst from its center. With a void element like `<img>` or `<input>`, which can't have children, the effect falls back to the wrapping `div`.",
+      "texts": {
+        "label": "Make a wish"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the particles on screen and blocks new bursts. The timer that removes them pauses too: they stay put until you resume, and `outParticleBurst` waits for them to finish. `isDisabled` skips bursts and keeps the content interactive. Here each particle lasts `2400` ms so you have time to pause it.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "label": "Click me"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onParticleBurst` fires on the first burst (or when a hold starts) and `outParticleBurst` when the last particles finish, with the reason in `event.reason`. Each burst counts as active for `delay + duration`: while that lasts or particles remain, repeated clicks don't fire `onParticleBurst` again. With reduced motion no particles are drawn, but the events still fire. The inner button still gets its click: `pointerdown` bubbles up to the root. If you activate it with Enter or Space, the burst comes from the center and the events fire the same way.",
+      "texts": {
+        "body": "Click the button (or activate it with the keyboard): it bumps the counter and throws the burst.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Party"
+    },
+    "styled": {
+      "label": "Bubbles"
+    }
+  },
+  "apiLink": "See the full ParticleBurst API",
+  "api": {
+    "header": {
+      "title": "ParticleBurst API",
+      "description": "Reference for props, inheritance, accessibility, CSS classes and variables, and exported types of `ParticleBurst`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for each variant, trigger, and option.",
+      "link": "See ParticleBurst demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/particle-burst` with `particles.css` (the particles) and `particle-burst.css` (the root), or from the package root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>color</code>) and forwards them to the root <code>div</code> (or the child, with <code>asChild</code>). <code>onPointerDown</code>, <code>onClick</code>, <code>onKeyDown</code>, <code>onKeyUp</code>, and <code>onBlur</code> run before the effect's internal logic. <code>style</code> reaches the root unchanged: the effect writes no variables on it."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> no particles are created; the child stays the same. <code>onParticleBurst</code> and <code>outParticleBurst</code> still fire: each burst counts as active for <code>delay + duration</code>, even if nothing is drawn.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the bursts. Use it only when motion is essential.",
+        "decorative": "The layer has <code>aria-hidden</code> and <code>pointer-events: none</code>: it isn't announced and doesn't block clicks. If the burst confirms an action, also say so in text.",
+        "keyboard": "Activating a focusable child (button, link) with Enter or Space throws a burst from the center and fires <code>onParticleBurst</code>. If the root is the focused element (with <code>asChild</code> on a button, or with <code>tabIndex</code>), Enter and Space throw bursts too, and with <code>trigger=\"hold\"</code> holding the key repeats them until you release it or focus leaves.",
+        "touch": "With <code>trigger=\"hold\"</code> the root sets <code>touch-action: none</code>, so touch can't scroll starting from the effect. <code>disabledOnTouch</code> ignores touches and restores <code>touch-action: auto</code>; mouse and pen keep working."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `inline-flex`, `position: relative`, `isolation: isolate`, and `overflow: visible`.",
+        "variant": "Active variant. It has no styles of its own: each particle's class sets the look.",
+        "hold": "Added with `trigger=\"hold\"`. Sets `user-select: none` and `touch-action: none`. The pointer is tracked with listeners on `window`, without capturing it, so children get their `click`.",
+        "paused": "Added with `isPaused`. Pauses particles with `animation-play-state`; the timer that removes them pauses in JS.",
+        "inactive": "Added with `isActive={false}`. Hides the particles on screen.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "touchDisabled": "Added with `disabledOnTouch`. Restores `touch-action: auto`.",
+        "surface": "Wraps the child (`z-index: 0`). With `asChild`, the class goes on the child itself.",
+        "layer": "Particles layer (`position: absolute`, `inset: 0`, `z-index: 1`, `aria-hidden`). `--burst` sets the easing and end scale.",
+        "particle": "Each particle. The variant class sets the shape: radius for `confetti`, glow for `spark`, and a four-point `clip-path` for `star`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "The duration is written inline on the layer and per-particle values go inline on each particle. The motion ones come from the layer class.",
+      "items": {
+        "particleDuration": "Duration of each particle. Set by `duration` and inline on the layer; to override it from CSS, declare it on `.gemfx-particle`.",
+        "motion": "Easing (`--gemfx-easing-exit`), initial vertical offset (`-50%`), and end scale (`0.35`). Set by `.gemfx-particle-layer--burst` and overridable with a class.",
+        "particle": "Origin, travel, rotation, size, color, and delay of each particle. Computed in JS on every burst."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables ParticleBurst reads as defaults. Palettes are only used when you pass neither `colors` nor `color`.",
+      "items": {
+        "confetti": "Default `confetti` palette.",
+        "spark": "Default `spark` palette.",
+        "star": "Default `star` palette.",
+        "easing": "Particle easing (fallback `ease-out`)."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "What the particles burst over and where the effect mounts."
+      },
+      "appearance": { "title": "Appearance", "description": "Shape, colors, count, and spread." },
+      "timing": {
+        "title": "Timing",
+        "description": "Duration, delay, and interval, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it bursts, how it pauses, and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `click`, `hold`, `inactive`, `disabled`, or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Content the particles burst over.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements like `img` it falls back to the `div`.",
+      "variant": "`confetti` is paper bits, `spark` glowing streaks, and `star` four-point sparkles.",
+      "colors": "Particle palette; each particle takes the next color. Prefer tokens.",
+      "color": "A single color. Used when `colors` is omitted.",
+      "count": "Particles per burst (`1` to `80`). Wins over `intensity`.",
+      "spread": "How far they travel, in pixels. Wins over `intensity`.",
+      "intensity": "Without `count` or `spread`: `10` / `18` / `28` particles and `56` / `88` / `128` px.",
+      "duration": "How long each particle takes.",
+      "delay": "Delay before the burst. Each particle adds up to `70` ms at random.",
+      "interval": "Time between bursts with `trigger=\"hold\"` (minimum `40`).",
+      "trigger": "`click` throws one burst on `pointerdown` (or Enter or Space); `hold` repeats them while the pointer or key is pressed.",
+      "isActive": "Allows new bursts. When `false`, hides the particles on screen.",
+      "isPaused": "Freezes the particles on screen (and the timer that removes them) and blocks new bursts.",
+      "isDisabled": "Skips bursts; the child stays interactive.",
+      "ignoreReducedMotion": "Throws particles even when the user prefers less motion. Only when essential.",
+      "disabledOnTouch": "Ignores touch pointers; mouse and pen keep working.",
+      "onParticleBurst": "Fires on the first burst or when a hold starts. Also with reduced motion, even if no particles are drawn.",
+      "outParticleBurst": "Fires when the last particles finish and `delay + duration` has passed since the last burst (with `hold`, release waits for them) or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer`, and `particle` (on each particle).",
+      "style": "Inline styles for the root.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

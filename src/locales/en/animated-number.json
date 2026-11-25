@@ -1,0 +1,266 @@
+{
+  "header": {
+    "title": "AnimatedNumber",
+    "description": "Animates changes to a number: counters, balances, prices and metrics. By default (`effect=\"count\"`) it interpolates the value frame by frame; with `fade`, `up` or `down` it swaps the formatted figure with a crossfade or a short slide. Pass the value in `value` and format it with `Intl.NumberFormat` (`locales`, `formatOptions`) or your own `format` function."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine props, change the value with the buttons and check the generated code. Increases use the `enter` timing and decreases use `exit`.",
+    "label": "Balance",
+    "increase": "Add 240",
+    "decrease": "Subtract 240",
+    "reset": "Reset"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic counter",
+      "description": "With the defaults the number interpolates over `500` ms: increases use the `standard` easing and decreases use `exit`. The root is a `span` with tabular numbers, so you can drop it inside text. When `value` is an integer, intermediate steps are integers too.",
+      "texts": {
+        "label": "Available balance",
+        "increase": "Add 240",
+        "decrease": "Subtract 240",
+        "reset": "Reset"
+      }
+    },
+    "effects": {
+      "title": "Effects",
+      "description": "`count` walks through the intermediate values. `fade` crossfades the old and new figure at the same time; `up` adds an upward slide (the new figure enters from below) and `down` does the opposite. The direction comes from the effect, not from whether the value rises or falls. These three only animate when the formatted text changes.",
+      "texts": {
+        "increase": "Add 240",
+        "decrease": "Subtract 240"
+      }
+    },
+    "currency": {
+      "title": "Currency",
+      "description": "`formatOptions` goes to `Intl.NumberFormat` together with `locales`. `duration` and `easing` accept `{ enter, exit }`: here increases take `620` ms with `emphasized` and decreases `420` ms with `exit`.",
+      "texts": {
+        "label": "Monthly revenue",
+        "increase": "Add $180",
+        "decrease": "Subtract $180"
+      }
+    },
+    "percent": {
+      "title": "Percent",
+      "description": "With `style: \"percent\"`, `value` goes from `0` to `1`: `0.42` renders as `42%`. `maximumFractionDigits` applies to the displayed percent, not the raw value, and the count keeps enough decimals so intermediate steps do not jump.",
+      "texts": {
+        "label": "Conversion rate",
+        "increase": "Add 8 pp",
+        "decrease": "Subtract 8 pp"
+      }
+    },
+    "format": {
+      "title": "Custom format, prefix and suffix",
+      "description": "`format` receives the interpolated value on every frame (with `count`) or the final value (with `fade`, `up` or `down`) and returns the text; when you pass it, `locales` and `formatOptions` are ignored. `prefix` and `suffix` render before and after the figure, outside the animation.",
+      "texts": {
+        "label": "Storage used",
+        "upload": "Upload 1.5 GB",
+        "remove": "Free 1.5 GB",
+        "suffix": "/ {capacity} GB"
+      }
+    },
+    "round": {
+      "title": "Count decimals (round)",
+      "description": "`round` sets how many decimals the intermediate count values have, overriding the precision inferred from `value` and `formatOptions`. It is clamped to `0`–`20` and only applies to `effect=\"count\"`. Here the same value with `2` and `4` decimals.",
+      "texts": {
+        "increase": "Add 1.1111",
+        "decrease": "Subtract 1.1111"
+      }
+    },
+    "trend": {
+      "title": "Trend color (trendClassName)",
+      "description": "`trendClassName` adds the `up` class to the root when the value rises and `down` when it falls. The last trend sticks until the next change; there is none on mount.",
+      "texts": {
+        "label": "Share price",
+        "rise": "Up $3.25",
+        "fall": "Down $3.25"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onStart(from)` fires when a change begins, with the value being displayed, and `onComplete(to)` when it settles. `onAnimatedNumber` reports that the animation started (`reason: \"enter\"`) and `outAnimatedNumber` that it ended (`exit`), was disabled (`disabled`) or unmounted (`unmount`). If the value changes mid-way, `onStart` fires again but `onAnimatedNumber` does not.",
+      "texts": {
+        "label": "Visits today",
+        "increase": "Add 240",
+        "decrease": "Subtract 240",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` the figure jumps straight to the new value, just like with `prefers-reduced-motion: reduce`. `onStart` and `onComplete` still fire, one right after the other.",
+      "texts": {
+        "increase": "Add 240",
+        "decrease": "Subtract 240"
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild` the classes, styles and ref go to the single child (a `strong` here) and its content is replaced by the figure. Use it to keep semantics inside a paragraph, a table cell or an `output`. The child must be exactly one element: without one, the number is not rendered.",
+      "texts": {
+        "before": "Your cart has",
+        "after": "items.",
+        "add": "Add item",
+        "remove": "Remove item"
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Classes from `utilities.css` (`gemst-inline-flex`, `gemst-relative`…) go through `classNames` to adjust layout, overflow or position without a design system stylesheet. Here `gemst-inline-flex` goes on `root` and `gemst-relative` on `value`. They are already included in `styles.css`.",
+      "texts": {
+        "label": "Members",
+        "increase": "Add 240",
+        "decrease": "Subtract 240"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Score",
+      "next": "Add 7 points"
+    },
+    "variant": {
+      "increase": "Add 240"
+    },
+    "styled": {
+      "home": "Home",
+      "away": "Away",
+      "goal": "{team} scores"
+    }
+  },
+  "apiLink": "Open the full AnimatedNumber API",
+  "api": {
+    "header": {
+      "title": "AnimatedNumber API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `AnimatedNumber`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every effect, format and option.",
+      "link": "Open AnimatedNumber demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemsitions/animated-number` with its `animated-number.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> (except <code>children</code>) and forwards them to the root <code>span</code>, or to the child with <code>asChild</code>. In that case classes and styles merge with the child's and, when both define the same handler (<code>onClick</code>…), the child's runs first. The component adds <code>aria-busy</code> while it animates."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "live": "The visible figure has <code>aria-hidden</code>. The formatted final value lives in a visually hidden <code>span</code> with <code>aria-live=\"polite\"</code> (<code>.gemst-animated-number__sr</code>), so screen readers announce the result once per change instead of every intermediate frame.",
+        "busy": "While the animation runs, the root has <code>aria-busy</code>.",
+        "affixes": "<code>prefix</code> and <code>suffix</code> sit outside the live region: they are read when browsing the page, but not announced when the value changes. If the unit matters, include it in <code>format</code> or <code>formatOptions</code> (for example <code>style: \"currency\"</code> or <code>\"unit\"</code>).",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the figure jumps to the final value. The preference is read on every render, not listened to live: if it changes, it applies on the next value change.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds the <code>gemst-ignore-reduced-motion</code> class to the root. Use it only when motion is essential.",
+        "tabular": "Tabular numbers (<code>tabular-nums</code>) keep the width from jumping while counting. It still changes when the number of digits changes (from <code>1,000</code> to <code>999</code>).",
+        "asChild": "With <code>asChild</code>, pick a child with the right semantics (<code>strong</code>, <code>output</code>, <code>td</code>): its content is replaced by the figure and the live region."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`span`). `position: relative`, baseline-aligned `inline-flex`, `max-width: 100%`, `color: inherit` and tabular numbers.",
+        "effect": "Active effect. With `fade`, `up` and `down`, `__value` becomes an `inline-grid` with `overflow: hidden` to stack both figures.",
+        "playing": "While the count or the figure swap runs.",
+        "idle": "No animation running.",
+        "disabled": "Added with `isDisabled`. Figures have no transition.",
+        "ready": "Only with `fade`, `up` and `down`, after mount: enables transitions so the first render does not animate.",
+        "from": "Only with `fade`, `up` and `down`: the frame where the new figure paints at its start pose with transitions off.",
+        "value": "`span` holding the visible figure (`aria-hidden`, `white-space: nowrap`).",
+        "sr": "Visually hidden copy of the final value, with `aria-live=\"polite\"`.",
+        "slot": "Each figure during a `fade`, `up` or `down` swap. Both share the same grid cell and transition `opacity` and `transform`.",
+        "slotRole": "`incoming` uses the `enter-*` variables; `outgoing` uses `exit-*` and ignores pointer events.",
+        "slotState": "`in` is the resting pose (`opacity: 1`); `out` hides it and, with `up` or `down`, shifts it by `--gemst-animated-number-shift`."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline on every render (as `0ms` with `isDisabled` or reduced motion), except `shift`. The count runs in JavaScript: the transition variables are only used by the `fade`, `up` and `down` figures.",
+      "items": {
+        "duration": "Duration of the current phase (increase = `enter`, decrease = `exit`). No CSS rule reads it.",
+        "delay": "Delay of the current phase. No CSS rule reads it.",
+        "easing": "Resolved curve of the current phase. No CSS rule reads it.",
+        "enterDuration": "Transition duration of the incoming figure. Default `500ms`.",
+        "exitDuration": "Transition duration of the outgoing figure. Default `500ms`.",
+        "enterDelay": "Delay of the incoming figure. Default `0ms`.",
+        "exitDelay": "Delay of the outgoing figure. Default `0ms`.",
+        "enterEasing": "Curve of the incoming figure. Default `standard`.",
+        "exitEasing": "Curve of the outgoing figure. Default `exit`.",
+        "shift": "Slide distance for `up` and `down`. Default `0.4em`. Not written inline: override it with a class or `style`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables the CSS uses as defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-animated-number-easing` and `--gemst-animated-number-enter-easing`. The component writes the resolved curve inline, so redefining the token does not change the animation: use `easing`.",
+        "easingExit": "Default for `--gemst-animated-number-exit-easing`, with the same caveat."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "`value` is required; everything else is optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "The value to display, what surrounds it and where it mounts."
+      },
+      "format": {
+        "title": "Format",
+        "description": "How the number becomes text and how many decimals the count uses."
+      },
+      "appearance": { "title": "Appearance", "description": "Animation type and trend classes." },
+      "timing": {
+        "title": "Timing",
+        "description": "In milliseconds. `enter` applies to increases (or the incoming figure) and `exit` to decreases (or the outgoing one)."
+      },
+      "state": { "title": "State", "description": "How the animation is turned off." },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `enter`, `exit`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "value": "Target value. Non-finite values (`NaN`, `Infinity`) are treated as `0`.",
+      "prefix": "Content before the figure. It is not animated and not part of the live region.",
+      "suffix": "Content after the figure. It is not animated and not part of the live region.",
+      "children": "Only with `asChild`: the element used as root. Its content is replaced by the figure. Ignored without `asChild`.",
+      "asChild": "Applies classes, styles and ref to the single child instead of a `span`. Without exactly one child element, the number is not rendered.",
+      "locales": "`Intl.NumberFormat` locales. Ignored when `format` is set. Must be stable across renders.",
+      "formatOptions": "`Intl.NumberFormat` options. Ignored when `format` is set. Pass a stable object: a new one on every render restarts the count. With `style: \"percent\"`, decimals apply to the displayed percent.",
+      "format": "Function that turns the number into text. Receives the interpolated value on every frame (`count`) or the final one (`fade`, `up`, `down`).",
+      "round": "Decimals for intermediate count values. Overrides the inferred precision. Clamped to `0`–`20`; only with `count`.",
+      "effect": "`count` interpolates the number; `fade` crossfades figures; `up` and `down` add a vertical slide.",
+      "trendClassName": "Classes added to the root based on the last change: `up` when it rose, `down` when it fell.",
+      "duration": "Duration. With `count`, `enter` is for increases and `exit` for decreases; with `fade`, `up` and `down`, for the incoming and outgoing figure.",
+      "delay": "Wait before starting. Accepts `{ enter, exit }` like `duration`.",
+      "easing": "Token (`standard`, `enter`, `exit`, `emphasized`, `linear`), a `cubic-bezier(...)` or `{ enter, exit }`. With `count`, any CSS curve other than `cubic-bezier` is treated as linear.",
+      "isDisabled": "Jumps straight to the new value, without animation. Turning it on mid-way sends `disabled` to `outAnimatedNumber`.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only when essential.",
+      "onStart": "Fires when a change begins, with the value being displayed.",
+      "onComplete": "Fires when the figure reaches the final value. With `isDisabled` or reduced motion, right after `onStart`.",
+      "onAnimatedNumber": "Fires when the animation starts (`reason: \"enter\"`). Does not fire when motion is off.",
+      "outAnimatedNumber": "Fires when it ends (`exit`), is disabled mid-way (`disabled`) or unmounts while animating (`unmount`).",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `value`, `sr`, `slot`, `incoming` and `outgoing`.",
+      "style": "Inline styles for the root. Merged with the `--gemst-animated-number-*` variables, which take precedence.",
+      "ref": "Ref to the root (the `span`, or the child with `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,143 @@
+.noise-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.noise-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.noise-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.noise-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-200);
+}
+
+/* The layer inherits the radius from the root, so the root carries it. */
+.noise-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.noise-demo__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--gem-space-1);
+  width: 16rem;
+  max-width: 100%;
+  height: 10rem;
+  padding: var(--gem-space-4);
+  border-radius: var(--gem-radius-md);
+  color: var(--gem-palette-neutral-50);
+  font-weight: 700;
+}
+
+.noise-demo__card--compact {
+  width: 10rem;
+  height: 7rem;
+}
+
+.noise-demo__card--gradient {
+  background-image: linear-gradient(
+    145deg,
+    var(--gem-palette-primary-800) 0%,
+    var(--gem-palette-primary-500) 52%,
+    var(--gem-palette-tertiary-400) 100%
+  );
+}
+
+.noise-demo__card--dark {
+  background: var(--gem-palette-neutral-950);
+}
+
+.noise-demo__card--mid {
+  background: var(--gem-palette-neutral-500);
+}
+
+.noise-demo__card--light {
+  background: var(--gem-palette-neutral-50);
+  color: var(--gem-palette-neutral-900);
+}
+
+.noise-demo__image {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+}
+
+.noise-demo__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.1rem;
+  border: 0;
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.noise-demo__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gem-space-3);
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--gem-space-5);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-neutral-50);
+}
+
+.noise-demo__body {
+  margin: 0;
+  color: var(--gem-palette-neutral-300);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.noise-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.noise-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

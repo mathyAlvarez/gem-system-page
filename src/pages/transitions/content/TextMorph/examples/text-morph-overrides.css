@@ -1,0 +1,17 @@
+.gemst-text-morph.ticker {
+  --gemst-text-morph-shift: 1em;
+  display: inline-grid;
+  min-width: 12rem;
+  padding: var(--gem-space-2) var(--gem-space-4);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-primary-300);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xl);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.gemst-text-morph.ticker .gemst-text-morph__slot--outgoing {
+  color: var(--gem-palette-neutral-500);
+}

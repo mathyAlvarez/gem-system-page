@@ -1,0 +1,13 @@
+.gemfx-glassmorphism.glass-aurora {
+  --gemfx-glassmorphism-color: var(--gem-palette-primary-200);
+  border-radius: var(--gem-radius-xl);
+}
+
+.gemfx-glassmorphism.glass-aurora .gemfx-glassmorphism__pane {
+  border-color: color-mix(in srgb, var(--gem-palette-primary-200) 60%, transparent);
+  background-image: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--gem-palette-primary-400) 30%, transparent),
+    color-mix(in srgb, var(--gem-palette-secondary-400) 22%, transparent)
+  );
+}

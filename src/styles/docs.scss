@@ -91,6 +91,27 @@
   }
 }
 
+.docs-api-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    gap: var(--gem-space-2);
+    color: var(--gem-color-fg-muted);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 0.2em;
+    color: var(--gem-color-accent);
+  }
+}
+
 .docs-api-table {
   overflow-x: auto;
   border: 1px solid var(--gem-color-border);
@@ -258,6 +279,38 @@
   width: 100%;
   padding-inline: var(--gem-space-3);
   background: var(--gem-color-bg-subtle);
+
+  // Plain text shown until Monaco mounts — same metrics so the swap does not jump.
+  &__fallback {
+    margin: 0;
+    padding: 1rem 0;
+    overflow: hidden;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--gem-color-fg);
+    background: transparent;
+
+    code {
+      font: inherit;
+    }
+  }
+
+  &__editor {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &[data-ready] {
+      position: relative;
+      inset: auto;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
 }
 
 [data-theme="dark"] .docs-code-viewer__badge {

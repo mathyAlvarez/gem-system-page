@@ -1,0 +1,11 @@
+.gemst-slide-transition.drawer-shell {
+  --gemst-slide-duration: 320ms;
+  --gemst-slide-offset: 1.5rem;
+  --gemst-slide-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+}
+
+.gemst-slide-transition.drawer-shell .slide-demo__panel {
+  border-color: var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}

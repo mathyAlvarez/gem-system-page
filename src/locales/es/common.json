@@ -15,7 +15,15 @@
   "navbar": {
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "docsNav": "Documentación"
+    "docsNav": "Documentación",
+    "product": "Producto"
+  },
+  "products": {
+    "home": "Home",
+    "system": "System",
+    "effects": "Effects",
+    "transitions": "Transitions",
+    "ecosystem": "Gem Org"
   },
   "nav": {
     "gettingStarted": "Primeros pasos",
@@ -36,7 +44,23 @@
     "navigation": "Navegación y estructura",
     "feedback": "Feedback",
     "dataDisplay": "Visualización de datos",
-    "componentsApi": "API de componentes"
+    "componentsApi": "API de componentes",
+    "foundationParticles": "Partículas",
+    "duration": "Duración",
+    "easing": "Easing",
+    "intensity": "Intensidad",
+    "light": "Aura, luz y neón",
+    "motion": "3D y movimiento",
+    "style": "Estilo, filtros y retro",
+    "gradients": "Gradientes y mallas",
+    "particles": "Partículas e interacciones",
+    "effectsApi": "API de efectos",
+    "content": "Contenido",
+    "morphingLayout": "Morphing y layout",
+    "mountUnmount": "Montaje y desmontaje",
+    "viewsLayouts": "Vistas y layouts",
+    "listsSequences": "Listas y secuencias",
+    "transitionsApi": "API de transiciones"
   },
   "version": {
     "label": "Versión"

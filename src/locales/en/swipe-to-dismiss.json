@@ -1,0 +1,305 @@
+{
+  "header": {
+    "title": "SwipeToDismiss",
+    "description": "Drag-to-dismiss for toasts, alerts, and list rows. Pointer drag on the host (mouse or touch); release past `threshold` or with a flick to fly out. `direction` is the gesture axis; `dismissDirection` sets which sign commits and the exit trajectory (`both` follows the swipe). `rubberband` (default true) resists drags against a locked edge. `onSwipeStart` / `onSwipeMove` / `onSwipeCancel` track the gesture. Restore / `isIn={true}` slides the item back in from the dismiss edge. `direction=\"horizontal\"` (default) keeps vertical scrolling (`touch-action: pan-y`). Clicks on inner buttons still work — the gesture starts after 8px. `onDismiss` fires on a committed swipe so the parent can set `isIn={false}` or remove the item. Not for HTML `table` / `tr`."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Drag horizontally past about a third of the width (or flick). Restore / Dismiss also play enter and exit.",
+    "restore": "Restore",
+    "dismiss": "Dismiss",
+    "panelTitle": "Saved",
+    "panelCopy": "Swipe the panel sideways to dismiss. Vertical scroll still works.",
+    "sibling": "Sibling below — moves up after the panel unmounts."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Drag horizontally past about a third of the width (or flick). The host keeps `touch-action: pan-y` so a list can still scroll. Restore slides the panel back from the dismiss edge.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe the panel sideways to dismiss. Vertical scroll still works.",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "vertical": {
+      "title": "Vertical",
+      "description": "`direction=\"up\"` only accepts an upward drag. The host uses `touch-action: pan-x`.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe up to dismiss. Horizontal pan is left for the page.",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "leftOnly": {
+      "title": "Left only",
+      "description": "A single edge locks the sign. `direction=\"left\"` with default `rubberband` resists the opposite pull instead of hard-clamping to 0.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Only a left swipe dismisses — dragging right rubberbands back.",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "rubberbandOff": {
+      "title": "rubberband false",
+      "description": "`rubberband={false}` restores the hard clamp against a locked edge (drag right does nothing).",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Opposite drag is hard-clamped — no rubberband.",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "dismissDirection": {
+      "title": "dismissDirection left",
+      "description": "`direction=\"horizontal\"` allows both signs; `dismissDirection=\"left\"` only commits leftward swipes and always exits left. A right release settles back and fires `onSwipeCancel`.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Drag either way; only a left swipe dismisses (flies left).",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "gestureCallbacks": {
+      "title": "onSwipeStart / Move / Cancel",
+      "description": "`onSwipeStart` fires when the axis locks; `onSwipeMove` streams progress / translation; `onSwipeCancel` fires when the release settles back below threshold.",
+      "texts": {
+        "restore": "Restore",
+        "title": "Gesture log",
+        "copy": "Drag past threshold to dismiss, or release early to cancel.",
+        "lastEvent": "Last event:",
+        "progressLabel": "progress:",
+        "empty": "—"
+      }
+    },
+    "markSelected": {
+      "title": "markSelected",
+      "description": "With `markSelected`, the host shows a selection ring on `:hover` (and while dragging). Hover a row, then swipe to dismiss.",
+      "texts": {
+        "copy": "Hover to mark · swipe to dismiss"
+      }
+    },
+    "markOverride": {
+      "title": "markSelected class override",
+      "description": "Override the hover ring with `classNames.root`. This demo uses `mark-override` (dashed outline). You can also theme via `--gemst-swipe-selected-*`.",
+      "texts": {
+        "copy": "Custom hover ring via classNames"
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "Split `duration` and `easing`. Restore uses enter; dismiss uses exit.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe the panel sideways to dismiss.",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "listRows": {
+      "title": "List rows",
+      "description": "One SwipeToDismiss per row. Swipe a row away; Restore all sets `isIn` back so each row slides in from the dismiss edge. Not an HTML table — each row is a block item.",
+      "texts": {
+        "restoreAll": "Restore all",
+        "sibling": "Sibling below — moves up as rows leave, then back when they restore."
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onSwipe` / `outSwipe` mark show and dismiss / disable / unmount.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe or use Dismiss.",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled`, drag is ignored. Restore and Dismiss still snap.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Gesture is off — use the Dismiss button (snaps out).",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, swipe styles merge onto the `article` — no extra wrapper.",
+      "texts": {
+        "restore": "Restore",
+        "title": "asChild host",
+        "copy": "Drag this article sideways."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Classes from `utilities.css` go through `classNames`. Here `gemst-relative` and `gemst-overflow-hidden` on `root`.",
+      "texts": {
+        "restore": "Restore",
+        "dismiss": "Dismiss",
+        "title": "Saved",
+        "copy": "Swipe the panel sideways to dismiss.",
+        "sibling": "Sibling below — moves up after the panel unmounts."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "restore": "Restore",
+      "dismiss": "Dismiss",
+      "title": "Saved",
+      "copy": "Variables via Tailwind."
+    },
+    "variant": {
+      "restore": "Restore",
+      "dismiss": "Dismiss",
+      "title": "Saved",
+      "copy": "Wrapper with cva."
+    },
+    "styled": {
+      "restore": "Restore",
+      "dismiss": "Dismiss",
+      "title": "Saved",
+      "copy": "CSS override on card-shell."
+    }
+  },
+  "apiLink": "See the full SwipeToDismiss API",
+  "api": {
+    "header": {
+      "title": "SwipeToDismiss API",
+      "description": "Reference for props, inheritance, accessibility, CSS classes and variables, and exported types for `SwipeToDismiss`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for direction, rubberband, markSelected, and list rows.",
+      "link": "See SwipeToDismiss demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/swipe-to-dismiss` with its `swipe-to-dismiss.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. The gesture is pointer on the host; clicks on inner buttons still work (8px slop). Do not use <code>table</code> / <code>tr</code>."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "gesture": "Swipe dismiss should not be the only way to close or remove an item. Offer an equivalent control (button).",
+        "scroll": "With <code>direction=\"horizontal\"</code> the host uses <code>touch-action: pan-y</code> so vertical scroll still works. Vertical axes use <code>pan-x</code>.",
+        "dismiss": "<code>onDismiss</code> fires on a committed swipe. Update presence there (<code>isIn={false}</code> or remove the item). Programmatic <code>isIn={false}</code> does not call <code>onDismiss</code>.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the host snaps to the final state with no interpolation.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code>. Only if motion is essential.",
+        "host": "Pick a host with the right semantics (toast, alert, row). The <code>markSelected</code> ring is decorative — it does not replace focus or real selection.",
+        "asChild": "With <code>asChild</code>, the child receives pointer handlers and styles. Use an element that can be interactive."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div` or the child with `asChild`).",
+        "horizontal": "Horizontal axis (`touch-action: pan-y`).",
+        "vertical": "Vertical axis (`touch-action: pan-x`).",
+        "dragging": "Active drag.",
+        "entering": "Programmatic enter from the edge.",
+        "settling": "Settle back below threshold.",
+        "dismissing": "Dismiss exit in progress.",
+        "out": "Out state (unmounted or hidden).",
+        "markSelected": "Selection ring on hover / drag.",
+        "disabled": "Gesture off.",
+        "idle": "No active motion."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written on the host from phase and drag.",
+      "items": {
+        "duration": "Settle / dismiss / enter duration. Default `300ms`.",
+        "delay": "Programmatic enter/exit delay. Default `0ms`.",
+        "easing": "Curve. Enter uses `standard`; dismiss uses `exit`.",
+        "x": "X offset during drag / settle.",
+        "y": "Y offset during drag / settle.",
+        "progress": "0–1 drag progress (also lowers opacity).",
+        "selectedWidth": "`markSelected` outline width.",
+        "selectedColor": "Outline color.",
+        "selectedOffset": "Outline offset.",
+        "selectedRadius": "Outline radius."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables the CSS uses as defaults.",
+      "items": {
+        "easingStandard": "Default for enter / settle.",
+        "easingExit": "Default for dismiss."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "Children and host." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Axis, threshold, rubberband, and mark."
+      },
+      "timing": { "title": "Timing", "description": "Restore = enter; dismiss = exit." },
+      "state": { "title": "State", "description": "How the gesture is turned off." },
+      "events": { "title": "Events", "description": "Gesture, dismiss, and presence cycle." },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Draggable content (toast, alert, row). Not `table` / `tr`.",
+      "asChild": "Applies classes, styles, and ref to the single child. That child is the gesture host.",
+      "isIn": "`true` (default) plays enter and stays mounted; `false` plays exit and unmounts when done.",
+      "direction": "Gesture axis. `horizontal` (default) dismisses left/right and keeps vertical scrolling; `vertical` does the inverse. A single edge (`left` / `right` / `up` / `down`) only accepts that sign.",
+      "dismissDirection": "Exit trajectory and which sign commits. `both` (default) follows the swipe; a single edge only commits that sign and always exits that way.",
+      "rubberband": "`true` (default) resists drag against a locked edge. `false` hard-clamps to 0.",
+      "threshold": "Fraction of host size that counts as dismiss (0–1). Default `0.35`.",
+      "velocityThreshold": "Flick speed in px/ms that dismisses even below threshold. Default `0.5`.",
+      "markSelected": "Shows a selection ring on hover (and while dragging).",
+      "unmountOnExit": "Unmounts immediately on dismiss (skips exit motion).",
+      "duration": "Duration. With `{ enter, exit }`, enter = restore; exit = dismiss.",
+      "delay": "Wait before programmatic enter/exit. Drag always starts immediately.",
+      "easing": "Token, timing function, or `{ enter, exit }`. Settle uses enter; dismiss uses exit.",
+      "isDisabled": "Disables the gesture and snaps presence.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onDismiss": "When a swipe crosses the threshold (or a flick). Update presence here. Programmatic `isIn={false}` does not call this.",
+      "onSwipeStart": "When the drag axis locks (after the 8px slop).",
+      "onSwipeMove": "On each move while dragging (`progress` + `translation`).",
+      "onSwipeCancel": "When the drag ends without committing and the host settles back.",
+      "onSwipe": "When the host is shown (`isIn` true).",
+      "outSwipe": "When it dismisses, disables, or unmounts.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: only `root`.",
+      "style": "Inline styles for the root. Combined with `--gemst-swipe-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title": "Intensity",
+    "description": "Fuerza de los efectos. La prop `intensity` acepta un token (`sm`, `md` o `lg`) o un número entre `0` y `1`. Los tokens también existen como variables `--gemfx-intensity-*`."
+  },
+  "scale": {
+    "title": "Tokens",
+    "description": "Cada muestra mezcla el color de acento con transparente en el porcentaje del token."
+  },
+  "custom": {
+    "title": "Valores personalizados",
+    "description": "Un número entre `0` y `1` se convierte en un porcentaje de mezcla. Para valores que no son porcentajes (blur, escala, distancia), los efectos interpolan entre los valores de cada token con `mixIntensity`."
+  },
+  "tester": {
+    "title": "Probá un valor",
+    "description": "Mové el slider para ver qué devuelven los helpers. `mixIntensity` usa como ejemplo un blur de 8, 16 y 28 px para `sm`, `md` y `lg`.",
+    "label": "intensity",
+    "preview": "Vista previa"
+  },
+  "helpers": {
+    "title": "Helpers",
+    "description": "Se importan desde `@gem-org/gemffects/tokens`.",
+    "columns": {
+      "name": "Nombre",
+      "signature": "Firma",
+      "description": "Descripción"
+    },
+    "items": {
+      "intensity": "Valor de cada token como unidad entre `0` y `1`.",
+      "intensityCss": "Valor de cada token como porcentaje para CSS.",
+      "isIntensityToken": "Indica si un valor es `sm`, `md` o `lg`.",
+      "clampIntensityUnit": "Limita un número a `0`–`1`. Si no es finito, devuelve el valor de `md`.",
+      "intensityUnit": "Convierte un token o un número en una unidad entre `0` y `1`.",
+      "intensityCssValue": "Convierte un token o un número en un porcentaje (`0.62` → `62%`).",
+      "mixIntensity": "Interpola de forma lineal entre los valores de un mapa por token. `0` devuelve `at0` (default `0`), los tokens devuelven su valor y `1` extrapola más allá de `lg`.",
+      "intensitySamples": "Valores de ejemplo para demos."
+    }
+  },
+  "usage": {
+    "title": "Uso",
+    "description": "En CSS, usá las variables como porcentaje de mezcla. En los efectos, pasá un token o un número a `intensity`."
+  },
+  "code": {
+    "token": "con un token",
+    "unit": "con un número entre 0 y 1",
+    "mix": "un valor propio que escala con la intensidad"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "header": {
+    "title": "Glow",
+    "description": "Halo de neón que respira detrás del contenido. `variant` define el aspecto, `trigger` cuándo se enciende y `spread` hasta dónde llega la luz. Con `prefers-reduced-motion: reduce` el halo queda fijo."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. `edge` solo aplica con `variant` en `edge`; `color` usa tokens de la paleta del host.",
+    "target": "Glow"
+  },
+  "stories": {
+    "variants": {
+      "title": "Variantes",
+      "description": "`halo` es un resplandor suave detrás del hijo, `outline` ilumina solo el borde, `inner` emite luz desde adentro y `pulse` es un destello que se expande, se apaga y se repite."
+    },
+    "edge": {
+      "title": "Luz desde un lado",
+      "description": "Con `variant` en `edge`, la luz sale de un solo lado. Elegilo con `edge`: `top`, `right`, `bottom` (default) o `left`."
+    },
+    "dual": {
+      "title": "Dos colores",
+      "description": "`variant` en `dual` suma un segundo halo con `colorAlt`, desfasado del primero para que los colores se alternen.",
+      "texts": {
+        "title": "Plan Pro",
+        "body": "Deploys ilimitados, dominios propios y soporte prioritario."
+      }
+    },
+    "text": {
+      "title": "Texto de neón",
+      "description": "`variant` en `text` no dibuja un halo: anima un `text-shadow` que sigue la forma de las letras. Con `asChild` se aplica directo sobre el título, sin `div` envolvente.",
+      "texts": {
+        "text": "Abierto 24 h"
+      }
+    },
+    "triggers": {
+      "title": "Hover y click",
+      "description": "Con `trigger` en `hover`, el halo se enciende mientras el puntero (o el foco) está sobre el elemento. Con `click`, cada clic lo prende o lo apaga.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "spread": {
+      "title": "Alcance",
+      "description": "`spread` es cuánto se extiende el halo fuera del hijo. Un número son píxeles; también acepta cualquier longitud CSS (`1.5rem`)."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` acepta un token (`sm`, `md`, `lg`) o un número entre `0` y `1`, y define la opacidad máxima del halo."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es un ciclo completo de respiración, en milisegundos. `delay` retrasa el inicio."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` acepta cualquier color CSS. Preferí los tokens de la paleta de tu app (`var(--gem-palette-*)`) para que el halo siga el tema."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild`, el efecto se aplica sobre el hijo sin agregar un `div` envolvente. Acá, sobre un `Button` de gem-system.",
+      "texts": {
+        "label": "Guardar cambios"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela la respiración en el cuadro actual. `isDisabled` oculta el halo y deja el hijo interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Estado"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onGlow` se dispara cuando el halo se enciende y `outGlow` cuando se apaga, con el motivo en `event.reason`. El halo no tapa la interacción: el botón de adentro sigue recibiendo clics.",
+      "texts": {
+        "title": "Entradas para el recital",
+        "body": "Pasá el mouse por la tarjeta y mirá el registro.",
+        "action": "Comprar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Nuevo"
+    },
+    "styled": {
+      "title": "Atardecer",
+      "body": "Halo con degradé, definido en una clase propia."
+    }
+  },
+  "apiLink": "Ver la API completa de Glow",
+  "api": {
+    "header": {
+      "title": "Glow API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Glow`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante y disparador.",
+      "link": "Ver demos de Glow"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/glow` con su `glow.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> salvo <code>color</code>, y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La capa del halo tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: es decorativa y no tapa la interacción del hijo.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> la animación se detiene y el halo queda fijo (en <code>text</code>, un <code>text-shadow</code> estático).",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza la animación. Usalo solo si el movimiento es esencial.",
+        "focus": "Con <code>trigger=\"hover\"</code>, el halo también se enciende con el foco de teclado (<code>:focus-visible</code> en la raíz o adentro), así que se ve al navegar con Tab. Un clic de mouse que enfoca un botón no lo deja prendido. <code>onGlow</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code>, el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code> (como en el ejemplo con <code>asChild</code>), también responde a Enter y Espacio.",
+        "touch": "En pantallas táctiles no hay hover: preferí <code>always</code> o <code>click</code>.",
+        "meaning": "El halo es decoración: no lo uses como única señal de estado (seleccionado, error). Acompañalo con texto o un atributo ARIA."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` e `isolation: isolate`.",
+        "variant": "Variante activa.",
+        "edge": "Lado que emite luz con `variant=\"edge\"`.",
+        "trigger": "Disparador activo. Oculta el halo hasta el hover/foco o el clic.",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused` y pausa las animaciones.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled` y oculta el halo.",
+        "disabled": "Se agrega con `isDisabled`. Quita el cursor de puntero.",
+        "layer": "Capa absoluta detrás del hijo que contiene los halos.",
+        "halo": "Halo principal. En `outline` e `inner` usa `box-shadow` en lugar de blur.",
+        "haloAlt": "Segundo halo, solo con `variant=\"dual\"`.",
+        "surface": "Envuelve al hijo, por encima de la capa. En `text` lleva el `text-shadow`."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "items": {
+        "color": "Color del halo. Lo define `color`; default `var(--gem-palette-primary-400)`.",
+        "colorAlt": "Color del segundo halo en `dual`. Lo define `colorAlt`; default `var(--gem-palette-secondary-400)`.",
+        "duration": "Ciclo de respiración. Lo define `duration`; default `2400ms`.",
+        "delay": "Retraso antes de empezar. Lo define `delay`; default `0ms`.",
+        "intensity": "Opacidad máxima del halo. La define `intensity`; default `var(--gemfx-intensity-md)`.",
+        "spread": "Alcance del halo. Lo define `spread`; default `24px`.",
+        "blur": "Desenfoque del halo. No tiene prop: cambialo desde CSS; default `1.35rem`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Glow lee como valor por defecto.",
+      "items": {
+        "intensity": "Intensidad por defecto (`55%`).",
+        "easing": "Curva de la respiración.",
+        "palette": "Colores por defecto de `color` y `colorAlt`, con un neón de respaldo si no cargás gem-system."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué se ilumina y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Forma, color, alcance e intensidad del halo."
+      },
+      "timing": { "title": "Tiempo", "description": "Ritmo de la respiración, en milisegundos." },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo se enciende el halo y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido que queda delante del halo.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. Funciona con todas las variantes, `text` incluida. Con un elemento vacío (`img`, `input`) cae al `div`, porque la capa del halo no se puede montar adentro.",
+      "variant": "Aspecto del halo: `halo`, `outline`, `inner`, `edge`, `dual`, `pulse` o `text`.",
+      "edge": "Lado que emite luz cuando `variant` es `edge`.",
+      "color": "Color del halo. Preferí tokens del host (`var(--gem-palette-primary-400)`). Un string vacío usa el default.",
+      "colorAlt": "Segundo color, para `variant=\"dual\"`.",
+      "spread": "Cuánto se extiende el halo fuera del hijo. Un número son píxeles; un string se usa tal cual.",
+      "intensity": "Fuerza del halo: token o número entre `0` y `1`.",
+      "duration": "Ciclo completo de respiración. Los valores negativos se toman como `0`.",
+      "delay": "Retraso antes de que empiece la animación.",
+      "trigger": "`always` siempre encendido, `hover` mientras el puntero o el foco está encima, `click` alterna con cada clic.",
+      "isActive": "Muestra el halo. En `false` lo oculta y `outGlow` recibe `inactive`.",
+      "isPaused": "Congela la animación en el cuadro actual.",
+      "isDisabled": "Oculta el halo; el hijo sigue interactivo. `outGlow` recibe `disabled`.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si el movimiento es esencial.",
+      "onGlow": "Se dispara cuando el halo se enciende: al montar con `always`, al entrar el puntero con `hover` o al prender con `click`.",
+      "outGlow": "Se dispara cuando el halo se apaga: al salir el puntero, al apagar con `click`, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `halo` y `haloAlt`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-glow-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

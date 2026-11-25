@@ -1,0 +1,156 @@
+{
+  "header": {
+    "title": "Particles",
+    "description": "Primitiva de partículas que comparten `ParticleBurst`, `ParticleRain` y `Rip`. `ParticleLayer` solo dibuja y anima las partículas; la física de emisión (dónde nacen, hacia dónde vuelan, cuántas) la pone quien emite. Usala para armar tus propios efectos."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "`kind` define el aspecto y `motion` el perfil de vuelo. Con `emit` en `click`, hacé clic en el escenario; con `always`, emite sola cada 160 ms.",
+    "hint": "Hacé clic",
+    "hintAlways": "Siempre activo",
+    "code": {
+      "click": "en pointerdown, con la posición del puntero",
+      "always": "cada 160 ms, desde un setInterval"
+    }
+  },
+  "stories": {
+    "kinds": {
+      "title": "Tipos",
+      "description": "Los cuatro `kind` incluidos: `confetti` (papelitos), `spark` (chispas finas con brillo), `star` (destellos de cuatro puntas) y `light` (orbes suaves). Todos con `motion` en `burst`. Hacé clic en cada uno."
+    },
+    "motions": {
+      "title": "Perfiles de vuelo",
+      "description": "`burst` y `rip` salen desde el puntero; `rain` cae desde el borde superior y recorta lo que se sale del escenario. Cada perfil cambia el easing, la escala final y los keyframes."
+    },
+    "rain": {
+      "title": "Emisión continua",
+      "description": "Lluvia de `light` que emite sola cada 160 ms. `useParticleField` con `maxLive` limita cuántas partículas hay en pantalla al mismo tiempo.",
+      "texts": {
+        "hint": "Siempre activo"
+      }
+    },
+    "paused": {
+      "title": "Pausa",
+      "description": "Con `isPaused`, las partículas en pantalla se congelan hasta que vence su tiempo de vida y el escenario deja de emitir. Hacé clic en el escenario y activá la pausa mientras vuelan.",
+      "texts": {
+        "hint": "Hacé clic",
+        "pauseLabel": "Pausar partículas"
+      }
+    },
+    "custom": {
+      "title": "Partícula propia",
+      "description": "`renderParticle` dibuja el contenido de cada partícula. El contenedor sigue volando con la misma física y recibe el color en `particle.color`.",
+      "texts": {
+        "hint": "Personalizada"
+      }
+    }
+  },
+  "apiLink": "Ver la API completa de Particles",
+  "api": {
+    "header": {
+      "title": "Particles API",
+      "description": "Referencia de `ParticleLayer`, `useParticleField`, los helpers de generación, las clases y variables CSS y los tipos exportados."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada `kind` y `motion`.",
+      "link": "Ver demos de Particles"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Todo se importa desde `@gem-org/gemffects/particles` y necesita `particles.css` (ya incluido en `styles.css`)."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "name": "Nombre",
+      "signature": "Firma",
+      "class": "Clase",
+      "variable": "Variable"
+    },
+    "layer": {
+      "description": "Capa absoluta que cubre a su contenedor posicionado y dibuja una partícula por elemento de `particles`.",
+      "items": {
+        "particles": "Partículas a dibujar. Pasá el array que devuelve `useParticleField`.",
+        "motion": "Perfil de vuelo: origen, easing, escala final y keyframes.",
+        "durationMs": "Duración del vuelo en milisegundos. Sin valor, usa el default del CSS (700 ms).",
+        "isPaused": "Congela las partículas en pantalla (`animation-play-state: paused`).",
+        "renderParticle": "Contenido propio para cada partícula. Desactiva el fondo, la sombra y el recorte del `kind`.",
+        "className": "Clase extra para la capa.",
+        "particleClassName": "Clase extra para cada partícula.",
+        "style": "Estilos inline de la capa. Se combinan con `--gemfx-particle-duration`."
+      }
+    },
+    "field": {
+      "description": "Estado de las partículas vivas. Cada lote se borra solo cuando vence su `lifetimeMs`.",
+      "optionsTitle": "Opciones",
+      "resultTitle": "Devuelve",
+      "options": {
+        "maxLive": "Máximo de partículas en pantalla. Si no hay lugar, el lote se recorta o se descarta. Sin valor, no hay límite."
+      },
+      "result": {
+        "particles": "Partículas vivas, listas para `ParticleLayer`.",
+        "spawn": "Agrega un lote y lo borra después de `lifetimeMs`. Usá la duración del vuelo más un margen.",
+        "clear": "Borra todas las partículas y cancela los timers pendientes.",
+        "getLiveCount": "Cantidad de partículas vivas, sin provocar un render."
+      }
+    },
+    "helpers": {
+      "title": "Helpers",
+      "description": "Funciones para generar partículas con los mismos tamaños, giros y paletas que usan los efectos.",
+      "items": {
+        "createParticle": "Arma una `Particle`. Si no pasás `width`/`height`, `heading` o `spin`, los calcula según el `kind`.",
+        "resolveParticlePalette": "Devuelve `colors` si hay, si no `[color]`, y si no la paleta del `kind`.",
+        "particleSize": "Tamaño aleatorio dentro del rango de cada `kind`.",
+        "particleHeading": "Rotación inicial. Las `spark` se orientan hacia su dirección de vuelo.",
+        "particleSpin": "Giro aleatorio durante el vuelo según el `kind`.",
+        "pickColor": "Color de la paleta para un índice, de forma cíclica.",
+        "pickParticleKind": "Un `kind` al azar de la lista (por defecto, todos).",
+        "randomBetween": "Número aleatorio entre `min` y `max`.",
+        "PARTICLE_KINDS": "Los cuatro `kind` incluidos, en orden.",
+        "PALETTES": "Paletas por defecto de cada `kind`. Usan tokens `--gem-palette-*` con un color de respaldo."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "layer": "Capa raíz: absoluta, cubre al contenedor y no recibe eventos del puntero.",
+        "layerMotion": "Perfil de vuelo activo. `rain` además recorta con `overflow: hidden`.",
+        "layerPaused": "Se agrega con `isPaused` y pausa las animaciones.",
+        "particle": "Cada partícula. Se posiciona y anima con las variables de abajo.",
+        "particleKind": "Aspecto de la partícula según su `kind`.",
+        "particleCustom": "Se agrega con `renderParticle` y quita fondo, sombra y recorte."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "items": {
+        "duration": "Duración del vuelo. La define `durationMs`; default `700ms`.",
+        "easing": "Curva del vuelo. Cada `motion` usa un token `--gemfx-easing-*`.",
+        "endScale": "Escala al final del vuelo (`burst` 0.35, `rain` 0.55, `rip` 0.25).",
+        "originY": "Desplazamiento vertical del punto de origen según el `motion`.",
+        "position": "Punto de origen de la partícula, en px.",
+        "offset": "Distancia que recorre la partícula, en px.",
+        "rotation": "Rotación inicial y giro durante el vuelo, en grados.",
+        "size": "Ancho y alto de la partícula, en px.",
+        "color": "Color de la partícula.",
+        "delay": "Retraso antes de que arranque el vuelo, en ms."
+      }
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "hidden": "La capa tiene <code>aria-hidden</code> y <code>pointer-events: none</code>: es decorativa y no tapa la interacción.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> las partículas no se animan y quedan invisibles, salvo dentro de <code>.gemfx-ignore-reduced-motion</code>.",
+        "emitter": "Si armás tu propio emisor, chequeá <code>prefersReducedMotion()</code> (de <code>@gem-org/gemffects/utils</code>) para no generar partículas que nadie va a ver.",
+        "control": "Lo que dispara la emisión tiene que ser un control real (un <code>button</code> con nombre accesible) y también responder al teclado.",
+        "budget": "Usá <code>maxLive</code> para acotar cuántas partículas hay a la vez, sobre todo con emisión continua."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  }
+}

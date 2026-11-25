@@ -1,0 +1,19 @@
+.gem-modal.modal-branded {
+  --gem-modal-width: 32rem;
+  --gem-radius-md: 1rem;
+  --gem-color-border: var(--gem-palette-tertiary-300);
+  --gem-color-bg: color-mix(in srgb, var(--gem-palette-tertiary-500) 6%, white);
+}
+
+.gem-modal.modal-branded::backdrop {
+  background-color: color-mix(in srgb, var(--gem-palette-tertiary-900) 45%, transparent);
+}
+
+[data-theme="dark"] .gem-modal.modal-branded {
+  --gem-color-border: var(--gem-palette-tertiary-700);
+  --gem-color-bg: color-mix(
+    in srgb,
+    var(--gem-palette-tertiary-500) 10%,
+    var(--gem-palette-neutral-900)
+  );
+}

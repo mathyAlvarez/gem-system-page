@@ -1,0 +1,151 @@
+.rp-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.rp-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.rp-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+/* Debris is light and flies past the card, so the stage stays dark. */
+.rp-demo__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--gem-space-6) var(--gem-space-5);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+}
+
+.rp-demo__stage--sm {
+  padding: var(--gem-space-5) var(--gem-space-4);
+}
+
+.rp-demo__host {
+  border-radius: var(--gem-radius-md);
+}
+
+.rp-demo__target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gem-space-1);
+  width: 18rem;
+  max-width: 100%;
+  min-height: 10rem;
+  padding: var(--gem-space-4);
+  border-radius: var(--gem-radius-md);
+  background: linear-gradient(
+    145deg,
+    var(--gem-palette-primary-800) 0%,
+    var(--gem-palette-secondary-800) 50%,
+    var(--gem-palette-tertiary-500) 100%
+  );
+  color: var(--gem-palette-neutral-50);
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+}
+
+.rp-demo__target--sm {
+  width: 12rem;
+  min-height: 8rem;
+}
+
+.rp-demo__kicker {
+  margin: 0;
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.rp-demo__title {
+  margin: 0;
+  font-size: var(--gem-font-size-2xl);
+}
+
+.rp-demo__media {
+  width: 14rem;
+  max-width: 100%;
+}
+
+.rp-demo__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.rp-demo__glyph {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-shadow: 0 0 0.4rem currentColor;
+}
+
+.rp-demo__chip {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.12rem;
+  background: currentColor;
+  box-shadow: 0 0 0.35rem currentColor;
+}
+
+.rp-demo__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gem-space-3);
+  width: 20rem;
+  max-width: 100%;
+  padding: var(--gem-space-5);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg-subtle);
+  color: var(--gem-color-fg);
+}
+
+.rp-demo__body {
+  margin: 0;
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.rp-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.rp-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

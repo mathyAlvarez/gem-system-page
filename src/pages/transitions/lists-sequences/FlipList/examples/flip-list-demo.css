@@ -1,0 +1,97 @@
+.flip-list-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  max-width: 22rem;
+}
+
+.flip-list-demo--wide {
+  max-width: 28rem;
+}
+
+.flip-list-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.flip-list-demo__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flip-list-demo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gem-space-2);
+}
+
+.flip-list-demo__tile {
+  box-sizing: border-box;
+  display: block;
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  line-height: 1.35;
+  box-shadow: var(--gem-shadow-sm);
+}
+
+.flip-list-demo__sibling {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: var(--gem-space-3) var(--gem-space-4);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  color: var(--gem-color-fg-muted);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.4;
+}
+
+.flip-list-demo__scroll {
+  box-sizing: border-box;
+  max-height: 14rem;
+  overflow: auto;
+  padding-right: var(--gem-space-1);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+}
+
+.flip-list-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 4.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}
+
+.flip-list-demo__compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.flip-list-demo__compare-label {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  font-weight: 650;
+}

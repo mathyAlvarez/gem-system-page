@@ -1,0 +1,209 @@
+{
+  "header": {
+    "title": "Noise",
+    "description": "Photographic grain over the content, generated with an SVG filter (`feTurbulence`). `variant` sets the look: `grain` is a fine grain, `film` makes it drift like film stock and `static` is coarser TV snow. It shows by default; the layer is decorative and doesn't block clicks."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. `duration` only affects `film`. Change the surface to see how the grain reads on dark and light backgrounds.",
+    "cardTitle": "Grain",
+    "surface": "surface (demo)"
+  },
+  "stories": {
+    "base": {
+      "title": "Basic grain",
+      "description": "With the defaults (`variant=\"grain\"`, `trigger=\"always\"`, `intensity=\"md\"`) the grain covers the whole child. The root clips (`overflow: hidden`) and the layer inherits its `border-radius`, so the radius goes on the root.",
+      "texts": {
+        "title": "Film texture"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`grain` is a fine, still grain. `film` uses a slightly larger grain and drifts it in a loop. `static` is coarser and more opaque, but it's also still: it doesn't flicker like a TV."
+    },
+    "image": {
+      "title": "On an image",
+      "description": "Wraps a native `img` with the default `div`. `film` with `intensity=\"lg\"` gives it an analog-frame look.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "surfaces": {
+      "title": "On different surfaces",
+      "description": "The same grain on a dark, a mid and a light surface. The grain is gray around the mid-tone and the layer blends with the content (`--gemfx-noise-blend`, `overlay` by default), so it darkens and lightens at once and shows on all three. It only blends with what's inside the root, not with what's behind it."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` tints the grain: it multiplies the gray grain by that color (`.gemfx-noise__tint` in the filter). Any CSS color works; a token is better. Without a value, the default is near-white and the grain stays neutral."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` the grain shows on pointer hover or with keyboard focus on the root or inside (`:focus-visible`). With `click`, each click turns it on or off. It fades in briefly (`--gemfx-duration-fast`) and turns off without a transition.",
+      "texts": {
+        "hoverLabel": "Hover me",
+        "clickLabel": "Click me"
+      }
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "`intensity` sets the grain opacity: 70% of the value (`35%`, `55%` or `80%`) with `grain` and `film`, and 95% with `static`. Takes a token or a number between `0` and `1`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is the `film` drift cycle, in milliseconds; `grain` and `static` don't use it. Lower is jumpier. `delay` postpones the grain's appearance in every variant (and the `film` drift too); with `hover` and `click` it replays on each activation."
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, the effect is applied to the single child without adding a `div`. The grain layer is inserted inside that child. Void elements like `img` have nowhere to hold it, so it falls back to the wrapping `div`.",
+      "texts": {
+        "label": "Grain"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the `film` drift in place. `isDisabled` hides the grain and keeps the content interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onNoise` fires when the grain turns on (on pointer enter or keyboard focus with `hover`, on click with `click` or on mount with `always`) and `outNoise` when it turns off, with the reason in `event.reason`. Try reaching the button with Tab. The button still receives clicks.",
+      "texts": {
+        "body": "Hover the card to turn the grain on and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "title": "Fixed opacity"
+    },
+    "styled": {
+      "title": "CRT"
+    }
+  },
+  "apiLink": "See the full Noise API",
+  "api": {
+    "header": {
+      "title": "Noise API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `Noise`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for every variant, trigger and option.",
+      "link": "See Noise demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/noise` with its `noise.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the <code>HTMLAttributes&lt;HTMLElement&gt;</code> attributes (except <code>color</code>, which is its own prop) and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the <code>film</code> drift stops; the grain stays still and visible.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) keeps the drift. Only use it when essential.",
+        "decorative": "The layer and the <code>svg</code> have <code>aria-hidden</code> and <code>pointer-events: none</code>: they aren't announced and don't block clicks.",
+        "focus": "With <code>trigger=\"hover\"</code> the grain also shows with keyboard focus on the root or inside (<code>:focus-visible</code>), and <code>onNoise</code> and <code>outNoise</code> fire just like with the pointer. With <code>click</code> the root isn't focusable: the keyboard can't turn it on.",
+        "contrast": "The grain blends with the content (darkening and lightening it) and lowers text contrast a bit. With <code>intensity=\"lg\"</code> or <code>static</code>, check that the text stays readable."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex`, `isolation: isolate` and `overflow: hidden`.",
+        "variant": "Active variant. `film` animates the grain; `static` raises the opacity and switches `--gemfx-noise-blend` to `soft-light`.",
+        "trigger": "Active trigger, while the effect is enabled. Sets `cursor: pointer`.",
+        "on": "Added while the grain is on with `click`.",
+        "paused": "Added with `isPaused`. Pauses the drift with `animation-play-state`.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Hides the layer and removes the animation.",
+        "disabled": "Added with `isDisabled`. Sets `cursor: default`.",
+        "surface": "Wraps the child (`z-index: 1`). With `asChild`, the class goes on the child itself.",
+        "layer": "Decorative layer above the content (`aria-hidden`, `z-index: 2`, `pointer-events: none`). Inherits the `border-radius`, blends with `--gemfx-noise-blend` and fades in honoring `--gemfx-noise-delay`.",
+        "grain": "The `svg` with the noise filter. It's 136% of the host so the drift never leaves empty edges.",
+        "tint": "The filter's `feFlood` that tints the grain. Reads `--gemfx-noise-color` through `flood-color`. It has no `classNames` entry."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Intensity, duration and delay are written inline on every render, so they only change through the props. The color is inline only when you pass `color`; otherwise you can override it from a class, like the blend.",
+      "items": {
+        "intensity": "Base grain opacity. Set by `intensity`; default `55%`.",
+        "color": "Grain tint: it multiplies the filter's gray. Set by `color`; default `--gem-palette-neutral-0` (near-white, neutral grain).",
+        "duration": "`film` drift cycle. Set by `duration`; default `2400ms`.",
+        "delay": "Delay of the layer fade-in and the `film` drift. Set by `delay`; default `0ms`.",
+        "blend": "The layer's `mix-blend-mode` against the content. No prop; default `overlay`, and `soft-light` with `static`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables Noise reads as defaults. You can redefine them on the root with a class.",
+      "items": {
+        "intensity": "They only show up as the CSS default: the `intensity` prop always writes a literal percentage inline, so redefining these tokens changes nothing.",
+        "durationFast": "Duration of the grain fade-in. Without tokens, falls back to `200ms`.",
+        "easingStandard": "Timing function of the fade-in and the `film` drift.",
+        "neutral0": "Default `--gemfx-noise-color` (from gem-system, with a light gray fallback)."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content gets the grain and where the effect is mounted."
+      },
+      "appearance": { "title": "Appearance", "description": "Grain look, opacity and tint." },
+      "timing": { "title": "Timing", "description": "Drift cycle and delay, in milliseconds." },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it shows, how it pauses and how it turns off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles and ref." }
+    },
+    "items": {
+      "children": "Content under the grain: a card, an image or a panel.",
+      "asChild": "Applies the effect to the single child, without a wrapping `div`. With void elements (`img`, `input`) it falls back to the wrapping `div`.",
+      "variant": "`grain` fine grain, `film` grain that drifts in a loop, `static` coarser, more opaque snow.",
+      "intensity": "Grain opacity. Token or a number between `0` and `1`.",
+      "color": "Grain tint (multiplies the gray grain); a token is better. Without a value, near-white: neutral grain.",
+      "duration": "`film` drift cycle. Negative values are treated as `0`.",
+      "delay": "Delay before the grain appears. With `hover` and `click` it replays on each activation. It also delays the `film` drift.",
+      "trigger": "`always` always shows, `hover` on pointer hover or keyboard focus and `click` turns on and off with each click.",
+      "isActive": "Lets the grain show. When `false` it hides it and `outNoise` receives `inactive`.",
+      "isPaused": "Freezes the `film` drift.",
+      "isDisabled": "Hides the grain; the child stays interactive. `outNoise` receives `disabled`.",
+      "ignoreReducedMotion": "Keeps the drift even when the user prefers reduced motion. Only when essential.",
+      "onNoise": "Fires when the grain turns on: on mount with `always`, on pointer enter or keyboard focus with `hover` or on click with `click`.",
+      "outNoise": "Fires when it turns off: on pointer or focus leave, on a second click, when deactivated or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root`, `surface`, `layer` and `grain`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-noise-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

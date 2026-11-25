@@ -1,0 +1,108 @@
+.scramble-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.scramble-demo__item {
+  display: flex;
+  flex: 1 1 12rem;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.scramble-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+.scramble-demo__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gem-space-2);
+  min-height: 7rem;
+  padding: 2rem 1.5rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-primary-200);
+  text-align: center;
+}
+
+.scramble-demo__copy {
+  font-size: var(--gem-font-size-2xl);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.scramble-demo__copy--sm {
+  font-size: var(--gem-font-size-lg);
+}
+
+.scramble-demo__heading {
+  margin: 0;
+  color: var(--gem-palette-neutral-50);
+  font-size: var(--gem-font-size-3xl);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.scramble-demo__caption {
+  margin: 0;
+  color: var(--gem-palette-neutral-400);
+  font-size: var(--gem-font-size-sm);
+}
+
+.scramble-demo__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gem-space-1);
+}
+
+.scramble-demo__metric-value {
+  color: var(--gem-palette-neutral-50);
+  font-size: var(--gem-font-size-3xl);
+  font-weight: 700;
+}
+
+.scramble-demo__button {
+  min-width: 9rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--gem-palette-primary-400) 40%, transparent);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-palette-neutral-900);
+  color: var(--gem-palette-primary-200);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.scramble-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.scramble-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

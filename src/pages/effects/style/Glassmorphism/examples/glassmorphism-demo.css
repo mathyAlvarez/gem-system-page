@@ -1,0 +1,134 @@
+.glass-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.glass-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.glass-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+/* Glass needs something behind it: the scene paints the brand image under the pane. */
+.glass-demo__scene {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 12rem;
+  padding: 2.5rem 2rem;
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-palette-neutral-950);
+  color: var(--gem-palette-neutral-50);
+}
+
+.glass-demo__scene--compact {
+  min-height: 9rem;
+  padding: 1.75rem 1.25rem;
+}
+
+.glass-demo__scene-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.glass-demo__host {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--gem-radius-md);
+}
+
+.glass-demo__target {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-width: 10rem;
+  padding: var(--gem-space-4) var(--gem-space-5);
+  user-select: none;
+}
+
+.glass-demo__title {
+  margin: 0;
+  font-size: var(--gem-font-size-md);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.glass-demo__copy {
+  margin: 0;
+  color: color-mix(in srgb, var(--gem-palette-neutral-50) 78%, transparent);
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.45;
+}
+
+.glass-demo__frame {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--gem-radius-md);
+}
+
+.glass-demo__image {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Beats the library's `position: relative` on the root. */
+.gemfx-glassmorphism.glass-demo__overlay {
+  position: absolute;
+  inset: auto var(--gem-space-3) var(--gem-space-3);
+  border-radius: var(--gem-radius-sm);
+  color: var(--gem-palette-neutral-50);
+}
+
+.glass-demo__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: var(--gem-space-2) var(--gem-space-3);
+}
+
+.glass-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.glass-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

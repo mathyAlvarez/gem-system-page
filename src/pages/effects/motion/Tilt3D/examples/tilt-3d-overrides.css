@@ -1,0 +1,19 @@
+.gemfx-tilt3d.tilt-holo {
+  border-radius: var(--gem-radius-md);
+}
+
+.gemfx-tilt3d.tilt-holo .gemfx-tilt3d__glare {
+  background:
+    radial-gradient(
+      circle at var(--gemfx-tilt3d-glare-x) var(--gemfx-tilt3d-glare-y),
+      rgb(255 255 255 / 0.55) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      115deg,
+      var(--gem-palette-primary-300),
+      var(--gem-palette-secondary-300),
+      var(--gem-palette-tertiary-300)
+    );
+  mix-blend-mode: color-dodge;
+}

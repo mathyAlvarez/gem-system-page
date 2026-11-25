@@ -1,0 +1,355 @@
+{
+  "header": {
+    "title": "CrossFadeView",
+    "description": "Crossfade between two views (or any keyed substitute). Toggle `isSecond` to fade `first` out while `second` fades in — both slots stay stacked. For three or more views, pass `viewKey` plus `children`. `mode`: `sync` (overlap), `wait` (exit then enter), `pop-layout` (outgoing absolute). `keepState` keeps inactive panes mounted. `pagination` and `swipe` are Swiper-style."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combine mode, pagination, and swipe. Incoming uses `enter` timing; outgoing uses `exit`. With `pagination={3}` use Back / Next (`viewKey` mode).",
+    "first": "First",
+    "second": "Second",
+    "back": "Back",
+    "next": "Next",
+    "firstLabel": "Inbox",
+    "secondLabel": "Sent",
+    "firstCopy": "First view. Switch to Second to crossfade.",
+    "secondCopy": "Second view. The previous pane fades out underneath.",
+    "pageCopy": "Active view for {tab}. Use Back / Next or the dots."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Toggle `isSecond`. Both panes stay stacked; dots from `pagination` mark the active view.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "First view. Switch to Second to crossfade.",
+        "secondCopy": "Second view. The previous pane fades out underneath.",
+        "sibling": "Sibling below — the host sizes to the stacked panes while both are mounted."
+      }
+    },
+    "timing": {
+      "title": "Enter / exit timing",
+      "description": "`duration`, `delay`, and `easing` accept `{ enter, exit }`. Incoming uses enter; outgoing uses exit.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Slower enter with delay.",
+        "secondCopy": "Shorter exit."
+      }
+    },
+    "heights": {
+      "title": "Different heights",
+      "description": "Both slots stay mounted and share one grid cell, so the host is as tall as the larger view. Pair with AutoAnimateContainer if that height should tween.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "shortLabel": "Short",
+        "tallLabel": "Tall",
+        "shortCopy": "One line.",
+        "tallCopy": "Extra copy so the stacked host grows while both panes are mounted, then settles to this height when the outgoing unmounts.",
+        "sibling": "Sibling below — moves when the host height changes."
+      }
+    },
+    "viewKey": {
+      "title": "viewKey",
+      "description": "Three substitutes via `viewKey`. Pass `pagination` and `paginationIndex` so the dots follow the keyed view.",
+      "texts": {
+        "copy": "Active view for {tab}. Change the key to crossfade."
+      }
+    },
+    "modeWait": {
+      "title": "mode wait",
+      "description": "`mode=\"wait\"` finishes the outgoing fade before the incoming pane mounts and fades in.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Fully exits before the other enters.",
+        "secondCopy": "Enters only after exit finished."
+      }
+    },
+    "modePopLayout": {
+      "title": "mode pop-layout",
+      "description": "`mode=\"pop-layout\"` pulls the outgoing out of flow (`position: absolute`) so the host sizes to the incoming pane and sibling content below follows the active height immediately.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "shortLabel": "Short",
+        "tallLabel": "Tall",
+        "shortCopy": "One line.",
+        "tallCopy": "Extra copy — with pop-layout the host sizes to the incoming while the outgoing is absolute.",
+        "sibling": "Sibling below — follows the active height immediately."
+      }
+    },
+    "keepState": {
+      "title": "keepState",
+      "description": "`keepState` keeps visited panes mounted (`display: none`). Type in a field, switch tabs, return — the value survives. `onViewChange` logs below.",
+      "texts": {
+        "noteLabel": "Note for {tab}:",
+        "placeholder": "type here",
+        "changeLabel": "onViewChange"
+      }
+    },
+    "paginationOverlay": {
+      "title": "Pagination overlay",
+      "description": "`pagination.placement = \"inside-end\"` overlays the dots on the card, like Swiper.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Dots at the bottom, on top of the panel.",
+        "secondCopy": "Same overlay on the second view."
+      }
+    },
+    "swipe": {
+      "title": "swipe",
+      "description": "`swipe` — drag the card sideways; the pane follows the pointer, then crossfades on commit (or settles back below threshold). Pass `swipe.axis = \"y\"` for vertical.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Drag left to go to Sent.",
+        "secondCopy": "Drag right to go back."
+      }
+    },
+    "paginationTop": {
+      "title": "Pagination top",
+      "description": "`inside-start` pins the dots to the top edge of the pane.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Dots on top.",
+        "secondCopy": "Same placement on Sent."
+      }
+    },
+    "paginationColors": {
+      "title": "Pagination colors",
+      "description": "Customize with `color`, `activeColor`, `size`, and `gap`. Also overridable via CSS `--gemst-cross-fade-pagination-*`.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Dots with an info active color.",
+        "secondCopy": "Same tokens on Sent."
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onViewChange` fires when the active identity changes. `onCrossFade` / `outCrossFade` mark the start and end of the crossfade.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "First view.",
+        "secondCopy": "Second view.",
+        "empty": "No events yet"
+      }
+    },
+    "disabled": {
+      "title": "Disabled",
+      "description": "With `isDisabled` (or `prefers-reduced-motion: reduce`) the active slot snaps in with no overlap.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Snap with no overlap.",
+        "secondCopy": "Snap with no overlap."
+      }
+    },
+    "asChild": {
+      "title": "No wrapper (asChild)",
+      "description": "With `asChild`, host styles merge onto the `section`. Pass `first` / `second` as the panes — the child is only the host.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Pane inside the slotted section.",
+        "secondCopy": "Alternate pane, same host node."
+      }
+    },
+    "utilities": {
+      "title": "Utility classes",
+      "description": "Pass `utilities.css` helpers via `classNames`. This demo applies `gemst-relative` / `gemst-overflow-hidden` on `root` and `gemst-block` on `pane`.",
+      "texts": {
+        "first": "First",
+        "second": "Second",
+        "firstLabel": "Inbox",
+        "secondLabel": "Sent",
+        "firstCopy": "Root with overflow hidden.",
+        "secondCopy": "Pane as block."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "first": "First",
+      "second": "Second",
+      "firstLabel": "Inbox",
+      "secondLabel": "Sent",
+      "firstCopy": "Variables via Tailwind.",
+      "secondCopy": "Same surface on Sent."
+    },
+    "variant": {
+      "first": "First",
+      "second": "Second",
+      "firstLabel": "Inbox",
+      "secondLabel": "Sent",
+      "firstCopy": "Wrapper with cva.",
+      "secondCopy": "Same variant on Sent."
+    },
+    "styled": {
+      "first": "First",
+      "second": "Second",
+      "firstLabel": "Inbox",
+      "secondLabel": "Sent",
+      "firstCopy": "CSS override on card-shell.",
+      "secondCopy": "Same skin on Sent."
+    }
+  },
+  "apiLink": "See the full CrossFadeView API",
+  "api": {
+    "header": {
+      "title": "CrossFadeView API",
+      "description": "Props, inheritance, accessibility, CSS classes and variables, and exported types for `CrossFadeView`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples for slots, viewKey, modes, pagination, and swipe.",
+      "link": "See CrossFadeView demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import from `@gem-org/gemsitions/cross-fade-view` with its `cross-fade-view.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts <code>HTMLAttributes&lt;HTMLElement&gt;</code> and forwards them to the root <code>div</code>, or to the child with <code>asChild</code>. In slot mode with <code>asChild</code>, the child is only the host — panes replace its children. The component handles the end of <code>opacity</code> on each pane and then calls your handlers."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "presence": "This is a view swap: the control that changes <code>isSecond</code> / <code>viewKey</code> should reflect state. Do not convey information with the fade alone.",
+        "pagination": "With <code>onPagination</code>, dots are buttons. Without it, they are decorative (<code>span</code>) and swipe is ignored.",
+        "swipe": "<code>swipe</code> needs <code>onPagination</code> and a count ≥ 2. On touch, <code>touch-action</code> follows the axis. Do not make swipe the only way to change views.",
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> panes snap to the final state. The preference is read each render.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> keeps the animation and adds <code>gemst-ignore-reduced-motion</code>. Only when motion is essential.",
+        "keepState": "With <code>keepState</code>, inactive panes stay with <code>display: none</code>. They should not receive focus or be announced while hidden.",
+        "asChild": "With <code>asChild</code>, pick a host with the right semantics (<code>section</code>, <code>div</code>): that element is the crossfade container."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root (`div`, or the child with `asChild`). `display: grid` (or `block` in pop-layout).",
+        "pane": "View layer. Shares `grid-area: 1 / 1` and transitions `opacity`.",
+        "incoming": "Entering pane (`z-index: 1`, enter timing).",
+        "outgoing": "Leaving pane (`pointer-events: none`, exit timing).",
+        "in": "Visible pane (`opacity: 1`).",
+        "out": "Hidden pane (`opacity: 0`).",
+        "kept": "Inactive pane with `keepState` (`display: none`).",
+        "pagination": "Dot row (grid overlay).",
+        "dot": "Idle dot.",
+        "dotActive": "Active dot (scale and full opacity).",
+        "modePop": "pop-layout mode: outgoing absolute, host sizes to incoming.",
+        "playing": "Crossfade in progress (`will-change: opacity` on active panes).",
+        "disabled": "No opacity transition.",
+        "swiping": "Active drag (`cursor: grabbing`, swipe transform)."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "Written inline each render from the current phase (enter/exit) and swipe/pagination state.",
+      "items": {
+        "enterDuration": "Incoming duration. Default `300ms`.",
+        "exitDuration": "Outgoing duration. Default `300ms`.",
+        "enterDelay": "Incoming delay. Default `0ms`.",
+        "exitDelay": "Outgoing delay. Default `0ms`.",
+        "enterEasing": "Incoming easing. Default `standard`.",
+        "exitEasing": "Outgoing easing. Default `exit`.",
+        "paginationColor": "Idle dot color.",
+        "paginationActiveColor": "Active dot color.",
+        "paginationSize": "Dot size.",
+        "paginationGap": "Gap between dots."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global gemsitions variables used as CSS defaults.",
+      "items": {
+        "easingStandard": "Default for `--gemst-cross-fade-enter-easing`.",
+        "easingExit": "Default for `--gemst-cross-fade-exit-easing`."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": { "title": "Content", "description": "Slots, children, and host." },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Active identity, mode, pagination, and swipe."
+      },
+      "timing": { "title": "Timing", "description": "Incoming = enter; outgoing = exit." },
+      "state": { "title": "State", "description": "How motion is turned off." },
+      "events": {
+        "title": "Events",
+        "description": "View change, pagination, and crossfade cycle."
+      },
+      "styling": { "title": "Styling", "description": "Classes, inline styles, and ref." }
+    },
+    "items": {
+      "children": "Current view when `first` / `second` are omitted. Identity is `viewKey` or the child’s `key`. With `asChild` and slots, this is the host only.",
+      "first": "First / default view. Use with `second` and `isSecond`.",
+      "second": "Second / alternate view. Use with `first` and `isSecond`.",
+      "asChild": "Applies classes, styles, and ref to the single child (no extra wrapper). With slots, the child is the host and panes replace its children.",
+      "isSecond": "`false` (default) shows `first`; `true` shows `second`.",
+      "viewKey": "Stable identity for `children`. Required for a crossfade when the child has no `key`. Ignored when `first` / `second` are set.",
+      "mode": "`sync` overlaps enter/exit; `wait` finishes exit before mounting enter; `pop-layout` makes outgoing absolute so the host sizes to incoming.",
+      "keepState": "Keeps inactive panes mounted (`display: none`) so local state survives when returning.",
+      "unmountOnExit": "Skips the fade. Slot mode also unmounts the inactive pane.",
+      "pagination": "Swiper-style dots. Number = count, or an object with `placement`, `color`, `activeColor`, `size`, `gap`.",
+      "paginationIndex": "Active dot (0-based). Defaults to `1` when `isSecond`, a numeric `viewKey`, or `0`.",
+      "swipe": "`true` = horizontal axis + pagination count (or 2 in slots). Requires `onPagination` and count ≥ 2. Swipe left = next.",
+      "duration": "Duration. With `{ enter, exit }`, `enter` is incoming and `exit` is outgoing.",
+      "delay": "Wait before each fade. Accepts `{ enter, exit }`.",
+      "easing": "Token, timing function, or `{ enter, exit }`. Default enter `standard`, exit `exit`.",
+      "isDisabled": "Snaps to the active view with no interpolation.",
+      "ignoreReducedMotion": "Animates even when the user prefers reduced motion. Only if essential.",
+      "onPagination": "Dot pressed or swipe that commits a page. Update `isSecond` / `viewKey` here. Without this, dots are decorative and swipe is ignored.",
+      "onViewChange": "After the active identity changes (skips the first mount). Keys: `viewKey`, `first`/`second`, or the child key.",
+      "onCrossFade": "When the crossfade starts playing.",
+      "outCrossFade": "When the crossfade settles, motion is disabled, or the host unmounts.",
+      "className": "Extra class for the root.",
+      "classNames": "Classes by part: `root`, `pane`, `incoming`, `outgoing`, `pagination`, `dot`.",
+      "style": "Inline styles for the root. Combined with `--gemst-cross-fade-*`.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

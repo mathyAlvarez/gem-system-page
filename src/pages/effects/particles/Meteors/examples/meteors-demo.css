@@ -1,0 +1,101 @@
+.mt-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.mt-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-2);
+  min-width: 0;
+}
+
+.mt-demo__label {
+  margin: 0;
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+}
+
+/* The streaks are light, so the sky stays dark in both themes. */
+.mt-demo__host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22rem;
+  max-width: 100%;
+  min-height: 12rem;
+  border-radius: var(--gem-radius-lg);
+  background:
+    radial-gradient(
+      120% 90% at 20% 0%,
+      color-mix(in srgb, var(--gem-palette-primary-900) 55%, transparent),
+      transparent 60%
+    ),
+    var(--gem-palette-neutral-950);
+  color: var(--gem-palette-neutral-50);
+}
+
+.mt-demo__host--sm {
+  width: 14rem;
+  min-height: 9rem;
+}
+
+.mt-demo__copy {
+  margin: 0;
+  font-size: var(--gem-font-size-xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.mt-demo__media {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  border-radius: var(--gem-radius-lg);
+}
+
+.mt-demo__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mt-demo__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gem-space-3);
+  padding: var(--gem-space-5);
+}
+
+.mt-demo__body {
+  margin: 0;
+  font-size: var(--gem-font-size-sm);
+  line-height: 1.5;
+}
+
+.mt-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-5);
+}
+
+.mt-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 5.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}

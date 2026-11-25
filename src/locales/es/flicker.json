@@ -1,0 +1,224 @@
+{
+  "header": {
+    "title": "Flicker",
+    "description": "Parpadeo de tubo de neón: un halo de color detrás del contenido que se prende y se apaga a saltos. `variant` define el patrón (`neon`, `buzz`, `strobe`, `fault` o `text`), `edge` lo limita a un borde y `trigger` decide cuándo corre. Por defecto parpadea siempre."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Combiná las props y mirá el código que genera. Con `hover` o `click` el halo solo aparece mientras está activo.",
+    "label": "Abierto"
+  },
+  "stories": {
+    "sign": {
+      "title": "Cartel de neón",
+      "description": "Con los valores por defecto (`variant=\"neon\"`, `trigger=\"always\"`) el halo queda casi siempre encendido y cae tres veces por ciclo de `2800ms`. El contenido baja hasta un 42 % de opacidad en cada caída. El halo hereda el `border-radius` de la raíz, así que conviene ponérselo.",
+      "texts": {
+        "label": "Abierto 24 h"
+      }
+    },
+    "variants": {
+      "title": "Variantes",
+      "description": "`neon` cae de vez en cuando, `buzz` zumba con caídas cortas y casi no se apaga, `strobe` alterna encendido y apagado a mitades iguales (acá con `900ms`), `fault` pasa la mayor parte del ciclo apagado con chispazos (acá con `4200ms`) y `text` hace parpadear el `text-shadow` del texto en lugar del halo."
+    },
+    "edge": {
+      "title": "Borde",
+      "description": "Con `edge` distinto de `all`, el halo se vuelve una franja contra ese borde, aparece un tubo de `3px` y el contenido deja de atenuarse. `x` ilumina izquierda y derecha; `y`, arriba y abajo. `spread` define el grosor de la franja."
+    },
+    "text": {
+      "title": "Texto",
+      "description": "`variant=\"text\"` no dibuja halo ni tubo: tiñe el texto con `color` y anima su `text-shadow`. Funciona mejor con texto grande y en negrita.",
+      "texts": {
+        "label": "Neon bar"
+      }
+    },
+    "triggers": {
+      "title": "Disparadores",
+      "description": "Con `hover`, el halo aparece al pasar el puntero o al llegar con el teclado a la raíz o a algo de adentro (`:focus-visible`). Con `click`, cada clic lo prende o lo apaga. En reposo no hay halo y el contenido queda al 100 %.",
+      "texts": {
+        "hoverLabel": "Pasá el mouse",
+        "clickLabel": "Hacé clic"
+      }
+    },
+    "spread": {
+      "title": "Alcance",
+      "description": "`spread` es cuánto se extiende el halo más allá de la caja (o el grosor de la franja con `edge`). Un número son píxeles; un string se usa tal cual (`\"1rem\"`). Default `18`."
+    },
+    "duration": {
+      "title": "Duración",
+      "description": "`duration` es lo que dura un ciclo completo del patrón, en milisegundos. `delay` retrasa el inicio, útil para desfasar varios carteles."
+    },
+    "intensity": {
+      "title": "Intensidad",
+      "description": "`intensity` es la opacidad máxima del halo; el tubo usa un 55 % de ese valor. Acepta un token (`sm`, `md`, `lg`) o un número entre `0` y `1`."
+    },
+    "color": {
+      "title": "Color",
+      "description": "`color` acepta cualquier color CSS, incluidas variables. Sin `color`, usa `--gem-palette-primary-400`."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "Con `asChild` el efecto se monta sobre el hijo, sin `div` envolvente: sirve dentro de texto o de un enlace, donde un `div` no es válido. El hijo es raíz y superficie a la vez: con `text` recibe el color y el `text-shadow`, y con las demás variantes el halo queda detrás de su contenido (`z-index: -1`). El contenido no se atenúa con el parpadeo; solo parpadea el halo. Si el hijo no admite contenido (`img`, `input`), el efecto vuelve a envolverlo en un `div`.",
+      "texts": {
+        "label": "Bar abierto"
+      }
+    },
+    "state": {
+      "title": "Pausa y desactivado",
+      "description": "`isPaused` congela el parpadeo en el paso actual. `isDisabled` quita el halo y deja el contenido al 100 % e interactivo.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled",
+        "target": "Señal"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onFlicker` se dispara cuando el efecto se activa y `outFlicker` cuando se apaga, con el motivo en `event.reason`. El halo queda detrás y no bloquea los clics.",
+      "texts": {
+        "body": "Pasá el mouse por la tarjeta para encender el tubo y hacé clic en el botón.",
+        "action": "Sumar",
+        "clicks": "Clics: {count}",
+        "empty": "Sin eventos todavía"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "label": "Cerrado"
+    },
+    "styled": {
+      "label": "Neon bar"
+    }
+  },
+  "apiLink": "Ver la API completa de Flicker",
+  "api": {
+    "header": {
+      "title": "Flicker API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `Flicker`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de cada variante, borde, disparador y opción.",
+      "link": "Ver demos de Flicker"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemffects/flicker` con su `flicker.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> (salvo <code>color</code>, que es una prop propia) y los pasa al <code>div</code> raíz (o al hijo, con <code>asChild</code>). <code>onClick</code>, <code>onPointerEnter</code> y <code>onPointerLeave</code> se llaman antes que la lógica interna del efecto."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "photosensitivity": "Es un efecto de destellos. Para cumplir WCAG 2.3.1, evitá más de tres destellos por segundo: no bajes mucho <code>duration</code>, sobre todo con <code>strobe</code> y <code>fault</code>, y no lo uses en áreas grandes de la pantalla.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> se detiene la animación: el halo y el tubo quedan fijos con menos opacidad, el contenido al 100 % y <code>text</code> conserva una sombra estática mientras está encendido. Apagado (<code>isActive={false}</code>, <code>isDisabled</code> o un <code>hover</code> / <code>click</code> en reposo) queda sin brillo, igual que sin reduced motion. Estas reglas no usan <code>!important</code>: ninguna regla de animación les gana, pero una clase tuya más específica sí.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (o la clase <code>gemfx-ignore-reduced-motion</code> en un ancestro) fuerza el parpadeo. Usalo solo si es esencial.",
+        "decorative": "La capa del halo lleva <code>aria-hidden</code> y <code>pointer-events: none</code>: no se anuncia ni bloquea clics.",
+        "keyboard": "Con <code>trigger=\"hover\"</code> el halo también aparece con el foco de teclado en la raíz o adentro (<code>:focus-visible</code>); un clic de mouse que enfoca un botón no lo deja prendido. <code>onFlicker</code> solo se dispara con el puntero.",
+        "click": "Con <code>trigger=\"click\"</code> el toggle escucha el <code>click</code> de la raíz. Si el hijo es un <code>button</code>, también responde a Enter y Espacio."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz. `position: relative`, `inline-flex` e `isolation: isolate`. Es la que anima `--gemfx-flicker-gate`.",
+        "variant": "Variante activa. Cambia el `animation-name`.",
+        "edge": "Se agrega cuando `edge` no es `all`. Convierte el halo en franja, muestra el tubo y deja el contenido al 100 %.",
+        "edgeSide": "Borde activo.",
+        "trigger": "Se agrega con `trigger=\"hover\"` o `\"click\"` (no hay clase para `always`).",
+        "on": "Se agrega con `trigger=\"click\"` mientras está encendido.",
+        "paused": "Se agrega con `isPaused`. Pausa la animación.",
+        "inactive": "Se agrega con `isActive={false}` o `isDisabled`. Quita la animación, el halo y el tubo; con `text`, el color y el `text-shadow` (también con reduced motion).",
+        "disabled": "Se agrega con `isDisabled`.",
+        "layer": "Capa decorativa detrás del contenido (`aria-hidden`, `z-index: 0`; `-1` con `asChild`, para quedar debajo del contenido del hijo).",
+        "halo": "Resplandor desenfocado. Las versiones `-alt` solo existen con `edge=\"x\"` o `\"y\"`.",
+        "tube": "Tinte de tubo sobre toda la caja, o la línea de `3px` con `edge`. Las versiones `-alt` solo existen con `edge=\"x\"` o `\"y\"`.",
+        "surface": "Envuelve al hijo. Su opacidad sigue al parpadeo (salvo con `edge`) y con `text` recibe el color. Con `asChild` es el propio hijo: recibe el color de `text`, pero su opacidad no cambia."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "`duration`, `delay`, `spread` e `intensity` se escriben inline en cada render, así que solo se cambian con las props. `--gemfx-flicker-color` va inline solo si pasás `color`; si no, se puede pisar desde una clase, igual que `--gemfx-flicker-blur`.",
+      "items": {
+        "color": "Color del halo, el tubo y el texto. Lo define `color`; default `var(--gem-palette-primary-400)`.",
+        "blur": "Desenfoque del halo. No tiene prop: cambialo desde una clase. Default `1.1rem`.",
+        "duration": "Duración de un ciclo. La define `duration`; default `2800ms`.",
+        "delay": "Retraso. Lo define `delay`; default `0ms`.",
+        "spread": "Extensión del halo (o grosor de la franja con `edge`). La define `spread`; default `18px`.",
+        "intensity": "Opacidad máxima del halo, como porcentaje. La define `intensity`: `sm` 35 %, `md` 55 %, `lg` 80 %, o el número × 100.",
+        "gate": "Brillo instantáneo entre `0` y `1`, animado con `steps(1, end)`. Es una propiedad registrada: no la pises, leela si querés sincronizar otras partes con el parpadeo."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales que Flicker lee como valor por defecto.",
+      "items": {
+        "intensityMd": "Valor de reserva del CSS. En la práctica no se usa: `intensity` siempre escribe el porcentaje inline, así que redefinir el token no cambia nada.",
+        "palette": "Color por defecto de gem-system. Si no está cargado, cae a `#2ee6c6`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": {
+        "title": "Contenido",
+        "description": "Qué contenido se ilumina y dónde se monta el efecto."
+      },
+      "appearance": {
+        "title": "Apariencia",
+        "description": "Patrón, borde, color, alcance e intensidad del halo."
+      },
+      "timing": {
+        "title": "Tiempo",
+        "description": "Ciclo del patrón y retraso, en milisegundos."
+      },
+      "state": {
+        "title": "Disparo y estado",
+        "description": "Cuándo corre y cómo se pausa o se apaga."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "`event.reason` puede ser `always`, `hover`, `click`, `inactive`, `disabled` o `unmount`."
+      },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Contenido sobre el que se dibuja el halo.",
+      "asChild": "Aplica el efecto sobre el único hijo, sin `div` envolvente. El halo queda detrás del contenido del hijo, `text` y `edge` funcionan igual y el contenido no se atenúa. Si el hijo no admite contenido (`img`, `input`), vuelve a usar un `div`.",
+      "variant": "`neon` caídas ocasionales, `buzz` zumbido con caídas cortas, `strobe` encendido y apagado a mitades, `fault` casi siempre apagado con chispazos, `text` parpadeo del `text-shadow`.",
+      "edge": "`all` ilumina toda la caja. Un lado (`top`, `right`, `bottom`, `left`) o un eje (`x`, `y`) convierte el halo en franja y agrega un tubo de `3px`.",
+      "color": "Color del neón. Cualquier color CSS; sin valor usa `--gem-palette-primary-400`.",
+      "spread": "Extensión del halo. Un número son píxeles (los negativos se toman como `0`); un string se usa tal cual. Un string vacío vuelve a `18px`.",
+      "intensity": "Opacidad máxima del halo. Token o número entre `0` y `1`.",
+      "duration": "Duración de un ciclo del patrón. Los negativos se toman como `0`.",
+      "delay": "Retraso antes del primer ciclo.",
+      "trigger": "`always` parpadea siempre, `hover` mientras el puntero está encima o hay foco de teclado (`:focus-visible`) en la raíz o adentro, `click` alterna con cada clic.",
+      "isActive": "Permite el efecto. En `false` quita el halo y `outFlicker` recibe `inactive`.",
+      "isPaused": "Congela el parpadeo en el paso actual.",
+      "isDisabled": "Detiene el efecto; el hijo queda al 100 % e interactivo. `outFlicker` recibe `disabled`.",
+      "ignoreReducedMotion": "Parpadea aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onFlicker": "Se dispara cuando el efecto se activa: al montar con `always`, al entrar el puntero o al encender con clic.",
+      "outFlicker": "Se dispara cuando se apaga: al salir el puntero, al apagar con clic, al desactivarlo o al desmontar.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `surface`, `layer`, `halo`, `haloAlt`, `tube` y `tubeAlt`.",
+      "style": "Estilos inline de la raíz. Se combinan con las variables `--gemfx-flicker-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

@@ -44,7 +44,16 @@
     "wrap": {
       "title": "Salto de línea",
       "description": "Por defecto los hijos quedan en una sola línea y se achican o desbordan. `wrap` los pasa a la línea siguiente cuando no entran y `wrap=\"wrap-reverse\"` apila las líneas de abajo hacia arriba. Achicá la ventana para ver la diferencia.",
-      "tags": ["Diseño", "Tokens", "Layout", "Formularios", "Navegación", "Feedback", "Datos", "Accesibilidad"]
+      "tags": [
+        "Diseño",
+        "Tokens",
+        "Layout",
+        "Formularios",
+        "Navegación",
+        "Feedback",
+        "Datos",
+        "Accesibilidad"
+      ]
     },
     "justify": {
       "title": "Justify",

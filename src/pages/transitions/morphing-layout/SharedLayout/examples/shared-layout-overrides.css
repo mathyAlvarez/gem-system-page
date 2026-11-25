@@ -1,0 +1,23 @@
+.gemst-shared-layout.card-shell {
+  --gemst-shared-layout-duration: 380ms;
+  --gemst-shared-layout-easing: var(--gemst-easing-emphasized, cubic-bezier(0.2, 0, 0, 1));
+  --gemst-shared-layout-z: 2;
+}
+
+.gemst-shared-layout.card-shell .gemst-shared-layout__surface--collapsed .shared-layout-demo__tile,
+.gemst-shared-layout.card-shell .shared-layout-demo__tile {
+  border: 1px solid var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}
+
+.gemst-shared-layout.card-shell .shared-layout-demo__detail {
+  border: 1px solid var(--gem-color-info-border);
+  background: var(--gem-color-info-soft);
+  color: var(--gem-color-info-text);
+}
+
+.gemst-shared-layout.card-shell .shared-layout-demo__detail p {
+  color: inherit;
+  opacity: 0.85;
+}

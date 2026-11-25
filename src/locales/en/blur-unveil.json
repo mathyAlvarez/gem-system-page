@@ -1,0 +1,212 @@
+{
+  "header": {
+    "title": "BlurUnveil",
+    "description": "Goes from blurred to sharp (or the other way), with a slight zoom. `variant` sets the pattern (`in`, `out` or `pulse`) and `trigger` when it runs: by default (`always`) it plays once on mount. Meant for loading images or content being revealed."
+  },
+  "replay": "Replay",
+  "playground": {
+    "title": "Playground",
+    "description": "Combine the props and see the generated code. With `trigger=\"always\"` the animation runs only once: use Replay to see it again. With `pulse`, raise `duration` (it's the length of each cycle).",
+    "alt": "gem-org logo"
+  },
+  "stories": {
+    "image": {
+      "title": "On an image",
+      "description": "With the defaults (`variant=\"in\"`, `trigger=\"always\"`) the image starts blurred and slightly enlarged, and becomes sharp in `700ms`. It only runs on mount. The root clips (`overflow: hidden`), so it carries the `border-radius`.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "`in` goes from blurred to sharp, `out` from sharp to blurred and `pulse` loops between the two."
+    },
+    "triggers": {
+      "title": "Triggers",
+      "description": "With `hover` and `click`, `in` stays blurred at rest and turns sharp on hover or click. With `hover`, keyboard focus (on the root or on a control inside) sharpens it too. `always` plays once on mount."
+    },
+    "spoiler": {
+      "title": "Spoiler",
+      "description": "`trigger=\"click\"` with `scale={1}` works to hide content until the person chooses to see it. Click the card to reveal it and again to hide it. With `tabIndex={0}` the root is focusable: tab to it and toggle with Enter or Space.",
+      "texts": {
+        "title": "Season finale",
+        "body": "The hero was the villain since the very first episode."
+      }
+    },
+    "blur": {
+      "title": "Blur",
+      "description": "`blur` sets the peak blur and replaces the one from `intensity`. A number is pixels; a string is used as is (`\"1.5rem\"`). Hover to sharpen each one."
+    },
+    "scale": {
+      "title": "Scale",
+      "description": "`scale` is the zoom while blurred; it goes back to `1` when sharp. With `scale={1}` the size doesn't change. Values below `1` are treated as `1`."
+    },
+    "duration": {
+      "title": "Duration",
+      "description": "`duration` is how long it takes to sharpen (or the full cycle, with `pulse`). `delay` postpones the start."
+    },
+    "intensity": {
+      "title": "Intensity",
+      "description": "When `blur` and `scale` are omitted, `intensity` sets them: `sm` 8px and 1.02, `md` 18px and 1.06, `lg` 32px and 1.1. It takes a token or a number between `0` and `1`. Here with `hover` to show the resting blur."
+    },
+    "asChild": {
+      "title": "asChild",
+      "description": "With `asChild`, the effect is applied to the child without a wrapping `div`. Here, straight on an `img` with `trigger=\"hover\"` and `scale={1}`. There's no root to clip, so the blur shows a bit past the edges: use the default `div` if you want it clipped.",
+      "texts": {
+        "alt": "gem-org logo"
+      }
+    },
+    "state": {
+      "title": "Paused and disabled",
+      "description": "`isPaused` freezes the blur and scale where they are, for any variant and trigger: the `pulse` beat, the `always` entrance or a `hover` or `click` transition halfway through. When unpaused it continues from there. `isDisabled` keeps the content sharp and interactive.",
+      "texts": {
+        "pausedLabel": "isPaused",
+        "disabledLabel": "isDisabled"
+      }
+    },
+    "callbacks": {
+      "title": "Events",
+      "description": "`onBlurUnveil` fires when the effect turns on and `outBlurUnveil` when it turns off, with the cause in `event.reason`. The button still gets clicks even while blurred.",
+      "texts": {
+        "body": "Hover over the card to see it sharp and click the button.",
+        "action": "Add",
+        "clicks": "Clicks: {count}",
+        "empty": "No events yet"
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "alt": "gem-org logo with a border on reveal"
+    },
+    "styled": {
+      "alt": "gem-org logo hidden as a spoiler",
+      "hint": "Click to see"
+    }
+  },
+  "apiLink": "See the full BlurUnveil API",
+  "api": {
+    "header": {
+      "title": "BlurUnveil API",
+      "description": "Reference for the props, inheritance, accessibility, CSS classes and variables, and exported types of `BlurUnveil`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground and examples of each variant, trigger and option.",
+      "link": "See BlurUnveil demos"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Import it from `@gem-org/gemffects/blur-unveil` with its `blur-unveil.css`, or from the root if you already load `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "class": "Class",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Inheritance",
+      "body": "Accepts the attributes of <code>HTMLAttributes&lt;HTMLElement&gt;</code> and passes them to the root <code>div</code> (or to the child, with <code>asChild</code>). <code>onClick</code>, <code>onKeyDown</code>, <code>onPointerEnter</code>, <code>onPointerLeave</code>, <code>onFocus</code> and <code>onBlur</code> run before the effect's internal logic."
+    },
+    "a11y": {
+      "title": "Accessibility",
+      "items": {
+        "reducedMotion": "With <code>prefers-reduced-motion: reduce</code> the content stays sharp and at scale <code>1</code> for every variant and trigger: the animations, the transitions and the resting blur are removed.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> (or the <code>gemfx-ignore-reduced-motion</code> class on an ancestor) forces the motion. Only use it if it's essential.",
+        "hidden": "The blur is visual only: the content stays in the DOM and screen readers read it. Don't use it as the only way to hide sensitive information.",
+        "keyboard": "With <code>trigger=\"hover\"</code>, keyboard focus (<code>:focus-visible</code> on the root or inside) counts as hover: the content sharpens and <code>onBlurUnveil</code> and <code>outBlurUnveil</code> fire. A mouse click that focuses a button doesn't keep it sharp.",
+        "click": "With <code>trigger=\"click\"</code> the toggle listens to the root's <code>click</code>, so a <code>button</code> inside toggles with Enter and Space. If the root is focusable (<code>tabIndex={0}</code>, as in the spoiler), Enter and Space on it toggle too.",
+        "performance": "<code>filter: blur()</code> is expensive on large elements. Avoid many <code>pulse</code> instances at once."
+      }
+    },
+    "cssClasses": {
+      "title": "CSS classes",
+      "items": {
+        "root": "Root. `position: relative`, `inline-flex`, `isolation: isolate` and `overflow: hidden` to clip the zoom and the blur.",
+        "variant": "Active variant.",
+        "trigger": "Active trigger. With `hover` and `click`, `in` stays blurred until `--on` appears.",
+        "on": "Added while active: with the pointer or keyboard focus on it (`hover`) or toggled on (`click`).",
+        "paused": "Added with `isPaused`. Pauses the `always` and `pulse` animations. With `hover` and `click`, the component pins the current blur and scale inline for as long as it's paused.",
+        "inactive": "Added with `isActive={false}` or `isDisabled`. Keeps the surface sharp and at scale `1`.",
+        "disabled": "Added with `isDisabled`.",
+        "surface": "Wraps the child. It gets the `filter: blur()` and the `transform: scale()`. With `asChild` it's the child itself."
+      }
+    },
+    "cssVariables": {
+      "title": "CSS variables",
+      "description": "All of them are written inline on the root on every render, so a class can't override them: tune them with the props. The curves can be changed through the tokens.",
+      "items": {
+        "duration": "Transition length (or `pulse` cycle). Set by `duration`; default `700ms`.",
+        "delay": "Delay. Set by `delay`; default `0ms`.",
+        "blur": "Peak blur. Comes from `blur` or `intensity` (`18px` by default).",
+        "scale": "Scale while blurred. Comes from `scale` or `intensity` (`1.06` by default)."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Global variables BlurUnveil reads as defaults. They can be redefined on the root with a class.",
+      "items": {
+        "easingEmphasized": "Curve for `in`, `out` and the `hover` and `click` transitions.",
+        "easingStandard": "Curve for the `pulse` cycle."
+      }
+    },
+    "types": {
+      "title": "Exported types"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "All props are optional.",
+    "groups": {
+      "content": {
+        "title": "Content",
+        "description": "Which content blurs and where the effect is mounted."
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Pattern, blur and scale."
+      },
+      "timing": {
+        "title": "Timing",
+        "description": "Duration (or `pulse` cycle) and delay, in milliseconds."
+      },
+      "state": {
+        "title": "Trigger and state",
+        "description": "When it runs and how it's paused or turned off."
+      },
+      "events": {
+        "title": "Events",
+        "description": "`event.reason` can be `always`, `hover`, `click`, `inactive`, `disabled` or `unmount`."
+      },
+      "styling": {
+        "title": "Styling",
+        "description": "Classes, inline styles and ref."
+      }
+    },
+    "items": {
+      "children": "Content being revealed, typically an image.",
+      "asChild": "Applies the effect to the only child, without a wrapping `div`. It blurs the child itself, so the blur and zoom aren't clipped. It injects no layers, so it works with void elements (`img`): the element itself becomes the root.",
+      "variant": "`in` from blurred to sharp, `out` from sharp to blurred, `pulse` loops between them.",
+      "blur": "Peak blur. A number is pixels (negative values are treated as `0`); a string is used as is. When omitted, `intensity` sets it: `8`, `18` or `32` px.",
+      "scale": "Scale while blurred. When omitted, `intensity` sets it: `1.02`, `1.06` or `1.1`. Minimum `1`.",
+      "intensity": "Sets `blur` and `scale` when missing. A token or a number between `0` and `1`.",
+      "duration": "Transition length, or full cycle with `pulse`. Negative values are treated as `0`.",
+      "delay": "Delay before it starts.",
+      "trigger": "`always` plays once on mount (`pulse` loops), `hover` while the pointer or keyboard focus is on it, `click` toggles on each click (or with Enter and Space when the root has focus).",
+      "isActive": "Allows the effect. With `false` the content stays sharp and `outBlurUnveil` gets `inactive`.",
+      "isPaused": "Freezes the current blur and scale for any variant, also mid-transition. While paused, clicks don't toggle with `trigger=\"click\"`.",
+      "isDisabled": "Stops the effect; the child stays sharp and interactive. `outBlurUnveil` gets `disabled`.",
+      "ignoreReducedMotion": "Animates even if the user prefers reduced motion. Only if essential.",
+      "onBlurUnveil": "Fires when the effect turns on: on pointer or keyboard focus enter, when toggled on by click or keyboard, or on mount with `always`.",
+      "outBlurUnveil": "Fires when it turns off: on pointer or focus leave, when toggled off by click or keyboard, on disable or on unmount.",
+      "className": "Extra class for the root.",
+      "classNames": "Per-part classes: `root` and `surface`.",
+      "style": "Inline styles for the root. Merged with the `--gemfx-blur-unveil-*` variables.",
+      "ref": "Ref to the root (the `div`, or the child with `asChild`)."
+    }
+  }
+}

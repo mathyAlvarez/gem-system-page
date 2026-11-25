@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+﻿import type { ReactNode } from "react";
 import { Button } from "@gem-org/gem-system";
 import { ArrowRight } from "@gem-org/gem-system/icons";
 import { useTranslation } from "react-i18next";
@@ -27,7 +27,11 @@ export function StyleChangesSection({ tailwind, cva, cssVariables }: StyleChange
         {cssVariables}
       </DocsSection>
       <div>
-        <Button variant="link" rightIcon={<ArrowRight size="sm" />} onClick={() => navigate("/override-styles")}>
+        <Button
+          variant="link"
+          rightIcon={<ArrowRight size="sm" />}
+          onClick={() => navigate("/system/override-styles")}
+        >
           {t("styleChanges.guide")}
         </Button>
       </div>

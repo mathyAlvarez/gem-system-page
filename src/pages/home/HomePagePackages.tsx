@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+﻿import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Button, Typography } from "@gem-org/gem-system";
 import { BorderBeam } from "@gem-org/gemffects";
@@ -10,19 +10,19 @@ const packages = [
     id: "system",
     name: "@gem-org/gem-system",
     title: "Gem System",
-    detailTo: "/getting-started",
+    detailTo: "/system/getting-started",
   },
   {
     id: "effects",
     name: "@gem-org/gemffects",
     title: "Gemffects",
-    detailTo: import.meta.env.VITE_GEMFFECTS_PAGE,
+    detailTo: "/effects/getting-started",
   },
   {
     id: "motions",
     name: "@gem-org/gemsitions",
     title: "Gemsitions",
-    detailTo: import.meta.env.VITE_GEMSITIONS_PAGE,
+    detailTo: "/transitions/getting-started",
   },
 ] as const;
 

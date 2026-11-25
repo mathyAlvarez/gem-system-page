@@ -145,8 +145,16 @@
         "choose": "Elegir",
         "plans": [
           { "name": "Básico", "price": "0 €", "text": "Para empezar solo." },
-          { "name": "Equipo", "price": "12 € / mes", "text": "Hasta 10 personas y espacios compartidos." },
-          { "name": "Empresa", "price": "30 € / mes", "text": "Permisos avanzados y soporte dedicado." }
+          {
+            "name": "Equipo",
+            "price": "12 € / mes",
+            "text": "Hasta 10 personas y espacios compartidos."
+          },
+          {
+            "name": "Empresa",
+            "price": "30 € / mes",
+            "text": "Permisos avanzados y soporte dedicado."
+          }
         ]
       }
     }

@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "Getting started",
+    "description": "Install Gemffects, load the styles and wrap your UI with visual effects."
+  },
+  "peers": {
+    "title": "Peers",
+    "body": "React 19. @gem-org/gem-system is optional: when installed, effects use its color tokens (--gem-*); otherwise they fall back to neutral values."
+  },
+  "install": {
+    "title": "Installation"
+  },
+  "usage": {
+    "title": "Basic usage",
+    "description": "Each effect wraps its child. By default it renders a wrapping `div`, and every prop is optional.",
+    "save": "Save"
+  },
+  "bootstrap": {
+    "title": "Bootstrap",
+    "description": "The quickest way: import styles.css once in your entry point and use the effects from the barrel.",
+    "fullLabel": "Full import",
+    "partial": {
+      "title": "Import only what you need",
+      "description": "Each effect ships as its own subpath (kebab-case, for example <code>@gem-org/gemffects/border-beam</code>) with a matching stylesheet (<code>border-beam.css</code>). That way the bundle only includes the JS and CSS of the effects you actually use.",
+      "label": "Partial import",
+      "notesTitle": "Keep in mind:",
+      "notes": {
+        "tokens": "Import <code>tokens.css</code> once: it defines the <code>--gemfx-*</code> duration, easing and intensity variables.",
+        "particles": "<code>ParticleBurst</code>, <code>ParticleRain</code> and <code>Rip</code> also need <code>particles.css</code>.",
+        "aliases": "Two stylesheets have aliases: <code>holo-foil.css</code> points to <code>holofoil.css</code> and <code>tilt-3d.css</code> to <code>tilt3d.css</code>.",
+        "single": "Pick one path: <code>styles.css</code> already includes every stylesheet, so don't mix it with individual imports."
+      }
+    }
+  },
+  "asChild": {
+    "title": "asChild",
+    "description": "With `asChild` the effect skips the wrapping `div` and merges its classes, variables and listeners onto the single child. Useful inside Flex or Grid, or on a real `button`. The child must be exactly one React element."
+  },
+  "tokens": {
+    "title": "Motion tokens",
+    "description": "Gemffects owns duration, easing and intensity. Palette, type, spacing and radius come from the host app (--gem-*).",
+    "intensity": "`intensity` accepts a token (`sm`, `md` or `lg`) or a number between `0` and `1`. The tokens map to 35%, 55% and 80%."
+  },
+  "a11y": {
+    "title": "Reduced motion and touch",
+    "description": "Effects are meant to decorate, not to convey information.",
+    "items": {
+      "reducedMotion": "Every effect respects <code>prefers-reduced-motion: reduce</code>. Use <code>ignoreReducedMotion</code> only when motion is essential to the experience.",
+      "decorative": "Effect layers (halos, particles, waves) are <code>aria-hidden</code> and the child stays interactive.",
+      "touchPointer": "Pointer-tracking effects (<code>Tilt3D</code>, <code>Magnetic</code>, <code>Spotlight</code>, <code>HoloFoil</code>, <code>Zoom</code>) ignore touch by default (<code>disabledOnTouch</code> is <code>true</code>).",
+      "touchGesture": "Gesture and tap effects (<code>Ripple</code>, <code>Flash</code>, <code>ParticleBurst</code>, <code>ParticleRain</code>, <code>Rip</code>, <code>RipZone</code>) work on touch by default (<code>disabledOnTouch</code> is <code>false</code>)."
+    }
+  },
+  "code": {
+    "anyEffect": "any effect",
+    "particles": "only for ParticleBurst, ParticleRain and Rip",
+    "cssVariables": "also available as CSS variables"
+  }
+}

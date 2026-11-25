@@ -1,0 +1,265 @@
+{
+  "header": {
+    "title": "FlipList",
+    "description": "FLIP para reordenar y filtrar listas o grillas. Cada hijo necesita un `key` estable: al mezclar el orden se traduce desde el rect anterior, y al sacar un key se hace fade out en el lugar mientras los vecinos llenan el hueco. Cambiá `staggerKey` para forzar un enter cascade completo. `maintainScroll` restaura el scroll parent más cercano. Usá hosts block / flex / CSS grid (`div`, `ul`/`li`, cards) — no `table` / `tr` (el exit usa `position: absolute`)."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Shuffle y Reverse reordenan con FLIP. A–L / M–Z filtran por nombre (demo; no son props). Moves usan enter; los filtrados usan exit.",
+    "shuffle": "Shuffle",
+    "reverse": "Reverse",
+    "all": "All",
+    "early": "A–L",
+    "late": "M–Z",
+    "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+  },
+  "stories": {
+    "base": {
+      "title": "Base",
+      "description": "Shuffle y Reverse reordenan con FLIP. A–L / M–Z son un filtro alfabético de demo en M — FlipList solo recibe menos children.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    },
+    "grid": {
+      "title": "Grid",
+      "description": "Mismo FLIP en una grilla CSS de dos columnas — no un `table` HTML. Los ítems se mueven en ambos ejes al cambiar de celda.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    },
+    "timing": {
+      "title": "Tiempos de enter y exit",
+      "description": "Separá `duration`, `delay` y `staggerDelay`. Los moves usan enter; los filtrados usan exit.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    },
+    "axisY": {
+      "title": "axis y",
+      "description": "`axis=\"y\"` invierte solo el delta vertical — alcanza para una lista apilada.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    },
+    "staggerKey": {
+      "title": "staggerKey",
+      "description": "Cambiar `staggerKey` fuerza un enter cascade completo (con `staggerDelay`) en vez de un move FLIP. Shuffle sigue moviendo con FLIP; Restagger mantiene los mismos keys y solo sube la key.",
+      "texts": {
+        "shuffle": "Shuffle (FLIP)",
+        "restagger": "Restagger (staggerKey)"
+      }
+    },
+    "maintainScroll": {
+      "title": "maintainScroll",
+      "description": "Scrolleá la caja y filtrá con A–L / M–Z. Con `maintainScroll`, el scroll parent conserva el offset y el viewport no salta cuando salen ítems.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z"
+      }
+    },
+    "callbacks": {
+      "title": "Eventos",
+      "description": "`onFlip` / `outFlip` marcan el inicio y el fin del ciclo FLIP o de filtro.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "empty": "Sin eventos todavía"
+      }
+    },
+    "disabled": {
+      "title": "Desactivado",
+      "description": "Con `isDisabled` el nuevo orden salta sin interpolar.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    },
+    "asChild": {
+      "title": "Sin contenedor (asChild)",
+      "description": "Con `asChild`, los estilos de la lista van al `ul`. Cada `li` es el ítem FLIP.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    },
+    "utilities": {
+      "title": "Clases utilitarias",
+      "description": "Las clases de `utilities.css` se pasan por `classNames`. Acá `gemst-flex` en `root` y `gemst-relative` en `item`.",
+      "texts": {
+        "shuffle": "Shuffle",
+        "reverse": "Reverse",
+        "all": "All",
+        "early": "A–L",
+        "late": "M–Z",
+        "sibling": "Hermano abajo — sube cuando los filtrados salen del flow."
+      }
+    }
+  },
+  "styles": {
+    "tailwind": {
+      "shuffle": "Shuffle",
+      "reverse": "Reverse",
+      "all": "All",
+      "early": "A–L",
+      "late": "M–Z"
+    },
+    "variant": {
+      "shuffle": "Shuffle",
+      "reverse": "Reverse",
+      "all": "All",
+      "early": "A–L",
+      "late": "M–Z"
+    },
+    "styled": {
+      "shuffle": "Shuffle",
+      "reverse": "Reverse",
+      "all": "All",
+      "early": "A–L",
+      "late": "M–Z"
+    }
+  },
+  "apiLink": "Ver la API completa de FlipList",
+  "api": {
+    "header": {
+      "title": "FlipList API",
+      "description": "Referencia de props, herencia, accesibilidad, clases y variables CSS y tipos exportados de `FlipList`."
+    },
+    "demos": {
+      "title": "Demos",
+      "description": "Playground y ejemplos de reorder, grid, staggerKey y maintainScroll.",
+      "link": "Ver demos de FlipList"
+    },
+    "import": {
+      "title": "Import",
+      "description": "Importalo desde `@gem-org/gemsitions/flip-list` con su `flip-list.css`, o desde la raíz si ya cargás `styles.css`."
+    },
+    "columns": {
+      "prop": "Prop",
+      "type": "Tipo",
+      "default": "Default",
+      "description": "Descripción",
+      "class": "Clase",
+      "variable": "Variable",
+      "token": "Token"
+    },
+    "inheritance": {
+      "title": "Herencia",
+      "body": "Acepta los atributos de <code>HTMLAttributes&lt;HTMLElement&gt;</code> y los pasa al <code>div</code> raíz, o al hijo con <code>asChild</code>. Cada child con <code>key</code> se wrappea como ítem FLIP. No uses <code>table</code> / <code>tr</code>: el exit pone <code>position: absolute</code>."
+    },
+    "a11y": {
+      "title": "Accesibilidad",
+      "items": {
+        "keys": "Cada ítem necesita un <code>key</code> estable. Sin eso el FLIP no puede matchear identidad al reordenar o filtrar.",
+        "host": "Usá hosts block, flex o CSS grid. Evitá <code>table</code> / <code>tr</code>: el exit absoluto rompe el layout de tabla.",
+        "filter": "El filtrado es del consumidor: FlipList solo anima los children que recibe. El control que filtra debería reflejar el estado.",
+        "reducedMotion": "Con <code>prefers-reduced-motion: reduce</code> el orden salta al final sin interpolar.",
+        "ignoreReducedMotion": "<code>ignoreReducedMotion</code> mantiene la animación y agrega <code>gemst-ignore-reduced-motion</code>. Solo si el movimiento es esencial.",
+        "asChild": "Con <code>asChild</code>, elegí un host semántico (<code>ul</code>, <code>ol</code>, <code>div</code>): ese elemento es el contenedor FLIP."
+      }
+    },
+    "cssClasses": {
+      "title": "Clases CSS",
+      "items": {
+        "root": "Raíz (`div` o el hijo con `asChild`). `position: relative`.",
+        "item": "Wrapper de cada child con `key`.",
+        "enter": "Ítem entrando (opacity + distance).",
+        "exit": "Ítem saliendo (`position: absolute`).",
+        "in": "Estado final del enter.",
+        "out": "Estado final del exit.",
+        "playing": "Motion en curso en el ítem.",
+        "idle": "Sin ciclo activo.",
+        "disabled": "Sin transición."
+      }
+    },
+    "cssVariables": {
+      "title": "Variables CSS",
+      "description": "Se escriben en el host según timing y distance.",
+      "items": {
+        "moveDuration": "Duración de los moves FLIP. Default `300ms`.",
+        "enterDuration": "Duración del enter. Default `300ms`.",
+        "exitDuration": "Duración del exit. Default `300ms`.",
+        "delay": "Retraso base. Default `0ms`.",
+        "easing": "Curva de move / enter. Default `emphasized`.",
+        "exitEasing": "Curva del exit. Default `exit`.",
+        "distance": "Offset Y de enter / exit. Default `8px`."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "description": "Variables globales de gemsitions que el CSS usa como valor por defecto.",
+      "items": {
+        "easingEmphasized": "Default de `--gemst-flip-easing`.",
+        "easingExit": "Default de `--gemst-flip-exit-easing`."
+      }
+    },
+    "types": {
+      "title": "Tipos exportados"
+    }
+  },
+  "props": {
+    "title": "Props",
+    "description": "Todas las props son opcionales.",
+    "groups": {
+      "content": { "title": "Contenido", "description": "Children y host." },
+      "appearance": { "title": "Apariencia", "description": "Eje, distance, staggerKey y scroll." },
+      "timing": { "title": "Tiempo", "description": "Moves = enter; filtrados = exit." },
+      "state": { "title": "Estado", "description": "Cómo se apaga la animación." },
+      "events": { "title": "Eventos", "description": "Ciclo FLIP / filtro." },
+      "styling": { "title": "Estilos", "description": "Clases, estilos inline y ref." }
+    },
+    "items": {
+      "children": "Ítems de lista o grilla. `key`s estables obligatorios. Block / flex / CSS grid — no `table` / `tr`.",
+      "asChild": "Aplica clases, estilos y ref al único hijo. Ese hijo es el host FLIP.",
+      "axis": "Ejes que se invierten. `both` (default) para grillas; `y` alcanza para lista vertical.",
+      "distance": "Offset Y de enter / exit en px (opacity + `translate3d`). Default `8`.",
+      "staggerKey": "Al cambiar, cada ítem restante hace enter stagger completo (no un move FLIP).",
+      "maintainScroll": "Restaura el scroll parent más cercano (o window) después del layout.",
+      "unmountOnExit": "Tira los filtrados al toque (salta el fade de exit).",
+      "duration": "Duración. Con `{ enter, exit }`, `enter` también mueve; `exit` filtra.",
+      "delay": "Espera antes del motion. Acepta `{ enter, exit }`.",
+      "staggerDelay": "Extra entre ítems que entran o salen. Los moves van juntos salvo `staggerKey`.",
+      "easing": "Token, timing function o `{ enter, exit }`. Move usa enter. Default `emphasized`.",
+      "isDisabled": "Salta al nuevo orden sin interpolar.",
+      "ignoreReducedMotion": "Anima aunque el usuario prefiera menos movimiento. Solo si es esencial.",
+      "onFlip": "Cuando un ciclo FLIP / filtro empieza a reproducirse.",
+      "outFlip": "Cuando termina, se desactiva el motion o se desmonta la lista.",
+      "className": "Clase extra para la raíz.",
+      "classNames": "Clases por parte: `root`, `item`.",
+      "style": "Estilos inline de la raíz. Se combinan con `--gemst-flip-*`.",
+      "ref": "Ref a la raíz (el `div`, o el hijo con `asChild`)."
+    }
+  }
+}

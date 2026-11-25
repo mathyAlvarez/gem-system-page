@@ -1,0 +1,30 @@
+.gemfx-scramble-text.scramble-terminal {
+  padding: var(--gem-space-2) var(--gem-space-3);
+  border-left: 3px solid var(--gem-palette-success-300);
+  background: color-mix(in srgb, var(--gem-palette-success-300) 8%, transparent);
+  color: var(--gem-palette-success-300);
+  font-size: var(--gem-font-size-lg);
+}
+
+.gemfx-scramble-text.scramble-terminal .gemfx-scramble-text__glyphs::before {
+  content: "> ";
+  opacity: 0.6;
+}
+
+.gemfx-scramble-text.scramble-terminal .gemfx-scramble-text__glyphs::after {
+  content: "_";
+  margin-inline-start: 0.1em;
+}
+
+@keyframes scramble-terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* The library has no CSS animation here; the guard keeps reduced motion still. */
+@media (prefers-reduced-motion: no-preference) {
+  .gemfx-scramble-text.scramble-terminal .gemfx-scramble-text__glyphs::after {
+    animation: scramble-terminal-blink 1s steps(1) infinite;
+  }
+}

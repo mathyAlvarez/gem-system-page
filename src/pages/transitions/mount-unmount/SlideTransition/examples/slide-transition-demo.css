@@ -1,0 +1,106 @@
+.slide-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-4);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.slide-demo--wide {
+  max-width: 48rem;
+}
+
+.slide-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gem-space-2);
+}
+
+.slide-demo__stage {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  min-height: 10rem;
+  padding: var(--gem-space-5);
+  border: 1px dashed var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+}
+
+.slide-demo__stage--roomy {
+  min-height: 16rem;
+  padding: var(--gem-space-6);
+}
+
+.slide-demo__stage[data-from="top"] {
+  align-items: flex-start;
+}
+
+.slide-demo__stage[data-from="bottom"] {
+  align-items: flex-end;
+}
+
+.slide-demo__stage[data-from="left"] {
+  justify-content: flex-start;
+}
+
+.slide-demo__stage[data-from="right"] {
+  justify-content: flex-end;
+}
+
+.slide-demo__panel {
+  box-sizing: border-box;
+  min-width: 12rem;
+  padding: var(--gem-space-5) var(--gem-space-6);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-lg);
+  background: var(--gem-color-bg-subtle);
+  color: var(--gem-color-fg);
+  font-size: var(--gem-font-size-sm);
+  font-weight: 650;
+  line-height: 1.4;
+  box-shadow: var(--gem-shadow-sm);
+}
+
+.slide-demo__panel--large {
+  min-width: 14rem;
+  min-height: 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gem-space-6) var(--gem-space-8);
+  font-size: var(--gem-font-size-md);
+}
+
+.slide-demo__log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gem-space-1);
+  min-height: 4.5rem;
+  margin: 0;
+  padding: var(--gem-space-3);
+  border: 1px solid var(--gem-color-border);
+  border-radius: var(--gem-radius-md);
+  background: var(--gem-color-bg);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  list-style: none;
+}
+
+.slide-demo__compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--gem-space-4);
+  width: 100%;
+}
+
+.slide-demo__compare-label {
+  margin: 0 0 var(--gem-space-2);
+  color: var(--gem-color-fg-muted);
+  font-family: var(--gem-font-mono);
+  font-size: var(--gem-font-size-xs);
+  font-weight: 650;
+}

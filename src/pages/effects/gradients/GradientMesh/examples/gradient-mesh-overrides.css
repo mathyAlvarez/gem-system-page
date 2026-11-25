@@ -1,0 +1,16 @@
+/* The effect only writes inline the props you pass, so a class can
+   replace the colors, the base, the blur or any other variable. */
+.gemfx-gradient-mesh.gm-sunset {
+  --gemfx-gradient-mesh-base: color-mix(in srgb, var(--gem-palette-secondary-900) 70%, black);
+  --gemfx-gradient-mesh-from: var(--gem-palette-tertiary-400);
+  --gemfx-gradient-mesh-via: var(--gem-palette-error-400);
+  --gemfx-gradient-mesh-to: var(--gem-palette-secondary-500);
+  --gemfx-gradient-mesh-blur: 56px;
+
+  border-radius: var(--gem-radius-xl);
+}
+
+/* Blend the blobs with each other instead of stacking them. */
+.gm-sunset .gemfx-gradient-mesh__blob {
+  mix-blend-mode: screen;
+}

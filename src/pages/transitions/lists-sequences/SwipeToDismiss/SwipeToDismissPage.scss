@@ -1,0 +1,23 @@
+/**
+ * Gem System Page — SwipeToDismiss playground
+ * Controls grid for the SwipeToDismiss docs playground.
+ */
+
+.swipe-to-dismiss-playground {
+  --swipe-to-dismiss-playground-gap: var(--gem-space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--swipe-to-dismiss-playground-gap);
+  margin-bottom: var(--gem-space-6);
+
+  @media (min-width: 48rem) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gem-space-2);
+    min-width: 0;
+  }
+}
